@@ -17,6 +17,7 @@ import '../css/app.styl';
 
 // Import App Component
 import App from '../components/app.jsx';
+//import App from '../components/app.jsx';
 
 // Init F7 React Plugin
 Framework7.use(Framework7React)

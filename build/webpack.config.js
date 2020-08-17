@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const path = require('path');
-
+console.log(__dirname);
 function resolvePath(dir) {
   return path.join(__dirname, '..', dir);
 }

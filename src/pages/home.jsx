@@ -25,9 +25,9 @@ export default () => (
       <Nav />
       {/* Page content */}
       <Block className="display-flex flex-direction-co">
-        <Block>
+        {/* <Block> */}
           <LeftPanel />
-        </Block>
+        {/* </Block> */}
         <Block>
           <Card>
             <CardHeader>Lo Mas Relevante</CardHeader>
@@ -70,9 +70,9 @@ export default () => (
           </Card>
           {/* aqui va un ad */}
         </Block>
-        <Block>
+        {/* <Block> */}
           <RightPanel />
-        </Block>
+        {/* </Block> */}
       </Block>
       <Footer />
     </PageContent>
