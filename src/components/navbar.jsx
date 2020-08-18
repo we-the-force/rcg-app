@@ -16,7 +16,9 @@ export default class Nav extends Component {
         return (
             <Navbar sliding noHairline noShadow>
                 <NavLeft>
-                    <img src="../static/imgs/Logo_blanco.png" alt="" />
+                    <a href="/">
+                        <img src="../static/imgs/Logo_blanco.png" alt="" />
+                    </a>
                 </NavLeft>
                 <Link href="/articulo/Aquivaelnombredealgunarticulo/" className="uppercase">locales</Link>
                 <hr />
