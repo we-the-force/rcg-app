@@ -1,0 +1,118 @@
+.card
+    &.left_pan_card
+        width 100%
+        margin 15px 0px
+        border-radius 4px
+        box-shadow unset
+        background-color white
+
+        &.envivo, &.radio_card, &.pages, &.social
+            .card-header
+                font font_1
+                font-weight bold
+                color red_2 /* add dark */
+                text-transform capitalize
+                min-height unset
+                padding 9px 0px
+                margin 0px 8px 0px 14px
+                border-bottom 1px solid #EFEFEF
+
+                .icon
+                    width 16px
+                    height 16px
+                    margin 3px 3px 3px 0px
+
+                    img
+                        height 100%
+
+            .item-content
+                padding-left 10px
+                padding-right 8px
+                min-height unset
+
+                .item-inner
+                    padding 9px 30px 9px 2px
+                    min-height unset
+                    align-self unset
+                    padding-left 2px
+                    font font_3
+                    color black_2 /* add dark */
+                    text-transform capitalize
+
+                    &:before
+                        content none
+
+                    &:after
+                        background-color #EFEFEF
+
+        &.envivo
+            &:after
+                background-image url('../static/imgs/card_back_1.png')
+
+        &.radio_card
+            &:after
+                background-image url('../static/imgs/card_back_2.png')
+
+        &.pages
+            /* .item-content
+                .item-inner
+                    padding 9px 30px 9px 2px */
+
+            &:after
+                background-image url('../static/imgs/card_back_3.png')
+
+        &.social
+            .social_cont
+                padding 5px 24px 5px 14px
+
+            &:after
+                background-image url('../static/imgs/card_back_4.png')
+
+        &.about
+            background-repeat no-repeat
+            background-size cover
+            background-position center
+            background-image url('../static/imgs/card_back_5.png')
+
+            .item-content
+                padding-left 10px
+                padding-right 10px
+                min-height unset
+
+                .item-inner
+                    padding 9px 30px 9px 2px
+                    min-height unset
+                    align-self unset
+                    padding-left 4px
+                    font font_3
+                    color white /* add dark */
+                    text-transform capitalize
+
+                    &:before
+                        content none
+
+                    &:after
+                        background-color #EFEFEF
+
+            &:after
+                content none
+
+        &.darkTheme
+            background-color grey_d_3
+
+        &:after
+            content ''
+            position absolute
+            top 0
+            right 0
+            width 100%
+            height 100%
+            z-index 2
+            border-radius 4px
+            pointer-events none
+            background-position right
+            background-repeat no-repeat
+            background-size contain
+
+        .card-header:after
+            content none

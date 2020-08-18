@@ -24,10 +24,10 @@ export default () => (
       {/* Top Navbar */}
       <Nav />
       {/* Page content */}
-      <Block className="display-flex flex-direction-co">
-        {/* <Block> */}
+      <Block className="main_cont">
+        <Block className="left_pan">
           <LeftPanel />
-        {/* </Block> */}
+        </Block>
         <Block>
           <Card>
             <CardHeader>Lo Mas Relevante</CardHeader>
@@ -70,9 +70,9 @@ export default () => (
           </Card>
           {/* aqui va un ad */}
         </Block>
-        {/* <Block> */}
+        <Block className="right_pan">
           <RightPanel />
-        {/* </Block> */}
+        </Block>
       </Block>
       <Footer />
     </PageContent>

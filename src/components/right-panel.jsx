@@ -15,7 +15,7 @@ export default class RightPanel extends Component {
     }
     render() {
         return (
-            <Block>
+            <Block className="right_panel_cont">
                 <Block>
                     <Searchbar />
                     <Card style={{ height: "200px" }}>

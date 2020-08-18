@@ -1,12 +1,54 @@
-@import './stylus/constants/colors.styl';
-@import './stylus/constants/fonts.styl';
-@import './stylus/constants/dimensions.styl';
-@import './stylus/navbar.styl';
+@import './stylus/constants/colors.styl'
+@import './stylus/constants/fonts.styl'
+@import './stylus/constants/dimensions.styl'
+@import './stylus/constants/mixins.styl'
+@import './stylus/components/navbar.styl'
+@import './stylus/components/ads.styl'
+@import './stylus/components/left-panel.styl'
+@import './stylus/components/right-panel.styl'
+@import './stylus/components/cards.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
   height 100vh
 
 /* Your app custom styles here */
+.page-content
+  background white_l
+  &.darkTheme
+    background grey_d
+
+
+.main_cont
+  display flex
+  flex-direction row
+  width 95%
+  margin 0px auto
+  padding 0px
+
+  .left_pan
+    flex-basis 150px
+    flex-grow 1
+    max-width 300px
+    max-width 160px
+    no-mar-no-pad()
+
+  .right_pan
+    flex-basis 200px
+    flex-grow 1
+    max-width 400px
+    no-mar-no-pad()
+
+  .center_pan
+    flex-basis 600px
+    flex-grow 1
+
+  /* @media (min-width: 480px)
+  @media (min-width: 568px)
+  @media (min-width: 768px) 
+  @media (min-width: 1024px) */
+  @media (min-width 1200px)
+    width 70%
+
 .uppercase
   text-transform uppercase

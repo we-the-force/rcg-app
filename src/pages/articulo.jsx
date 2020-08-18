@@ -23,16 +23,18 @@ export default () => (
             {/* ads */}
             {/* Top Navbar */}
             <Nav />
-            <Block>{/* ads */}</Block>
+            <Block className="ads slim">{/* ads */}</Block>
             {/* Page content */}
-            <Block className="display-flex flex-direction-co">
-                {/* <Block> */}
-                <LeftPanel />
-                {/* </Block> */}
-                <ArticuloPanel/>
-                {/* <Block> */}
-                <RightPanel />
-                {/* </Block> */}
+            <Block className="main_cont">
+                <Block className="left_pan">
+                    <LeftPanel />
+                </Block>
+                <Block className="center_pan">
+                    <ArticuloPanel />
+                </Block>
+                <Block className="right_pan">
+                    <RightPanel />
+                </Block>
             </Block>
             <Footer />
         </PageContent>

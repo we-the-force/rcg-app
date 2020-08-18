@@ -12,7 +12,7 @@ export default class ArticuloPanel extends Component {
     }
     render() {
         return (
-            <Block>
+            <Block className="articulo_panel">
                 <Card>
                     <CardHeader>Locales</CardHeader>
                     <Block id="share"></Block>

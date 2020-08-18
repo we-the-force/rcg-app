@@ -15,57 +15,75 @@ export default class LeftPanel extends Component {
     }
     render() {
         return (
-            <Block>
-                <Card>
-                    <CardHeader>
-                        En Vivo
+            <Block className="left_panel_cont">
+                <Card className="left_pan_card envivo">
+                    <CardHeader className="justify-content-flex-start align-items-flex-end">
+                        <div className="icon display-flex justify-content-flex-start align-items-flex-end">
+                            <img src="../static/icons/tv_light.png" alt="" />
+                        </div>
+                        en vivo
                     </CardHeader>
                     <List>
-                        <ListItem title="Link 1" link="#"></ListItem>
-                        <ListItem title="Link 2" link="#"></ListItem>
-                        <ListItem title="Link 3" link="#"></ListItem>
+                        <ListItem link="#">RCG en vivo</ListItem>
+                        <ListItem link="#">RCG Diferido – 2</ListItem>
+                        <ListItem link="#">RCG TV 8.3</ListItem>
                     </List>
                 </Card>
-                <Card>
-                    <CardHeader>
+                <Card className="left_pan_card radio_card">
+                    <CardHeader className="justify-content-flex-start align-items-flex-end">
+                        <div className="icon display-flex justify-content-center align-items-flex-end">
+                            <img src="../static/icons/microphone.png" alt="" />
+                        </div>
                         Radio
                     </CardHeader>
                     <List>
-                        <ListItem title="Link 1" link="#"></ListItem>
-                        <ListItem title="Link 2" link="#"></ListItem>
+                        <ListItem link="#">DIGITAL 106.5 FM</ListItem>
+                        <ListItem link="#">XHSJ 103.3 FM</ListItem>
                     </List>
                 </Card>
-                <Card>
+                <Card className="left_pan_card pages">
                     <List>
-                        <ListItem title="Link 1" link="#"></ListItem>
-                        <ListItem title="Link 2" link="#"></ListItem>
-                        <ListItem title="Link 3" link="#"></ListItem>
+                        <ListItem link="#">Fundación RCG</ListItem>
+                        <ListItem link="#">Espectaculares</ListItem>
+                        <ListItem link="#">Registra tu calca</ListItem>
                     </List>
                 </Card>
-                <Card>
+                <Card className="left_pan_card social">
                     <CardHeader>
                         Siguenos en:
                     </CardHeader>
+                    <Block className="social_cont display-flex justify-content-space-between align-items-center">
+                        <a href="">
+                            <img src="../static/icons/FB_Icon.png" alt="" srcSet="" />
+                        </a>
+                        <a href="">
+                            <img src="../static/icons/TW_Icon.png" alt="" srcSet="" />
+                        </a>
+                        <a href="">
+                            <img src="../static/icons/YT_Icon.png" alt="" srcSet="" />
+                        </a>
+                        <a href="">
+                            <img src="../static/icons/IG_Icon.png" alt="" srcSet="" />
+                        </a>
+                    </Block>
+                </Card>
+                <Card className="left_pan_card about">
                     <List>
-                        <ListItem title="Link 1" link="#"></ListItem>
-                        <ListItem title="Link 2" link="#"></ListItem>
-                        <ListItem title="Link 3" link="#"></ListItem>
-                        <ListItem title="Link 3" link="#"></ListItem>
+                        <ListItem link="#">Nosotros</ListItem>
+                        <ListItem link="#">Contacto</ListItem>
                     </List>
                 </Card>
-                <Card>
-                    <List>
-                        <ListItem title="Link 1" link="#"></ListItem>
-                        <ListItem title="Link 2" link="#"></ListItem>
-                    </List>
-                </Card>
-                <Block>
-                    <Link href={false}>Derecho de replica</Link>
-                    <Link href={false}>Aviso de privacidad</Link>
-                    <Link href={false}>OPI 2017</Link>
-                    <Link href={false}>OPI 2018</Link>
-                    <Link href={false}>SEG</Link>
-                    <Link href={false}>©2020 RCG</Link>
+                <Block className="more display-flex flex-direction-column justify-content-flex-start align-items-flex-start">
+                    <div className="flex_wrap display-flex justify-content-flex-start align-items-center">
+                        <Link href={false}>Derecho de replica</Link>
+                        <Link href={false}>Aviso de privacidad</Link>
+                    </div>
+                    <div className="display-flex justify-content-flex-start align-items-center">
+                        <Link href={false}>OPI 2017</Link>
+                        <Link href={false}>OPI 2018</Link>
+                        <Link href={false}>SEG</Link>
+                    </div>
+                    <p>©2020 RCG</p>
                 </Block>
             </Block>
         );
