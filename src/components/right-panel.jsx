@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DestItem from './destacado-item';
 import {
     Block,
     Searchbar,
@@ -21,49 +22,17 @@ export default class RightPanel extends Component {
                     <Block className="ads square"></Block>
                 </Block>
                 <Block className="right_panel_down">
-                    <Card>
+                    <Card className="right_panel_down_card destacado">
                         <CardHeader>
                             Destacado
                         </CardHeader>
-                        <Block>
-                            <div><img src="" alt="" /></div>
-                            <Block strong>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
-                                <h1>Titulo De La Nota</h1>
-                                <p className="cont">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                <p className="Tag Titulo"></p>
-                                <p>Mostrar mas</p>
-                            </Block>
-                        </Block>
-                        <Block>
-                            <div><img src="" alt="" /></div>
-                            <Block strong>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
-                                <h1>Titulo De La Nota</h1>
-                                <p className="cont">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                <p className="Tag Titulo"></p>
-                                <p>Mostrar mas</p>
-                            </Block>
-                        </Block>
-                        <Block>
-                            <Block strong>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
-                                <h1>Titulo De La Nota</h1>
-                                <p className="cont">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                <p className="Tag Titulo"></p>
-                                <p>Mostrar mas</p>
-                            </Block>                    </Block>
-                        <Block>
-                            <Block strong>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
-                                <h1>Titulo De La Nota</h1>
-                                <p className="cont">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                <p className="Tag Titulo"></p>
-                                <p>Mostrar mas</p>
-                            </Block>
-                        </Block>
+                        <DestItem image={true} />
+                        <DestItem image={true} />
+                        <DestItem image={false} />
+                        <DestItem image={false} />
+                        <DestItem image={false} nobord/>
                     </Card>
-                    <Card>
+                    <Card className="right_panel_down_card tags">
                         <CardHeader>
                             Tags
                         </CardHeader>
@@ -73,7 +42,7 @@ export default class RightPanel extends Component {
                             <ListItem link="#">Reporte</ListItem>
                             <ListItem link="#">Alcalde</ListItem>
                             <ListItem link="#">RCG</ListItem>
-                            <ListItem link="#">Buscar</ListItem>
+                            <ListItem link="#" className="grey">Buscar</ListItem>
                         </List>
                     </Card>
                 </Block>

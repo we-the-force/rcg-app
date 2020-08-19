@@ -1,0 +1,68 @@
+.dest-item
+    no-mar-no-pad()
+
+    .img_cont
+        display flex
+        padding 10px
+
+        img
+            width 100%
+            height 100%
+            object-fit cover
+
+    .dest-cont
+        border-bottom 1px solid #EBEBEB
+        padding 0px 0px 10px 0px
+        margin 0px 10px
+
+        &:before
+            content none
+
+        .block-header
+            margin 10px 0px
+            display flex
+            font font_6
+            color #989898
+
+            p
+                margin 0px
+
+            .autor
+                color red
+
+            .fecha
+                color #989898
+
+        .block-title
+            margin 10px 0px
+            font font_7
+            color #191919
+            text-transform capitalize
+            white-space normal
+
+        .cont
+            margin 10px 0px
+            font font_1
+            color #191919
+            text-transform capitalize
+
+        .block-footer
+            margin 10px 0px 
+            a.more
+                font font_6
+                color #2AAAE0
+
+            p
+                font font_6
+                margin 0px
+
+                &.tag
+                    color #989898
+                    text-transform capitalize
+
+                    .etiqueta
+                        color #EC1B23
+
+    &.nobord
+        .dest-cont
+            border-bottom none

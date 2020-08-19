@@ -2,12 +2,14 @@
 @import './stylus/constants/fonts.styl'
 @import './stylus/constants/dimensions.styl'
 @import './stylus/constants/mixins.styl'
+@import './stylus/components/footer.styl'
 @import './stylus/components/navbar.styl'
 @import './stylus/components/ads.styl'
 @import './stylus/components/left-panel.styl'
 @import './stylus/components/right-panel.styl'
 @import './stylus/components/cards.styl'
 @import './stylus/components/searchbar.styl'
+@import './stylus/components/destacado-item.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -31,14 +33,14 @@
     flex-basis 150px
     flex-grow 1
     max-width 300px
-    max-width 160px
+    min-width 160px
     no-mar-no-pad()
 
   .right_pan
-    flex-basis 200px
+    flex-basis 210px
     flex-grow 1
     max-width 400px
-    max-width 200px
+    min-width 200px
     no-mar-no-pad()
 
   .center_pan
