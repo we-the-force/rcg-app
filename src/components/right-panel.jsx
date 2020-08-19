@@ -16,16 +16,15 @@ export default class RightPanel extends Component {
     render() {
         return (
             <Block className="right_panel_cont">
-                <Block>
-                    <Searchbar />
-                    <Card style={{ height: "200px" }}>
-                    </Card>
+                <Block className="search_block">
+                    <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false}/>
+                    <Block className="ads square"></Block>
                 </Block>
-                <Block>
+                <Block className="right_panel_down">
                     <Card>
                         <CardHeader>
                             Destacado
-                    </CardHeader>
+                        </CardHeader>
                         <Block>
                             <div><img src="" alt="" /></div>
                             <Block strong>
@@ -67,7 +66,7 @@ export default class RightPanel extends Component {
                     <Card>
                         <CardHeader>
                             Tags
-                    </CardHeader>
+                        </CardHeader>
                         <List>
                             <ListItem link="#">Coahuila</ListItem>
                             <ListItem link="#">Saltillo</ListItem>

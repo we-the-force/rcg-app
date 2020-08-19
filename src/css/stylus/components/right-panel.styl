@@ -1,3 +1,15 @@
 .right_panel_cont
-    margin 0px
-    padding 0px
+    height 100%
+    no-mar-no-pad()
+
+    .search_block
+        position sticky
+        top var(--f7-navbar-height)
+        padding 30px 0px 15px 0px
+        margin 0px
+        background white_l
+        z-index 2
+
+    .right_panel_down
+        position sticky
+        filter drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.1))
