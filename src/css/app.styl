@@ -10,6 +10,7 @@
 @import './stylus/components/cards.styl'
 @import './stylus/components/searchbar.styl'
 @import './stylus/components/destacado-item.styl'
+@import './stylus/components/articulo-panel.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -18,9 +19,9 @@
 /* Your app custom styles here */
 .page-content
   background white_l
+
   &.darkTheme
     background grey_d
-
 
 .main_cont
   display flex
@@ -42,10 +43,15 @@
     max-width 400px
     min-width 200px
     no-mar-no-pad()
+    margin-left -10px
+    margin-right 10px
 
   .center_pan
     flex-basis 600px
     flex-grow 1
+    width auto
+    no-mar-no-pad()
+    z-index 3
 
   /* @media (min-width: 480px)
   @media (min-width: 568px)
