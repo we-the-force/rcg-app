@@ -1,10 +1,14 @@
+no-mar-no-pad()
+    margin 0px
+    padding 0px
+
 .card
+    margin 15px 0px
+    border-radius 8px
+    box-shadow unset
+    background-color white
     &.left_pan_card
         width 100%
-        margin 15px 0px
-        border-radius 8px
-        box-shadow unset
-        background-color white
 
         &.envivo, &.radio_card, &.pages, &.social
             .card-header
@@ -120,10 +124,6 @@
 
     &.right_panel_down_card
         width calc(100% - 20px)
-        margin 15px 10px
-        border-radius 8px
-        box-shadow unset
-        background-color white
 
         &.destacado
             margin-top 0px
@@ -177,6 +177,100 @@
     &.articulo
         width 100%
         margin 0px
-        border-radius 8px
-        box-shadow unset
-        background-color white
+        padding 15px
+        box-sizing border-box
+
+        .header_cont
+            padding 0px
+
+            .card-header
+                padding 0px 0px 0px 7px
+                min-height unset !important
+
+                a
+                    padding-right 10px
+                    font font_7
+                    text-transform capitalize
+                    color #303030
+
+                &:after
+                    content none
+
+            .share
+                padding 15px 7px 0px 0px
+
+                p
+                    font font_3
+                    text-transform capitalize
+                    color #444444
+                    margin 0px
+
+                a
+                    padding-left 5px
+                    width 25px
+                    height 25px
+
+                    img
+                        width 100%
+
+        .title_cont
+            padding 30px 0px 0px 0px
+
+            .head
+                padding 0px 0px 0px 7px
+                margin 10px 0px
+                font font_8
+                color #979797
+                text-transform capitalize
+
+                p
+                    margin 0px
+
+                .autor
+                    color red
+                    padding-right 5px
+
+                .fecha
+                    padding-left 5px
+
+            .titulo
+                padding 0px
+                font font_9
+                text-transform capitalize
+                color #242424
+                white-space normal
+
+            .img_cont
+                padding 10px 0px
+                width 100%
+
+                img
+                    width 100%
+                    object-fit cover
+
+                .foot
+                    padding 0px 0px 0px 7px
+                    margin 10px 0px
+                    font font_8
+                    color #5e5e5e
+                    text-transform capitalize
+
+                    p
+                        margin 0px
+
+                    .pieTitulo
+                        padding-right 5px
+                        font-weight bold
+
+                    .pie
+                        padding-left 5px
+        .content
+            margin 0px
+            padding 10px 0px
+            .right_side
+                padding 0px 
+                width fit-content
+            .left_side
+                padding 0px 20px
+                .block
+                    padding 0px
