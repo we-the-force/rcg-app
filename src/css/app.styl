@@ -11,6 +11,7 @@
 @import './stylus/components/searchbar.styl'
 @import './stylus/components/destacado-item.styl'
 @import './stylus/components/articulo-panel.styl'
+@import './stylus/components/nota-recomendada'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -26,7 +27,7 @@
 .main_cont
   display flex
   flex-direction row
-  width 95%
+  width 95vw
   margin 0px auto
   padding 0px
 
@@ -49,7 +50,6 @@
   .center_pan
     flex-basis 600px
     flex-grow 1
-    width auto
     no-mar-no-pad()
     z-index 3
 
@@ -58,7 +58,7 @@
   @media (min-width: 768px) 
   @media (min-width: 1024px) */
   @media (min-width 1200px)
-    width 70%
+    width 70vw
 
 .uppercase
   text-transform uppercase

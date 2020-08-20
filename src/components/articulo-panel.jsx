@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import NotaRecomandada from './nota-recomendada.jsx';
 import {
     Block,
     Card,
     CardHeader,
+    Swiper,
+    SwiperSlide
 } from 'framework7-react';
 
 export default class ArticuloPanel extends Component {
@@ -43,30 +46,45 @@ export default class ArticuloPanel extends Component {
                     </Block>
                     <Block className="content display-flex align-items-flex-start">
                         <Block className="left_side">
-
-                            <Block>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet vel lorem quis suscipit. Aenean faucibus pulvinar molestie. Aenean sapien ante, interdum a nulla sit amet, bibendum porta nunc. Nulla vitae mattis lacus. Vivamus pretium imperdiet arcu vel interdum. Mauris suscipit ex sit amet libero convallis tristique. Aliquam posuere, ipsum eget iaculis ornare, metus purus auctor mi, eu fringilla ligula purus a ipsum. Etiam blandit orci elit, quis maximus ipsum tincidunt maximus. Mauris imperdiet pulvinar elit, vitae ultricies ligula lacinia eget. Duis mauris nulla, pellentesque a magna vel, commodo venenatis metus.
-
-                                Maecenas volutpat metus vitae eros bibendum, rhoncus imperdiet magna laoreet. Quisque sed risus quis purus pulvinar sodales. Ut lacus lectus, euismod in pharetra sit amet, efficitur vel mi. Donec nisi risus, finibus a leo vitae, ornare consectetur mi. Donec sollicitudin massa eget ligula lobortis, eu congue lacus malesuada. Nulla arcu sem, vestibulum sed elementum sit amet, finibus sit amet sapien. Praesent semper elit a turpis malesuada eleifend. Duis efficitur urna id mi iaculis, eget pretium mi malesuada. In id libero massa. Morbi at leo lorem. Vivamus fermentum sodales eros eu convallis. Cras congue vel lacus non lacinia. Maecenas vel erat id enim aliquam tempor. Aliquam ac felis at ipsum sagittis venenatis sit amet a dolor. Praesent commodo tempus lacus, eu commodo purus dictum ut. Aenean metus nibh, porttitor in libero viverra, condimentum blandit quam.
-
-                                Vivamus quis justo et neque rutrum consequat in eget neque. Praesent aliquam gravida vestibulum. Proin porttitor augue ac orci semper rutrum. Pellentesque congue, odio eu dignissim dictum, purus justo pellentesque risus, ac ornare sapien turpis sit amet erat. Quisque vehicula ligula vitae volutpat eleifend. Morbi sollicitudin vel neque tristique viverra. Nunc bibendum velit quis iaculis cursus. Pellentesque nec arcu odio. Suspendisse potenti. Mauris a metus quis tortor auctor tincidunt et vel enim. Donec vitae risus scelerisque, tristique nulla in, sagittis purus.
-
-                                Vestibulum iaculis lacus ac arcu commodo lobortis. Fusce augue risus, efficitur vitae metus sit amet, iaculis auctor leo. Cras dictum viverra neque, quis ultricies felis dictum faucibus. Proin iaculis iaculis tortor, id lobortis tortor lacinia a. Donec a suscipit eros. Praesent quis fermentum justo, a sodales lectus. Fusce porta dolor quis venenatis condimentum. Nam maximus mauris at nisi cursus viverra. Mauris placerat molestie dui ac lacinia. Nam viverra in nibh id euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-                                Nullam eu consequat nisl. Phasellus elementum risus sed ante rutrum, a feugiat felis vulputate. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut quis imperdiet orci. Integer vitae mi at arcu porttitor mollis. Aenean hendrerit porta urna ac commodo. Vivamus vitae ex dolor. Etiam dapibus mi nulla, ut finibus tellus porttitor eget. Curabitur eleifend ante ac dolor vehicula auctor ut vel ante. Maecenas faucibus, dolor sit amet semper ultrices, nulla velit faucibus nisi, quis venenatis nisl massa et elit. Cras pretium, odio in viverra consectetur, orci neque hendrerit tellus, rutrum tincidunt felis metus eget ligula.
-                                        {/* aqui va el contenido */}
+                            <Block className="articulo_cont">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                                </p>
+                                <Block className="quotes display-flex align-items-center">
+                                    {/* <p className="comillas up">&#8220;</p> */}
+                                    <p className="text"> El cafe con leche es como el cafe, pero con leche</p>
+                                    {/* <p className="comillas down">&#8221;</p> */}
+                                </Block>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                                </p>
                             </Block>
-                            <Block>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet vel lorem quis suscipit. Aenean faucibus pulvinar molestie. Aenean sapien ante, interdum a nulla sit amet, bibendum porta nunc. Nulla vitae mattis lacus. Vivamus pretium imperdiet arcu vel interdum. Mauris suscipit ex sit amet libero convallis tristique. Aliquam posuere, ipsum eget iaculis ornare, metus purus auctor mi, eu fringilla ligula purus a ipsum. Etiam blandit orci elit, quis maximus ipsum tincidunt maximus. Mauris imperdiet pulvinar elit, vitae ultricies ligula lacinia eget. Duis mauris nulla, pellentesque a magna vel, commodo venenatis metus.
+                            <Block className="tags display-flex justify-content-flex-start align-items-flex-start">
+                                <p>
+                                    Tags Relacionados:
+                                </p>
+                                <Block className="links">
+                                    <a href=""> Coahuila </a>
+                                    <a href=""> Saltillo </a>
+                                    <a href=""> Reporte </a>
+                                    <a href=""> Alcalde </a>
+                                    <a href=""> RCG </a>
+                                </Block>
+                            </Block>
+                            <Block className="comments">
 
-                                Maecenas volutpat metus vitae eros bibendum, rhoncus imperdiet magna laoreet. Quisque sed risus quis purus pulvinar sodales. Ut lacus lectus, euismod in pharetra sit amet, efficitur vel mi. Donec nisi risus, finibus a leo vitae, ornare consectetur mi. Donec sollicitudin massa eget ligula lobortis, eu congue lacus malesuada. Nulla arcu sem, vestibulum sed elementum sit amet, finibus sit amet sapien. Praesent semper elit a turpis malesuada eleifend. Duis efficitur urna id mi iaculis, eget pretium mi malesuada. In id libero massa. Morbi at leo lorem. Vivamus fermentum sodales eros eu convallis. Cras congue vel lacus non lacinia. Maecenas vel erat id enim aliquam tempor. Aliquam ac felis at ipsum sagittis venenatis sit amet a dolor. Praesent commodo tempus lacus, eu commodo purus dictum ut. Aenean metus nibh, porttitor in libero viverra, condimentum blandit quam.
-
-                                Vivamus quis justo et neque rutrum consequat in eget neque. Praesent aliquam gravida vestibulum. Proin porttitor augue ac orci semper rutrum. Pellentesque congue, odio eu dignissim dictum, purus justo pellentesque risus, ac ornare sapien turpis sit amet erat. Quisque vehicula ligula vitae volutpat eleifend. Morbi sollicitudin vel neque tristique viverra. Nunc bibendum velit quis iaculis cursus. Pellentesque nec arcu odio. Suspendisse potenti. Mauris a metus quis tortor auctor tincidunt et vel enim. Donec vitae risus scelerisque, tristique nulla in, sagittis purus.
-
-                                Vestibulum iaculis lacus ac arcu commodo lobortis. Fusce augue risus, efficitur vitae metus sit amet, iaculis auctor leo. Cras dictum viverra neque, quis ultricies felis dictum faucibus. Proin iaculis iaculis tortor, id lobortis tortor lacinia a. Donec a suscipit eros. Praesent quis fermentum justo, a sodales lectus. Fusce porta dolor quis venenatis condimentum. Nam maximus mauris at nisi cursus viverra. Mauris placerat molestie dui ac lacinia. Nam viverra in nibh id euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-                                Nullam eu consequat nisl. Phasellus elementum risus sed ante rutrum, a feugiat felis vulputate. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut quis imperdiet orci. Integer vitae mi at arcu porttitor mollis. Aenean hendrerit porta urna ac commodo. Vivamus vitae ex dolor. Etiam dapibus mi nulla, ut finibus tellus porttitor eget. Curabitur eleifend ante ac dolor vehicula auctor ut vel ante. Maecenas faucibus, dolor sit amet semper ultrices, nulla velit faucibus nisi, quis venenatis nisl massa et elit. Cras pretium, odio in viverra consectetur, orci neque hendrerit tellus, rutrum tincidunt felis metus eget ligula.
-                                        {/* aqui va el contenido */}
+                            </Block>
+                            <Block className="share display-flex align-items-center">
+                                <p>Compartir:</p>
+                                <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
+                                    <img src="../static/icons/TW_Icon_x3.png" alt="" />
+                                </a>
+                                <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
+                                    <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                                </a>
                             </Block>
                         </Block>
 
@@ -77,22 +95,46 @@ export default class ArticuloPanel extends Component {
                             </Block>
                         </Block>
                     </Block>
-                    <Block>
-                        {/* aqui van los comentarios */}
+                    <Block className="ads bar">
                     </Block>
-                    <Block>
-                        {/* share */}
-                    </Block>
-                    <Block>
-                        {/* ads */}
-                    </Block>
-                    <Block>
-                        <div>
-                            <h1></h1>
+                    <Block className="recomendados display-flex flex-direction-column align-content-stretch	">
+                        <Block className="head display-flex justify-content-space-between align-items-center">
+                            <h1>Te Recomandamos</h1>
                             <a href="">Mostrar mas</a>
-                        </div>
-                        {/* aqui va un swiper */}
-                        {/* Recomendamos */}
+                        </Block>
+                        <Swiper
+                            navigation
+                            scrollbar
+                            params={{ slidesPerView: 3 }}
+                        >
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                        </Swiper>
                     </Block>
                 </Card>
             </Block>

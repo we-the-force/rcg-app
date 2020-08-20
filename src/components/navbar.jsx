@@ -20,7 +20,7 @@ export default class Nav extends Component {
                         <img src="../static/imgs/Logo_blanco.png" alt="" />
                     </a>
                 </NavLeft>
-                <Link href="/articulo/Aquivaelnombredealgunarticulo/" className="uppercase">locales</Link>
+                <Link href="/articulo/1/" className="uppercase">locales</Link>
                 <hr />
                 <Link href={false} className="uppercase">estatales</Link>
                 <hr />
