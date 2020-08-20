@@ -24,6 +24,54 @@ import {
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
 
+// import ApolloClient, {gql} from "apollo-boost";
+// import {ApolloProvider, Query} from "react-apollo";
+
+
+// const client = new ApolloClient({
+//   uri: `${process.env.REACT_APP_BACKEND_URL}/graphql`
+// })
+
+// const AutorsQuery = () => {
+//   try
+//   {
+//     console.log("PINCHE COLA AAAAH");
+//     return <Query query={gql`{
+//       autors {
+//         id
+//         nombre
+//         correo
+//       }
+//     }`}>
+//     {
+//       () => {({loading, error, data}) => {
+//         console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH");
+//         if (loading)
+//         {
+//           console.log("Come caca si se pudo");
+//           return <p>Loading...</p>;
+//         }  
+//         if (error)
+//         {
+//           console.log("Come caca pinches errores");
+//           return <p>Error: {JSON.stringify(error)}</p>;
+//         }
+  
+//         return data.autors.results.map(autor => {
+//           return <p>{autor.name}</p>
+//         })
+//       }}
+//     }
+//   </Query>
+
+//   }
+//   catch (err)
+//   {
+//     console.log("Error ptm");
+//     console.log(err);
+//   }
+// }
+
 export default class extends React.Component {
   constructor() {
     super();
@@ -65,11 +113,15 @@ export default class extends React.Component {
     }
   }
   render() {
+    // console.log("Caca");
     return (
-      <App params={ this.state.f7params } >
-        {/* Your main view, should have "view-main" class */}
-        <View main className="safe-areas" url="/" />
-      </App>
+      // <ApolloProvider client={client}>
+        <App params={ this.state.f7params } >
+          {/* <AutorsQuery/> */}
+          {/* Your main view, should have "view-main" class */}
+          <View main className="safe-areas" url="/" />
+        </App>
+      // </ApolloProvider>
     )
   }
   alertLoginData() {
