@@ -19,7 +19,7 @@ export default class Masthead extends Component {
             home = <img src="../static/imgs/Logo_negro.png" alt="" srcSet="" />
         } */
         return (
-            <Block>
+            <Block className="masthead">
                 <Swiper pagination params={{ loop: true }}>
                     <SwiperSlide>
                         <img src="../static/imgs/LOGO_negro_sobre_blanco.png" alt="" />
