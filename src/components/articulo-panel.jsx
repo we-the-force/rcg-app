@@ -11,7 +11,6 @@ import {
 export default class ArticuloPanel extends Component {
     constructor() {
         super();
-        this.state = {}
     }
     render() {
         return (
@@ -34,11 +33,12 @@ export default class ArticuloPanel extends Component {
                     </Block>
                     <Block className="title_cont">
                         <Block className="head display-flex justify-content-flex-start">
-                            <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
+                            <p className="autor"> {this.props.articulo.autor.nombre} </p> - <p className="fecha"> {this.props.articulo.fecha} </p>
                         </Block>
-                        <Block className="titulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</Block>
+                        <Block className="titulo">{this.props.articulo.Titulo}</Block>
                         <Block className="img_cont display-flex flex-direction-column">
-                            <img src="../static/imgs/418464-PD8PXQ-214 1.png" alt="" />
+                            {/* <img src="../static/imgs/418464-PD8PXQ-214 1.png" alt="" /> */}
+                            <img src={`http://localhost:1337${this.props.articulo.cover.url}`} alt="" />
                             <Block className="foot display-flex justify-content-flex-start align-items-center">
                                 <p className="pieTitulo">Pie de foto</p> - <p className="pie">Pie de foto</p>
                             </Block>
@@ -46,13 +46,16 @@ export default class ArticuloPanel extends Component {
                     </Block>
                     <Block className="content display-flex align-items-flex-start">
                         <Block className="left_side">
+
                             <Block className="articulo_cont">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    {this.props.articulo.description}
+                                    {/* aqui va el contenido */}
+                                    {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. */}
                                 </p>
-                                <p>
+                                {/* <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
-                                </p>
+                                </p> */}
                                 <Block className="quotes display-flex align-items-center">
                                     {/* <p className="comillas up">&#8220;</p> */}
                                     <p className="text"> El cafe con leche es como el cafe, pero con leche</p>

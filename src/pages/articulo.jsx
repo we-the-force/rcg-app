@@ -25,7 +25,7 @@ export default () => (
                         <LeftPanel />
                     </Block>
                     <Block className="center_pan">
-                        <ArticuloPanel />
+                        <ArticuloPanel articulo={this.$f7route.context.Article}/>
                     </Block>
                     <Block className="right_pan">
                         <RightPanel />

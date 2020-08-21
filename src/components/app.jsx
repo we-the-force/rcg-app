@@ -35,7 +35,6 @@ import routes from '../js/routes';
 // const AutorsQuery = () => {
 //   try
 //   {
-//     console.log("PINCHE COLA AAAAH");
 //     return <Query query={gql`{
 //       autors {
 //         id
@@ -48,12 +47,11 @@ import routes from '../js/routes';
 //         console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH");
 //         if (loading)
 //         {
-//           console.log("Come caca si se pudo");
 //           return <p>Loading...</p>;
 //         }  
 //         if (error)
 //         {
-//           console.log("Come caca pinches errores");
+//           console.log("Ayyy, error pidiendo la info unu");
 //           return <p>Error: {JSON.stringify(error)}</p>;
 //         }
   
@@ -71,7 +69,6 @@ import routes from '../js/routes';
 //     console.log(err);
 //   }
 // }
-
 export default class extends React.Component {
   constructor() {
     super();
@@ -116,7 +113,7 @@ export default class extends React.Component {
     // console.log("Caca");
     return (
       // <ApolloProvider client={client}>
-        <App params={ this.state.f7params } >
+      <App params={ this.state.f7params } >
           {/* <AutorsQuery/> */}
           {/* Your main view, should have "view-main" class */}
           <View main className="safe-areas" url="/" />
