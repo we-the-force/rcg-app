@@ -1,7 +1,7 @@
 
 import HomePage from '../pages/home.jsx';
 import Articulo from '../pages/articulo.jsx';
-import ContactsPage from '../pages/contacts.jsx';
+import ContactsPage from '../pages/contacto.jsx';
 import CategoriaPage from '../pages/categoria.jsx';
 import NotFoundPage from '../pages/404.jsx';
 
@@ -37,12 +37,6 @@ var routes = [
         }
       });
     }
-    // ,
-    // options: {
-    //   props: {
-    //     article: "asd"
-    //   }
-    // }
   },
   {
     path: '/contacts',
