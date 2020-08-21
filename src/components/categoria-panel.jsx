@@ -15,10 +15,14 @@ export default class NewsPanel extends Component {
         return (
             <Block className="categoria_panel">
                 <Card className="head">
-                    <CardHeader>Locales</CardHeader>
+                    <CardHeader> {this.props.categoria} </CardHeader>
                 </Card>
                 {/* Lista de NewsCards */}
-                <NewsCard />
+                { this.props.articulos.map((articulo, i) => {
+                    console.log("Articulo");
+                    return (<NewsCard key={i} articulo={articulo}/>);
+                }) }
+                {/* <NewsCard />
                 <Block className="ads bar"></Block>
                 <NewsCard />
                 <NewsCard />
@@ -28,7 +32,7 @@ export default class NewsPanel extends Component {
                 <Block className="ads bar"></Block>
                 <NewsCard />
                 <NewsCard />
-                <Block className="ads bar"></Block>
+                <Block className="ads bar"></Block> */}
                 {/* te recomendamos */}
             </Block>
         );

@@ -35,7 +35,7 @@ export default class ArticuloPanel extends Component {
                         <Block className="head display-flex justify-content-flex-start">
                             <p className="autor"> {this.props.articulo.autor.nombre} </p> - <p className="fecha"> {this.props.articulo.fecha} </p>
                         </Block>
-                        <Block className="titulo">{this.props.articulo.Titulo}</Block>
+                        <Block className="titulo">{this.props.articulo.titulo}</Block>
                         <Block className="img_cont display-flex flex-direction-column">
                             {/* <img src="../static/imgs/418464-PD8PXQ-214 1.png" alt="" /> */}
                             <img src={`http://localhost:1337${this.props.articulo.cover.url}`} alt="" />
