@@ -51,7 +51,7 @@ var routes = [
     }
   },
   {
-    path: '/envivo/:name',
+    path: '/tv/:name',
     component: TV,
   },
   {
@@ -84,11 +84,11 @@ var routes = [
     {
       var router = this;
       var app = router.app;
-      var catId = routeTo.params.nameId;
+      var catId = categoryToIndex(routeTo.params.nameId);
 
       console.log("AAAAAH");
 
-      let categoria = await indexToCategory(catId);
+      let categoria = indexToCategory(catId);
       let articles;
       let query = `query{ articulos(where: {categorias: {id: ${catId}}}){ id Titulo autor{nombre} fecha cover{url} description visitas tags{tag} categorias{nombre id} comentarios{valor}}}`
       await  app.request.promise.get(`http://localhost:1337/graphql?query=${query}`).then(function(res) {
@@ -112,28 +112,55 @@ var routes = [
         }
       });
 
-      async function indexToCategory(index)
+      function categoryToIndex(category)
+      {
+        console.log("Receiuving catToInd: " + category);
+        switch (category)
+        {
+          case "locales":
+            return 1;
+          case "estatales":
+            return 2;
+          case "nacionales":
+            return 3;
+          case "internacionales":
+            return 4;
+          case "deportes":
+            return 5;
+          case "espectaculos":
+            return 6;
+          case "destacados":
+            return 7;
+          case "fundacion_rcg":
+            return 8;
+          case "salud_y_cultura":
+            return 9;
+          
+        }
+      }
+
+      function indexToCategory(index)
       {
         console.log("Receiving switch: " + index);
         switch (index)
         {
-          case "1":
+          case 1:
             return "Locales";
-          case "2":
+          case 2:
             return "Estatal";
-          case "3":
+          case 3:
             return "Nacional";
-          case "4":
+          case 4:
             return "Internacional";
-          case "5":
+          case 5:
             return "Deportes";
-          case "6":
+          case 6:
             return "Espectaculos";
-          case "7":
+          case 7:
             return "destacadas";
-          case "8":
+          case 8:
             return "Fundacion RCG";
-          case "9":
+          case 9:
             return "Salud y Cultura";
           default:
             console.log(`Entered on default (${index})`);

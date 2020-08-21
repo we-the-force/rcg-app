@@ -24,9 +24,9 @@ export default class LeftPanel extends Component {
                         en vivo
                     </CardHeader>
                     <List>
-                        <ListItem link="#">RCG en vivo</ListItem>
-                        <ListItem link="#">RCG Diferido – 2</ListItem>
-                        <ListItem link="#">RCG TV 8.3</ListItem>
+                        <ListItem link="/tv/envivo">RCG en vivo</ListItem>
+                        <ListItem link="/tv/diferido">RCG Diferido – 2</ListItem>
+                        <ListItem link="/tv/8-3">RCG TV 8.3</ListItem>
                     </List>
                 </Card>
                 <Card className="left_pan_card radio_card">
@@ -37,15 +37,15 @@ export default class LeftPanel extends Component {
                         Radio
                     </CardHeader>
                     <List>
-                        <ListItem link="#">DIGITAL 106.5 FM</ListItem>
-                        <ListItem link="#">XHSJ 103.3 FM</ListItem>
+                        <ListItem link="/radio/106-5">DIGITAL 106.5 FM</ListItem>
+                        <ListItem link="/radio/103-3">XHSJ 103.3 FM</ListItem>
                     </List>
                 </Card>
                 <Card className="left_pan_card pages">
                     <List>
                         <ListItem link="#">Fundación RCG</ListItem>
-                        <ListItem link="#">Espectaculares</ListItem>
-                        <ListItem link="#">Registra tu calca</ListItem>
+                        <ListItem link="/espectaculares">Espectaculares</ListItem>
+                        <ListItem link="/calca">Registra tu calca</ListItem>
                     </List>
                 </Card>
                 <Card className="left_pan_card social">
@@ -69,14 +69,14 @@ export default class LeftPanel extends Component {
                 </Card>
                 <Card className="left_pan_card about">
                     <List>
-                        <ListItem link="#">Nosotros</ListItem>
-                        <ListItem link="#">Contacto</ListItem>
+                        <ListItem link="/nosotros">Nosotros</ListItem>
+                        <ListItem link="/contacto">Contacto</ListItem>
                     </List>
                 </Card>
                 <Block className="more display-flex flex-direction-column justify-content-flex-start align-items-flex-start">
                     <div className="flex_wrap display-flex justify-content-flex-start align-items-center">
-                        <Link href={false}>Derecho de replica</Link>
-                        <Link href={false}>Aviso de privacidad</Link>
+                        <Link href="/derecho_replica">Derecho de replica</Link>
+                        <Link href="/aviso_privacidad">Aviso de privacidad</Link>
                     </div>
                     <div className="display-flex justify-content-flex-start align-items-center">
                         <Link href={false}>OPI 2017</Link>

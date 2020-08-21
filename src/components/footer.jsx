@@ -12,14 +12,14 @@ export default class Footer extends Component {
     render() {
         return (
             <Block className="footer display-flex justify-content-space-between">
-                <Block className="left">
+                <a href="/" className="left">
                     <img src="../static/imgs/Logo_negro.png" alt="" />
-                </Block>
+                </a>
                 <Block className="center">
                     <div className="display-flex">
-                        <Link href={false}>Derecho de replica</Link>
+                        <Link href="/derecho_replica">Derecho de replica</Link>
                         <hr />
-                        <Link href={false}>Aviso de privacidad</Link>
+                        <Link href="/aviso_privacidad">Aviso de privacidad</Link>
                         <hr />
                         <Link href={false}>OPI 2017</Link>
                         <hr />

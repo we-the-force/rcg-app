@@ -20,23 +20,23 @@ export default class Nav extends Component {
                         <img src="../static/imgs/Logo_blanco.png" alt="" />
                     </a>
                 </NavLeft>
-                <Link href="/categoria/1/" className="uppercase">locales</Link>
+                <Link href="/categoria/locales" className="uppercase">locales</Link>
                 <hr />
-                <Link href='/categoria/2/' className="uppercase">estatales</Link>
+                <Link href="/categoria/estatales" className="uppercase">estatales</Link>
                 <hr />
-                <Link href="/categoria/3/" className="uppercase">nacionales</Link>
+                <Link href="/categoria/nacionales" className="uppercase">nacionales</Link>
                 <hr />
-                <Link href="/categoria/4/" className="uppercase">internacionales</Link>
+                <Link href="/categoria/internacionales" className="uppercase">internacionales</Link>
                 <hr />
-                <Link href="/categoria/5/" className="uppercase">deportes</Link>
+                <Link href="/categoria/deportes" className="uppercase">deportes</Link>
                 <hr />
-                <Link href="/categoria/6/" className="uppercase">espectáculos</Link>
+                <Link href="/categoria/espectaculos" className="uppercase">espectáculos</Link>
                 <hr />
-                <Link href="/categoria/7/" className="uppercase">destacados</Link>
+                <Link href="/categoria/destacados" className="uppercase">destacados</Link>
                 <hr />
-                <Link href="/categoria/8/" className="uppercase">fundación rcg</Link>
+                <Link href="/categoria/fundacion_rcg" className="uppercase">fundación rcg</Link>
                 <hr />
-                <Link href="/categoria/9/" className="uppercase">salud y cultura</Link>
+                <Link href="/categoria/salud_y_cultura" className="uppercase">salud y cultura</Link>
                 <NavRight>
                     <img src="../static/imgs/nav_graph.png" alt="" />
                 </NavRight>
