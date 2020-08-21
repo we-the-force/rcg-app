@@ -1,36 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Nav from '../components/navbar';
 import LeftPanel from '../components/left-panel';
 import RightPanel from '../components/right-panel';
 import Footer from '../components/footer';
 import AdsTop from '../components/ads_top';
+import TVPanel from '../components/tv-panel';
 import {
     Page,
     Block,
     PageContent
 } from 'framework7-react';
 
-export default () => (
-    <Page pageContent={false} name="tv">
-        <PageContent>
-            {/* Top Navbar */}
-            <Nav />
-            {/* Page content */}
-            <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                <AdsTop />
-                <Block className="paneles">
-                    <Block className="left_pan">
-                        <LeftPanel />
+export default class TV extends Component{
+    constructor()
+    {
+        super();
+    }
+    render() {
+        return (
+            <Page pageContent={false} name="tv">
+                <PageContent>
+                    {/* Top Navbar */}
+                    <Nav />
+                    {/* Page content */}
+                    <Block className="main_cont display-flex flex-direction-column justify-content-center">
+                        <AdsTop />
+                        <Block className="paneles">
+                            <Block className="left_pan">
+                                <LeftPanel />
+                            </Block>
+                            <Block className="center_pan">
+                                {/* aqui va el panel central */}
+                                <TVPanel/>
+                            </Block>
+                            <Block className="right_pan">
+                                <RightPanel />
+                            </Block>
+                        </Block>
                     </Block>
-                    <Block className="center_pan">
-                        {/* aqui va el panel central */}
-                    </Block>
-                    <Block className="right_pan">
-                        <RightPanel />
-                    </Block>
-                </Block>
-            </Block>
-            <Footer />
-        </PageContent>
-    </Page>
-);
+                    <Footer />
+                </PageContent>
+            </Page>
+        );
+    }
+}
+
