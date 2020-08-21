@@ -55,7 +55,7 @@ var routes = [
     }
   },
   {
-    path: '/envivo/:name',
+    path: '/tv/:name',
     component: TV,
   },
   {
