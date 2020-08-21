@@ -4,15 +4,12 @@ import Masthead from '../components/masthead';
 import LeftPanel from '../components/left-panel';
 import RightPanel from '../components/right-panel';
 import Footer from '../components/footer';
+import AdsTop from '../components/ads_top';
+import HomePanel from '../components/home-panel';
 import {
   Page,
   Block,
-  Card,
-  CardHeader,
-  Row,
-  Col,
-  PageContent,
-  CardFooter,
+  PageContent
 } from 'framework7-react';
 
 export default () => (
@@ -24,54 +21,18 @@ export default () => (
       {/* Top Navbar */}
       <Nav />
       {/* Page content */}
-      <Block className="main_cont">
-        <Block className="left_pan">
-          <LeftPanel />
-        </Block>
-        <Block>
-          <Card>
-            <CardHeader>Lo Mas Relevante</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          {/* aqui va un ad */}
-          <Card>
-            <CardHeader>Locales</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>Estatales</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          {/* aqui va un ad */}
-          <Card>
-            <CardHeader>Internacional</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>Deportes</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>Espectaculos</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          {/* aqui va un ad */}
-          <Card>
-            <CardHeader>Destacadas</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>Fundación RCG</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>Salud Y Cultura</CardHeader>
-            <CardFooter>Mostrar mas</CardFooter>
-          </Card>
-          {/* aqui va un ad */}
-        </Block>
-        <Block className="right_pan">
-          <RightPanel />
+      <Block className="main_cont display-flex flex-direction-column justify-content-center">
+        <AdsTop />
+        <Block className="paneles">
+          <Block className="left_pan">
+            <LeftPanel />
+          </Block>
+          <Block className="center_pan">
+            <HomePanel />
+          </Block>
+          <Block className="right_pan">
+            <RightPanel />
+          </Block>
         </Block>
       </Block>
       <Footer />

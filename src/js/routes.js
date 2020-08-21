@@ -1,8 +1,20 @@
 
 import HomePage from '../pages/home.jsx';
-import Articulo from '../pages/articulo.jsx';
-import ContactsPage from '../pages/contacts.jsx';
 import CategoriaPage from '../pages/categoria.jsx';
+import Articulo from '../pages/articulo.jsx';
+import TV from '../pages/tv.jsx';
+import Radio from '../pages/radio.jsx'
+import Busqueda from '../pages/busqueda.jsx'
+import Nosotros from '../pages/nosotros.jsx'
+import Calca from '../pages/calca.jsx'
+import ContactsPage from '../pages/contacto.jsx';
+import AvisoPrivacidad from '../pages/aviso_priv.jsx'
+import DerechoReplica from '../pages/derecho_rep.jsx'
+import Espectaculares from '../pages/espectaculares.jsx'
+import Catalogo from '../pages/catalogo_espec.jsx'
+import FAQ from '../pages/faq.jsx'
+import Autores from '../pages/autores.jsx'
+import Autor from '../pages/autor.jsx'
 import NotFoundPage from '../pages/404.jsx';
 
 var routes = [
@@ -37,25 +49,44 @@ var routes = [
         }
       });
     }
-    // ,
-    // options: {
-    //   props: {
-    //     article: "asd"
-    //   }
-    // }
   },
   {
-    path: '/contacts',
+    path: '/envivo/:name',
+    component: TV,
+  },
+  {
+    path: '/radio/:name',
+    component: Radio,
+  },
+  {
+    path: '/busqueda',
+    component: Busqueda,
+  },
+  {
+    path: '/nosotros',
+    component: Nosotros,
+  },
+  {
+    path: '/calca',
+    component: Calca,
+  },
+  {
+    path: '/nosotros',
+    component: Nosotros,
+  },
+  {
+    path: '/contacto',
     component: ContactsPage,
   },
   {
     path: '/categoria/:nameId',
-    // component: CategoriaPage,
     async: async function (routeTo, routeFrom, resolve, reject)
     {
       var router = this;
       var app = router.app;
       var catId = routeTo.params.nameId;
+
+      console.log("AAAAAH");
 
       let categoria = await indexToCategory(catId);
       let articles;
@@ -111,56 +142,37 @@ var routes = [
     }
   },
   {
+    path: '/aviso_privacidad',
+    component: AvisoPrivacidad,
+  },
+  {
+    path: '/derecho_replica',
+    component: DerechoReplica,
+  },
+  {
+    path: '/espectaculares',
+    component: Espectaculares,
+  },
+  {
+    path: '/catalogo',
+    component: Catalogo,
+  },
+  {
+    path: '/faq',
+    component: FAQ,
+  },
+  {
+    path: '/autores',
+    component: Autores,
+  },
+  {
+    path: '/autor',
+    component: Autor,
+  },
+  {
     path: '(.*)',
     component: NotFoundPage,
   },
 ];
 
 export default routes;
-
-// function requestInfo() {
-//   var requestOptions = {
-//     method: 'POST',
-//     body: `mutation {
-//       createAutor(
-//         input: {
-//           data: {
-//             nombre: "Pedro nuevo como no",
-//             correo: "newpedro@test.com",
-//             descripcion: "Ayyy el pedro"
-//           }
-//         }
-//       )
-//       {
-//         autor{
-//           nombre
-//           correo
-//           descripcion
-//         }
-//       }
-//     }`,
-//   };
-
-//   fetch ('http://localhost:1337/graphql', requestOptions)
-//   .then(response => {
-//     console.log("requestInfo.response");
-//     console.log(response);
-//   }).then(data => {
-//     console.log("requestInfo.data");
-//     console.log(data);
-//   });
-// }
-
-// async function getAutors() {
-//   let query = `query={autors{nombre correo descripcion}}`;
-//   var requestOptions = {
-//     method: 'GET',
-//   }
-//   await fetch (`http://localhost:1337/graphql?${query}`, requestOptions)
-//   .then (async function(res){
-//     console.log("getAutors.response");
-//     console.log(res);
-//     let asd = await res.json();
-//     console.log(asd.data);
-//   })
-// }
