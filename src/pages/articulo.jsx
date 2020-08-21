@@ -7,13 +7,7 @@ import ArticuloPanel from '../components/articulo-panel';
 import {
     Page,
     Block,
-    BlockTitle,
-    Card,
-    CardHeader,
-    Row,
-    Col,
-    PageContent,
-    CardFooter,
+    PageContent
 } from 'framework7-react';
 
 

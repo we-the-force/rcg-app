@@ -2,7 +2,7 @@
 import HomePage from '../pages/home.jsx';
 import Articulo from '../pages/articulo.jsx';
 import ContactsPage from '../pages/contacts.jsx';
-import NewsPage from '../pages/news.jsx';
+import CategoriaPage from '../pages/categoria.jsx';
 import NotFoundPage from '../pages/404.jsx';
 
 var routes = [
@@ -49,8 +49,8 @@ var routes = [
     component: ContactsPage,
   },
   {
-    path: '/news',
-    component: NewsPage,
+    path: '/categoria/:nameId',
+    component: CategoriaPage,
   },
   {
     path: '(.*)',

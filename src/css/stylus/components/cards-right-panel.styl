@@ -1,0 +1,53 @@
+.card.right_panel_down_card
+    width calc(100% - 20px)
+    margin 0px 10px
+    margin-bottom 10px
+
+    &.destacado
+        margin-top 0px
+        padding-bottom 20px
+
+        .card-header
+            font font_5
+            color #1A1A1A /* add dark */
+            text-transform capitalize
+            min-height unset
+            padding 12px 0px
+            margin 0px 12px
+            border-bottom 1px solid #EBEBEB
+
+    &.tags
+        .card-header
+            padding 10px 0px
+            margin 0px 12px
+            border-bottom 1px solid #EBEBEB
+            font font_7
+            color #1A1A1A
+            text-transform capitalize
+
+            &:after
+                content none
+
+        .item-content
+            padding-left 10px
+            padding-right 8px
+            min-height unset
+
+            .item-inner
+                padding 9px 30px 9px 2px
+                min-height unset
+                align-self unset
+                padding-left 2px
+                font font_1
+                color #2AAAE0 /* add dark */
+                text-transform capitalize
+
+                &:before
+                    content none
+
+                &:after
+                    background-color #EBEBEB
+
+        .grey
+            .item-inner
+                color #939393
