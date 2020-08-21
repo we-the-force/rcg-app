@@ -40,7 +40,7 @@ export default class NewsCard extends Component {
                 </Block>
                 <Block className="content display-flex flex-direction-column align-items-flex-start">
                     <p className="text"> {this.props.articulo.description} </p>
-                    <a href="">Ver más</a>
+                    <a href={`/articulo/${this.props.articulo.id}/`}>Ver más</a>
                 </Block>
             </Card>
         );
