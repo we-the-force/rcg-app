@@ -4,6 +4,7 @@ import LeftPanel from '../components/left-panel';
 import RightPanel from '../components/right-panel';
 import CategoriaPanel from '../components/categoria-panel';
 import Footer from '../components/footer';
+import AdsTop from '../components/ads_top';
 import {
     Page,
     Block,
@@ -14,17 +15,19 @@ export default () => (
     <Page pageContent={false} name="categoria">
         <PageContent>
             <Nav />
-            <Block className="ads slim">{/* ads */}</Block>
             {/* Top Navbar */}
-            <Block className="main_cont">
-                <Block className="left_pan">
-                    <LeftPanel />
-                </Block>
-                <Block className="center_pan">
-                    <CategoriaPanel />
-                </Block>
-                <Block className="right_pan">
-                    <RightPanel />
+            <Block className="main_cont display-flex flex-direction-column justify-content-center">
+                <AdsTop />
+                <Block className="paneles">
+                    <Block className="left_pan">
+                        <LeftPanel />
+                    </Block>
+                    <Block className="center_pan">
+                        <CategoriaPanel />
+                    </Block>
+                    <Block className="right_pan">
+                        <RightPanel />
+                    </Block>
                 </Block>
             </Block>
             <Footer />

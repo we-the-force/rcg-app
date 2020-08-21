@@ -6,7 +6,7 @@ import {
     BlockFooter
 } from 'framework7-react';
 
-export default class NewsCard extends Component {
+export default class DestItem extends Component {
     constructor() {
         super();
         this.state = {}

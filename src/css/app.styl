@@ -25,45 +25,74 @@
     background grey_d
 
 .main_cont
-  display flex
-  flex-direction row
   width 95vw
   margin 0px auto
   padding 0px
 
-  .left_pan
-    width 15vw
-    max-width 300px
-    min-width 165px
-    no-mar-no-pad()
-    padding-bottom 15px
+  .paneles
+    display flex
+    flex-direction row
+    width 100%
+    margin 0px
+    padding 0px
 
-  .right_pan
-    width 10vw
-    max-width 400px
-    min-width 200px
-    no-mar-no-pad()
-    margin-left -10px
-    margin-right 10px
-    padding-bottom 15px
+    .left_pan
+      width 15vw
+      max-width 300px
+      min-width 165px
+      no-mar-no-pad()
+      padding-bottom 15px
 
-  .center_pan
-    width 45vw
-    padding 20px 10px 15px 10px !important
-    min-width 620px
-    no-mar-no-pad()
-    z-index 3
+    .right_pan
+      width 15vw
+      max-width 400px
+      min-width 200px
+      no-mar-no-pad()
+      margin-left -10px
+      margin-right 10px
+      padding-bottom 15px
 
-  /* @media (min-width: 480px)
-  @media (min-width: 568px)
-  @media (min-width: 768px) 
-  @media (min-width: 1024px) */
+    .center_pan
+      width 45vw
+      padding 20px 10px 15px 10px !important
+      min-width 620px
+      no-mar-no-pad()
+      z-index 3
+
+    /* @media (min-width: 480px)
+    @media (min-width: 568px)
+    @media (min-width: 768px) 
+    @media (min-width: 1024px) */
   @media (min-width 1200px)
     width 70vw
-    .left_pan
-      width 10vw
-    .center_pan
-      width 50vw
+    .paneles
+      .left_pan
+        width 10vw
+        margin-left 5vw
+      .right_pan
+        width 15vw
+
+  .ads_cont
+    width 100%
+    no-mar-no-pad()
+
+    .left,.right
+      no-mar-no-pad()
+      width 15vw
+
+    .left
+      min-width 165px
+
+    .right
+      min-width 200px
+
+    .center
+      min-width 620px
+      no-mar-no-pad()
+      width 45vw
+      .ads
+        margin-left auto
+        margin-right auto
 
 .uppercase
   text-transform uppercase
