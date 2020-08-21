@@ -13,9 +13,11 @@ export default class NewsCard extends Component {
     render() {
         return (
             <Block className="nota_recomend">
-                <BlockTitle>Lorem ipsum dolor sit amet...</BlockTitle>
-                <BlockFooter>10 agosto 2020</BlockFooter>
-                <img src="" alt="" srcset=""/>
+                <img src="../static/imgs/IMG_01.png" alt="" srcSet="" />
+                <Block className="cont">
+                    <BlockTitle>Lorem ipsum dolor sit amet... </BlockTitle>
+                    <BlockFooter>10 agosto 2020</BlockFooter>
+                </Block>
             </Block>
         );
     }

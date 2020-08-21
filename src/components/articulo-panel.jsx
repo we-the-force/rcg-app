@@ -95,17 +95,22 @@ export default class ArticuloPanel extends Component {
                             </Block>
                         </Block>
                     </Block>
-                    <Block className="ads bar">
+                    <Block className="ads_cont">
+                        <Block className="ads bar">
+                        </Block>
                     </Block>
                     <Block className="recomendados display-flex flex-direction-column align-content-stretch	">
                         <Block className="head display-flex justify-content-space-between align-items-center">
                             <h1>Te Recomandamos</h1>
                             <a href="">Mostrar mas</a>
                         </Block>
+                    </Block>
+                    <Block className="swiper_cont">
                         <Swiper
+                            init
                             navigation
                             scrollbar
-                            params={{ slidesPerView: 3 }}
+                            params={{ slidesPerView: 3, spaceBetween: 10 }}
                         >
                             <SwiperSlide>
                                 <NotaRecomandada />
