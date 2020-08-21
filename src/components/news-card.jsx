@@ -7,8 +7,8 @@ import {
 } from 'framework7-react';
 
 export default class NewsCard extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {}
     }
     render() {
@@ -16,7 +16,8 @@ export default class NewsCard extends Component {
             <Card className="new_card">
                 <Block className="header_cont display-flex justify-content-space-between">
                     <Block className="head display-flex justify-content-flex-start">
-                        <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
+                        <p className="autor"> {this.props.articulo.autor.nombre} </p> - <p className="fecha"> {this.props.articulo.fecha} </p>
+                        { console.log(this.props.articulo) }
                     </Block>
                     <Block className="share display-flex align-items-center">
                         <p>Compartir:</p>
@@ -29,17 +30,17 @@ export default class NewsCard extends Component {
                     </Block>
                 </Block>
                 <Block className="title_cont">
-                    <Block className="titulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</Block>
+                    <Block className="titulo"> {this.props.articulo.Titulo} </Block>
                     <Block className="img_cont display-flex flex-direction-column">
-                        <img src="../static/imgs/418464-PD8PXQ-214 1.png" alt="" />
+                        <img src={`http://localhost:1337${this.props.articulo.cover.url}`} alt="" />
                         <Block className="foot display-flex justify-content-flex-start align-items-center">
                             <p className="pieTitulo">Pie de foto</p> - <p className="pie">Pie de foto</p>
                         </Block>
                     </Block>
                 </Block>
                 <Block className="content display-flex flex-direction-column align-items-flex-start">
-                    <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a href="">Ver más</a>
+                    <p className="text"> {this.props.articulo.description} </p>
+                    <a href={`/articulo/${this.props.articulo.id}/`}>Ver más</a>
                 </Block>
             </Card>
         );

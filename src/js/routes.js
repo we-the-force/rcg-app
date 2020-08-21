@@ -23,10 +23,6 @@ var routes = [
     component: HomePage,
   },
   {
-    path: '/categoria/:nameId',
-    component: CategoriaPage,
-  },
-  {
     path: '/articulo/:artId/',
     async: async function (routeTo, routeFrom, resolve, reject)
     {
@@ -81,6 +77,69 @@ var routes = [
   {
     path: '/contacto',
     component: ContactsPage,
+  },
+  {
+    path: '/categoria/:nameId',
+    async: async function (routeTo, routeFrom, resolve, reject)
+    {
+      var router = this;
+      var app = router.app;
+      var catId = routeTo.params.nameId;
+
+      console.log("AAAAAH");
+
+      let categoria = await indexToCategory(catId);
+      let articles;
+      let query = `query{ articulos(where: {categorias: {id: ${catId}}}){ id Titulo autor{nombre} fecha cover{url} description visitas tags{tag} categorias{nombre id} comentarios{valor}}}`
+      await  app.request.promise.get(`http://localhost:1337/graphql?query=${query}`).then(function(res) {
+        let resData = JSON.parse(res.data);
+        articles = resData.data.articulos;
+      }).catch(function(err){
+        console.log("Error fetching articles information");
+        console.log(err);
+      });
+
+      console.log("ROUTER");
+      console.log("Categoria: " + categoria);
+      console.log(articles);
+      resolve({
+        component: CategoriaPage
+      },
+      {
+        context: {
+          Articles: articles,
+          Category: categoria
+        }
+      });
+
+      async function indexToCategory(index)
+      {
+        console.log("Receiving switch: " + index);
+        switch (index)
+        {
+          case "1":
+            return "Locales";
+          case "2":
+            return "Estatal";
+          case "3":
+            return "Nacional";
+          case "4":
+            return "Internacional";
+          case "5":
+            return "Deportes";
+          case "6":
+            return "Espectaculos";
+          case "7":
+            return "destacadas";
+          case "8":
+            return "Fundacion RCG";
+          case "9":
+            return "Salud y Cultura";
+          default:
+            console.log(`Entered on default (${index})`);
+        }
+      }
+    }
   },
   {
     path: '/aviso_privacidad',

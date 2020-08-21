@@ -11,28 +11,35 @@ import {
     PageContent
 } from 'framework7-react';
 
-
-export default () => (
-    <Page pageContent={false} name="articulo">
-        <PageContent>
-            {/* ads */}
-            {/* Top Navbar */}
-            <Nav />
-            <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                <AdsTop />
-                <Block className="paneles">
-                    <Block className="left_pan">
-                        <LeftPanel />
+export default class Articulo extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <Page pageContent={false} name="articulo">
+                <PageContent>
+                    {/* ads */}
+                    {/* Top Navbar */}
+                    <Nav />
+                    <Block className="main_cont display-flex flex-direction-column justify-content-center">
+                        <AdsTop />
+                        <Block className="paneles">
+                            <Block className="left_pan">
+                                <LeftPanel />
+                            </Block>
+                            <Block className="center_pan">
+                                {/* <ArticuloPanel articulo={this.$f7route.context.Article}/> */}
+                                <ArticuloPanel articulo={this.$f7route.context.Article}/>
+                            </Block>
+                            <Block className="right_pan">
+                                <RightPanel />
+                            </Block>
+                        </Block>
                     </Block>
-                    <Block className="center_pan">
-                        <ArticuloPanel articulo={this.$f7route.context.Article}/>
-                    </Block>
-                    <Block className="right_pan">
-                        <RightPanel />
-                    </Block>
-                </Block>
-            </Block>
-            <Footer />
-        </PageContent>
-    </Page>
-);
+                    <Footer />
+                </PageContent>
+            </Page>
+        );
+    }
+}
