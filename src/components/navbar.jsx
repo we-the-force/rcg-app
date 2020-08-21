@@ -22,7 +22,7 @@ export default class Nav extends Component {
                 </NavLeft>
                 <Link href="/categoria/1/" className="uppercase">locales</Link>
                 <hr />
-                <Link href='/articulo/1/' className="uppercase">estatales</Link>
+                <Link href='/categoria/2/' className="uppercase">estatales</Link>
                 <hr />
                 <Link href="/categoria/3/" className="uppercase">nacionales</Link>
                 <hr />
