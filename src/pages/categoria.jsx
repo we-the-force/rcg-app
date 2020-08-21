@@ -1,30 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Nav from '../components/navbar';
 import LeftPanel from '../components/left-panel';
 import RightPanel from '../components/right-panel';
+import CategoriaPanel from '../components/categoria-panel';
 import Footer from '../components/footer';
-import ArticuloPanel from '../components/articulo-panel';
 import {
     Page,
     Block,
     PageContent
 } from 'framework7-react';
 
-
 export default () => (
-    <Page pageContent={false} name="articulo">
+    <Page pageContent={false} name="categoria">
         <PageContent>
-            {/* ads */}
-            {/* Top Navbar */}
             <Nav />
             <Block className="ads slim">{/* ads */}</Block>
-            {/* Page content */}
+            {/* Top Navbar */}
             <Block className="main_cont">
                 <Block className="left_pan">
                     <LeftPanel />
                 </Block>
                 <Block className="center_pan">
-                    <ArticuloPanel />
+                    <CategoriaPanel />
                 </Block>
                 <Block className="right_pan">
                     <RightPanel />

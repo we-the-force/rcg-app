@@ -1,0 +1,295 @@
+.card.articulo
+    width 100%
+    margin 0px
+    padding 15px
+    box-sizing border-box
+
+    .header_cont
+        padding 0px
+
+        .card-header
+            padding 0px 0px 0px 7px
+            min-height unset !important
+
+            a
+                padding-right 10px
+                font font_7
+                text-transform capitalize
+                color #303030
+
+            &:after
+                content none
+
+        .share
+            padding 15px 7px 0px 0px
+
+            p
+                font font_3
+                text-transform capitalize
+                color #444444
+                margin 0px
+
+            a
+                padding-left 5px
+                width 25px
+                height 25px
+
+                img
+                    width 100%
+
+    .title_cont
+        padding 15px 0px 0px 0px
+
+        .head
+            padding 0px 0px 0px 7px
+            margin 10px 0px
+            font font_8
+            color #979797
+            text-transform capitalize
+
+            p
+                margin 0px
+
+            .autor
+                color red
+                padding-right 5px
+
+            .fecha
+                padding-left 5px
+
+        .titulo
+            padding 0px
+            font font_9
+            text-transform capitalize
+            color #242424
+            white-space normal
+
+        .img_cont
+            padding 10px 0px
+            width 100%
+
+            img
+                width 100%
+                object-fit cover
+
+            .foot
+                padding 0px 0px 0px 7px
+                margin 10px 0px
+                font font_8
+                color #5e5e5e
+                text-transform capitalize
+
+                p
+                    margin 0px
+
+                .pieTitulo
+                    padding-right 5px
+                    font-weight bold
+
+                .pie
+                    padding-left 5px
+
+    .content
+        margin 0px
+        padding 10px 0px
+
+        .right_side
+            padding 0px
+            width fit-content
+
+            .ads
+                border-radius 8px
+                margin-bottom 20px
+
+        .left_side
+            padding 0px 20px
+
+            .articulo_cont
+                padding 0px
+
+                p
+                    margin-top 0px
+                    margin-bottom 20px
+                    padding 0px
+                    font font_8
+                    line-height 16px
+                    text-align justify
+                    text-transform capitalize
+                    color black
+
+                .quotes
+                    width 100%
+                    height 200px
+                    background #FA565D
+                    margin-bottom 20px
+
+                    &:after
+                        content '\201C'
+                        position absolute
+                        margin-left 25px
+                        margin-right 25px
+                        font font_r
+                        color white
+                        top 0
+                        left 0
+                        margin-top 15px
+
+                    &:before
+                        content '\201D'
+                        position absolute
+                        margin-left 25px
+                        margin-right 25px
+                        font font_r
+                        color white
+                        bottom 0px
+                        right 0px
+                        margin-bottom -38px
+
+                    .text
+                        font_mix(normal, 18px, 20px)
+                        color white
+                        text-transform capitalize
+                        text-align center
+                        margin 0px 25px
+                        width 100%
+
+            .tags
+                padding 0px
+                font font_8
+                text-transform capitalize
+                margin-bottom 50px
+
+                p
+                    color black
+                    font-weight 500
+                    margin 0px
+                    padding-right 10px
+                    white-space nowrap
+
+                .links
+                    padding 0px
+
+                    a
+                        font font_8
+                        line-height 20px
+                        color red
+                        padding-right 10px
+
+            .comments
+                width 100%
+                height 150px
+
+            .share
+                padding 10px 0px
+                border-top 0.3px solid #D5D5D5
+                border-bottom 0.3px solid #D5D5D5
+
+                p
+                    font font_3
+                    text-transform capitalize
+                    color #444444
+                    margin 0px
+
+                a
+                    padding-left 5px
+                    width 25px
+                    height 25px
+
+                    img
+                        width 100%
+
+    .ads_cont
+        width 100%
+        padding 0px
+        margin-left -15px
+        margin-right -15px
+
+        .ads.bar
+            margin-left auto
+            margin-right auto
+
+    .recomendados
+        margin 40px 0px 0px 0px
+        padding 0px
+
+        .head
+            padding 0px 0px 15px 0px
+
+            /* margin-bottom 50vh */
+            h1
+                padding-right 10px
+                margin 0px
+                font font_7
+                text-transform capitalize
+                color #303030
+
+            a
+                font font_10
+                color #2AAAE0
+                margin 0px
+
+    .swiper-container
+        padding-bottom 50px
+
+        .swiper-scrollbar
+            width 35%
+            height 10px
+            margin 20px auto
+            bottom 0px
+            left 50%
+            background #ECECEC
+            transform translateX(-50%)
+
+            .swiper-scrollbar-drag
+                background red
+                border-radius 6.66667px
+
+        .swiper-button-prev
+            width 20px
+            height 20px
+            bottom 0px
+            left 0px
+            top unset
+            margin-top 15px
+            margin-bottom 15px
+            margin-left calc(32.5% - 30px)
+            margin-right 15px
+            
+
+            &:after
+                content 'play_arrow'
+                font-family 'Material Icons'
+                font-size 25px
+                width 100%
+                height 100%
+                transform scaleX(-1)
+                display flex
+                justify-content center
+                align-items center
+                color red
+
+        .swiper-button-next
+            width 20px
+            height 20px
+            right 0px
+            bottom 0px
+            top unset
+            margin-top 15px
+            margin-bottom 15px
+            margin-left 15px
+            margin-right calc(32.5% - 30px)
+
+            &:after
+                content 'play_arrow'
+                font-family 'Material Icons'
+                font-size 25px
+                width 100%
+                height 100%
+                display flex
+                justify-content center
+                align-items center
+                color red
+
+        .swiper-button-disabled
+            &:after
+                color #c4c4c4
