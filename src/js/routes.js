@@ -90,7 +90,7 @@ var routes = [
 
       let categoria = await indexToCategory(catId);
       let articles;
-      let query = `query{ articulos(where: {categorias: {id: ${catId}}}){ Titulo autor{nombre} fecha cover{url} description visitas tags{tag} categorias{nombre id} comentarios{valor}}}`
+      let query = `query{ articulos(where: {categorias: {id: ${catId}}}){ id Titulo autor{nombre} fecha cover{url} description visitas tags{tag} categorias{nombre id} comentarios{valor}}}`
       await  app.request.promise.get(`http://localhost:1337/graphql?query=${query}`).then(function(res) {
         let resData = JSON.parse(res.data);
         articles = resData.data.articulos;
