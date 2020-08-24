@@ -1,5 +1,5 @@
 import React from 'react';
-import { Device }  from 'framework7/framework7-lite.esm.bundle.js';
+import { Device } from 'framework7/framework7-lite.esm.bundle.js';
 import {
   App,
   Panel,
@@ -24,51 +24,6 @@ import {
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
 
-// import ApolloClient, {gql} from "apollo-boost";
-// import {ApolloProvider, Query} from "react-apollo";
-
-
-// const client = new ApolloClient({
-//   uri: `${process.env.REACT_APP_BACKEND_URL}/graphql`
-// })
-
-// const AutorsQuery = () => {
-//   try
-//   {
-//     return <Query query={gql`{
-//       autors {
-//         id
-//         nombre
-//         correo
-//       }
-//     }`}>
-//     {
-//       () => {({loading, error, data}) => {
-//         console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH");
-//         if (loading)
-//         {
-//           return <p>Loading...</p>;
-//         }  
-//         if (error)
-//         {
-//           console.log("Ayyy, error pidiendo la info unu");
-//           return <p>Error: {JSON.stringify(error)}</p>;
-//         }
-  
-//         return data.autors.results.map(autor => {
-//           return <p>{autor.name}</p>
-//         })
-//       }}
-//     }
-//   </Query>
-
-//   }
-//   catch (err)
-//   {
-//     console.log("Error ptm");
-//     console.log(err);
-//   }
-// }
 export default class extends React.Component {
   constructor() {
     super();
@@ -82,9 +37,11 @@ export default class extends React.Component {
 
         view: {
           pushState: true,
-          pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080/',
-          pushStateSeparator: '#',
+          pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
+          pushStateSeparator: '',
         },
+
+        autoDarkTheme: true,
 
         // App routes
         routes: routes,
@@ -104,27 +61,14 @@ export default class extends React.Component {
           androidOverlaysWebView: false,
         },
       },
-      // Login screen demo data
-      username: '',
-      password: '',
     }
   }
   render() {
-    // console.log("Caca");
     return (
-      // <ApolloProvider client={client}>
-      <App params={ this.state.f7params } >
-          {/* <AutorsQuery/> */}
-          {/* Your main view, should have "view-main" class */}
-          <View main className="safe-areas" url="/" />
-        </App>
-      // </ApolloProvider>
+      <App params={this.state.f7params} >
+        <View main className="safe-areas" url="/" />
+      </App>
     )
-  }
-  alertLoginData() {
-    this.$f7.dialog.alert('Username: ' + this.state.username + '<br>Password: ' + this.state.password, () => {
-      this.$f7.loginScreen.close();
-    });
   }
   componentDidMount() {
     this.$f7ready((f7) => {

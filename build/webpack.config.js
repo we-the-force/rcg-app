@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const path = require('path');
-console.log(__dirname);
+
 function resolvePath(dir) {
   return path.join(__dirname, '..', dir);
 }
@@ -27,14 +27,13 @@ module.exports = {
     path: resolvePath(isCordova ? 'cordova/www' : 'www'),
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].js',
-    publicPath: '',
+    publicPath: '/',
     hotUpdateChunkFilename: 'hot/hot-update.js',
     hotUpdateMainFilename: 'hot/hot-update.json',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-
       '@': resolvePath('src'),
     },
 

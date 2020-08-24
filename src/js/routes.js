@@ -1,6 +1,6 @@
 
 import HomePage from '../pages/home.jsx';
-import CategoriaPage from '../pages/categoria.jsx';
+import CategoriaPage from '@/pages/categoria.jsx';
 import Articulo from '../pages/articulo.jsx';
 import TV from '../pages/tv.jsx';
 import Radio from '../pages/radio.jsx'
@@ -86,7 +86,7 @@ var routes = [
       var app = router.app;
       var catId = categoryToIndex(routeTo.params.nameId);
 
-      console.log("AAAAAH");
+      console.log();
 
       let categoria = indexToCategory(catId);
       let articles;
