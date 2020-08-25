@@ -84,11 +84,12 @@ var routes = [
     {
       var router = this;
       var app = router.app;
-      var catId = categoryToIndex(routeTo.params.nameId);
+      // var catId = categoryToIndex(routeTo.params.nameId);
+      var catId = routeTo.params.nameId;
 
       console.log();
 
-      let categoria = indexToCategory(catId);
+      let categoria = indexToCategory(parseInt(catId));
       let articles;
       let query = `query{ articulos(where: {categorias: {id: ${catId}}}){ id Titulo autor{nombre} fecha cover{url} description visitas tags{tag} categorias{nombre id} comentarios{valor}}}`
       await  app.request.promise.get(`http://localhost:1337/graphql?query=${query}`).then(function(res) {
