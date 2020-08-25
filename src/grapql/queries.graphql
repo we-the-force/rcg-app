@@ -1,0 +1,5 @@
+query CategoriasNavbar {
+  categorias {
+    nombre
+  }
+}

@@ -1,46 +1,84 @@
-import React, { Component } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import {
     Navbar,
     NavLeft,
     NavRight,
-    NavTitle,
+    Icon,
     Link,
+    Popover,
+    List,
+    ListItem
 } from 'framework7-react';
 
-export default class Nav extends Component {
-    constructor() {
-        super();
-        this.state = {}
-    }
-    render() {
-        return (
-            <Navbar sliding noHairline noShadow>
-                <NavLeft>
-                    <a href="/">
-                        <img src="../static/imgs/Logo_blanco.png" alt="" />
-                    </a>
-                </NavLeft>
-                <Link href="/categoria/1" className="uppercase">locales</Link>
-                <hr />
-                <Link href="/categoria/2" className="uppercase">estatales</Link>
-                <hr />
-                <Link href="/categoria/3" className="uppercase">nacionales</Link>
-                <hr />
-                <Link href="/categoria/4" className="uppercase">internacionales</Link>
-                <hr />
-                <Link href="/categoria/5" className="uppercase">deportes</Link>
-                <hr />
-                <Link href="/categoria/6" className="uppercase">espectáculos</Link>
-                <hr />
-                <Link href="/categoria/7" className="uppercase">destacados</Link>
-                <hr />
-                <Link href="/categoria/8" className="uppercase">fundación rcg</Link>
-                <hr />
-                <Link href="/categoria/9" className="uppercase">salud y cultura</Link>
-                <NavRight>
-                    <img src="../static/imgs/nav_graph.png" alt="" />
-                </NavRight>
-            </Navbar>
-        );
-    }
+export default function Nav(props) {
+    const [categ_show, categ_pop] = useData(props.categorias);
+
+    return (
+        <Navbar sliding noHairline noShadow>
+            <NavLeft>
+                <a href="/">
+                    <img src="../static/imgs/Logo_blanco.png" alt="" />
+                </a>
+            </NavLeft>
+            {categ_show.map((val, key) => {
+                return (
+                    <Fragment key={key}>
+                        <Link href={"/categoria/" + val.nombre} className="uppercase">{val.nombre}</Link>
+                        <hr />
+                    </Fragment>
+                );
+            })}
+            <Link popoverOpen=".popover-menu" className="uppercase">MÁS <Icon material="arrow_drop_down"></Icon></Link>
+            <NavRight>
+                <img src="../static/imgs/nav_graph.png" alt="" />
+            </NavRight>
+            <Popover className="popover-menu">
+                <List>
+                    {categ_pop.map((val, key) => {
+                        return (
+                            <ListItem key={key} link="#" popoverClose className="uppercase" title="sdf" />
+                        );
+                    })}
+                </List>
+            </Popover>
+        </Navbar>
+    );
+}
+
+
+function useData(data) {
+    const [categ, setCateg] = useState({
+        categ_show: [''],
+        categ_pop: ['']
+    });
+    let cant = null;
+
+    useEffect(() => {
+        function handleResize() {
+
+            let categorias = [...data];
+            let w = window.innerWidth;
+            if (w >= 1200) {
+                cant = 9;//9 links
+            } else if (w >= 1024) {
+                cant = 7;//7 lnks
+            } else if (w >= 768) {
+                cant = 5;//6 links
+            } else if (w >= 568) {
+                cant = 4;//4 links
+            } else {
+                //usar navbar mobile
+            }
+            let categ_nav = categorias.splice(0, cant);
+            setCateg({
+                categ_show: categ_nav,
+                categ_pop: categorias
+            });
+        }
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    console.log(categ);
+    return [categ.categ_show, categ.categ_pop];
 }

@@ -6,36 +6,51 @@ import RightPanel from '../components/right-panel';
 import Footer from '../components/footer';
 import AdsTop from '../components/ads_top';
 import HomePanel from '../components/home-panel';
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
 import {
   Page,
   Block,
   PageContent
 } from 'framework7-react';
 
-export default () => (
-  <Page pageContent={false} name="home">
-    <PageContent>
-      {/* ads */}
-      {/* masthead */}
-      <Masthead home />
-      {/* Top Navbar */}
-      <Nav />
-      {/* Page content */}
-      <Block className="main_cont display-flex flex-direction-column justify-content-center">
-        <AdsTop />
-        <Block className="paneles">
-          <Block className="left_pan">
-            <LeftPanel />
-          </Block>
-          <Block className="center_pan">
-            <HomePanel />
-          </Block>
-          <Block className="right_pan">
-            <RightPanel />
+const query = gql`
+{
+    categorias {
+        nombre
+    }
+}
+`;
+
+export default function Home() {
+  const { loading, error, data } = useQuery(query);
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  return (
+    <Page pageContent={false} name="home">
+      <PageContent>
+        {/* ads */}
+        {/* masthead */}
+        <Masthead home />
+        {/* Top Navbar */}
+        <Nav categorias={data.categorias} />
+        {/* Page content */}
+        <Block className="main_cont display-flex flex-direction-column justify-content-center">
+          <AdsTop />
+          <Block className="paneles">
+            <Block className="left_pan">
+              <LeftPanel />
+            </Block>
+            <Block className="center_pan">
+              <HomePanel />
+            </Block>
+            <Block className="right_pan">
+              <RightPanel />
+            </Block>
           </Block>
         </Block>
-      </Block>
-      <Footer />
-    </PageContent>
-  </Page>
-);
+        <Footer />
+      </PageContent>
+    </Page>
+  );
+}
