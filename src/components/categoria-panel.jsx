@@ -18,10 +18,10 @@ export default class NewsPanel extends Component {
                     <CardHeader> {this.props.categoria} </CardHeader>
                 </Card>
                 {/* Lista de NewsCards */}
-                {/* { this.props.articulos.map((articulo, i) => {
+                { this.props.articulos.map((articulo, i) => {
                     console.log("Articulo");
                     return (<NewsCard key={i} articulo={articulo}/>);
-                }) } */}
+                }) }
                 {/* <NewsCard />
                 <Block className="ads bar"></Block>
                 <NewsCard />
