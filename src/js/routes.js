@@ -84,8 +84,8 @@ var routes = [
     {
       var router = this;
       var app = router.app;
-      // var catId = categoryToIndex(routeTo.params.nameId);
-      var catId = routeTo.params.nameId;
+      var catId = categoryToIndex(routeTo.params.nameId);
+      // var catId = routeTo.params.nameId;
 
       console.log();
 
