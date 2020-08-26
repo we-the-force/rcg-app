@@ -2,28 +2,31 @@ import React from 'react';
 import { Device } from 'framework7/framework7-lite.esm.bundle.js';
 import {
   App,
-  Panel,
-  Views,
   View,
-  Popup,
-  Page,
-  Navbar,
-  Toolbar,
-  NavRight,
-  Link,
-  Block,
-  BlockTitle,
-  LoginScreen,
-  LoginScreenTitle,
-  List,
-  ListItem,
-  ListInput,
-  ListButton,
-  BlockFooter
 } from 'framework7-react';
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
 
+import { ApolloClient, InMemoryCache, ApolloProvider, Query } from '@apollo/client';
+
+
+const client = new ApolloClient({
+  uri: 'http://localhost:1337/graphql',
+  cache: new InMemoryCache()
+});
+
+/* const testQuery = gql`{
+  articulos { 
+      Titulo
+      visitas 
+      }
+  }
+`;
+
+client.query({
+  query: testQuery
+}).then(res => console.log(res));
+ */
 export default class extends React.Component {
   constructor() {
     super();
@@ -65,9 +68,11 @@ export default class extends React.Component {
   }
   render() {
     return (
-      <App params={this.state.f7params} >
-        <View main className="safe-areas" url="/" />
-      </App>
+      <ApolloProvider client={client}>
+        <App params={this.state.f7params} >
+          <View main className="safe-areas" url="/" />
+        </App>
+      </ApolloProvider>
     )
   }
   componentDidMount() {
