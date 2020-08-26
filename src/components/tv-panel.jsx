@@ -1,8 +1,12 @@
+import TVScheduleTable from '../components/tv/tv-schedule-table';
+import NotaRecomandada from './nota-recomendada.jsx';
 import React, { Component } from 'react';
 import {
     Card,
     CardHeader,
-    Block
+    Block,
+    Swiper,
+    SwiperSlide
 } from 'framework7-react';
 
 export default class TVPanel extends Component {
@@ -32,7 +36,7 @@ export default class TVPanel extends Component {
                     </Block>
                     <Block>
                         {/* La tablita de programacion ayayay */}
-                        La tablita de programacion ayayay
+                        <TVScheduleTable/>
                     </Block>
                     <br></br>
                     <br></br>
@@ -45,12 +49,54 @@ export default class TVPanel extends Component {
                     </Block>
                 </Card>
                 <Card>
-                    <Block>
+                    <Block className="recomendados display-flex flex-direction-column align-content-stretch	">
+                        <Block className="head display-flex justify-content-space-between align-items-center">
+                            <h1>Te Recomandamos</h1>
+                            <a href="">Mostrar mas</a>
+                        </Block>
+                    </Block>
+                    <Block className="swiper_cont">
+                        <Swiper
+                            init
+                            navigation
+                            scrollbar
+                            params={{ slidesPerView: 3, spaceBetween: 10 }}
+                        >
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <NotaRecomandada />
+                            </SwiperSlide>
+                        </Swiper>
+                    </Block>
+                    {/* <Block>
                         <b>Te recomendamos</b> <a href="" className="">Mostrar Mas</a>
                     </Block>
                     <Block>
                         La lista de muchos cositos como no hijuesu
-                    </Block>
+                    </Block> */}
                 </Card>
             </Block>
         );
