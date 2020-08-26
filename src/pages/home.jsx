@@ -7,8 +7,7 @@ import Footer from '../components/footer';
 import AdsTop from '../components/ads_top';
 import HomePanel from '../components/home-panel';
 import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-import { CategoriasNavbar } from '@/graphql/queries.graphql'
+import { CategoriasNavbar } from '@/graphql/queries.graphql';
 import {
   Page,
   Block,
