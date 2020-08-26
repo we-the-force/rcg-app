@@ -10,6 +10,24 @@ import {
     SwiperSlide
 } from 'framework7-react';
 
+var placeHolderVideos = [
+    'https://www.youtube.com/watch?v=lXMskKTw3Bc',
+    'https://www.youtube.com/watch?v=4aneAWxzOUk',
+    'https://www.youtube.com/watch?v=bpszIdtcWQc',
+    'https://www.youtube.com/watch?v=iWj_USKu0mI',
+    'https://www.youtube.com/watch?v=ZwL-L8v-f4g',
+    'https://www.youtube.com/watch?v=b7zTQ0AHiYY',
+    'https://www.youtube.com/watch?v=E4av4GX7mw8',
+    'https://www.youtube.com/watch?v=BFoaeZ-ptHo',
+    'https://www.youtube.com/watch?v=fmTwlDG7INM',
+    'https://www.youtube.com/watch?v=TTSer9C5SrY']
+
+const RandomLink = () => {
+    return placeHolderVideos[Math.floor(Math.random() * placeHolderVideos.length)];
+}
+
+// const currentLink = RandomLink();
+
 export default class TVPanel extends Component {
     constructor () {
         super();
@@ -23,7 +41,7 @@ export default class TVPanel extends Component {
                     </Block>
                     <Block>
                         {/* Aqui va el stream */}
-                        <ReactPlayer url='https://www.youtube.com/watch?v=lXMskKTw3Bc' width="100%" playing="true" loop="true"/>
+                        <ReactPlayer url={RandomLink()} width="100%" playing={true} loop={true}/>
                     </Block>
                     <br></br>
                     <br></br>
@@ -46,8 +64,18 @@ export default class TVPanel extends Component {
                         <b className="justify-content-flex-start">Mas Canales</b>
                     </Block>
                     <Block>
-                        <p>Canal 1</p>
-                        <p>Canal 2</p>
+                        <a href="">
+                            <Card>
+                                <img/>
+                                <p>RCG Diferido-2</p>
+                            </Card>
+                        </a>
+                        <a href="">
+                            <Card>
+                                <img/>
+                                <p>RCG TV 8.3</p>
+                            </Card>
+                        </a>
                     </Block>
                 </Card>
                 <Card>
