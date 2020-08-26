@@ -12,7 +12,7 @@ import {
 
 export default function Nav(props) {
     const [categ_show, categ_pop] = useData(props.categorias);
-
+    const more = categ_pop.length > 0 ? 'display-flex' : 'display-none';
     return (
         <Navbar sliding noHairline noShadow>
             <NavLeft>
@@ -21,14 +21,16 @@ export default function Nav(props) {
                 </a>
             </NavLeft>
             {categ_show.map((val, key) => {
+                let dis = (categ_show.length - 1) == key ? 'display-none' : 'display-flex';
                 return (
                     <Fragment key={key}>
                         <Link href={"/categoria/" + val.nombre} className="uppercase">{val.nombre}</Link>
-                        <hr />
+                        <hr className={dis} />
                     </Fragment>
                 );
             })}
-            <Link popoverOpen=".popover-menu" className="uppercase">MÁS <Icon material="arrow_drop_down"></Icon></Link>
+            <hr className={more} />
+            <Link popoverOpen=".popover-menu" className={'uppercase ' + more}>MÁS <Icon material="arrow_drop_down"></Icon></Link>
             <NavRight>
                 <img src="../static/imgs/nav_graph.png" alt="" />
             </NavRight>
@@ -36,7 +38,7 @@ export default function Nav(props) {
                 <List>
                     {categ_pop.map((val, key) => {
                         return (
-                            <ListItem key={key} link="#" popoverClose className="uppercase" title="sdf" />
+                            <ListItem key={key} link="#" popoverClose className="uppercase" >{val.nombre}</ListItem>
                         );
                     })}
                 </List>
@@ -64,7 +66,7 @@ function useData(data) {
                 cant = 7;//7 lnks
             } else if (w >= 768) {
                 cant = 5;//6 links
-            } else if (w >= 568) {
+            } else if (w >= 640) {
                 cant = 4;//4 links
             } else {
                 //usar navbar mobile

@@ -8,22 +8,15 @@ import AdsTop from '../components/ads_top';
 import HomePanel from '../components/home-panel';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
+import { CategoriasNavbar } from '@/graphql/queries.graphql'
 import {
   Page,
   Block,
   PageContent
 } from 'framework7-react';
 
-const query = gql`
-{
-    categorias {
-        nombre
-    }
-}
-`;
-
 export default function Home() {
-  const { loading, error, data } = useQuery(query);
+  const { loading, error, data } = useQuery(CategoriasNavbar);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (
