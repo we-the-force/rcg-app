@@ -1,6 +1,6 @@
 
 import HomePage from '../pages/home.jsx';
-import CategoriaPage from '@/pages/categoria.jsx';
+import CategoriaPage from '../pages/categoria.jsx';
 import Articulo from '../pages/articulo.jsx';
 import TV from '../pages/tv.jsx';
 import Radio from '../pages/radio.jsx'
@@ -118,23 +118,23 @@ var routes = [
         console.log("Receiuving catToInd: " + category);
         switch (category)
         {
-          case "locales":
+          case "Locales":
             return 1;
-          case "estatales":
+          case "Estatales":
             return 2;
-          case "nacionales":
+          case "Nacionales":
             return 3;
-          case "internacionales":
+          case "Internacionales":
             return 4;
-          case "deportes":
+          case "Deportes":
             return 5;
-          case "espectaculos":
+          case "Espectaculos":
             return 6;
-          case "destacados":
+          case "Destacadas":
             return 7;
-          case "fundacion_rcg":
+          case "Fundacion_rcg":
             return 8;
-          case "salud_y_cultura":
+          case "Salud_y_cultura":
             return 9;
           
         }
@@ -158,7 +158,7 @@ var routes = [
           case 6:
             return "Espectaculos";
           case 7:
-            return "destacadas";
+            return "Destacadas";
           case 8:
             return "Fundacion RCG";
           case 9:

@@ -16,7 +16,6 @@ export default function Categoria() {
     const { loading, error, data } = useQuery(CategoriasNavbar);
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
-    console.log(this.$f7route);
     return (
         <Page pageContent={false} name="categoria">
             <PageContent>

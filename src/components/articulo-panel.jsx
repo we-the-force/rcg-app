@@ -14,7 +14,7 @@ export default class ArticuloPanel extends Component {
     }
     render() {
         return (
-            <Block className="articulo_panel">
+            <Block className="articulo_panel center_panel">
                 <Card className="articulo">
                     <Block className="header_cont display-flex justify-content-space-between">
                         <CardHeader>

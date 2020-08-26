@@ -13,7 +13,7 @@ export default class NewsPanel extends Component {
     }
     render() {
         return (
-            <Block className="categoria_panel">
+            <Block className="categoria_panel center_panel">
                 <Card className="head">
                     <CardHeader> {this.props.categoria} </CardHeader>
                 </Card>
