@@ -1,5 +1,6 @@
 import TVScheduleTable from '../components/tv/tv-schedule-table';
 import NotaRecomandada from './nota-recomendada.jsx';
+import ReactPlayer from 'react-player';
 import React, { Component } from 'react';
 import {
     Card,
@@ -22,6 +23,7 @@ export default class TVPanel extends Component {
                     </Block>
                     <Block>
                         {/* Aqui va el stream */}
+                        <ReactPlayer url='https://www.youtube.com/watch?v=lXMskKTw3Bc' width="100%" playing="true" loop="true"/>
                     </Block>
                     <br></br>
                     <br></br>
