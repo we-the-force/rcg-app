@@ -16,6 +16,7 @@ import {
 
 export default function Home() {
   const { loading, error, data } = useQuery(CategoriasNavbar);
+
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (
