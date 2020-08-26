@@ -34,7 +34,7 @@ export default class TVPanel extends Component {
     }
     render() {
         return (
-            <Block className="categoria_panel">
+            <Block className="tv_panel center_panel">
                 <Card>
                     <Block className="justify-content-flex-start">
                         <p>RCG En Vivo</p>
