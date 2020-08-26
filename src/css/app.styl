@@ -25,15 +25,17 @@
     background grey_d
 
 .main_cont
-  width 95vw
+  /* width 95vw */
+  width fit-content
   margin 0px auto
   padding 0px
 
   .paneles
     display flex
     flex-direction row
-    width 100%
-    margin 0px
+    /* width 100% */
+    width fit-content
+    margin auto
     padding 0px
 
     .left_pan
@@ -64,11 +66,10 @@
     @media (min-width: 768px) 
     @media (min-width: 1024px) */
   @media (min-width 1200px)
-    width 70vw
+    /* width 70vw */
     .paneles
       .left_pan
         width 10vw
-        margin-left 5vw
       .right_pan
         width 15vw
 
@@ -79,6 +80,8 @@
     .left,.right
       no-mar-no-pad()
       width 15vw
+      @media (min-width 1200px)
+        width 10vw
 
     .left
       min-width 165px
