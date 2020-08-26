@@ -81,6 +81,5 @@ function useData(data) {
         handleResize();
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-    console.log(categ);
     return [categ.categ_show, categ.categ_pop];
 }
