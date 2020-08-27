@@ -30,7 +30,6 @@ export default function TV() {
                             <LeftPanel />
                         </Block>
                         <Block className="center_pan">
-                            {/* aqui va el panel central */}
                             <TVPanel />
                         </Block>
                         <Block className="right_pan">

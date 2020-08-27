@@ -6,8 +6,10 @@ import {
     Card,
     CardHeader,
     Block,
+    BlockHeader,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    Icon
 } from 'framework7-react';
 
 var placeHolderVideos = [
@@ -29,56 +31,48 @@ const RandomLink = () => {
 // const currentLink = RandomLink();
 
 export default class TVPanel extends Component {
-    constructor () {
+    constructor() {
         super();
     }
     render() {
         return (
             <Block className="tv_panel center_panel">
-                <Card>
-                    <Block className="justify-content-flex-start">
-                        <p>RCG En Vivo</p>
+                <Card className="tv">
+                    <Block className="header_cont display-flex justify-content-space-between">
+                        <CardHeader>
+                            RCG En Vivo
+                            <Icon material="play_arrow"></Icon>
+                        </CardHeader>
+                        <Block className="share display-flex align-items-center">
+                            <p>Compartir:</p>
+                            <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
+                                <img src="../static/icons/TW_Icon_x3.png" alt="" />
+                            </a>
+                            <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
+                                <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                            </a>
+                        </Block>
                     </Block>
-                    <Block>
+                    <Block className="player-wrapper">
                         {/* Aqui va el stream */}
-                        <ReactPlayer url={RandomLink()} width="100%" playing={true} loop={true}/>
+                        <ReactPlayer className="player"  url={RandomLink()} playing={true} loop={true}/>
                     </Block>
-                    <br></br>
-                    <br></br>
-                    <Block>
-                        <b>Nombre de Programa</b>
-                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore sed dolores quia esse veniam. Quos nobis temporibus ab, vero reiciendis animi, illum provident voluptate autem possimus nam quas a! </p>
+                    <Block className="info-programa">
+                        <p className="titulo-programa">Nombre de Programa</p>
+                        <p className="texto-programa"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore sed dolores quia esse veniam. Quos nobis temporibus ab, vero reiciendis animi, illum provident voluptate autem possimus nam quas a! </p>
                     </Block>
-                    <br></br>
-                    <br></br>
-                    <Block>
-                        <b className="justify-content-flex-start">Programacion:</b>
+                    <Block className="tabla_programacion">
+                        <BlockHeader>Programacion:</BlockHeader>
+                        {/* La tablita de programacion */}
+                        <TVScheduleTable />
                     </Block>
-                    <Block>
-                        {/* La tablita de programacion ayayay */}
-                        <TVScheduleTable/>
-                    </Block>
-                    <br></br>
-                    <br></br>
-                    <Block>
-                        <b className="justify-content-flex-start">Mas Canales</b>
-                    </Block>
-                    <Block>
-                        <a href="">
-                            <Card>
-                                <img/>
-                                <p>RCG Diferido-2</p>
-                            </Card>
-                        </a>
-                        <a href="">
-                            <Card>
-                                <img/>
-                                <p>RCG TV 8.3</p>
-                            </Card>
-                        </a>
+                    <Block className="mas_canales">
+                        <BlockHeader>Programacion:</BlockHeader>
+                        <Block>Canal 1</Block>
+                        <Block>Canal 2</Block>
                     </Block>
                 </Card>
-                <Card>
+                <Card className="recomendados-card">
                     <Block className="recomendados display-flex flex-direction-column align-content-stretch	">
                         <Block className="head display-flex justify-content-space-between align-items-center">
                             <h1>Te Recomandamos</h1>
@@ -121,12 +115,6 @@ export default class TVPanel extends Component {
                             </SwiperSlide>
                         </Swiper>
                     </Block>
-                    {/* <Block>
-                        <b>Te recomendamos</b> <a href="" className="">Mostrar Mas</a>
-                    </Block>
-                    <Block>
-                        La lista de muchos cositos como no hijuesu
-                    </Block> */}
                 </Card>
             </Block>
         );
