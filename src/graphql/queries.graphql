@@ -1,5 +1,44 @@
+query CategoriaPage($categoria: String){
+  articulos(
+    where: {
+      categorias: {
+        nombre: $categoria
+      }
+    }
+  ){
+    ...ArticulosData
+  },
+  categorias {
+    nombre
+  }
+}
+
 query CategoriasNavbar {
   categorias {
     nombre
+  }
+}
+
+fragment ArticulosData on Articulo {
+  id 
+  Titulo 
+  autor {
+    nombre
+  } 
+  fecha 
+  cover {
+    url
+  } 
+  description 
+  visitas 
+  tags {
+    tag
+  } 
+  categorias {
+    nombre 
+    id
+  } 
+  comentarios { 
+    valor
   }
 }

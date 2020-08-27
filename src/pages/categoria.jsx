@@ -6,14 +6,17 @@ import CategoriaPanel from '../components/categoria-panel';
 import Footer from '../components/footer';
 import AdsTop from '../components/ads_top';
 import { useQuery } from '@apollo/client';
-import { CategoriasNavbar } from '@/graphql/queries.graphql';
+import { CategoriaPage } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
     PageContent
 } from 'framework7-react';
-export default function Categoria() {
-    const { loading, error, data } = useQuery(CategoriasNavbar);
+export default function Categoria(props) {
+    let categoria = props.nombre;
+    const { loading, error, data } = useQuery(CategoriaPage, {
+        variables: { categoria }
+    });
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     return (
@@ -29,7 +32,7 @@ export default function Categoria() {
                         </Block>
                         <Block className="center_pan">
                             {/* {JSON.stringify(this.$f7route.context.Articles)} */}
-                            <CategoriaPanel articulos={this.$f7route.context.Articles} categoria={this.$f7route.context.Category} />
+                            <CategoriaPanel articulos={data.articulos}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel />

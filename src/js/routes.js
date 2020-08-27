@@ -79,8 +79,9 @@ var routes = [
     component: ContactsPage,
   },
   {
-    path: '/categoria/:nameId',
-    async: async function (routeTo, routeFrom, resolve, reject)
+    path: '/categoria/:nombre',
+    component: CategoriaPage,
+    /* async: async function (routeTo, routeFrom, resolve, reject)
     {
       var router = this;
       var app = router.app;
@@ -167,7 +168,7 @@ var routes = [
             console.log(`Entered on default (${index})`);
         }
       }
-    }
+    } */
   },
   {
     path: '/aviso_privacidad',

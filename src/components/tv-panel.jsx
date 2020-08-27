@@ -2,6 +2,9 @@ import TVScheduleTable from '../components/tv/tv-schedule-table';
 import NotaRecomandada from './nota-recomendada.jsx';
 import ReactPlayer from 'react-player';
 import React, { Component } from 'react';
+import RecomendacionSwiper from '../components/recomendacionSwiper'
+import Icon_TV from '@/static/icons/tv_dark.png';
+import bk_img from '../static/imgs/Rcg.png';
 import {
     Card,
     CardHeader,
@@ -55,7 +58,7 @@ export default class TVPanel extends Component {
                     </Block>
                     <Block className="player-wrapper">
                         {/* Aqui va el stream */}
-                        <ReactPlayer className="player"  url={RandomLink()} playing={true} loop={true}/>
+                        <ReactPlayer className="player" url={RandomLink()} playing={false} loop={true} />
                     </Block>
                     <Block className="info-programa">
                         <p className="titulo-programa">Nombre de Programa</p>
@@ -67,54 +70,33 @@ export default class TVPanel extends Component {
                         <TVScheduleTable />
                     </Block>
                     <Block className="mas_canales">
-                        <BlockHeader>Programacion:</BlockHeader>
-                        <Block>Canal 1</Block>
-                        <Block>Canal 2</Block>
+                        <BlockHeader>Más Canales</BlockHeader>
+                        <Block className="canal">
+                            <Block className="icon_tv display-flex justify-content-center align-items-center">
+                                <img src={Icon_TV} alt="" />
+                            </Block>
+                            <a href="" className="canal_content display-flex justify-content-center align-items-center">
+                                <img src={bk_img} alt="" srcset="" />
+                                <h1 className="title">
+                                    RCG Diferido -2
+                                </h1>
+                            </a>
+                        </Block>
+                        <Block className="canal">
+                            <Block className="icon_tv display-flex justify-content-center align-items-center">
+                                <img src={Icon_TV} alt="" />
+                            </Block>
+                            <a href="" className="canal_content display-flex justify-content-center align-items-center">
+                                <img src={bk_img} alt="" srcset="" />
+                                <h1 className="title">
+                                    RCG tV 8.3
+                                </h1>
+                            </a>
+                        </Block>
                     </Block>
                 </Card>
                 <Card className="recomendados-card">
-                    <Block className="recomendados display-flex flex-direction-column align-content-stretch	">
-                        <Block className="head display-flex justify-content-space-between align-items-center">
-                            <h1>Te Recomandamos</h1>
-                            <a href="">Mostrar mas</a>
-                        </Block>
-                    </Block>
-                    <Block className="swiper_cont">
-                        <Swiper
-                            init
-                            navigation
-                            scrollbar
-                            params={{ slidesPerView: 3, spaceBetween: 10 }}
-                        >
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                        </Swiper>
-                    </Block>
+                    <RecomendacionSwiper />
                 </Card>
             </Block>
         );

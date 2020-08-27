@@ -15,8 +15,9 @@ import {
 } from 'framework7-react';
 
 export default function Home() {
+  console.log(CategoriasNavbar);
   const { loading, error, data } = useQuery(CategoriasNavbar);
-
+  console.log(data);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (

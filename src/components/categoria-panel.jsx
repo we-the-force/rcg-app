@@ -19,7 +19,6 @@ export default class NewsPanel extends Component {
                 </Card>
                 {/* Lista de NewsCards */}
                 { this.props.articulos.map((articulo, i) => {
-                    console.log("Articulo");
                     return (<NewsCard key={i} articulo={articulo}/>);
                 }) }
                 {/* <NewsCard />
