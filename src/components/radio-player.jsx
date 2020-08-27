@@ -166,8 +166,9 @@ export default class RadioPlayer extends Component {
             <Card>
                 <ReactPlayer 
                     ref={this.ref}
-                    url={this.state.url}
-                    // url="https://www.youtube.com/watch?v=ZEy36W1xX8c"
+                    // url={this.state.url}
+                    url="https://www.youtube.com/watch?v=ZEy36W1xX8c"
+                    // url="http://209.222.101.166:9302/;"
                     pip={this.state.pip}
                     playing={this.state.playing}
                     controls={this.state.controls}
