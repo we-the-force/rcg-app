@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import TWIcon from '@/static/icons/TW_Icon.png'
+import FBIcon from '@/static/icons/FB_Icon.png'
+import YTIcon from '@/static/icons/YT_Icon.png'
+import IGIcon from '@/static/icons/IG_Icon.png'
+import TVLight from '@/static/icons/tv_light.png'
+import MIC from '@/static/icons/microphone.png'
 import {
     Card,
     CardHeader,
@@ -19,7 +25,7 @@ export default class LeftPanel extends Component {
                 <Card className="left_pan_card envivo">
                     <CardHeader className="justify-content-flex-start align-items-flex-end">
                         <div className="icon display-flex justify-content-flex-start align-items-flex-end">
-                            <img src="../static/icons/tv_light.png" alt="" />
+                            <img src={TVLight} alt="" />
                         </div>
                         en vivo
                     </CardHeader>
@@ -32,7 +38,7 @@ export default class LeftPanel extends Component {
                 <Card className="left_pan_card radio_card">
                     <CardHeader className="justify-content-flex-start align-items-flex-end">
                         <div className="icon display-flex justify-content-center align-items-flex-end">
-                            <img src="../static/icons/microphone.png" alt="" />
+                            <img src={MIC} alt="" />
                         </div>
                         Radio
                     </CardHeader>
@@ -54,16 +60,16 @@ export default class LeftPanel extends Component {
                     </CardHeader>
                     <Block className="social_cont display-flex justify-content-space-between align-items-center">
                         <a href="">
-                            <img src="../static/icons/FB_Icon.png" alt="" srcSet="" />
+                            <img src={FBIcon} alt="" srcSet="" />
                         </a>
                         <a href="">
-                            <img src="../static/icons/TW_Icon.png" alt="" srcSet="" />
+                            <img src={TWIcon} alt="" srcSet="" />
                         </a>
                         <a href="">
-                            <img src="../static/icons/YT_Icon.png" alt="" srcSet="" />
+                            <img src={YTIcon} alt="" srcSet="" />
                         </a>
                         <a href="">
-                            <img src="../static/icons/IG_Icon.png" alt="" srcSet="" />
+                            <img src={IGIcon} alt="" srcSet="" />
                         </a>
                     </Block>
                 </Card>

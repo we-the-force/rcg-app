@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import IMG from '@/static/imgs/IMG_01.png'
 import {
     Block,
     BlockTitle,
@@ -13,7 +14,7 @@ export default class NotaRecom extends Component {
     render() {
         return (
             <Block className="nota_recomend">
-                <img src="../static/imgs/IMG_01.png" alt="" srcSet="" />
+                <img src={IMG} alt="" srcSet="" />
                 <Block className="cont">
                     <BlockTitle>Lorem ipsum dolor sit amet... </BlockTitle>
                     <BlockFooter>10 agosto 2020</BlockFooter>

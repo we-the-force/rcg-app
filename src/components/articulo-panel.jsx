@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import NotaRecomandada from './nota-recomendada.jsx';
+import TWIconx3 from '@/static/icons/TW_Icon_x3.png'
+import FBIconx3 from '@/static/icons/FB_Icon_x3.png'
 import {
     Block,
     Card,
@@ -24,10 +26,10 @@ export default class ArticuloPanel extends Component {
                         <Block className="share display-flex align-items-center">
                             <p>Compartir:</p>
                             <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
-                                <img src="../static/icons/TW_Icon_x3.png" alt="" />
+                                <img src={TWIconx3} alt="" />
                             </a>
                             <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
-                                <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                                <img src={FBIconx3} alt="" />
                             </a>
                         </Block>
                     </Block>
@@ -83,10 +85,10 @@ export default class ArticuloPanel extends Component {
                             <Block className="share display-flex align-items-center">
                                 <p>Compartir:</p>
                                 <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
-                                    <img src="../static/icons/TW_Icon_x3.png" alt="" />
+                                    <img src={TWIconx3} alt="" />
                                 </a>
                                 <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
-                                    <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                                    <img src={FBIconx3} alt="" />
                                 </a>
                             </Block>
                         </Block>

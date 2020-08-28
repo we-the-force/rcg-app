@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import LogoNegro from '@/static/imgs/Logo_negro.png'
+import FaceFoot from '@/static/icons/footer_face.png'
+import TwitFoot from '@/static/icons/footer_twit.png'
+import YouFoot from '@/static/icons/footer_you.png'
+import InstaFoot from '@/static/icons/footer_insta.png'
 import {
     Block,
     Link
@@ -13,7 +18,7 @@ export default class Footer extends Component {
         return (
             <Block className="footer display-flex justify-content-space-between">
                 <a href="/" className="left">
-                    <img src="../static/imgs/Logo_negro.png" alt="" />
+                    <img src={LogoNegro} alt="" />
                 </a>
                 <Block className="center">
                     <div className="display-flex">
@@ -33,16 +38,16 @@ export default class Footer extends Component {
                 </Block>
                 <Block className="right display-flex justify-content-space-between align-items-center">
                     <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
-                        <img src="../static/icons/footer_face.png" alt=""/>
+                        <img src={FaceFoot} alt=""/>
                     </a>
                     <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
-                        <img src="../static/icons/footer_twit.png" alt=""/>
+                        <img src={TwitFoot} alt=""/>
                     </a>
                     <a href="#" className="youIcon display-flex justify-content-center align-items-center">
-                        <img src="../static/icons/footer_you.png" alt=""/>
+                        <img src={YouFoot} alt=""/>
                     </a>
                     <a href="#" className="instaIcon display-flex justify-content-center align-items-center">
-                        <img src="../static/icons/footer_insta.png" alt=""/>
+                        <img src={InstaFoot} alt=""/>
                     </a>
                 </Block>
             </Block>

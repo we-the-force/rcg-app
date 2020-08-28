@@ -6,15 +6,18 @@ import Footer from '../components/footer';
 import ArticuloPanel from '../components/articulo-panel';
 import AdsTop from '../components/ads_top';
 import { useQuery } from '@apollo/client';
-import { CategoriasNavbar } from '@/graphql/queries.graphql';
+import { ArticuloPage } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
     PageContent
 } from 'framework7-react';
 
-export default function Articulo() {
-    const { loading, error, data } = useQuery(CategoriasNavbar);
+export default function Articulo(props) {
+    let url = props.url;
+    const { loading, error, data } = useQuery(ArticuloPage, {
+        variables: { url }
+    });
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     return (
@@ -31,7 +34,7 @@ export default function Articulo() {
                         </Block>
                         <Block className="center_pan">
                             {/* <ArticuloPanel articulo={this.$f7route.context.Article}/> */}
-                            <ArticuloPanel articulo={this.$f7route.context.Article} />
+                            <ArticuloPanel articulo={data.articulos[0]} />
                         </Block>
                         <Block className="right_pan">
                             <RightPanel />

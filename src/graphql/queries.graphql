@@ -13,6 +13,15 @@ query CategoriaPage($categoria: String){
   }
 }
 
+query ArticuloPage($url: String){
+  articulos(where: {url: $url}){
+    ...ArticulosData
+  },
+  categorias {
+    nombre
+  }
+}
+
 query CategoriasNavbar {
   categorias {
     nombre
@@ -21,6 +30,7 @@ query CategoriasNavbar {
 
 fragment ArticulosData on Articulo {
   id 
+  url
   Titulo 
   autor {
     nombre

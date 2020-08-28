@@ -23,7 +23,7 @@ var routes = [
     component: HomePage,
   },
   {
-    path: '/articulo/:artId/',
+    path: '/articulo/:url/',
     component: Articulo,
     /* async: async function (routeTo, routeFrom, resolve, reject)
     {

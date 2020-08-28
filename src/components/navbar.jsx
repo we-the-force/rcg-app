@@ -1,4 +1,6 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import LogoBlanco from '@/static/imgs/Logo_blanco.png'
+import navGraph from '@/static/imgs/nav_graph.png'
 import {
     Navbar,
     NavLeft,
@@ -19,7 +21,7 @@ export default function Nav(props) {
         <Navbar sliding noHairline noShadow>
             <NavLeft>
                 <a href="/">
-                    <img src="../static/imgs/Logo_blanco.png" alt="" />
+                    <img src={LogoBlanco} alt="" />
                 </a>
                 {/* <p ref={refContainer}>asdf</p> */}
             </NavLeft>
@@ -35,7 +37,7 @@ export default function Nav(props) {
             <hr className={more} />
             <Link popoverOpen=".popover-menu" className={'uppercase ' + more}>MÁS <Icon material="arrow_drop_down"></Icon></Link>
             <NavRight>
-                <img src="../static/imgs/nav_graph.png" alt="" />
+                <img src={navGraph} alt="" />
             </NavRight>
             <Popover className="popover-menu">
                 <List>

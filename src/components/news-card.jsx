@@ -17,7 +17,6 @@ export default class NewsCard extends Component {
                 <Block className="header_cont display-flex justify-content-space-between">
                     <Block className="head display-flex justify-content-flex-start">
                         <p className="autor"> {this.props.articulo.autor.nombre} </p> - <p className="fecha"> {this.props.articulo.fecha} </p>
-                        { console.log(this.props.articulo) }
                     </Block>
                     <Block className="share display-flex align-items-center">
                         <p>Compartir:</p>
@@ -40,7 +39,7 @@ export default class NewsCard extends Component {
                 </Block>
                 <Block className="content display-flex flex-direction-column align-items-flex-start">
                     <p className="text"> {this.props.articulo.description} </p>
-                    <a href={`/articulo/${this.props.articulo.id}/`}>Ver más</a>
+                    <a href={`/articulo/${this.props.articulo.url}/`}>Ver más</a>
                 </Block>
             </Card>
         );

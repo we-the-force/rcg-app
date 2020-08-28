@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import IMG from '@/static/imgs/IMG_01.png'
 import {
     Block,
     BlockHeader,
@@ -17,7 +18,7 @@ export default class DestItem extends Component {
             <Block className={"dest-item " + bord}>
                 {this.props.image &&
                     <a className="img_cont">
-                        <img src="../static/imgs/IMG_01.png" alt="" />
+                        <img src={IMG} alt="" />
                     </a>
                 }
                 <Block className="dest-cont">
