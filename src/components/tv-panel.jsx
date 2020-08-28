@@ -1,4 +1,4 @@
-import TVScheduleTable from '../components/tv/tv-schedule-table';
+import TVScheduleTable from './tv-schedule-table';
 import NotaRecomandada from './nota-recomendada.jsx';
 import ReactPlayer from 'react-player';
 import React, { Component } from 'react';
@@ -76,7 +76,7 @@ export default class TVPanel extends Component {
                                 <img src={Icon_TV} alt="" />
                             </Block>
                             <a href="" className="canal_content display-flex justify-content-center align-items-center">
-                                <img src={bk_img} alt="" srcset="" />
+                                <img src={bk_img} alt="" srcSet="" />
                                 <h1 className="title">
                                     RCG Diferido -2
                                 </h1>
@@ -87,7 +87,7 @@ export default class TVPanel extends Component {
                                 <img src={Icon_TV} alt="" />
                             </Block>
                             <a href="" className="canal_content display-flex justify-content-center align-items-center">
-                                <img src={bk_img} alt="" srcset="" />
+                                <img src={bk_img} alt="" srcSet="" />
                                 <h1 className="title">
                                     RCG tV 8.3
                                 </h1>

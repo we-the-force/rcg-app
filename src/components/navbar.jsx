@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 import {
     Navbar,
     NavLeft,
@@ -13,12 +13,15 @@ import {
 export default function Nav(props) {
     const [categ_show, categ_pop] = useData(props.categorias);
     const more = categ_pop.length > 0 ? 'display-flex' : 'display-none';
+    //const refContainer = useRef(null);
+    //myref.current.text('ahoy');
     return (
         <Navbar sliding noHairline noShadow>
             <NavLeft>
                 <a href="/">
                     <img src="../static/imgs/Logo_blanco.png" alt="" />
                 </a>
+                {/* <p ref={refContainer}>asdf</p> */}
             </NavLeft>
             {categ_show.map((val, key) => {
                 let dis = (categ_show.length - 1) == key ? 'display-none' : 'display-flex';

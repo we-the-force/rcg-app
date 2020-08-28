@@ -1,0 +1,106 @@
+.schedule
+    width 100%
+    padding 0px
+
+    .week_toolbar
+        background unset
+
+        hr
+            border 0.75px solid red
+            height 14px
+            width 0px
+            margin 0px
+
+        .tab-link
+            font font_14
+            color #D7D7D7
+            text-transform capitalize
+
+            &.tab-link-active
+                color #B71F25
+
+        .tab-link-highlight
+            display none
+
+    .week_tabs
+        width 100%
+
+        // max-height 225px
+        .tab-active
+            display flex
+
+            .toolbar
+                height 300px
+                width 63%
+
+                .toolbar-inner
+                    flex-direction column
+                    overflow-y auto
+                    height fit-content
+                    max-height 300px
+
+                    &::-webkit-scrollbar
+                        display none
+
+                    .tab-link
+                        min-height 30px
+                        display flex
+                        flex-direction row
+
+                        p
+                            margin 0px
+                            font font_3
+                            text-transform capitalize
+                            color #5A5A5A
+                            line-height 30px
+
+                        .time
+                            width 16%
+                            height 100%
+                            display flex
+                            justify-content center
+                            align-items center
+
+                            p
+                                font-weight bold
+                                color white
+
+                        .text
+                            padding-left 12px
+                            width 83%
+
+                        &.v1
+                            background #D6D6D6
+
+                            .time
+                                background #C9C9C9
+
+                        &.v2
+                            background #E4E4E4
+
+                            .time
+                                background #D8D7D7
+
+                        &.tab-link-active
+                            background red
+
+                            .time
+                                background red_2
+
+                            p
+                                color white
+
+                            .sqr
+                                //content ''
+                                opacity 1
+                                width 21.21px
+                                height 21.21px
+                                position absolute
+                                background red_2
+                                right 0
+                                left unset
+                                top 50%
+                                transform rotate(45deg) translateY(-50%)
+
+            .tabs
+                width 37%
