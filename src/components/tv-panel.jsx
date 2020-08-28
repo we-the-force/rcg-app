@@ -1,4 +1,4 @@
-import TVScheduleTable from './tv-schedule-table';
+import TVScheduleTable from './schedule-table';
 import NotaRecomandada from './nota-recomendada.jsx';
 import ReactPlayer from 'react-player';
 import React, { Component } from 'react';

@@ -50,7 +50,7 @@ export default class TVScheduleTable extends Component {
                                     <p>6:00</p>
                                 </div>
                                 <p className="text">Nombre Programa</p>
-                                <div className="sqr"></div>
+                                {/* <div className="sqr"></div> */}
                             </Link>
                             <Link tabLink="#domingo-tab-2" className="v2">
                                 <div className="time">

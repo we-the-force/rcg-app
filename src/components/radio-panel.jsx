@@ -1,4 +1,4 @@
-import TVScheduleTable from '../components/tv/tv-schedule-table';
+import TVScheduleTable from './schedule-table';
 import NotaRecomandada from './nota-recomendada.jsx';
 import RadioPlayer from '../components/radio-player';
 import ReactPlayer from 'react-player';

@@ -32,12 +32,15 @@
             .toolbar
                 height 300px
                 width 63%
+                background transparent
 
                 .toolbar-inner
                     flex-direction column
                     overflow-y auto
                     height fit-content
                     max-height 300px
+                    padding-right 15px
+                    background transparent
 
                     &::-webkit-scrollbar
                         display none
@@ -83,6 +86,7 @@
 
                         &.tab-link-active
                             background red
+                            overflow visible
 
                             .time
                                 background red_2
@@ -90,17 +94,18 @@
                             p
                                 color white
 
-                            .sqr
-                                //content ''
-                                opacity 1
-                                width 21.21px
-                                height 21.21px
-                                position absolute
-                                background red_2
-                                right 0
-                                left unset
-                                top 50%
-                                transform rotate(45deg) translateY(-50%)
+                                &:after
+                                    content ''
+                                    opacity 1
+                                    width 21.21px
+                                    height 21.21px
+                                    position absolute
+                                    background red_2
+                                    right 0
+                                    left unset
+                                    top 50%
+                                    transform translate(10px, -50%) rotate(45deg)
 
             .tabs
+                margin-left -15px
                 width 37%
