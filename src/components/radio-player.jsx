@@ -6,6 +6,7 @@ import {
     Row,
     Col
 } from 'framework7-react';
+import { disableFragmentWarnings } from 'graphql-tag';
 
 
 var placeHolderVideos = [
@@ -29,11 +30,14 @@ export default class RadioPlayer extends Component {
         super();
         console.log(this);
 
+
+        const bufferSeconds = 2;
+
         this.state = {
             url: null,
             pip: false,
             playing: false,
-            controls: false,
+            controls: true,
             light: false,
             volume: 0.8,
             muted: false,
@@ -48,6 +52,7 @@ export default class RadioPlayer extends Component {
             console.log(`Loading new button`, url);
             this.setState({
                 url,
+                playing: false,
                 played: 0,
                 loaded: 0,
                 pip: false
@@ -125,11 +130,24 @@ export default class RadioPlayer extends Component {
     
         this.handleSeekMouseUp = e => {
             this.setState({ seeking: false })
-            this.player.seekTo(parseFloat(e.target.value))
+            
+            let progress = parseFloat(e.target.value);
+            let bufferLoadedSeconds = (this.state.loadedSeconds - bufferSeconds > 0) ? this.state.loadedSeconds - bufferSeconds : 0.00001;
+            let newSeconds = bufferLoadedSeconds * progress;
+            console.error(`New seconds to jump to: ${newSeconds} (out of ${this.state.loadedSeconds})`);
+
+            console.log(this.player);
+            // this.player.seekTo(parseFloat(e.target.value))
+            this.player.seekTo(newSeconds < 1 ? 1 : newSeconds);
         }
-    
+
         this.handleProgress = state => {
+            
+            let currentLoadedSeconds = (state.loadedSeconds - bufferSeconds) > 0 ? state.loadedSeconds - bufferSeconds : 0.0001
+            let progress = 1 / currentLoadedSeconds * state.playedSeconds;
+            state.played = progress;
             console.log('onProgress', state)
+            
             // We only want to update time slider if we are not currently seeking
             if (!this.state.seeking) {
                 this.setState(state)
@@ -158,25 +176,40 @@ export default class RadioPlayer extends Component {
             );
         }
 
+        this.ref = player => {
+            this.player = player
+        }
+
+        // this.renderButtonClick = async (url) => {
+        //     console.log("Render Button Click");
+        //     if (this.state.playing)
+        //     {
+        //         this.setState({url: null, playing:false});
+        //         // await this.handleStop;
+        //     }
+        //     this.load(url);
+        // }
+
         // function 
     }
 
     render () {
+        const { url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = this.state
+        const SEPARATOR = ' - '
         return (
             <Card>
                 <ReactPlayer 
                     ref={this.ref}
-                    // url={this.state.url}
+                    url={url}
                     url="https://www.youtube.com/watch?v=ZEy36W1xX8c"
-                    // url="http://209.222.101.166:9302/;"
-                    pip={this.state.pip}
-                    playing={this.state.playing}
-                    controls={this.state.controls}
-                    light={this.state.light}
-                    loop={this.state.loop}
-                    playbackRate={this.state.playbackRate}
-                    volume={this.state.volume}
-                    muted={this.state.muted}
+                    pip={pip}
+                    playing={playing}
+                    controls={controls}
+                    light={light}
+                    loop={loop}
+                    playbackRate={playbackRate}
+                    volume={volume}
+                    muted={muted}
                     onReady={() => console.log("aAAAH ESTOY READY")}
                     onStart={() => console.log("LE PIQUE A START AHAHAHAHAHHHHAAA")}
                     onPlay={this.handlePlay}
@@ -194,7 +227,7 @@ export default class RadioPlayer extends Component {
                 />
                 <Row>
                     <Col>
-                    {/* <ReactPlayer url={this.state.url} width="100%" height="100px" playing={true} loop={true}/> */}
+                    {/* <ReactPlayer url={url} width="100%" height="100px" playing={true} loop={true}/> */}
 
                         imagen
                     </Col>
@@ -205,21 +238,31 @@ export default class RadioPlayer extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        {this.renderLoadButton('https://www.youtube.com/watch?v=ZEy36W1xX8c', 'MeltyLand')}
+                    </Col>
+                    <Col>
                     </Col>
                 </Row>
+                {/* <Row>
+                    <Col>
+                        <input
+                            type='range' min={0} max={0.999999} step='any'
+                            value={played}
+                            onMouseDown={this.handleSeekMouseDown}
+                            onChange={this.handleSeekChange}
+                            onMouseUp={this.handleSeekMouseUp}
+                            style={{width: "100%"}}
+                        />
+                    </Col>
+                </Row> */}
                 <Row>
                     <Col>
-                        <button onClick={this.handlePlayPause}>{this.state.playing ? 'Pause' : 'Play'}</button>
+                        <button onClick={this.handlePlayPause}>{playing ? 'Pause' : 'Play'}</button>
                     </Col>
                     <Col>
                         <button onClick={this.handleStop}>Stop</button>
                     </Col>
                     <Col>
-                        Skip
-                    </Col>
-                    <Col>
-                        <input type='range' min={0} max={1} step='any' value={this.state.volume} onChange={this.handleVolumeChange}/>
+                        <input type='range' min={0} max={1} step='any' value={volume} onChange={this.handleVolumeChange}/>
                     </Col>
                 </Row>
             </Card>
