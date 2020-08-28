@@ -28,6 +28,7 @@
         // max-height 225px
         .tab-active
             display flex
+            align-items stretch
 
             .toolbar
                 height 300px
@@ -43,6 +44,9 @@
                     background transparent
 
                     &::-webkit-scrollbar
+                        display none
+
+                    .tab-link-highlight
                         display none
 
                     .tab-link
@@ -94,7 +98,7 @@
                             p
                                 color white
 
-                                &:after
+                                &.text:after
                                     content ''
                                     opacity 1
                                     width 21.21px
@@ -106,6 +110,68 @@
                                     top 50%
                                     transform translate(10px, -50%) rotate(45deg)
 
-            .tabs
+                            &:after
+                                content ''
+                                position absolute
+                                right 0
+                                top 0
+                                width 0
+                                height 0
+                                border-right 120px solid red_2
+                                border-bottom 60px solid transparent
+
+                        .ripple-wave
+                            display none
+
+            .tabs-content
                 margin-left -15px
                 width 37%
+                height 300px
+
+                .tab-content
+                    height 100%
+                    padding 15px
+                    flex-direction column
+                    box-sizing border-box
+
+                    .img_cont
+                        border-radius 8px
+                        padding 0px
+                        height 55%
+
+                        img
+                            width 100%
+                            height 100%
+                            object-fit cover
+                            border-radius 8px
+
+                        div
+                            background #000000
+                            position absolute
+                            bottom 0
+                            width 100%
+                            display flex
+                            justify-content flex-start
+                            border-radius 8px
+
+                            p
+                                color white
+                                text-transform capitalize
+                                font font_15
+                                margin 3px 7px
+
+                    .content
+                        width 100%
+                        padding 0px
+                        height 45%
+                        overflow hidden
+                        .block-header
+                            font font_14
+                            color #272727
+                            text-transform capitalize
+                            margin 9px 0px 4px 0px
+
+                        .text
+                            font font_6
+                            color #494949
+                            text-align left
