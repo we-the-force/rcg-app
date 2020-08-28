@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
     Toolbar,
     Block,
@@ -7,16 +7,112 @@ import {
     Tab
 } from 'framework7-react';
 
-var schedule = [
-    { time: '08:00', name: 'Program 1' },
-    { time: '07:30', name: 'Program 2' },
-    { time: '09:00', name: 'Program 3' },
-    { time: '11:00', name: 'Program 4' },
-    { time: '13:30', name: 'Program 5' },
-    { time: '15:00', name: 'Program 6' },
-    { time: '17:30', name: 'Program 7' },
-    { time: '20:00', name: 'Program 8' },
-    { time: '22:30', name: 'Program 9' }]
+var schedule = [{
+    day: 'domingo',
+    horas: [
+        { time: '08:00', name: 'Program 1' },
+        { time: '07:30', name: 'Program 2' },
+        { time: '09:00', name: 'Program 3' },
+        { time: '11:00', name: 'Program 4' },
+        { time: '13:30', name: 'Program 5' },
+        { time: '15:00', name: 'Program 6' },
+        { time: '17:30', name: 'Program 7' },
+        { time: '20:00', name: 'Program 8' },
+        { time: '22:30', name: 'Program 9' },
+        { time: '23:00', name: 'Program 9' },
+    ]
+},
+{
+    day: 'lunes',
+    horas: [
+        { time: '08:00', name: 'Program 1' },
+        { time: '07:30', name: 'Program 2' },
+        { time: '09:00', name: 'Program 3' },
+        { time: '11:00', name: 'Program 4' },
+        { time: '13:30', name: 'Program 5' },
+        { time: '15:00', name: 'Program 6' },
+        { time: '17:30', name: 'Program 7' },
+        { time: '20:00', name: 'Program 8' },
+        { time: '22:30', name: 'Program 9' },
+        { time: '23:00', name: 'Program 9' },
+    ]
+},
+{
+    day: 'martes',
+    horas: [
+        { time: '08:00', name: 'Program 1' },
+        { time: '07:30', name: 'Program 2' },
+        { time: '09:00', name: 'Program 3' },
+        { time: '11:00', name: 'Program 4' },
+        { time: '13:30', name: 'Program 5' },
+        { time: '15:00', name: 'Program 6' },
+        { time: '17:30', name: 'Program 7' },
+        { time: '20:00', name: 'Program 8' },
+        { time: '22:30', name: 'Program 9' },
+        { time: '23:00', name: 'Program 9' },
+    ]
+},
+{
+    day: 'miercoles',
+    horas: [
+        { time: '08:00', name: 'Program 1' },
+        { time: '07:30', name: 'Program 2' },
+        { time: '09:00', name: 'Program 3' },
+        { time: '11:00', name: 'Program 4' },
+        { time: '13:30', name: 'Program 5' },
+        { time: '15:00', name: 'Program 6' },
+        { time: '17:30', name: 'Program 7' },
+        { time: '20:00', name: 'Program 8' },
+        { time: '22:30', name: 'Program 9' },
+        { time: '23:00', name: 'Program 9' },
+    ]
+},
+{
+    day: 'jueves',
+    horas: [
+        { time: '08:00', name: 'Program 1' },
+        { time: '07:30', name: 'Program 2' },
+        { time: '09:00', name: 'Program 3' },
+        { time: '11:00', name: 'Program 4' },
+        { time: '13:30', name: 'Program 5' },
+        { time: '15:00', name: 'Program 6' },
+        { time: '17:30', name: 'Program 7' },
+        { time: '20:00', name: 'Program 8' },
+        { time: '22:30', name: 'Program 9' },
+        { time: '23:00', name: 'Program 9' },
+    ]
+},
+{
+    day: 'viernes',
+    horas: [
+        { time: '08:00', name: 'Program 1' },
+        { time: '07:30', name: 'Program 2' },
+        { time: '09:00', name: 'Program 3' },
+        { time: '11:00', name: 'Program 4' },
+        { time: '13:30', name: 'Program 5' },
+        { time: '15:00', name: 'Program 6' },
+        { time: '17:30', name: 'Program 7' },
+        { time: '20:00', name: 'Program 8' },
+        { time: '22:30', name: 'Program 9' },
+        { time: '23:00', name: 'Program 9' },
+    ]
+},
+{
+    day: 'sabado',
+    horas: [
+        { time: '08:00', name: 'Program 1' },
+        { time: '07:30', name: 'Program 2' },
+        { time: '09:00', name: 'Program 3' },
+        { time: '11:00', name: 'Program 4' },
+        { time: '13:30', name: 'Program 5' },
+        { time: '15:00', name: 'Program 6' },
+        { time: '17:30', name: 'Program 7' },
+        { time: '20:00', name: 'Program 8' },
+        { time: '22:30', name: 'Program 9' },
+        { time: '23:00', name: 'Program 9' },
+    ]
+}]
+
 
 export default class TVScheduleTable extends Component {
     constructor(props) {
@@ -24,25 +120,35 @@ export default class TVScheduleTable extends Component {
         this.state = {}
     }
     render() {
+        console.log(schedule)
         return (
             <Block className="schedule">
                 {/* Columns */}
                 <Toolbar tabbar className="week_toolbar">
-                    <Link tabLink="#domingo" tabLinkActive>Domingo</Link>
-                    <hr />
-                    <Link tabLink="#lunes">Lunes</Link>
-                    <hr />
-                    <Link tabLink="#martes">Martes</Link>
-                    <hr />
-                    <Link tabLink="#miercoles">Miercoles</Link>
-                    <hr />
-                    <Link tabLink="#jueves">Jueves</Link>
-                    <hr />
-                    <Link tabLink="#viernes">Viernes</Link>
-                    <hr />
-                    <Link tabLink="#sabado">Sabado</Link>
+                    {schedule.map((val, key) => {
+                        let active = key === 0 ? true : false;
+                        let dis = (schedule.length - 1) === key ? 'display-none' : 'display-flex';
+                        return (
+                            <Fragment key={key}>
+                                <Link tabLink={"#" + val.day} tabLinkActive={active} >{val.day}</Link>
+                                <hr className={dis} />
+                            </Fragment>
+                        );
+                    })}
                 </Toolbar>
                 <Tabs className="week_tabs">
+                    {/* {schedule.map((val, key) => {
+                        let active = key === 0 ? true : false;
+                        return (
+                            <Tab id={val.day} tabActive={active}>
+                                {
+                                    val.horas.map((val, key) => {
+
+                                    })
+                                }
+                            </Tab>
+                        );
+                    })} */}
                     <Tab id="domingo" tabActive>
                         <Toolbar tabbar>
                             <Link tabLink="#domingo-tab-1" className="v1" tabLinkActive>

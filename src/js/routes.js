@@ -24,7 +24,8 @@ var routes = [
   },
   {
     path: '/articulo/:artId/',
-    async: async function (routeTo, routeFrom, resolve, reject)
+    component: Articulo,
+    /* async: async function (routeTo, routeFrom, resolve, reject)
     {
       var router = this;
       var app = router.app;
@@ -48,7 +49,7 @@ var routes = [
           Article: article
         }
       });
-    }
+    } */
   },
   {
     path: '/tv/:name',
