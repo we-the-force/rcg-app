@@ -35,30 +35,8 @@ export default function Radio() {
                         </Block>
                     </Block>
                 </Block>
+                <Footer />
             </PageContent>
         </Page>
     )
 }
-
-// export default () => (
-//     <Page pageContent={false} name="radio">
-//         <PageContent>
-//             <Nav />
-//             <Block className="main_cont display-flex flex-direction-column justify-content-center">
-//                 <AdsTop />
-//                 <Block className="paneles">
-//                     <Block className="left_pan">
-//                         <LeftPanel />
-//                     </Block>
-//                     <Block className="center_pan">
-//                         <RadioPanel/>
-//                     </Block>
-//                     <Block className="right_pan">
-//                         <RightPanel />
-//                     </Block>
-//                 </Block>
-//             </Block>
-//             <Footer />
-//         </PageContent>
-//     </Page>
-// );

@@ -1,5 +1,4 @@
 import TVScheduleTable from './schedule-table';
-import NotaRecomandada from './nota-recomendada.jsx';
 import ReactPlayer from 'react-player';
 import React, { Component } from 'react';
 import RecomendacionSwiper from '../components/recomendacionSwiper'
@@ -10,8 +9,6 @@ import {
     CardHeader,
     Block,
     BlockHeader,
-    Swiper,
-    SwiperSlide,
     Icon
 } from 'framework7-react';
 

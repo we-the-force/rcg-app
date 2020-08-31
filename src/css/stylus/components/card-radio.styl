@@ -1,0 +1,220 @@
+.card.radio_center_card
+    margin-top 0px
+    padding 20px 18px
+    margin-bottom 15px
+
+    .header_cont
+        padding 0px
+        margin-bottom 30px
+
+        .card-header
+            padding 0px
+            font font_12
+            color grey_d_3
+            text-transform capitalize
+
+            .icon
+                color red
+
+            &:after
+                content none
+
+        .share
+            padding 0px 8px
+
+            p
+                font font_3
+                text-transform capitalize
+                color #444444
+                margin 0px
+
+            a
+                padding-left 5px
+                width 25px
+                height 25px
+
+                img
+                    width 100%
+
+    .info-programa
+        padding 20px 0px
+
+        .titulo-programa
+            font font_13
+            color grey_d
+            margin-bottom 5px
+
+        .texto-programa
+            no-mar-no-pad()
+            font font_10
+            color grey
+            text-transform capitalize
+
+    .tabla_programacion
+        no-mar-no-pad()
+        margin-bottom 20px
+
+        .block-header
+            margin 20px 0px 10px 0px
+            font font_3
+            text-transform capitalize
+            color grey_d
+
+    .mas_canales
+        no-mar-no-pad()
+        margin-bottom 20px
+
+        .block-header
+            margin 15px 0px
+            font font_3
+            text-transform capitalize
+            color grey_d
+
+        .canal
+            padding 0px
+            margin-bottom 15px
+
+            .icon_tv
+                position absolute
+                top 0
+                left 0
+                width 40px
+                height 40px
+                background red_2
+                border-radius 4px
+                overflow hidden
+
+                img
+                    width 20px
+                    height 20px
+
+                &:before
+                    content ''
+                    position absolute
+                    bottom 0
+                    right 0
+                    width 60px
+                    height 60px
+                    background red
+                    transform rotate(45deg)
+                    z-index -1
+
+            .canal_content
+                width 80%
+                left 0
+                padding 15px 0px 0px 15px
+
+                img
+                    padding 0px
+                    width 100%
+                    object-fit cover
+
+                .title
+                    position absolute
+                    bottom 0px
+                    left 15px
+                    padding 0px
+                    margin-left 15px
+                    margin-bottom 15px
+                    font font_12
+                    text-transform capitalize
+                    color white
+                    text-shadow 0px 0px 4px rgba(0, 0, 0, 0.8)
+
+    .radio-wrapper
+        margin 15px 0px
+        position relative
+        height 0
+        width 100%
+        padding 0
+        padding-top calc(240 / 1140 * 100%) // aspect radio
+
+        .radio-ui
+            position absolute
+            top 0
+            left 0
+            width 100% !important
+            height 100% !important
+            padding 0px
+
+            .top-wrapper
+                padding 0px
+                width 100%
+                height calc(100% - 25%)
+
+                .logo-radio
+                    padding 0px
+                    width 30%
+                    height 100%
+
+                    img
+                        border-radius 4px 4px 0px 0px
+                        width 100%
+                        height 100%
+                        object-fit cover
+
+                    &:after
+                        content ''
+                        position absolute
+                        bottom 0
+                        right 0
+                        width 25px
+                        height 45px
+                        background-image url('../static/icons/microphone_black.png')
+                        background-position center
+                        background-repeat no-repeat
+                        background-size contain
+                        transform translateX(50%)
+
+                .content-radio
+                    width 70%
+                    height 100%
+                    padding 11px 22px
+
+                    .title
+                        margin 0px
+                        font font_16
+                        text-transform capitalize
+                        color #323232
+
+                    .text
+                        font font_8
+                        text-transform capitalize
+                        color #5B5B5B
+                        margin 0px
+                        margin-top 5px
+                        display -webkit-box
+                        -webkit-line-clamp 4
+                        -webkit-box-orient vertical
+                        overflow hidden
+
+            .controls-wrapper
+                width 100%
+                height 25%
+                background #E4E4E4
+
+                .controls
+                    a
+                        margin auto 7.5px
+
+                        .icon
+                            font-size 28px
+                            color #2D2D2D
+
+                    .range-slider
+                        margin-left -2.5px
+                        width 70px
+                        --f7-theme-color #545454
+
+            .logo-RCG
+                position absolute
+                left 0px
+                bottom 0px
+                width 17%
+                height 42%
+                padding 6px
+
+                img
+                    width 100%
+                    height 100%
+                    object-fit content
