@@ -89,7 +89,7 @@
                                 background #D8D7D7
 
                         &.tab-link-active
-                            background red
+                            background red_2
                             overflow visible
 
                             .time
@@ -98,27 +98,39 @@
                             p
                                 color white
 
-                                &.text:after
-                                    content ''
-                                    opacity 1
-                                    width 21.21px
-                                    height 21.21px
-                                    position absolute
-                                    background red_2
-                                    right 0
-                                    left unset
-                                    top 50%
-                                    transform translate(10px, -50%) rotate(45deg)
+                                &.text
+                                    &:after
+                                        content ''
+                                        opacity 1
+                                        width 21.21px
+                                        height 21.21px
+                                        position absolute
+                                        background red_2
+                                        right 0
+                                        left unset
+                                        top 50%
+                                        transform translate(10px, -50%) rotate(45deg)
+                                    &:before
+                                        content ''
+                                        width 40%
+                                        height 30px
+                                        position absolute
+                                        background red_2
+                                        right 0
+                                        top 0
+                                        z-index -1
 
                             &:after
                                 content ''
                                 position absolute
-                                right 0
+                                left 0
                                 top 0
-                                width 0
-                                height 0
-                                border-right 120px solid red_2
-                                border-bottom 60px solid transparent
+                                width 80%
+                                height 30px
+                                background red
+                                transform skew(65deg, 0deg)
+                                z-index -1
+                                box-shadow 0px -5px 6.91564px rgba(0, 0, 0, 0.08)
 
                         .ripple-wave
                             display none
@@ -133,6 +145,10 @@
                     padding 15px
                     flex-direction column
                     box-sizing border-box
+                    background-repeat no-repeat
+                    background-size 200% auto
+                    background-position 100% top
+                    background-image url('../static/imgs/card_back_7.png')
 
                     .img_cont
                         border-radius 8px
@@ -165,6 +181,7 @@
                         padding 0px
                         height 45%
                         overflow hidden
+
                         .block-header
                             font font_14
                             color #272727
@@ -175,3 +192,7 @@
                             font font_6
                             color #494949
                             text-align left
+                            display -webkit-box
+                            -webkit-line-clamp 7
+                            -webkit-box-orient vertical
+                            overflow hidden
