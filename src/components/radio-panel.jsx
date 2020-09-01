@@ -19,6 +19,7 @@ export default class RadioPanel extends Component {
     constructor() {
         super();
         this.state = {
+            radioURL: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
             url: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
             playing: false,
             volume: 0.8,
@@ -26,26 +27,50 @@ export default class RadioPanel extends Component {
             played: 0,
             loaded: 0,
             duration: 0,
-            play_pause: true
+            play_pause: true,
+            mute_unmute: true,
         }
     }
 
-    playStop(){
+    playPause = () => {
+        let url = this.state.url == null ? this.state.radioURL : this.state.url;  
         this.setState({
+            url: url,
             playing: !this.state.playing,
             play_pause: !this.state.play_pause
         });
     }
 
+    handleStop = () => {
+        this.setState({ 
+            url: null, 
+            playing: false,
+            play_pause: true,
+        });
+    }
+
+    handleToggleMuted = () => {
+        this.setState({ 
+            muted: !this.state.muted,
+            mute_unmute: !this.state.mute_unmute
+        })
+    }
+
+    handleVolumeChange = e => {
+        this.setState({ volume: parseFloat(e) })
+    }
+
     render() {
-        const { url, playing, volume, muted, play_pause } = this.state
+        const { url, playing, volume, muted, play_pause, mute_unmute } = this.state
 
         return (
             <Block className="tv_panel center_panel">
+                {/* tarjetita principal radio */}
                 <Card className="radio_center_card">
+                    {/* header */}
                     <Block className="header_cont display-flex justify-content-space-between">
                         <CardHeader>
-                            RCG En Vivo
+                            DIGITAL 106.5 FM
                             <Icon material="play_arrow"></Icon>
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
@@ -58,6 +83,7 @@ export default class RadioPanel extends Component {
                             </a>
                         </Block>
                     </Block>
+                    {/* bloque de radio*/}
                     <Block className="radio-wrapper">
                         <ReactPlayer
                             url={url}
@@ -80,20 +106,21 @@ export default class RadioPanel extends Component {
                             </Block>
                             <Block className="controls-wrapper display-flex justify-content-center align-items-center">
                                 <Block className="controls display-flex align-items-center">
-                                    <a onClick={this.playStop.bind(this)}>
+                                    <a onClick={this.playPause}>
                                         <Icon material={play_pause ? 'play_arrow' : 'pause'} /> {/* pause */}
                                     </a>
-                                    <a onClick={() => { }}>
+                                    <a onClick={this.handleStop}>
                                         <Icon material="stop" />
                                     </a>
-                                    <a onClick={() => { }}>
-                                        <Icon material="volume_up" />
+                                    <a onClick={this.handleToggleMuted}>
+                                        <Icon material={mute_unmute ? "volume_up" : "volume_off"} />
                                     </a>
                                     <Range
                                         min={0}
                                         max={1}
-                                        step={0.1}
+                                        step={0.01}
                                         value={volume}
+                                        onRangeChange={this.handleVolumeChange}
                                     ></Range>
                                 </Block>
                             </Block>
@@ -102,15 +129,17 @@ export default class RadioPanel extends Component {
                             </Block>
                         </Block>
                     </Block>
+                    {/* bloque de info */}
                     <Block className="info-programa">
                         <p className="titulo-programa">Nombre de Programa</p>
                         <p className="texto-programa"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore sed dolores quia esse veniam. Quos nobis temporibus ab, vero reiciendis animi, illum provident voluptate autem possimus nam quas a! </p>
                     </Block>
+                    {/* La tablita de programacion */}
                     <Block className="tabla_programacion">
-                        {/* La tablita de programacion */}
                         <BlockHeader>Programacion:</BlockHeader>
                         <TVScheduleTable />
                     </Block>
+                    {/* mas canales xD */}
                     <Block className="mas_canales">
                         <BlockHeader>Más Canales</BlockHeader>
                         <Block className="canal">
@@ -137,6 +166,7 @@ export default class RadioPanel extends Component {
                         </Block>
                     </Block>
                 </Card>
+                {/* tarjewtita recomendados */}
                 <Card className="recomendados-card">
                     <RecomendacionSwiper />
                 </Card>

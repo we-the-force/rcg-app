@@ -122,7 +122,6 @@ export default class TVScheduleTable extends Component {
         this.state = {}
     }
     render() {
-        console.log(schedule)
         return (
             <Block className="schedule">
                 {/* Columns */}
