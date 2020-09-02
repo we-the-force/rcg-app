@@ -13,7 +13,7 @@ import {
     PageContent
 } from 'framework7-react';
 
-export default function TV() {
+export default function TV(props) {
     let station = "2";
     let tv = true;
     const { loading, error, data } = useQuery(SchedulePage,{
@@ -37,7 +37,7 @@ export default function TV() {
                             <LeftPanel />
                         </Block>
                         <Block className="center_pan">
-                            <TVPanel prog={data.programacionSemanas}/>
+                            <TVPanel prog={data.programacionSemanas} table_id={props.name}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel />

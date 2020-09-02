@@ -15,7 +15,8 @@ import {
 
 
 export default function Radio(props) {
-    console.log(props);
+    // console.log("Props thing");
+    // console.log(props);
 
     let station = "1";
     let tv = false;
@@ -24,8 +25,8 @@ export default function Radio(props) {
         variables: { station, tv },
     });
 
-    console.log("Data del radio");
-    console.log(data);
+    // console.log("Data del radio");
+    // console.log(data);
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     return (
@@ -39,7 +40,7 @@ export default function Radio(props) {
                             <LeftPanel/>
                         </Block>
                         <Block className="center_pan">
-                            <RadioPanel prog={data.programacionSemanas}/>
+                            <RadioPanel prog={data.programacionSemanas} table_id={props.name}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel/>

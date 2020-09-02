@@ -137,7 +137,7 @@ export default class RadioPanel extends Component {
                     {/* La tablita de programacion */}
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
-                        <TVScheduleTable prog={this.props.prog}/>
+                        <TVScheduleTable prog={this.props.prog} table_id={this.props.table_id}/>
                     </Block>
                     {/* mas canales xD */}
                     <Block className="mas_canales">

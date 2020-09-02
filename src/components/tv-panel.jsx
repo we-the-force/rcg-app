@@ -64,7 +64,7 @@ export default class TVPanel extends Component {
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
                         {/* La tablita de programacion */}
-                        <TVScheduleTable prog={this.props.prog}/>
+                        <TVScheduleTable prog={this.props.prog} table_id={this.props.table_id}/>
                     </Block>
                     <Block className="mas_canales">
                         <BlockHeader>Más Canales</BlockHeader>

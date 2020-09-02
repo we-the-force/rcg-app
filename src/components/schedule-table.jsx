@@ -169,7 +169,7 @@ export default class TVScheduleTable extends Component {
     constructor(props) {
         super(props);
         console.log("Props");
-        console.log(props.prog);
+        console.log(this);
         schedule = CreateScheduleObject(props.prog[0].programacion);
         this.state = {}
     }
@@ -178,12 +178,14 @@ export default class TVScheduleTable extends Component {
             <Block className="schedule">
                 {/* Columns */}
                 <Toolbar tabbar className="week_toolbar">
+                    {/* { console.log('Propies') }
+                    { console.log(this) } */}
                     {schedule.map((val, key) => {
                         let active = key === 0 ? true : false;
                         let dis = (schedule.length - 1) === key ? 'display-none' : 'display-flex';
                         return (
                             <Fragment key={key}>
-                                <Link tabLink={"#" + val.day} tabLinkActive={active} >{val.day}</Link>
+                                <Link tabLink={"#" + val.day + "-" + this.props.table_id} tabLinkActive={active} >{val.day}</Link>
                                 <hr className={dis} />
                             </Fragment>
                         );
@@ -193,7 +195,7 @@ export default class TVScheduleTable extends Component {
                     {schedule.map((val, key) => {
                         let active = key === 0 ? true : false;
                         return (
-                            <Tab id={val.day} tabActive={active} key={key}>
+                            <Tab id={val.day + "-" + this.props.table_id} tabActive={active} key={key}>
                                 <Toolbar tabbar>
                                     {
                                         val.horas.map((val_2, key_2) => {
