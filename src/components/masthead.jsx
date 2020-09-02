@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import RCGlogo from '@/static/imgs/LOGO_negro_sobre_blanco.png';
+import img1 from '@/static/imgs/418464-PD8PXQ-214 1.png';
+import img2 from '@/static/imgs/fondo-sj-e1540342434825 1.png';
+import img3 from '@/static/imgs/Rcg.png';
+import img4 from '@/static/imgs/Image.png';
 import {
     Swiper,
     SwiperSlide,
@@ -12,52 +17,57 @@ export default class Masthead extends Component {
         this.state = {}
     }
     render() {
-        /* let home = this.props.home ? this.props.home : false; */
-        /* if (home) {
-            home = 
-        } else {
-            home = <img src="../static/imgs/Logo_negro.png" alt="" srcSet="" />
-        } */
         return (
             <Block className="masthead">
+                <Block className="logo">
+                    <img src={RCGlogo} alt="" />
+                </Block>
                 <Swiper pagination params={{ loop: true }}>
                     <SwiperSlide>
-                        <img src="../static/imgs/LOGO_negro_sobre_blanco.png" alt="" />
-                        <Block strong>
+                        <Block className="background">
+                            <img src={img1} alt=""/>
+                        </Block>
+                        <Block className="content">
                             <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
                             <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
+                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
                             </BlockFooter>
                         </Block>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="../static/imgs/LOGO_negro_sobre_blanco.png" alt="" />
-                        <Block strong>
+                        <Block className="background">
+                            <img src={img2} alt=""/>
+                        </Block>
+                        <Block className="content">
                             <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
                             <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
+                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
                             </BlockFooter>
                         </Block>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="../static/imgs/LOGO_negro_sobre_blanco.png" alt="" />
-                        <Block strong>
+                        <Block className="background">
+                            <img src={img3} alt=""/>
+                        </Block>
+                        <Block className="content">
                             <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
                             <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
+                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
                             </BlockFooter>
                         </Block>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="../static/imgs/LOGO_negro_sobre_blanco.png" alt="" />
-                        <Block strong>
+                        <Block className="background">
+                            <img src={img4} alt=""/>
+                        </Block>
+                        <Block className="content">
                             <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
                             <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> - <p className="fecha">11 Agosto 2020</p>
+                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
                             </BlockFooter>
                         </Block>
                     </SwiperSlide>
