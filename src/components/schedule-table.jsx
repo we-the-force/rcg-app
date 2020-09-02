@@ -213,6 +213,7 @@ export default class TVScheduleTable extends Component {
                                     {
                                         val.horas.map((val_2, key_2) => {
                                             let active_2 = key_2 === 0 ? true : false;
+                                            console.log("Creating description stuff");
                                             return (
                                                 <Tab key={key_2} id={val.day + "-tab-" + (key_2 + 1)} className="tab-content" tabActive={active_2}>
                                                     <Block className="img_cont">
@@ -223,10 +224,12 @@ export default class TVScheduleTable extends Component {
                                                     </Block>
                                                     <Block className="content">
                                                         <BlockHeader>
-                                                            Nombre Programa
+                                                            {val_2.name}
+                                                            {/* Nombre Programa */}
                                                         </BlockHeader>
                                                         <p className="text">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+                                                            {val_2.desc}
+                                                            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. */}
                                                         </p>
                                                     </Block>
                                                 </Tab>
