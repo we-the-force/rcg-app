@@ -234,6 +234,7 @@ export default class RadioPlayer extends Component {
                                 max={1}
                                 step={0.1}
                                 value={volume}
+                                onRangeChange={this.handleVolumeChange}
                             ></Range>
                         </Block>
                     </Block>
