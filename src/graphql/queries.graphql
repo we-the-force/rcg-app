@@ -22,9 +22,23 @@ query ArticuloPage($url: String){
   }
 }
 
+
 query CategoriasNavbar {
   categorias {
     nombre
+  }
+}
+
+query SchedulePage($station: String, $tv: Boolean){
+  categorias{
+    nombre
+  },
+  programacionSemanas(where: {id: $station es_tv: $tv}){
+    ...ScheduleData
+    # id
+    # programacion {
+    #   lunes{programa{Nombre}}
+    # }
   }
 }
 
@@ -50,5 +64,68 @@ fragment ArticulosData on Articulo {
   } 
   comentarios { 
     valor
+  }
+}
+
+fragment ScheduleData on ProgramacionSemana{
+  id
+  canal_estacion { nombre }
+  programacion {
+    lunes{
+      hora_inicio
+      hora_final
+      programa {
+        Nombre
+        Descripcion
+      }
+    }
+    martes{
+      hora_inicio
+      hora_final
+      programa {
+        Nombre
+        Descripcion
+      }
+    }
+    miercoles{
+      hora_inicio
+      hora_final
+      programa {
+        Nombre
+        Descripcion
+      }
+    }
+    jueves{
+      hora_inicio
+      hora_final
+      programa {
+        Nombre
+        Descripcion
+      }
+    }
+    viernes{
+      hora_inicio
+      hora_final
+      programa {
+        Nombre
+        Descripcion
+      }
+    }
+    sabado{
+      hora_inicio
+      hora_final
+      programa {
+        Nombre
+        Descripcion
+      }
+    }
+    domingo{
+      hora_inicio
+      hora_final
+      programa {
+        Nombre
+        Descripcion
+      }
+    }
   }
 }

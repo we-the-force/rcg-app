@@ -9,120 +9,171 @@ import {
     Tab
 } from 'framework7-react';
 
-var schedule = [{
-    day: 'domingo',
-    horas: [
-        { time: '08:00', name: 'Program 1' },
-        { time: '07:30', name: 'Program 2' },
-        { time: '09:00', name: 'Program 3' },
-        { time: '11:00', name: 'Program 4' },
-        { time: '13:30', name: 'Program 5' },
-        { time: '15:00', name: 'Program 6' },
-        { time: '17:30', name: 'Program 7' },
-        { time: '20:00', name: 'Program 8' },
-        { time: '22:30', name: 'Program 9' },
-        { time: '23:00', name: 'Program 9' },
-    ]
-},
-{
-    day: 'lunes',
-    horas: [
-        { time: '08:00', name: 'Program 1' },
-        { time: '07:30', name: 'Program 2' },
-        { time: '09:00', name: 'Program 3' },
-        { time: '11:00', name: 'Program 4' },
-        { time: '13:30', name: 'Program 5' },
-        { time: '15:00', name: 'Program 6' },
-        { time: '17:30', name: 'Program 7' },
-        { time: '20:00', name: 'Program 8' },
-        { time: '22:30', name: 'Program 9' },
-        { time: '23:00', name: 'Program 9' },
-    ]
-},
-{
-    day: 'martes',
-    horas: [
-        { time: '08:00', name: 'Program 1' },
-        { time: '07:30', name: 'Program 2' },
-        { time: '09:00', name: 'Program 3' },
-        { time: '11:00', name: 'Program 4' },
-        { time: '13:30', name: 'Program 5' },
-        { time: '15:00', name: 'Program 6' },
-        { time: '17:30', name: 'Program 7' },
-        { time: '20:00', name: 'Program 8' },
-        { time: '22:30', name: 'Program 9' },
-        { time: '23:00', name: 'Program 9' },
-    ]
-},
-{
-    day: 'miercoles',
-    horas: [
-        { time: '08:00', name: 'Program 1' },
-        { time: '07:30', name: 'Program 2' },
-        { time: '09:00', name: 'Program 3' },
-        { time: '11:00', name: 'Program 4' },
-        { time: '13:30', name: 'Program 5' },
-        { time: '15:00', name: 'Program 6' },
-        { time: '17:30', name: 'Program 7' },
-        { time: '20:00', name: 'Program 8' },
-        { time: '22:30', name: 'Program 9' },
-        { time: '23:00', name: 'Program 9' },
-    ]
-},
-{
-    day: 'jueves',
-    horas: [
-        { time: '08:00', name: 'Program 1' },
-        { time: '07:30', name: 'Program 2' },
-        { time: '09:00', name: 'Program 3' },
-        { time: '11:00', name: 'Program 4' },
-        { time: '13:30', name: 'Program 5' },
-        { time: '15:00', name: 'Program 6' },
-        { time: '17:30', name: 'Program 7' },
-        { time: '20:00', name: 'Program 8' },
-        { time: '22:30', name: 'Program 9' },
-        { time: '23:00', name: 'Program 9' },
-    ]
-},
-{
-    day: 'viernes',
-    horas: [
-        { time: '08:00', name: 'Program 1' },
-        { time: '07:30', name: 'Program 2' },
-        { time: '09:00', name: 'Program 3' },
-        { time: '11:00', name: 'Program 4' },
-        { time: '13:30', name: 'Program 5' },
-        { time: '15:00', name: 'Program 6' },
-        { time: '17:30', name: 'Program 7' },
-        { time: '20:00', name: 'Program 8' },
-        { time: '22:30', name: 'Program 9' },
-        { time: '23:00', name: 'Program 9' },
-    ]
-},
-{
-    day: 'sabado',
-    horas: [
-        { time: '08:00', name: 'Program 1' },
-        { time: '07:30', name: 'Program 2' },
-        { time: '09:00', name: 'Program 3' },
-        { time: '11:00', name: 'Program 4' },
-        { time: '13:30', name: 'Program 5' },
-        { time: '15:00', name: 'Program 6' },
-        { time: '17:30', name: 'Program 7' },
-        { time: '20:00', name: 'Program 8' },
-        { time: '22:30', name: 'Program 9' },
-        { time: '23:00', name: 'Program 9' },
-    ]
-}]
+var schedule = [];
+// var schedule = [{
+//     day: 'domingo',
+//     horas: [
+//         { time: '08:00', name: 'Program 1' },
+//         { time: '07:30', name: 'Program 2' },
+//         { time: '09:00', name: 'Program 3' },
+//         { time: '11:00', name: 'Program 4' },
+//         { time: '13:30', name: 'Program 5' },
+//         { time: '15:00', name: 'Program 6' },
+//         { time: '17:30', name: 'Program 7' },
+//         { time: '20:00', name: 'Program 8' },
+//         { time: '22:30', name: 'Program 9' },
+//         { time: '23:00', name: 'Program 9' },
+//     ]
+// },
+// {
+//     day: 'lunes',
+//     horas: [
+//         { time: '08:00', name: 'Program 1' },
+//         { time: '07:30', name: 'Program 2' },
+//         { time: '09:00', name: 'Program 3' },
+//         { time: '11:00', name: 'Program 4' },
+//         { time: '13:30', name: 'Program 5' },
+//         { time: '15:00', name: 'Program 6' },
+//         { time: '17:30', name: 'Program 7' },
+//         { time: '20:00', name: 'Program 8' },
+//         { time: '22:30', name: 'Program 9' },
+//         { time: '23:00', name: 'Program 9' },
+//     ]
+// },
+// {
+//     day: 'martes',
+//     horas: [
+//         { time: '08:00', name: 'Program 1' },
+//         { time: '07:30', name: 'Program 2' },
+//         { time: '09:00', name: 'Program 3' },
+//         { time: '11:00', name: 'Program 4' },
+//         { time: '13:30', name: 'Program 5' },
+//         { time: '15:00', name: 'Program 6' },
+//         { time: '17:30', name: 'Program 7' },
+//         { time: '20:00', name: 'Program 8' },
+//         { time: '22:30', name: 'Program 9' },
+//         { time: '23:00', name: 'Program 9' },
+//     ]
+// },
+// {
+//     day: 'miercoles',
+//     horas: [
+//         { time: '08:00', name: 'Program 1' },
+//         { time: '07:30', name: 'Program 2' },
+//         { time: '09:00', name: 'Program 3' },
+//         { time: '11:00', name: 'Program 4' },
+//         { time: '13:30', name: 'Program 5' },
+//         { time: '15:00', name: 'Program 6' },
+//         { time: '17:30', name: 'Program 7' },
+//         { time: '20:00', name: 'Program 8' },
+//         { time: '22:30', name: 'Program 9' },
+//         { time: '23:00', name: 'Program 9' },
+//     ]
+// },
+// {
+//     day: 'jueves',
+//     horas: [
+//         { time: '08:00', name: 'Program 1' },
+//         { time: '07:30', name: 'Program 2' },
+//         { time: '09:00', name: 'Program 3' },
+//         { time: '11:00', name: 'Program 4' },
+//         { time: '13:30', name: 'Program 5' },
+//         { time: '15:00', name: 'Program 6' },
+//         { time: '17:30', name: 'Program 7' },
+//         { time: '20:00', name: 'Program 8' },
+//         { time: '22:30', name: 'Program 9' },
+//         { time: '23:00', name: 'Program 9' },
+//     ]
+// },
+// {
+//     day: 'viernes',
+//     horas: [
+//         { time: '08:00', name: 'Program 1' },
+//         { time: '07:30', name: 'Program 2' },
+//         { time: '09:00', name: 'Program 3' },
+//         { time: '11:00', name: 'Program 4' },
+//         { time: '13:30', name: 'Program 5' },
+//         { time: '15:00', name: 'Program 6' },
+//         { time: '17:30', name: 'Program 7' },
+//         { time: '20:00', name: 'Program 8' },
+//         { time: '22:30', name: 'Program 9' },
+//         { time: '23:00', name: 'Program 9' },
+//     ]
+// },
+// {
+//     day: 'sabado',
+//     horas: [
+//         { time: '08:00', name: 'Program 1' },
+//         { time: '07:30', name: 'Program 2' },
+//         { time: '09:00', name: 'Program 3' },
+//         { time: '11:00', name: 'Program 4' },
+//         { time: '13:30', name: 'Program 5' },
+//         { time: '15:00', name: 'Program 6' },
+//         { time: '17:30', name: 'Program 7' },
+//         { time: '20:00', name: 'Program 8' },
+//         { time: '22:30', name: 'Program 9' },
+//         { time: '23:00', name: 'Program 9' },
+//     ]
+// }]
 
+function CreateScheduleObject(sourceObject)
+{
+    let auxSchedule = [];
+    // console.log("CreateScheduleObject!", sourceObject);
+
+    auxSchedule.push(CreateDaySchedule("domingo", sourceObject.domingo));
+    auxSchedule.push(CreateDaySchedule("lunes", sourceObject.lunes));
+    auxSchedule.push(CreateDaySchedule("martes", sourceObject.martes));
+    auxSchedule.push(CreateDaySchedule("miercoles", sourceObject.miercoles));
+    auxSchedule.push(CreateDaySchedule("jueves", sourceObject.jueves));
+    auxSchedule.push(CreateDaySchedule("viernes", sourceObject.viernes));
+    auxSchedule.push(CreateDaySchedule("sabado", sourceObject.sabado));
+
+    return auxSchedule;
+    // console.log("Result:",auxSchedule);
+}
+
+function CreateDaySchedule(dayName, daySchedule)
+{
+    let auxObject = {
+        day: dayName,
+        horas: []
+    };
+    // console.log(`${dayName} schedule:`);
+    if (daySchedule.length > 0)
+    {
+        daySchedule.forEach(hourSchedule => {
+            auxObject.horas.push({
+                time: hourSchedule.hora_inicio.substring(0, 5),
+                name: hourSchedule.programa.Nombre,
+                desc: hourSchedule.programa.Descripcion
+            })
+        })
+    }
+    else
+    {
+        console.log("AAAAH ESTA VACIO");
+        for (let i = 0; i < 9; i++)
+        {
+            auxObject.horas.push({
+                time: "--:--",
+                name: "Sin programacion",
+                desc: "Ayyy, se me paso poner programacion aqui lmao"
+            })
+        }
+    }
+    return auxObject;
+}
 
 export default class TVScheduleTable extends Component {
     constructor(props) {
         super(props);
+        console.log("Props");
+        console.log(props.prog);
+        schedule = CreateScheduleObject(props.prog[0].programacion);
         this.state = {}
     }
     render() {
-        console.log(schedule)
         return (
             <Block className="schedule">
                 {/* Columns */}

@@ -6,15 +6,26 @@ import RadioPanel from '../components/radio-panel';
 import Footer from '../components/footer';
 import AdsTop from '../components/ads_top';
 import { useQuery } from '@apollo/client';
-import { CategoriasNavbar } from '@/graphql/queries.graphql';
+import { CategoriasNavbar, SchedulePage } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
     PageContent
 } from 'framework7-react';
 
-export default function Radio() {
-    const {loading, error, data } = useQuery(CategoriasNavbar);
+
+export default function Radio(props) {
+    console.log(props);
+
+    let station = "1";
+    let tv = false;
+    const {loading, error, data } = useQuery(SchedulePage, {
+        // variables: props.f7route.params.name 
+        variables: { station, tv },
+    });
+
+    console.log("Data del radio");
+    console.log(data);
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     return (
@@ -28,7 +39,7 @@ export default function Radio() {
                             <LeftPanel/>
                         </Block>
                         <Block className="center_pan">
-                            <RadioPanel/>
+                            <RadioPanel prog={data.programacionSemanas}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel/>
