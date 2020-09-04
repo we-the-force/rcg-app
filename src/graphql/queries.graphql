@@ -1,11 +1,5 @@
 query CategoriaPage($categoria: String){
-  articulos(
-    where: {
-      categorias: {
-        nombre: $categoria
-      }
-    }
-  ){
+  articulos(where: { categoria: { nombre: $categoria }}){
     ...ArticulosData
   },
   categorias {
@@ -22,6 +16,51 @@ query ArticuloPage($url: String){
   }
 }
 
+query TopArticulos{
+  articulos(where: {relevante: true}){
+    ...ArticulosData
+  }
+}
+
+query HomePage{
+  categorias{
+    nombre
+  },
+  articulosTop: articulos(sort: "fecha:desc", where: {relevante: true}, limit: 9){
+    ...ArticulosData
+  },
+  articulosLocal: articulos(where: {categoria: {id:1}} limit: 5){
+    ...ArticulosData
+  },
+  articulosEstatal: articulos(where: {categoria: {id:2}} limit: 5){
+    ...ArticulosData
+  },
+  articulosNacional: articulos(where: {categoria: {id:3}} limit: 5){
+    ...ArticulosData
+  },
+  articulosInternacional: articulos(where: {categoria: {id:4}} limit: 5){
+    ...ArticulosData
+  },
+  articulosDeporte: articulos(where: {categoria: {id:5}} limit: 5){
+    ...ArticulosData
+  },
+  articulosEspectaculo: articulos(where: {categoria: {id:6}} limit: 5){
+    ...ArticulosData
+  },
+  articulosDestacados: articulos(where: {categoria: {id:7}} limit: 5){
+    ...ArticulosData
+  },
+  articulosFundacion: articulos(where: {categoria: {id:8}} limit: 5){
+    ...ArticulosData
+  },
+  articulosSaludCultura: articulos(where: {categoria: {id:9}} limit: 5){
+    ...ArticulosData
+  },
+  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
+  }
+}
 
 query CategoriasNavbar {
   categorias {
@@ -58,7 +97,7 @@ fragment ArticulosData on Articulo {
   tags {
     tag
   } 
-  categorias {
+  categoria {
     nombre 
     id
   } 

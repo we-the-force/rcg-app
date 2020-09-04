@@ -13,7 +13,8 @@ import {
     PageContent
 } from 'framework7-react';
 export default function Categoria(props) {
-    let categoria = props.nombre;
+    var categoria = props.nombre;
+    // console.log(`Categoria: ${categoria}`);
     const { loading, error, data } = useQuery(CategoriaPage, {
         variables: { categoria }
     });
@@ -32,7 +33,7 @@ export default function Categoria(props) {
                         </Block>
                         <Block className="center_pan">
                             {/* {JSON.stringify(this.$f7route.context.Articles)} */}
-                            <CategoriaPanel articulos={data.articulos}/>
+                            <CategoriaPanel articulos={data.articulos} categoria={categoria}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel />

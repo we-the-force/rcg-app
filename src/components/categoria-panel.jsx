@@ -15,6 +15,7 @@ export default class NewsPanel extends Component {
         return (
             <Block className="categoria_panel center_panel">
                 <Card className="head">
+                    {/* { console.log(this.props) } */}
                     <CardHeader> {this.props.categoria} </CardHeader>
                 </Card>
                 {/* Lista de NewsCards */}
