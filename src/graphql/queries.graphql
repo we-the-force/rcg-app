@@ -4,6 +4,10 @@ query CategoriaPage($categoria: String){
   },
   categorias {
     nombre
+  },
+  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
   }
 }
 
@@ -13,6 +17,10 @@ query ArticuloPage($url: String){
   },
   categorias {
     nombre
+  },
+  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
   }
 }
 
@@ -78,6 +86,10 @@ query SchedulePage($station: String, $tv: Boolean){
     # programacion {
     #   lunes{programa{Nombre}}
     # }
+  },
+  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
   }
 }
 

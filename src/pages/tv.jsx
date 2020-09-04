@@ -40,7 +40,7 @@ export default function TV(props) {
                             <TVPanel prog={data.programacionSemanas} table_id={props.name}/>
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel />
+                            <RightPanel newsInfo={data.articulosDescatacosRaros}/>
                         </Block>
                     </Block>
                 </Block>
