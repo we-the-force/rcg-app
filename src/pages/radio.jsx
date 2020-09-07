@@ -43,7 +43,7 @@ export default function Radio(props) {
                             <RadioPanel prog={data.programacionSemanas} table_id={props.name}/>
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDescatacosRaros}/>
+                            <RightPanel newsInfo={data.articulosDestacadosRaros}/>
                         </Block>
                     </Block>
                 </Block>

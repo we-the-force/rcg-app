@@ -36,7 +36,7 @@ export default function Categoria(props) {
                             <CategoriaPanel articulos={data.articulos} categoria={categoria}/>
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDescatacosRaros}/>
+                            <RightPanel newsInfo={data.articulosDestacadosRaros}/>
                         </Block>
                     </Block>
                 </Block>

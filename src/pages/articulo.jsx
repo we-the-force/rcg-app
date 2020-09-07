@@ -37,7 +37,7 @@ export default function Articulo(props) {
                             <ArticuloPanel articulo={data.articulos[0]} />
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDescatacosRaros}/>
+                            <RightPanel newsInfo={data.articulosDestacadosRaros}/>
                         </Block>
                     </Block>
                 </Block>

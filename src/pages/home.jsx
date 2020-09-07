@@ -41,7 +41,7 @@ export default function Home() {
             </Block>
             <Block className="right_pan">
               { console.log(data)}
-              <RightPanel newsInfo={data.articulosDescatacosRaros}/>
+              <RightPanel newsInfo={data.articulosDestacadosRaros}/>
             </Block>
           </Block>
         </Block>

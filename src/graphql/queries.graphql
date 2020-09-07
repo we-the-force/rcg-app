@@ -5,7 +5,7 @@ query CategoriaPage($categoria: String){
   categorias {
     nombre
   },
-  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
   }
@@ -18,7 +18,7 @@ query ArticuloPage($url: String){
   categorias {
     nombre
   },
-  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
   }
@@ -64,7 +64,7 @@ query HomePage{
   articulosSaludCultura: articulos(where: {categoria: {id:9}} limit: 5){
     ...ArticulosData
   },
-  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
   }
@@ -87,7 +87,7 @@ query SchedulePage($station: String, $tv: Boolean){
     #   lunes{programa{Nombre}}
     # }
   },
-  articulosDescatacosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
   }
