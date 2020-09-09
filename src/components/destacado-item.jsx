@@ -11,8 +11,6 @@ export default class DestItem extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-        console.log("DestItem");
-        console.log(props);
     }
     render() {
         let bord = this.props.nobord ? 'nobord' : '';
@@ -34,7 +32,6 @@ export default class DestItem extends Component {
                     <BlockFooter className="display-flex justify-content-space-between">
                         <p className="tag">Tag&nbsp;{
                             this.props.articulo.tags.map((tag, i) => {
-                                console.log(`Current tag`,tag.tag);
                                 let isLastPos = !(i < (this.props.articulo.tags.length - 1));
                                 if (isLastPos)
                                 {

@@ -13,7 +13,6 @@ export default class RightPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-        console.log("Soy un side panel");
     }
     render() {
         return (
@@ -27,8 +26,6 @@ export default class RightPanel extends Component {
                         <CardHeader>
                             Destacado
                         </CardHeader>
-                        {console.log("A punto de armar el side panel")}
-                        {console.log(this.props)}
                         {
                             this.props.newsInfo != undefined ? 
                             this.props.newsInfo.map((articulo, i) => {
