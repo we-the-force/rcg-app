@@ -3,7 +3,7 @@ import Nav from '../components/navbar';
 import LeftPanel from '../components/left-panel';
 import RightPanel from '../components/right-panel';
 import Footer from '../components/footer';
-import AdsTop from '../components/ads_top';
+import AdsTop from '../components/general/ads_top';
 import { useQuery } from '@apollo/client';
 import { CategoriasNavbar, SchedulePage } from '@/graphql/queries.graphql';
 import {

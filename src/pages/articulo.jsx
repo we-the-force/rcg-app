@@ -4,7 +4,7 @@ import LeftPanel from '../components/left-panel';
 import RightPanel from '../components/right-panel';
 import Footer from '../components/footer';
 import ArticuloPanel from '../components/articulo-panel';
-import AdsTop from '../components/ads_top';
+import AdsTop from '../components/general/ads_top';
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { ArticuloPage } from '@/graphql/queries.graphql';
 import {
