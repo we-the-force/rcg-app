@@ -12,8 +12,8 @@ import {
     BlockFooter
 } from 'framework7-react';
 export default class Masthead extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {}
     }
     render() {
@@ -23,7 +23,26 @@ export default class Masthead extends Component {
                     <img src={RCGlogo} alt="" />
                 </Block>
                 <Swiper pagination params={{ loop: true }}>
-                    <SwiperSlide>
+                    {
+                        this.props.articulos.map((bannerItem, i) => {
+                            return(
+                                <SwiperSlide key={i}>
+                                    <Block className="background">
+                                        <img src={`http://localhost:1337${bannerItem.articulo.cover.url}`} alt=""/>
+                                    </Block>
+                                    <Block className="content">
+                                        <BlockHeader className="categoria upperscale">{bannerItem.articulo.categoria.nombre}</BlockHeader>
+                                        <a className="text" href={`/articulo/${bannerItem.articulo.url}/`}>{bannerItem.articulo.Titulo}</a>
+                                        <BlockFooter>
+                                            <p className="autor">{bannerItem.articulo.autor.nombre}@</p> &nbsp;-&nbsp; <p className="fecha">{bannerItem.articulo.fecha}</p>
+                                        </BlockFooter>
+                                    </Block>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+
+                    {/* <SwiperSlide>
                         <Block className="background">
                             <img src={img1} alt=""/>
                         </Block>
@@ -34,8 +53,9 @@ export default class Masthead extends Component {
                                 <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
                             </BlockFooter>
                         </Block>
-                    </SwiperSlide>
-                    <SwiperSlide>
+                    </SwiperSlide> */}
+
+                    {/* <SwiperSlide>
                         <Block className="background">
                             <img src={img2} alt=""/>
                         </Block>
@@ -70,7 +90,7 @@ export default class Masthead extends Component {
                                 <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
                             </BlockFooter>
                         </Block>
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                 </Swiper>
             </Block>
         );

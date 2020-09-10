@@ -34,6 +34,10 @@ query HomePage{
   categorias{
     nombre
   },
+  articulosBanner: banners(sort: "posicion:desc", limit: 10){
+    posicion
+    articulo{ ...ArticulosData}
+  },
   articulosTop: articulos(sort: "fecha:desc", where: {relevante: true}, limit: 9){
     ...ArticulosData
   },
@@ -73,6 +77,12 @@ query HomePage{
 query CategoriasNavbar {
   categorias {
     nombre
+  }
+}
+
+query SearchArticulosByTag($tags: [String]) {
+  articulos(where: {tags: {nombre_in: $tags}}) {
+    ...ArticulosData
   }
 }
 
@@ -137,7 +147,7 @@ fragment ArticulosData on Articulo {
   description 
   visitas 
   tags {
-    tag
+    nombre
   } 
   categoria {
     nombre 

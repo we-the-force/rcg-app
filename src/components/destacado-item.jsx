@@ -35,11 +35,11 @@ export default class DestItem extends Component {
                                 let isLastPos = !(i < (this.props.articulo.tags.length - 1));
                                 if (isLastPos)
                                 {
-                                    return (<a href="" className="etiqueta" key={i}>{tag.tag}</a>);
+                                    return (<a href="" className="etiqueta" key={i}>{tag.nombre}</a>);
                                 }
                                 else
                                 {
-                                    return (<Fragment key={i}><a href="" className="etiqueta">{tag.tag}</a>, </Fragment>);
+                                    return (<Fragment key={i}><a href="" className="etiqueta">{tag.nombre}</a>, </Fragment>);
                                 }
                                 // return (<DestItem image={true} key={i} articulo={articulo}/>)
                             })

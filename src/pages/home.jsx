@@ -26,7 +26,7 @@ export default function Home() {
       <PageContent>
         {/* ads */}
         {/* masthead */}
-        <Masthead home />
+        <Masthead home articulos={data.articulosBanner}/>
         {/* Top Navbar */}
         <Nav categorias={data.categorias} />
         {/* Page content */}
@@ -40,7 +40,6 @@ export default function Home() {
               <HomePanel newsInfo={data}/>
             </Block>
             <Block className="right_pan">
-              { console.log(data)}
               <RightPanel newsInfo={data.articulosDestacadosRaros}/>
             </Block>
           </Block>
