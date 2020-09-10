@@ -7,7 +7,7 @@ import Footer from '../components/footer';
 import AdsTop from '../components/general/ads_top';
 import HomePanel from '../components/home-panel';
 import { useQuery } from '@apollo/client';
-import { CategoriasNavbar } from '@/graphql/queries.graphql';
+import { CategoriasNavbar, HomePage } from '@/graphql/queries.graphql';
 import {
   Page,
   Block,
@@ -15,9 +15,10 @@ import {
 } from 'framework7-react';
 
 export default function Home() {
-  console.log(CategoriasNavbar);
-  const { loading, error, data } = useQuery(CategoriasNavbar);
-  console.log(data);
+  // console.log(CategoriasNavbar);
+  const { loading, error, data } = useQuery(HomePage);
+  // console.log("Loading data");
+  // console.log(data);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (
@@ -36,10 +37,11 @@ export default function Home() {
               <LeftPanel />
             </Block>
             <Block className="center_pan">
-              <HomePanel />
+              <HomePanel newsInfo={data}/>
             </Block>
             <Block className="right_pan">
-              <RightPanel />
+              { console.log(data)}
+              <RightPanel newsInfo={data.articulosDestacadosRaros}/>
             </Block>
           </Block>
         </Block>

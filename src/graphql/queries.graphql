@@ -1,15 +1,13 @@
 query CategoriaPage($categoria: String){
-  articulos(
-    where: {
-      categorias: {
-        nombre: $categoria
-      }
-    }
-  ){
+  articulos(where: { categoria: { nombre: $categoria }}){
     ...ArticulosData
   },
   categorias {
     nombre
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
   }
 }
 
@@ -19,9 +17,58 @@ query ArticuloPage($url: String){
   },
   categorias {
     nombre
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
   }
 }
 
+query TopArticulos{
+  articulos(where: {relevante: true}){
+    ...ArticulosData
+  }
+}
+
+query HomePage{
+  categorias{
+    nombre
+  },
+  articulosTop: articulos(sort: "fecha:desc", where: {relevante: true}, limit: 9){
+    ...ArticulosData
+  },
+  articulosLocal: articulos(where: {categoria: {id:1}} limit: 5){
+    ...ArticulosData
+  },
+  articulosEstatal: articulos(where: {categoria: {id:2}} limit: 5){
+    ...ArticulosData
+  },
+  articulosNacional: articulos(where: {categoria: {id:3}} limit: 5){
+    ...ArticulosData
+  },
+  articulosInternacional: articulos(where: {categoria: {id:4}} limit: 5){
+    ...ArticulosData
+  },
+  articulosDeporte: articulos(where: {categoria: {id:5}} limit: 5){
+    ...ArticulosData
+  },
+  articulosEspectaculo: articulos(where: {categoria: {id:6}} limit: 5){
+    ...ArticulosData
+  },
+  articulosDestacados: articulos(where: {categoria: {id:7}} limit: 5){
+    ...ArticulosData
+  },
+  articulosFundacion: articulos(where: {categoria: {id:8}} limit: 5){
+    ...ArticulosData
+  },
+  articulosSaludCultura: articulos(where: {categoria: {id:9}} limit: 5){
+    ...ArticulosData
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
+  }
+}
 
 query CategoriasNavbar {
   categorias {
@@ -39,8 +86,42 @@ query SchedulePage($station: String, $tv: Boolean){
     # programacion {
     #   lunes{programa{Nombre}}
     # }
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
   }
 }
+
+mutation UpdateArticulo($id: ID!, $visitas: Int) {
+  updateArticulo(
+    input: {
+      where: {id: $id}
+      data: {visitas: $visitas}
+    }
+  )
+  {
+    articulo {
+      id
+      visitas
+    }
+  }
+}
+
+# mutation UpdateArticulo($id: ID!, $visitas: Int) {
+#   updateArticulo(
+#     input: {
+#       where: {id: $id}
+#       data: {visitas: $visitas}
+#     }
+#   )
+#   {
+#     articulo {
+#       id
+#       visitas
+#     }
+#   }
+# }
 
 fragment ArticulosData on Articulo {
   id 
@@ -58,7 +139,7 @@ fragment ArticulosData on Articulo {
   tags {
     tag
   } 
-  categorias {
+  categoria {
     nombre 
     id
   } 

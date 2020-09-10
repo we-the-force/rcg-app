@@ -10,8 +10,8 @@ import {
 } from 'framework7-react';
 
 export default class RightPanel extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {}
     }
     render() {
@@ -26,11 +26,18 @@ export default class RightPanel extends Component {
                         <CardHeader>
                             Destacado
                         </CardHeader>
-                        <DestItem image={true} />
+                        {
+                            this.props.newsInfo != undefined ? 
+                            this.props.newsInfo.map((articulo, i) => {
+                                return (<DestItem image={true} key={i} articulo={articulo}/>)
+                            }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
+                        }
+                        {/* <DestItem image={true}/> */}
+                        {/* <DestItem image={true} />
                         <DestItem image={true} />
                         <DestItem image={false} />
                         <DestItem image={false} />
-                        <DestItem image={false} nobord/>
+                        <DestItem image={false} nobord/> */}
                     </Card>
                     <Card className="right_panel_down_card tags">
                         <CardHeader>

@@ -7,12 +7,18 @@ import {
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
 
-import { ApolloClient, InMemoryCache, ApolloProvider, Query } from '@apollo/client';
+import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from '@apollo/client';
+import { onError } from 'apollo-link-error';
+import { HttpLink } from 'apollo-link-http';
 
+const errorLink = onError(({graphQLErrors}) => {
+  if (graphQLErrors) graphQLErrors.map(({ message }) => console.error('!!GraphQL Error!!', message));
+})
 
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  link: ApolloLink.from([errorLink, new HttpLink({uri: 'http://localhost:1337/graphql'})])
 });
 
 /* const testQuery = gql`{
