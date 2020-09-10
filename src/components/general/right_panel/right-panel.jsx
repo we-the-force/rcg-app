@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DestItem from '../destacado-item';
+import DestItem from '@/components/general/right_panel/destacado-item';
 import {
     Block,
     Searchbar,

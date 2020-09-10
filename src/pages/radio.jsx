@@ -1,8 +1,8 @@
 import React from 'react';
 import Nav from '../components/general/navbar';
 import LeftPanel from '../components/general/left-panel';
-import RightPanel from '../components/general/right-panel';
-import RadioPanel from '../components/radio-panel';
+import RightPanel from '@/components/general/right_panel/right-panel';
+import RadioPanel from '../components/radio/radio-panel';
 import Footer from '../components/general/footer';
 import AdsTop from '../components/general/ads_top';
 import { useQuery } from '@apollo/client';

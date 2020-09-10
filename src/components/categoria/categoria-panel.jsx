@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewsCard from './news-card';
+import NewsCard from '../news-card';
 import {
     Card,
     CardHeader,

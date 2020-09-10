@@ -1,9 +1,9 @@
-import ScheduleTable from './general/schedule-table';
+import ScheduleTable from '@/components/general/schedule-table';
 import ReactPlayer from 'react-player';
 import React, { Component } from 'react';
-import RecomendacionSwiper from '../components/general/recomendacionSwiper'
+import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_TV from '@/static/icons/tv_dark.png';
-import bk_img from '../static/imgs/Rcg.png';
+import bk_img from '@/static/imgs/Rcg.png';
 import {
     Card,
     CardHeader,

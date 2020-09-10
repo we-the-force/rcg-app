@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import Nav from '../components/general/navbar';
-import LeftPanel from '../components/general/left-panel';
-import RightPanel from '../components/general/right-panel';
-import Footer from '../components/general/footer';
-import ArticuloPanel from '../components/articulo-panel';
-import AdsTop from '../components/general/ads_top';
+import Nav from '@/components/general/navbar';
+import LeftPanel from '@/components/general/left-panel';
+import RightPanel from '@/components/general/right_panel/right-panel';
+import Footer from '@/components/general/footer';
+import ArticuloPanel from '@/components/articulo/articulo-panel';
+import AdsTop from '@/components/general/ads_top';
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { ArticuloPage } from '@/graphql/queries.graphql';
 import {

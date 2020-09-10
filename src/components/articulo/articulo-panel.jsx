@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NotaRecomandada from './nota-recomendada.jsx';
+import NotaRecomandada from '@/components/nota-recomendada.jsx';
 import TWIconx3 from '@/static/icons/TW_Icon_x3.png';
 import FBIconx3 from '@/static/icons/FB_Icon_x3.png';
 import { useMutation, gql } from '@apollo/client';

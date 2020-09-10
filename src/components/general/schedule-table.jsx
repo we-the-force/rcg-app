@@ -60,12 +60,11 @@ function CreateDaySchedule(dayName, daySchedule)
     return auxObject;
 }
 
-export default class TVScheduleTable extends Component {
+export default class ScheduleTable extends Component {
     constructor(props) {
         super(props);
-        console.log("Props");
-        console.log(this);
-        schedule = CreateScheduleObject(props.prog[0].programacion);
+        console.log(props.prog[0]);
+        schedule = []//CreateScheduleObject(props.prog[0].programacion);
         this.state = {}
     }
     render() {

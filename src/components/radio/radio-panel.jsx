@@ -1,10 +1,10 @@
-import ScheduleTable from './general/schedule-table';
+import ScheduleTable from '@/components/general/schedule-table';
 import ReactPlayer from 'react-player';
-import RecomendacionSwiper from '../components/general/recomendacionSwiper'
+import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_Radio from '@/static/icons/microphone_dark.png';
 import Img_106 from '@/static/imgs/escuchadigital 1.png';
 import Img_103 from '@/static/imgs/fondo-sj-e1540342434825 1.png';
-import RCGlogo from '../static/imgs/Logo_negro.png'
+import RCGlogo from '@/static/imgs/Logo_negro.png'
 import React, { Component } from 'react';
 import {
     Card,

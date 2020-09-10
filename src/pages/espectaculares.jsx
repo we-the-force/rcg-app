@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../components/general/navbar';
 import LeftPanel from '../components/general/left-panel';
-import RightPanel from '../components/general/right-panel';
+import RightPanel from '@/components/general/right_panel/right-panel';
 import Footer from '../components/general/footer';
 import AdsTop from '../components/general/ads_top';
 import {
