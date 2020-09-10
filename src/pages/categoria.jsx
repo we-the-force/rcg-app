@@ -1,9 +1,9 @@
 import React from 'react';
-import Nav from '../components/navbar';
-import LeftPanel from '../components/left-panel';
-import RightPanel from '../components/right-panel';
+import Nav from '../components/general/navbar';
+import LeftPanel from '../components/general/left-panel';
+import RightPanel from '../components/general/right-panel';
 import CategoriaPanel from '../components/categoria-panel';
-import Footer from '../components/footer';
+import Footer from '../components/general/footer';
 import AdsTop from '../components/general/ads_top';
 import { useQuery } from '@apollo/client';
 import { CategoriaPage } from '@/graphql/queries.graphql';
