@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '@/components/general/navbar';
+import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
 import CategoriaPanel from '@/components/categoria/categoria-panel';
