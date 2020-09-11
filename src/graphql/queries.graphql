@@ -74,6 +74,16 @@ query HomePage{
   }
 }
 
+query BusquedaPage{
+  categorias {
+    nombre
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
+  }
+}
+
 query CategoriasNavbar {
   categorias {
     nombre
