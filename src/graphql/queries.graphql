@@ -74,6 +74,16 @@ query HomePage{
   }
 }
 
+query BusquedaPage{
+  categorias {
+    nombre
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
+  }
+}
+
 query CategoriasNavbar {
   categorias {
     nombre
@@ -90,7 +100,7 @@ query SchedulePage($station: String, $tv: Boolean){
   categorias{
     nombre
   },
-  programacionSemanas(where: {id: $station es_tv: $tv}){
+  programacionSemanas(where: {id: $station Radio_TV: $tv}){
     ...ScheduleData
     # id
     # programacion {

@@ -5,7 +5,7 @@ import RightPanel from '../components/right-panel';
 import Footer from '../components/footer';
 import AdsTop from '../components/general/ads_top';
 import { useQuery } from '@apollo/client';
-import { CategoriasNavbar, SchedulePage } from '@/graphql/queries.graphql';
+import { BusquedaPage } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
@@ -16,7 +16,7 @@ export default function Busqueda(props) {
     console.log("busqueda props:");
     console.log(props);
 
-    const {loading, error, data} = useQuery(CategoriasNavbar);
+    const {loading, error, data} = useQuery(BusquedaPage);
 
     if (loading) return "loading...";
     if (error) return `Error! ${error.message}`;
@@ -37,7 +37,7 @@ export default function Busqueda(props) {
                             {/* aqui va el panel central */}
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel />
+                            <RightPanel newsInfo={data.articulosDestacadosRaros}/>
                         </Block>
                     </Block>
                 </Block>
