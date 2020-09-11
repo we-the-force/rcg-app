@@ -13,7 +13,7 @@ export default class HomePanel extends Component {
     }
     render() {
         return (
-            <Block>
+            <Block className="home">
                 <Card>
                     <CardHeader>Lo Mas Relevante</CardHeader>
                     { this.props.newsInfo.articulosTop.map((articulo, i) => {

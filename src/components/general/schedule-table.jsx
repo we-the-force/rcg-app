@@ -64,7 +64,7 @@ export default class ScheduleTable extends Component {
     constructor(props) {
         super(props);
         console.log(props.prog[0]);
-        schedule = []//CreateScheduleObject(props.prog[0].programacion);
+        schedule = CreateScheduleObject(props.prog[0].programacion);
         this.state = {}
     }
     render() {
