@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import NotaRecomandada from '../components/nota-recomendada';
+import NotaRecomandada from '../nota-recomendada';
 import {
     Block,
     Swiper,

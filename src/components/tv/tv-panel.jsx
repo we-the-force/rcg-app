@@ -1,9 +1,9 @@
-import TVScheduleTable from './schedule-table';
+import ScheduleTable from '@/components/general/schedule-table';
 import ReactPlayer from 'react-player';
 import React, { Component } from 'react';
-import RecomendacionSwiper from '../components/recomendacionSwiper'
+import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_TV from '@/static/icons/tv_dark.png';
-import bk_img from '../static/imgs/Rcg.png';
+import bk_img from '@/static/imgs/Rcg.png';
 import {
     Card,
     CardHeader,
@@ -64,7 +64,7 @@ export default class TVPanel extends Component {
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
                         {/* La tablita de programacion */}
-                        <TVScheduleTable prog={this.props.prog} table_id={this.props.table_id}/>
+                        <ScheduleTable prog={this.props.prog} table_id={this.props.table_id}/>
                     </Block>
                     <Block className="mas_canales">
                         <BlockHeader>Más Canales</BlockHeader>

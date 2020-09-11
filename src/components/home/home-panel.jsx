@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HomeNewsCard from '../components/home-news-card.jsx';
+import HomeNewsCard from '../home-news-card.jsx';
 import {
     Block,
     Card,
@@ -10,8 +10,6 @@ import {
 export default class HomePanel extends Component {
     constructor(props) {
         super(props);
-        // console.log("Props:");
-        // console.log(props);
     }
     render() {
         return (

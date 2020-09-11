@@ -10,111 +10,6 @@ import {
 } from 'framework7-react';
 
 var schedule = [];
-// var schedule = [{
-//     day: 'domingo',
-//     horas: [
-//         { time: '08:00', name: 'Program 1' },
-//         { time: '07:30', name: 'Program 2' },
-//         { time: '09:00', name: 'Program 3' },
-//         { time: '11:00', name: 'Program 4' },
-//         { time: '13:30', name: 'Program 5' },
-//         { time: '15:00', name: 'Program 6' },
-//         { time: '17:30', name: 'Program 7' },
-//         { time: '20:00', name: 'Program 8' },
-//         { time: '22:30', name: 'Program 9' },
-//         { time: '23:00', name: 'Program 9' },
-//     ]
-// },
-// {
-//     day: 'lunes',
-//     horas: [
-//         { time: '08:00', name: 'Program 1' },
-//         { time: '07:30', name: 'Program 2' },
-//         { time: '09:00', name: 'Program 3' },
-//         { time: '11:00', name: 'Program 4' },
-//         { time: '13:30', name: 'Program 5' },
-//         { time: '15:00', name: 'Program 6' },
-//         { time: '17:30', name: 'Program 7' },
-//         { time: '20:00', name: 'Program 8' },
-//         { time: '22:30', name: 'Program 9' },
-//         { time: '23:00', name: 'Program 9' },
-//     ]
-// },
-// {
-//     day: 'martes',
-//     horas: [
-//         { time: '08:00', name: 'Program 1' },
-//         { time: '07:30', name: 'Program 2' },
-//         { time: '09:00', name: 'Program 3' },
-//         { time: '11:00', name: 'Program 4' },
-//         { time: '13:30', name: 'Program 5' },
-//         { time: '15:00', name: 'Program 6' },
-//         { time: '17:30', name: 'Program 7' },
-//         { time: '20:00', name: 'Program 8' },
-//         { time: '22:30', name: 'Program 9' },
-//         { time: '23:00', name: 'Program 9' },
-//     ]
-// },
-// {
-//     day: 'miercoles',
-//     horas: [
-//         { time: '08:00', name: 'Program 1' },
-//         { time: '07:30', name: 'Program 2' },
-//         { time: '09:00', name: 'Program 3' },
-//         { time: '11:00', name: 'Program 4' },
-//         { time: '13:30', name: 'Program 5' },
-//         { time: '15:00', name: 'Program 6' },
-//         { time: '17:30', name: 'Program 7' },
-//         { time: '20:00', name: 'Program 8' },
-//         { time: '22:30', name: 'Program 9' },
-//         { time: '23:00', name: 'Program 9' },
-//     ]
-// },
-// {
-//     day: 'jueves',
-//     horas: [
-//         { time: '08:00', name: 'Program 1' },
-//         { time: '07:30', name: 'Program 2' },
-//         { time: '09:00', name: 'Program 3' },
-//         { time: '11:00', name: 'Program 4' },
-//         { time: '13:30', name: 'Program 5' },
-//         { time: '15:00', name: 'Program 6' },
-//         { time: '17:30', name: 'Program 7' },
-//         { time: '20:00', name: 'Program 8' },
-//         { time: '22:30', name: 'Program 9' },
-//         { time: '23:00', name: 'Program 9' },
-//     ]
-// },
-// {
-//     day: 'viernes',
-//     horas: [
-//         { time: '08:00', name: 'Program 1' },
-//         { time: '07:30', name: 'Program 2' },
-//         { time: '09:00', name: 'Program 3' },
-//         { time: '11:00', name: 'Program 4' },
-//         { time: '13:30', name: 'Program 5' },
-//         { time: '15:00', name: 'Program 6' },
-//         { time: '17:30', name: 'Program 7' },
-//         { time: '20:00', name: 'Program 8' },
-//         { time: '22:30', name: 'Program 9' },
-//         { time: '23:00', name: 'Program 9' },
-//     ]
-// },
-// {
-//     day: 'sabado',
-//     horas: [
-//         { time: '08:00', name: 'Program 1' },
-//         { time: '07:30', name: 'Program 2' },
-//         { time: '09:00', name: 'Program 3' },
-//         { time: '11:00', name: 'Program 4' },
-//         { time: '13:30', name: 'Program 5' },
-//         { time: '15:00', name: 'Program 6' },
-//         { time: '17:30', name: 'Program 7' },
-//         { time: '20:00', name: 'Program 8' },
-//         { time: '22:30', name: 'Program 9' },
-//         { time: '23:00', name: 'Program 9' },
-//     ]
-// }]
 
 function CreateScheduleObject(sourceObject)
 {
@@ -165,12 +60,11 @@ function CreateDaySchedule(dayName, daySchedule)
     return auxObject;
 }
 
-export default class TVScheduleTable extends Component {
+export default class ScheduleTable extends Component {
     constructor(props) {
         super(props);
-        console.log("Props");
-        console.log(this);
-        schedule = CreateScheduleObject(props.prog[0].programacion);
+        console.log(props.prog[0]);
+        schedule = []//CreateScheduleObject(props.prog[0].programacion);
         this.state = {}
     }
     render() {

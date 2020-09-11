@@ -4,8 +4,8 @@ import {
   App,
   View,
 } from 'framework7-react';
-import cordovaApp from '../js/cordova-app';
-import routes from '../js/routes';
+import cordovaApp from '../../js/cordova-app';
+import routes from '../../js/routes';
 
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from '@apollo/client';
 import { onError } from 'apollo-link-error';
