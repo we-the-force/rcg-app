@@ -63,8 +63,8 @@ function CreateDaySchedule(dayName, daySchedule)
 export default class ScheduleTable extends Component {
     constructor(props) {
         super(props);
-        console.log(props.prog[0]);
-        schedule = CreateScheduleObject(props.prog[0].programacion);
+        console.log("ScheduleTable.constructor() ", props.prog);
+        schedule = CreateScheduleObject(props.prog.programacion);
         this.state = {}
     }
     render() {
