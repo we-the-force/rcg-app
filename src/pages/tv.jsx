@@ -7,6 +7,7 @@ import AdsTop from '@/components/general/ads_top';
 import TVPanel from '@/components/tv/tv-panel';
 import { useQuery } from '@apollo/client';
 import { CategoriasNavbar, SchedulePage } from '@/graphql/queries.graphql';
+import moment from 'moment';
 import {
     Page,
     Block,
@@ -14,10 +15,10 @@ import {
 } from 'framework7-react';
 
 export default function TV(props) {
-    let station = "2";
-    let tv = true;
+    let station = props.f7route.params.name.replace("-", ".");
+    let date = moment().startOf('week').format('YYYY-MM-DD');
     const { loading, error, data } = useQuery(SchedulePage,{
-        variables: {station, tv}
+        variables: {station, date}
     });
 
     console.log('data de tv', data);

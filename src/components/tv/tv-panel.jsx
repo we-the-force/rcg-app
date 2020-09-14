@@ -31,8 +31,35 @@ const RandomLink = () => {
 // const currentLink = RandomLink();
 
 export default class TVPanel extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log("TV-Panel props: ", props);
+        if (props.prog.length > 0)
+        {
+            this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
+
+            console.log('this.programacion', this.programacion.programacion.martes);
+            this.programacion.programacion.martes.sort(function(a, b){
+                let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
+                return (isBefore ? -1 : 1);
+            });
+            console.log('this.programacion', this.programacion.programacion.martes);
+        }
+        else
+        {
+            console.log('prog was empty');
+            this.programacion = {
+                programacion: {
+                    domingo: [],
+                    lunes: [],
+                    martes: [],
+                    miercoles: [],
+                    jueves: [],
+                    viernes: [],
+                    sabado: []
+                }
+            };
+        }
     }
     render() {
         return (
@@ -64,7 +91,7 @@ export default class TVPanel extends Component {
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
                         {/* La tablita de programacion */}
-                        <ScheduleTable prog={this.props.prog} table_id={this.props.table_id}/>
+                        <ScheduleTable prog={this.programacion} table_id={this.props.table_id}/>
                     </Block>
                     <Block className="mas_canales">
                         <BlockHeader>Más Canales</BlockHeader>
