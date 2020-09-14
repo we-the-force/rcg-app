@@ -100,7 +100,7 @@ query SchedulePage($station: String, $tv: Boolean){
   categorias{
     nombre
   },
-  programacionSemanas(where: {id: $station Radio_TV: $tv}){
+  programacionSemanas(where: {canal_estacion: { nombre_contains: $station } Radio_TV: $tv}){
     ...ScheduleData
     # id
     # programacion {

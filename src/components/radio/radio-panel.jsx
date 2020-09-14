@@ -16,8 +16,8 @@ import {
 } from 'framework7-react';
 
 export default class RadioPanel extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             radioURL: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
             url: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
@@ -29,6 +29,25 @@ export default class RadioPanel extends Component {
             duration: 0,
             play_pause: true,
             mute_unmute: true,
+        }
+        // console.log("Constructor: ", props.prog);
+        if (props.prog.length > 0)
+        {
+            this.programacion = props.prog[0];
+        }
+        else
+        {
+            this.programacion = {
+                programacion: {
+                    domingo: [],
+                    lunes: [],
+                    martes: [],
+                    miercoles: [],
+                    jueves: [],
+                    viernes: [],
+                    sabado: []
+                }
+            };
         }
     }
 
@@ -137,7 +156,8 @@ export default class RadioPanel extends Component {
                     {/* La tablita de programacion */}
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
-                        <ScheduleTable prog={this.props.prog} table_id={this.props.table_id}/>
+                        {/* {console.log('Schedule prog???', this.programacion)} */}
+                        <ScheduleTable prog={this.programacion} table_id={this.props.table_id}/>
                     </Block>
                     {/* mas canales xD */}
                     <Block className="mas_canales">

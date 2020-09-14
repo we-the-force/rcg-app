@@ -15,22 +15,18 @@ import {
 
 
 export default function Radio(props) {
-    // console.log("Props thing");
-    // console.log(props);
-
-    let station = "1";
+    let station = props.f7route.params.name.replace("-", ".");
     let tv = false;
+    // console.log(`Station: '${station}', tv: ${tv}`)
     const {loading, error, data } = useQuery(SchedulePage, {
         // variables: props.f7route.params.name 
         variables: { station, tv },
     });
-
-    // console.log("Data del radio");
-    // console.log(data);
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     return (
         <Page pageContent={false} name='tv'>
+            {/* { console.log(data) } */}
             <PageContent>
                 <Nav categorias={data.categorias}/>
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
