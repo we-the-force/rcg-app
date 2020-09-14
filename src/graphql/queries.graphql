@@ -96,11 +96,11 @@ query SearchArticulosByTag($tags: [String]) {
   }
 }
 
-query SchedulePage($station: String, $tv: Boolean){
+query SchedulePage($station: String, $date: String){
   categorias{
     nombre
   },
-  programacionSemanas(where: {canal_estacion: { nombre_contains: $station } Radio_TV: $tv}){
+  programacionSemanas(where: {canal_estacion: { nombre_contains: $station } fecha_inicio_gte: $date} sort: "fecha_inicio:asc"){
     ...ScheduleData
     # id
     # programacion {

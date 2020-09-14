@@ -7,6 +7,7 @@ import Footer from '../components/general/footer';
 import AdsTop from '../components/general/ads_top';
 import { useQuery } from '@apollo/client';
 import { CategoriasNavbar, SchedulePage } from '@/graphql/queries.graphql';
+import moment from 'moment';
 import {
     Page,
     Block,
@@ -16,11 +17,11 @@ import {
 
 export default function Radio(props) {
     let station = props.f7route.params.name.replace("-", ".");
-    let tv = false;
+    let date = moment().startOf('week').format('YYYY-MM-DD');
     // console.log(`Station: '${station}', tv: ${tv}`)
     const {loading, error, data } = useQuery(SchedulePage, {
         // variables: props.f7route.params.name 
-        variables: { station, tv },
+        variables: { station, date },
     });
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;

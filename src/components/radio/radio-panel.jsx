@@ -4,7 +4,8 @@ import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_Radio from '@/static/icons/microphone_dark.png';
 import Img_106 from '@/static/imgs/escuchadigital 1.png';
 import Img_103 from '@/static/imgs/fondo-sj-e1540342434825 1.png';
-import RCGlogo from '@/static/imgs/Logo_negro.png'
+import RCGlogo from '@/static/imgs/Logo_negro.png';
+import moment from 'moment';
 import React, { Component } from 'react';
 import {
     Card,
@@ -30,10 +31,17 @@ export default class RadioPanel extends Component {
             play_pause: true,
             mute_unmute: true,
         }
-        // console.log("Constructor: ", props.prog);
+
         if (props.prog.length > 0)
         {
-            this.programacion = props.prog[0];
+            this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
+
+            console.log('this.programacion', this.programacion.programacion.martes);
+            this.programacion.programacion.martes.sort(function(a, b){
+                let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
+                return (isBefore ? -1 : 1);
+            });
+            console.log('this.programacion', this.programacion.programacion.martes);
         }
         else
         {
