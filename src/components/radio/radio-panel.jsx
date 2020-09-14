@@ -19,9 +19,10 @@ import {
 export default class RadioPanel extends Component {
     constructor(props) {
         super(props);
+        console.log("Radio-Panel: ", props);
         this.state = {
-            radioURL: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
-            url: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
+            radioURL: props.station.source_url,
+            url: props.station.source_url,
             playing: false,
             volume: 0.8,
             muted: false,

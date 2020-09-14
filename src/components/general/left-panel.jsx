@@ -15,9 +15,27 @@ import {
 } from 'framework7-react';
 
 export default class LeftPanel extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {}
+        console.log(`LeftPanel props: `, props);
+
+        if (props.hasOwnProperty("tv_channels"))
+        {
+            this.tv_channels = props.tv_channels;
+        }
+        else
+        {
+            this.tv_channels = [];
+        }
+        if (props.hasOwnProperty("radio_stations"))
+        {
+            this.radio_stations = props.radio_stations;
+        }
+        else
+        {
+            this.radio_stations = [];
+        }
     }
     render() {
         return (
@@ -30,9 +48,14 @@ export default class LeftPanel extends Component {
                         en vivo
                     </CardHeader>
                     <List>
-                        <ListItem link="/tv/envivo">RCG en vivo</ListItem>
+                        {/* <ListItem link="/tv/envivo">RCG en vivo</ListItem>
                         <ListItem link="/tv/diferido">RCG Diferido – 2</ListItem>
-                        <ListItem link="/tv/8-3">RCG TV 8.3</ListItem>
+                        <ListItem link="/tv/8-3">RCG TV 8.3</ListItem> */}
+                        {
+                            this.tv_channels.map((channel, key) => {
+                                return (<ListItem key={key} link={`/tv/${channel.url}`}>{channel.nombre}</ListItem>)
+                            })
+                        }
                     </List>
                 </Card>
                 <Card className="left_pan_card radio_card">
@@ -43,8 +66,13 @@ export default class LeftPanel extends Component {
                         Radio
                     </CardHeader>
                     <List>
-                        <ListItem link="/radio/106-5">DIGITAL 106.5 FM</ListItem>
-                        <ListItem link="/radio/103-3">XHSJ 103.3 FM</ListItem>
+                        {/* <ListItem link="/radio/106-5">DIGITAL 106.5 FM</ListItem>
+                        <ListItem link="/radio/103-3">XHSJ 103.3 FM</ListItem> */}
+                        {
+                            this.radio_stations.map((station, key) => {
+                                return (<ListItem key={key} link={`/radio/${station.url}`}>{station.nombre}</ListItem>);
+                            })
+                        }
                     </List>
                 </Card>
                 <Card className="left_pan_card pages">

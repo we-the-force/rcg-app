@@ -82,7 +82,7 @@ export default class TVPanel extends Component {
                     </Block>
                     <Block className="player-wrapper">
                         {/* Aqui va el stream */}
-                        <ReactPlayer className="player" url={RandomLink()} playing={false} loop={true} />
+                        <ReactPlayer className="player" url={this.props.channel.source_url} playing={false} loop={true} />
                     </Block>
                     <Block className="info-programa">
                         <p className="titulo-programa">Nombre de Programa</p>

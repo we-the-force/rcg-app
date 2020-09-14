@@ -34,7 +34,7 @@ export default function Home() {
           <AdsTop />
           <Block className="paneles">
             <Block className="left_pan">
-              <LeftPanel />
+              <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
             </Block>
             <Block className="center_pan">
               <HomePanel newsInfo={data}/>

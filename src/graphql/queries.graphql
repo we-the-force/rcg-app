@@ -5,6 +5,16 @@ query CategoriaPage($categoria: String){
   categorias {
     nombre
   },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    nombre
+    url
+    source_url
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    nombre
+    url
+    source_url
+  },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
@@ -17,6 +27,16 @@ query ArticuloPage($url: String){
   },
   categorias {
     nombre
+  },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    nombre
+    url
+    source_url
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    nombre
+    url
+    source_url
   },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
@@ -33,6 +53,16 @@ query TopArticulos{
 query HomePage{
   categorias{
     nombre
+  },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    nombre
+    url
+    source_url
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    nombre
+    url
+    source_url
   },
   articulosBanner: banners(sort: "posicion:desc", limit: 10){
     posicion
@@ -78,6 +108,16 @@ query BusquedaPage{
   categorias {
     nombre
   },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    nombre
+    url
+    source_url
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    nombre
+    url
+    source_url
+  },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
@@ -100,7 +140,17 @@ query SchedulePage($station: String, $date: String){
   categorias{
     nombre
   },
-  programacionSemanas(where: {canal_estacion: { nombre_contains: $station } fecha_inicio_gte: $date} sort: "fecha_inicio:asc"){
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    nombre
+    url
+    source_url
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    nombre
+    url
+    source_url
+  },
+  programacionSemanas(where: {canal_estacion: { url: $station } fecha_inicio_gte: $date} sort: "fecha_inicio:asc"){
     ...ScheduleData
     # id
     # programacion {
