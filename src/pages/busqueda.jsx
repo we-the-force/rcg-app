@@ -1,9 +1,9 @@
 import React from 'react';
-import Nav from '../components/general/navbar';
-import LeftPanel from '../components/general/left-panel';
+import Nav from '@/components/general/navbar/navbar';
+import LeftPanel from '@/components/general/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
-import Footer from '../components/general/footer';
-import AdsTop from '../components/general/ads_top';
+import Footer from '@/components/general/footer';
+import AdsTop from '@/components/general/ads_top';
 import { useQuery } from '@apollo/client';
 import { BusquedaPage } from '@/graphql/queries.graphql';
 import {
