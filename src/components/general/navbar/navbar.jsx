@@ -8,11 +8,11 @@ export default function Nav(props) {
     const [categ_show, categ_pop, type] = useData(categorias);
     return (
         <Navbar sliding noHairline noShadow>
-            {type === 'desktop' &&
+            {type === 'desktop' && 
                 <Desk itemsShow={categ_show} itemsPop={categ_pop.length > 0 ? categ_pop : []} />
             }
             {type === 'mobile' &&
-                <Mobile categorias={categorias} />
+                <Mobile categorias={categorias}/>
             }
         </Navbar>
     );
