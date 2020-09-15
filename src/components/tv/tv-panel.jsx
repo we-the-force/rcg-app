@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_TV from '@/static/icons/tv_dark.png';
 import bk_img from '@/static/imgs/Rcg.png';
+import moment from 'moment';
 import {
     Card,
     CardHeader,
