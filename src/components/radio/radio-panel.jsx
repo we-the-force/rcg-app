@@ -4,7 +4,8 @@ import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_Radio from '@/static/icons/microphone_dark.png';
 import Img_106 from '@/static/imgs/escuchadigital 1.png';
 import Img_103 from '@/static/imgs/fondo-sj-e1540342434825 1.png';
-import RCGlogo from '@/static/imgs/Logo_negro.png'
+import RCGlogo from '@/static/imgs/Logo_negro.png';
+import moment from 'moment';
 import React, { Component } from 'react';
 import {
     Card,
@@ -18,9 +19,10 @@ import {
 export default class RadioPanel extends Component {
     constructor(props) {
         super(props);
+        console.log("Radio-Panel: ", props);
         this.state = {
-            radioURL: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
-            url: "https://www.youtube.com/watch?v=ZEy36W1xX8c",
+            radioURL: props.station.source_url,
+            url: props.station.source_url,
             playing: false,
             volume: 0.8,
             muted: false,
@@ -30,10 +32,17 @@ export default class RadioPanel extends Component {
             play_pause: true,
             mute_unmute: true,
         }
-        // console.log("Constructor: ", props.prog);
+
         if (props.prog.length > 0)
         {
-            this.programacion = props.prog[0];
+            this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
+
+            console.log('this.programacion', this.programacion.programacion.martes);
+            this.programacion.programacion.martes.sort(function(a, b){
+                let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
+                return (isBefore ? -1 : 1);
+            });
+            console.log('this.programacion', this.programacion.programacion.martes);
         }
         else
         {
@@ -48,6 +57,24 @@ export default class RadioPanel extends Component {
                     sabado: []
                 }
             };
+        }
+
+        if (props.station != undefined)
+        {
+            this.moreStations = JSON.parse(JSON.stringify(props.station_list));
+            for (let i = 0; i < this.moreStations.length; i++)
+            {
+                if (this.moreStations[i].url === props.station.url)
+                {
+                    this.moreStations.splice(i, 1);
+                    break;
+                }
+            }
+            // console.log(this.moreStations);
+        }
+        else
+        {
+            this.moreStations = [];
         }
     }
 
@@ -89,7 +116,7 @@ export default class RadioPanel extends Component {
                     {/* header */}
                     <Block className="header_cont display-flex justify-content-space-between">
                         <CardHeader>
-                            DIGITAL 106.5 FM
+                            {this.props.station.nombre}
                             <Icon material="play_arrow"></Icon>
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
@@ -116,11 +143,14 @@ export default class RadioPanel extends Component {
                         <Block className="radio-ui display-flex flex-direction-column">
                             <Block className="display-flex top-wrapper">
                                 <Block className="logo-radio">
-                                    <img src={Img_106} alt="" />
+                                    {/* <img src={Img_106} alt="" /> */}
+                                    {/* { console.log(this.props.station) } */}
+                                    {/* { console.log(`http://localhost:1337${this.props.station.logo.url}`) } */}
+                                    <img src={`http://localhost:1337${this.props.station.logo.url}`} alt="" />
                                 </Block>
                                 <Block className="content-radio">
-                                    <h1 className="title">digital 106.5 FM</h1>
-                                    <p className="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint eveniet est quidem error alias. Earum blanditiis commodi molestiae laudantium, accusamus sequi modi officia molestias atque! Error eveniet quam minus aliquam!</p>
+                                    <h1 className="title">{this.props.station.nombre}</h1>
+                                    <p className="text">{this.props.station.descripcion}</p>
                                 </Block>
                             </Block>
                             <Block className="controls-wrapper display-flex justify-content-center align-items-center">
@@ -149,10 +179,10 @@ export default class RadioPanel extends Component {
                         </Block>
                     </Block>
                     {/* bloque de info */}
-                    <Block className="info-programa">
+                    {/* <Block className="info-programa">
                         <p className="titulo-programa">Nombre de Programa</p>
                         <p className="texto-programa"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore sed dolores quia esse veniam. Quos nobis temporibus ab, vero reiciendis animi, illum provident voluptate autem possimus nam quas a! </p>
-                    </Block>
+                    </Block> */}
                     {/* La tablita de programacion */}
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
@@ -160,8 +190,30 @@ export default class RadioPanel extends Component {
                         <ScheduleTable prog={this.programacion} table_id={this.props.table_id}/>
                     </Block>
                     {/* mas canales xD */}
-                    <Block className="mas_canales">
+                    {
+                        (this.moreStations.length > 0) &&
+                        <Block className="mas_canales">
+                            <BlockHeader>Más Canales</BlockHeader>
+                            {this.moreStations.map((station, key) => {
+                                return(
+                                    <Block key={key} className="canal">
+                                        <Block className="icon_tv display-flex justify-content-center align-items-center">
+                                           <img src={Icon_Radio} alt="" />
+                                        </Block>
+                                        <a href={`/radio/${station.url}`} className="canal_content display-flex justify-content-center align-items-center">
+                                            <img src={`http://localhost:1337${station.logo.url}`} alt="" srcSet=""/>
+                                            <h1 className="title">
+                                                {station.nombre}
+                                            </h1>
+                                        </a>
+                                    </Block>
+                                );
+                            })}
+                        </Block>
+                    }
+                    {/* <Block className="mas_canales">
                         <BlockHeader>Más Canales</BlockHeader>
+
                         <Block className="canal">
                             <Block className="icon_tv display-flex justify-content-center align-items-center">
                                 <img src={Icon_Radio} alt="" />
@@ -173,6 +225,7 @@ export default class RadioPanel extends Component {
                                 </h1>
                             </a>
                         </Block>
+
                         <Block className="canal">
                             <Block className="icon_tv display-flex justify-content-center align-items-center">
                                 <img src={Icon_Radio} alt="" />
@@ -184,7 +237,7 @@ export default class RadioPanel extends Component {
                                 </h1>
                             </a>
                         </Block>
-                    </Block>
+                    </Block> */}
                 </Card>
                 {/* tarjewtita recomendados */}
                 <Card className="recomendados-card">

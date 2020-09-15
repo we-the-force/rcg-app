@@ -98,7 +98,7 @@ export default function Articulo(props) {
                     <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel />
+                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
                         </Block>
                         <Block className="center_pan">
                             {/* <ArticuloPanel articulo={this.$f7route.context.Article}/> */}

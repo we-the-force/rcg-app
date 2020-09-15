@@ -7,6 +7,7 @@ import AdsTop from '@/components/general/ads_top';
 import TVPanel from '@/components/tv/tv-panel';
 import { useQuery } from '@apollo/client';
 import { CategoriasNavbar, SchedulePage } from '@/graphql/queries.graphql';
+import moment from 'moment';
 import {
     Page,
     Block,
@@ -14,13 +15,17 @@ import {
 } from 'framework7-react';
 
 export default function TV(props) {
-    let station = "2";
-    let tv = true;
+    let station = props.f7route.params.name;
+    let date = moment().startOf('week').format('YYYY-MM-DD');
     const { loading, error, data } = useQuery(SchedulePage,{
-        variables: {station, tv}
+        variables: {station, date}
     });
 
-    console.log('data de tv', data);
+    var currentChannel = {};
+    if (data != undefined)
+    {
+        currentChannel = data.tv_channels.find(x => x.url === station)
+    }
 
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
@@ -34,10 +39,10 @@ export default function TV(props) {
                     <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel />
+                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
-                            <TVPanel prog={data.programacionSemanas} table_id={props.name}/>
+                            <TVPanel channel={currentChannel} channel_list={data.tv_channels} prog={data.programacionSemanas} table_id={props.name}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros}/>

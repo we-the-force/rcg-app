@@ -11,6 +11,12 @@ query CategoriaPage($categoria: String){
   categorias {
     nombre
   },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
+  },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
@@ -23,6 +29,12 @@ query ArticuloPage($url: String){
   },
   categorias {
     nombre
+  },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
   },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
@@ -39,6 +51,12 @@ query TopArticulos{
 query HomePage{
   categorias{
     nombre
+  },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
   },
   articulosBanner: banners(sort: "posicion:desc", limit: 10){
     posicion
@@ -84,6 +102,12 @@ query BusquedaPage{
   categorias {
     nombre
   },
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
+  },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
     ...ArticulosData
@@ -102,11 +126,17 @@ query SearchArticulosByTag($tags: [String]) {
   }
 }
 
-query SchedulePage($station: String, $tv: Boolean){
+query SchedulePage($station: String, $date: String){
   categorias{
     nombre
   },
-  programacionSemanas(where: {canal_estacion: { nombre_contains: $station } Radio_TV: $tv}){
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
+  },
+  programacionSemanas(where: {canal_estacion: { url: $station } fecha_inicio_gte: $date} sort: "fecha_inicio:asc"){
     ...ScheduleData
     # id
     # programacion {
@@ -132,6 +162,15 @@ mutation UpdateArticulo($id: ID!, $visitas: Int) {
       visitas
     }
   }
+}
+
+fragment StationData on CanalEstacion {
+  nombre
+  url
+  source_url
+  logo {url}
+  descripcion
+  Radio_TV
 }
 
 fragment ArticulosData on Articulo {

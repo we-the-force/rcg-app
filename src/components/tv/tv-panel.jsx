@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_TV from '@/static/icons/tv_dark.png';
 import bk_img from '@/static/imgs/Rcg.png';
+import moment from 'moment';
 import {
     Card,
     CardHeader,
@@ -31,8 +32,51 @@ const RandomLink = () => {
 // const currentLink = RandomLink();
 
 export default class TVPanel extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log("TV-Panel props: ", props);
+        if (props.prog.length > 0)
+        {
+            this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
+
+            console.log('this.programacion', this.programacion.programacion.martes);
+            this.programacion.programacion.martes.sort(function(a, b){
+                let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
+                return (isBefore ? -1 : 1);
+            });
+            // console.log('this.programacion', this.programacion.programacion.martes);
+        }
+        else
+        {
+            // console.log('prog was empty');
+            this.programacion = {
+                programacion: {
+                    domingo: [],
+                    lunes: [],
+                    martes: [],
+                    miercoles: [],
+                    jueves: [],
+                    viernes: [],
+                    sabado: []
+                }
+            };
+        }
+        if (props.channel != undefined)
+        {
+            this.moreChannels = JSON.parse(JSON.stringify(props.channel_list));
+            for (let i = 0; i < this.moreChannels.length; i++)
+            {
+                if (this.moreChannels[i].url === props.channel.url)
+                {
+                    this.moreChannels.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            this.moreChannels = [];
+        }
     }
     render() {
         return (
@@ -40,7 +84,7 @@ export default class TVPanel extends Component {
                 <Card className="tv">
                     <Block className="header_cont display-flex justify-content-space-between">
                         <CardHeader>
-                            RCG En Vivo
+                            {this.props.channel.nombre}
                             <Icon material="play_arrow"></Icon>
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
@@ -55,18 +99,39 @@ export default class TVPanel extends Component {
                     </Block>
                     <Block className="player-wrapper">
                         {/* Aqui va el stream */}
-                        <ReactPlayer className="player" url={RandomLink()} playing={false} loop={true} />
+                        <ReactPlayer className="player" url={this.props.channel.source_url} playing={false} />
                     </Block>
-                    <Block className="info-programa">
+                    {/* <Block className="info-programa">
                         <p className="titulo-programa">Nombre de Programa</p>
                         <p className="texto-programa"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore sed dolores quia esse veniam. Quos nobis temporibus ab, vero reiciendis animi, illum provident voluptate autem possimus nam quas a! </p>
-                    </Block>
+                    </Block> */}
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
                         {/* La tablita de programacion */}
-                        <ScheduleTable prog={this.props.prog} table_id={this.props.table_id}/>
+                        <ScheduleTable prog={this.programacion} table_id={this.props.table_id}/>
                     </Block>
-                    <Block className="mas_canales">
+                    {
+                        (this.moreChannels.length > 0) &&
+                        <Block className="mas_canales">
+                            <BlockHeader>Más Canales</BlockHeader>
+                            {this.moreChannels.map((channel, key) => {
+                                return(
+                                    <Block key={key} className="canal">
+                                        <Block className="icon_tv display-flex justify-content-center align-items-center">
+                                            <img src={Icon_TV} alt="" />
+                                        </Block>
+                                        <a href={`/tv/${channel.url}`} className="canal_content display-flex justify-content-center align-items-center">
+                                            <img src={`http://localhost:1337${channel.logo.url}`} alt="" srcSet=""/>
+                                            <h1 className="title">
+                                                {channel.nombre}
+                                            </h1>
+                                        </a>
+                                    </Block>
+                                )
+                            })}
+                        </Block>
+                    }
+                    {/* <Block className="mas_canales">
                         <BlockHeader>Más Canales</BlockHeader>
                         <Block className="canal">
                             <Block className="icon_tv display-flex justify-content-center align-items-center">
@@ -90,7 +155,7 @@ export default class TVPanel extends Component {
                                 </h1>
                             </a>
                         </Block>
-                    </Block>
+                    </Block> */}
                 </Card>
                 <Card className="recomendados-card">
                     <RecomendacionSwiper />
