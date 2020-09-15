@@ -42,7 +42,7 @@ export default function TV(props) {
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
-                            <TVPanel channel={currentChannel} prog={data.programacionSemanas} table_id={props.name}/>
+                            <TVPanel channel={currentChannel} channel_list={data.tv_channels} prog={data.programacionSemanas} table_id={props.name}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros}/>

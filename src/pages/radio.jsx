@@ -28,6 +28,7 @@ export default function Radio(props) {
     if (data != undefined)
     {
         currentStation = data.radio_stations.find(x => x.url === station);
+
     }
 
     if (loading) return 'Loading...';
@@ -45,7 +46,7 @@ export default function Radio(props) {
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
                         </Block>
                         <Block className="center_pan">
-                            <RadioPanel station={currentStation} prog={data.programacionSemanas} table_id={props.name}/>
+                            <RadioPanel station={currentStation} station_list={data.radio_stations} prog={data.programacionSemanas} table_id={props.name}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros}/>

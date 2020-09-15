@@ -6,14 +6,10 @@ query CategoriaPage($categoria: String){
     nombre
   },
   radio_stations: canalEstacions(where: {Radio_TV: false}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   tv_channels: canalEstacions(where: {Radio_TV: true}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
@@ -29,14 +25,10 @@ query ArticuloPage($url: String){
     nombre
   },
   radio_stations: canalEstacions(where: {Radio_TV: false}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   tv_channels: canalEstacions(where: {Radio_TV: true}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
@@ -55,14 +47,10 @@ query HomePage{
     nombre
   },
   radio_stations: canalEstacions(where: {Radio_TV: false}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   tv_channels: canalEstacions(where: {Radio_TV: true}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   articulosBanner: banners(sort: "posicion:desc", limit: 10){
     posicion
@@ -109,14 +97,10 @@ query BusquedaPage{
     nombre
   },
   radio_stations: canalEstacions(where: {Radio_TV: false}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   tv_channels: canalEstacions(where: {Radio_TV: true}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
   {
@@ -141,14 +125,10 @@ query SchedulePage($station: String, $date: String){
     nombre
   },
   radio_stations: canalEstacions(where: {Radio_TV: false}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   tv_channels: canalEstacions(where: {Radio_TV: true}){
-    nombre
-    url
-    source_url
+    ...StationData
   },
   programacionSemanas(where: {canal_estacion: { url: $station } fecha_inicio_gte: $date} sort: "fecha_inicio:asc"){
     ...ScheduleData
@@ -176,6 +156,15 @@ mutation UpdateArticulo($id: ID!, $visitas: Int) {
       visitas
     }
   }
+}
+
+fragment StationData on CanalEstacion {
+  nombre
+  url
+  source_url
+  logo {url}
+  descripcion
+  Radio_TV
 }
 
 fragment ArticulosData on Articulo {
