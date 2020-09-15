@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import Masthead from '@/components/home/masthead';
-import LeftPanel from '@/components/general/left-panel';
+import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import HomePanel from '@/components/home/home-panel';
+import { f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
 import { CategoriasNavbar, HomePage } from '@/graphql/queries.graphql';
 import {
@@ -14,11 +15,13 @@ import {
   PageContent
 } from 'framework7-react';
 
-export default function Home() {
-  // console.log(CategoriasNavbar);
+export default function Home(props) {
   const { loading, error, data } = useQuery(HomePage);
-  // console.log("Loading data");
-  // console.log(data);
+  useEffect(() => {
+    f7ready((f7) => {
+      f7.methods.handleCategoriaActual('');
+    });
+  }, []);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (
@@ -26,7 +29,7 @@ export default function Home() {
       <PageContent>
         {/* ads */}
         {/* masthead */}
-        <Masthead home articulos={data.articulosBanner}/>
+        <Masthead home articulos={data.articulosBanner} />
         {/* Top Navbar */}
         <Nav categorias={data.categorias} />
         {/* Page content */}
@@ -37,10 +40,10 @@ export default function Home() {
               <LeftPanel />
             </Block>
             <Block className="center_pan">
-              <HomePanel newsInfo={data}/>
+              <HomePanel newsInfo={data} />
             </Block>
             <Block className="right_pan">
-              <RightPanel newsInfo={data.articulosDestacadosRaros}/>
+              <RightPanel newsInfo={data.articulosDestacadosRaros} />
             </Block>
           </Block>
         </Block>

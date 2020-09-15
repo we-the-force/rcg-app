@@ -1,29 +1,27 @@
 .panel-left&.categorias
     width 60%
-    .page-content
-        background white //change to dark theme
-        .list
-            margin 15px 7px
-            ul
-                &:before,&:after
-                    content none
+    .list
+        margin 15px 7px
+        ul
+            &:before,&:after
+                content none
 
-                .current
-                    .item-content
-                        background red
-                        .item-inner
-                            color white
-
+            .current
                 .item-content
-                    padding-left 5px
-                    margin 12px 0px
-                    min-height 22px
+                    background red
                     .item-inner
-                        padding 0px
-                        min-height 22px
-                        transform uppercase 
-                        color #282828
-                        font font_10
+                        color white
 
-                        &:after
-                            content none
+            .item-content
+                padding-left 5px
+                margin 12px 0px
+                min-height 22px
+                .item-inner
+                    padding 0px
+                    min-height 22px
+                    transform uppercase 
+                    color #282828
+                    font font_10
+
+                    &:after,&:before
+                        content none

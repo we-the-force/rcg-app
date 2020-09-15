@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Nav from '@/components/general/navbar/navbar';
-import LeftPanel from '@/components/general/left-panel';
+import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
 import Footer from '@/components/general/footer';
 import ArticuloPanel from '@/components/articulo/articulo-panel';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '@/components/general/navbar/navbar';
-import LeftPanel from '@/components/general/left-panel';
+import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
 import RadioPanel from '@/components/radio/radio-panel';
 import Footer from '@/components/general/footer';

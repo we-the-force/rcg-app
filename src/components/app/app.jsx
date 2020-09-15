@@ -6,36 +6,37 @@ import {
 } from 'framework7-react';
 import cordovaApp from '../../js/cordova-app';
 import routes from '../../js/routes';
+import LeftPanelMobile from '@/components/general/left_panel/left-panel-mobile';
+import { AppQuery } from '@/graphql/queries.graphql';
 
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from '@apollo/client';
 import { onError } from 'apollo-link-error';
 import { HttpLink } from 'apollo-link-http';
 
-const errorLink = onError(({graphQLErrors}) => {
+const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.error('!!GraphQL Error!!', message));
 })
 
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
   cache: new InMemoryCache(),
-  link: ApolloLink.from([errorLink, new HttpLink({uri: 'http://localhost:1337/graphql'})])
+  link: ApolloLink.from([errorLink, new HttpLink({ uri: 'http://localhost:1337/graphql' })])
 });
 
-/* const testQuery = gql`{
-  articulos { 
-      Titulo
-      visitas 
-      }
-  }
-`;
 
-client.query({
-  query: testQuery
-}).then(res => console.log(res));
- */
 export default class extends React.Component {
   constructor() {
     super();
+
+    var categorias = [];
+
+    client.query({
+      query: AppQuery
+    }).then(res => {
+      this.setState({
+        categorias: res.data.categorias
+      })
+    });
 
     this.state = {
       // Framework7 Parameters
@@ -69,14 +70,39 @@ export default class extends React.Component {
           iosOverlaysWebView: true,
           androidOverlaysWebView: false,
         },
+        methods: {
+          alert: function () {
+            app.dialog.alert('Hello World');
+          },
+          handleCategorias: (cat) => {
+            this.setState({
+              categorias: cat
+            })
+          },
+          handleCategoriaActual: (cat) => {
+            this.setState({
+              categoriaActual: cat
+            })
+          }
+        }
       },
+
+      categorias: categorias,
+      categoriaActual: '',
+
     }
   }
   render() {
     return (
       <ApolloProvider client={client}>
-        <App params={this.state.f7params} >
-          <View main className="safe-areas" url="/" />
+        <App params={this.state.f7params}>
+          <LeftPanelMobile categorias={this.state.categorias} categoria={this.state.categoriaActual} />
+          <View
+            id="main-view"
+            main
+            className="safe-areas"
+            url="/"
+          />
         </App>
       </ApolloProvider>
     )

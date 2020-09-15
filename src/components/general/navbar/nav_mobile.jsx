@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useRef, useState, useEffect } from 'react';
 import LogoBlanco from '@/static/imgs/Logo_blanco.png'
 import TVLight from '@/static/icons/tv_light.png'
 import services from '@/static/icons/servicios.png'
@@ -9,6 +9,7 @@ import face from '@/static/icons/FB_Icon.png'
 import tw from '@/static/icons/TW_Icon.png'
 import you from '@/static/icons/YT_Icon.png'
 import insta from '@/static/icons/IG_Icon.png'
+//import LeftPanelMobile from '@/components/general/left_panel/left-panel-mobile';
 import {
     Searchbar,
     NavLeft,
@@ -17,21 +18,20 @@ import {
     Link,
     Page,
     View,
-    Panel,
-    List,
-    ListItem,
     Icon,
     BlockHeader,
     Block,
-    Navbar
+    Navbar,
+    Panel,
+    List,
+    ListItem,
 } from 'framework7-react';
 
 export default function navMobile(props) {
-    const { categorias } = props;
     return (
         <Fragment>
             <NavLeft>
-                <Link className="categorias" panelOpen="left" iconMaterial="menu" icon="menu" color="red"></Link>
+                <Link className="categorias panel-open" data-panel=".panel-left-mobile" iconMaterial="menu" icon="menu" color="red"></Link>
             </NavLeft>
             <a className="logo" href="/">
                 <img src={LogoBlanco} alt="" />
@@ -39,23 +39,10 @@ export default function navMobile(props) {
             <NavRight>
                 <Link className="menuIcon" popupOpen=".menuPopup" iconMaterial='apps' icon='apps' color="red"></Link>
             </NavRight>
-            <Panel left resizable className="categorias">
-                <View>
-                    <Page>
-                        <List>
-                            {categorias.map((val, key) => {
-                                return (
-                                    <ListItem key={key} popoverClose className="uppercase" >{val.nombre}</ListItem>
-                                );
-                            })}
-                        </List>
-                    </Page>
-                </View>
-            </Panel>
             <Popup className="menuPopup">
                 <Navbar sliding noHairline noShadow className="navPopup">
                     <NavLeft>
-                        <Link className="categorias" popupClose panelOpen="left" iconMaterial="menu" icon="menu" color="red"></Link>
+                        <Link className="categorias panel-open" popupClose data-panel=".panel-left-mobile" iconMaterial="menu" icon="menu" color="red"></Link>
                     </NavLeft>
                     <a className="logo" href="/">
                         <img src={LogoBlanco} alt="" />

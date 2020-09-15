@@ -1,3 +1,9 @@
+query AppQuery{
+  categorias{
+    nombre
+  }
+}
+
 query CategoriaPage($categoria: String){
   articulos(where: { categoria: { nombre: $categoria }}){
     ...ArticulosData
