@@ -60,7 +60,7 @@ var routes = [
     component: Radio,
   },
   {
-    path: '/busqueda',
+    path: '/busqueda/:params',
     component: Busqueda,
   },
   {
