@@ -87,10 +87,28 @@ export default class extends React.Component {
   }
 
   render() {
+
+    let tablet = false, desktop = false, mobile = false;
+    let w = window.innerWidth;
+    if (w >= 1024) {
+      desktop = true;
+    } else if (w >= 640) {
+      tablet = true;
+    } else {
+      mobile = true;
+    }
+
     return (
       <ApolloProvider client={client}>
         <App params={this.state}>
-          <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+          
+          {/* {tablet &&
+            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+          }
+          {desktop &&
+            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+          } */}
           <View
             id="main-view"
             main
