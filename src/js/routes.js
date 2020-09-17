@@ -25,31 +25,6 @@ var routes = [
   {
     path: '/articulo/:url/',
     component: Articulo,
-    /* async: async function (routeTo, routeFrom, resolve, reject)
-    {
-      var router = this;
-      var app = router.app;
-      var artId = routeTo.params.artId;
-
-      let article;
-      let query = `{articulo(id:${artId}){Titulo autor{nombre} fecha cover{url} description visitas tags{tag} categorias{nombre} comentarios{valor}}}`;
-      await app.request.promise.get(`http://localhost:1337/graphql?query=${query}`).then(function(res){
-        let resData = JSON.parse(res.data);
-        article = resData.data.articulo;
-      }).catch(function(err){
-        console.log("Error fetching article information");
-        console.log(err);
-      });
-
-      resolve({
-        component: Articulo
-      },
-      {
-        context: {
-          Article: article
-        }
-      });
-    } */
   },
   {
     path: '/tv/:name',
@@ -82,94 +57,6 @@ var routes = [
   {
     path: '/categoria/:nombre',
     component: CategoriaPage,
-    /* async: async function (routeTo, routeFrom, resolve, reject)
-    {
-      var router = this;
-      var app = router.app;
-      var catId = categoryToIndex(routeTo.params.nameId);
-      // var catId = routeTo.params.nameId;
-
-      console.log();
-
-      let categoria = indexToCategory(parseInt(catId));
-      let articles;
-      let query = `query{ articulos(where: {categorias: {id: ${catId}}}){ id Titulo autor{nombre} fecha cover{url} description visitas tags{tag} categorias{nombre id} comentarios{valor}}}`
-      await  app.request.promise.get(`http://localhost:1337/graphql?query=${query}`).then(function(res) {
-        let resData = JSON.parse(res.data);
-        articles = resData.data.articulos;
-      }).catch(function(err){
-        console.log("Error fetching articles information");
-        console.log(err);
-      });
-
-      console.log("ROUTER");
-      console.log("Categoria: " + categoria);
-      console.log(articles);
-      resolve({
-        component: CategoriaPage
-      },
-      {
-        context: {
-          Articles: articles,
-          Category: categoria
-        }
-      });
-
-      function categoryToIndex(category)
-      {
-        console.log("Receiuving catToInd: " + category);
-        switch (category)
-        {
-          case "Locales":
-            return 1;
-          case "Estatales":
-            return 2;
-          case "Nacionales":
-            return 3;
-          case "Internacionales":
-            return 4;
-          case "Deportes":
-            return 5;
-          case "Espectaculos":
-            return 6;
-          case "Destacadas":
-            return 7;
-          case "Fundacion_rcg":
-            return 8;
-          case "Salud_y_cultura":
-            return 9;
-          
-        }
-      }
-
-      function indexToCategory(index)
-      {
-        console.log("Receiving switch: " + index);
-        switch (index)
-        {
-          case 1:
-            return "Locales";
-          case 2:
-            return "Estatal";
-          case 3:
-            return "Nacional";
-          case 4:
-            return "Internacional";
-          case 5:
-            return "Deportes";
-          case 6:
-            return "Espectaculos";
-          case 7:
-            return "Destacadas";
-          case 8:
-            return "Fundacion RCG";
-          case 9:
-            return "Salud y Cultura";
-          default:
-            console.log(`Entered on default (${index})`);
-        }
-      }
-    } */
   },
   {
     path: '/aviso_privacidad',

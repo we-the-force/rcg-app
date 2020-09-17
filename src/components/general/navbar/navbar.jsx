@@ -4,15 +4,16 @@ import Desk from './nav_desktop';
 import { Navbar } from 'framework7-react';
 
 export default function Nav(props) {
+    const categoria = props.categoria ? props.categoria : ''; 
     const { categorias } = props;
     const [categ_show, categ_pop, type] = useData(categorias);
     return (
         <Navbar sliding noHairline noShadow>
-            {type === 'desktop' &&
-                <Desk itemsShow={categ_show} itemsPop={categ_pop.length > 0 ? categ_pop : []} />
+            {type === 'desktop' && 
+                <Desk itemsShow={categ_show} itemsPop={categ_pop.length > 0 ? categ_pop : []}/>
             }
             {type === 'mobile' &&
-                <Mobile categorias={categorias} />
+                <Mobile categorias={categorias} categoria={categoria}/>
             }
         </Navbar>
     );
@@ -34,14 +35,16 @@ function useData(data) {/* recibe categorias */
             let categorias = [...data];
             let w = window.innerWidth;
             thisType = 'desktop';
-            if (w >= 1200) {
+            if (w > 1320){
                 cant = 9;//9 links
+            }else if (w >= 1200) {
+                cant = 7;//9 links
             } else if (w >= 1024) {
-                cant = 7;//7 lnks
+                cant = 6;//7 lnks
             } else if (w >= 768) {
-                cant = 5;//6 links
+                cant = 4;//6 links
             } else if (w >= 640) {
-                cant = 4;//4 links
+                cant = 3;//4 links
             } else {
                 thisType = 'mobile';
             }

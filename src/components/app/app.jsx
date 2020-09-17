@@ -6,88 +6,139 @@ import {
 } from 'framework7-react';
 import cordovaApp from '../../js/cordova-app';
 import routes from '../../js/routes';
+import LeftPanelMobile from '@/components/general/left_panel/left-panel-mobile';
+import { AppQuery } from '@/graphql/queries.graphql';
 
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from '@apollo/client';
 import { onError } from 'apollo-link-error';
 import { HttpLink } from 'apollo-link-http';
 
-const errorLink = onError(({graphQLErrors}) => {
+const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.error('!!GraphQL Error!!', message));
 })
 
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
   cache: new InMemoryCache(),
-  link: ApolloLink.from([errorLink, new HttpLink({uri: 'http://localhost:1337/graphql'})])
+  link: ApolloLink.from([errorLink, new HttpLink({ uri: 'http://localhost:1337/graphql' })])
 });
 
-/* const testQuery = gql`{
-  articulos { 
-      Titulo
-      visitas 
-      }
-  }
-`;
-
-client.query({
-  query: testQuery
-}).then(res => console.log(res));
- */
 export default class extends React.Component {
   constructor() {
     super();
-
     this.state = {
       // Framework7 Parameters
-      f7params: {
-        id: 'io.framework7.RCG', // App bundle ID
-        name: 'RCG webpage', // App name
-        theme: 'auto', // Automatic theme detection
+      id: 'io.framework7.RCG', // App bundle ID
+      name: 'RCG webpage', // App name
+      theme: 'auto', // Automatic theme detection
 
-        view: {
-          pushState: true,
-          pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
-          pushStateSeparator: '',
-        },
-
-        autoDarkTheme: true,
-
-        // App routes
-        routes: routes,
-
-        // Register service worker
-        serviceWorker: Device.cordova ? {} : {
-          path: '/service-worker.js',
-        },
-        // Input settings
-        input: {
-          scrollIntoViewOnFocus: Device.cordova && !Device.electron,
-          scrollIntoViewCentered: Device.cordova && !Device.electron,
-        },
-        // Cordova Statusbar settings
-        statusbar: {
-          iosOverlaysWebView: true,
-          androidOverlaysWebView: false,
-        },
+      view: {
+        pushState: true,
+        pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
+        pushStateSeparator: '',
       },
+
+      autoDarkTheme: true,
+
+      // App routes
+      routes: routes,
+
+      // Register service worker
+      serviceWorker: Device.cordova ? {} : {
+        path: '/service-worker.js',
+      },
+      // Input settings
+      input: {
+        scrollIntoViewOnFocus: Device.cordova && !Device.electron,
+        scrollIntoViewCentered: Device.cordova && !Device.electron,
+      },
+      // Cordova Statusbar settings
+      statusbar: {
+        iosOverlaysWebView: true,
+        androidOverlaysWebView: false,
+      },
+      methods: {
+        alert: function () {
+          app.dialog.alert('Hello World');
+        },
+        handleCategoriaActual: (cat) => {
+          this.setState((prevState) => {
+            return {
+              ...prevState,
+              data: {
+                ...prevState.data,
+                categoriaActual: cat,
+              }
+            }
+          });
+        },
+        getCategorias: () => {
+          return this.state.data.categorias;
+        },
+        getCategoriaActual: () => {
+          return this.state.data.categoriaActual;
+        }
+      },
+      data: {
+        categorias: [],
+        categoriaActual: '',
+      }
     }
   }
+
   render() {
+
+    let tablet = false, desktop = false, mobile = false;
+    let w = window.innerWidth;
+    if (w >= 1024) {
+      desktop = true;
+    } else if (w >= 640) {
+      tablet = true;
+    } else {
+      mobile = true;
+    }
+
     return (
       <ApolloProvider client={client}>
-        <App params={this.state.f7params} >
-          <View main className="safe-areas" url="/" />
+        <App params={this.state}>
+            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+          
+          {/* {tablet &&
+            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+          }
+          {desktop &&
+            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+          } */}
+          <View
+            id="main-view"
+            main
+            className="safe-areas"
+            url="/"
+          />
         </App>
       </ApolloProvider>
     )
   }
   componentDidMount() {
+    client.query({
+      query: AppQuery
+    }).then(res => {
+      this.setState((prevState) => {
+        return {
+          ...prevState,
+          data: {
+            ...prevState.data,
+            categorias: res.data.categorias,
+          }
+        }
+      });
+    });
     this.$f7ready((f7) => {
       // Init cordova APIs (see cordova-app.js)
       if (Device.cordova) {
         cordovaApp.init(f7);
       }
       // Call F7 APIs here
-    });
+    })
   }
 }

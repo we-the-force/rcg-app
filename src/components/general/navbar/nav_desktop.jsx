@@ -34,7 +34,7 @@ export default function navMobile(props) {
             {itemsPop.length > 0 &&
                 <Fragment >
                     <hr />
-                    <Link popoverOpen=".popover-menu" iconMaterial="arrow_drop_down" className={'uppercase '}>MÁS </Link>
+                    <Link popoverOpen=".popover-menu" iconMaterial="arrow_drop_down" className={'uppercase more-icon '+more}>MÁS </Link>
                 </Fragment>
             }
             <NavRight>

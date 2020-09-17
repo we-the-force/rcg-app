@@ -1,0 +1,29 @@
+.panel-left&.categorias
+    width 60%
+    .list
+        margin 15px 7px
+        ul
+            &:before,&:after
+                content none
+
+            .current
+                .item-content
+                    background red
+                    .item-inner
+                        color white
+
+            .item-content
+                padding-left 5px
+                margin 12px 0px
+                min-height 22px
+                .item-inner
+                    padding 0px
+                    min-height 22px
+                    transform uppercase 
+                    color #282828
+                    font font_10
+
+                    &:after,&:before
+                        content none
+    @media (min-width 640px)
+        display none
