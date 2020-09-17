@@ -18,7 +18,6 @@ export default class LeftPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-        console.log(`LeftPanel props: `, props);
 
         if (props.hasOwnProperty("tv_channels"))
         {

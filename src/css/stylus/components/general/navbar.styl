@@ -39,20 +39,11 @@
         top -60px
         bottom unset
 
-/* @media (min-width: 640px)
-@media (min-width: 768px) */
-@media (min-width 1024px)
-    position sticky
-    /* --f7-navbar-height 50px
-    
-            @media (min-width 1024px) */
-    --f7-navbar-height 70px
-
-    .navbar-bg
-        background black
-
-    .navbar-inner
-        justify-content center
+    @media (min-width 640px)
+        position sticky
+        --f7-navbar-height 50px
+        bottom unset
+        top 0px
 
         a
             font font_10
@@ -60,6 +51,10 @@
             padding 0px 10px !important
             text-align center
             min-width unset !important
+            text-transform uppercase
+
+            &.more-icon
+                flex-direction row-reverse
 
         hr
             border 0.75px solid white
@@ -68,37 +63,44 @@
             margin 0px
 
         .left
-            width 11.5%
-            min-width 105px
             height 100%
             margin-right auto
 
             a
                 width 100%
-                height inherit
+                height 100%
+                box-sizing inherit
 
                 img
-                    margin auto
-                    width 85px
-                    position relative
-                    left 50%
-                    top 50%
-                    transform translate(-50%, -50%)
-
-                    @media (min-width 640px)
-                        width 85px
-
-                    @media (min-width 1024px)
-                        width 105px
+                    width 70px
+                    height 100%
+                    object-fit contain
 
         .right
             height 100%
-            width 11.5%
+            width 88px
             margin-left auto
 
             img
                 width 218px
                 margin 0px auto
 
-/* @media (min-width: 1200px)
-@media (min-width: 1440px) */
+    @media (min-width 1024px)
+        --f7-navbar-height 70px
+
+        a
+            font-size 16px
+            line-height 18px
+
+        .left
+            img
+                width 105px !important
+
+        .right
+            width 115px !important
+
+/* @media (min-width: 640px)
+@media (min-width: 768px) */
+/* --f7-navbar-height 50px
+@media (min-width 1024px) */
+/* --f7-navbar-height 70px */

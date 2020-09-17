@@ -23,80 +23,74 @@ const client = new ApolloClient({
   link: ApolloLink.from([errorLink, new HttpLink({ uri: 'http://localhost:1337/graphql' })])
 });
 
-
 export default class extends React.Component {
   constructor() {
     super();
-
-    var categorias = [];
-
-    client.query({
-      query: AppQuery
-    }).then(res => {
-      this.setState({
-        categorias: res.data.categorias
-      })
-    });
-
     this.state = {
       // Framework7 Parameters
-      f7params: {
-        id: 'io.framework7.RCG', // App bundle ID
-        name: 'RCG webpage', // App name
-        theme: 'auto', // Automatic theme detection
+      id: 'io.framework7.RCG', // App bundle ID
+      name: 'RCG webpage', // App name
+      theme: 'auto', // Automatic theme detection
 
-        view: {
-          pushState: true,
-          pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
-          pushStateSeparator: '',
-        },
-
-        autoDarkTheme: true,
-
-        // App routes
-        routes: routes,
-
-        // Register service worker
-        serviceWorker: Device.cordova ? {} : {
-          path: '/service-worker.js',
-        },
-        // Input settings
-        input: {
-          scrollIntoViewOnFocus: Device.cordova && !Device.electron,
-          scrollIntoViewCentered: Device.cordova && !Device.electron,
-        },
-        // Cordova Statusbar settings
-        statusbar: {
-          iosOverlaysWebView: true,
-          androidOverlaysWebView: false,
-        },
-        methods: {
-          alert: function () {
-            app.dialog.alert('Hello World');
-          },
-          handleCategorias: (cat) => {
-            this.setState({
-              categorias: cat
-            })
-          },
-          handleCategoriaActual: (cat) => {
-            this.setState({
-              categoriaActual: cat
-            })
-          }
-        }
+      view: {
+        pushState: true,
+        pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
+        pushStateSeparator: '',
       },
 
-      categorias: categorias,
-      categoriaActual: '',
+      autoDarkTheme: true,
 
+      // App routes
+      routes: routes,
+
+      // Register service worker
+      serviceWorker: Device.cordova ? {} : {
+        path: '/service-worker.js',
+      },
+      // Input settings
+      input: {
+        scrollIntoViewOnFocus: Device.cordova && !Device.electron,
+        scrollIntoViewCentered: Device.cordova && !Device.electron,
+      },
+      // Cordova Statusbar settings
+      statusbar: {
+        iosOverlaysWebView: true,
+        androidOverlaysWebView: false,
+      },
+      methods: {
+        alert: function () {
+          app.dialog.alert('Hello World');
+        },
+        handleCategoriaActual: (cat) => {
+          this.setState((prevState) => {
+            return {
+              ...prevState,
+              data: {
+                ...prevState.data,
+                categoriaActual: cat,
+              }
+            }
+          });
+        },
+        getCategorias: () => {
+          return this.state.data.categorias;
+        },
+        getCategoriaActual: () => {
+          return this.state.data.categoriaActual;
+        }
+      },
+      data: {
+        categorias: [],
+        categoriaActual: '',
+      }
     }
   }
+
   render() {
     return (
       <ApolloProvider client={client}>
-        <App params={this.state.f7params}>
-          <LeftPanelMobile categorias={this.state.categorias} categoria={this.state.categoriaActual} />
+        <App params={this.state}>
+          <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
           <View
             id="main-view"
             main
@@ -108,12 +102,25 @@ export default class extends React.Component {
     )
   }
   componentDidMount() {
+    client.query({
+      query: AppQuery
+    }).then(res => {
+      this.setState((prevState) => {
+        return {
+          ...prevState,
+          data: {
+            ...prevState.data,
+            categorias: res.data.categorias,
+          }
+        }
+      });
+    });
     this.$f7ready((f7) => {
       // Init cordova APIs (see cordova-app.js)
       if (Device.cordova) {
         cordovaApp.init(f7);
       }
       // Call F7 APIs here
-    });
+    })
   }
 }

@@ -6,7 +6,7 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import HomePanel from '@/components/home/home-panel';
-import { f7ready } from 'framework7-react';
+import { f7, f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
 import { CategoriasNavbar, HomePage } from '@/graphql/queries.graphql';
 import {
@@ -16,14 +16,21 @@ import {
 } from 'framework7-react';
 
 export default function Home(props) {
+  //query de la pagina
   const { loading, error, data } = useQuery(HomePage);
+
+  //efecto para quitar etiqueta roja
   useEffect(() => {
     f7ready((f7) => {
       f7.methods.handleCategoriaActual('');
     });
   }, []);
+
   if (loading) return 'Loading...';
+  //pagina cargando
   if (error) return `Error! ${error.message}`;
+  //error en la pagina 
+
   return (
     <Page pageContent={false} name="home">
       <PageContent>
@@ -31,13 +38,13 @@ export default function Home(props) {
         {/* masthead */}
         <Masthead home articulos={data.articulosBanner} />
         {/* Top Navbar */}
-        <Nav categorias={data.categorias} />
+        <Nav home categorias={f7.methods.getCategorias()} />
         {/* Page content */}
         <Block className="main_cont display-flex flex-direction-column justify-content-center">
           <AdsTop />
           <Block className="paneles">
             <Block className="left_pan">
-              <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
+              <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
             </Block>
             <Block className="center_pan">
               <HomePanel newsInfo={data} />

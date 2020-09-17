@@ -7,7 +7,7 @@ import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import { useQuery } from '@apollo/client';
 import { CategoriaPage } from '@/graphql/queries.graphql';
-import { f7ready } from 'framework7-react';
+import { f7,f7ready } from 'framework7-react';
 import {
     Page,
     Block,
@@ -30,7 +30,7 @@ export default function Categoria(props) {
     return (
         <Page pageContent={false} name="categoria">
             <PageContent>
-                <Nav categorias={data.categorias} />
+                <Nav categorias={f7.methods.getCategorias()} />
                 {/* Top Navbar */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <AdsTop />

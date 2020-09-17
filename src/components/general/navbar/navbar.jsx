@@ -35,14 +35,16 @@ function useData(data) {/* recibe categorias */
             let categorias = [...data];
             let w = window.innerWidth;
             thisType = 'desktop';
-            if (w >= 1200) {
+            if (w > 1320){
                 cant = 9;//9 links
+            }else if (w >= 1200) {
+                cant = 7;//9 links
             } else if (w >= 1024) {
-                cant = 7;//7 lnks
+                cant = 6;//7 lnks
             } else if (w >= 768) {
-                cant = 5;//6 links
+                cant = 4;//6 links
             } else if (w >= 640) {
-                cant = 4;//4 links
+                cant = 3;//4 links
             } else {
                 thisType = 'mobile';
             }
