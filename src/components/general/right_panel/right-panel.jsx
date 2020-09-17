@@ -17,13 +17,13 @@ export default class RightPanel extends Component {
             let searchValue = e.target.value.trim();
             if (searchValue !== "")
             {
-                console.log(encodeURI(e.target.value));
-                console.log(this.$f7.views.main.router.navigate);
+                // console.log(encodeURI(e.target.value));
+                // console.log(this.$f7.views.main.router.navigate);
                 this.$f7.views.main.router.navigate(`/busqueda/${encodeURI(e.target.value)}`);
             }
             else
             {
-                console.log("Ta vacio que quieres que busque lmao");
+                // console.log("Ta vacio que quieres que busque lmao");
             }
         }
     }
@@ -36,7 +36,7 @@ export default class RightPanel extends Component {
         return (
             <Block className="right_panel_cont">
                 <Block className="search_block">
-                    {console.log(this)}
+                    {/* {console.log(this)} */}
                     {/* <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false} onSearchbarSearch={this.aaah}/> */}
                     <input id="searchBar" type="text" onKeyPress={this.aaah}/>
                     <Block className="ads square"></Block>
