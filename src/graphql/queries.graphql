@@ -98,10 +98,14 @@ query HomePage{
   }
 }
 
-query BusquedaPage{
-  categorias {
-    nombre
+query BusquedaPage($terms: [String]){
+  searchTitulo: articulos(where: {Titulo_contains: $terms}) {
+    ...ArticulosData
   },
+  # searchTag: articulos(where: {tags: {nombre_in: $terms}}) {
+  searchTag: articulos(where: {tags: {nombre_contains: $terms}}) {
+    ...ArticulosData
+  }
   radio_stations: canalEstacions(where: {Radio_TV: false}){
     ...StationData
   },

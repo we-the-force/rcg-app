@@ -10,15 +10,35 @@ import {
 } from 'framework7-react';
 
 export default class RightPanel extends Component {
+    aaah = (e) => {
+        if (e.key === "Enter")
+        {
+            //TODO: ToLowercase como no
+            let searchValue = e.target.value.trim();
+            if (searchValue !== "")
+            {
+                console.log(encodeURI(e.target.value));
+                console.log(this.$f7.views.main.router.navigate);
+                this.$f7.views.main.router.navigate(`/busqueda/${encodeURI(e.target.value)}`);
+            }
+            else
+            {
+                console.log("Ta vacio que quieres que busque lmao");
+            }
+        }
+    }
     constructor(props) {
         super(props);
         this.state = {}
+
     }
     render() {
         return (
             <Block className="right_panel_cont">
                 <Block className="search_block">
-                    <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false}/>
+                    {console.log(this)}
+                    {/* <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false} onSearchbarSearch={this.aaah}/> */}
+                    <input id="searchBar" type="text" onKeyPress={this.aaah}/>
                     <Block className="ads square"></Block>
                 </Block>
                 <Block className="right_panel_down">
