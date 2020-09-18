@@ -145,8 +145,8 @@ export default class RadioPanel extends Component {
                                 <Block className="logo-radio">
                                     {/* <img src={Img_106} alt="" /> */}
                                     {/* { console.log(this.props.station) } */}
-                                    {/* { console.log(`http://localhost:1337${this.props.station.logo.url}`) } */}
-                                    <img src={`http://localhost:1337${this.props.station.logo.url}`} alt="" />
+                                    {/* { console.log(`http://149.28.252.152:1337${this.props.station.logo.url}`) } */}
+                                    <img src={`http://149.28.252.152:1337${this.props.station.logo.url}`} alt="" />
                                 </Block>
                                 <Block className="content-radio">
                                     <h1 className="title">{this.props.station.nombre}</h1>
@@ -201,7 +201,7 @@ export default class RadioPanel extends Component {
                                            <img src={Icon_Radio} alt="" />
                                         </Block>
                                         <a href={`/radio/${station.url}`} className="canal_content display-flex justify-content-center align-items-center">
-                                            <img src={`http://localhost:1337${station.logo.url}`} alt="" srcSet=""/>
+                                            <img src={`http://149.28.252.152:1337${station.logo.url}`} alt="" srcSet=""/>
                                             <h1 className="title">
                                                 {station.nombre}
                                             </h1>

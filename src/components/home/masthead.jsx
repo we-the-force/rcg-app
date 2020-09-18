@@ -28,7 +28,7 @@ export default class Masthead extends Component {
                             return(
                                 <SwiperSlide key={i}>
                                     <Block className="background">
-                                        <img src={`http://localhost:1337${bannerItem.articulo.cover.url}`} alt=""/>
+                                        <img src={`http://149.28.252.152:1337${bannerItem.articulo.cover.url}`} alt=""/>
                                     </Block>
                                     <Block className="content">
                                         <BlockHeader className="categoria upperscale">{bannerItem.articulo.categoria.nombre}</BlockHeader>

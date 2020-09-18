@@ -11,10 +11,10 @@ export default class adsTop extends Component {
     }
     render() {
         return (
-            <Block className="ads_cont display-flex">
+            <Block className="ads_cont">
                 <Block className="left"></Block>
                 <Block className="center">
-                    <Block className="ads slim">{/* ads */}</Block>
+                    <Block className="ads">{/* ads */}</Block>
                 </Block>
                 <Block className="right"></Block>
             </Block>

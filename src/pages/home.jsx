@@ -30,7 +30,7 @@ export default function Home(props) {
   //pagina cargando
   if (error) return `Error! ${error.message}`;
   //error en la pagina 
-
+  console.log(data);
   return (
     <Page pageContent={false} name="home">
       <PageContent>
@@ -41,12 +41,12 @@ export default function Home(props) {
         <Nav home categorias={f7.methods.getCategorias()} />
         {/* Page content */}
         <Block className="main_cont display-flex flex-direction-column justify-content-center">
-          <AdsTop />
           <Block className="paneles">
             <Block className="left_pan">
               <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
             </Block>
             <Block className="center_pan">
+              <AdsTop />
               <HomePanel newsInfo={data} />
             </Block>
             <Block className="right_pan">

@@ -25,7 +25,7 @@ export default class HomeNewsCard extends Component{
                 {/* Pa cuando le piques al click y te tenga que mandar a la pagina del articulo
                  href={`/articulo/${this.props.articulo.url}`} */}
                 <Block className="background">
-                    <img src={`http://localhost:1337${this.props.articulo.cover.url}`} alt=""/>
+                    <img src={`http://149.28.252.152:1337${this.props.articulo.cover.url}`} alt=""/>
                 </Block>
                 <Block className="content">
                     <BlockHeader className="categoria uppercase">{this.props.articulo.categoria.nombre}</BlockHeader>
