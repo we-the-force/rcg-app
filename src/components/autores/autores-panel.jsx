@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NewsCard from '../news-card';
 import Locutor from '@/static/imgs/locutor.png'
 import {
     Card,
@@ -9,7 +10,7 @@ import {
 export default class AutoresPanel extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
+        // console.log(props);
     }
     render() {
         return (
@@ -24,8 +25,8 @@ export default class AutoresPanel extends Component {
                                     <img src={`http://149.28.252.152:1337${autor.img.url}`}/>
                                     {/* Name */}
                                     <p>{autor.nombre}</p>
-                                    <p>{autor.articulos.length} noticias</p>
-                                    Redes
+                                    <a href={`/autor/${autor.id}`}>{autor.articulos.length} noticias</a>
+                                    <p>Redes</p>
                                     <Block className="display-flex">
                                         <img src="../static/icons/TW_Icon_x3.png" alt="" />
                                         <img src="../static/icons/FB_Icon_x3.png" alt="" />
