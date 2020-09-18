@@ -121,7 +121,7 @@ export default class TVPanel extends Component {
                                             <img src={Icon_TV} alt="" />
                                         </Block>
                                         <a href={`/tv/${channel.url}`} className="canal_content display-flex justify-content-center align-items-center">
-                                            <img src={`http://149.28.252.152:1337${channel.logo.url}`} alt="" srcSet=""/>
+                                            <img src={`http://${window.location.hostname}:1337${channel.logo.url}`} alt="" srcSet=""/>
                                             <h1 className="title">
                                                 {channel.nombre}
                                             </h1>

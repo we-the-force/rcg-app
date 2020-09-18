@@ -31,7 +31,7 @@ export default class NewsCard extends Component {
                 <Block className="title_cont">
                     <Block className="titulo"> {this.props.articulo.Titulo} </Block>
                     <Block className="img_cont display-flex flex-direction-column">
-                        <img src={`http://149.28.252.152:1337${this.props.articulo.cover.url}`} alt="" />
+                        <img src={`http://${window.location.hostname}:1337${this.props.articulo.cover.url}`} alt="" />
                         <Block className="foot display-flex justify-content-flex-start align-items-center">
                             <p className="pieTitulo">Pie de foto</p> - <p className="pie">Pie de foto</p>
                         </Block>
