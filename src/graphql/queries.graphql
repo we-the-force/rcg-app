@@ -118,6 +118,43 @@ query BusquedaPage($terms: [String]){
   }
 }
 
+query AutoresPage {
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
+  },
+  autores: autors {
+    id
+    nombre
+    img {url}
+    articulos {id}
+  }
+}
+
+query AutorPage($autorID: String) {
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
+  },
+  autorInfo: autors(where: {id: $autorID}) {
+    nombre
+    img {url}
+    articulos {...ArticulosData}
+  }
+}
+
 query CategoriasNavbar {
   categorias {
     nombre
