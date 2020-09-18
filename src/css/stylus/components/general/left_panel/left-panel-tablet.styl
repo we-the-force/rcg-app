@@ -1,0 +1,59 @@
+.left_panel_tablet
+    display none
+
+    @media (min-width 640px)
+        display flex
+        flex-direction column
+        margin 0px
+        padding 0px
+        justify-content flex-start
+        align-items center
+        position sticky
+        top 50px
+
+        .icon-link
+            margin 20px 0px 15px 0px
+            padding 12px 11px
+
+            i
+                color red
+
+                &.search
+                    font-size 28px
+
+                &.nosotros
+                    font-size 24px
+
+            &.tv
+                img
+                    width 18px
+                    height 18px
+
+            &.radio_
+                img
+                    width 12px
+
+            &.servicios
+                img
+                    width 14px
+
+            &.redes
+                img
+                    width 18px
+
+        .links
+            display flex
+            flex-direction row
+            flex-wrap wrap
+            justify-content center
+
+            .text-link, p
+                font font_4
+                font-size 10px
+                color #606060
+                text-align center
+                margin 4px 0px
+                padding 0px 5px
+
+    @media (min-width 1024px)
+        display none

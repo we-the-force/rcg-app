@@ -1,23 +1,24 @@
 .right_panel_cont
-    /* display none
-    @media (min-width: 1024px) */
-    height 100%
-    no-mar-no-pad()
-
-    .search_block
-        position sticky
-        top var(--f7-navbar-height)
-        padding 20px 0px 15px 0px
-        margin 0px
-        background white_l
-        z-index 2
-        
-        .ads
-            border-radius 8px
-            width calc(100% - 20px)
-
-    .right_panel_down
-        position sticky
-        top -960px 
-        filter drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.1))
+    display none
+    @media (min-width: 1024px)
+        display block
+        height 100%
         no-mar-no-pad()
+
+        .search_block
+            position sticky
+            top var(--f7-navbar-height)
+            padding 20px 0px 15px 0px
+            margin 0px
+            background white_l
+            z-index 2
+            
+            .ads
+                border-radius 8px
+                width calc(100% - 20px)
+
+        .right_panel_down
+            position sticky
+            top -960px 
+            filter drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.1))
+            no-mar-no-pad()
