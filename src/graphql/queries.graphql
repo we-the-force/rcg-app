@@ -131,9 +131,8 @@ query AutoresPage {
   },
   autores: autors {
     nombre
-    articulos {
-      id
-    }
+    img {url}
+    articulos {id}
   }
 }
 

@@ -21,7 +21,7 @@ export default class AutoresPanel extends Component {
                     this.props.autores.map((autor, key) => {
 
                         return (<Card key={key}>
-                                    <img src={Locutor}/>
+                                    <img src={`http://149.28.252.152:1337${autor.img.url}`}/>
                                     {/* Name */}
                                     <p>{autor.nombre}</p>
                                     <p>{autor.articulos.length} noticias</p>
