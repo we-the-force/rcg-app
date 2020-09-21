@@ -144,14 +144,17 @@ query AutorPage($autorID: String) {
   tv_channels: canalEstacions(where: {Radio_TV: true}){
     ...StationData
   },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
-    ...ArticulosData
-  },
   autorInfo: autors(where: {id: $autorID}) {
+    id
     nombre
     img {url}
     articulos {...ArticulosData}
+  },
+  autores: autors {
+    id
+    nombre
+    img {url}
+    articulos {id}
   }
 }
 

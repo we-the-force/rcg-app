@@ -10,7 +10,7 @@ import {
 } from 'framework7-react';
 
 export default class RightPanel extends Component {
-    aaah = (e) => {
+    articuloSearch = (e) => {
         if (e.key === "Enter")
         {
             //TODO: ToLowercase como no
@@ -38,7 +38,7 @@ export default class RightPanel extends Component {
                 <Block className="search_block">
                     {/* {console.log(this)} */}
                     {/* <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false} onSearchbarSearch={this.aaah}/> */}
-                    <input id="searchBar" type="text" onKeyPress={this.aaah}/>
+                    <input id="searchBar" type="text" onKeyPress={this.articuloSearch}/>
                     <Block className="ads square"></Block>
                 </Block>
                 <Block className="right_panel_down">

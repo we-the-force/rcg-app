@@ -28,9 +28,9 @@ export default class AutoresPanel extends Component {
                                     <a href={`/autor/${autor.id}`}>{autor.articulos.length} noticias</a>
                                     <p>Redes</p>
                                     <Block className="display-flex">
-                                        <img src="../static/icons/TW_Icon_x3.png" alt="" />
-                                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
-                                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                                        <img src="../static/icons/TW_Icon.png" alt="" />
+                                        <img src="../static/icons/FB_Icon.png" alt="" />
+                                        <img src="../static/icons/IG_Icon.png" alt="" />
                                     </Block>
                                     {/* Article count */}
                                     {/* Iconitos social media */}
