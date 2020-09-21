@@ -26,9 +26,9 @@ export default class AutorPanel extends Component {
                         <p>{this.props.autorInfo.articulos.length} Noticias</p>
                     </Block>
                     <Block className="display-flex">
-                        <img src="../static/icons/TW_Icon_x3.png" alt="" />
-                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
-                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                        <img src="../static/icons/TW_Icon.png" alt="" />
+                        <img src="../static/icons/FB_Icon.png" alt="" />
+                        <img src="../static/icons/IG_Icon.png" alt="" />
                     </Block>
                 </Card>
                 <Card>
