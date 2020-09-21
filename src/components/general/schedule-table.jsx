@@ -47,7 +47,7 @@ function CreateDaySchedule(dayName, daySchedule)
     }
     else
     {
-        console.log("AAAAH ESTA VACIO");
+        // console.log("AAAAH ESTA VACIO");
         for (let i = 0; i < 9; i++)
         {
             auxObject.horas.push({
@@ -63,7 +63,7 @@ function CreateDaySchedule(dayName, daySchedule)
 export default class ScheduleTable extends Component {
     constructor(props) {
         super(props);
-        console.log("ScheduleTable.constructor() ", props.prog);
+        // console.log("ScheduleTable.constructor() ", props.prog);
         schedule = CreateScheduleObject(props.prog.programacion);
         this.state = {}
     }

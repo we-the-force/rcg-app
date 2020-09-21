@@ -17,6 +17,7 @@ import {
 } from 'framework7-react';
 
 export default class RadioPanel extends Component {
+    
     constructor(props) {
         super(props);
         console.log("Radio-Panel: ", props);
@@ -37,12 +38,16 @@ export default class RadioPanel extends Component {
         {
             this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
 
-            console.log('this.programacion', this.programacion.programacion.martes);
-            this.programacion.programacion.martes.sort(function(a, b){
-                let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
-                return (isBefore ? -1 : 1);
-            });
-            console.log('this.programacion', this.programacion.programacion.martes);
+            // console.log("Programacion rara", this.programacion.programacion);
+            // console.log('this.programacion', this.programacion.programacion.martes);
+            this.programacion.programacion.domingo.sort(this.sortFunction);
+            this.programacion.programacion.lunes.sort(this.sortFunction);
+            this.programacion.programacion.martes.sort(this.sortFunction);
+            this.programacion.programacion.miercoles.sort(this.sortFunction);
+            this.programacion.programacion.jueves.sort(this.sortFunction);
+            this.programacion.programacion.viernes.sort(this.sortFunction);
+            this.programacion.programacion.sabado.sort(this.sortFunction);
+            // console.log('this.programacion', this.programacion.programacion);
         }
         else
         {
@@ -57,6 +62,7 @@ export default class RadioPanel extends Component {
                     sabado: []
                 }
             };
+            console.log("Empty programacion: ", this.programacion);
         }
 
         if (props.station != undefined)
@@ -77,7 +83,10 @@ export default class RadioPanel extends Component {
             this.moreStations = [];
         }
     }
-
+    sortFunction(a, b){
+        let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
+        return (isBefore ? -1 : 1);
+    }
     playPause = () => {
         let url = this.state.url == null ? this.state.radioURL : this.state.url;  
         this.setState({

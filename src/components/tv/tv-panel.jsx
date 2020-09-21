@@ -34,16 +34,19 @@ const RandomLink = () => {
 export default class TVPanel extends Component {
     constructor(props) {
         super(props);
-        console.log("TV-Panel props: ", props);
+        // console.log("TV-Panel props: ", props);
         if (props.prog.length > 0)
         {
             this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
 
-            console.log('this.programacion', this.programacion.programacion.martes);
-            this.programacion.programacion.martes.sort(function(a, b){
-                let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
-                return (isBefore ? -1 : 1);
-            });
+            // console.log('this.programacion', this.programacion.programacion.martes);
+            this.programacion.programacion.domingo.sort(this.sortFunction);
+            this.programacion.programacion.lunes.sort(this.sortFunction);
+            this.programacion.programacion.martes.sort(this.sortFunction);
+            this.programacion.programacion.miercoles.sort(this.sortFunction);
+            this.programacion.programacion.jueves.sort(this.sortFunction);
+            this.programacion.programacion.viernes.sort(this.sortFunction);
+            this.programacion.programacion.sabado.sort(this.sortFunction);
             // console.log('this.programacion', this.programacion.programacion.martes);
         }
         else
@@ -77,6 +80,10 @@ export default class TVPanel extends Component {
         {
             this.moreChannels = [];
         }
+    }
+    sortFunction(a, b){
+        let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
+        return (isBefore ? -1 : 1);
     }
     render() {
         return (
