@@ -44,9 +44,10 @@ export default function navMobile(props) {
                 <List>
                     {itemsPop.map((val, key) => {
                         return (
-                            <ListItem key={key} link="#" popoverClose className="uppercase" >{val.nombre}</ListItem>
+                            <ListItem key={key} link={`/categoria/${val.nombre}`} popoverClose className="uppercase" >{val.nombre}</ListItem>
                         );
                     })}
+                    <ListItem link="/autores" className="uppercase" popoverClose>autores</ListItem>
                 </List>
             </Popover>
         </Fragment>

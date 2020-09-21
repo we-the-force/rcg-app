@@ -9,6 +9,7 @@ import {
 
 export default function LeftPanelMobile(props) {
     const { categorias, categoria } = props;
+    console.log("Left Panel Mobile props: ", props);
     const thisPanel = useRef(null);
     return (
         <Panel left resizable className="categorias panel-left-mobile" ref={thisPanel}>
@@ -19,6 +20,7 @@ export default function LeftPanelMobile(props) {
                         <ListItem link={'/categoria/' + val.nombre} view="#main-view" key={key} className={"uppercase " + current} panelClose>{val.nombre}</ListItem>
                     );
                 })}
+                <ListItem link={`/autores`} view="#main-view" className="uppercase autores" panelClose>autores</ListItem>
             </List>
         </Panel>
     );
