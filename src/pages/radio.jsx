@@ -41,7 +41,7 @@ export default function Radio(props) {
     return (
         <Page pageContent={false} name='tv'>
             {/* { console.log(data) } */}
-            {console.log(currentStation)}
+            {/* {console.log(currentStation)} */}
             <PageContent>
                 <Nav categorias={f7.methods.getCategorias()} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">

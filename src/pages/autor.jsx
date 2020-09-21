@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
-import RightPanel from '@/components/general/right_panel/right-panel';
+import RightPanelAutor from '@/components/autores/right-panel-autor.jsx';
 import AutorPanel from '@/components/autores/autor-panel.jsx'
 import Footer from '@/components/general/footer';
 import { useQuery } from '@apollo/client';
@@ -46,7 +46,7 @@ export default function Autor(props) {
                             <AutorPanel autorInfo={data.autorInfo[0]}/>
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanelAutor autores={data.autores} autorInfo={data.autorInfo[0]} />
                         </Block>
                     </Block>
                 </Block>

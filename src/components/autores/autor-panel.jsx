@@ -10,23 +10,35 @@ import {
 export default class AutorPanel extends Component {
     constructor(props){
         super(props);
-        console.log("AutorPanelProps: ", props);
+
+        this.autorImage = props.autorInfo.img != null ? `http://${window.location.hostname}:1337${props.autorInfo.img.url}` : ``;
+        // console.log(this.autorImage);
+        console.log(props.autorInfo.instagram_link);
     }
     render() {
         return (
             <Block className="center_panel">
                 <Card className="head">
                     <Block>
-                        <img src={`http://149.28.252.152:1337${this.props.autorInfo.img.url}`}/>
+                        <img src={this.autorImage}/>
                     </Block>
                     <Block>
                         {this.props.autorInfo.nombre}
                         <p>{this.props.autorInfo.articulos.length} Noticias</p>
                     </Block>
                     <Block className="display-flex">
-                        <img src="../static/icons/TW_Icon_x3.png" alt="" />
-                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
-                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                        { 
+                            (this.props.autorInfo.twitter_link != null) &&
+                            <a href={this.props.autorInfo.twitter_link} target="_blank"><img src="../static/icons/TW_Icon.png" alt=""/></a>
+                        }
+                        { 
+                            (this.props.autorInfo.facebook_link != null) &&
+                            <a href={this.props.autorInfo.facebook_link} target="_blank"><img src="../static/icons/FB_Icon.png" alt=""/></a>
+                        }
+                        { 
+                            (this.props.autorInfo.instagram_link != null) &&
+                            <a href={this.props.autorInfo.instagram_link} target="_blank"><img src="../static/icons/IG_Icon.png" alt=""/></a>
+                        }
                     </Block>
                 </Card>
                 <Card>

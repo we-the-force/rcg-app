@@ -134,6 +134,9 @@ query AutoresPage {
     nombre
     img {url}
     articulos {id}
+    twitter_link
+    facebook_link
+    instagram_link
   }
 }
 
@@ -144,14 +147,23 @@ query AutorPage($autorID: String) {
   tv_channels: canalEstacions(where: {Radio_TV: true}){
     ...StationData
   },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
-    ...ArticulosData
-  },
   autorInfo: autors(where: {id: $autorID}) {
+    id
     nombre
     img {url}
     articulos {...ArticulosData}
+    twitter_link
+    facebook_link
+    instagram_link
+  },
+  autores: autors {
+    id
+    nombre
+    img {url}
+    articulos {id}
+    twitter_link
+    facebook_link
+    instagram_link
   }
 }
 

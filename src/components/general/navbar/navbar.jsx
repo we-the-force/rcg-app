@@ -6,6 +6,7 @@ import { Navbar } from 'framework7-react';
 export default function Nav(props) {
     const categoria = props.categoria ? props.categoria : ''; 
     const { categorias } = props;
+    // console.log("Navbar-categorias: ", categorias);
     const [categ_show, categ_pop, type] = useData(categorias);
     return (
         <Navbar sliding noHairline noShadow>

@@ -20,21 +20,22 @@ export default class AutoresPanel extends Component {
                 </Card>
                 {
                     this.props.autores.map((autor, key) => {
-
+                        let autorImgUrl = autor.img != null ? `http://${window.location.hostname}:1337${autor.img.url}` : ``;
+                        let twLink = autor.twitter_link   != null ? (<a href={autor.twitter_link}   target="_blank"><img src="../static/icons/TW_Icon.png"/></a>) : ("");
+                        let fbLink = autor.facebook_link  != null ? (<a href={autor.facebook_link}  target="_blank"><img src="../static/icons/FB_Icon.png"/></a>) : ("");
+                        let igLink = autor.instagram_link != null ? (<a href={autor.instagram_link} target="_blank"><img src="../static/icons/IG_Icon.png"/></a>) : ("");
+                        console.log("autoresPanel igLink:", igLink);
+                        console.log("autoresPanel igLink2:", autor.instagram_link);
                         return (<Card key={key}>
-                                    <img src={`http://149.28.252.152:1337${autor.img.url}`}/>
-                                    {/* Name */}
+                                    <img src={autorImgUrl}/>
                                     <p>{autor.nombre}</p>
                                     <a href={`/autor/${autor.id}`}>{autor.articulos.length} noticias</a>
-                                    <p>Redes</p>
+                                    <p>Redes:</p>
                                     <Block className="display-flex">
-                                        <img src="../static/icons/TW_Icon_x3.png" alt="" />
-                                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
-                                        <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                                        {twLink}
+                                        {fbLink}
+                                        {igLink}
                                     </Block>
-                                    {/* Article count */}
-                                    {/* Iconitos social media */}
-
                                 </Card>)
                     })
                 }
