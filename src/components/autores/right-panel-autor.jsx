@@ -30,12 +30,11 @@ export default class RightPanelAutor extends Component {
     }
     constructor(props){
         super(props);
-        console.log(props);
+        // console.log(props);
 
         if (props.autorInfo != undefined)
         {
             this.otherAuthors = JSON.parse(JSON.stringify(props.autores));
-            console.log("Other authors",this.otherAuthors);
             for (let i = 0; i < this.otherAuthors.length; i++)
             {
                 if (this.otherAuthors[i].id === (props.autorInfo.id))
@@ -49,7 +48,6 @@ export default class RightPanelAutor extends Component {
         {
             this.otherAuthors = [];
         }
-        console.log("Ayayayyyy las otras weas como no", this.otherAuthors);
     }
     render() {
         return (
@@ -59,15 +57,16 @@ export default class RightPanelAutor extends Component {
                     <Block className="ads square"></Block>
                 </Block>
                 <Block className="right_panel_down">
-                    { console.log(`Las weas estas`, this.props) }
+                    {/* { console.log(`Las weas estas`, this.props) } */}
                     {
                         this.otherAuthors.map((author, key) => {
-                            console.log("Author: ", author);
+                            // console.log("Author: ", author);
+                            let autorImgUrl = author.img != null ? `http://${window.location.hostname}:1337${author.img.url}` : ``;
                             return (
                                 <Card key={key} className="right_panel_down_card">
-                                    <img src={``}/>
+                                    <img src={autorImgUrl}/>
                                     <p>{author.nombre}</p>
-                                    <p>{`${author.articulos.length} Noticias`}</p>
+                                    <a href={`/autor/${author.id}`}>{`${author.articulos.length} Noticias`}</a>
                                     <Block className="display-flex">
                                         <img src="../static/icons/TW_Icon.png" alt="" />
                                         <img src="../static/icons/FB_Icon.png" alt="" />

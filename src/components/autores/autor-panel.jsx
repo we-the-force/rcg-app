@@ -10,14 +10,16 @@ import {
 export default class AutorPanel extends Component {
     constructor(props){
         super(props);
-        console.log("AutorPanelProps: ", props);
+
+        this.autorImage = props.autorInfo.img != null ? `http://${window.location.hostname}:1337${props.autorInfo.img.url}` : ``;
+        // console.log(this.autorImage);
     }
     render() {
         return (
             <Block className="center_panel">
                 <Card className="head">
                     <Block>
-                        <img src={`http://149.28.252.152:1337${this.props.autorInfo.img.url}`}/>
+                        <img src={this.autorImage}/>
                     </Block>
                     <Block>
                         {this.props.autorInfo.nombre}

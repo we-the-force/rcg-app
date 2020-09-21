@@ -24,6 +24,11 @@ export default function Autores(props) {
         });
     }, []);
 
+    // if (data != undefined)
+    // {
+    //     console.log("Autores.jsx data:", data);
+    // }
+
     if (loading) return "loading...";
     if (error) return `Error! ${error.message}`;
     return (
