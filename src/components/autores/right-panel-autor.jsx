@@ -67,6 +67,7 @@ export default class RightPanelAutor extends Component {
                                     <img src={autorImgUrl}/>
                                     <p>{author.nombre}</p>
                                     <a href={`/autor/${author.id}`}>{`${author.articulos.length} Noticias`}</a>
+                                    <p>Redes:</p>
                                     <Block className="display-flex">
                                         <img src="../static/icons/TW_Icon.png" alt="" />
                                         <img src="../static/icons/FB_Icon.png" alt="" />
