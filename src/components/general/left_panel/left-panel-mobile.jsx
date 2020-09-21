@@ -9,10 +9,8 @@ import {
 
 export default function LeftPanelMobile(props) {
     const { categorias, categoria } = props;
-    console.log("Left Panel Mobile props: ", props);
-    const thisPanel = useRef(null);
     return (
-        <Panel left resizable className="categorias panel-left-mobile" ref={thisPanel}>
+        <Panel left resizable className="categorias panel-left-mobile">
             <List>
                 {categorias.map((val, key) => {
                     let current = categoria === val.nombre ? 'current' : '';
