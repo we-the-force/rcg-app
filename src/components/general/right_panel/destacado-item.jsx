@@ -18,7 +18,7 @@ export default class DestItem extends Component {
             <Block className={"dest-item " + bord}>
                 {this.props.image &&
                     <a className="img_cont">
-                        <img src={`http://149.28.252.152:1337${this.props.articulo.cover.url}`} alt="" />
+                        <img src={`http://${window.location.hostname}:1337${this.props.articulo.cover.url}`} alt="" />
                     </a>
                 }
                 <Block className="dest-cont">

@@ -7,6 +7,8 @@
 @import './stylus/components/general/ads.styl'
 @import './stylus/components/general/left_panel/left-panel.styl'
 @import './stylus/components/general/right_panel/right-panel.styl'
+@import './stylus/components/general/left_panel/left-panel-tablet.styl'
+@import './stylus/components/general/right_panel/right-panel-tablet.styl'
 @import './stylus/components/articulo/card-articulo.styl'
 @import './stylus/components/general/left_panel/cards-left-panel.styl'
 @import './stylus/components/general/right_panel/cards-right-panel.styl'
@@ -46,7 +48,7 @@
   margin 0px auto
   padding 0px
 
-  /* .paneles
+  .paneles
     display flex
     flex-direction row
     width 100%
@@ -92,15 +94,32 @@
     @media (min-width: 640px)
       .center_pan
         width auto
+        padding-left 0px
       .left_pan
         display block
-        width 95px
+        width 90px
+        min-width 90px
+        padding 0px
+        margin 0px
       .right_pan
         display block
-        width 45px */
+        min-width 45px
+        width 45px
+        padding 0px
+
+  @media (min-width: 1024px)
+    max-width 1200px
+    .paneles
+      .left_pan
+        width 14%
+        min-width 170px
+      .right_pan
+        width 18%
+        min-width 220px
 
 
-  .paneles //active
+
+  /* .paneles //active
       display flex //ready
       flex-direction row //ready
       //width 100% //ready
@@ -163,4 +182,4 @@
 
       .ads
         margin-left auto
-        margin-right auto
+        margin-right auto */

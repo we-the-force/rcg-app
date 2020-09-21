@@ -17,11 +17,9 @@ const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.error('!!GraphQL Error!!', message));
 })
 const client = new ApolloClient({
-  uri: 'http://149.28.252.152:1337/graphql',
-  // uri: 'http://localhost:1337/graphql',
+  uri: `http://${window.location.hostname}:1337/graphql`,
   cache: new InMemoryCache(),
-  link: ApolloLink.from([errorLink, new HttpLink({ uri: 'http://149.28.252.152:1337/graphql' })])
-  // link: ApolloLink.from([errorLink, new HttpLink({ uri: 'http://localhost:1337/graphql' })])
+  link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${window.location.hostname}:1337/graphql` })])
 });
 
 export default class extends React.Component {

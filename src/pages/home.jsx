@@ -3,6 +3,9 @@ import Nav from '@/components/general/navbar/navbar';
 import Masthead from '@/components/home/masthead';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
+
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import HomePanel from '@/components/home/home-panel';
@@ -44,6 +47,7 @@ export default function Home(props) {
           <Block className="paneles">
             <Block className="left_pan">
               <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+              <LeftPanelTablet />
             </Block>
             <Block className="center_pan">
               <AdsTop />
@@ -51,6 +55,7 @@ export default function Home(props) {
             </Block>
             <Block className="right_pan">
               <RightPanel newsInfo={data.articulosDestacadosRaros} />
+              <RightPanelTablet />
             </Block>
           </Block>
         </Block>
