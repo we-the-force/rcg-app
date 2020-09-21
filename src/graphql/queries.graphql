@@ -134,6 +134,9 @@ query AutoresPage {
     nombre
     img {url}
     articulos {id}
+    twitter_link
+    facebook_link
+    instagram_link
   }
 }
 
@@ -149,12 +152,18 @@ query AutorPage($autorID: String) {
     nombre
     img {url}
     articulos {...ArticulosData}
+    twitter_link
+    facebook_link
+    instagram_link
   },
   autores: autors {
     id
     nombre
     img {url}
     articulos {id}
+    twitter_link
+    facebook_link
+    instagram_link
   }
 }
 

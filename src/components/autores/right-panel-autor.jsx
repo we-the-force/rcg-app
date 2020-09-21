@@ -59,19 +59,21 @@ export default class RightPanelAutor extends Component {
                 <Block className="right_panel_down">
                     {/* { console.log(`Las weas estas`, this.props) } */}
                     {
-                        this.otherAuthors.map((author, key) => {
-                            // console.log("Author: ", author);
-                            let autorImgUrl = author.img != null ? `http://${window.location.hostname}:1337${author.img.url}` : ``;
+                        this.otherAuthors.map((autor, key) => {
+                            let autorImgUrl = autor.img != null ? `http://${window.location.hostname}:1337${autor.img.url}` : ``;
+                            let twLink = autor.twitter_link   != null ? (<a href={autor.twitter_link}   target="_blank"><img src="../static/icons/TW_Icon.png"/></a>) : ("");
+                            let fbLink = autor.facebook_link  != null ? (<a href={autor.facebook_link}  target="_blank"><img src="../static/icons/FB_Icon.png"/></a>) : ("");
+                            let igLink = autor.instagram_link != null ? (<a href={autor.instagram_link} target="_blank"><img src="../static/icons/IG_Icon.png"/></a>) : ("");
                             return (
                                 <Card key={key} className="right_panel_down_card">
                                     <img src={autorImgUrl}/>
-                                    <p>{author.nombre}</p>
-                                    <a href={`/autor/${author.id}`}>{`${author.articulos.length} Noticias`}</a>
+                                    <p>{autor.nombre}</p>
+                                    <a href={`/autor/${autor.id}`}>{`${autor.articulos.length} Noticias`}</a>
                                     <p>Redes:</p>
                                     <Block className="display-flex">
-                                        <img src="../static/icons/TW_Icon.png" alt="" />
-                                        <img src="../static/icons/FB_Icon.png" alt="" />
-                                        <img src="../static/icons/IG_Icon.png" alt="" />
+                                        {twLink}
+                                        {fbLink}
+                                        {igLink}
                                     </Block>
                                 </Card>
                             )
