@@ -4,21 +4,26 @@
     @media (min-width 640px)
         display block
         width 190px !important
-        transform: translate3d(0, 0, 0) !important 
+        transform translate3d(42px, 0, 0) !important
         filter drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
         border-radius 6px !important
         margin 0px !important
         left 100% !important
+        overflow visible
 
         a.close
+            position absolute
+            top 0px
+            left -42px
             width 42px
             height 42px
             margin 0px
-            margin-top 20px
+            margin-top 9px
             padding 0px
             background red
             border-top-left-radius 50%
             border-bottom-left-radius 50%
+
             i
                 font-size 30px
                 color white
@@ -33,10 +38,15 @@
             &:after
                 content none
 
-        /* .vistos-popup */
+        .news-cont
+            no-mar-no-pad()
+            height calc(100% - 44px)
+            width 100%
+            overflow hidden
+            margin-bottom 10px
 
         &.modal-in
-            transform: translate3d(-190px, 0, 0) !important
+            transform translate3d(-190px, 0, 0) !important
 
     @media (min-width 1024px)
         display none
