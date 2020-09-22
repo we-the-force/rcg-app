@@ -1,28 +1,9 @@
 .masthead
-    no-mar-no-pad()
+    margin 0px
+    padding 0px
 
     .logo
-        position absolute
-        top 0
-        left 0
-        width 20vw
-        margin 30px 35px
-        padding 0px
-        z-index 2
-
-        &:after
-            content ''
-            display block
-            padding-top calc(180 / 365 * 100%)
-
-        img
-            position absolute
-            width 100%
-            height 100%
-            top 0
-            left 0
-            padding 0px
-            margin 0px
+        display none
 
     .swiper-container
         .swiper-slide
@@ -33,7 +14,7 @@
                 &:after
                     content ''
                     display block
-                    padding-top calc(810 / 1920 * 100%)
+                    padding-top calc(250 / 375 * 100%)
 
                 img
                     position absolute
@@ -43,51 +24,260 @@
                     height 100%
                     object-fit cover
 
-            .content
-                position absolute
-                bottom 0
-                left 0
-                width 60vw
-                padding 0px
-                margin 50px 35px
-
-                .categoria
+                .label
+                    position absolute
+                    top 0
+                    left 0
                     margin 0px
-                    padding 0px 30px 0px 7px
-                    font font_16
-                    color red
-                    text-transform capitalize
-                    background white
-                    width min-content
+                    padding 0px
 
-                .text
-                    margin 0
-                    padding 0
-                    font font_17
-                    color white
-                    text-shadow 0px 0px 6px rgba(0, 0, 0, 0.35)
-                    text-transform capitalize
+                    .categoria
+                        margin 15px
+                        padding-right 15px
+                        padding-left 5px
+                        background white
+                        font font_14
+                        text-transform capitalize
+                        color red
 
-                .block-footer
-                    margin 0
-                    padding 0
-                    font font_13
-                    color #E4E4E4
-                    text-transform capitalize
-                    display flex
-                    align-items center
-                    justify-content left
+                .bottom-cont
+                    position absolute
+                    bottom 0
+                    left 0
+                    margin 0px
+                    width 100%
+                    padding 10px 16px
 
-                    p
-                        margin 0px
+                    .label-desk
+                        display none
 
-                    .autor
+                    .title
+                        font font_18
+                        text-transform capitalize
                         color white
+                        text-shadow 0px 0px 2.60625px rgba(0, 0, 0, 0.35)
+
+                    .block-footer
+                        display flex
+                        font font_8
+                        font-weight 500
+                        text-transform capitalize
+                        color #E4E4E4
+                        margin 10px 0px
+
+                        .autor, .fecha
+                            font font_8
+                            font-weight 500
+                            text-transform capitalize
+                            color #E4E4E4
+                            margin 0px
 
         .swiper-pagination-bullet
-            width 10px
-            height 10px
-            background white
+            display none
 
-            &.swiper-pagination-bullet
+    @media (min-width 640px)
+        .logo
+            display block
+            position absolute
+            top 0
+            left 0
+            width 40vw
+            margin 15px 15px
+            padding 0px
+            z-index 2
+
+            &:after
+                content ''
+                display block
+                padding-top calc(180 / 365 * 100%)
+
+            img
+                position absolute
+                width 100%
+                height 100%
+                top 0
+                left 0
+                padding 0px
+                margin 0px
+
+        .swiper-container
+            .swiper-slide
+                .background
+                    &:after
+                        padding-top calc(573 / 834 * 100%)
+
+                    .label
+                        display none !important
+
+                    .bottom-cont
+                        padding 0px 30px
+                        padding-bottom 60px
+                        padding-top 25px
+
+                        .label-desk
+                            display block
+                            position absolute
+                            top 0
+                            left 0
+                            margin 0px
+                            padding 0px
+
+                            .categoria
+                                margin-bottom 11px
+                                margin-left 30px
+                                padding-right 15px
+                                padding-left 5px
+                                background white
+                                font font_14
+                                text-transform capitalize
+                                color red
+
+                        .title
+                            font font_19
+
+                        .block-footer
+                            font font_3
+                            margin 0px
+
+                            .autor, .fecha
+                                font font_3
+
+            .swiper-pagination-bullets
+                bottom 20px
+
+                .swiper-pagination-bullet
+                    display inline-block
+                    width 10px
+                    height 10px
+                    background white
+
+                    &.swiper-pagination-bullet
+                        background white
+
+    @media (min-width 1024px)
+        .logo
+            width 20vw
+            margin 30px 35px
+
+        .swiper-container
+            .swiper-slide
+                .background
+                    &:after
+                        padding-top calc(810 / 1920 * 100%)
+
+                    .bottom-cont
+                        padding 0px 35px
+                        padding-bottom 65px
+                        padding-top 25px
+
+                        .label-desk .categoria
+                            margin-bottom 0px
+                            margin-left 35px
+                            padding-right 15px
+                            padding-left 5px
+                            background white
+                            font font_16
+                            text-transform capitalize
+                            color red
+
+                        .title
+                            font font_19
+
+                        .block-footer
+                            font font_3
+                            margin 0px
+
+                            .autor, .fecha
+                                font font_3
+    /* no-mar-no-pad()
+    
+        .logo
+            position absolute
+            top 0
+            left 0
+            width 20vw
+            margin 30px 35px
+            padding 0px
+            z-index 2
+    
+            &:after
+                content ''
+                display block
+                padding-top calc(180 / 365 * 100%)
+    
+            img
+                position absolute
+                width 100%
+                height 100%
+                top 0
+                left 0
+                padding 0px
+                margin 0px
+    
+        .swiper-container
+            .swiper-slide
+                .background
+                    no-mar-no-pad()
+                    width 100%
+    
+                    &:after
+                        content ''
+                        display block
+                        padding-top calc(810 / 1920 * 100%)
+    
+                    img
+                        position absolute
+                        top 0
+                        left 0
+                        width 100%
+                        height 100%
+                        object-fit cover
+    
+                .content
+                    position absolute
+                    bottom 0
+                    left 0
+                    width 60vw
+                    padding 0px
+                    margin 50px 35px
+    
+                    .categoria
+                        margin 0px
+                        padding 0px 30px 0px 7px
+                        font font_16
+                        color red
+                        text-transform capitalize
+                        background white
+                        width min-content
+    
+                    .text
+                        margin 0
+                        padding 0
+                        font font_17
+                        color white
+                        text-shadow 0px 0px 6px rgba(0, 0, 0, 0.35)
+                        text-transform capitalize
+    
+                    .block-footer
+                        margin 0
+                        padding 0
+                        font font_13
+                        color #E4E4E4
+                        text-transform capitalize
+                        display flex
+                        align-items center
+                        justify-content left
+    
+                        p
+                            margin 0px
+    
+                        .autor
+                            color white
+    
+            .swiper-pagination-bullet
+                width 10px
+                height 10px
                 background white
+    
+                &.swiper-pagination-bullet
+                    background white */
