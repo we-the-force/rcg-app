@@ -47,7 +47,7 @@ export default function Articulo(props) {
     useEffect(() => {
         // console.log('Use Effect como no', NPDV);
         var addView = false;
-        if (NPDV != null) {
+        if (NPDV != null && NPDV.articulos.length > 0) {
             var sourceViewedArticles = window.sessionStorage.getItem('viewedArticles');
             // console.log("Viewed articles", sourceViewedArticles);
             if (sourceViewedArticles != null) {
@@ -89,6 +89,13 @@ export default function Articulo(props) {
 
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
+    if (data.articulos.length === 0)
+    {
+        // El articulo no existia, redirecciona a 404.
+        console.log("This: ", f7.views.main);
+        f7.views.main.router.navigate('/404/');
+    }
+    console.log("Ayy el articulo se termino?", data);
     return (
         <Page pageContent={false} name="articulo">
             <PageContent>
@@ -102,8 +109,14 @@ export default function Articulo(props) {
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
-                            {/* <ArticuloPanel articulo={this.$f7route.context.Article}/> */}
-                            <ArticuloPanel articulo={data.articulos[0]} />
+                            {
+                                (data.articulos.length > 0) &&
+                                <ArticuloPanel articulo={data.articulos[0]} />
+                            }
+                            {
+                                (data.articulos.length === 0) &&
+                                <p>AAAAAAAH</p>
+                            }
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros} />

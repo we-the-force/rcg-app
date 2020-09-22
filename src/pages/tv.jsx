@@ -35,6 +35,10 @@ export default function TV(props) {
 
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
+    if (currentChannel === undefined)
+    {
+        f7.views.main.router.navigate('/404/');
+    }
     return (
         <Page pageContent={false} name="tv">
             <PageContent>
@@ -48,7 +52,10 @@ export default function TV(props) {
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
-                            <TVPanel channel={currentChannel} channel_list={data.tv_channels} prog={data.programacionSemanas} table_id={props.name} />
+                            {
+                                (currentChannel != undefined) &&
+                                <TVPanel channel={currentChannel} channel_list={data.tv_channels} prog={data.programacionSemanas} table_id={props.name} />
+                            }
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros} />

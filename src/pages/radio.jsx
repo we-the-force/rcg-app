@@ -30,14 +30,17 @@ export default function Radio(props) {
         });
     }, []);
 
-
     if (data != undefined) {
         currentStation = data.radio_stations.find(x => x.url === station);
-
     }
 
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
+
+    if (currentStation === undefined)
+    {
+        f7.views.main.router.navigate('/404/');
+    }
     return (
         <Page pageContent={false} name='tv'>
             {/* { console.log(data) } */}
@@ -51,7 +54,10 @@ export default function Radio(props) {
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
-                            <RadioPanel station={currentStation} station_list={data.radio_stations} prog={data.programacionSemanas} table_id={props.name} />
+                            {
+                                (currentStation != undefined) &&
+                                <RadioPanel station={currentStation} station_list={data.radio_stations} prog={data.programacionSemanas} table_id={props.name} />
+                            }
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros} />
