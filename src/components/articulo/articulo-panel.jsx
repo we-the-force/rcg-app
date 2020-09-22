@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NotaRecomandada from '@/components/nota-recomendada.jsx';
+import marked from 'marked';
 import TWIconx3 from '@/static/icons/TW_Icon_x3.png';
 import FBIconx3 from '@/static/icons/FB_Icon_x3.png';
 import { useMutation, gql } from '@apollo/client';
@@ -24,6 +25,14 @@ export default class ArticuloPanel extends Component {
     // console.log(props);
     constructor(props) {
         super(props);
+        // console.log("Props Description: ", props.articulo.description);
+        // console.log("Props Articulo: ", props.articulo);
+        // var MarkdownIt = require('markdown-it');
+        // this.md = new MarkdownIt();
+        // this.result = this.md.render(props.articulo.description);
+        this.result = marked(props.articulo.description);
+
+        console.log("El this.result:\r\n",this.result);
     }
     componentDidMount() {
         console.log("Mounted");
@@ -35,8 +44,7 @@ export default class ArticuloPanel extends Component {
                 <Card className="articulo">
                     <Block className="header_cont display-flex justify-content-space-between">
                         <CardHeader>
-                            <a>Locales</a>
-                            <a>Estatales</a>
+                            <a href={`/categoria/${this.props.articulo.categoria.nombre}`}>{this.props.articulo.categoria.nombre}</a>
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
                             <p>Compartir:</p>
@@ -52,7 +60,7 @@ export default class ArticuloPanel extends Component {
                         <Block className="head display-flex justify-content-flex-start">
                             <p className="autor"> {this.props.articulo.autor.nombre} </p> - <p className="fecha"> {this.props.articulo.fecha} </p>
                         </Block>
-                        <Block className="titulo">{this.props.articulo.titulo}</Block>
+                        <Block className="titulo">{this.props.articulo.Titulo}</Block>
                         <Block className="img_cont display-flex flex-direction-column">
                             {/* <img src="../static/imgs/418464-PD8PXQ-214 1.png" alt="" /> */}
                             <img src={`http://${window.location.hostname}:1337${this.props.articulo.cover.url}`} alt="" />
@@ -65,8 +73,15 @@ export default class ArticuloPanel extends Component {
                         <Block className="left_side">
     
                             <Block className="articulo_cont">
-                                <p>
-                                    {this.props.articulo.description}
+                                <p dangerouslySetInnerHTML={{ __html: this.result }}>
+                                    {/* {console.log("La weaaaaa", this.result)} */}
+                                    {/* {this.result} */}
+                                    {/* {this.props.articulo.description}
+
+                                    aaah
+                                    <br/>
+                                    <br/>
+                                    {this.md.render(this.props.articulo.description)} */}
                                     {/* aqui va el contenido */}
                                     {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. */}
                                 </p>
