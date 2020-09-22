@@ -100,14 +100,7 @@ export default class extends React.Component {
     return (
       <ApolloProvider client={client}>
         <App params={this.state}>
-            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-          
-          {/* {tablet &&
-            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-          }
-          {desktop &&
-            <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-          } */}
+          <LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
           <View
             id="main-view"
             main
