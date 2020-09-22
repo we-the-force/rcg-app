@@ -24,14 +24,16 @@ export default function RightPanelTablet(props) {
         <Block className="right_panel_tablet">
             <Link popupOpen=".vistos-popup" onClick={e => { changeBackdropOpen(e) }} className="more" iconMaterial="add" icon="add"></Link>
             <Popup className="vistos-popup right-popup-tablet" onPopupClose={changeBackdropClose}>
-                <Link popupClose=".vistos-popup" className="close" iconMaterial="close" icon="close"></Link>
+                <Link popupClose=".vistos-popup" className="close" iconMaterial="add" icon="add"></Link>
                 <h1>Destacado</h1>
-                {
-                    props.newsInfo != undefined ?
-                        props.newsInfo.map((articulo, i) => {
-                            return (<DestItem image={true} key={i} articulo={articulo} />)
-                        }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
-                }
+                <Block className="news-cont">
+                    {
+                        props.newsInfo != undefined ?
+                            props.newsInfo.map((articulo, i) => {
+                                return (<DestItem image={true} key={i} articulo={articulo} />)
+                            }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
+                    }
+                </Block>
             </Popup>
         </Block>
     );
