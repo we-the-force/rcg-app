@@ -11,7 +11,9 @@ import { BusquedaPage } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
-    PageContent
+    PageContent,
+    Card,
+    CardHeader
 } from 'framework7-react';
 
 export default function Busqueda(props) {
@@ -58,7 +60,7 @@ export default function Busqueda(props) {
 
     if (loading) return "loading...";
     if (error) return `Error! ${error.message}`;
-
+    console.log(searchResults);
     return (
         <Page pageContent={false} name="busqueda">
             <PageContent>
@@ -74,7 +76,21 @@ export default function Busqueda(props) {
                         <Block className="center_pan">
                             {/* aqui va el panel central */}
                             {/* {console.log("Pasandole los articulos al panel como no", searchResults)} */}
-                            <CategoriaPanel articulos={searchResults} categoria={"Resultados"}/>
+                            {
+                                (searchResults.length > 0) &&
+                                <CategoriaPanel articulos={searchResults} categoria={"Resultados"}/>
+                            }
+                            {
+                                (searchResults.length === 0) &&
+                                <Block className="categoria_panel center_panel">
+                                    <Card className="head">
+                                        <CardHeader>Resultados</CardHeader>
+                                    </Card>
+                                    <Card>
+                                        <p>Tu busqueda no obtuvo resultados, intenta con diferentes terminos</p>
+                                    </Card>
+                                </Block>
+                            }
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros} />

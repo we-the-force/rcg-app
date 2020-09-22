@@ -20,7 +20,6 @@ export default class RadioPanel extends Component {
     
     constructor(props) {
         super(props);
-        console.log("Radio-Panel: ", props);
         this.state = {
             radioURL: props.station.source_url,
             url: props.station.source_url,
@@ -62,7 +61,7 @@ export default class RadioPanel extends Component {
                     sabado: []
                 }
             };
-            console.log("Empty programacion: ", this.programacion);
+            // console.log("Empty programacion: ", this.programacion);
         }
 
         if (props.station != undefined)
