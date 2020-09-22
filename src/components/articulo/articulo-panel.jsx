@@ -108,7 +108,7 @@ export default class ArticuloPanel extends Component {
                             </Block>
                             <Block>
                                 Comentario
-                                <div className="fb-comments" data-href={`http://${window.location.hostname}:8080/articulo/${this.props.articulo.url}/`} data-numposts="4" mobile="true" data-width=""></div>
+                                <div className="fb-comments" data-href={`http://${window.location.hostname}:8080/articulo/${this.props.articulo.url}/`} data-numposts="" data-width=""></div>
                             </Block>
                         </Block>
     
