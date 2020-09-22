@@ -55,7 +55,7 @@ export default function Home(props) {
             </Block>
             <Block className="right_pan">
               <RightPanel newsInfo={data.articulosDestacadosRaros} />
-              <RightPanelTablet />
+              <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
             </Block>
           </Block>
         </Block>

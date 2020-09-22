@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DestItem from '@/components/general/right_panel/destacado-item';
 import {
     Popup,
     Block,
@@ -23,7 +24,14 @@ export default function RightPanelTablet(props) {
         <Block className="right_panel_tablet">
             <Link popupOpen=".vistos-popup" onClick={e => { changeBackdropOpen(e) }} className="more" iconMaterial="add" icon="add"></Link>
             <Popup className="vistos-popup right-popup-tablet" onPopupClose={changeBackdropClose}>
-                Detacado/mas vistos
+                <Link popupClose=".vistos-popup" className="close" iconMaterial="close" icon="close"></Link>
+                <h1>Destacado</h1>
+                {
+                    props.newsInfo != undefined ?
+                        props.newsInfo.map((articulo, i) => {
+                            return (<DestItem image={true} key={i} articulo={articulo} />)
+                        }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
+                }
             </Popup>
         </Block>
     );
