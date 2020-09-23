@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HomeNewsCard from '../home-news-card.jsx';
+import NewsRelevantes from '@/components/cards_news/news_relevantes.jsx';
 import {
     Block,
     Card,
@@ -14,13 +15,30 @@ export default class HomePanel extends Component {
     render() {
         return (
             <Block className="home center_panel">
-                <Card>
-                    <CardHeader>Lo Mas Relevante</CardHeader>
-                    { this.props.newsInfo.articulosTop.map((articulo, i) => {
+                <Card className="relevantes_home">
+                    <CardHeader>
+                        <p className="title">Lo Mas Relevante</p> 
+                        <p className="link-more">Mostrar mas</p>
+                    </CardHeader>
+                    <Block id="grid1" className="grid-cont">
+                        <NewsRelevantes id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large"/>
+                    </Block>
+                    <Block id="grid2" className="grid-cont">
+                        <NewsRelevantes id="item1" className="mob-small tab-medium desk-medium"/>
+                        <NewsRelevantes id="item2" className="mob-small tab-medium desk-medium"/>
+                        <NewsRelevantes id="item3" className="mob-large-small tab-medium desk-medium"/>
+                    </Block>
+                    <Block id="grid3" className="grid-cont">
+                        <NewsRelevantes id="item1" className="tab-large desk-large-small"/>
+                        <NewsRelevantes id="item2" className="tab-large desk-small"/>
+                        <NewsRelevantes id="item3" className="desk-small"/>
+                        <NewsRelevantes id="item4" className="desk-large"/>
+                    </Block>
+                    {/* { this.props.newsInfo.articulosTop.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo}/>)
-                    })}
-                    <CardFooter>Mostrar mas</CardFooter>
+                    })} */}
                 </Card>
+
                 {/* aqui va un ad */}
                 <Card>
                     <CardHeader>Locales</CardHeader>

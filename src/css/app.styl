@@ -29,6 +29,7 @@
 @import './stylus/components/general/schedule.styl'
 @import './stylus/components/home/masthead.styl'
 @import './stylus/components/home/cards-home.styl'
+@import './stylus/components/cards_news/new_relevantes.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -95,7 +96,7 @@
 
     @media (min-width 640px)
       .center_pan
-        width auto
+        width calc(100% - 135px) !important
         padding-left 0px
 
       .left_pan
@@ -116,6 +117,7 @@
 
     .paneles
       .center_pan
+        width calc(100% - 410px) !important
         padding-right 0px
         padding-left 0px
 
