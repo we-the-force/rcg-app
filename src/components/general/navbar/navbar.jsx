@@ -4,8 +4,12 @@ import Desk from './nav_desktop';
 import { Navbar } from 'framework7-react';
 
 export default function Nav(props) {
+    // console.log("props: ", props.categorias);
+    // console.log("props.length: ", props.categorias.length);
     const categoria = props.categoria ? props.categoria : ''; 
-    const { categorias } = props;
+    const { categorias } = props.categorias != undefined ? props : {categorias: []};
+    // const { categorias } = props.categorias != undefined ? props : {categorias: [{nombre: "Error"}, {nombre: "En"}, {nombre: "Categorias"}, {nombre: ":c"}]};
+    // console.log("Categorias: ", categorias);
     // console.log("Navbar-categorias: ", categorias);
     const [categ_show, categ_pop, type] = useData(categorias);
     return (
