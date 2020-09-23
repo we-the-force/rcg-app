@@ -31,7 +31,7 @@
                 height 20px
                 width 20px
                 position relative
-                transition background
+                transition background 0.5s ease-in-out 0s
 
                 i
                     position absolute
@@ -40,10 +40,14 @@
                     transform translate(50%, 50%)
                     color white
                     font-size 20px
+                    transition color 0.5s ease-in-out 0s, transform 0.5s cubic-bezier(0.57, 0.76, 1, 1.49) 0.5s
 
-            /* &.modal-in
+            &.modal-in
                 .add
-                     */
+                    background white
+                    i
+                        color red
+                        transform translate(50%, 50%) rotate(45deg)
 
         .bottom-cont
             position absolute

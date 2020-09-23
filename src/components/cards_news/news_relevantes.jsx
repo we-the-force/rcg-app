@@ -16,7 +16,7 @@ export default function NewsRelevantes(props) {
             <img src={TestImage} alt="" />
             <Block className={`top-cont ${modal}`}>
                 <Link className="categoria upperscale">Locales</Link>
-                <a className="add" href="" onClick={()=>{setModal('modal-in')}}><Icon material="add" /></a>
+                <a className="add" href="" onClick={() => { setModal(modal == '' ? 'modal-in' : '') }}><Icon material="add" /></a>
             </Block>
             <Block className={`content ${modal}`}>
                 <p>Aqui va contenido cuado se despliegue</p>
