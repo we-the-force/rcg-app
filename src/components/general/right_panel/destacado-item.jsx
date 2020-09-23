@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import marked from 'marked';
 import IMG from '@/static/imgs/IMG_01.png'
 import {
     Block,
@@ -11,6 +12,7 @@ export default class DestItem extends Component {
     constructor(props) {
         super(props);
         this.state = {}
+        this.formattedDescription = marked(props.articulo.description);
     }
     render() {
         let bord = this.props.nobord ? 'nobord' : '';
@@ -28,7 +30,7 @@ export default class DestItem extends Component {
                     <BlockTitle>
                         {this.props.articulo.Titulo}
                     </BlockTitle>
-                    <p className="cont">{this.props.articulo.description}</p>
+                    <p className="cont" dangerouslySetInnerHTML={{__html: this.formattedDescription}}/>
                     <BlockFooter className="display-flex justify-content-space-between">
                         <p className="tag">Tag&nbsp;{
                             this.props.articulo.tags.map((tag, i) => {
