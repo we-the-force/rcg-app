@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import RCGlogo from '@/static/imgs/LOGO_negro_sobre_blanco.png';
 import img1 from '@/static/imgs/418464-PD8PXQ-214 1.png';
 import img2 from '@/static/imgs/fondo-sj-e1540342434825 1.png';
@@ -9,7 +9,7 @@ import {
     SwiperSlide,
     Block,
     BlockHeader,
-    BlockFooter
+    BlockFooter, Link
 } from 'framework7-react';
 export default class Masthead extends Component {
     constructor(props) {
@@ -17,81 +17,42 @@ export default class Masthead extends Component {
         this.state = {}
     }
     render() {
+        let articulos = this.props.articulos ? this.props.articulos : [''];
         return (
             <Block className="masthead">
-                <Block className="logo">
-                    <img src={RCGlogo} alt="" />
-                </Block>
-                <Swiper pagination params={{ loop: true }}>
-                    {
-                        this.props.articulos.map((bannerItem, i) => {
-                            return(
-                                <SwiperSlide key={i}>
-                                    <Block className="background">
-                                        <img src={`http://${window.location.hostname}:1337${bannerItem.articulo.cover.url}`} alt=""/>
-                                    </Block>
-                                    <Block className="content">
-                                        <BlockHeader className="categoria upperscale">{bannerItem.articulo.categoria.nombre}</BlockHeader>
-                                        <a className="text" href={`/articulo/${bannerItem.articulo.url}/`}>{bannerItem.articulo.Titulo}</a>
-                                        <BlockFooter>
-                                            <p className="autor">{bannerItem.articulo.autor.nombre}@</p> &nbsp;-&nbsp; <p className="fecha">{bannerItem.articulo.fecha}</p>
-                                        </BlockFooter>
-                                    </Block>
-                                </SwiperSlide>
-                            )
-                        })
-                    }
-
-                    {/* <SwiperSlide>
-                        <Block className="background">
-                            <img src={img1} alt=""/>
+                {articulos[0] !== '' &&
+                    <Fragment>
+                        <Block className="logo">
+                            <img src={RCGlogo} alt="" />
                         </Block>
-                        <Block className="content">
-                            <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                            <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
-                            </BlockFooter>
-                        </Block>
-                    </SwiperSlide> */}
-
-                    {/* <SwiperSlide>
-                        <Block className="background">
-                            <img src={img2} alt=""/>
-                        </Block>
-                        <Block className="content">
-                            <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                            <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
-                            </BlockFooter>
-                        </Block>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Block className="background">
-                            <img src={img3} alt=""/>
-                        </Block>
-                        <Block className="content">
-                            <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                            <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
-                            </BlockFooter>
-                        </Block>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Block className="background">
-                            <img src={img4} alt=""/>
-                        </Block>
-                        <Block className="content">
-                            <BlockHeader className="categoria uppercase">estatal</BlockHeader>
-                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                            <BlockFooter>
-                                <p className="autor">Nombre Reporter@</p> &nbsp;-&nbsp; <p className="fecha">11 Agosto 2020</p>
-                            </BlockFooter>
-                        </Block>
-                    </SwiperSlide> */}
-                </Swiper>
+                        <Swiper pagination params={{ loop: true }}>
+                            {
+                                articulos.map((bannerItem, i) => {
+                                    return (
+                                        <SwiperSlide key={i}>
+                                            <Block className="background">
+                                                <img src={`http://${window.location.hostname}:1337${bannerItem.articulo.cover.url}`} alt="" />
+                                                <Block className="label">
+                                                    <Link className="categoria upperscale">{bannerItem.articulo.categoria.nombre}</Link>
+                                                </Block>
+                                                <Block className="bottom-cont">
+                                                    <Block className="label-desk">
+                                                        <Link className="categoria upperscale">{bannerItem.articulo.categoria.nombre}</Link>
+                                                    </Block>
+                                                    <Link className="title" href={`/articulo/${bannerItem.articulo.url}/`}>{bannerItem.articulo.Titulo}</Link>
+                                                    <BlockFooter>
+                                                        <Link className="autor" href={'/autores'}>{bannerItem.articulo.autor.nombre}</Link>&nbsp;-&nbsp;
+                                                        <p className="fecha">{bannerItem.articulo.fecha}</p>
+                                                    </BlockFooter>
+                                                </Block>
+                                            </Block>
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
+                        </Swiper>
+                    </Fragment>
+                }
             </Block>
         );
     }
