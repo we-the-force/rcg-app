@@ -1,32 +1,32 @@
 .home .card
     margin 7.5px 0px
 
+    .card-header
+        margin 10px 4px
+        padding 0px
+        min-height unset
+        align-items baseline
+
+        p
+            margin 0px
+
+            &.title
+                float left
+                font font_2
+                text-transform capitalize
+                color #444444
+
+            &.link-more
+                float right
+                font font_6
+                text-align right
+                color #2AAAE0
+
+        &:after
+            content none
+
     &.relevantes_home
         padding 5px
-
-        .card-header
-            margin 10px 4px
-            padding 0px
-            min-height unset
-            align-items baseline
-
-            p
-                margin 0px
-
-                &.title
-                    float left
-                    font font_2
-                    text-transform capitalize
-                    color #444444
-
-                &.link-more
-                    float right
-                    font font_6
-                    text-align right
-                    color #2AAAE0
-
-            &:after
-                content none
 
         .grid-cont
             display grid
@@ -87,3 +87,25 @@
                     #item4
                         display block
                         grid-area cuatro
+
+    &.categoria
+        padding 5px
+
+        .grid-cont
+            display grid
+            grid-gap 10px
+            padding 4px
+            grid-template-columns auto auto
+
+            .grid-item
+                &:nth-child(1)
+                    grid-column 1 / span 2
+
+                &:nth-child(4),&:nth-child(5),&:nth-child(6),&:nth-child(7)
+                    display none
+
+        @media (min-width 640px)
+            .grid-cont
+                .grid-item
+                    &:nth-child(4),&:nth-child(5),&:nth-child(6),&:nth-child(7)
+                        display block

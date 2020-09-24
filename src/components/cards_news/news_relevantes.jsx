@@ -32,17 +32,3 @@ export default function NewsRelevantes(props) {
         </Block>
     );
 }
-{/* <a href={`/articulo/${this.props.articulo.url}/`}>
-    //Pa cuando le piques al click y te tenga que mandar a la pagina del articulo
-        //href={`/articulo/${this.props.articulo.url}`} 
-    <Block className="background">
-        <img src={`http://${window.location.hostname}:1337${this.props.articulo.cover.url}`} alt="" />
-    </Block>
-    <Block className="content">
-        <BlockHeader className="categoria uppercase">{this.props.articulo.categoria.nombre}</BlockHeader>
-        <p className="text">{this.props.articulo.Titulo}</p>
-        <BlockFooter>
-            <p className="autor">{this.props.articulo.autor.nombre}</p> &nbsp;-&nbsp; <p className="fecha">{this.props.articulo.fecha}</p>
-        </BlockFooter>
-    </Block>
-</a> */}
