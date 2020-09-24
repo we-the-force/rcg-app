@@ -23,31 +23,53 @@
                 text-transform capitalize
                 color red
 
-            .add
-                float right
-                margin 10px
-                border-radius 50%
-                background red
-                height 20px
-                width 20px
-                position relative
-                transition background 0.5s ease-in-out 0s
+        .add
+            position absolute
+            width 100%
+            height 100%
+            margin 0px
+            background red
+            padding 0px
+            z-index 10
+            transition clip-path 0.5s ease-out 0s, background 0.5s ease 0s
 
-                i
-                    position absolute
-                    top -50%
-                    left -50%
-                    transform translate(50%, 50%)
+            .content
+                z-index 1
+                width 100%
+                height 100%
+                padding 0px
+                display flex
+                justify-content center
+                align-items center
+
+                p
+                    font font_8
+                    text-transform capitalize
+                    color #191919
+                    padding 0px 15%
+                    display -webkit-box
+                    -webkit-line-clamp 5
+                    -webkit-box-orient vertical
+                    overflow hidden
+
+            .link
+                z-index 2
+                position absolute
+                top 0
+                right 0
+
+                .icon
                     color white
-                    font-size 20px
-                    transition color 0.5s ease-in-out 0s, transform 0.5s cubic-bezier(0.57, 0.76, 1, 1.49) 0.5s
+                    transition color 0.3s ease-in-out 0s, transform 0.5s cubic-bezier(0.57, 0.76, 1, 1.49) 0s
 
-            &.modal-in
-                .add
-                    background white
-                    i
-                        color red
-                        transform translate(50%, 50%) rotate(45deg)
+        &.modal-in
+            .add
+                background white
+                clip-path circle(140% at top 20px right 20px)
+
+                .link .icon
+                    color red
+                    transform rotate(-45deg)
 
         .bottom-cont
             position absolute
@@ -98,6 +120,19 @@
 
     @media (max-width 639px)
         .NewsRel_Cont
+            .add
+                clip-path circle(10px at top 20px right 20px)
+
+                .link
+                    margin 10px
+
+                .icon
+                    font-size 20px
+
+            &.modal-in
+                .add
+                    clip-path circle(130% at top 20px right 20px)
+
             &.mob-large-sm2
                 &:after
                     padding-top calc(833 / 1000 * 100%)
@@ -120,13 +155,14 @@
                 .categoria
                     margin 15px
 
-                .add
-                    height 22px
-                    width 22px
-                    margin 15px
+            .add
+                clip-path circle(12px at top 24px right 24px)
 
-                    i
-                        font-size 22px
+                .link
+                    margin 12px
+
+                .icon
+                    font-size 24px
 
             .bottom-cont
                 margin-left 15px
@@ -155,13 +191,14 @@
                 .categoria
                     margin 15px
 
-                .add
-                    margin 15px
-                    height 24px
-                    width 24px
+            .add
+                clip-path circle(12.5px at top 24.5px right 24.5px)
 
-                    i
-                        font-size 24px
+                .link
+                    margin 12px
+
+                .icon
+                    font-size 25px
 
             .bottom-cont
                 margin-left 17px
@@ -191,9 +228,6 @@
             &.desk-small
                 .top-cont
                     .categoria
-                        margin 13px
-
-                    .add
                         margin 13px
 
                 &:after
