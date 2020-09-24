@@ -20,13 +20,8 @@ import {
 
 // export default function ArticuloPanel(props) {
 export default class ArticuloPanel extends Component {
-    // console.log("ArticuloPanel coso");
-    // console.log(props);
-    // console.log(props);
     constructor(props) {
         super(props);
-        // console.log("Props Description: ", props.articulo.description);
-        // console.log("Props Articulo: ", props.articulo);
         // var MarkdownIt = require('markdown-it');
         // this.md = new MarkdownIt();
         // this.result = this.md.render(props.articulo.description);

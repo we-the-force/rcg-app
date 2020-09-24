@@ -275,6 +275,19 @@ mutation UpdateArticulo($id: ID!, $visitas: Int) {
   }
 }
 
+query CalcaPage {
+  radio_stations: canalEstacions(where: {Radio_TV: false}){
+    ...StationData
+  },
+  tv_channels: canalEstacions(where: {Radio_TV: true}){
+    ...StationData
+  },
+  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
+  {
+    ...ArticulosData
+  }
+}
+
 fragment StationData on CanalEstacion {
   nombre
   url

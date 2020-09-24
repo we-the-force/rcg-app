@@ -26,7 +26,6 @@ export default function AvisoPrivacidad(props) {
 
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
-    console.log("Aviso Privacidad Data: ", data);
     return (
         <Page pageContent={false} name="nosotros">
             <PageContent>
