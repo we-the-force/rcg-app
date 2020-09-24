@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
 import {
     Block,
-    Searchbar,
     Card,
     CardHeader,
     List,
@@ -11,18 +10,16 @@ import {
 
 export default class RightPanel extends Component {
     articuloSearch = (e) => {
-        if (e.key === "Enter")
-        {
+        console.log(e);
+        if (e.key === "Enter") {
             //TODO: ToLowercase como no
             let searchValue = e.target.value.trim();
-            if (searchValue !== "")
-            {
+            if (searchValue !== "") {
                 // console.log(encodeURI(e.target.value));
                 // console.log(this.$f7.views.main.router.navigate);
                 this.$f7.views.main.router.navigate(`/busqueda/${encodeURI(e.target.value)}`);
             }
-            else
-            {
+            else {
                 // console.log("Ta vacio que quieres que busque lmao");
             }
         }
@@ -36,9 +33,13 @@ export default class RightPanel extends Component {
         return (
             <Block className="right_panel_cont">
                 <Block className="search_block">
-                    {/* {console.log(this)} */}
-                    {/* <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false} onSearchbarSearch={this.aaah}/> */}
-                    <input id="searchBar" type="text" onKeyPress={this.articuloSearch}/>
+                    <Block className="search_cont">
+                        <input placeholder="Buscar" onChange={(e) => { console.log(e) }} onKeyPress={e => this.articuloSearch(e)} />
+                        <span className="material-icons icon-image-preview">
+                            search
+                        </span>
+                    </Block>
+                    {/* <input id="searchBar" type="text" onKeyPress={this.articuloSearch} /> */}
                     <Block className="ads square"></Block>
                 </Block>
                 <Block className="right_panel_down">
@@ -47,10 +48,10 @@ export default class RightPanel extends Component {
                             Destacado
                         </CardHeader>
                         {
-                            this.props.newsInfo != undefined ? 
-                            this.props.newsInfo.map((articulo, i) => {
-                                return (<DestItem image={true} key={i} articulo={articulo}/>)
-                            }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
+                            this.props.newsInfo != undefined ?
+                                this.props.newsInfo.map((articulo, i) => {
+                                    return (<DestItem image={true} key={i} articulo={articulo} />)
+                                }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
                         }
                         {/* <DestItem image={true}/> */}
                         {/* <DestItem image={true} />
