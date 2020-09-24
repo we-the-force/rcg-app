@@ -5,6 +5,10 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import ContactoPanel from '@/components/estaticas/contacto-panel';
+
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
+
 import {useQuery} from '@apollo/client';
 import {AboutUsPage} from '@/graphql/queries.graphql';
 import {
@@ -38,10 +42,16 @@ export default function AboutUs(props) {
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
+                            <LeftPanelTablet newsInfo={data.articulosDestacadosRaros} />
                         </Block>
                         <Block className="center_pan">
                             {/* aqui va el panel central */}
                             {/* <AboutUsPanel nosotrosInfo={data.nosotrosInfo}/> */}
+                            <ContactoPanel/>
+                        </Block>
+                        <Block className="right_pan">
+                            <RightPanel newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
                         </Block>
                     </Block>
                 </Block>
