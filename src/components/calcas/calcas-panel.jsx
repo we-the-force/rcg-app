@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useQuery, gql, useMutation } from '@apollo/client';
 import {
     Block,
     Card,
@@ -8,11 +9,39 @@ import {
     f7
 } from 'framework7-react';
 
-export default function CalcasPanel(props) {
-
-    function handleCalcaSubmit(e) {
-        if (document.getElementById("calca-privacy").checked)
+const UPDATE_CALCA = gql`
+    mutation CreateCalca($nombre: String! $dir: String! $ciudad: String! $tel: String! $serial: String!) {
+        createCalca(
+            input: {
+            data: {
+                nombre: $nombre
+                direccion: $dir
+                ciudad: $ciudad
+                telefono: $tel
+                numero_calca: $serial
+            }
+            }
+        )
         {
+            calca {
+            nombre
+            direccion
+            ciudad
+            telefono
+            numero_calca
+            }
+        }
+    }
+`;
+
+export default function CalcasPanel(props) {
+    const [createCalca] = useMutation(UPDATE_CALCA);
+
+    var isUpdating = false;
+    function handleCalcaSubmit(e) {
+        if (document.getElementById("calca-privacy").checked && !isUpdating)
+        {
+            isUpdating = true;
             let requestValue = {
                 name: (document.getElementById("calca-name").value).trim(),
                 address: (document.getElementById("calca-address").value).trim(),
@@ -25,10 +54,29 @@ export default function CalcasPanel(props) {
 
             if (isRequestValid.result)
             {
+                /*
+                    Para las calcas:
+                        Se pueden mas de una por nombre? Que tal por telefono?
+                        El serial es alfanumerico?
+                */
 
+                let potato = createCalca({
+                    variables: {
+                        "nombre": requestValue.name,
+                        "dir": requestValue.address,
+                        "ciudad": requestValue.city,
+                        "tel": requestValue.phone,
+                        "serial": requestValue.serial 
+                    }}).then((res) => {
+                        isUpdating = false;
+                        console.log("Inside promise then :D", res);
+                    });
             }
             else
             {
+                isUpdating = false;
+                // f7.methods.alert();
+                // f7.methods.alert(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
                 console.log(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
             }
 
@@ -36,7 +84,14 @@ export default function CalcasPanel(props) {
         }
         else
         {
-            console.log("Acepta los terminos prro");
+            if (!isUpdating)
+            {
+                console.log("Acepta los terminos prro");
+            }
+            else
+            {
+                console.log("Esta haciendo el mutation");
+            }
         }
     }
     function validateData(calcaRequest)
@@ -45,7 +100,7 @@ export default function CalcasPanel(props) {
             result: true,
             message: ""
         }
-        let errors;
+        let errors = 0;
 
         if (calcaRequest.name === "")
         {
