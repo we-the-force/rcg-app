@@ -45,7 +45,7 @@ export default class AutorPanel extends Component {
                     {
                         this.props.autorInfo.articulos.map((articulo, key) => {
                             return (
-                                  <NewsCard key={key} articulo={articulo}/>
+                                <NewsCard key={key} articulo={articulo}/>
                             );
                         })
                     }                    

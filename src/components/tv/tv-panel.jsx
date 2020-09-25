@@ -1,9 +1,9 @@
 import ScheduleTable from '@/components/general/schedule-table';
 import ReactPlayer from 'react-player';
 import React, { Component } from 'react';
-import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
 import Icon_TV from '@/static/icons/tv_dark.png';
 import bk_img from '@/static/imgs/Rcg.png';
+import SwiperNews from '@/components/general/swiper_news.jsx';
 import moment from 'moment';
 import {
     Card,
@@ -165,7 +165,7 @@ export default class TVPanel extends Component {
                     </Block> */}
                 </Card>
                 <Card className="recomendados-card">
-                    <RecomendacionSwiper />
+                    <SwiperNews />
                 </Card>
             </Block>
         );

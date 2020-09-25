@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import HomeNewsCard from '../home-news-card.jsx';
 import NewsRelevantes from '@/components/cards_news/news_relevantes.jsx';
 import NewsHome from '@/components/cards_news/news_home.jsx';
+import SwiperNews from '@/components/general/swiper_news.jsx';
 import {
     Block,
     Card,
-    CardHeader,
-    CardFooter
+    CardHeader
 } from 'framework7-react';
 
 export default class HomePanel extends Component {
@@ -147,9 +146,9 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
-                    {this.props.newsInfo.articulosEspectaculo.map((articulo, i) => {
+                    {/* {this.props.newsInfo.articulosEspectaculo.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })}
+                    })} */}
                 </Card>
                 {/* aqui va un ad */}
                 <Card className="categoria">

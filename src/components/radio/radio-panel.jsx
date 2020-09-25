@@ -1,6 +1,6 @@
 import ScheduleTable from '@/components/general/schedule-table';
 import ReactPlayer from 'react-player';
-import RecomendacionSwiper from '@/components/general/recomendacionSwiper'
+import SwiperNews from '@/components/general/swiper_news.jsx';
 import Icon_Radio from '@/static/icons/microphone_dark.png';
 import Img_106 from '@/static/imgs/escuchadigital 1.png';
 import Img_103 from '@/static/imgs/fondo-sj-e1540342434825 1.png';
@@ -249,7 +249,7 @@ export default class RadioPanel extends Component {
                 </Card>
                 {/* tarjewtita recomendados */}
                 <Card className="recomendados-card">
-                    <RecomendacionSwiper />
+                    <SwiperNews />
                 </Card>
             </Block>
         );

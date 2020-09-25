@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import NotaRecomandada from '../nota-recomendada';
+import NewSwiper from '@/components/cards_news/news_swiper.jsx';
 import {
     Block,
     Swiper,
     SwiperSlide
 } from 'framework7-react';
 
-export default class RecomendacionSwiper extends Component {
+export default class SwiperNews extends Component {
     constructor() {
         super();
         this.state = {}
@@ -28,31 +28,31 @@ export default class RecomendacionSwiper extends Component {
                         params={{ slidesPerView: 3, spaceBetween: 10 }}
                     >
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <NotaRecomandada />
+                            <NewSwiper />
                         </SwiperSlide>
                     </Swiper>
                 </Block>

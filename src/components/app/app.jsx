@@ -86,7 +86,6 @@ export default class extends React.Component {
   }
 
   render() {
-
     let tablet = false, desktop = false, mobile = false;
     let w = window.innerWidth;
     if (w >= 1024) {

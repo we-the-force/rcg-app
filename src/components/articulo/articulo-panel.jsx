@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NotaRecomandada from '@/components/nota-recomendada.jsx';
+import SwiperNews from '@/components/general/swiper_news.jsx';
 import marked from 'marked';
 import TWIconx3 from '@/static/icons/TW_Icon_x3.png';
 import FBIconx3 from '@/static/icons/FB_Icon_x3.png';
@@ -133,48 +133,7 @@ export default class ArticuloPanel extends Component {
                         <Block className="ads bar">
                         </Block>
                     </Block>
-                    <Block className="recomendados display-flex flex-direction-column align-content-stretch	">
-                        <Block className="head display-flex justify-content-space-between align-items-center">
-                            <h1>Te Recomandamos</h1>
-                            <a href="">Mostrar mas</a>
-                        </Block>
-                    </Block>
-                    <Block className="swiper_cont">
-                        <Swiper
-                            init
-                            navigation
-                            scrollbar
-                            params={{ slidesPerView: 3, spaceBetween: 10 }}
-                        >
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <NotaRecomandada />
-                            </SwiperSlide>
-                        </Swiper>
-                    </Block>
+                    <SwiperNews />
                 </Card>
             </Block>
         )
