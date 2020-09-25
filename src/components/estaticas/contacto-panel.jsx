@@ -21,7 +21,7 @@ import {
 export default function ContactoPage(props) {
 
     var isRequesting = false;
-    function handleContactSubmit(e) {
+    async function handleContactSubmit(e) {
         if (!isRequesting){
             let requestObject = {
                 name: (document.getElementById("formulario-name").value).trim(),
@@ -41,9 +41,18 @@ export default function ContactoPage(props) {
                         El formulario se envia directo a la personita?
                         Se van a guardar un registro de intentos de contactos?
                 */
+               let asdasd = await f7.request({
+                   url: `http://${window.location.hostname}:1337/request`,
+                   method: "POST",
+                   data: {
+                       requestObject
+                   }
+               });
+               console.log(`Wea asdasd: `, asdasd);
             }
             else
             {
+                f7.dialog.alert(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
                 console.log(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
             }
         }

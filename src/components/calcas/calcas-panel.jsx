@@ -34,6 +34,7 @@ const UPDATE_CALCA = gql`
     }
 `;
 
+
 export default function CalcasPanel(props) {
     const [createCalca] = useMutation(UPDATE_CALCA);
 
@@ -70,6 +71,9 @@ export default function CalcasPanel(props) {
                     }}).then((res) => {
                         isUpdating = false;
                         console.log("Inside promise then :D", res);
+                        createPopup();
+                    }).catch((err) => {
+                        console.log("Error inside of createCalca", err);
                     });
             }
             else
@@ -137,6 +141,36 @@ export default function CalcasPanel(props) {
 
         return auxResponse;
     }
+
+
+    function createPopup() {
+        console.log("Create Popup:\r\n", f7.popup.create);
+        var pop = f7.popup.create({
+          content: `
+            <div class="popup">
+              <div class="page">
+                <div class="navbar">
+                  <div class="navbar-bg">
+                  <div class="navbar-inner">
+                    <div class="title">Dynamic Popup</div>
+                    <div class="right"><a href="#" class="link popup-close">Close</a></div>
+                  </div>
+                </div>
+                <div class="page-content">
+                  <div class="block">
+                    <p>This popup was created dynamically</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus mauris leo, eu bibendum neque congue non. Ut leo mauris, eleifend eu commodo a, egestas ac urna. Maecenas in lacus faucibus, viverra ipsum pulvinar, molestie arcu. Etiam lacinia venenatis dignissim. Suspendisse non nisl semper tellus malesuada suscipit eu et eros. Nulla eu enim quis quam elementum vulputate. Mauris ornare consequat nunc viverra pellentesque. Aenean semper eu massa sit amet aliquam. Integer et neque sed libero mollis elementum at vitae ligula. Vestibulum pharetra sed libero sed porttitor. Suspendisse a faucibus lectus.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `.trim(),
+        });
+      
+      // Open it
+      pop.open();
+    }
+
     return (
         <Block className="calca_panel center_panel">
             <Card className="head">
