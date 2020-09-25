@@ -1,0 +1,215 @@
+.NewsBusqueda_cont
+    padding 5px
+
+    .background
+        background #F0F0F0
+        border-radius 6px
+        padding 5px
+        display flex
+
+        .img_cont
+            width 30%
+            padding 0px
+            margin 0px
+
+            .categoria
+                position absolute
+                margin 7px
+                padding-right 15px
+                padding-left 5px
+                background white
+                font font_14
+                text-transform capitalize
+                color red
+                z-index 1
+
+            img
+                position absolute
+                border-radius 6px
+                width 100%
+                height 100%
+                object-fit cover
+
+            &:after
+                content ''
+                display block
+                padding-top calc(110 / 110 * 100%)
+
+        .content
+            width 70%
+            padding 0px
+            margin 0px
+            padding-left 8px
+
+            .info
+                display flex
+                font font_6
+                text-transform capitalize
+                color #BCBCBC
+                margin 0px
+                margin-bottom 1vw
+                padding 0px
+
+                .autor
+                    max-width max-content
+                    width 55%
+                    font @font
+                    color red
+                    text-transform @text-transform
+                    margin 0px
+                    display -webkit-box
+                    -webkit-line-clamp 1
+                    -webkit-box-orient vertical
+                    overflow hidden
+
+                .fecha
+                    font @font
+                    color @color
+                    text-transform @text-transform
+                    margin 0px
+
+            .title
+                font font_14
+                text-transform capitalize
+                color #242424
+                margin 0px
+                margin-bottom 0.7vw
+                padding 0px
+                display -webkit-box
+                -webkit-line-clamp 2
+                -webkit-box-orient vertical
+                overflow hidden
+
+            .preview
+                font font_6
+                text-align justify
+                text-transform capitalize
+                color #404040
+                margin 0px
+                margin-bottom 0.7vw
+                padding 0px
+                display -webkit-box
+                -webkit-line-clamp 3
+                -webkit-box-orient vertical
+                overflow hidden
+
+            @media (min-width 360px)
+                .info
+                    margin-bottom 1vw
+
+                .title
+                    margin-bottom 1vw
+
+                .preview
+                    margin-bottom 1vw
+                    -webkit-line-clamp 4
+
+            @media (min-width 460px)
+                padding-right 10px
+
+                .info
+                    margin-bottom 1.2vw
+
+                .title
+                    margin-bottom 1.4vw
+
+                .preview
+                    margin-bottom 1.4vw
+                    -webkit-line-clamp 5
+
+            @media (min-width 520px)
+                padding-right 15px
+
+                .info
+                    margin-bottom 1.5vw
+
+                .title
+                    margin-bottom 1.8vw
+
+                .preview
+                    margin-bottom 1.8vw
+                    -webkit-line-clamp 6
+
+            .more
+                position absolute
+                left 0
+                top 0
+                width 100%
+                height 100%
+                opacity 0
+
+    @media (min-width 640px)
+        padding 10px
+
+        .background
+            padding 0px
+
+            .img_cont
+                img
+                    border-radius 6px 0px 0px 6px
+
+            .content
+                padding 13px 17px 0px 17px
+
+                .info
+                    margin-bottom 1vw
+
+                .title
+                    margin-bottom 1vw
+                    font font_16
+
+                .preview
+                    -webkit-line-clamp 3
+                    margin-bottom 1vw
+                    font font_8
+
+                .more
+                    width fit-content
+                    height fit-content
+                    top unset
+                    left unset
+                    bottom 0
+                    right 0
+                    opacity 1
+                    font font_22
+                    text-align right
+                    color #2AAAE0
+                    margin 5px 10px
+
+    @media (min-width 700px)
+        .background .content
+            .preview
+                -webkit-line-clamp 4
+
+    @media (min-width 750px)
+        .background .content
+            .preview
+                -webkit-line-clamp 5
+
+    @media (min-width 800px)
+        .background .content
+            .preview
+                -webkit-line-clamp 6
+
+    @media (min-width 850px)
+        .background .content
+            .preview
+                -webkit-line-clamp 7
+
+    @media (min-width 1024px)
+        .background
+            .content
+                .preview
+                    -webkit-line-clamp 5
+
+    @media (min-width 1100px)
+        .background
+            .content
+                .preview
+                    -webkit-line-clamp 6
+
+    @media (min-width 1200px)
+        .background
+            .content
+                .preview
+                    -webkit-line-clamp 7
