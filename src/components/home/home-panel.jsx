@@ -54,6 +54,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosLocal.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })} */}
@@ -72,6 +74,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosEstatal.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })} */}
@@ -90,6 +94,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosNacional.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })} */}
@@ -109,6 +115,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosInternacional.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })} */}
@@ -127,6 +135,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosDeporte.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })}
@@ -146,6 +156,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosEspectaculo.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })} */}
@@ -165,6 +177,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosDestacados.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })}
@@ -184,6 +198,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosFundacion.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })}
@@ -203,6 +219,8 @@ export default class HomePanel extends Component {
                         <NewsHome className="grid-item" />
                         <NewsHome className="grid-item" />
                     </Block>
+
+                    <SwiperNews wot/>
                     {/* {this.props.newsInfo.articulosSaludCultura.map((articulo, i) => {
                         return (<HomeNewsCard key={i} articulo={articulo} />)
                     })}

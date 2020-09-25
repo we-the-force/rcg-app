@@ -12,9 +12,11 @@ export default class SwiperNews extends Component {
         this.state = {}
     }
     render() {
+        const { wot } = this.props;
+        let display = wot ? 'display-none' : '';
         return (
             <Fragment>
-                <Block className="recomendados display-flex flex-direction-column align-content-stretch	">
+                <Block className={`recomendados display-flex flex-direction-column align-content-stretch ${display}`}>
                     <Block className="head display-flex justify-content-space-between align-items-center">
                         <h1>Te Recomandamos</h1>
                         <a href="">Mostrar mas</a>
