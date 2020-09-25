@@ -114,6 +114,7 @@ export default class extends React.Component {
     client.query({
       query: AppQuery
     }).then(res => {
+      console.log('una vez');
       this.setState((prevState) => {
         return {
           ...prevState,

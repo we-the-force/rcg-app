@@ -33,12 +33,15 @@ export default function Home(props) {
   //pagina cargando
   if (error) return `Error! ${error.message}`;
   //error en la pagina 
+
+  console.log(data);
+  const { Banner } = data;
   return (
     <Page pageContent={false} name="home">
       <PageContent>
         {/* ads */}
         {/* masthead */}
-        <Masthead home articulos={data.articulosBanner} />
+        <Masthead articulos={data.articulosBanner} />
         {/* Top Navbar */}
         <Nav home categorias={f7.methods.getCategorias()} />
         {/* Page content */}

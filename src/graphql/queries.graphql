@@ -1,139 +1,153 @@
-query AppQuery{
-  categorias{
-    nombre
-  }
-}
-
-query CategoriaPage($categoria: String){
-  articulos(where: { categoria: { nombre: $categoria }}){
-    ...ArticulosData
-  },
+query AppQuery {
   categorias {
     nombre
-  },
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
-    ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
-    ...StationData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
-    ...ArticulosData
   }
 }
 
-query ArticuloPage($url: String){
-  articulos(where: {url: $url}){
-    ...ArticulosData
-  },
+query HomePage {
   categorias {
     nombre
-  },
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
-    ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
-    ...StationData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
-    ...ArticulosData
+    articulos(sort: "fecha:desc", limit: 15) {
+      ...ArticulosData
+    }
   }
-}
-
-query TopArticulos{
-  articulos(where: {relevante: true}){
-    ...ArticulosData
-  }
-}
-
-query HomePage{
-  categorias{
-    nombre
-  },
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
-    ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
-    ...StationData
-  },
-  articulosBanner: banners(sort: "posicion:desc", limit: 10){
+  Banner: banners(sort: "posicion:desc", limit: 10) {
     posicion
-    articulo{ ...ArticulosData}
-  },
-  articulosTop: articulos(sort: "fecha:desc", where: {relevante: true}, limit: 9){
+    articulo {
+      ...ArticulosData
+    }
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  articulosTop: articulos(
+    sort: "fecha:desc"
+    where: { relevante: true }
+    limit: 8
+  ) {
     ...ArticulosData
-  },
-  articulosLocal: articulos(where: {categoria: {id:1}} limit: 5){
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
-  },
-  articulosEstatal: articulos(where: {categoria: {id:2}} limit: 5){
-    ...ArticulosData
-  },
-  articulosNacional: articulos(where: {categoria: {id:3}} limit: 5){
-    ...ArticulosData
-  },
-  articulosInternacional: articulos(where: {categoria: {id:4}} limit: 5){
-    ...ArticulosData
-  },
-  articulosDeporte: articulos(where: {categoria: {id:5}} limit: 5){
-    ...ArticulosData
-  },
-  articulosEspectaculo: articulos(where: {categoria: {id:6}} limit: 5){
-    ...ArticulosData
-  },
-  articulosDestacados: articulos(where: {categoria: {id:7}} limit: 5){
-    ...ArticulosData
-  },
-  articulosFundacion: articulos(where: {categoria: {id:8}} limit: 5){
-    ...ArticulosData
-  },
-  articulosSaludCultura: articulos(where: {categoria: {id:9}} limit: 5){
-    ...ArticulosData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
+  }
+  masVistos: articulos(sort: "visitas:desc", limit: 5) {
     ...ArticulosData
   }
 }
 
-query BusquedaPage($terms: [String]){
-  searchTitulo: articulos(where: {Titulo_contains: $terms}) {
-    ...ArticulosData
-  },
-  # searchTag: articulos(where: {tags: {nombre_in: $terms}}) {
-  searchTag: articulos(where: {tags: {nombre_contains: $terms}}) {
+query BorraEsteMasAdelante{
+  articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
     ...ArticulosData
   }
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  articulosEstatal: articulos(where: { categoria: { id: 2 } }, limit: 5) {
+    ...ArticulosData
+  }
+  articulosNacional: articulos(where: { categoria: { id: 3 } }, limit: 5) {
+    ...ArticulosData
+  }
+  articulosInternacional: articulos(where: { categoria: { id: 4 } }, limit: 5) {
+    ...ArticulosData
+  }
+  articulosDeporte: articulos(where: { categoria: { id: 5 } }, limit: 5) {
+    ...ArticulosData
+  }
+  articulosEspectaculo: articulos(where: { categoria: { id: 6 } }, limit: 5) {
+    ...ArticulosData
+  }
+  articulosDestacados: articulos(where: { categoria: { id: 7 } }, limit: 5) {
+    ...ArticulosData
+  }
+  articulosFundacion: articulos(where: { categoria: { id: 8 } }, limit: 5) {
+    ...ArticulosData
+  }
+  articulosSaludCultura: articulos(where: { categoria: { id: 9 } }, limit: 5) {
+    ...ArticulosData
+  }
+}
+
+query CategoriaPage($categoria: String) {
+  articulos(where: { categoria: { nombre: $categoria } }) {
+    ...ArticulosData
+  }
+  categorias {
+    nombre
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+    ...ArticulosData
+  }
+}
+
+query ArticuloPage($url: String) {
+  articulos(where: { url: $url }) {
+    ...ArticulosData
+  }
+  categorias {
+    nombre
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+    ...ArticulosData
+  }
+}
+
+query TopArticulos {
+  articulos(where: { relevante: true }) {
+    ...ArticulosData
+  }
+}
+
+query BusquedaPage($terms: [String]) {
+  searchTitulo: articulos(where: { Titulo_contains: $terms }) {
+    ...ArticulosData
+  }
+  # searchTag: articulos(where: {tags: {nombre_in: $terms}}) {
+  searchTag: articulos(where: { tags: { nombre_contains: $terms } }) {
+    ...ArticulosData
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
 }
 
 query AutoresPage {
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
-  },
+  }
   autores: autors {
     id
     nombre
-    img {url}
-    articulos {id}
+    img {
+      url
+    }
+    articulos {
+      id
+    }
     twitter_link
     facebook_link
     instagram_link
@@ -141,91 +155,93 @@ query AutoresPage {
 }
 
 query AutorPage($autorID: String) {
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
-  autorInfo: autors(where: {id: $autorID}) {
+  }
+  autorInfo: autors(where: { id: $autorID }) {
     id
     nombre
-    img {url}
-    articulos {...ArticulosData}
-    twitter_link
-    facebook_link
-    instagram_link
-  },
-  autores: autors {
-    id
-    nombre
-    img {url}
-    articulos {id}
+    img {
+      url
+    }
+    articulos {
+      ...ArticulosData
+    }
     twitter_link
     facebook_link
     instagram_link
   }
-}
-
-query CategoriasNavbar {
-  categorias {
+  autores: autors {
+    id
     nombre
+    img {
+      url
+    }
+    articulos {
+      id
+    }
+    twitter_link
+    facebook_link
+    instagram_link
   }
 }
 
 query SearchArticulosByTag($tags: [String]) {
-  articulos(where: {tags: {nombre_in: $tags}}) {
+  articulos(where: { tags: { nombre_in: $tags } }) {
     ...ArticulosData
   }
 }
 
-query SchedulePage($station: String, $date: String){
-  categorias{
+query SchedulePage($station: String, $date: String) {
+  categorias {
     nombre
-  },
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
-  programacionSemanas(where: {canal_estacion: { url: $station } fecha_inicio_gte: $date} sort: "fecha_inicio:asc"){
+  }
+  programacionSemanas(
+    where: { canal_estacion: { url: $station }, fecha_inicio_gte: $date }
+    sort: "fecha_inicio:asc"
+  ) {
     ...ScheduleData
     # id
     # programacion {
     #   lunes{programa{Nombre}}
     # }
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
 }
 
 query NotFoundPage {
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
 }
 
 query AboutUsPage {
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
-  },
+  }
   nosotrosInfo: nosotro {
     descripcion
     info_mid
@@ -234,12 +250,12 @@ query AboutUsPage {
 }
 
 query DerechoReplicaPage {
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
+  }
   contactoInfo: derechoDeReplica {
     nombre
     direccion
@@ -249,25 +265,19 @@ query DerechoReplicaPage {
 }
 
 query AvisoPrivacidadPage {
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
+  }
   avisoPrivacidad: avisoDePrivacidad {
     descripcion
   }
 }
 
 mutation UpdateArticulo($id: ID!, $visitas: Int) {
-  updateArticulo(
-    input: {
-      where: {id: $id}
-      data: {visitas: $visitas}
-    }
-  )
-  {
+  updateArticulo(input: { where: { id: $id }, data: { visitas: $visitas } }) {
     articulo {
       id
       visitas
@@ -276,14 +286,13 @@ mutation UpdateArticulo($id: ID!, $visitas: Int) {
 }
 
 query CalcaPage {
-  radio_stations: canalEstacions(where: {Radio_TV: false}){
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
-  },
-  tv_channels: canalEstacions(where: {Radio_TV: true}){
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
-  },
-  articulosDestacadosRaros: articulos(sort: "fecha:desc",  limit: 5)
-  {
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
 }
@@ -292,41 +301,45 @@ fragment StationData on CanalEstacion {
   nombre
   url
   source_url
-  logo {url}
+  logo {
+    url
+  }
   descripcion
   Radio_TV
 }
 
 fragment ArticulosData on Articulo {
-  id 
+  id
   url
-  Titulo 
+  Titulo
   autor {
     nombre
-  } 
-  fecha 
+  }
+  fecha
   cover {
     url
-  } 
-  description 
-  visitas 
+  }
+  description
+  visitas
   tags {
     nombre
-  } 
+  }
   categoria {
-    nombre 
+    nombre
     id
-  } 
-  comentarios { 
+  }
+  comentarios {
     valor
   }
 }
 
-fragment ScheduleData on ProgramacionSemana{
+fragment ScheduleData on ProgramacionSemana {
   id
-  canal_estacion { nombre }
+  canal_estacion {
+    nombre
+  }
   programacion {
-    lunes{
+    lunes {
       hora_inicio
       hora_final
       programa {
@@ -334,7 +347,7 @@ fragment ScheduleData on ProgramacionSemana{
         Descripcion
       }
     }
-    martes{
+    martes {
       hora_inicio
       hora_final
       programa {
@@ -342,7 +355,7 @@ fragment ScheduleData on ProgramacionSemana{
         Descripcion
       }
     }
-    miercoles{
+    miercoles {
       hora_inicio
       hora_final
       programa {
@@ -350,7 +363,7 @@ fragment ScheduleData on ProgramacionSemana{
         Descripcion
       }
     }
-    jueves{
+    jueves {
       hora_inicio
       hora_final
       programa {
@@ -358,7 +371,7 @@ fragment ScheduleData on ProgramacionSemana{
         Descripcion
       }
     }
-    viernes{
+    viernes {
       hora_inicio
       hora_final
       programa {
@@ -366,7 +379,7 @@ fragment ScheduleData on ProgramacionSemana{
         Descripcion
       }
     }
-    sabado{
+    sabado {
       hora_inicio
       hora_final
       programa {
@@ -374,7 +387,7 @@ fragment ScheduleData on ProgramacionSemana{
         Descripcion
       }
     }
-    domingo{
+    domingo {
       hora_inicio
       hora_final
       programa {
