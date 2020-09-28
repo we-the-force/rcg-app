@@ -61,7 +61,7 @@ export default function CalcasPanel(props) {
                         El serial es alfanumerico?
                 */
 
-                let potato = createCalca({
+                createCalca({
                     variables: {
                         "nombre": requestValue.name,
                         "dir": requestValue.address,
