@@ -13,6 +13,7 @@ export default class HomePanel extends Component {
         super(props);
     }
     render() {
+        const { noticias, relevante } = this.props;
         return (
             <Block className="home center_panel">
                 <Card className="relevantes_home">
@@ -20,22 +21,19 @@ export default class HomePanel extends Component {
                         <p className="title">Lo Mas Relevante</p>
                     </CardHeader>
                     <Block id="grid1" className="grid-cont">
-                        <NewsRelevantes id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
+                        <NewsRelevantes noticia={relevante[0]} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
                     </Block>
                     <Block id="grid2" className="grid-cont">
-                        <NewsRelevantes id="item1" className="mob-small tab-medium desk-medium" />
-                        <NewsRelevantes id="item2" className="mob-small tab-medium desk-medium" />
-                        <NewsRelevantes id="item3" className="mob-large-small tab-medium desk-medium" />
+                        <NewsRelevantes noticia={relevante[1]} id="item1" className="mob-small tab-medium desk-medium" />
+                        <NewsRelevantes noticia={relevante[2]} id="item2" className="mob-small tab-medium desk-medium" />
+                        <NewsRelevantes noticia={relevante[3]} id="item3" className="mob-large-small tab-medium desk-medium" />
                     </Block>
                     <Block id="grid3" className="grid-cont">
-                        <NewsRelevantes id="item1" className="tab-large desk-large-small" />
-                        <NewsRelevantes id="item2" className="tab-large desk-small" />
-                        <NewsRelevantes id="item3" className="desk-small" />
-                        <NewsRelevantes id="item4" className="desk-large" />
+                        <NewsRelevantes noticia={relevante[4]} id="item1" className="tab-large desk-large-small" />
+                        <NewsRelevantes noticia={relevante[5]} id="item2" className="tab-large desk-small" />
+                        <NewsRelevantes noticia={relevante[6]} id="item3" className="desk-small" />
+                        <NewsRelevantes noticia={relevante[7]} id="item4" className="desk-large" />
                     </Block>
-                    {/* { this.props.newsInfo.articulosTop.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo}/>)
-                    })} */}
                 </Card>
 
                 {/* aqui va un ad */}

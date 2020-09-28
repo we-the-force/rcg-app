@@ -86,8 +86,12 @@ export default class extends React.Component {
         getArticulosRightPanel: () => {
           return this.state.data.articulosRightPanel;
         },
+        get_URL_DB: () => {
+          return this.state.data.db_url;
+        },
       },
       data: {
+        db_url: `http://${window.location.hostname}:1337`,
         categorias: [],
         categoriaActual: '',
         radioStations: [],

@@ -55,7 +55,7 @@ export default function Home(props) {
             </Block>
             <Block className="center_pan">
               <AdsTop />
-              <HomePanel newsInfo={data} />
+              <HomePanel noticias={categorias} relevante={relevante}/>
             </Block>
             <Block className="right_pan">
               <RightPanel newsInfo={rightPanel} />
