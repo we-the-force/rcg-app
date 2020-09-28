@@ -21,7 +21,7 @@ query HomePage {
   }
   categorias {
     nombre
-    articulos(sort: "fecha:desc", limit: 15) {
+    articulos(sort: "fecha:desc", limit: 16) {
       ...ArticulosData
     }
   }
