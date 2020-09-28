@@ -249,6 +249,36 @@ query AboutUsPage {
   }
 }
 
+query FaqPage {
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  faqInfo: preguntasFrecuente {
+    preguntas {pregunta respuesta}
+  }
+}
+
+query EspectacularPage {
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  espectacularInfo {
+    quienes_somos
+    porque_nosotros
+    nosotros
+  }
+  clientes: espectacularClientes{
+    nombre
+    logo {url}
+  }
+}
+
 query DerechoReplicaPage {
   radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData

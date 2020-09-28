@@ -1,11 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import ReactPlayer from 'react-player';
-import Nav from '@/components/general/navbar/navbar';
-import Masthead from '@/components/home/masthead';
-import LeftPanel from '@/components/general/left_panel/left-panel';
-import RightPanel from '@/components/general/right_panel/right-panel';
-import { useQuery, gql, useMutation } from '@apollo/client';
-import { f7, f7ready } from 'framework7-react';
+import { f7 } from 'framework7-react';
 
 import {
     Page,
