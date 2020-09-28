@@ -41,14 +41,14 @@ export default function ContactoPage(props) {
                         El formulario se envia directo a la personita?
                         Se van a guardar un registro de intentos de contactos?
                 */
-               let asdasd = await f7.request({
+               let postResponse = await f7.request({
                    url: `http://${window.location.hostname}:1337/request`,
                    method: "POST",
                    data: {
                        requestObject
                    }
                });
-               console.log(`Wea asdasd: `, asdasd);
+               console.log(`Wea asdasd: `, postResponse);
             }
             else
             {
