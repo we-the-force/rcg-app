@@ -34,30 +34,32 @@ export default function Home(props) {
   if (error) return `Error! ${error.message}`;
   //error en la pagina 
 
-  console.log(data);
-  const { Banner } = data;
+  const { banner, categorias, relevante } = data;
+  let rightPanel = f7.methods.getArticulosRightPanel();
+  let leftPanelTV = f7.methods.getTV();
+  let leftPanelRadio = f7.methods.getRadio();
   return (
     <Page pageContent={false} name="home">
       <PageContent>
         {/* ads */}
         {/* masthead */}
-        <Masthead articulos={data.articulosBanner} />
+        <Masthead banner={banner} relevante={relevante} />
         {/* Top Navbar */}
         <Nav home categorias={f7.methods.getCategorias()} />
         {/* Page content */}
         <Block className="main_cont display-flex flex-direction-column justify-content-center">
           <Block className="paneles">
             <Block className="left_pan">
-              <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+              <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
               <LeftPanelTablet />
             </Block>
             <Block className="center_pan">
               <AdsTop />
-              <HomePanel newsInfo={data} />
+              <HomePanel noticias={categorias} relevante={relevante}/>
             </Block>
             <Block className="right_pan">
-              <RightPanel newsInfo={data.articulosDestacadosRaros} />
-              <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+              <RightPanel newsInfo={rightPanel} />
+              <RightPanelTablet newsInfo={rightPanel} />
             </Block>
           </Block>
         </Block>

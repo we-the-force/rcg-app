@@ -2,20 +2,41 @@ query AppQuery {
   categorias {
     nombre
   }
+  tvChannels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  radioStations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
+    ...ArticulosData
+  }
 }
 
 query HomePage {
-  categorias {
-    nombre
-    articulos(sort: "fecha:desc", limit: 15) {
-      ...ArticulosData
-    }
-  }
-  Banner: banners(sort: "posicion:desc", limit: 10) {
-    posicion
+  banner: banners(sort: "posicion:desc", limit: 10) {
     articulo {
       ...ArticulosData
     }
+  }
+  categorias {
+    nombre
+    articulos(sort: "fecha:desc", limit: 16) {
+      ...ArticulosData
+    }
+  }
+  relevante: articulos(
+    sort: "fecha:desc"
+    where: { relevante: true }
+    limit: 8
+  ) {
+    ...ArticulosData
+  }
+}
+
+query ArticuloPage($url: String) {
+  articulos(where: { url: $url }) {
+    ...ArticulosData
   }
   radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
@@ -23,18 +44,24 @@ query HomePage {
   tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
   }
-  articulosTop: articulos(
-    sort: "fecha:desc"
-    where: { relevante: true }
-    limit: 8
-  ) {
-    ...ArticulosData
-  }
   articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
-  masVistos: articulos(sort: "visitas:desc", limit: 5) {
-    ...ArticulosData
+}
+
+query AutoresPage {
+  autores: autors {
+    id
+    nombre
+    img {
+      url
+    }
+    articulos {
+      id
+    }
+    twitter_link
+    facebook_link
+    instagram_link
   }
 }
 
@@ -86,23 +113,6 @@ query CategoriaPage($categoria: String) {
   }
 }
 
-query ArticuloPage($url: String) {
-  articulos(where: { url: $url }) {
-    ...ArticulosData
-  }
-  categorias {
-    nombre
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
 
 query TopArticulos {
   articulos(where: { relevante: true }) {
@@ -129,30 +139,6 @@ query BusquedaPage($terms: [String]) {
   }
 }
 
-query AutoresPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-  autores: autors {
-    id
-    nombre
-    img {
-      url
-    }
-    articulos {
-      id
-    }
-    twitter_link
-    facebook_link
-    instagram_link
-  }
-}
 
 query AutorPage($autorID: String) {
   radio_stations: canalEstacions(where: { Radio_TV: false }) {
