@@ -34,6 +34,37 @@ query HomePage {
   }
 }
 
+query ArticuloPage($url: String) {
+  articulos(where: { url: $url }) {
+    ...ArticulosData
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+    ...ArticulosData
+  }
+}
+
+query AutoresPage {
+  autores: autors {
+    id
+    nombre
+    img {
+      url
+    }
+    articulos {
+      id
+    }
+    twitter_link
+    facebook_link
+    instagram_link
+  }
+}
+
 query BorraEsteMasAdelante{
   articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
     ...ArticulosData
@@ -82,23 +113,6 @@ query CategoriaPage($categoria: String) {
   }
 }
 
-query ArticuloPage($url: String) {
-  articulos(where: { url: $url }) {
-    ...ArticulosData
-  }
-  categorias {
-    nombre
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
 
 query TopArticulos {
   articulos(where: { relevante: true }) {
@@ -125,30 +139,6 @@ query BusquedaPage($terms: [String]) {
   }
 }
 
-query AutoresPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-  autores: autors {
-    id
-    nombre
-    img {
-      url
-    }
-    articulos {
-      id
-    }
-    twitter_link
-    facebook_link
-    instagram_link
-  }
-}
 
 query AutorPage($autorID: String) {
   radio_stations: canalEstacions(where: { Radio_TV: false }) {
