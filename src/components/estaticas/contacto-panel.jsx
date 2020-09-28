@@ -77,12 +77,12 @@ export default function ContactoPage(props) {
             auxResponse.message += errors === 0 ? "Te falta la direccion de correo" : " y la direccion de correo";
             errors++;
         }
-        // if (contactRequest.subject === "")
-        // {
-        //     auxResponse.result = false;
-        //     auxResponse.message += errors === 0 ? "Te falta el asunto " : " y el asunto";
-        //     errors++;
-        // }
+        if (contactRequest.subject === "")
+        {
+            auxResponse.result = false;
+            auxResponse.message += errors === 0 ? "Te falta el asunto " : " y el asunto";
+            errors++;
+        }
         auxResponse.message += ".";
         return auxResponse;
     }
