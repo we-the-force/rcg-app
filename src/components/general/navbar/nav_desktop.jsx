@@ -14,7 +14,6 @@ import {
 
 export default function navMobile(props) {
     const { itemsShow, itemsPop } = props;
-    const more = itemsPop.length > 0 ? 'display-flex' : 'display-none';
     return (
         <Fragment>
             <NavLeft>
@@ -31,10 +30,16 @@ export default function navMobile(props) {
                     </Fragment>
                 );
             })}
+            {itemsPop.length == 0 &&
+                <Fragment >
+                    <hr />
+                    <Link href="/autores" className='uppercase'>autores </Link>
+                </Fragment>
+            }
             {itemsPop.length > 0 &&
                 <Fragment >
                     <hr />
-                    <Link popoverOpen=".popover-menu" iconMaterial="arrow_drop_down" className={'uppercase more-icon '+more}>MÁS </Link>
+                    <Link popoverOpen=".popover-menu" iconMaterial="arrow_drop_down" className={'uppercase more-icon display-flex'}>MÁS </Link>
                 </Fragment>
             }
             <NavRight>

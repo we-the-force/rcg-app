@@ -74,11 +74,11 @@ export default class Masthead extends Component {
                                             <Block className="background">
                                                 <img src={`http://${window.location.hostname}:1337${item.cover.url}`} alt="" />
                                                 <Block className="label">
-                                                    <Link className="categoria upperscale">{item.categoria.nombre}</Link>
+                                                    <Link href={"/categoria/" + item.categoria.nombre} className="categoria upperscale">{item.categoria.nombre}</Link>
                                                 </Block>
                                                 <Block className="bottom-cont">
                                                     <Block className="label-desk">
-                                                        <Link className="categoria upperscale">{item.categoria.nombre}</Link>
+                                                        <Link href={"/categoria/" + item.categoria.nombre} className="categoria upperscale">{item.categoria.nombre}</Link>
                                                     </Block>
                                                     <Link className="title" href={`/articulo/${item.url}/`}>{item.Titulo}</Link>
                                                     <BlockFooter>
