@@ -76,11 +76,23 @@ export default class extends React.Component {
         },
         getCategoriaActual: () => {
           return this.state.data.categoriaActual;
-        }
+        },
+        getRadio: () => {
+          return this.state.data.radioStations;
+        },
+        getTV: () => {
+          return this.state.data.tvChannels;
+        },
+        getArticulosRightPanel: () => {
+          return this.state.data.articulosRightPanel;
+        },
       },
       data: {
         categorias: [],
         categoriaActual: '',
+        radioStations: [],
+        tvChannels: [],
+        articulosRightPanel: [],
       }
     }
   }
@@ -114,13 +126,15 @@ export default class extends React.Component {
     client.query({
       query: AppQuery
     }).then(res => {
-      console.log('una vez');
       this.setState((prevState) => {
         return {
           ...prevState,
           data: {
             ...prevState.data,
             categorias: res.data.categorias,
+            radioStations: res.data.radioStations,
+            tvChannels: res.data.tvChannels,
+            articulosRightPanel: res.data.rightPanel,
           }
         }
       });

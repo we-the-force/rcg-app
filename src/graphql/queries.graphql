@@ -2,38 +2,34 @@ query AppQuery {
   categorias {
     nombre
   }
+  tvChannels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  radioStations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
+    ...ArticulosData
+  }
 }
 
 query HomePage {
+  banner: banners(sort: "posicion:desc", limit: 10) {
+    articulo {
+      ...ArticulosData
+    }
+  }
   categorias {
     nombre
     articulos(sort: "fecha:desc", limit: 15) {
       ...ArticulosData
     }
   }
-  Banner: banners(sort: "posicion:desc", limit: 10) {
-    posicion
-    articulo {
-      ...ArticulosData
-    }
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosTop: articulos(
+  relevante: articulos(
     sort: "fecha:desc"
     where: { relevante: true }
     limit: 8
   ) {
-    ...ArticulosData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-  masVistos: articulos(sort: "visitas:desc", limit: 5) {
     ...ArticulosData
   }
 }
