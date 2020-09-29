@@ -61,9 +61,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara1 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 1</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara1);
@@ -72,9 +72,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara2 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 2</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara2);
@@ -103,9 +103,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara1 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 1</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara1);
@@ -114,9 +114,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara2 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 2</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara2);
@@ -145,9 +145,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara1 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 1</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara1);
@@ -156,9 +156,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara2 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 2</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara2);
@@ -187,9 +187,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara1 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 1</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara1);
@@ -198,9 +198,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara2 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 2</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara2);
@@ -229,9 +229,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara1 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 1</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara1);
@@ -240,9 +240,9 @@ export default class CatalogoPanel extends Component {
                                 {
                                     htmlCara2 = (
                                         <Block>
-                                            <p>{espectacular.lugar}</p>
+                                            <p>{espectacular.id_espectacular} - Cara 2</p>
                                             <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                            <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
                                     console.log("Cara1 :D\r\n", htmlCara2);
