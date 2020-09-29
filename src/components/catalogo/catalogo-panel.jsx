@@ -25,7 +25,7 @@ export default class CatalogoPanel extends Component {
     }
     constructor(props) {
         super(props);
-        console.log(props);
+        // console.log(props);
 
         // this.espectaculares = [];
 
@@ -53,12 +53,37 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.centro.map((espectacular, key) => {
-                                console.log(espectacular);
+                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                console.log("Cara1: ", espectacular.cara1);
+                                let htmlCara1 = "";
+                                let htmlCara2 = "";
+                                if (espectacular.cara1 != null)
+                                {
+                                    htmlCara1 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                }
+                                if (espectacular.cara2 != null)
+                                {
+                                    htmlCara2 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                }
                                 return (
-                                    <Block key={key}>
-                                        <p>{espectacular.direccion}</p>
-                                        <img src={`http://${window.location.hostname}:1337${espectacular.imagen.url}`}/>
-                                        <p>{espectacular.nombre} - Fecha</p>
+                                    <Block key={key} className="display-flex">
+                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
+                                        {htmlCara1}
+                                        {htmlCara2}
                                     </Block>
                                 )
                             })
@@ -70,12 +95,37 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.norte.map((espectacular, key) => {
-                                console.log(espectacular);
+                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                console.log("Cara1: ", espectacular.cara1);
+                                let htmlCara1 = "";
+                                let htmlCara2 = "";
+                                if (espectacular.cara1 != null)
+                                {
+                                    htmlCara1 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                }
+                                if (espectacular.cara2 != null)
+                                {
+                                    htmlCara2 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                }
                                 return (
-                                    <Block key={key}>
-                                        <p>{espectacular.direccion}</p>
-                                        <img src={`http://${window.location.hostname}:1337${espectacular.imagen.url}`}/>
-                                        <p>{espectacular.nombre} - Fecha</p>
+                                    <Block key={key} className="display-flex">
+                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
+                                        {htmlCara1}
+                                        {htmlCara2}
                                     </Block>
                                 )
                             })
@@ -87,12 +137,37 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.oriente.map((espectacular, key) => {
-                                console.log(espectacular);
+                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                console.log("Cara1: ", espectacular.cara1);
+                                let htmlCara1 = "";
+                                let htmlCara2 = "";
+                                if (espectacular.cara1 != null)
+                                {
+                                    htmlCara1 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                }
+                                if (espectacular.cara2 != null)
+                                {
+                                    htmlCara2 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                }
                                 return (
-                                    <Block key={key}>
-                                        <p>{espectacular.direccion}</p>
-                                        <img src={`http://${window.location.hostname}:1337${espectacular.imagen.url}`}/>
-                                        <p>{espectacular.nombre} - Fecha</p>
+                                    <Block key={key} className="display-flex">
+                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
+                                        {htmlCara1}
+                                        {htmlCara2}
                                     </Block>
                                 )
                             })
@@ -104,12 +179,37 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.poniente.map((espectacular, key) => {
-                                console.log(espectacular);
+                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                console.log("Cara1: ", espectacular.cara1);
+                                let htmlCara1 = "";
+                                let htmlCara2 = "";
+                                if (espectacular.cara1 != null)
+                                {
+                                    htmlCara1 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                }
+                                if (espectacular.cara2 != null)
+                                {
+                                    htmlCara2 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                }
                                 return (
-                                    <Block key={key}>
-                                        <p>{espectacular.direccion}</p>
-                                        <img src={`http://${window.location.hostname}:1337${espectacular.imagen.url}`}/>
-                                        <p>{espectacular.nombre} - Fecha</p>
+                                    <Block key={key} className="display-flex">
+                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
+                                        {htmlCara1}
+                                        {htmlCara2}
                                     </Block>
                                 )
                             })
@@ -121,12 +221,37 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.sur.map((espectacular, key) => {
-                                console.log(espectacular);
+                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                console.log("Cara1: ", espectacular.cara1);
+                                let htmlCara1 = "";
+                                let htmlCara2 = "";
+                                if (espectacular.cara1 != null)
+                                {
+                                    htmlCara1 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                }
+                                if (espectacular.cara2 != null)
+                                {
+                                    htmlCara2 = (
+                                        <Block>
+                                            <p>{espectacular.lugar}</p>
+                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
+                                            <p>{espectacular.id_espectacular} - Fecha</p>
+                                        </Block>
+                                    );
+                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                }
                                 return (
-                                    <Block key={key}>
-                                        <p>{espectacular.direccion}</p>
-                                        <img src={`http://${window.location.hostname}:1337${espectacular.imagen.url}`}/>
-                                        <p>{espectacular.nombre} - Fecha</p>
+                                    <Block key={key} className="display-flex">
+                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
+                                        {htmlCara1}
+                                        {htmlCara2}
                                     </Block>
                                 )
                             })

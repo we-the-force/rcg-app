@@ -273,34 +273,19 @@ query CatalogoPage {
     ...StationData
   }
   norte: espectaculars(where: {zona: "norte"}) {
-    nombre
-    imagen {url}
-    direccion
-    zona
+    ...EspectacularData
   }
   sur: espectaculars(where: {zona: "sur"}) {
-    nombre
-    imagen {url}
-    direccion
-    zona
+    ...EspectacularData
   }
   oriente: espectaculars(where: {zona: "oriente"}) {
-    nombre
-    imagen {url}
-    direccion
-    zona
+    ...EspectacularData
   }
   poniente: espectaculars(where: {zona: "poniente"}) {
-    nombre
-    imagen {url}
-    direccion
-    zona
+    ...EspectacularData
   }
   centro: espectaculars(where: {zona: "centro"}) {
-    nombre
-    imagen {url}
-    direccion
-    zona
+    ...EspectacularData
   }
 }
 
@@ -350,6 +335,14 @@ query CalcaPage {
   articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
+}
+
+fragment EspectacularData on Espectacular {
+    id_espectacular
+    cara1 {url}
+    cara2 {url}
+    lugar
+    zona
 }
 
 fragment StationData on CanalEstacion {
