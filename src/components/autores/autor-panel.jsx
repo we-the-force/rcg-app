@@ -10,10 +10,9 @@ import {
 export default class AutorPanel extends Component {
     constructor(props){
         super(props);
-
-        this.autorImage = props.autorInfo.img != null ? `http://${window.location.hostname}:1337${props.autorInfo.img.url}` : ``;
+        //this.autorImage = props.autorInfo.img != null ? `http://${window.location.hostname}:1337${props.autorInfo.img.url}` : ``;
         // console.log(this.autorImage);
-        console.log(props.autorInfo.instagram_link);
+        //console.log(props.autorInfo.instagram_link);
     }
     render() {
         return (

@@ -11,7 +11,8 @@ export default class AutoresPanel extends Component {
         super(props);
     }
     render() {
-        const { autores } = this.props;
+        const { autores, numNoticias } = this.props;
+
         return (
             <Block className="center_panel">
                 <Card className="head">
@@ -20,12 +21,12 @@ export default class AutoresPanel extends Component {
                 <Block className="autores_cont">
                     {
                         autores.map((autor, key) => {
-                            return(<AutorCard key={key} autor={autor}/>);
+                            return(<AutorCard key={key} autor={autor} numArticulos={numNoticias.find(val => val.autor === autor.id)}/>);
                         })
                     }
+                    {/* <AutorCard/>
                     <AutorCard/>
-                    <AutorCard/>
-                    <AutorCard/>
+                    <AutorCard/> */}
                     {/* {
                         this.props.autores.map((autor, key) => {
                             let autorImgUrl = autor.img != null ? `http://${window.location.hostname}:1337${autor.img.url}` : ``;
