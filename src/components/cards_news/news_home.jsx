@@ -1,26 +1,30 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import TestImage from '@/static/imgs/418464-PD8PXQ-214 1.png';
+import TestImage from '@/static/imgs/grayback.jpg';
+import moment from 'moment';
 import {
     Block,
     Link,
     BlockFooter,
+    f7
 } from 'framework7-react';
 
 // ano natsu no, kimi ga atama ni iru
 export default function NewsHome(props) {
-    const { className } = props;
+    moment.locale('es');
+    const { className, articulo } = props;
+    let DB_url = f7.methods.get_URL_DB();
     return (
         <Block className={`NewsHome_cont ${className}`}>
             <Block className="img_cont">
-                <Link><img src={TestImage} alt="" /></Link>
+                <Link><img src={DB_url + articulo.cover.url} alt="" /></Link>
             </Block>
             <Block className='img_foot'>
-                <Link className="autor">Nombre Reporter@</Link>&nbsp;-&nbsp;
-                <p className="fecha">10 septiembre</p>
+                <Link className="autor">{articulo.autor.nombre}</Link>&nbsp;-&nbsp;
+                <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
             </Block>
             <Block className='content'>
-                <Link className="title" href='#'>Aqui va el titulo mas grande para probar cuanto cabe aqui</Link>
-                <p className="preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat mauris et tellus faucibus bibendum. Ut egestas aliquam facilisis. Aliquam tristique libero ut sapien consequat imperdiet. Sed ut auctor dolor. In iaculis ligula eu nisl laoreet, quis suscipit urna gravida. Ut nunc elit, imperdiet nec lorem commodo, lacinia mattis libero. Pellentesque fringilla purus nunc, ut semper nibh placerat ut. In euismod fermentum eros. Mauris nec sodales dui.</p>
+                <Link className="title" href='#'>{articulo.Titulo}</Link>
+                <p className="preview">{articulo.description}</p>
             </Block>
         </Block>
     );

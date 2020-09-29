@@ -5,7 +5,9 @@ import { ListGroup, Navbar } from 'framework7-react';
 
 export default function Nav(props) {
     let { categorias, home } = props;
-    if (categorias.length <= 0) return "Loading...";
+    
+    if (categorias.length <= 0) return "";
+
     let [categ_show, categ_pop, type] = useData(categorias);
 
     return (

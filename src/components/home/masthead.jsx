@@ -44,6 +44,8 @@ export default class Masthead extends Component {
                 fecha: val.fecha
             }
         });
+
+        banners.reverse();
         /* concateno los arreglos */
         let articulos = banners.concat(relevantes)
 
