@@ -265,6 +265,45 @@ query EspectacularPage {
   }
 }
 
+query CatalogoPage {
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  norte: espectaculars(where: {zona: "norte"}) {
+    nombre
+    imagen {url}
+    direccion
+    zona
+  }
+  sur: espectaculars(where: {zona: "sur"}) {
+    nombre
+    imagen {url}
+    direccion
+    zona
+  }
+  oriente: espectaculars(where: {zona: "oriente"}) {
+    nombre
+    imagen {url}
+    direccion
+    zona
+  }
+  poniente: espectaculars(where: {zona: "poniente"}) {
+    nombre
+    imagen {url}
+    direccion
+    zona
+  }
+  centro: espectaculars(where: {zona: "centro"}) {
+    nombre
+    imagen {url}
+    direccion
+    zona
+  }
+}
+
 query DerechoReplicaPage {
   radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
