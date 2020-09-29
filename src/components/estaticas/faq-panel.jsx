@@ -23,8 +23,12 @@ export default class FaqPage extends Component {
                         this.props.faqInfo.preguntas.map((question, key) => {
                             return(
                                 <Block key={key}>
-                                    <p><b>{question.pregunta}</b></p>
-                                    <p>{question.respuesta}</p>
+                                    <p>
+                                        <b>{question.pregunta}</b>
+                                        <br/>
+                                        {question.respuesta}
+                                    </p>
+                                    <br/>
                                 </Block>
                             );
                         })
