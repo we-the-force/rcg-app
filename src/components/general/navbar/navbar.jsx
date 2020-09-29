@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Mobile from './nav_mobile';
 import Desk from './nav_desktop';
-import { Navbar } from 'framework7-react';
+import { ListGroup, Navbar } from 'framework7-react';
 
 export default function Nav(props) {
-    const { categorias, home } = props;
-    const [categ_show, categ_pop, type] = useData(categorias);
+    let { categorias, home } = props;
+    if (categorias.length <= 0) return "Loading...";
+    let [categ_show, categ_pop, type] = useData(categorias);
+
     return (
         <Navbar sliding noHairline noShadow>
             {type === 'desktop' &&
@@ -27,10 +29,9 @@ function useData(data) {/* recibe categorias */
     });
     let cant = null;
     let thisType = '';
-
     useEffect(() => {
         function handleResize() {
-
+            
             let categorias = [...data];
             let w = window.innerWidth;
             thisType = 'desktop';

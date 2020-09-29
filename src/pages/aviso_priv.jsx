@@ -33,12 +33,12 @@ export default function AvisoPrivacidad(props) {
                 <Nav categorias={f7.methods.getCategorias()}/>
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                    <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
                         </Block>
                         <Block className="center_pan">
+                            <AdsTop />
                             {/* aqui va el panel central */}
                             {/* <AboutUsPanel nosotrosInfo={data.nosotrosInfo}/> */}
                             <AvisoPrivacidadPanel avisoPriv={data.avisoPrivacidad}/>
