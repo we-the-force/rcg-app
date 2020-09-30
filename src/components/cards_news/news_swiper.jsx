@@ -21,7 +21,7 @@ export default class NewsSwiper extends Component {
         let DB_url = f7.methods.get_URL_DB();
         let skeleton = articulo ? '' : 'skeleton-text';
         return (
-            <Link href='/url' className="news_swiper">
+            <Link href={`/articulo/${articulo.url}/`} className="news_swiper">
                 <img src={articulo ? DB_url + articulo.cover.url : IMG} alt="" srcSet="" />
                 <Block className="cont">
                     <BlockTitle className={skeleton}>{articulo.Titulo}</BlockTitle>

@@ -249,7 +249,7 @@ export default class RadioPanel extends Component {
                 </Card>
                 {/* tarjewtita recomendados */}
                 <Card className="recomendados-card">
-                    <SwiperNews />
+                    <SwiperNews articulos={[]}/>
                 </Card>
             </Block>
         );
