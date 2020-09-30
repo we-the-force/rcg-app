@@ -109,7 +109,7 @@ export default class ScheduleTable extends Component {
                                     {
                                         val.horas.map((val_2, key_2) => {
                                             let active_2 = key_2 === 0 ? true : false;
-                                            console.log("Creating description stuff");
+                                            // console.log("Creating description stuff");
                                             return (
                                                 <Tab key={key_2} id={val.day + "-tab-" + (key_2 + 1)} className="tab-content" tabActive={active_2}>
                                                     <Block className="img_cont">
