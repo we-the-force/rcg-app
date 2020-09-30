@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import TVPanel from '@/components/tv/tv-panel';
