@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import IMG from '@/static/imgs/IMG_01.png'
+import IMG from '@/static/imgs/grayback.jpg'
+import moment from 'moment';
 import {
     Block,
     BlockTitle,
-    BlockFooter
+    BlockFooter,
+    Link,
+    f7
 } from 'framework7-react';
 
 export default class NewsSwiper extends Component {
@@ -12,14 +15,19 @@ export default class NewsSwiper extends Component {
         this.state = {}
     }
     render() {
+        moment.locale('es');
+        let { articulo } = this.props;
+        console.log(articulo);
+        let DB_url = f7.methods.get_URL_DB();
+        let skeleton = articulo ? '' : 'skeleton-text';
         return (
-            <Block className="nota_recomend">
-                <img src={IMG} alt="" srcSet="" />
+            <Link href='/url' className="news_swiper">
+                <img src={articulo ? DB_url + articulo.cover.url : IMG} alt="" srcSet="" />
                 <Block className="cont">
-                    <BlockTitle>Lorem ipsum dolor sit amet... </BlockTitle>
-                    <BlockFooter>10 agosto 2020</BlockFooter>
+                    <BlockTitle className={skeleton}>{articulo.Titulo}</BlockTitle>
+                    <BlockFooter className={skeleton}>{moment(articulo.fecha).format('D MMMM YYYY')}</BlockFooter>
                 </Block>
-            </Block>
+            </Link>
         );
     }
 }
