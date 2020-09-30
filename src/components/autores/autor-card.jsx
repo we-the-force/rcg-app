@@ -34,6 +34,7 @@ export default function AutorCard(props) {
         insta = "https://www.instagram.com";
         url = "";
     }
+    console.log(`Autor: ${nombre}\r\nArticulos: ${articulos}`);
     return (
         <Card className={"autor_card " + className}>
             <Block className="back">

@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AvisoPrivacidadPanel from '@/components/estaticas/aviso-privacidad-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
@@ -30,12 +32,13 @@ export default function AvisoPrivacidad(props) {
         <Page pageContent={false} name="nosotros">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()}/>
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
+                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
                             <AdsTop />

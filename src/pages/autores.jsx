@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import RightPanel from '@/components/general/right_panel/right-panel';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AutoresPanel from '@/components/autores/autores-panel.jsx'
@@ -47,12 +48,12 @@ export default function Autores(props) {
             <PageContent>
                 {/* ads */}
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
-                            <LeftPanelTablet />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
                             <AdsTop />

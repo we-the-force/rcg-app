@@ -53,8 +53,8 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.centro.map((espectacular, key) => {
-                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                console.log("Cara1: ", espectacular.cara1);
+                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                // console.log("Cara1: ", espectacular.cara1);
                                 let htmlCara1 = "";
                                 let htmlCara2 = "";
                                 if (espectacular.cara1 != null)
@@ -66,7 +66,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                    // console.log("Cara1 :D\r\n", htmlCara1);
                                 }
                                 if (espectacular.cara2 != null)
                                 {
@@ -77,7 +77,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                    // console.log("Cara1 :D\r\n", htmlCara2);
                                 }
                                 return (
                                     <Block key={key} className="display-flex">
@@ -95,8 +95,8 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.norte.map((espectacular, key) => {
-                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                console.log("Cara1: ", espectacular.cara1);
+                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                // console.log("Cara1: ", espectacular.cara1);
                                 let htmlCara1 = "";
                                 let htmlCara2 = "";
                                 if (espectacular.cara1 != null)
@@ -108,7 +108,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                    // console.log("Cara1 :D\r\n", htmlCara1);
                                 }
                                 if (espectacular.cara2 != null)
                                 {
@@ -119,7 +119,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                    // console.log("Cara1 :D\r\n", htmlCara2);
                                 }
                                 return (
                                     <Block key={key} className="display-flex">
@@ -137,8 +137,8 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.oriente.map((espectacular, key) => {
-                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                console.log("Cara1: ", espectacular.cara1);
+                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                // console.log("Cara1: ", espectacular.cara1);
                                 let htmlCara1 = "";
                                 let htmlCara2 = "";
                                 if (espectacular.cara1 != null)
@@ -150,7 +150,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                    // console.log("Cara1 :D\r\n", htmlCara1);
                                 }
                                 if (espectacular.cara2 != null)
                                 {
@@ -161,7 +161,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                    // console.log("Cara1 :D\r\n", htmlCara2);
                                 }
                                 return (
                                     <Block key={key} className="display-flex">
@@ -179,8 +179,8 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.poniente.map((espectacular, key) => {
-                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                console.log("Cara1: ", espectacular.cara1);
+                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                // console.log("Cara1: ", espectacular.cara1);
                                 let htmlCara1 = "";
                                 let htmlCara2 = "";
                                 if (espectacular.cara1 != null)
@@ -192,7 +192,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                    // console.log("Cara1 :D\r\n", htmlCara1);
                                 }
                                 if (espectacular.cara2 != null)
                                 {
@@ -203,7 +203,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                    // console.log("Cara1 :D\r\n", htmlCara2);
                                 }
                                 return (
                                     <Block key={key} className="display-flex">
@@ -221,8 +221,8 @@ export default class CatalogoPanel extends Component {
                     <Block className="display-flex">
                         {
                             this.props.catalogoInfo.sur.map((espectacular, key) => {
-                                console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                console.log("Cara1: ", espectacular.cara1);
+                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
+                                // console.log("Cara1: ", espectacular.cara1);
                                 let htmlCara1 = "";
                                 let htmlCara2 = "";
                                 if (espectacular.cara1 != null)
@@ -234,7 +234,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara1);
+                                    // console.log("Cara1 :D\r\n", htmlCara1);
                                 }
                                 if (espectacular.cara2 != null)
                                 {
@@ -245,7 +245,7 @@ export default class CatalogoPanel extends Component {
                                             <p>{espectacular.lugar} - Fecha</p>
                                         </Block>
                                     );
-                                    console.log("Cara1 :D\r\n", htmlCara2);
+                                    // console.log("Cara1 :D\r\n", htmlCara2);
                                 }
                                 return (
                                     <Block key={key} className="display-flex">

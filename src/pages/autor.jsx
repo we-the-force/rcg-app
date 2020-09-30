@@ -48,12 +48,12 @@ export default function Autor(props) {
             <PageContent>
                 {/* ads */}
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
-                            <LeftPanelTablet />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
                             {/* Aqui va el deste */}

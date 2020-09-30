@@ -34,14 +34,14 @@ export default function Faq(props) {
         <Page pageContent={false} name="faq">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()}/>
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
-                            <LeftPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
                             {/* aqui va el panel central */}

@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import RadioPanel from '@/components/radio/radio-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
@@ -46,12 +48,13 @@ export default function Radio(props) {
             {/* { console.log(data) } */}
             {/* {console.log(currentStation)} */}
             <PageContent>
-                <Nav categorias={f7.methods.getCategorias()} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                         </Block>
                         <Block className="center_pan">
                             {
@@ -61,6 +64,7 @@ export default function Radio(props) {
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
                         </Block>
                     </Block>
                 </Block>
