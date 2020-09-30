@@ -12,7 +12,7 @@ export default class SwiperNews extends Component {
         this.state = {}
     }
     render() {
-        const { wot } = this.props;
+        const { wot, articulos } = this.props;
         let display = wot ? 'display-none' : '';
         return (
             <Fragment>
@@ -29,36 +29,18 @@ export default class SwiperNews extends Component {
                         scrollbar
                         params={{ slidesPerView: 3, spaceBetween: 10 }}
                     >
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <NewSwiper />
-                        </SwiperSlide>
+                        {
+                            articulos.map((val, i) => {
+                                return (
+                                    <SwiperSlide key={i}>
+                                        <NewSwiper articulo={val}/>
+                                    </SwiperSlide>
+                                );
+                            })
+                        }
                     </Swiper>
                 </Block>
-            </Fragment>
+            </Fragment >
         );
     }
 }

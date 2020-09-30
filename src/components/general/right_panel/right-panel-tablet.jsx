@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
+import AutorCard from '@/components/autores/autor-card.jsx';
 import {
     Popup,
     Block,
@@ -8,7 +9,6 @@ import {
 
 export default function RightPanelTablet(props) {
     const changeBackdropOpen = (e) => {
-        console.log(e.target.getBoundingClientRect().top);
         var popup = document.getElementsByClassName("modal-in");
         popup[0].style.top = `${(e.target.getBoundingClientRect().top - 12)}px`;
         var x = document.getElementsByClassName("popup-backdrop");
@@ -20,19 +20,36 @@ export default function RightPanelTablet(props) {
         x[0].classList.remove("invisible");
     }
 
+
+    let { newsInfo, autores, numArticulos } = props;
+    let cont, title = 'Destacado';
+
+    if (newsInfo != undefined) {
+        cont = (
+            newsInfo.map((articulo, i) => {
+                return (<DestItem image={true} key={i} articulo={articulo} />)
+            })
+        );
+
+    } else if (autores != undefined) {
+        title = 'Autores';
+        cont = autores.map((autor, i) => {
+            return (<AutorCard className={"right_panel_down_card"} key={i} autor={autor} numArticulos={numArticulos.find(val => val.autor === autor.id)} />);
+        });
+    } else {
+        cont = (
+            <p>Not found</p>
+        );
+    }
+
     return (
         <Block className="right_panel_tablet">
             <Link popupOpen=".vistos-popup" onClick={e => { changeBackdropOpen(e) }} className="more" iconMaterial="add" icon="add"></Link>
             <Popup className="vistos-popup right-popup-tablet" onPopupClose={changeBackdropClose}>
                 <Link popupClose=".vistos-popup" className="close" iconMaterial="add" icon="add"></Link>
-                <h1>Destacado</h1>
+                <h1>{title}</h1>
                 <Block className="news-cont">
-                    {
-                        props.newsInfo != undefined ?
-                            props.newsInfo.map((articulo, i) => {
-                                return (<DestItem image={true} key={i} articulo={articulo} />)
-                            }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
-                    }
+                    {cont}
                 </Block>
             </Popup>
         </Block>

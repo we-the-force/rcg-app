@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
+import AutorCard from '@/components/autores/autor-card.jsx';
 import {
     Block,
     Card,
@@ -30,6 +31,36 @@ export default class RightPanel extends Component {
 
     }
     render() {
+        let { newsInfo, autores, numArticulos } = this.props;
+        let cards;
+
+        if (newsInfo != undefined) {
+            cards = (
+                <Card className="right_panel_down_card destacado">
+                    <CardHeader>Destacado</CardHeader>
+                    {
+                        newsInfo.map((articulo, i) => {
+                            return (<DestItem image={true} key={i} articulo={articulo} />)
+                        })
+                    }
+                </Card>
+            );
+
+        } else if (autores != undefined) {
+            cards = autores.map((autor, i) => {
+                return (<AutorCard className={"right_panel_down_card"} key={i} autor={autor} numArticulos={numArticulos.find(val => val.autor === autor.id)} />);
+            });
+        } else {
+            cards = (
+                <Card className="right_panel_down_card destacado">
+                    <CardHeader>Destacado</CardHeader>
+                    <Block className={"dest-item"}>
+                        <p>Not found</p>
+                    </Block>
+                </Card>
+            );
+        }
+
         return (
             <Block className="right_panel_cont">
                 <Block className="search_block">
@@ -39,27 +70,10 @@ export default class RightPanel extends Component {
                             search
                         </span>
                     </Block>
-                    {/* <input id="searchBar" type="text" onKeyPress={this.articuloSearch} /> */}
                     <Block className="ads square"></Block>
                 </Block>
                 <Block className="right_panel_down">
-                    <Card className="right_panel_down_card destacado">
-                        <CardHeader>
-                            Destacado
-                        </CardHeader>
-                        {
-                            this.props.newsInfo != undefined ?
-                                this.props.newsInfo.map((articulo, i) => {
-                                    return (<DestItem image={true} key={i} articulo={articulo} />)
-                                }) : `Tienes un error en tu paginita amigo\r\nMi newsInfo esta undefined, pasamelo por props pls`
-                        }
-                        {/* <DestItem image={true}/> */}
-                        {/* <DestItem image={true} />
-                        <DestItem image={true} />
-                        <DestItem image={false} />
-                        <DestItem image={false} />
-                        <DestItem image={false} nobord/> */}
-                    </Card>
+                    {cards}
                     <Card className="right_panel_down_card tags">
                         <CardHeader>
                             Tags

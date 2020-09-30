@@ -1,0 +1,88 @@
+.card.autor_head
+    margin 10px 0px
+    width 100%
+    display flex
+
+    .image_cont
+        width 45%
+        max-width 129px
+        padding 10px 15px
+        padding-right 10px
+        display flex
+        justify-content center
+        align-items center
+
+        img
+            width 100%
+            height 100%
+            border-radius 50%
+            filter drop-shadow(0px 0px 7.28px rgba(0, 0, 0, 0.35))
+            object-fit cover
+
+    .info_cont
+        min-width 55%
+        padding 10px 0px
+        padding-left 1.5vw
+        padding-right 3vw
+        display flex
+        flex-direction column
+        flex 1
+
+        .name_info
+            display flex
+            flex-direction column
+            padding 0px
+            flex 1
+
+            .name
+                font font_12
+                text-transform capitalize
+                color #313131
+                margin 0px
+                margin-bottom 5px
+
+            .noticias
+                font font_23
+                text-transform capitalize
+                color red
+                margin 0px
+                margin-bottom 5px
+
+        .redes_cont
+            padding 0px
+            max-width 172px
+            display flex
+            align-items center
+            justify-content space-between
+            flex 1
+
+            a
+                width 35px
+                display flex
+                justify-content center
+                align-items center
+
+                img
+                    width 100%
+                    height 100%
+
+    @media (min-width 640px)
+        .image_cont
+            width 20%
+            max-width 85px
+            padding-left 20px
+
+        .info_cont
+            min-width 80%
+            flex-direction row
+            padding-left 0px
+            padding-right 0px
+            .redes_cont
+                max-width 155px
+                margin-right 40px
+
+            .name_info
+                padding-right 10px
+                padding-left 10px
+                .noticias
+                    font font_10

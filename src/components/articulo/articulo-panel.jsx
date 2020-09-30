@@ -133,7 +133,7 @@ export default class ArticuloPanel extends Component {
                         <Block className="ads bar">
                         </Block>
                     </Block>
-                    <SwiperNews />
+                    <SwiperNews articulos={[]}/>
                 </Card>
             </Block>
         )

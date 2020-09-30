@@ -165,7 +165,7 @@ export default class TVPanel extends Component {
                     </Block> */}
                 </Card>
                 <Card className="recomendados-card">
-                    <SwiperNews />
+                    <SwiperNews articulos={[]}/>
                 </Card>
             </Block>
         );

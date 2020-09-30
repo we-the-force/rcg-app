@@ -48,7 +48,6 @@ export default class DestItem extends Component {
                         }</p>
                         <a className="more" href={`/articulo/${this.props.articulo.url}/`}>Mostrar mas</a>
                     </BlockFooter>
-
                 </Block>
             </Block>
         );

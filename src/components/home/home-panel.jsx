@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import NewsRelevantes from '@/components/cards_news/news_relevantes.jsx';
 import NewsHome from '@/components/cards_news/news_home.jsx';
 import SwiperNews from '@/components/general/swiper_news.jsx';
@@ -80,15 +80,12 @@ export default class HomePanel extends Component {
                                         <NewsHome className={'grid-item ' + first} key={i} articulo={val} />
                                     );
                                 })}
-                                {/* 
-                                <NewsHome className="grid-item first" />
-                                <NewsHome className="grid-item" />
-                                <NewsHome className="grid-item" />
-                                <NewsHome className="grid-item" />
-                                <NewsHome className="grid-item" />
-                                <NewsHome className="grid-item" />
-                                <NewsHome className="grid-item" /> 
-                                */}
+                                {articulosSwiper.length > 0 &&
+                                    <Fragment>
+                                        <NewsHome className={'grid-item mobile'} articulo={articulosSwiper[0]} />
+                                        <NewsHome className={'grid-item mobile'} articulo={articulosSwiper[1]} />
+                                    </Fragment>
+                                }
                             </Block>
                             {articulosSwiper.length > 0 &&
                                 <SwiperNews wot articulos={articulosSwiper} />
@@ -96,196 +93,6 @@ export default class HomePanel extends Component {
                         </Card>
                     );
                 })}
-
-                {/* aqui va un ad */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Locales</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosLocal.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })} */}
-                {/* </Card> */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Estatales</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosEstatal.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })} */}
-                {/* </Card> */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Nacionales</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosNacional.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })} */}
-                {/* </Card> */}
-                {/* aqui va un ad */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Internacional</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosInternacional.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })} */}
-                {/* </Card> */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Deportes</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosDeporte.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })}
-                     */}
-                {/* </Card> */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Espectaculos</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosEspectaculo.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })} */}
-                {/* </Card> */}
-                {/* aqui va un ad */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Destacadas</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosDestacados.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })}
-                     */}
-                {/* </Card> */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Fundación RCG</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosFundacion.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })}
-                     */}
-                {/* </Card> */}
-                {/* <Card className="categoria">
-                    <CardHeader>
-                        <p className="title">Salud Y Cultura</p>
-                        <p className="link-more">Mostrar más</p>
-                    </CardHeader>
-                    <Block className="grid-cont">
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                        <NewsHome className="grid-item" />
-                    </Block>
-
-                    <SwiperNews wot/> */}
-                {/* {this.props.newsInfo.articulosSaludCultura.map((articulo, i) => {
-                        return (<HomeNewsCard key={i} articulo={articulo} />)
-                    })}
-                     */}
-                {/* </Card> */}
-                {/* aqui va un ad */}
             </Block>
         );
     }
