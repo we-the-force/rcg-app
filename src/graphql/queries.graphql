@@ -41,14 +41,18 @@ query AutorPage($url: String) {
     img {
       url
     }
-    articulos {
+    articulos(limit: 20) {
       ...ArticulosData
     }
     twitter_link
     facebook_link
     instagram_link
+    url
   }
-  autorArticulos: articulosConnection(where: {autor: {url: "yo-merenges"}}){
+
+  autorArticulos: articulosConnection(
+    where: { autor: { url: $url } }
+  ) {
     groupBy {
       autor {
         key
@@ -60,18 +64,30 @@ query AutorPage($url: String) {
       }
     }
   }
-  autores: autors {
+
+  autores: autors(limit: 3, where: { url_ne: $url }) {
     id
     nombre
     img {
       url
     }
-    articulos {
-      id
-    }
     twitter_link
     facebook_link
     instagram_link
+    url
+  }
+
+  autoresArticulos: articulosConnection {
+    groupBy {
+      autor {
+        key
+        connection {
+          aggregate {
+            count
+          }
+        }
+      }
+    }
   }
 }
 
@@ -291,19 +307,19 @@ query CatalogoPage {
   tv_channels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
   }
-  norte: espectaculars(where: {zona: "norte"}) {
+  norte: espectaculars(where: { zona: "norte" }) {
     ...EspectacularData
   }
-  sur: espectaculars(where: {zona: "sur"}) {
+  sur: espectaculars(where: { zona: "sur" }) {
     ...EspectacularData
   }
-  oriente: espectaculars(where: {zona: "oriente"}) {
+  oriente: espectaculars(where: { zona: "oriente" }) {
     ...EspectacularData
   }
-  poniente: espectaculars(where: {zona: "poniente"}) {
+  poniente: espectaculars(where: { zona: "poniente" }) {
     ...EspectacularData
   }
-  centro: espectaculars(where: {zona: "centro"}) {
+  centro: espectaculars(where: { zona: "centro" }) {
     ...EspectacularData
   }
 }
@@ -357,11 +373,15 @@ query CalcaPage {
 }
 
 fragment EspectacularData on Espectacular {
-    id_espectacular
-    cara1 {url}
-    cara2 {url}
-    lugar
-    zona
+  id_espectacular
+  cara1 {
+    url
+  }
+  cara2 {
+    url
+  }
+  lugar
+  zona
 }
 
 fragment StationData on CanalEstacion {

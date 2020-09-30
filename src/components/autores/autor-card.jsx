@@ -12,15 +12,14 @@ import {
 
 
 export default function AutorCard(props) {
-    const { autor, numArticulos } = props;
-    console.log(autor);
+    const { autor, numArticulos, className } = props;
     let DB_url = f7.methods.get_URL_DB();
     let imagen, id, nombre, articulos, face, twitt, insta, url;
     if(autor){
         imagen = DB_url + autor.img.url;
         id = autor.id;
         nombre = autor.nombre;
-        articulos = numArticulos.articulos;
+        articulos = numArticulos ? numArticulos.articulos : '0';
         face = autor.facebook_link;
         twitt = autor.twitter_link;
         insta = autor.instagram_link;
@@ -36,13 +35,13 @@ export default function AutorCard(props) {
         url = "";
     }
     return (
-        <Card className="autor_card">
+        <Card className={"autor_card " + className}>
             <Block className="back">
-                <Link href={`/autor/${url}`} className="image_cont">
+                <Link popupClose href={`/autor/${url}`} className="image_cont">
                     <img src={imagen} alt="" />
                 </Link>
-                <Link href={`/autor/${url}`} className="nombre">{nombre}</Link>
-                <Link href={`/autor/${url}`} className="noticias"> {articulos} Noticias</Link>
+                <Link popupClose href={`/autor/${url}`} className="nombre">{nombre}</Link>
+                <Link popupClose href={`/autor/${url}`} className="noticias"> {articulos} Noticias</Link>
                 <p className="redes_label">Redes:</p>
                 <Block className="redes_cont">
                     <a href={face} className="external" target="_blank"><img src={FBIcon} /></a>

@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
-import RightPanelAutor from '@/components/autores/right-panel-autor.jsx';
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanel from '@/components/general/right_panel/right-panel';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AutorPanel from '@/components/autores/autor-panel.jsx'
 import Footer from '@/components/general/footer';
 import { useQuery } from '@apollo/client';
@@ -15,7 +17,7 @@ import {
 } from 'framework7-react';
 
 export default function Autor(props) {
-    let { url } = props
+    let { url } = props;
     const { loading, error, data } = useQuery(AutorPage, {
         variables: { url }
     });
@@ -25,13 +27,20 @@ export default function Autor(props) {
             f7.methods.handleCategoriaActual('');
         });
     }, []);
-
     if (loading) return "loading...";
     if (error) return `Error!:  ${error.message}`;
 
     const { autor, autores } = data;
-    const articulosNum = data.autorArticulos ? data.autorArticulos.groupBy.autor[0].connection.aggregate.count : 0;
-    console.log(articulosNum);
+
+    const articulosNum = data.autorArticulos.groupBy.autor.length > 0 ? data.autorArticulos.groupBy.autor[0].connection.aggregate.count : 0;
+    let numArticulosAutores = data.autoresArticulos.groupBy.autor.length > 0 ? data.autoresArticulos.groupBy.autor.map((val) => {
+        let elem = {
+            autor: val.key,
+            articulos: val.connection.aggregate.count,
+        }
+        return elem;
+    }) : [];
+    let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
@@ -44,14 +53,16 @@ export default function Autor(props) {
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                            <LeftPanelTablet />
                         </Block>
                         <Block className="center_pan">
                             {/* Aqui va el deste */}
                             <AdsTop />
-                            <AutorPanel autor={autor} articulosNum={articulosNum}/>
+                            <AutorPanel autor={autor} articulosNum={articulosNum} />
                         </Block>
                         <Block className="right_pan">
-                            {/* <RightPanelAutor autores={data.autores} autorInfo={data.autorInfo[0]} /> */}
+                            <RightPanel autores={autores} numArticulos={numArticulosAutores} />
+                            <RightPanelTablet autores={autores} numArticulos={numArticulosAutores} />
                         </Block>
                     </Block>
                 </Block>

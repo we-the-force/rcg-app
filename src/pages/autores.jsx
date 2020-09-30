@@ -3,6 +3,7 @@ import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanel from '@/components/general/right_panel/right-panel';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AutoresPanel from '@/components/autores/autores-panel.jsx'
 import Footer from '@/components/general/footer';
 import { useQuery } from '@apollo/client';
@@ -59,6 +60,7 @@ export default function Autores(props) {
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>
