@@ -20,11 +20,11 @@ import {
 } from 'framework7-react';
 
 export default function LeftPanelTablet(props) {
-    console.log("LeftPanelTablet-props:\r\n", props);
+    // console.log("LeftPanelTablet-props:\r\n", props);
     const [input, setInput] = useState('');
 
     const changeBackdropOpen = (e) => {
-        console.log(e.target.getBoundingClientRect().top);
+        // console.log(e.target.getBoundingClientRect().top);
         var popup = document.getElementsByClassName("modal-in");
         popup[0].style.top = `${e.target.getBoundingClientRect().top}px`;
         var x = document.getElementsByClassName("popup-backdrop");
