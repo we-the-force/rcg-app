@@ -130,7 +130,7 @@ export default class extends React.Component {
     client.query({
       query: AppQuery
     }).then(res => {
-      console.log("app.jsx did mount", res);
+      // console.log("app.jsx did mount", res);
       this.setState((prevState) => {
         return {
           ...prevState,
