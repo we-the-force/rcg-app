@@ -45,7 +45,7 @@ export default function Home(props) {
         {/* masthead */}
         <Masthead banner={banner} relevante={relevante} />
         {/* Top Navbar */}
-        <Nav home categorias={f7.methods.getCategorias()} />
+        <Nav home categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
         {/* Page content */}
         <Block className="main_cont display-flex flex-direction-column justify-content-center">
           <Block className="paneles">

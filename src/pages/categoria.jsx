@@ -30,7 +30,7 @@ export default function Categoria(props) {
     return (
         <Page pageContent={false} name="categoria">
             <PageContent>
-                <Nav categorias={f7.methods.getCategorias()} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                 {/* Top Navbar */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <AdsTop />

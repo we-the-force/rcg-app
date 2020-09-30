@@ -30,7 +30,7 @@ export default class EspectacularPage extends Component {
                     <Block className="display-flex">
                         {
                             this.props.clientes.map((cliente, key) => {
-                                console.log("Clientes\r\n: ", cliente);
+                                // console.log("Clientes\r\n: ", cliente);
                                 return(
                                     <Block key={key}>
                                         <img src={`http://${window.location.hostname}:1337${cliente.logo.url}`} alt="" />

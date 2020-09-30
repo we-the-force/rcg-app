@@ -25,9 +25,26 @@ import {
     Panel,
     List,
     ListItem,
+    f7
 } from 'framework7-react';
 
 export default function navMobile(props) {
+    // console.log("nav_mobile:\r\n", props);
+    function articuloSearch(e) {
+        // console.log(e);
+        if (e.key === "Enter") {
+            //TODO: ToLowercase como no
+            let searchValue = e.target.value.trim();
+            if (searchValue !== "") {
+                // console.log(encodeURI(e.target.value));
+                // console.log(this.$f7.views.main.router.navigate);
+                f7.views.main.router.navigate(`/busqueda/${encodeURI(e.target.value)}`);
+            }
+            else {
+                // console.log("Ta vacio que quieres que busque lmao");
+            }
+        }
+    }
     return (
         <Fragment>
             <NavLeft>
@@ -53,28 +70,39 @@ export default function navMobile(props) {
                 </Navbar>
                 <Page>
                     <div className="grid">
-                        <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false} />
+                        {/* <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false} /> */}
+                        <input placeholder="Buscar" onKeyPress={e => articuloSearch(e)} />
                         <div className="box live">
                             <Block>
-                                <BlockHeader><img src={TVLight} alt="" /> <p>En Vivo</p></BlockHeader>
-                                <Link>RCG En Vivo</Link>
+                                <BlockHeader><img src={TVLight} alt="" /> <p>TV</p></BlockHeader>
+                                {
+                                    props.tv_channels.map((channel, key) => {
+                                        return (<Link key={key} href={`/tv/${channel.url}`}>{channel.nombre}</Link>)
+                                    })
+                                }
+                                {/* <Link>RCG En Vivo</Link>
                                 <Link>RCG Diferido - 2</Link>
-                                <Link>RCG TV 8.3</Link>
+                                <Link>RCG TV 8.3</Link> */}
                             </Block>
                         </div>
                         <div className="box services">
                             <Block>
                                 <BlockHeader><img src={services} alt="" /> <p>Servicios</p></BlockHeader>
                                 <Link>Fundacion RCG</Link>
-                                <Link>Espectaculares</Link>
-                                <Link>Registra Tu Calca</Link>
+                                <Link href="/espectaculares">Espectaculares</Link>
+                                <Link href="/calca">Registra Tu Calca</Link>
                             </Block>
                         </div>
                         <div className="box estaciones">
                             <Block>
                                 <BlockHeader><img src={radio} alt="" /><p>Radio</p></BlockHeader>
-                                <Link>Digital 106.5 FM</Link>
-                                <Link>XHSJ 103.3 FM</Link>
+                                {
+                                    props.radio_stations.map((station, key) => {
+                                        return (<Link key={key} href={`/radio/${station.url}`}>{station.nombre}</Link>)
+                                    })
+                                }
+                                {/* <Link>Digital 106.5 FM</Link>
+                                <Link>XHSJ 103.3 FM</Link> */}
                             </Block>
                         </div>
                         <div className="box follow">
@@ -89,8 +117,8 @@ export default function navMobile(props) {
                         <div className="box RCG">
                             <Block>
                                 <BlockHeader><img src={contact} alt="" /><p>RCG</p></BlockHeader>
-                                <Link>Nosotros</Link>
-                                <Link>Contacto</Link>
+                                <Link href="/nosotros">Nosotros</Link>
+                                <Link href="/contacto">Contacto</Link>
                             </Block>
                         </div>
                         <div className="box empty">

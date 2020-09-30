@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Mobile from './nav_mobile';
 import Desk from './nav_desktop';
-import { ListGroup, Navbar } from 'framework7-react';
+import { ListGroup, Navbar, f7 } from 'framework7-react';
 
 export default function Nav(props) {
+    let currentRoute = f7.views.main.history[f7.views.main.history.length - 1];
+    let isEspectaculares = currentRoute === "/espectaculares";
     let { categorias, home } = props;
     if (categorias.length <= 0) return "Loading...";
     let [categ_show, categ_pop, type] = useData(categorias);
@@ -11,10 +13,10 @@ export default function Nav(props) {
     return (
         <Navbar sliding noHairline noShadow>
             {type === 'desktop' &&
-                <Desk itemsShow={categ_show} itemsPop={categ_pop} />
+                <Desk itemsShow={categ_show} itemsPop={categ_pop} isEspectaculares={isEspectaculares}/>
             }
             {type === 'mobile' &&
-                <Mobile categorias={categorias} />
+                <Mobile categorias={categorias} isEspectaculares={isEspectaculares} tv_channels={props.tv_channels} radio_stations={props.radio_stations}/>
             }
         </Navbar>
     );

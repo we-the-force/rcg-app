@@ -35,7 +35,7 @@ export default function Esoectaculares(props) {
         <Page pageContent={false} name="espectaculares">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()}/> {/* navbar espectaculares */}
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations}/> {/* navbar espectaculares */}
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <AdsTop />

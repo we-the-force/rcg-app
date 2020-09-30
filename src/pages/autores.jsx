@@ -36,7 +36,7 @@ export default function Autores(props) {
             <PageContent>
                 {/* ads */}
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
                         <Block className="left_pan">

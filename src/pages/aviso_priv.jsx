@@ -30,7 +30,7 @@ export default function AvisoPrivacidad(props) {
         <Page pageContent={false} name="nosotros">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()}/>
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
