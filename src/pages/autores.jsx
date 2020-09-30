@@ -4,7 +4,6 @@ import LeftPanel from '@/components/general/left_panel/left-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import RightPanel from '@/components/general/right_panel/right-panel';
-import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AutoresPanel from '@/components/autores/autores-panel.jsx'
 import Footer from '@/components/general/footer';
 import { useQuery } from '@apollo/client';
