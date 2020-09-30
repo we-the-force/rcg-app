@@ -13,14 +13,14 @@ import {
 
 export default function AutorCard(props) {
     const { autor, numArticulos } = props;
-    console.log(autor);
+    console.log("AutorCard:\r\n", props);
     let DB_url = f7.methods.get_URL_DB();
     let imagen, id, nombre, articulos, face, twitt, insta, url;
     if(autor){
         imagen = DB_url + autor.img.url;
         id = autor.id;
         nombre = autor.nombre;
-        articulos = numArticulos.articulos;
+        articulos = numArticulos != undefined ? numArticulos.articulos : "0";
         face = autor.facebook_link;
         twitt = autor.twitter_link;
         insta = autor.instagram_link;
@@ -35,6 +35,7 @@ export default function AutorCard(props) {
         insta = "https://www.instagram.com";
         url = "";
     }
+    console.log(`Autor: ${nombre}\r\nArticulos: ${articulos}`);
     return (
         <Card className="autor_card">
             <Block className="back">
