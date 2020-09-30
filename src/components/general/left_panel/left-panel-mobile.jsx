@@ -13,7 +13,7 @@ export default function LeftPanelMobile(props) {
     var navLinks = [];
     if (f7 != undefined)
     {
-        console.log("LeftPanelMobile-f7:\r\n", f7);
+        // console.log("LeftPanelMobile-f7:\r\n", f7);
         let currentRoute = f7.views.main.history[f7.views.main.history.length - 1];
         let isEspectaculares = currentRoute === "/espectaculares";
         
@@ -27,7 +27,7 @@ export default function LeftPanelMobile(props) {
         {
             if (categorias.length > 0)
             {
-                console.log("LeftPanelMobile-Categorias:\r\n", categorias);
+                // console.log("LeftPanelMobile-Categorias:\r\n", categorias);
                 navLinks = categorias.map((val, key) => {
                     let current = categoria === val.nombre ? 'current' : '';
                     return (

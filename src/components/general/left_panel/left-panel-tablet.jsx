@@ -20,7 +20,7 @@ import {
 } from 'framework7-react';
 
 export default function LeftPanelTablet(props) {
-
+    console.log("LeftPanelTablet-props:\r\n", props);
     const [input, setInput] = useState('');
 
     const changeBackdropOpen = (e) => {
@@ -63,25 +63,25 @@ export default function LeftPanelTablet(props) {
             </Popup>
             <Popup className="live-popup left-popup-tablet">
                 <List>
-                    <ListItem link="/tv/envivo">RCG en vivo</ListItem>
+                    {/* <ListItem link="/tv/envivo">RCG en vivo</ListItem>
                     <ListItem link="/tv/diferido">RCG Diferido – 2</ListItem>
-                    <ListItem link="/tv/8-3">RCG TV 8.3</ListItem>
-                    {/* {
-                        this.tv_channels.map((channel, key) => {
+                    <ListItem link="/tv/8-3">RCG TV 8.3</ListItem> */}
+                    {
+                        props.tv_channels.map((channel, key) => {
                             return (<ListItem key={key} link={`/tv/${channel.url}`}>{channel.nombre}</ListItem>)
                         })
-                    } */}
+                    }
                 </List>
             </Popup>
             <Popup className="radio-popup left-popup-tablet">
                 <List>
-                    <ListItem link="/radio/106-5">DIGITAL 106.5 FM</ListItem>
-                    <ListItem link="/radio/103-3">XHSJ 103.3 FM</ListItem>
-                    {/* {
-                        this.radio_stations.map((station, key) => {
+                    {/* <ListItem link="/radio/106-5">DIGITAL 106.5 FM</ListItem>
+                    <ListItem link="/radio/103-3">XHSJ 103.3 FM</ListItem> */}
+                    {
+                        props.radio_stations.map((station, key) => {
                             return (<ListItem key={key} link={`/radio/${station.url}`}>{station.nombre}</ListItem>);
                         })
-                    } */}
+                    }
                 </List>
             </Popup>
             <Popup className="more-popup left-popup-tablet">

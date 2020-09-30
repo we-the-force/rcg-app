@@ -44,6 +44,7 @@ export default function Autor(props) {
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
                             {/* Aqui va el deste */}
