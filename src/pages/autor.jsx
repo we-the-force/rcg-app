@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanelAutor from '@/components/autores/right-panel-autor.jsx';
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import AutorPanel from '@/components/autores/autor-panel.jsx'
 import Footer from '@/components/general/footer';
 import { useQuery } from '@apollo/client';

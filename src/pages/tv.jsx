@@ -60,6 +60,7 @@ export default function TV(props) {
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
                         </Block>
                     </Block>
                 </Block>

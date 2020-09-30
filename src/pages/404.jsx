@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import NotFoundPanel from '@/components/not-found-panel';
@@ -43,6 +45,7 @@ export default function NotFound(props) {
             </Block>
             <Block className="right_pan">
                 <RightPanel newsInfo={data.articulosDestacadosRaros} />
+                <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
             </Block>
           </Block>
         </Block>

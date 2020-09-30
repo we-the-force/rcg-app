@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
+import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
+import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import RadioPanel from '@/components/radio/radio-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
@@ -62,6 +64,7 @@ export default function Radio(props) {
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
                         </Block>
                     </Block>
                 </Block>
