@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
@@ -8,7 +8,7 @@ import Footer from '@/components/general/footer';
 import { useQuery } from '@apollo/client';
 import AdsTop from '@/components/general/ads_top';
 import { AutoresPage } from '@/graphql/queries.graphql';
-import { f7,f7ready } from 'framework7-react';
+import { f7, f7ready } from 'framework7-react';
 import {
     Page,
     Block,
@@ -17,7 +17,7 @@ import {
 
 export default function Autores(props) {
 
-    const {loading, error, data} = useQuery(AutoresPage);
+    const { loading, error, data } = useQuery(AutoresPage);
 
     useEffect(() => {
         f7ready((f7) => {
@@ -27,6 +27,16 @@ export default function Autores(props) {
 
     if (loading) return "loading...";
     if (error) return `Error! ${error.message}`;
+
+    let numNoticias = data.autorArticulos.groupBy.autor.map((val) => {
+        let elem = {
+            autor: val.key,
+            articulos: val.connection.aggregate.count,
+        }
+        return elem;
+    });
+
+    let { autores } = data;
 
     const rightPanel = f7.methods.getArticulosRightPanel();
     const leftPanelTV = f7.methods.getTV();
@@ -45,7 +55,7 @@ export default function Autores(props) {
                         </Block>
                         <Block className="center_pan">
                             <AdsTop />
-                            <AutoresPanel autores={data.autores}/>
+                            <AutoresPanel autores={autores} numNoticias={numNoticias} />
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />
@@ -56,5 +66,5 @@ export default function Autores(props) {
             </PageContent>
         </Page>
     );
-} 
+}
 

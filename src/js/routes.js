@@ -83,7 +83,7 @@ var routes = [
     component: Autores,
   },
   {
-    path: '/autor/:autor',
+    path: '/autor/:url',
     component: Autor,
   },
   {

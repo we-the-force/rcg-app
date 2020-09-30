@@ -7,7 +7,9 @@ export default function Nav(props) {
     let currentRoute = f7.views.main.history[f7.views.main.history.length - 1];
     let isEspectaculares = currentRoute === "/espectaculares";
     let { categorias, home } = props;
-    if (categorias.length <= 0) return "Loading...";
+    
+    if (categorias.length <= 0) return "";
+
     let [categ_show, categ_pop, type] = useData(categorias);
 
     return (

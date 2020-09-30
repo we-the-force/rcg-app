@@ -34,22 +34,32 @@ query HomePage {
   }
 }
 
-query ArticuloPage($url: String) {
-  articulos(where: { url: $url }) {
-    ...ArticulosData
+query AutorPage($url: String) {
+  autor: autors(where: { url: $url }) {
+    id
+    nombre
+    img {
+      url
+    }
+    articulos {
+      ...ArticulosData
+    }
+    twitter_link
+    facebook_link
+    instagram_link
   }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
+  autorArticulos: articulosConnection(where: {autor: {url: "yo-merenges"}}){
+    groupBy {
+      autor {
+        key
+        connection {
+          aggregate {
+            count
+          }
+        }
+      }
+    }
   }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
-
-query AutoresPage {
   autores: autors {
     id
     nombre
@@ -65,7 +75,48 @@ query AutoresPage {
   }
 }
 
-query BorraEsteMasAdelante{
+query AutoresPage {
+  autores: autors {
+    id
+    nombre
+    img {
+      url
+    }
+    twitter_link
+    facebook_link
+    instagram_link
+    url
+  }
+  autorArticulos: articulosConnection {
+    groupBy {
+      autor {
+        key
+        connection {
+          aggregate {
+            count
+          }
+        }
+      }
+    }
+  }
+}
+
+query ArticuloPage($url: String) {
+  articulos(where: { url: $url }) {
+    ...ArticulosData
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+    ...ArticulosData
+  }
+}
+
+query BorraEsteMasAdelante {
   articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
     ...ArticulosData
   }
@@ -113,7 +164,6 @@ query CategoriaPage($categoria: String) {
   }
 }
 
-
 query TopArticulos {
   articulos(where: { relevante: true }) {
     ...ArticulosData
@@ -136,42 +186,6 @@ query BusquedaPage($terms: [String]) {
   }
   articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
-  }
-}
-
-
-query AutorPage($autorID: String) {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  autorInfo: autors(where: { id: $autorID }) {
-    id
-    nombre
-    img {
-      url
-    }
-    articulos {
-      ...ArticulosData
-    }
-    twitter_link
-    facebook_link
-    instagram_link
-  }
-  autores: autors {
-    id
-    nombre
-    img {
-      url
-    }
-    articulos {
-      id
-    }
-    twitter_link
-    facebook_link
-    instagram_link
   }
 }
 
@@ -243,7 +257,10 @@ query FaqPage {
     ...StationData
   }
   faqInfo: preguntasFrecuente {
-    preguntas {pregunta respuesta}
+    preguntas {
+      pregunta
+      respuesta
+    }
   }
 }
 
@@ -259,9 +276,11 @@ query EspectacularPage {
     porque_nosotros
     nosotros
   }
-  clientes: espectacularClientes{
+  clientes: espectacularClientes {
     nombre
-    logo {url}
+    logo {
+      url
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanelAutor from '@/components/autores/right-panel-autor.jsx';
@@ -7,7 +7,7 @@ import Footer from '@/components/general/footer';
 import { useQuery } from '@apollo/client';
 import { AutorPage } from '@/graphql/queries.graphql';
 import AdsTop from '@/components/general/ads_top';
-import { f7,f7ready } from 'framework7-react';
+import { f7, f7ready } from 'framework7-react';
 import {
     Page,
     Block,
@@ -15,9 +15,9 @@ import {
 } from 'framework7-react';
 
 export default function Autor(props) {
-    let autorID = props.f7route.params.autor
-    const {loading, error, data} = useQuery(AutorPage, {
-        variables: {autorID}
+    let { url } = props
+    const { loading, error, data } = useQuery(AutorPage, {
+        variables: { url }
     });
 
     useEffect(() => {
@@ -29,6 +29,11 @@ export default function Autor(props) {
     if (loading) return "loading...";
     if (error) return `Error!:  ${error.message}`;
 
+    const { autor, autores } = data;
+    const articulosNum = data.autorArticulos ? data.autorArticulos.groupBy.autor[0].connection.aggregate.count : 0;
+    console.log(articulosNum);
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
     return (
         <Page pageContent={false} name="autor">
             <PageContent>
@@ -36,17 +41,17 @@ export default function Autor(props) {
                 {/* Top Navbar */}
                 <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                    <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
                             {/* Aqui va el deste */}
-                            <AutorPanel autorInfo={data.autorInfo[0]}/>
+                            <AdsTop />
+                            <AutorPanel autor={autor} articulosNum={articulosNum}/>
                         </Block>
                         <Block className="right_pan">
-                            <RightPanelAutor autores={data.autores} autorInfo={data.autorInfo[0]} />
+                            {/* <RightPanelAutor autores={data.autores} autorInfo={data.autorInfo[0]} /> */}
                         </Block>
                     </Block>
                 </Block>

@@ -38,7 +38,34 @@ export default class HomePanel extends Component {
                 </Card>
 
                 {noticias_filtradas.map((val, i) => {
-                    console.log(val);
+                    let { articulos } = val;
+                    let [articulosTop, articulosSwiper] = [[], []];
+                    switch (articulos.length) {
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 5:
+                        case 7:
+                            articulosTop = articulos;
+                            break;
+                        case 4:
+                            articulosTop = articulos.slice(0, 1);
+                            articulosSwiper = articulos.slice(1);
+                            break;
+                        case 6:
+                            articulosTop = articulos.slice(0, 3);
+                            articulosSwiper = articulos.slice(3);
+                            break;
+                        case 8:
+                        case 9:
+                            articulosTop = articulos.slice(0, 5);
+                            articulosSwiper = articulos.slice(5);
+                            break;
+                        default:
+                            articulosTop = articulos.slice(0, 7);
+                            articulosSwiper = articulos.slice(7);
+                            break;
+                    }
                     return (
                         <Card className="categoria" key={i}>
                             <CardHeader>
@@ -47,15 +74,25 @@ export default class HomePanel extends Component {
                             </CardHeader>
 
                             <Block className="grid-cont">
+                                {articulosTop.map((val, i) => {
+                                    let first = i == 0 && articulosTop.length != 2 ? 'first' : '';
+                                    return (
+                                        <NewsHome className={'grid-item ' + first} key={i} articulo={val} />
+                                    );
+                                })}
+                                {/* 
                                 <NewsHome className="grid-item first" />
                                 <NewsHome className="grid-item" />
                                 <NewsHome className="grid-item" />
                                 <NewsHome className="grid-item" />
                                 <NewsHome className="grid-item" />
                                 <NewsHome className="grid-item" />
-                                <NewsHome className="grid-item" />
+                                <NewsHome className="grid-item" /> 
+                                */}
                             </Block>
-                            <SwiperNews wot />
+                            {articulosSwiper.length > 0 &&
+                                <SwiperNews wot articulos={articulosSwiper} />
+                            }
                         </Card>
                     );
                 })}

@@ -88,7 +88,7 @@
             .preview
                 -webkit-line-clamp 3
 
-        &.grid-item:nth-child(1)
+        &.grid-item.first
             &:after
                 content ''
                 display block
@@ -97,7 +97,6 @@
             .img_cont
                 position absolute
                 width 100%
-                height 100%
                 z-index -1
 
                 a
@@ -109,6 +108,9 @@
                         height 100%
                         object-fit cover
                         border-radius 6px
+
+                &:after
+                    padding-top calc(204 / 664 * 100%) !important
 
             .img_foot
                 position absolute
@@ -150,7 +152,7 @@
             .title
                 font font_16
 
-        &.grid-item:nth-child(1)
+        &.grid-item.first
             &:after
                 padding-top calc(217 / 575 * 100%) !important
             
@@ -159,6 +161,6 @@
                     font font_21
                     text-shadow 0px 0px 4px rgba(0, 0, 0, 0.35)
 
-
-    /* @media (min-width 640px)
-    @media (min-width 1024px) */
+            .img_cont
+                &:after
+                    padding-top calc(217 / 575 * 100%) !important
