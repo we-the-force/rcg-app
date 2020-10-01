@@ -30,10 +30,11 @@ export default class extends React.Component {
       id: 'io.framework7.RCG', // App bundle ID
       name: 'RCG webpage', // App name
       theme: 'auto', // Automatic theme detection
-
+      
+      // pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
       view: {
         pushState: true,
-        pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
+        pushStateRoot: `${window.location.protocol}//${window.location.hostname}`,
         pushStateSeparator: '',
       },
 
