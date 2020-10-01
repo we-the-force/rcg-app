@@ -46,8 +46,8 @@ export default function LeftPanelTablet(props) {
             <Link popupOpen=".nosotros-popup" onClick={changeBackdropOpen} className="icon-link nosotros" iconMaterial="perm_contact_calendar" icon="nosotros"></Link>
 
             <div className="links">
-                <Link className="text-link derecho-replica">Derecho de replica</Link>
-                <Link className="text-link aviso-privacidad">Aviso de privacidad</Link>
+                <Link href="/derecho_replica" className="text-link derecho-replica">Derecho de replica</Link>
+                <Link href="/aviso_privacidad"className="text-link aviso-privacidad">Aviso de privacidad</Link>
 
                 <Link className="text-link OPI-2017">OPI 2017</Link>
                 <Link className="text-link OPi-2018">OPI 2018</Link>
