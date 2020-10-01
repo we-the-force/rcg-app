@@ -9,10 +9,10 @@ import {
     PageContent
 } from 'framework7-react';
 
-export default class EspectacularPage extends Component {
+export default class EspectacularPanel extends Component {
     constructor(props) {
         super(props);
-        // console.log(props);
+        // console.log("EspectacularPanel", props);
     }
     render() {
         return (
