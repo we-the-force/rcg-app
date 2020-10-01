@@ -43,12 +43,14 @@ export default function ContactoPage(props) {
                        requestObject
                    }
                });
+               createPopup("Correo enviado", "Su solicitud ha sido enviada");
                console.log(`Wea asdasd: `, postResponse);
             }
             else
             {
-                f7.dialog.alert(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
+                // f7.dialog.alert(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
                 console.log(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
+                createPopup("Error!", `Ocurrio un error procesando la peticion: ${isRequestValid.message}`);
             }
         }
     }
@@ -80,6 +82,46 @@ export default function ContactoPage(props) {
         }
         auxResponse.message += ".";
         return auxResponse;
+    }
+
+    // function createPopup(titulo, message) {
+    //     // console.log("Create Popup:\r\n", f7.popup.create);
+    //     var pop = f7.popup.create({
+    //       content: `
+    //         <div class="popup">
+    //           <div class="page">
+    //             <div class="navbar">
+    //               <div class="navbar-bg">
+    //               <div class="navbar-inner">
+    //                 <div class="title">${titulo}</div>
+    //               </div>
+    //             </div>
+    //             <div>
+    //                 <p>${message}</p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       `.trim(),
+    //     });
+      
+    //   // Open it
+    //   pop.open();
+    // }
+    function createPopup(titulo, message) {
+        // console.log("Create Popup:\r\n", f7.popup.create);
+        var pop = f7.popup.create({
+          content: `
+            <div class="popup">
+                <div class="title">${titulo}</div>
+                <div>
+                    <p>${message}</p>
+                </div>
+            </div>
+          `.trim(),
+        });
+      
+      // Open it
+      pop.open();
     }
     return (
         <Block className="center_panel">
