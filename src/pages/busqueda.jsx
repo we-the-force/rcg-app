@@ -20,7 +20,7 @@ import {
 } from 'framework7-react';
 
 export default function Busqueda(props) {
-    let terms = formatParams(props.f7route.params.params);
+    let terms = formatParams(props.params);
     const { loading, error, data } = useQuery(BusquedaPage, {
         variables: {terms}
     });

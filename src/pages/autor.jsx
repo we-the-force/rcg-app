@@ -27,6 +27,7 @@ export default function Autor(props) {
             f7.methods.handleCategoriaActual('');
         });
     }, []);
+
     if (loading) return "loading...";
     if (error) return `Error!:  ${error.message}`;
 
@@ -40,6 +41,7 @@ export default function Autor(props) {
         }
         return elem;
     }) : [];
+    
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
