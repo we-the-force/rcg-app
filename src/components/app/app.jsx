@@ -34,7 +34,7 @@ export default class extends React.Component {
       // pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
       view: {
         pushState: true,
-        pushStateRoot: `${window.location.protocol}//${window.location.hostname}`,
+        pushStateRoot: `${window.location.protocol}//${window.location.hostname}:8080`,
         pushStateSeparator: '',
       },
 
