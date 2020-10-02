@@ -36,6 +36,14 @@ export default function LeftPanelTablet(props) {
         x[0].classList.remove("invisible");
     }
 
+    const articuloSearch = (e) => {
+        if (e.key === "Enter") {
+            if (e.target.value.trim() !== "") {
+                f7.views.main.router.navigate(`/busqueda/${e.target.value}`);
+            }
+        }
+    }
+
     return (
         <Block className="left_panel_tablet">
             <Link popupOpen=".search-popup" onClick={e => { changeBackdropOpen(e) }} className="icon-link search" iconMaterial="search" icon="search"></Link>
@@ -56,7 +64,7 @@ export default function LeftPanelTablet(props) {
             </div>
 
             <Popup className="search-popup left-popup-tablet" onPopupClose={changeBackdropClose}>
-                <input placeholder="Buscar" onChange={(e) => { console.log(e) }} onKeyPress={() => { console.log('in') }} />
+                <input placeholder="Buscar" onChange={(e) => { console.log(e) }} onKeyPress={(e) => articuloSearch(e)} />
                 <span className="material-icons icon-image-preview">
                     search
                 </span>
