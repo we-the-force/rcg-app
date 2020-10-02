@@ -19,7 +19,7 @@ import {
     f7
 } from 'framework7-react';
 
-export default function Esoectaculares(props) {
+export default function Espectaculares(props) {
     const {loading, error, data} = useQuery(EspectacularPage);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function Esoectaculares(props) {
 
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
-
+    // console.log("Espectaculares.data:\r\n", data);
     return (
         <Page pageContent={false} name="espectaculares">
             <PageContent>

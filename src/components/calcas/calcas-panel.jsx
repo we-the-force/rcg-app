@@ -71,9 +71,10 @@ export default function CalcasPanel(props) {
                     }}).then((res) => {
                         isUpdating = false;
                         console.log("Inside promise then :D", res);
-                        createPopup();
+                        createPopup("yey", "Calca creada exitosamente!");
                     }).catch((err) => {
-                        console.log("Error inside of createCalca", err);
+                        console.log("Error inside of createCalca\r\n\r\n", err);
+                        createPopup("Error!", `Error dando la calca de alta!\r\n\r\n${err}`);
                     });
             }
             else
@@ -90,6 +91,7 @@ export default function CalcasPanel(props) {
         {
             if (!isUpdating)
             {
+                createPopup("Error", `Debes aceptar el aviso de privacidad!`);
                 console.log("Acepta los terminos prro");
             }
             else
@@ -142,27 +144,38 @@ export default function CalcasPanel(props) {
         return auxResponse;
     }
 
-
-    function createPopup() {
-        console.log("Create Popup:\r\n", f7.popup.create);
+    // function createPopup(titulo, message) {
+    //     // console.log("Create Popup:\r\n", f7.popup.create);
+    //     var pop = f7.popup.create({
+    //       content: `
+    //         <div class="popup">
+    //           <div class="page">
+    //             <div class="navbar">
+    //               <div class="navbar-bg">
+    //               <div class="navbar-inner">
+    //                 <div class="title">${titulo}</div>
+    //               </div>
+    //             </div>
+    //             <div>
+    //                 <p>${message}</p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       `.trim(),
+    //     });
+      
+    //   // Open it
+    //   pop.open();
+    // }
+    function createPopup(titulo, message) {
+        // console.log("Create Popup:\r\n", f7.popup.create);
         var pop = f7.popup.create({
           content: `
             <div class="popup">
-              <div class="page">
-                <div class="navbar">
-                  <div class="navbar-bg">
-                  <div class="navbar-inner">
-                    <div class="title">Dynamic Popup</div>
-                    <div class="right"><a href="#" class="link popup-close">Close</a></div>
-                  </div>
+                <div class="title">${titulo}</div>
+                <div>
+                    <p>${message}</p>
                 </div>
-                <div class="page-content">
-                  <div class="block">
-                    <p>This popup was created dynamically</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus mauris leo, eu bibendum neque congue non. Ut leo mauris, eleifend eu commodo a, egestas ac urna. Maecenas in lacus faucibus, viverra ipsum pulvinar, molestie arcu. Etiam lacinia venenatis dignissim. Suspendisse non nisl semper tellus malesuada suscipit eu et eros. Nulla eu enim quis quam elementum vulputate. Mauris ornare consequat nunc viverra pellentesque. Aenean semper eu massa sit amet aliquam. Integer et neque sed libero mollis elementum at vitae ligula. Vestibulum pharetra sed libero sed porttitor. Suspendisse a faucibus lectus.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           `.trim(),
         });
