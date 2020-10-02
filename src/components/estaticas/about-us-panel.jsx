@@ -11,7 +11,6 @@ import {
 export default class AboutUsPanel extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.descripcion = marked(props.nosotrosInfo.descripcion);
         this.middleText = marked(props.nosotrosInfo.info_mid);
         this.bottomText = marked(props.nosotrosInfo.info_bottom);
@@ -27,16 +26,16 @@ export default class AboutUsPanel extends Component {
                         <div className="logo_cont">
                             <img src={Logo} alt="" />
                         </div>
-                        <div dangerouslySetInnerHTML={{ __html: this.descripcion }} />
+                        <div dangerouslySetInnerHTML={{ __html: this.descripcion }} /> {/* //change marked */}
                         <img className="cityImg" src={city} alt="" />
                     </Block>
                 </Card>
                 <Card className="quote">
-                    <div className="text" dangerouslySetInnerHTML={{ __html: this.middleText }} />
+                    <div className="text" dangerouslySetInnerHTML={{ __html: this.middleText }} /> {/* //change marked */}
                 </Card>
                 <Card className="bottom">
                     <Block className="back">
-                        <div dangerouslySetInnerHTML={{ __html: this.bottomText }} />
+                        <div dangerouslySetInnerHTML={{ __html: this.bottomText }} /> {/* //change marked */}
                         <div className="logo_cont">
                             <img src={Logo} alt="" />
                         </div>

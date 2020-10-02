@@ -183,6 +183,12 @@ query AboutUsPage {
   }
 }
 
+query AvisoPrivacidadPage {
+  avisoPrivacidad: avisoDePrivacidad {
+    descripcion
+  }
+}
+
 query BorraEsteMasAdelante {
   articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
     ...ArticulosData
@@ -242,12 +248,6 @@ query CategoriaPage($categoria: String) {
     ...StationData
   }
   articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
-
-query TopArticulos {
-  articulos(where: { relevante: true }) {
     ...ArticulosData
   }
 }
@@ -365,18 +365,6 @@ query DerechoReplicaPage {
     direccion
     telefono
     correo
-  }
-}
-
-query AvisoPrivacidadPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  avisoPrivacidad: avisoDePrivacidad {
-    descripcion
   }
 }
 

@@ -35,6 +35,7 @@
 @import './stylus/components/autores/autores.styl'
 @import './stylus/components/autores/card-autor.styl'
 @import './stylus/components/estaticas/nosotros.styl'
+@import './stylus/components/estaticas/av-priv.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -102,6 +103,9 @@
       .center_pan
         width calc(100% - 135px) !important
         padding-left 0px
+        &.wo_right_pan
+          width calc(100% - 90px) !important
+          padding-left 10px
 
       .left_pan
         display block
@@ -125,6 +129,8 @@
         width calc(100% - 410px) !important
         padding-right 0px
         padding-left 0px
+        &.wo_right_pan
+          width calc(100% - 220px) !important
 
       .left_pan
         width 14%

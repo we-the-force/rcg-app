@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import RightPanel from '@/components/general/right_panel/right-panel';
@@ -7,8 +7,8 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import AvisoPrivacidadPanel from '@/components/estaticas/aviso-privacidad-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
-import {useQuery} from '@apollo/client';
-import {AvisoPrivacidadPage} from '@/graphql/queries.graphql';
+import { useQuery } from '@apollo/client';
+import { AvisoPrivacidadPage } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
@@ -18,7 +18,7 @@ import {
 } from 'framework7-react';
 
 export default function AvisoPrivacidad(props) {
-    const {loading, error, data} = useQuery(AvisoPrivacidadPage);
+    const { loading, error, data } = useQuery(AvisoPrivacidadPage);
 
     useEffect(() => {
         f7ready((f7) => {
@@ -28,23 +28,28 @@ export default function AvisoPrivacidad(props) {
 
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
+    const { avisoPrivacidad } = data;
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
     return (
         <Page pageContent={false} name="nosotros">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
+                <Nav
+                    categorias={f7.methods.getCategorias()}
+                    tv_channels={leftPanelTV}
+                    radio_stations={leftPanelRadio}
+                />
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
-                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
-                        <Block className="center_pan">
+                        <Block className="center_pan wo_right_pan">
                             <AdsTop />
-                            {/* aqui va el panel central */}
-                            {/* <AboutUsPanel nosotrosInfo={data.nosotrosInfo}/> */}
-                            <AvisoPrivacidadPanel avisoPriv={data.avisoPrivacidad}/>
+                            <AvisoPrivacidadPanel avisoPriv={avisoPrivacidad} />
                         </Block>
                     </Block>
                 </Block>
