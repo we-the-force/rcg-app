@@ -16,7 +16,8 @@ import {
     Block,
     Link,
     List,
-    ListItem
+    ListItem,
+    f7
 } from 'framework7-react';
 
 export default function LeftPanelTablet(props) {
