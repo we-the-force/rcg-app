@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewsCard from '../news-card';
+import NewsCategoria from '@/components/cards_news/news_categoria.jsx';
 import {
     Card,
     CardHeader,
@@ -20,7 +20,7 @@ export default class NewsPanel extends Component {
                 </Card>
                 {/* Lista de NewsCards */}
                 { this.props.articulos.map((articulo, i) => {
-                    return (<NewsCard key={i} articulo={articulo}/>);
+                    return (<NewsCategoria key={i} articulo={articulo}/>);
                 }) }
                 {/* <NewsCard />
                 <Block className="ads bar"></Block>

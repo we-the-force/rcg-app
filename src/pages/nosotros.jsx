@@ -28,27 +28,30 @@ export default function AboutUs(props) {
 
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
-
+    console.log(data);
+    //const { banner, categorias, relevante } = data;
+    let rightPanel = f7.methods.getArticulosRightPanel();
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
     return (
         <Page pageContent={false} name="nosotros">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                    <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
-                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
-                            {/* aqui va el panel central */}
+                            <AdsTop />
                             <AboutUsPanel nosotrosInfo={data.nosotrosInfo}/>
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDestacadosRaros}/>
-                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanel newsInfo={rightPanel}/>
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>

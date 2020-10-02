@@ -1,5 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import marked from 'marked';
+import city from '@/static/imgs/city.png'
+import Logo from '@/static/imgs/Logo_negro.png'
 import {
     Block,
     Card,
@@ -16,18 +18,29 @@ export default class AboutUsPanel extends Component {
     }
     render() {
         return (
-            <Block className="center_panel">
+            <Block className="center_panel nosotros_panel">
                 <Card className="head">
                     <CardHeader>Nosotros</CardHeader>
                 </Card>
-                <Card>
-                    <div dangerouslySetInnerHTML={{ __html: this.descripcion}}/>
+                <Card className="city">
+                    <Block className="back">
+                        <div className="logo_cont">
+                            <img src={Logo} alt="" />
+                        </div>
+                        <div dangerouslySetInnerHTML={{ __html: this.descripcion }} />
+                        <img className="cityImg" src={city} alt="" />
+                    </Block>
                 </Card>
-                <Card>
-                    <div dangerouslySetInnerHTML={{ __html: this.middleText}}/>
+                <Card className="quote">
+                    <div className="text" dangerouslySetInnerHTML={{ __html: this.middleText }} />
                 </Card>
-                <Card>
-                    <div dangerouslySetInnerHTML={{ __html: this.bottomText}}/>
+                <Card className="bottom">
+                    <Block className="back">
+                        <div dangerouslySetInnerHTML={{ __html: this.bottomText }} />
+                        <div className="logo_cont">
+                            <img src={Logo} alt="" />
+                        </div>
+                    </Block>
                 </Card>
             </Block>
         )
