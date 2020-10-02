@@ -16,7 +16,8 @@ import {
     Block,
     Link,
     List,
-    ListItem
+    ListItem,
+    f7
 } from 'framework7-react';
 
 export default function LeftPanelTablet(props) {
@@ -34,6 +35,14 @@ export default function LeftPanelTablet(props) {
     const changeBackdropClose = () => {
         var x = document.getElementsByClassName("popup-backdrop");
         x[0].classList.remove("invisible");
+    }
+
+    const articuloSearch = (e) => {
+        if (e.key === "Enter") {
+            if (e.target.value.trim() !== "") {
+                f7.views.main.router.navigate(`/busqueda/${e.target.value}`);
+            }
+        }
     }
 
     return (
@@ -56,7 +65,7 @@ export default function LeftPanelTablet(props) {
             </div>
 
             <Popup className="search-popup left-popup-tablet" onPopupClose={changeBackdropClose}>
-                <input placeholder="Buscar" onChange={(e) => { console.log(e) }} onKeyPress={() => { console.log('in') }} />
+                <input placeholder="Buscar" onChange={(e) => { console.log(e) }} onKeyPress={(e) => articuloSearch(e)} />
                 <span className="material-icons icon-image-preview">
                     search
                 </span>
