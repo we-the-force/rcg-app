@@ -117,17 +117,31 @@ query AutoresPage {
   }
 }
 
-query ArticuloPage($url: String) {
-  articulos(where: { url: $url }) {
+query BusquedaPage($values: [String], $titulo: Boolean!, $tag: Boolean!, $desc: Boolean!, $inicio: Int, $limite: Int) {
+  byTitulo: articulos (where: { Titulo_contains: $values },start: $inicio, limit: $limite) @include(if: $titulo) {
     ...ArticulosData
   }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
+  byTag: articulos (where: { tags: { nombre_contains: $values }},start: $inicio, limit: $limite) @include(if: $tag) {
+    ...ArticulosData
   }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
+  byDesc: articulos (where: { description_contains: $values },start: $inicio, limit: $limite) @include(if: $desc) {
+    ...ArticulosData
+  } 
+}
+
+query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
+  articulos (where: { description_contains: $values },start: $inicio, limit: $limite){
+    ...ArticulosData
+  } 
+}
+
+query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
+  articulos (where: { Titulo_contains: $values },start: $inicio, limit: $limite) {
+    ...ArticulosData
   }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+}
+query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
+  articulos (where: { tags: { nombre_contains: $values }},start: $inicio, limit: $limite) {
     ...ArticulosData
   }
 }
@@ -162,6 +176,21 @@ query BorraEsteMasAdelante {
   }
 }
 
+query ArticuloPage($url: String) {
+  articulos(where: { url: $url }) {
+    ...ArticulosData
+  }
+  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+    ...StationData
+  }
+  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+    ...StationData
+  }
+  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+    ...ArticulosData
+  }
+}
+
 query CategoriaPage($categoria: String) {
   articulos(where: { categoria: { nombre: $categoria } }) {
     ...ArticulosData
@@ -182,25 +211,6 @@ query CategoriaPage($categoria: String) {
 
 query TopArticulos {
   articulos(where: { relevante: true }) {
-    ...ArticulosData
-  }
-}
-
-query BusquedaPage($terms: [String]) {
-  searchTitulo: articulos(where: { Titulo_contains: $terms }) {
-    ...ArticulosData
-  }
-  # searchTag: articulos(where: {tags: {nombre_in: $terms}}) {
-  searchTag: articulos(where: { tags: { nombre_contains: $terms } }) {
-    ...ArticulosData
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
 }
