@@ -130,6 +130,7 @@ export default function navMobile(props) {
                                 <div className="avisos display-flex">
                                     <Link href="/derecho_replica">Derecho de replica</Link>
                                     <Link href="/aviso_privacidad">Aviso de privacidad</Link>
+                                    <Link href="/faq">Preguntas Frecuentes</Link>
                                 </div>
                                 <div className="opis">
                                     <Link href={false}>OPI 2017</Link>

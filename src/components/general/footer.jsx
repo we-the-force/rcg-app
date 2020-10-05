@@ -31,6 +31,8 @@ export default class Footer extends Component {
                         <hr />
                         <Link href="/aviso_privacidad">Aviso de privacidad</Link>
                         <hr />
+                        <Link href="/faq">Preguntas Frecuentes</Link>
+                        <hr />
                         <Link href={false}>OPI 2017</Link>
                         <hr />
                         <Link href={false}>OPI 2018</Link>

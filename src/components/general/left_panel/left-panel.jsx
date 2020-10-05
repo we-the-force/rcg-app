@@ -76,7 +76,7 @@ export default class LeftPanel extends Component {
                 </Card>
                 <Card className="left_pan_card pages">
                     <List>
-                        <ListItem link="#">Fundación RCG</ListItem>
+                        {/* <ListItem link="#">Fundación RCG</ListItem> */}
                         <ListItem link="/espectaculares">Espectaculares</ListItem>
                         <ListItem link="/calca">Registra tu calca</ListItem>
                     </List>
@@ -110,6 +110,7 @@ export default class LeftPanel extends Component {
                     <div className="flex_wrap display-flex justify-content-flex-start align-items-center">
                         <Link href="/derecho_replica">Derecho de replica</Link>
                         <Link href="/aviso_privacidad">Aviso de privacidad</Link>
+                        <Link href="/faq">Preguntas Frecuentes</Link>
                     </div>
                     <div className="display-flex justify-content-flex-start align-items-center">
                         <Link href={false}>OPI 2017</Link>
