@@ -98,18 +98,21 @@ export default function Articulo(props) {
         f7.views.main.router.navigate('/404/');
     }
     console.log("Ayy el articulo se termino?", data);
+
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
     return (
         <Page pageContent={false} name="articulo">
             <PageContent>
                 {/* ads */}
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
-                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
                             {

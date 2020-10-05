@@ -33,7 +33,6 @@ export default function Faq(props) {
     const { faq } = data;
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
-
     return (
         <Page pageContent={false} name="faq">
             <PageContent>

@@ -42,7 +42,6 @@ export default function Autor(props) {
         return elem;
     }) : [];
     
-    let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
