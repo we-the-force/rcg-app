@@ -28,6 +28,7 @@ export default function AvisoPrivacidad(props) {
 
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
+    
     const { avisoPrivacidad } = data;
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
