@@ -39,7 +39,6 @@ export default class HomePanel extends Component {
 
                 {noticias_filtradas.map((val, i) => {
                     let { articulos } = val;
-                    console.log(val);
                     let [articulosTop, articulosSwiper] = [[], []];
                     switch (articulos.length) {
                         case 1:

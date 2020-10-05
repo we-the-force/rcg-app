@@ -17,26 +17,12 @@ import {
 export default class LeftPanel extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
-
-        if (props.hasOwnProperty("tv_channels"))
-        {
-            this.tv_channels = props.tv_channels;
-        }
-        else
-        {
-            this.tv_channels = [];
-        }
-        if (props.hasOwnProperty("radio_stations"))
-        {
-            this.radio_stations = props.radio_stations;
-        }
-        else
-        {
-            this.radio_stations = [];
+        this.state = {
+            ...props
         }
     }
     render() {
+        let { tv_channels, radio_stations } = this.state;
         return (
             <Block className="left_panel_cont">
                 <Card className="left_pan_card envivo">
@@ -47,11 +33,8 @@ export default class LeftPanel extends Component {
                         en vivo
                     </CardHeader>
                     <List>
-                        {/* <ListItem link="/tv/envivo">RCG en vivo</ListItem>
-                        <ListItem link="/tv/diferido">RCG Diferido – 2</ListItem>
-                        <ListItem link="/tv/8-3">RCG TV 8.3</ListItem> */}
                         {
-                            this.tv_channels.map((channel, key) => {
+                            tv_channels.map((channel, key) => {
                                 return (<ListItem key={key} link={`/tv/${channel.url}`}>{channel.nombre}</ListItem>)
                             })
                         }
@@ -65,10 +48,8 @@ export default class LeftPanel extends Component {
                         Radio
                     </CardHeader>
                     <List>
-                        {/* <ListItem link="/radio/106-5">DIGITAL 106.5 FM</ListItem>
-                        <ListItem link="/radio/103-3">XHSJ 103.3 FM</ListItem> */}
                         {
-                            this.radio_stations.map((station, key) => {
+                            radio_stations.map((station, key) => {
                                 return (<ListItem key={key} link={`/radio/${station.url}`}>{station.nombre}</ListItem>);
                             })
                         }
@@ -86,16 +67,16 @@ export default class LeftPanel extends Component {
                         Siguenos en:
                     </CardHeader>
                     <Block className="social_cont display-flex justify-content-space-between align-items-center">
-                        <a href="">
+                        <a href="https://www.facebook.com" className="external" target="_blank">
                             <img src={FBIcon} alt="" srcSet="" />
                         </a>
-                        <a href="">
+                        <a href="https://www.twitter.com" className="external" target="_blank">
                             <img src={TWIcon} alt="" srcSet="" />
                         </a>
-                        <a href="">
+                        <a href="https://www.youtube.com" className="external" target="_blank">
                             <img src={YTIcon} alt="" srcSet="" />
                         </a>
-                        <a href="">
+                        <a href="https://www.instagram.com" className="external" target="_blank">
                             <img src={IGIcon} alt="" srcSet="" />
                         </a>
                     </Block>

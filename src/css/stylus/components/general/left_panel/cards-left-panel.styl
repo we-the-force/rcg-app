@@ -43,25 +43,32 @@
     &.envivo
         margin-top 0px
 
+        .item-content
+            .item-inner
+                text-transform none
+
         &:after
             background-image url('../static/imgs/card_back_1.png')
 
     &.radio_card
+        .item-content
+            .item-inner
+                text-transform none
+
         &:after
             background-image url('../static/imgs/card_back_2.png')
 
     &.pages
-        /* .item-content
-        .item-inner
-            padding 9px 30px 9px 2px */
         &:after
             background-image url('../static/imgs/card_back_3.png')
 
     &.social
         .social_cont
             padding 5px 24px 5px 14px
+
             a
                 display flex
+
                 img
                     width 20px
                     height 20px
