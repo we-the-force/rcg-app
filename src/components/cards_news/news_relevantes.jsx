@@ -34,7 +34,9 @@ export default function NewsRelevantes(props) {
     }
     return (
         <Block className={`NewsRel_Cont ${className} ${modal}`} id={id}>
-            <img src={imagen} alt="" />
+            <a href={url}>
+                <img src={imagen} alt="" />
+            </a>
             <Block className={`top-cont`}>
                 <Link href={"/categoria/" + categoria} className={"categoria upperscale " + skeleton}>{categoria}</Link>
             </Block>
