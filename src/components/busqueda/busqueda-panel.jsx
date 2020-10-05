@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewsBusqueda from '@/components/cards_news/news_busqueda.jsx';
+import back_head from '@/static/imgs/card_back_6.png'
 import {
     Card,
     CardHeader,

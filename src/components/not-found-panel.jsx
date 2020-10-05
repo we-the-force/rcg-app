@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import back_head from '@/static/imgs/card_back_6.png'
 import {
     Block,
     Card,

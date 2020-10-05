@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, gql, useMutation } from '@apollo/client';
+import back_head from '@/static/imgs/card_back_6.png'
 import {
     Block,
     Card,

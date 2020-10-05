@@ -26,7 +26,9 @@ export default class AboutUsPanel extends Component {
                                 <img src={image} alt="" />
                             </div>
                         </BlockHeader>
-                        <div dangerouslySetInnerHTML={{ __html: this.avisoPrivacidad }} />
+                        <div className="content">
+                            <div dangerouslySetInnerHTML={{ __html: this.avisoPrivacidad }} />
+                        </div>
                         <img className="city" src={city} alt="" />
                         <div className="logo_cont">
                             <img src={Logo} alt="" />

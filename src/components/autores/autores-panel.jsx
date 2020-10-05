@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AutorCard from '@/components/autores/autor-card.jsx';
+import back_head from '@/static/imgs/card_back_6.png'
 import {
     Card,
     CardHeader,
