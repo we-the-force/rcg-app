@@ -30,6 +30,9 @@ export default function AboutUs(props) {
 
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
+    let rightPanel = f7.methods.getArticulosRightPanel();
 
     return (
         <Page pageContent={false} name="nosotros">
@@ -41,8 +44,8 @@ export default function AboutUs(props) {
                     <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations}/>
-                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
                         </Block>
                         <Block className="center_pan">
                             {/* aqui va el panel central */}
@@ -50,8 +53,8 @@ export default function AboutUs(props) {
                             <ContactoPanel/>
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDestacadosRaros} />
-                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>

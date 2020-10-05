@@ -12,9 +12,9 @@ import {
 export default class AboutUsPanel extends Component {
     constructor(props) {
         super(props);
-        this.descripcion = marked(props.nosotrosInfo.descripcion);
-        this.middleText = marked(props.nosotrosInfo.info_mid);
-        this.bottomText = marked(props.nosotrosInfo.info_bottom);
+        this.descripcion = marked(props.nosotrosInfo.descripcion == null ? "" : props.nosotrosInfo.descripcion);
+        this.middleText = marked(props.nosotrosInfo.info_mid == null ? "" : props.nosotrosInfo.info_mid);
+        this.bottomText = marked(props.nosotrosInfo.info_bottom == null ? "" : props.nosotrosInfo.info_bottom);
     }
     render() {
         return (
