@@ -37,7 +37,7 @@ export default function Espectaculares(props) {
         <Page pageContent={false} name="espectaculares">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/> {/* navbar espectaculares */}
+                <Nav espectaculares categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/> {/* navbar espectaculares */}
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <AdsTop />

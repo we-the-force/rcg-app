@@ -29,7 +29,6 @@ import {
 } from 'framework7-react';
 
 export default function navMobile(props) {
-    // console.log("nav_mobile:\r\n", props);
     function articuloSearch(e) {
         // console.log(e);
         if (e.key === "Enter") {
@@ -45,6 +44,7 @@ export default function navMobile(props) {
             }
         }
     }
+    let { tv_channels, radio_stations } = props;
     return (
         <Fragment>
             <NavLeft>
@@ -70,25 +70,24 @@ export default function navMobile(props) {
                 </Navbar>
                 <Page>
                     <div className="grid">
-                        {/* <Searchbar placeholder="Buscar" customSearch={true} disableButton={false} form={false} /> */}
-                        <input placeholder="Buscar" onKeyPress={e => articuloSearch(e)} />
+                        <Block className="search_cont">
+                            <input placeholder="Buscar" onKeyPress={e => articuloSearch(e)} />
+                            <span className="material-icons icon-image-preview">search</span>
+                        </Block>
                         <div className="box live">
                             <Block>
                                 <BlockHeader><img src={TVLight} alt="" /> <p>TV</p></BlockHeader>
                                 {
-                                    props.tv_channels.map((channel, key) => {
+                                    tv_channels.map((channel, key) => {
                                         return (<Link key={key} href={`/tv/${channel.url}`}>{channel.nombre}</Link>)
                                     })
                                 }
-                                {/* <Link>RCG En Vivo</Link>
-                                <Link>RCG Diferido - 2</Link>
-                                <Link>RCG TV 8.3</Link> */}
                             </Block>
                         </div>
                         <div className="box services">
                             <Block>
                                 <BlockHeader><img src={services} alt="" /> <p>Servicios</p></BlockHeader>
-                                <Link>Fundacion RCG</Link>
+                                {/* <Link>Fundacion RCG</Link> */}
                                 <Link href="/espectaculares">Espectaculares</Link>
                                 <Link href="/calca">Registra Tu Calca</Link>
                             </Block>
@@ -97,21 +96,19 @@ export default function navMobile(props) {
                             <Block>
                                 <BlockHeader><img src={radio} alt="" /><p>Radio</p></BlockHeader>
                                 {
-                                    props.radio_stations.map((station, key) => {
+                                    radio_stations.map((station, key) => {
                                         return (<Link key={key} href={`/radio/${station.url}`}>{station.nombre}</Link>)
                                     })
                                 }
-                                {/* <Link>Digital 106.5 FM</Link>
-                                <Link>XHSJ 103.3 FM</Link> */}
                             </Block>
                         </div>
                         <div className="box follow">
                             <Block>
                                 <BlockHeader><img src={twred} alt="" /><p>Siguenos En:</p></BlockHeader>
-                                <Link className="redes"><img src={face} alt="" /></Link>
-                                <Link className="redes"><img src={tw} alt="" /></Link>
-                                <Link className="redes"><img src={you} alt="" /></Link>
-                                <Link className="redes"><img src={insta} alt="" /></Link>
+                                <Link href="https://www.facebook.com" target="_blank" className="redes external"><img src={face} alt="" /></Link>
+                                <Link href="https://www.tiwtter.com" target="_blank" className="redes external"><img src={tw} alt="" /></Link>
+                                <Link href="https://www.youtube.com" target="_blank" className="redes external"><img src={you} alt="" /></Link>
+                                <Link href="https://www.instagram.com" target="_blank" className="redes external"><img src={insta} alt="" /></Link>
                             </Block>
                         </div>
                         <div className="box RCG">

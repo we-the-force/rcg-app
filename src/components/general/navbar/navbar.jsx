@@ -4,10 +4,10 @@ import Desk from './nav_desktop';
 import { ListGroup, Navbar, f7 } from 'framework7-react';
 
 export default function Nav(props) {
-    let currentRoute = f7.views.main.history[f7.views.main.history.length - 1];
-    let isEspectaculares = currentRoute === "/espectaculares";
-    let { categorias, home } = props;
-    
+    /* let currentRoute = f7.views.main.history[f7.views.main.history.length - 1];
+    let isEspectaculares = currentRoute === "/espectaculares"; */
+    let { categorias, home ,espectaculares } = props;
+
     if (categorias.length <= 0) return "";
 
     let [categ_show, categ_pop, type] = useData(categorias);
@@ -15,10 +15,10 @@ export default function Nav(props) {
     return (
         <Navbar sliding noHairline noShadow>
             {type === 'desktop' &&
-                <Desk itemsShow={categ_show} itemsPop={categ_pop} isEspectaculares={isEspectaculares}/>
+                <Desk itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares}/>
             }
             {type === 'mobile' &&
-                <Mobile categorias={categorias} isEspectaculares={isEspectaculares} tv_channels={props.tv_channels} radio_stations={props.radio_stations}/>
+                <Mobile categorias={categorias} tv_channels={props.tv_channels} radio_stations={props.radio_stations}/>
             }
         </Navbar>
     );
