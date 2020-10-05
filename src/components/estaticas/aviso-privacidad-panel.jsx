@@ -13,7 +13,7 @@ import {
 export default class AboutUsPanel extends Component {
     constructor(props) {
         super(props);
-        this.avisoPrivacidad = marked(props.avisoPriv.descripcion);
+        this.avisoPrivacidad = marked(props.avisoPriv.descripcion == null ? "" : props.avisoPriv.descripcion);
     }
     render() {
         return (
