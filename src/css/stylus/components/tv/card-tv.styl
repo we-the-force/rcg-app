@@ -38,10 +38,14 @@
 
     .player-wrapper
         position relative
-        height 0
+        height 100%
         width 100%
         padding 0
-        padding-top calc(591.44 / 1127.34 * 100%) //aspect radio
+
+        &:after
+            content ''
+            display block
+            padding-top calc(316 / 665 * 100%) // aspect radio
 
         .player
             position absolute

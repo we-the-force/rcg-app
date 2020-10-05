@@ -17,7 +17,7 @@ import {
 } from 'framework7-react';
 
 export default class RadioPanel extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -33,8 +33,7 @@ export default class RadioPanel extends Component {
             mute_unmute: true,
         }
 
-        if (props.prog.length > 0)
-        {
+        if (props.prog.length > 0) {
             this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
 
             // console.log("Programacion rara", this.programacion.programacion);
@@ -48,8 +47,7 @@ export default class RadioPanel extends Component {
             this.programacion.programacion.sabado.sort(this.sortFunction);
             // console.log('this.programacion', this.programacion.programacion);
         }
-        else
-        {
+        else {
             this.programacion = {
                 programacion: {
                     domingo: [],
@@ -64,30 +62,26 @@ export default class RadioPanel extends Component {
             // console.log("Empty programacion: ", this.programacion);
         }
 
-        if (props.station != undefined)
-        {
+        if (props.station != undefined) {
             this.moreStations = JSON.parse(JSON.stringify(props.station_list));
-            for (let i = 0; i < this.moreStations.length; i++)
-            {
-                if (this.moreStations[i].url === props.station.url)
-                {
+            for (let i = 0; i < this.moreStations.length; i++) {
+                if (this.moreStations[i].url === props.station.url) {
                     this.moreStations.splice(i, 1);
                     break;
                 }
             }
             // console.log(this.moreStations);
         }
-        else
-        {
+        else {
             this.moreStations = [];
         }
     }
-    sortFunction(a, b){
+    sortFunction(a, b) {
         let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
         return (isBefore ? -1 : 1);
     }
     playPause = () => {
-        let url = this.state.url == null ? this.state.radioURL : this.state.url;  
+        let url = this.state.url == null ? this.state.radioURL : this.state.url;
         this.setState({
             url: url,
             playing: !this.state.playing,
@@ -96,15 +90,15 @@ export default class RadioPanel extends Component {
     }
 
     handleStop = () => {
-        this.setState({ 
-            url: null, 
+        this.setState({
+            url: null,
             playing: false,
             play_pause: true,
         });
     }
 
     handleToggleMuted = () => {
-        this.setState({ 
+        this.setState({
             muted: !this.state.muted,
             mute_unmute: !this.state.mute_unmute
         })
@@ -151,9 +145,6 @@ export default class RadioPanel extends Component {
                         <Block className="radio-ui display-flex flex-direction-column">
                             <Block className="display-flex top-wrapper">
                                 <Block className="logo-radio">
-                                    {/* <img src={Img_106} alt="" /> */}
-                                    {/* { console.log(this.props.station) } */}
-                                    {/* { console.log(`http://149.28.252.152:1337${this.props.station.logo.url}`) } */}
                                     <img src={`http://${window.location.hostname}:1337${this.props.station.logo.url}`} alt="" />
                                 </Block>
                                 <Block className="content-radio">
@@ -186,16 +177,11 @@ export default class RadioPanel extends Component {
                             </Block>
                         </Block>
                     </Block>
-                    {/* bloque de info */}
-                    {/* <Block className="info-programa">
-                        <p className="titulo-programa">Nombre de Programa</p>
-                        <p className="texto-programa"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore sed dolores quia esse veniam. Quos nobis temporibus ab, vero reiciendis animi, illum provident voluptate autem possimus nam quas a! </p>
-                    </Block> */}
                     {/* La tablita de programacion */}
                     <Block className="tabla_programacion">
                         <BlockHeader>Programacion:</BlockHeader>
                         {/* {console.log('Schedule prog???', this.programacion)} */}
-                        <ScheduleTable prog={this.programacion} table_id={this.props.table_id}/>
+                        <ScheduleTable prog={this.programacion} table_id={this.props.table_id} />
                     </Block>
                     {/* mas canales xD */}
                     {
@@ -203,13 +189,13 @@ export default class RadioPanel extends Component {
                         <Block className="mas_canales">
                             <BlockHeader>Más Canales</BlockHeader>
                             {this.moreStations.map((station, key) => {
-                                return(
+                                return (
                                     <Block key={key} className="canal">
                                         <Block className="icon_tv display-flex justify-content-center align-items-center">
                                             <img src={Icon_Radio} alt="" />
                                         </Block>
                                         <a href={`/radio/${station.url}`} className="canal_content display-flex justify-content-center align-items-center">
-                                            <img src={`http://${window.location.hostname}:1337${station.logo.url}`} alt="" srcSet=""/>
+                                            <img src={`http://${window.location.hostname}:1337${station.logo.url}`} alt="" srcSet="" />
                                             <h1 className="title">
                                                 {station.nombre}
                                             </h1>
@@ -219,37 +205,10 @@ export default class RadioPanel extends Component {
                             })}
                         </Block>
                     }
-                    {/* <Block className="mas_canales">
-                        <BlockHeader>Más Canales</BlockHeader>
-
-                        <Block className="canal">
-                            <Block className="icon_tv display-flex justify-content-center align-items-center">
-                                <img src={Icon_Radio} alt="" />
-                            </Block>
-                            <a href="" className="canal_content display-flex justify-content-center align-items-center">
-                                <img src={Img_106} alt="" srcSet="" />
-                                <h1 className="title">
-                                    Digital 106.5 FM
-                                </h1>
-                            </a>
-                        </Block>
-
-                        <Block className="canal">
-                            <Block className="icon_tv display-flex justify-content-center align-items-center">
-                                <img src={Icon_Radio} alt="" />
-                            </Block>
-                            <a href="" className="canal_content display-flex justify-content-center align-items-center">
-                                <img src={Img_103} alt="" srcSet="" />
-                                <h1 className="title">
-                                    XHSJ 103.3 FM
-                                </h1>
-                            </a>
-                        </Block>
-                    </Block> */}
                 </Card>
                 {/* tarjewtita recomendados */}
                 <Card className="recomendados-card">
-                    <SwiperNews articulos={[]}/>
+                    <SwiperNews articulos={[]} />
                 </Card>
             </Block>
         );

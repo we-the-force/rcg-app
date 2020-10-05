@@ -124,10 +124,14 @@
     .radio-wrapper
         margin 15px 0px
         position relative
-        height 0
+        height 100%
         width 100%
         padding 0
-        padding-top calc(240 / 1140 * 100%) // aspect radio
+
+        &:after
+            content ''
+            display block
+            padding-top calc(240 / 1140 * 100%) // aspect radio
 
         .radio-ui
             position absolute
