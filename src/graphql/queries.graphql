@@ -189,6 +189,15 @@ query AvisoPrivacidadPage {
   }
 }
 
+query DerechoReplicaPage {
+  content: derechoDeReplica {
+    nombre
+    direccion
+    telefono
+    correo
+  }
+}
+
 query BorraEsteMasAdelante {
   articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
     ...ArticulosData
@@ -350,21 +359,6 @@ query CatalogoPage {
   }
   centro: espectaculars(where: { zona: "centro" }) {
     ...EspectacularData
-  }
-}
-
-query DerechoReplicaPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  contactoInfo: derechoDeReplica {
-    nombre
-    direccion
-    telefono
-    correo
   }
 }
 
