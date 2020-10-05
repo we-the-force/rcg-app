@@ -14,14 +14,16 @@ export default class NewsPanel extends Component {
     render() {
         return (
             <Block className="categoria_panel center_panel">
-                <Card className="head">
-                    {/* { console.log(this.props) } */}
-                    <CardHeader> {this.props.categoria} </CardHeader>
+                <Card className="new_head">
+                    <CardHeader>{this.props.categoria}</CardHeader>
+                    <div className="head_logo">
+                        <img src={back_head} alt="" />
+                    </div>
                 </Card>
                 {/* Lista de NewsCards */}
                 { this.props.articulos.map((articulo, i) => {
-                    return (<NewsCategoria key={i} articulo={articulo}/>);
-                }) }
+                    return (<NewsCategoria key={i} articulo={articulo} />);
+                })}
                 {/* <NewsCard />
                 <Block className="ads bar"></Block>
                 <NewsCard />

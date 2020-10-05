@@ -9,14 +9,17 @@ import {
 export default function BusquedaPanel(props) {
     return (
         <Block className="busqueda_panel center_panel">
-            <Card className="head">
-                <CardHeader> Busqueda </CardHeader>
+            <Card className="new_head">
+                <CardHeader>Busqueda</CardHeader>
+                <div className="head_logo">
+                    <img src={back_head} alt="" />
+                </div>
             </Card>
-            <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/> 
+            <NewsBusqueda className="" />
+            <NewsBusqueda className="" />
+            <NewsBusqueda className="" />
+            <NewsBusqueda className="" />
+            <NewsBusqueda className="" />
             {/* { 
                 this.props.articulos.map((articulo, i) => {
                     return (<NewsCard key={i} articulo={articulo}/>);

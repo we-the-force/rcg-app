@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery, gql, useMutation } from '@apollo/client';
 import {
     Block,
@@ -40,8 +40,7 @@ export default function CalcasPanel(props) {
 
     var isUpdating = false;
     function handleCalcaSubmit(e) {
-        if (document.getElementById("calca-privacy").checked && !isUpdating)
-        {
+        if (document.getElementById("calca-privacy").checked && !isUpdating) {
             isUpdating = true;
             let requestValue = {
                 name: (document.getElementById("calca-name").value).trim(),
@@ -50,11 +49,10 @@ export default function CalcasPanel(props) {
                 phone: (document.getElementById("calca-phone").value).trim(),
                 serial: (document.getElementById("calca-serial").value).trim()
             };
-    
+
             let isRequestValid = validateData(requestValue);
 
-            if (isRequestValid.result)
-            {
+            if (isRequestValid.result) {
                 /*
                     Para las calcas:
                         Se pueden mas de una por nombre? Que tal por telefono?
@@ -67,18 +65,18 @@ export default function CalcasPanel(props) {
                         "dir": requestValue.address,
                         "ciudad": requestValue.city,
                         "tel": requestValue.phone,
-                        "serial": requestValue.serial 
-                    }}).then((res) => {
-                        isUpdating = false;
-                        console.log("Inside promise then :D", res);
-                        createPopup("yey", "Calca creada exitosamente!");
-                    }).catch((err) => {
-                        console.log("Error inside of createCalca\r\n\r\n", err);
-                        createPopup("Error!", `Error dando la calca de alta!\r\n\r\n${err}`);
-                    });
+                        "serial": requestValue.serial
+                    }
+                }).then((res) => {
+                    isUpdating = false;
+                    console.log("Inside promise then :D", res);
+                    createPopup("yey", "Calca creada exitosamente!");
+                }).catch((err) => {
+                    console.log("Error inside of createCalca\r\n\r\n", err);
+                    createPopup("Error!", `Error dando la calca de alta!\r\n\r\n${err}`);
+                });
             }
-            else
-            {
+            else {
                 isUpdating = false;
                 // f7.methods.alert();
                 // f7.methods.alert(`Ocurrio un error procesando la peticion:\r\n${isRequestValid.message}`);
@@ -87,53 +85,44 @@ export default function CalcasPanel(props) {
 
             console.log(requestValue);
         }
-        else
-        {
-            if (!isUpdating)
-            {
+        else {
+            if (!isUpdating) {
                 createPopup("Error", `Debes aceptar el aviso de privacidad!`);
                 console.log("Acepta los terminos prro");
             }
-            else
-            {
+            else {
                 console.log("Esta haciendo el mutation");
             }
         }
     }
-    function validateData(calcaRequest)
-    {
+    function validateData(calcaRequest) {
         let auxResponse = {
             result: true,
             message: ""
         }
         let errors = 0;
 
-        if (calcaRequest.name === "")
-        {
+        if (calcaRequest.name === "") {
             auxResponse.result = false;
             auxResponse.message += "Te falta el nombre";
             errors++;
         }
-        if (calcaRequest.address === "")
-        {
+        if (calcaRequest.address === "") {
             auxResponse.result = false;
             auxResponse.message += errors === 0 ? "Te falta la direccion" : ", la direccion";
             errors++;
         }
-        if (calcaRequest.city === "")
-        {
+        if (calcaRequest.city === "") {
             auxResponse.result = false;
             auxResponse.message += errors === 0 ? "Te falta la ciudad" : ", la ciudad";
             errors++;
         }
-        if (calcaRequest.phone === "")
-        {
+        if (calcaRequest.phone === "") {
             auxResponse.result = false;
             auxResponse.message += errors === 0 ? "Te falta el telefono" : ", el telefono";
             errors++;
         }
-        if (calcaRequest.serial === "")
-        {
+        if (calcaRequest.serial === "") {
             auxResponse.result = false;
             auxResponse.message += errors === 0 ? "Te falta el serial" : " y el serial";
             errors++;
@@ -163,14 +152,14 @@ export default function CalcasPanel(props) {
     //         </div>
     //       `.trim(),
     //     });
-      
+
     //   // Open it
     //   pop.open();
     // }
     function createPopup(titulo, message) {
         // console.log("Create Popup:\r\n", f7.popup.create);
         var pop = f7.popup.create({
-          content: `
+            content: `
             <div class="popup">
                 <div class="title">${titulo}</div>
                 <div>
@@ -179,17 +168,18 @@ export default function CalcasPanel(props) {
             </div>
           `.trim(),
         });
-      
-      // Open it
-      pop.open();
+
+        // Open it
+        pop.open();
     }
 
     return (
         <Block className="calca_panel center_panel">
-            <Card className="head">
-                <CardHeader>
-                    REGISTRA TU CALCA
-                </CardHeader>
+            <Card className="new_head">
+                <CardHeader>Registra tu calca</CardHeader>
+                <div className="head_logo">
+                    <img src={back_head} alt="" />
+                </div>
             </Card>
             <Block>
                 <p><b>¡Registra Tu Calca De RCG!</b></p>
@@ -197,13 +187,13 @@ export default function CalcasPanel(props) {
             </Block>
             <Card>
                 <p className="categoria registro">Registro</p>
-                <input id="calca-name" type="text" placeholder="Nombre Completo"/>
-                <input id="calca-address" type="text" placeholder="Direccion Completa"/>
-                <input id="calca-city" type="text" placeholder="Ciudad"/>
-                <input id="calca-phone" type="text" placeholder="Celular (10 Digitos)"/>
-                <input id="calca-serial" type="text" placeholder="Numero De Calca"/>
-                <input id="calca-privacy" type="checkbox" placeholder="Acepto el Aviso de Seguridad"/> Acepto el <a href="/aviso_privacidad">Aviso de Privacidad</a>
-                <input id="calca-button" type="button" value="Registrar" onClick={handleCalcaSubmit}/>
+                <input id="calca-name" type="text" placeholder="Nombre Completo" />
+                <input id="calca-address" type="text" placeholder="Direccion Completa" />
+                <input id="calca-city" type="text" placeholder="Ciudad" />
+                <input id="calca-phone" type="text" placeholder="Celular (10 Digitos)" />
+                <input id="calca-serial" type="text" placeholder="Numero De Calca" />
+                <input id="calca-privacy" type="checkbox" placeholder="Acepto el Aviso de Seguridad" /> Acepto el <a href="/aviso_privacidad">Aviso de Privacidad</a>
+                <input id="calca-button" type="button" value="Registrar" onClick={handleCalcaSubmit} />
             </Card>
             <Block>
                 <p>Si aun no tienes tu <b>Calca</b> acude a nuestras pegas de calcas los viernes de <b>7:00am</b> a <b>9:00pm</b> en diferentes puntos de la ciudad, no te pierdas la programacion de <b>Radio</b> y <b>Television</b> para saber donde estaremos pegando calcas</p>

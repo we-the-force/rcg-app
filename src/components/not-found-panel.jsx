@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Block,
     Card,
@@ -12,8 +12,11 @@ export default class NotFoundPanel extends Component {
     render() {
         return (
             <Block className="center_panel">
-                <Card className="head">
+                <Card className="new_head">
                     <CardHeader>404 Contenido no encontrado</CardHeader>
+                    <div className="head_logo">
+                        <img src={back_head} alt="" />
+                    </div>
                 </Card>
                 <Card>
                     <h1>Gracias Usuario!</h1>

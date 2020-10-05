@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import marked from 'marked';
 import city from '@/static/imgs/city.png'
 import Logo from '@/static/imgs/Logo_negro.png'
+import back_head from '@/static/imgs/card_back_6.png'
 import {
     Block,
     Card,
@@ -18,8 +19,11 @@ export default class AboutUsPanel extends Component {
     render() {
         return (
             <Block className="center_panel nosotros_panel">
-                <Card className="head">
+                <Card className="new_head">
                     <CardHeader>Nosotros</CardHeader>
+                    <div className="head_logo">
+                        <img src={back_head} alt="" />
+                    </div>
                 </Card>
                 <Card className="city">
                     <Block className="back">

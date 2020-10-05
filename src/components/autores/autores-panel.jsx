@@ -15,8 +15,11 @@ export default class AutoresPanel extends Component {
 
         return (
             <Block className="autores center_panel">
-                <Card className="head">
+                <Card className="new_head">
                     <CardHeader>Autores</CardHeader>
+                    <div className="head_logo">
+                        <img src={back_head} alt="" />
+                    </div>
                 </Card>
                 <Block className="autores_cont">
                     {
