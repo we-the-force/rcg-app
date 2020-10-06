@@ -10,7 +10,7 @@ import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import { f7, f7ready } from 'framework7-react';
 import { useLazyQuery, useQuery } from '@apollo/client';
-import { BusquedaPage, BusquedaTag, BusquedaTitulo, BusquedaDesc } from '@/graphql/queries.graphql';
+import { BusquedaTag, BusquedaTitulo, BusquedaDesc } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,

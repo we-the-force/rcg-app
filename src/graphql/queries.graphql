@@ -115,37 +115,6 @@ query AutoresPage {
   }
 }
 
-query BusquedaPage(
-  $values: [String]
-  $titulo: Boolean!
-  $tag: Boolean!
-  $desc: Boolean!
-  $inicio: Int
-  $limite: Int
-) {
-  byTitulo: articulos(
-    where: { Titulo_contains: $values }
-    start: $inicio
-    limit: $limite
-  ) @include(if: $titulo) {
-    ...ArticulosData
-  }
-  byTag: articulos(
-    where: { tags: { nombre_contains: $values } }
-    start: $inicio
-    limit: $limite
-  ) @include(if: $tag) {
-    ...ArticulosData
-  }
-  byDesc: articulos(
-    where: { description_contains: $values }
-    start: $inicio
-    limit: $limite
-  ) @include(if: $desc) {
-    ...ArticulosData
-  }
-}
-
 query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
   articulos(
     where: { description_contains: $values }
@@ -203,6 +172,34 @@ query FaqPage {
     preguntas {
       pregunta
       respuesta
+    }
+  }
+}
+
+mutation CreateCalca(
+  $nombre: String!
+  $dir: String!
+  $ciudad: String!
+  $tel: String!
+  $serial: String!
+) {
+  createCalca(
+    input: {
+      data: {
+        nombre: $nombre
+        direccion: $dir
+        ciudad: $ciudad
+        telefono: $tel
+        numero_calca: $serial
+      }
+    }
+  ) {
+    calca {
+      nombre
+      direccion
+      ciudad
+      telefono
+      numero_calca
     }
   }
 }
@@ -363,18 +360,6 @@ mutation UpdateArticulo($id: ID!, $visitas: Int) {
       id
       visitas
     }
-  }
-}
-
-query CalcaPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
   }
 }
 

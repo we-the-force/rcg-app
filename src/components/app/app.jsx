@@ -14,12 +14,13 @@ import { onError } from 'apollo-link-error';
 import { HttpLink } from 'apollo-link-http';
 
 const errorLink = onError(({ graphQLErrors }) => {
-  if (graphQLErrors) graphQLErrors.map(({ message }) => console.error('!!GraphQL Error!!', message));
+  if (graphQLErrors) graphQLErrors.map(({ message }) => {/* console.error('!!GraphQL Error!!', message) */});
 })
+
 const client = new ApolloClient({
   uri: `http://${window.location.hostname}:1337/graphql`,
   cache: new InMemoryCache(),
-  link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${window.location.hostname}:1337/graphql` })])
+  link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${window.location.hostname}:1337/graphql` })]),
 });
 
 export default class extends React.Component {

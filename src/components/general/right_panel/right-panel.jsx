@@ -70,7 +70,7 @@ export default function RightPanel(props) {
                     <input placeholder="Buscar" onKeyPress={e => articuloSearch(e)} />
                     <span className="material-icons icon-image-preview">
                         search
-                        </span>
+                    </span>
                 </Block>
                 <Block className="ads square"></Block>
             </Block>
