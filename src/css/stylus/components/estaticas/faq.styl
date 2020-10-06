@@ -1,0 +1,87 @@
+.faq_panel
+    .card
+        padding 5px
+
+        .back
+            margin 0px
+            border-radius 6px
+            background #F0F0F0
+            padding 9px
+            padding-bottom calc(150 / 345 * 100%) !important
+
+            .block-header
+                margin-bottom 15px
+
+                h1
+                    font font_12
+                    color #000000
+                    text-transform uppercase
+                    width 35%
+                    margin 0px
+
+            .content
+                .block
+                    padding 0px
+                    margin 0px
+                    margin-bottom 22px
+
+                    .pregunta
+                        font font_14
+                        color #000
+                        margin-bottom 4px
+
+                    .respuesta
+                        font font_8
+                        color #000
+                        margin 0px
+
+                .bottom_p
+                    font font_8
+                    margin 0px
+                    padding 0px
+                    color #000000
+
+                    a
+                        font font_23
+                        color red
+
+            .city
+                width 100%
+                position absolute
+                bottom 0
+                left 0
+                z-index 0
+
+        @media (min-width 640px)
+            .back
+                padding 15px
+
+                .block-header
+                    margin-bottom 35px
+
+                    h1
+                        font font_25
+
+                .content
+
+                    .block
+                        .pregunta
+                            font font_2
+                        .respuesta
+                            font font_10
+
+                    .bottom_p
+                        font font_10
+
+                        a
+                            font font_3
+
+                .logo_cont
+                    display block
+
+        @media (min-width 1024px)
+            .back
+                padding 20px
+
+                .block-header
+                    margin-bottom 45px

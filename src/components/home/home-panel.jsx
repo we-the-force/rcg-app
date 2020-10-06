@@ -70,7 +70,7 @@ export default class HomePanel extends Component {
                         <Card className="categoria" key={i}>
                             <CardHeader>
                                 <p className="title">{val.nombre}</p>
-                                <p className="link-more">Mostrar más</p>
+                                <a href={"/categoria/" + val.nombre} className="link-more">Mostrar más</a>
                             </CardHeader>
 
                             <Block className="grid-cont">

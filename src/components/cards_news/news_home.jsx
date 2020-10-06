@@ -16,14 +16,14 @@ export default function NewsHome(props) {
     return (
         <Block className={`NewsHome_cont ${className}`}>
             <Block className="img_cont">
-                <Link><img src={DB_url + articulo.cover.url} alt="" /></Link>
+                <Link href={`/articulo/${articulo.url}/`}><img src={DB_url + articulo.cover.url} alt="" /></Link>
             </Block>
             <Block className='img_foot'>
                 <Link className="autor">{articulo.autor.nombre}</Link>&nbsp;-&nbsp;
                 <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
             </Block>
             <Block className='content'>
-                <Link className="title" href='#'>{articulo.Titulo}</Link>
+                <Link className="title" href={`/articulo/${articulo.url}/`}>{articulo.Titulo}</Link>
                 <p className="preview">{articulo.description}</p>
             </Block>
         </Block>

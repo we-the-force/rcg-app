@@ -12,7 +12,6 @@
 @import './stylus/components/articulo/card-articulo.styl'
 @import './stylus/components/general/left_panel/cards-left-panel.styl'
 @import './stylus/components/general/right_panel/cards-right-panel.styl'
-@import './stylus/components/cards-news.styl'
 @import './stylus/components/tv/card-tv.styl'
 @import './stylus/components/radio/card-radio.styl'
 @import './stylus/components/general/swiper.styl'
@@ -35,6 +34,10 @@
 @import './stylus/components/autores/autor.styl'
 @import './stylus/components/autores/autores.styl'
 @import './stylus/components/autores/card-autor.styl'
+@import './stylus/components/estaticas/nosotros.styl'
+@import './stylus/components/estaticas/av-priv.styl'
+@import './stylus/components/estaticas/der-replica.styl'
+@import './stylus/components/estaticas/faq.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -52,7 +55,6 @@
 
 .main_cont
   width auto
-  // width fit-content //active
   margin 0px auto
   padding 0px
 
@@ -82,8 +84,12 @@
           margin 10px
           padding 0px
           position relative
-          height 0
-          padding-top calc(60 / 468 * 100%)
+          height 100%
+
+          &:after
+            content ''
+            display flex
+            padding-top calc(60 / 468 * 100%)
 
           .ads
             position absolute
@@ -103,6 +109,10 @@
       .center_pan
         width calc(100% - 135px) !important
         padding-left 0px
+        &.wo_right_pan
+          width calc(100% - 90px) !important
+          padding-left 10px
+          padding-right 10px
 
       .left_pan
         display block
@@ -126,6 +136,8 @@
         width calc(100% - 410px) !important
         padding-right 0px
         padding-left 0px
+        &.wo_right_pan
+          width calc(100% - 190px) !important
 
       .left_pan
         width 14%

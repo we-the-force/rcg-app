@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AutorCard from '@/components/autores/autor-card.jsx';
+import back_head from '@/static/imgs/card_back_6.png'
 import {
     Card,
     CardHeader,
@@ -15,8 +16,11 @@ export default class AutoresPanel extends Component {
 
         return (
             <Block className="autores center_panel">
-                <Card className="head">
+                <Card className="new_head">
                     <CardHeader>Autores</CardHeader>
+                    <div className="head_logo">
+                        <img src={back_head} alt="" />
+                    </div>
                 </Card>
                 <Block className="autores_cont">
                     {

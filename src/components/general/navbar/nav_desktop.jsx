@@ -73,7 +73,6 @@ export default function navMobile(props) {
                     <img src={LogoBlanco} alt="" />
                 </a>
             </NavLeft>
-            {/* {console.log("nav_desktop:\r\n", navLinks)} */}
             {navLinks}
             <NavRight>
                 <img src={navGraph} alt="" />

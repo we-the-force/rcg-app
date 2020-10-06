@@ -50,9 +50,7 @@ query AutorPage($url: String) {
     url
   }
 
-  autorArticulos: articulosConnection(
-    where: { autor: { url: $url } }
-  ) {
+  autorArticulos: articulosConnection(where: { autor: { url: $url } }) {
     groupBy {
       autor {
         key
@@ -117,32 +115,95 @@ query AutoresPage {
   }
 }
 
-query BusquedaPage($values: [String], $titulo: Boolean!, $tag: Boolean!, $desc: Boolean!, $inicio: Int, $limite: Int) {
-  byTitulo: articulos (where: { Titulo_contains: $values },start: $inicio, limit: $limite) @include(if: $titulo) {
+query BusquedaPage(
+  $values: [String]
+  $titulo: Boolean!
+  $tag: Boolean!
+  $desc: Boolean!
+  $inicio: Int
+  $limite: Int
+) {
+  byTitulo: articulos(
+    where: { Titulo_contains: $values }
+    start: $inicio
+    limit: $limite
+  ) @include(if: $titulo) {
     ...ArticulosData
   }
-  byTag: articulos (where: { tags: { nombre_contains: $values }},start: $inicio, limit: $limite) @include(if: $tag) {
+  byTag: articulos(
+    where: { tags: { nombre_contains: $values } }
+    start: $inicio
+    limit: $limite
+  ) @include(if: $tag) {
     ...ArticulosData
   }
-  byDesc: articulos (where: { description_contains: $values },start: $inicio, limit: $limite) @include(if: $desc) {
+  byDesc: articulos(
+    where: { description_contains: $values }
+    start: $inicio
+    limit: $limite
+  ) @include(if: $desc) {
     ...ArticulosData
-  } 
+  }
 }
 
 query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
-  articulos (where: { description_contains: $values },start: $inicio, limit: $limite){
+  articulos(
+    where: { description_contains: $values }
+    start: $inicio
+    limit: $limite
+  ) {
     ...ArticulosData
-  } 
+  }
 }
 
 query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
-  articulos (where: { Titulo_contains: $values },start: $inicio, limit: $limite) {
+  articulos(
+    where: { Titulo_contains: $values }
+    start: $inicio
+    limit: $limite
+  ) {
     ...ArticulosData
   }
 }
 query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
-  articulos (where: { tags: { nombre_contains: $values }},start: $inicio, limit: $limite) {
+  articulos(
+    where: { tags: { nombre_contains: $values } }
+    start: $inicio
+    limit: $limite
+  ) {
     ...ArticulosData
+  }
+}
+
+query AboutUsPage {
+  nosotrosInfo: nosotro {
+    descripcion
+    info_mid
+    info_bottom
+  }
+}
+
+query AvisoPrivacidadPage {
+  avisoPrivacidad: avisoDePrivacidad {
+    descripcion
+  }
+}
+
+query DerechoReplicaPage {
+  content: derechoDeReplica {
+    nombre
+    direccion
+    telefono
+    correo
+  }
+}
+
+query FaqPage {
+  faq: preguntasFrecuente {
+    preguntas {
+      pregunta
+      respuesta
+    }
   }
 }
 
@@ -209,12 +270,6 @@ query CategoriaPage($categoria: String) {
   }
 }
 
-query TopArticulos {
-  articulos(where: { relevante: true }) {
-    ...ArticulosData
-  }
-}
-
 query SearchArticulosByTag($tags: [String]) {
   articulos(where: { tags: { nombre_in: $tags } }) {
     ...ArticulosData
@@ -255,38 +310,6 @@ query NotFoundPage {
   }
   articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
-  }
-}
-
-query AboutUsPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-  nosotrosInfo: nosotro {
-    descripcion
-    info_mid
-    info_bottom
-  }
-}
-
-query FaqPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  faqInfo: preguntasFrecuente {
-    preguntas {
-      pregunta
-      respuesta
-    }
   }
 }
 
@@ -331,33 +354,6 @@ query CatalogoPage {
   }
   centro: espectaculars(where: { zona: "centro" }) {
     ...EspectacularData
-  }
-}
-
-query DerechoReplicaPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  contactoInfo: derechoDeReplica {
-    nombre
-    direccion
-    telefono
-    correo
-  }
-}
-
-query AvisoPrivacidadPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  avisoPrivacidad: avisoDePrivacidad {
-    descripcion
   }
 }
 

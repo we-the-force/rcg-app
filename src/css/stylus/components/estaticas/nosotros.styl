@@ -1,0 +1,108 @@
+.nosotros_panel
+    .head
+        border-radius 6px 6px 0px 0px
+        padding 0px !important
+
+        .card-header
+            justify-content flex-start
+            padding-left 19px
+
+            &:after
+                border-radius 6px 6px 0px 0px
+
+    .card
+        padding 5px
+        margin 10px 0px
+
+        .back
+            border-radius 6px
+            background #F0F0F0
+            padding 9px
+
+        &.city
+            .back
+                padding-bottom calc(150 / 345 * 100%)
+
+                .logo_cont
+                    width 27%
+                    height 100%
+
+                    &:after
+                        content ''
+                        display block
+                        padding-top calc(50 / 100 * 100%)
+
+                    img
+                        position absolute
+                        top 9px
+                        left 9px
+                        width 27%
+
+                .cityImg
+                    width 100%
+                    position absolute
+                    bottom 0
+                    left 0
+                    z-index 0
+
+        &.quote
+            background linear-gradient(360deg, #EC1B23 43.39%, #FF5C63 125.23%)
+            padding-top 60px
+            margin-right 0px
+            margin-left 0px
+
+            .text
+                margin 0px
+                padding 20px
+                width 100%
+                box-sizing border-box
+
+                // quitar p cuando haga lo de mark up
+                p
+                    margin 0px
+                    font font_24
+                    color white
+                    text-transform capitalize
+                    text-align center
+
+            &:before
+                content '\201D'
+                position absolute
+                font font_r
+                color white
+                margin-top 20px
+                top 0px
+                left 50%
+                transform translateX(-50%)
+
+        &.bottom
+            padding 20px 9px 5px 9px
+
+            .back
+                .logo_cont
+                    margin-left auto
+                    margin-right 0px
+                    width 27%
+                    height 100%
+
+                    &:after
+                        content ''
+                        display block
+                        padding-bottom calc(50 / 100 * 100%)
+
+                    img
+                        position absolute
+                        width 27%
+
+    @media (min-width 640px)
+        .head
+            border-radius 6px
+
+            .card-header
+                &:after
+                    border-radius 6px
+
+    @media (min-width 1024px)
+        .quote
+            margin-left 8px !important
+            margin-right 8px !important
