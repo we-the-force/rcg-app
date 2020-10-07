@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { CreateCalca } from '@/graphql/queries.graphql';
+import { CreateCalca } from '@/graphql/mutations.graphql';
 import back_head from '@/static/imgs/card_back_6.png'
 import city from '@/static/imgs/city.png'
 import city2 from '@/static/imgs/city2.png'
@@ -10,7 +10,8 @@ import {
     Card,
     CardHeader,
     Input,
-    Popup
+    Popup,
+    Button
 } from 'framework7-react';
 
 export default function CalcasPanel(props) {
@@ -108,45 +109,48 @@ export default function CalcasPanel(props) {
                                 onChange={(e) => { handleChange(e.target.value, setDireccion) }}
                                 onInputClear={() => { handleChange('', setDireccion) }}
                             />
+                            <Block className="two_inputs">
+                                <Input
+                                    value={ciudad}
+                                    required
+                                    validate
+                                    validateOnBlur
+                                    pattern="^[^ ][\w\W ]*"
+                                    errorMessage="Porfavor llene este campo"
+                                    clearButton
+                                    id="calca-city"
+                                    type="text"
+                                    placeholder="Ciudad"
+                                    onChange={(e) => { handleChange(e.target.value, setCiudad) }}
+                                    onInputClear={() => { handleChange('', setCiudad) }}
+                                />
+                                <Input
+                                    value={celular}
+                                    required
+                                    validate
+                                    validateOnBlur
+                                    pattern="^[0-9]{10}$"
+                                    errorMessage="Ingrese un numero de telefono valido!"
+                                    clearButton
+                                    id="calca-phone"
+                                    type="text"
+                                    placeholder="Celular (10 Digitos)"
+                                    onChange={(e) => { handleChange(e.target.value, setCelular) }}
+                                    onInputClear={() => { handleChange('', setCelular) }}
+                                />
+                            </Block>
                             <Input
-                                value={ciudad}
+                                value={numero}
                                 required
                                 validate
                                 validateOnBlur
                                 pattern="^[^ ][\w\W ]*"
                                 errorMessage="Porfavor llene este campo"
                                 clearButton
-                                id="calca-city"
-                                type="text"
-                                placeholder="Ciudad"
-                                onChange={(e) => { handleChange(e.target.value, setCiudad) }}
-                                onInputClear={() => { handleChange('', setCiudad) }}
-                            />
-                            <Input
-                                value={celular}
-                                required
-                                validate
-                                validateOnBlur
-                                pattern="^[0-9]{10}$"
-                                errorMessage="Ingrese un numero de telefono valido!"
-                                clearButton
-                                id="calca-phone"
-                                type="text"
-                                placeholder="Celular (10 Digitos)"
-                                onChange={(e) => { handleChange(e.target.value, setCelular) }}
-                                onInputClear={() => { handleChange('', setCelular) }}
-                            />
-                            <Input
-                                value={numero}
-                                required
-                                validate
-                                validateOnBlur
-                                pattern="^[^ ][\w\W ]*[^ ]"
-                                errorMessage="Porfavor llene este campo"
-                                clearButton
                                 id="calca-serial"
                                 type="text"
                                 placeholder="Numero De Calca"
+                                className="num_calca"
                                 onChange={(e) => { handleChange(e.target.value, setNumero) }}
                                 onInputClear={() => { handleChange('', setNumero) }}
                             />
@@ -155,16 +159,17 @@ export default function CalcasPanel(props) {
                                 checked={av_priv}
                                 required
                                 validate
-                                errorMessage="Acepte el aviso de privacidad"
+                                errorMessage="Acepta el aviso de privacidad"
                                 id="calca-privacy"
                                 type="checkbox"
                                 onChange={(e) => { handleChange(e.target.checked, setAvPriv) }}
                             >
-                                <span slot="info">Acepto el <a href="/aviso_privacidad" className="external" target="_blank">Aviso de Privacidad</a></span>
+                                <p slot="info">Acepto el <a href="/aviso_privacidad" className="external" target="_blank">Aviso de Privacidad</a></p>
                             </Input>
-                            <Input className="registrar" id="calca-button" type="submit" value="Registrar" style={{ marginTop: '50px' }} />
+                            <Input className="registrar" id="calca-button" type="submit" value="Registrar" />
                         </form>
                         <img className="city" src={city} alt="" />
+                        <img className="city2" src={city2} alt="" />
                         <div className="logo_cont">
                             <img src={Logo} alt="" />
                         </div>
@@ -174,11 +179,17 @@ export default function CalcasPanel(props) {
                     <p>Si aun no tienes tu <b>Calca</b> acude a nuestras pegas de calcas los viernes de <b>7:00am</b> a <b>9:00pm</b> en diferentes puntos de la ciudad, no te pierdas la programacion de <b>Radio</b> y <b>Television</b> para saber donde estaremos pegando calcas</p>
                 </Block>
             </Block>
-            <Popup className="errorPopup" opened={errorPopup} onPopupClosed={() => setErrorPopup(false)}>
-                Upps an error
+            <Popup className="popupCalca errorPopup" opened={errorPopup} onPopupClosed={() => setErrorPopup(false)}>
+                <Block className="back">
+                    Ooops : ocurrio un error intentalo de nuevo mas tarde
+                <Button>Ok</Button>
+                </Block>
             </Popup>
-            <Popup className="successPopup" opened={successPopup} onPopupClosed={() => setSuccessPopup(false)}>
-                Your Calca is registered
+            <Popup className="popupCalca successPopup" opened={successPopup} onPopupClosed={() => setSuccessPopup(false)}>
+                <Block className="back">
+                    Your Calca is registered
+                <Button>Ok</Button>
+                </Block>
             </Popup>
         </Fragment>
     );

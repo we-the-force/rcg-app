@@ -176,34 +176,6 @@ query FaqPage {
   }
 }
 
-mutation CreateCalca(
-  $nombre: String!
-  $dir: String!
-  $ciudad: String!
-  $tel: String!
-  $serial: String!
-) {
-  createCalca(
-    input: {
-      data: {
-        nombre: $nombre
-        direccion: $dir
-        ciudad: $ciudad
-        telefono: $tel
-        numero_calca: $serial
-      }
-    }
-  ) {
-    calca {
-      nombre
-      direccion
-      ciudad
-      telefono
-      numero_calca
-    }
-  }
-}
-
 query BorraEsteMasAdelante {
   articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
     ...ArticulosData
