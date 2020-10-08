@@ -8,27 +8,19 @@ import {
 } from 'framework7-react';
 
 export default function BusquedaPanel(props) {
-    const { articulos } = props;
+    const { articulos, title } = props;
     return (
         <Block className="busqueda_panel center_panel">
             <Card className="new_head">
-                <CardHeader>Busqueda</CardHeader>
+                <CardHeader>{title}</CardHeader>
                 <div className="head_logo">
                     <img src={back_head} alt="" />
                 </div>
             </Card>
-            {/* <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/>
-            <NewsBusqueda className=""/>  */}
             {
                 articulos.map((articulo, i) => {
                     return (
                         <Fragment key={i}>
-                            <NewsBusqueda className="" articulo={articulo} />
-                            <NewsBusqueda className="" articulo={articulo} />
-                            <NewsBusqueda className="" articulo={articulo} />
                             <NewsBusqueda className="" articulo={articulo} />
                         </Fragment>
                     );

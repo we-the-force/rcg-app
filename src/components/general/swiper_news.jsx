@@ -27,7 +27,7 @@ export default class SwiperNews extends Component {
                         init
                         navigation
                         scrollbar
-                        params={{ slidesPerView: 3, spaceBetween: 10 }}
+                        params={{ slidesPerView: 3, spaceBetween: 10}}
                     >
                         {
                             articulos.map((val, i) => {
