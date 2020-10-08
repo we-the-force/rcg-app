@@ -20,10 +20,9 @@ import {
     Preloader
 } from 'framework7-react';
 
-
 export default function Busqueda(props) {
-    const values = props.params.trim().toString().split(' ');
-    const limitStatic = 2;
+    const values = props.params.trim().toString();
+    const limitStatic = 3;
     const [type, setType] = useState(-1);
     const [isCalled, setIsCalled] = useState(false);
     const [results, setResults] = useState([]);
@@ -50,7 +49,6 @@ export default function Busqueda(props) {
 
     const loadMore = () => {
         if (!allowInfinite) return;
-        console.count('infinite');
         setAllowInfinite(false);
         setPreloader(true);
         setCallApi(!callApi);
@@ -65,7 +63,6 @@ export default function Busqueda(props) {
     }, []);
 
     useEffect(() => {
-        console.count('api', type);
         let _arguments = {
             variables:
             {
@@ -85,11 +82,10 @@ export default function Busqueda(props) {
                 getTag(_arguments);
                 break;
             default:
+                setPreloader(false);
                 break;
         }
     }, [type, callApi]);
-
-    console.log('data',data);
 
     if (isCalled && data) {
         let val = data.articulos
@@ -102,18 +98,20 @@ export default function Busqueda(props) {
         setData(false)
         if (underLimit) setLimit(limit - length);
         if (!done) {
+            setInicial(0);
             setType(newType);
         } else {
+            let newInicial = inicial + limit;
             setIsCalled(false);
-            setInicial(limit);
+            setInicial(newInicial);
             setLimit(limitStatic);
             setPreloader(false);
             setAllowInfinite(true);
         }
     }
 
-    /* let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading); */
-    let centerPanel = <BusquedaPanel articulos={results} />;
+    let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading);
+    let centerPanel = isLoading ? <p>loading</p> : <BusquedaPanel title={values} articulos={results} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
@@ -154,8 +152,8 @@ export default function Busqueda(props) {
                             }
                         </Block>
                         <Block className="right_pan">
-                            {/* <RightPanel newsInfo={rightPanel} />
-                            <RightPanelTablet newsInfo={rightPanel} /> */}
+                            <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>
