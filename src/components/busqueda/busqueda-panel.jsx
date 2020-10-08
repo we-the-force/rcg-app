@@ -20,9 +20,7 @@ export default function BusquedaPanel(props) {
             {
                 articulos.map((articulo, i) => {
                     return (
-                        <Fragment key={i}>
-                            <NewsBusqueda className="" articulo={articulo} />
-                        </Fragment>
+                        <NewsBusqueda key={i} className="" articulo={articulo} />
                     );
                 })
             }

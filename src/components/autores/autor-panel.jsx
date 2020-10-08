@@ -15,8 +15,7 @@ export default class AutorPanel extends Component {
         super(props);
     }
     render() {
-        let { autor, articulosNum } = this.props;
-        if(autor.length <= 0) return <NotFoundPanel/>
+        let { autor, articulosNum, articulos } = this.props;
         let DB_url = f7.methods.get_URL_DB();
         return (
             <Block className="autor center_panel">
@@ -36,18 +35,13 @@ export default class AutorPanel extends Component {
                         </Block>
                     </Block>
                 </Card>
-                <NewsBusqueda />
-                <NewsBusqueda />
-                <NewsBusqueda />
-                <NewsBusqueda />
-                <NewsBusqueda />
-                {/* {
-                        this.props.autorInfo.articulos.map((articulo, key) => {
-                            return (
-                                <NewsCard key={key} articulo={articulo} />
-                            );
-                        })
-                    } */}
+                {
+                    articulos.map((articulo, key) => {
+                        return (
+                            <NewsBusqueda key={key} className="" articulo={articulo} />
+                        );
+                    })
+                }
             </Block>
         );
     }

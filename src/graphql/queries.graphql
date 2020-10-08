@@ -41,9 +41,6 @@ query AutorPage($url: String) {
     img {
       url
     }
-    articulos(limit: 20) {
-      ...ArticulosData
-    }
     twitter_link
     facebook_link
     instagram_link
@@ -115,10 +112,16 @@ query AutoresPage {
   }
 }
 
+query BusquedaAutor($url: String, $inicio: Int, $limite: Int) {
+  articulos(where: { autor: { url: $url } }, start: $inicio, limit: $limite) {
+    ...ArticulosData
+  }
+}
+
 query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
   articulos(
-    where: { description_contains: $values },
-    start: $inicio,
+    where: { description_contains: $values }
+    start: $inicio
     limit: $limite
   ) {
     ...ArticulosData
@@ -127,8 +130,8 @@ query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
 
 query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
   articulos(
-    where: { Titulo_contains: $values },
-    start: $inicio,
+    where: { Titulo_contains: $values }
+    start: $inicio
     limit: $limite
   ) {
     ...ArticulosData
@@ -136,8 +139,8 @@ query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
 }
 query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
   articulos(
-    where: { tags: { nombre_contains: $values } },
-    start: $inicio,
+    where: { tags: { nombre_contains: $values } }
+    start: $inicio
     limit: $limite
   ) {
     ...ArticulosData
