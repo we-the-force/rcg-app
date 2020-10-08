@@ -12,6 +12,7 @@ export default function NewsBusqueda(props) {
     moment.locale('es');
     const { className, articulo } = props;
     let DB_url = f7.methods.get_URL_DB();
+    console.log(articulo);
     return (
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">
@@ -24,9 +25,9 @@ export default function NewsBusqueda(props) {
                         <Link className="autor">{articulo.autor.nombre}</Link>&nbsp;-&nbsp;
                         <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
                     </Block>
-                    <Link className="title" href='#'>{articulo.Titulo}</Link>
+                    <Link className="title" href={`/articulo/${articulo.url}/`}>{articulo.Titulo}</Link>
                     <p className="preview">{articulo.description}</p>
-                    <a className="more" href={'/articulo/'+articulo.url}>Ver más</a>
+                    <a className="more" href={'/articulo/'+articulo.url+'/'}>Ver más</a>
                 </Block>
             </Block>
         </Card>

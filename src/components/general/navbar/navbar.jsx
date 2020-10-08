@@ -8,7 +8,7 @@ export default function Nav(props) {
     let isEspectaculares = currentRoute === "/espectaculares"; */
     let { categorias, home ,espectaculares } = props;
 
-    if (categorias.length <= 0) return "";
+    if (categorias.length <= 0) return null;
 
     let [categ_show, categ_pop, type] = useData(categorias);
 

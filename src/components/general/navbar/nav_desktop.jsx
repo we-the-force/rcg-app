@@ -15,31 +15,18 @@ import {
 } from 'framework7-react';
 
 export default function navMobile(props) {
-    const { itemsShow, itemsPop, isEspectaculares } = props;
-    // console.log(isEspectaculares);
+    const { itemsShow, itemsPop, esp } = props;
     var navLinks = [];
-    if (isEspectaculares)
-    {
-        navLinks.push(
-            <Fragment key="inicioLink">
-                <Link href="/" className="uppercase">Inicio</Link>
-            </Fragment>
-        );
-        navLinks.push(
-            <Fragment key="catalogoLink">
-                <hr/>
-                <Link href="/catalogo" className="uppercase">Galeria</Link>
-            </Fragment>
-        );
-        navLinks.push(
-            <Fragment key="contactoLink">
-                <hr/>
-                <Link href="/contacto" className="uppercase">Contacto</Link>
-            </Fragment>
-        );
+    if (esp) {
+        navLinks = <Fragment>
+            <Link href="/" className="uppercase">Inicio</Link>
+            <hr />
+            <Link href="/catalogo" className="uppercase">Galeria</Link>
+            <hr />
+            <Link href="/contacto" className="uppercase">Contacto</Link>
+        </Fragment>;
     }
-    else
-    {
+    else {
         navLinks = itemsShow.map((val, key) => {
             let dis = (itemsShow.length - 1) == key ? 'display-none' : 'display-flex';
             return (
@@ -48,23 +35,22 @@ export default function navMobile(props) {
                     <hr className={dis} />
                 </Fragment>);
         })
-        if (itemsPop.length === 0)
-        {
+        if (itemsPop.length === 0) {
             navLinks.push(
                 <Fragment key="autoresLink">
-                    <hr/>
+                    <hr />
                     <Link href="/autores" className="uppercase">autores </Link>
-                </Fragment>);
+                </Fragment>
+            );
         }
-        if (itemsPop.length > 0)
-        {
+        if (itemsPop.length > 0) {
             navLinks.push(
-            <Fragment key="masLink">
-                <hr />
-                <Link popoverOpen=".popover-menu" iconMaterial="arrow_drop_down" className={'uppercase more-icon display-flex'}>MÁS </Link>
-            </Fragment>);
+                <Fragment key="masLink">
+                    <hr />
+                    <Link popoverOpen=".popover-menu" iconMaterial="arrow_drop_down" className={'uppercase more-icon display-flex'}>MÁS </Link>
+                </Fragment>
+            );
         }
-        // console.log(navLinks);
     }
     return (
         <Fragment>
