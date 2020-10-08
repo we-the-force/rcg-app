@@ -79,7 +79,7 @@ export default function navMobile(props) {
                                 <BlockHeader><img src={TVLight} alt="" /> <p>TV</p></BlockHeader>
                                 {
                                     tv_channels.map((channel, key) => {
-                                        return (<Link key={key} href={`/tv/${channel.url}`}>{channel.nombre}</Link>)
+                                        return (<Link popupClose key={key} href={`/tv/${channel.url}`}>{channel.nombre}</Link>)
                                     })
                                 }
                             </Block>
@@ -88,8 +88,8 @@ export default function navMobile(props) {
                             <Block>
                                 <BlockHeader><img src={services} alt="" /> <p>Servicios</p></BlockHeader>
                                 {/* <Link>Fundacion RCG</Link> */}
-                                <Link href="/espectaculares">Espectaculares</Link>
-                                <Link href="/calca">Registra Tu Calca</Link>
+                                <Link popupClose href="/espectaculares">Espectaculares</Link>
+                                <Link popupClose href="/calca">Registra Tu Calca</Link>
                             </Block>
                         </div>
                         <div className="box estaciones">
@@ -97,7 +97,7 @@ export default function navMobile(props) {
                                 <BlockHeader><img src={radio} alt="" /><p>Radio</p></BlockHeader>
                                 {
                                     radio_stations.map((station, key) => {
-                                        return (<Link key={key} href={`/radio/${station.url}`}>{station.nombre}</Link>)
+                                        return (<Link popupClose key={key} href={`/radio/${station.url}`}>{station.nombre}</Link>)
                                     })
                                 }
                             </Block>
@@ -105,17 +105,17 @@ export default function navMobile(props) {
                         <div className="box follow">
                             <Block>
                                 <BlockHeader><img src={twred} alt="" /><p>Siguenos En:</p></BlockHeader>
-                                <Link href="https://www.facebook.com" target="_blank" className="redes external"><img src={face} alt="" /></Link>
-                                <Link href="https://www.tiwtter.com" target="_blank" className="redes external"><img src={tw} alt="" /></Link>
-                                <Link href="https://www.youtube.com" target="_blank" className="redes external"><img src={you} alt="" /></Link>
-                                <Link href="https://www.instagram.com" target="_blank" className="redes external"><img src={insta} alt="" /></Link>
+                                <Link popupClose href="https://www.facebook.com" target="_blank" className="redes external"><img src={face} alt="" /></Link>
+                                <Link popupClose href="https://www.twitter.com" target="_blank" className="redes external"><img src={tw} alt="" /></Link>
+                                <Link popupClose href="https://www.youtube.com" target="_blank" className="redes external"><img src={you} alt="" /></Link>
+                                <Link popupClose href="https://www.instagram.com" target="_blank" className="redes external"><img src={insta} alt="" /></Link>
                             </Block>
                         </div>
                         <div className="box RCG">
                             <Block>
                                 <BlockHeader><img src={contact} alt="" /><p>RCG</p></BlockHeader>
-                                <Link href="/nosotros">Nosotros</Link>
-                                <Link href="/contacto">Contacto</Link>
+                                <Link popupClose href="/nosotros">Nosotros</Link>
+                                <Link popupClose href="/contacto">Contacto</Link>
                             </Block>
                         </div>
                         <div className="box empty">
@@ -125,14 +125,14 @@ export default function navMobile(props) {
                         <div className="box foot">
                             <Block className="display-flex flex-direction-column justify-content-center align-items-center">
                                 <div className="avisos display-flex">
-                                    <Link href="/derecho_replica">Derecho de replica</Link>
-                                    <Link href="/aviso_privacidad">Aviso de privacidad</Link>
-                                    <Link href="/faq">Preguntas Frecuentes</Link>
+                                    <Link popupClose href="/derecho_replica">Derecho de replica</Link>
+                                    <Link popupClose href="/aviso_privacidad">Aviso de privacidad</Link>
+                                    <Link popupClose href="/faq">Preguntas Frecuentes</Link>
                                 </div>
                                 <div className="opis">
-                                    <Link href={false}>OPI 2017</Link>
-                                    <Link href={false}>OPI 2018</Link>
-                                    <Link href={false}>SEG</Link>
+                                    <Link popupClose href={false}>OPI 2017</Link>
+                                    <Link popupClose href={false}>OPI 2018</Link>
+                                    <Link popupClose href={false}>SEG</Link>
                                 </div>
                                 <p>©2020 RCG</p>
                             </Block>
