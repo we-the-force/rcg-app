@@ -23,7 +23,7 @@ import {
 
 export default function Busqueda(props) {
     const values = props.params.trim().toString().split(' ');
-    const limitStatic = 5;
+    const limitStatic = 2;
     const [type, setType] = useState(-1);
     const [isCalled, setIsCalled] = useState(false);
     const [results, setResults] = useState([]);
@@ -31,30 +31,30 @@ export default function Busqueda(props) {
     const [inicial, setInicial] = useState(0);
     const [allowInfinite, setAllowInfinite] = useState(true);
     const [preloader, setPreloader] = useState(false);
-    const [getTitulo, valuesTitulo] = useLazyQuery(BusquedaTitulo);
-    const [getTag, valuesTag] = useLazyQuery(BusquedaTag);
-    const [getDesc, valuesDesc] = useLazyQuery(BusquedaDesc);
+    const [callApi, setCallApi] = useState(false);
+    const [data, setData] = useState(false);
+    const [getTitulo, valuesTitulo] = useLazyQuery(BusquedaTitulo, {
+        onCompleted: (data) => { handleCompleted(data) }
+    });
+    const [getTag, valuesTag] = useLazyQuery(BusquedaTag, {
+        onCompleted: (data) => { handleCompleted(data) }
+    });
+    const [getDesc, valuesDesc] = useLazyQuery(BusquedaDesc, {
+        onCompleted: (data) => { handleCompleted(data) }
+    });
 
-    let data = [valuesTitulo.data, valuesDesc.data, valuesTag.data];
+    const handleCompleted = (data) => {
+        setIsCalled(true);
+        setData(data);
+    }
 
     const loadMore = () => {
         if (!allowInfinite) return;
+        console.count('infinite');
         setAllowInfinite(false);
         setPreloader(true);
-        console.log('loading');
-        setTimeout(() => {
-            console.log('loaded');
-            setAllowInfinite(true);
-            setPreloader(false);
-        }, 1000);
+        setCallApi(!callApi);
     };
-
-    useEffect(() => {
-        f7ready((f7) => {
-            f7.methods.handleCategoriaActual('');
-            setType(0);
-        });
-    }, []);
 
     //efecto para quitar etiqueta roja
     useEffect(() => {
@@ -65,6 +65,7 @@ export default function Busqueda(props) {
     }, []);
 
     useEffect(() => {
+        console.count('api', type);
         let _arguments = {
             variables:
             {
@@ -76,40 +77,43 @@ export default function Busqueda(props) {
         switch (type) {
             case 0:
                 getTitulo(_arguments);
-                setIsCalled(true);
                 break;
             case 1:
                 getDesc(_arguments);
-                setIsCalled(true);
                 break;
             case 2:
                 getTag(_arguments);
-                setIsCalled(true);
                 break;
             default:
                 break;
         }
-    }, [type]);
+    }, [type, callApi]);
 
+    console.log('data',data);
 
-
-    if (isCalled && data[type]) {
-        let val = data[type].articulos
+    if (isCalled && data) {
+        let val = data.articulos
         let length = val.length;
         let underLimit = (length < limit && length > 0);
         let nothing = (length === 0);
         let done = (length === limit);
         let newType = type + 1;
+        setResults(results.concat(val));
+        setData(false)
         if (underLimit) setLimit(limit - length);
-        if (!nothing) setResults(results.concat(val));
         if (!done) {
             setType(newType);
         } else {
             setIsCalled(false);
+            setInicial(limit);
+            setLimit(limitStatic);
+            setPreloader(false);
+            setAllowInfinite(true);
         }
     }
-    let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading);
-    let centerPanel = isLoading ? <p>Loading</p> : <BusquedaPanel articulos={results} />;
+
+    /* let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading); */
+    let centerPanel = <BusquedaPanel articulos={results} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
@@ -119,7 +123,7 @@ export default function Busqueda(props) {
                 infinite
                 infiniteDistance={50}
                 infinitePreloader={false}
-                onInfinite={() => { loadMore()}}
+                onInfinite={() => { loadMore() }}
             >
                 {/* Top Navbar */}
                 <Nav
@@ -140,7 +144,7 @@ export default function Busqueda(props) {
                                 radio_stations={leftPanelRadio}
                             />
                         </Block>
-                        <Block className="center_pan">
+                        <Block className="center_pan search">
                             <AdsTop />
                             {centerPanel}
                             {preloader &&
@@ -148,26 +152,13 @@ export default function Busqueda(props) {
                                     <Preloader color="red" ></Preloader>
                                 </Block>
                             }
-                            {/* <BusquedaPanel articulos={results} /> */}
-                            {/* {
-                                (searchResults.length === 0) &&
-                                <Block className="categoria_panel center_panel">
-                                    <Card className="head">
-                                        <CardHeader>Resultados</CardHeader>
-                                    </Card>
-                                    <Card>
-                                        <p>Tu busqueda no obtuvo resultados, intenta con diferentes terminos</p>
-                                    </Card>
-                                </Block>
-                            } */}
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={rightPanel} />
-                            <RightPanelTablet newsInfo={rightPanel} />
+                            {/* <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} /> */}
                         </Block>
                     </Block>
                 </Block>
-                {/* <Footer /> */}
             </PageContent>
         </Page>
     );
