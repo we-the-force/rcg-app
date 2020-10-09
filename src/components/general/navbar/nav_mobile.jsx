@@ -38,6 +38,7 @@ export default function navMobile(props) {
             if (searchValue !== "") {
                 // console.log(encodeURI(e.target.value));
                 // console.log(this.$f7.views.main.router.navigate);
+                setNavPopup(false);
                 f7.views.main.router.navigate(`/busqueda/${encodeURI(e.target.value)}`);
             }
             else {
