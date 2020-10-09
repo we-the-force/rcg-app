@@ -188,7 +188,7 @@ export default function CalcasPanel(props) {
             <Popup className="popupCalca successPopup" opened={successPopup} onPopupClosed={() => setSuccessPopup(false)}>
                 <Block className="back">
                     Tu Calca se ha registrado exitosamente.
-                <Button>Ok</Button>
+                <Button onClick={() => setSuccessPopup(false)}>Ok</Button>
                 </Block>
             </Popup>
         </Fragment>
