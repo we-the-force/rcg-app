@@ -43,12 +43,21 @@ export default class ArticuloPanel extends Component {
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
                             <p>Compartir:</p>
-                            <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
+                            <a className="faceIcon display-flex justify-content-center align-items-center external" href="https://twitter.com/intent/tweet?url=http://patatas.com/articulo/windows-xp-pierde-soporte-por-parte-de-microsoft/&text=La wea tweet y asi%0D%0A" data-size="large">
                                 <img src={TWIconx3} alt="" />
                             </a>
-                            <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
+                            {/* <a className="faceIcon display-flex justify-content-center align-items-center external" href="https://twitter.com/intent/tweet?text=Hello%20world" data-url="http%3A%2F%2F149.28.252.152%2Farticulo%2Fwindows-xp-pierde-soporte-por-parte-de-microsoft%2F" data-size="large">
+                                <img src={TWIconx3} alt="" />
+                            </a> */}
+                            {/* <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
                                 <img src={FBIconx3} alt="" />
-                            </a>
+                            </a> */}
+                            <div className="fb-share-button" data-href="http://149.28.252.152/articulo/windows-xp-pierde-soporte-por-parte-de-microsoft/" data-layout="button_count" data-size="small">
+                                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F149.28.252.152%2Farticulo%2Fwindows-xp-pierde-soporte-por-parte-de-microsoft%2F%26src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a>
+                            </div>
+                            {/* <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small">
+                                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F%26src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+                            </div> */}
                         </Block>
                     </Block>
                     <Block className="title_cont">
