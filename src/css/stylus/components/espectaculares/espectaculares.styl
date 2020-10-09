@@ -15,20 +15,48 @@
                     font font_12
                     color #000000
                     text-transform capitalize
-                    width 50%
+                    width 100%
                     margin 0px
 
             .content
                 p
                     font font_8
                     color #000000
-                
-            .img_cont  
+                    line-height 16px
+
+                .quote
+                    position relative
+                    border-radius 6px
+                    width 100%
+                    background linear-gradient(360deg, #EC1B23 43.39%, #FF5C63 125.23%)
+                    padding 15px
+                    padding-top 60px
+                    margin 0px
+                    box-sizing border-box
+
+                    p
+                        font font_2
+                        line-height 18px
+                        color white
+                        text-transform capitalize
+                        text-align center
+
+                    &:before
+                        content '\201D'
+                        position absolute
+                        font font_r
+                        color white
+                        margin-top 20px
+                        top 0px
+                        left 50%
+                        transform translateX(-50%)
+
+            .img_cont
                 width 100%
                 margin 10px 0px
                 height 140px
 
-                img 
+                img
                     width 100%
                     height 100%
                     border-radius 6px
@@ -40,14 +68,57 @@
                     width 100%
                     display grid
                     grid-template-columns 1fr 1fr 1fr
-                    margin 0px 
+                    margin 0px
                     padding 0px
 
-                    img 
+                    .img_cont
+                        position relative
                         width 100%
+                        height auto
+                        margin 0px
+                        padding 0px
+
+                        img
+                            position absolute
+                            top 0
+                            left 0
+                            width 100%
+                            height 100%
+                            object-fit contain
+
+                        &:after
+                            content ''
+                            display flex
+                            padding-top calc(50 / 50 * 100%)
 
     .portada_cont
         width 100%
 
         img
             width 100%
+
+    @media (min-width 640px)
+        .card
+            .back
+                padding 15px
+
+                .block-header
+                    h2
+                        font font_25
+
+                .img_cont
+                    height 200px
+                    margin-top 30px
+
+            &.clientes
+                .back
+                    .content
+                        grid-template-columns 1fr 1fr 1fr 1fr 1fr
+
+        .portada_cont
+            width 85%
+            margin auto
+
+    @media (min-width 1024px)
+        .portada_cont
+            width 70%

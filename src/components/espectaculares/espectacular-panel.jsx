@@ -10,7 +10,6 @@ import {
 export default function EspectacularPanel(props) {
     const { info, clientes } = props;
     let DB_url = f7.methods.get_URL_DB();
-    console.log(clientes);
     return (
         <Block className="center_panel espectacular_panel">
             <Card>
@@ -20,6 +19,9 @@ export default function EspectacularPanel(props) {
                     </BlockHeader>
                     <div className="content">
                         <p>{info.nosotros}</p>
+                        <div className="quote">
+                            <p className="text">RCG espectaculares somos una empresa líder en publicidad, por la permanencia y crecimiento continuo de nuestros clientes. Además, contamos con personal profesional cualificado para garantizar y superar sus expectativas en innovación publicitaria.</p>
+                        </div>
                     </div>
                     <div className="img_cont">
                         <img src={DB_url + info.NosotrosImagen.url} alt="" />
@@ -48,7 +50,9 @@ export default function EspectacularPanel(props) {
                         {
                             clientes.map((cliente, key) => {
                                 return (
-                                    <img src={DB_url + cliente.logo.url} alt="" key={key}/>
+                                    <div className="img_cont" key={key}>
+                                        <img src={DB_url + cliente.logo.url} alt="" />
+                                    </div>
                                 )
                             })
                         }
