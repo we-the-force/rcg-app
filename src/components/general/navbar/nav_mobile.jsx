@@ -29,6 +29,7 @@ import {
 } from 'framework7-react';
 
 export default function navMobile(props) {
+    const [navPopup, setNavPopup] = useState(false);
     function articuloSearch(e) {
         // console.log(e);
         if (e.key === "Enter") {
@@ -44,6 +45,7 @@ export default function navMobile(props) {
             }
         }
     }
+    // setNavPopup(false);
     let { tv_channels, radio_stations } = props;
     return (
         <Fragment>
@@ -54,18 +56,19 @@ export default function navMobile(props) {
                 <img src={LogoBlanco} alt="" />
             </a>
             <NavRight>
-                <Link className="menuIcon" popupOpen=".menuPopup" iconMaterial='apps' icon='apps' color="red"></Link>
+                {/* <Link className="menuIcon" popupOpen=".menuPopup" iconMaterial='apps' icon='apps' color="red"></Link> */}
+                <Link className="menuIcon" iconMaterial='apps' icon='apps' color="red" onClick={() => setNavPopup(true)}></Link>
             </NavRight>
-            <Popup className="menuPopup">
+            <Popup className="menuPopup" opened={navPopup} onPopupClosed={() => setNavPopup(false)}>
                 <Navbar sliding noHairline noShadow className="navPopup">
                     <NavLeft>
-                        <Link className="categorias panel-open" popupClose data-panel=".panel-left-mobile" iconMaterial="menu" icon="menu" color="red"></Link>
+                        <Link className="categorias panel-open"  data-panel=".panel-left-mobile" iconMaterial="menu" icon="menu" color="red" onClick={() => setNavPopup(false)}></Link>
                     </NavLeft>
                     <a className="logo" href="/">
                         <img src={LogoBlanco} alt="" />
                     </a>
                     <NavRight>
-                        <Link popupClose className="menuIcon" iconMaterial='close' icon='close' color="red"></Link>
+                        <Link  className="menuIcon" iconMaterial='close' icon='close' color="red" onClick={() => setNavPopup(false)}></Link>
                     </NavRight>
                 </Navbar>
                 <Page>
@@ -79,7 +82,7 @@ export default function navMobile(props) {
                                 <BlockHeader><img src={TVLight} alt="" /> <p>TV</p></BlockHeader>
                                 {
                                     tv_channels.map((channel, key) => {
-                                        return (<Link popupClose key={key} href={`/tv/${channel.url}`}>{channel.nombre}</Link>)
+                                        return (<Link  key={key} href={`/tv/${channel.url}`} onClick={() => setNavPopup(false)}>{channel.nombre}</Link>)
                                     })
                                 }
                             </Block>
@@ -88,8 +91,8 @@ export default function navMobile(props) {
                             <Block>
                                 <BlockHeader><img src={services} alt="" /> <p>Servicios</p></BlockHeader>
                                 {/* <Link>Fundacion RCG</Link> */}
-                                <Link popupClose href="/espectaculares">Espectaculares</Link>
-                                <Link popupClose href="/calca">Registra Tu Calca</Link>
+                                <Link  href="/espectaculares" onClick={() => setNavPopup(false)}>Espectaculares</Link>
+                                <Link  href="/calca" onClick={() => setNavPopup(false)}>Registra Tu Calca</Link>
                             </Block>
                         </div>
                         <div className="box estaciones">
@@ -97,7 +100,7 @@ export default function navMobile(props) {
                                 <BlockHeader><img src={radio} alt="" /><p>Radio</p></BlockHeader>
                                 {
                                     radio_stations.map((station, key) => {
-                                        return (<Link popupClose key={key} href={`/radio/${station.url}`}>{station.nombre}</Link>)
+                                        return (<Link  key={key} href={`/radio/${station.url}`} onClick={() => setNavPopup(false)}>{station.nombre}</Link>)
                                     })
                                 }
                             </Block>
@@ -105,17 +108,17 @@ export default function navMobile(props) {
                         <div className="box follow">
                             <Block>
                                 <BlockHeader><img src={twred} alt="" /><p>Siguenos En:</p></BlockHeader>
-                                <Link popupClose href="https://www.facebook.com" target="_blank" className="redes external"><img src={face} alt="" /></Link>
-                                <Link popupClose href="https://www.twitter.com" target="_blank" className="redes external"><img src={tw} alt="" /></Link>
-                                <Link popupClose href="https://www.youtube.com" target="_blank" className="redes external"><img src={you} alt="" /></Link>
-                                <Link popupClose href="https://www.instagram.com" target="_blank" className="redes external"><img src={insta} alt="" /></Link>
+                                <Link  href="https://www.facebook.com" target="_blank" className="redes external" ><img src={face} alt="" /></Link>
+                                <Link  href="https://www.twitter.com" target="_blank" className="redes external"  ><img src={tw} alt="" /></Link>
+                                <Link  href="https://www.youtube.com" target="_blank" className="redes external"  ><img src={you} alt="" /></Link>
+                                <Link  href="https://www.instagram.com" target="_blank" className="redes external"><img src={insta} alt="" /></Link>
                             </Block>
                         </div>
                         <div className="box RCG">
                             <Block>
                                 <BlockHeader><img src={contact} alt="" /><p>RCG</p></BlockHeader>
-                                <Link popupClose href="/nosotros">Nosotros</Link>
-                                <Link popupClose href="/contacto">Contacto</Link>
+                                <Link  href="/nosotros" onClick={() => setNavPopup(false)}>Nosotros</Link>
+                                <Link  href="/contacto" onClick={() => setNavPopup(false)}>Contacto</Link>
                             </Block>
                         </div>
                         <div className="box empty">
@@ -125,14 +128,14 @@ export default function navMobile(props) {
                         <div className="box foot">
                             <Block className="display-flex flex-direction-column justify-content-center align-items-center">
                                 <div className="avisos display-flex">
-                                    <Link popupClose href="/derecho_replica">Derecho de replica</Link>
-                                    <Link popupClose href="/aviso_privacidad">Aviso de privacidad</Link>
-                                    <Link popupClose href="/faq">Preguntas Frecuentes</Link>
+                                    <Link  href="/derecho_replica"  onClick={() => setNavPopup(false)}>Derecho de replica</Link>
+                                    <Link  href="/aviso_privacidad" onClick={() => setNavPopup(false)}>Aviso de privacidad</Link>
+                                    <Link  href="/faq"              onClick={() => setNavPopup(false)}>Preguntas Frecuentes</Link>
                                 </div>
                                 <div className="opis">
-                                    <Link popupClose href={false}>OPI 2017</Link>
-                                    <Link popupClose href={false}>OPI 2018</Link>
-                                    <Link popupClose href={false}>SEG</Link>
+                                    <Link  href={false}>OPI 2017</Link>
+                                    <Link  href={false}>OPI 2018</Link>
+                                    <Link  href={false}>SEG</Link>
                                 </div>
                                 <p>©2020 RCG</p>
                             </Block>
