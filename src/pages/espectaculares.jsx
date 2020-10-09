@@ -50,7 +50,7 @@ export default function Espectaculares(props) {
                         </Block>
                         <Block className="center_pan wo_right_pan">
                             <AdsTop />
-                            <EspectacularPanel espectacularInfo={info} clientes={clientes} />
+                            <EspectacularPanel info={info} clientes={clientes} />
                             {/* aqui va el panel central */}
                         </Block>
                     </Block>

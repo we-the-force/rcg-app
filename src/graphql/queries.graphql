@@ -183,6 +183,12 @@ query EspectacularPage {
   info: espectacularInfo {
     nosotros
     porque_nosotros
+    NosotrosImagen{
+      url
+    }
+    PorqueNosotrosImagen{
+      url
+    }
   }
   clientes: espectacularClientes {
     nombre

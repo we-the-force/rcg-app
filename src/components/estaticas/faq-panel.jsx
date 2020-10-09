@@ -28,27 +28,10 @@ export default class FaqPage extends Component {
                                     </Block>
                                 );
                             })}
-                            {/* <div dangerouslySetInnerHTML={{ __html: this.avisoPrivacidad }} /> */}
                             <p className="bottom_p">¿Te fueron de utilidad nuestras respuestas? ¿Aún tienes dudas acerca de nuestros servicios? <a href="/contacto">Llámanos</a> o <a href="/contacto">esbríbenos</a> y con gusto te atenderemos</p>
                         </div>
                         <img className="city" src={city} alt="" />
-                    </Block>
-                    {
-                        /* this.props.faqInfo.preguntas.map((question, key) => {
-                            return (
-                                <Block key={key}>
-                                    <p>
-                                        <b>{question.pregunta}</b>
-                                        <br />
-                                        {question.respuesta}
-                                    </p>
-                                    <br />
-                                </Block>
-                            );
-                        }) */
-                    }
-
-                    
+                    </Block>                    
                 </Card>
             </Block>
         )

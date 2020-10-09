@@ -12,9 +12,9 @@ export default function LeftPanelMobile(props) {
     let navLinks = [];
     if (categoria === 'espectaculares') {
         navLinks = [
-            <ListItem link="/" view="#main-view" className="uppercase" panelClose>inicio</ListItem>,
-            <ListItem link="/catalogo" view="#main-view" className="uppercase" panelClose>catalogo</ListItem>,
-            <ListItem link="/contacto" view="#main-view" className="uppercase" panelClose>contacto</ListItem>
+            <ListItem key={"1"} link="/" view="#main-view" className="uppercase" panelClose>inicio</ListItem>,
+            <ListItem key={"2"} link="/catalogo" view="#main-view" className="uppercase" panelClose>catalogo</ListItem>,
+            <ListItem key={"3"} link="/contacto" view="#main-view" className="uppercase" panelClose>contacto</ListItem>
         ]
     } else {
         navLinks = categorias.length > 0 ? categorias.map((val, key) => {
