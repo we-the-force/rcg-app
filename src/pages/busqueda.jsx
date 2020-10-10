@@ -31,6 +31,7 @@ export default function Busqueda(props) {
     const [allowInfinite, setAllowInfinite] = useState(true);
     const [preloader, setPreloader] = useState(false);
     const [callApi, setCallApi] = useState(false);
+    const [firstCharge, setFirstCharge] = useState(true);
     const [data, setData] = useState(false);
     const [getTitulo, valuesTitulo] = useLazyQuery(BusquedaTitulo, {
         onCompleted: (data) => { handleCompleted(data) }
@@ -49,6 +50,7 @@ export default function Busqueda(props) {
 
     const loadMore = () => {
         if (!allowInfinite) return;
+        setFirstCharge(false);
         setAllowInfinite(false);
         setPreloader(true);
         setCallApi(!callApi);
@@ -111,7 +113,7 @@ export default function Busqueda(props) {
     }
 
     let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading);
-    let centerPanel = isLoading ? <p>loading</p> : <BusquedaPanel title={values} articulos={results} />;
+    let centerPanel = isLoading && firstCharge ? <p>loading</p> : <BusquedaPanel title={values} articulos={results} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
