@@ -34,6 +34,12 @@ query HomePage {
   }
 }
 
+query ArticuloPage($url: String) {
+  articulos(where: { url: $url }) {
+    ...ArticulosData
+  }
+}
+
 query AutorPage($url: String) {
   autor: autors(where: { url: $url }) {
     id
@@ -148,7 +154,11 @@ query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
 }
 
 query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
-  articulos(where: { categoria: { nombre: $categoria } }, start: $inicio, limit: $limite) {
+  articulos(
+    where: { categoria: { nombre: $categoria } }
+    start: $inicio
+    limit: $limite
+  ) {
     ...ArticulosData
   }
 }
@@ -222,50 +232,7 @@ query CatalogoPage {
   }
 }
 
-query BorraEsteMasAdelante {
-  articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosEstatal: articulos(where: { categoria: { id: 2 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosNacional: articulos(where: { categoria: { id: 3 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosInternacional: articulos(where: { categoria: { id: 4 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosDeporte: articulos(where: { categoria: { id: 5 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosEspectaculo: articulos(where: { categoria: { id: 6 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosDestacados: articulos(where: { categoria: { id: 7 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosFundacion: articulos(where: { categoria: { id: 8 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosSaludCultura: articulos(where: { categoria: { id: 9 } }, limit: 5) {
-    ...ArticulosData
-  }
-}
-
-query ArticuloPage($url: String) {
-  articulos(where: { url: $url }) {
-    ...ArticulosData
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
+#borrar de aqui pa adelante si no los uso
 
 query SearchArticulosByTag($tags: [String]) {
   articulos(where: { tags: { nombre_in: $tags } }) {

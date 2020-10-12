@@ -14,9 +14,6 @@ import {
     SwiperSlide,
     f7
 } from 'framework7-react';
-// import { render } from 'stylus';
-
-// export default function ArticuloPanel(props) {
 export default class ArticuloPanel extends Component {
     constructor(props) {
         super(props);
@@ -25,12 +22,12 @@ export default class ArticuloPanel extends Component {
         // this.result = this.md.render(props.articulo.description);
         this.result = marked(props.articulo.description);
 
-        console.log("El this.result:\r\n",this.result);
+        /* console.log("El this.result:\r\n",this.result); */
         this.urlThing = `http://${window.location.hostname}/articulo/${props.articulo.url}/`;
         this.encodedUrlThing = encodeURIComponent(this.urlThing);
     }
     componentDidMount() {
-        console.log("Mounted");
+        /* console.log("Mounted"); */
         FB.XFBML.parse();
     }
     render() {
@@ -43,7 +40,7 @@ export default class ArticuloPanel extends Component {
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
                             <p>Compartir:</p>
-                            {console.log(`Url thing:\r\n   1.- ${this.urlThing}\r\n   2.- ${this.encodedUrlThing}`)}
+                            {/* console.log(`Url thing:\r\n   1.- ${this.urlThing}\r\n   2.- ${this.encodedUrlThing}`) */}
                             {/* <a className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=http://patatas.com/articulo/windows-xp-pierde-soporte-por-parte-de-microsoft/&text=La wea tweet y asi%0D%0A`} data-size="large"> */}
                             <a className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${this.urlThing}&text=La wea tweet y asi%0D%0A`} data-size="large">
                                 <img src={TWIconx3} alt="" />
@@ -155,13 +152,3 @@ export default class ArticuloPanel extends Component {
     }
     
 }
-// export default class ArticuloPanel extends Component {
-//     constructor() {
-//         super();
-//     }
-//     render() {
-//         return (
-            
-//         );
-//     }
-// }
