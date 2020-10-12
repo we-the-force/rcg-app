@@ -17,23 +17,27 @@ export default function CatalogoPanel(props) {
     const [photos, setPhotos] = useState([]);
 
     const handleClick = (el, face) => {
-        console.log(props.data[el.zona]);
-        setPhotos([])
-        console.log(photoBrowser);
+        let newPhotos = [];
+        props.data[el.zona].map((el, i) => {
+            newPhotos.push(DB_url + el.cara1.url);
+            newPhotos.push(DB_url + el.cara2.url);
+        });
+        setPhotos(newPhotos);
+        photoBrowser.current.open(face - 1);
     }
 
     const EspectTwoFaces = (prop) => {
         const { el, index } = prop;
         return (
             <Fragment>
-                <Link className="img_cont" onClick={() => { handleClick(el, ((index*2) + 1)) }}>
+                <Link className="img_cont" onClick={() => { handleClick(el, ((index * 2) + 1)) }}>
                     <div className="name">
                         <p>{el.id_espectacular} - cara 1</p>
                     </div>
                     <img src={DB_url + el.cara1.url} alt="" />
                     <p className="lugar">{el.lugar}</p>
                 </Link>
-                <Link className="img_cont" onClick={() => { handleClick(el, ((index*2) + 2)) }}>
+                <Link className="img_cont" onClick={() => { handleClick(el, ((index * 2) + 2)) }}>
                     <div className="name">
                         <p>{el.id_espectacular} - cara 2</p>
                     </div>
@@ -43,11 +47,17 @@ export default function CatalogoPanel(props) {
             </Fragment>
         );
     }
+
     return (
         <Block className="center_panel catalogo_panel">
             <PhotoBrowser
                 photos={photos}
                 ref={photoBrowser}
+                theme="dark"
+                type="popup"
+                routableModals={false}
+                popupCloseLinkText="Cerrar"
+                navbarOfText="de"
             />
             <Card>
                 <Block className="back">
@@ -74,7 +84,7 @@ export default function CatalogoPanel(props) {
                         {
                             norte.map((el, i) => {
                                 return (
-                                    <EspectTwoFaces key={i} el={el} index={i}/>
+                                    <EspectTwoFaces key={i} el={el} index={i} />
                                 );
                             })
                         }
@@ -90,7 +100,7 @@ export default function CatalogoPanel(props) {
                         {
                             oriente.map((el, i) => {
                                 return (
-                                    <EspectTwoFaces key={i} el={el} index={i}/>
+                                    <EspectTwoFaces key={i} el={el} index={i} />
                                 );
                             })
                         }
@@ -106,7 +116,7 @@ export default function CatalogoPanel(props) {
                         {
                             poniente.map((el, i) => {
                                 return (
-                                    <EspectTwoFaces key={i} el={el} index={i}/>
+                                    <EspectTwoFaces key={i} el={el} index={i} />
                                 );
                             })
                         }
@@ -122,7 +132,7 @@ export default function CatalogoPanel(props) {
                         {
                             sur.map((el, i) => {
                                 return (
-                                    <EspectTwoFaces key={i} el={el} index={i}/>
+                                    <EspectTwoFaces key={i} el={el} index={i} />
                                 );
                             })
                         }
