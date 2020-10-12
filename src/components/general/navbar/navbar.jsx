@@ -15,7 +15,7 @@ export default function Nav(props) {
     return (
         <Navbar sliding noHairline noShadow>
             {type === 'desktop' &&
-                <Desk itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares}/>
+                <Desk itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home}/>
             }
             {type === 'mobile' &&
                 <Mobile categorias={categorias} tv_channels={props.tv_channels} radio_stations={props.radio_stations}/>

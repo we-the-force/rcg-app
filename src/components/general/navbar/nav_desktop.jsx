@@ -15,7 +15,7 @@ import {
 } from 'framework7-react';
 
 export default function navMobile(props) {
-    const { itemsShow, itemsPop, esp } = props;
+    const { itemsShow, itemsPop, esp, home } = props;
     var navLinks = [];
     if (esp) {
         navLinks = <Fragment>
@@ -54,10 +54,15 @@ export default function navMobile(props) {
     }
     return (
         <Fragment>
-            <NavLeft>
-                <a href="/">
-                    <img src={LogoBlanco} alt="" />
-                </a>
+            <NavLeft className={home ? 'home' : ''}>
+                {home &&
+                    <img className="home" src={navGraph} alt="" />
+                }
+                {!home &&
+                    <a href="/">
+                        <img src={LogoBlanco} alt="" />
+                    </a>
+                }
             </NavLeft>
             {navLinks}
             <NavRight>
