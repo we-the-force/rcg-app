@@ -20,14 +20,13 @@ export default function RightPanelTablet(props) {
         x[0].classList.remove("invisible");
     }
 
-
     let { newsInfo, autores, numArticulos } = props;
     let cont, title = 'Destacado';
 
     if (newsInfo != undefined) {
         cont = (
             newsInfo.map((articulo, i) => {
-                return (<DestItem image={true} key={i} articulo={articulo} />)
+                return (<DestItem image={i === 0 || i === 1 ? true : false} key={i} articulo={articulo} />)
             })
         );
 

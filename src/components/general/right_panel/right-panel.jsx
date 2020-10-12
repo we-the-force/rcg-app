@@ -32,8 +32,8 @@ export default function RightPanel(props) {
                         return (
                             <DestItem
                                 key={i}
-                                image={true}
                                 articulo={articulo}
+                                image={i === 0 || i === 1 ? true : false}
                             />
                         )
                     })
@@ -86,7 +86,6 @@ export default function RightPanel(props) {
                         <ListItem link="#">Reporte</ListItem>
                         <ListItem link="#">Alcalde</ListItem>
                         <ListItem link="#">RCG</ListItem>
-                        <ListItem link="#" className="grey">Buscar</ListItem>
                     </List>
                 </Card>
             </Block>
