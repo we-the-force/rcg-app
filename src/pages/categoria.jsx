@@ -7,55 +7,107 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import CategoriaPanel from '@/components/categoria/categoria-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
-import { useQuery } from '@apollo/client';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { CategoriaPage } from '@/graphql/queries.graphql';
-import { f7,f7ready } from 'framework7-react';
+import { f7, f7ready } from 'framework7-react';
 import {
     Page,
     Block,
-    PageContent
+    PageContent,
+    Preloader
 } from 'framework7-react';
 export default function Categoria(props) {
-    let categoria = props.nombre;
-    const { loading, error, data } = useQuery(CategoriaPage, {
-        variables: { categoria },
+    const { nombre } = props;
+    const limitStatic = 20;
+    const [allowInfinite, setAllowInfinite] = useState(true);
+    const [preloader, setPreloader] = useState(false);
+    const [inicial, setInicial] = useState(0);
+    const [callApi, setCallApi] = useState(false);
+    const [articulos, setArticulos] = useState([]);
+    const [footer, setFooter] = useState(false);
+    const [first, setFirst] = useState(true);
+
+    const [getArticulos, { loading, error, data }] = useLazyQuery(CategoriaPage, {
+        onCompleted: (data) => {
+            let newInicial = inicial + limitStatic;
+            if (data.articulos.length > 0) setAllowInfinite(true);
+            if (data.articulos.length === 0) setFooter(true);
+            setPreloader(false);
+            setInicial(newInicial);
+            setArticulos(articulos.concat(data.articulos));
+        }
     });
-    
+
+    const loadMore = () => {
+        setFirst(false);
+        if (!allowInfinite) return;
+        setAllowInfinite(false);
+        setPreloader(true);
+        setCallApi(!callApi);
+    };
+
+    useEffect(() => {
+        getArticulos({
+            variables:
+            {
+                categoria: nombre,
+                inicio: inicial,
+                limite: limitStatic
+            }
+        });
+    }, [callApi]);
+
     useEffect(() => {
         f7ready((f7) => {
-            f7.methods.handleCategoriaActual(categoria);
+            f7.methods.handleCategoriaActual(nombre);
+            setCallApi(!callApi);
         });
     }, []);
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
-
-
+    let centerPanel = loading && first ?
+        'Loading' :
+        <CategoriaPanel
+            articulos={articulos}
+            categoria={nombre}
+        />;
+    let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
         <Page pageContent={false} name="categoria">
-            <PageContent>
+            <PageContent
+                infinite
+                infiniteDistance={50}
+                infinitePreloader={false}
+                onInfinite={() => { loadMore() }}
+            >
                 <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 {/* Top Navbar */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                    <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                             <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
-                            {/* {JSON.stringify(this.$f7route.context.Articles)} */}
-                            <CategoriaPanel articulos={data.articulos} categoria={categoria} />
+                            <AdsTop />
+                            {centerPanel}
+                            {preloader &&
+                                <Block className="display-flex justify-content-center align-items-center">
+                                    <Preloader color="red" ></Preloader>
+                                </Block>
+                            }
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDestacadosRaros} />
-                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>
-                <Footer />
+                {
+                    footer &&
+                    <Footer />
+                }
             </PageContent>
         </Page>
     )

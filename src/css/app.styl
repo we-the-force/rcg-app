@@ -31,6 +31,7 @@
 @import './stylus/components/cards_news/news_home.styl'
 @import './stylus/components/cards_news/news_busqueda.styl'
 @import './stylus/components/cards_news/news_swiper.styl'
+@import './stylus/components/cards_news/news_categoria.styl'
 @import './stylus/components/autores/autor.styl'
 @import './stylus/components/autores/autores.styl'
 @import './stylus/components/autores/card-autor.styl'
@@ -43,6 +44,7 @@
 @import './stylus/components/busqueda/busqueda.styl'
 @import './stylus/components/espectaculares/espectaculares.styl'
 @import './stylus/components/catalogo/catalogo.styl'
+@import './stylus/components/popovers/popup-photo.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -51,6 +53,10 @@
 /* Your app custom styles here */
 .page-content
   background white_l
+  padding-bottom 60px
+
+  @media (min-width 640px)
+    padding-bottom 0px
 
   &.darkTheme
     background grey_d

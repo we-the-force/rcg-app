@@ -22,7 +22,7 @@ import {
 
 export default function Busqueda(props) {
     const values = props.params.trim().toString();
-    const limitStatic = 3;
+    const limitStatic = 20;
     const [type, setType] = useState(-1);
     const [isCalled, setIsCalled] = useState(false);
     const [results, setResults] = useState([]);

@@ -19,7 +19,7 @@ import {
 } from 'framework7-react';
 
 export default function Autor(props) {
-    const limitStatic = 3;
+    const limitStatic = 5;
     const { url } = props;
     const [allowInfinite, setAllowInfinite] = useState(true);
     const [preloader, setPreloader] = useState(false);
