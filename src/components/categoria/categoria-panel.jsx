@@ -8,35 +8,24 @@ import {
 } from 'framework7-react';
 
 export default class NewsPanel extends Component {
-    constructor() {
-        super();
-        this.state = {}
+    constructor(props) {
+        super(props);
     }
     render() {
+        const { categoria, articulos } = this.props;
         return (
             <Block className="categoria_panel center_panel">
                 <Card className="new_head">
-                    <CardHeader>{this.props.categoria}</CardHeader>
+                    <CardHeader>{categoria}</CardHeader>
                     <div className="head_logo">
                         <img src={back_head} alt="" />
                     </div>
                 </Card>
-                {/* Lista de NewsCards */}
-                { this.props.articulos.map((articulo, i) => {
-                    return (<NewsCategoria key={i} articulo={articulo} />);
-                })}
-                {/* <NewsCard />
-                <Block className="ads bar"></Block>
-                <NewsCard />
-                <NewsCard />
-                <Block className="ads bar"></Block>
-                <NewsCard />
-                <NewsCard />
-                <Block className="ads bar"></Block>
-                <NewsCard />
-                <NewsCard />
-                <Block className="ads bar"></Block> */}
-                {/* te recomendamos */}
+                {
+                    articulos.map((articulo, i) => {
+                        return (<NewsCategoria className="" key={i} articulo={articulo} />);
+                    })
+                }
             </Block>
         );
     }
