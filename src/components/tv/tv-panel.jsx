@@ -80,6 +80,9 @@ export default class TVPanel extends Component {
         {
             this.moreChannels = [];
         }
+        console.log("Props:\r\n", props);
+        this.urlThing = `http://${window.location.hostname}/tv/${props.channel.url}/`;
+        this.encodedUrlThing = encodeURIComponent(this.urlThing);
     }
     sortFunction(a, b){
         let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
@@ -96,12 +99,20 @@ export default class TVPanel extends Component {
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
                             <p>Compartir:</p>
-                            <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
+                            {/* <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
                                 <img src="../static/icons/TW_Icon_x3.png" alt="" />
                             </a>
                             <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
                                 <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                            </a> */}
+                            <a className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${this.urlThing}&text=La wea tweet y asi%0D%0A`} data-size="large">
+                                <img src="../static/icons/TW_Icon_x3.png" alt="" />
                             </a>
+                            <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={this.urlThing} data-layout="button_count" data-size="small">
+                                <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${this.encodedUrlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
+                                <img src="../static/icons/FB_Icon_x3.png" alt="" />
+                                </a>
+                            </div>
                         </Block>
                     </Block>
                     <Block className="player-wrapper">
