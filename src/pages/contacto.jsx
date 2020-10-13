@@ -10,7 +10,7 @@ import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 
 import { useQuery } from '@apollo/client';
-import { AboutUsPage } from '@/graphql/queries.graphql';
+import { ContactPage } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
@@ -20,7 +20,7 @@ import {
 } from 'framework7-react';
 
 export default function AboutUs(props) {
-    const { loading, error, data } = useQuery(AboutUsPage);
+    const { loading, error, data } = useQuery(ContactPage);
 
     useEffect(() => {
         f7ready((f7) => {
@@ -49,7 +49,7 @@ export default function AboutUs(props) {
                         <Block className="center_pan">
                             {/* aqui va el panel central */}
                             {/* <AboutUsPanel nosotrosInfo={data.nosotrosInfo}/> */}
-                            <ContactoPanel />
+                            <ContactoPanel contactInfo={data.contactInfo}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />

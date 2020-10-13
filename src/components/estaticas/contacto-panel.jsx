@@ -13,8 +13,8 @@ import {
 
 
 
-export default function ContactoPage(props) {
-
+export default function ContactoPanel(props) {
+    console.log("ContactPanel.props:\r\n", props);
     var isRequesting = false;
     async function handleContactSubmit(e) {
         if (!isRequesting){
@@ -163,7 +163,7 @@ export default function ContactoPage(props) {
                     <b>Incrementa tus ventas</b>
                     <p>a traves de nuestros diferentes medios</p>
                     <h1>¡Anunciate!</h1>
-                    <p>Deja tus datos en esta seccion de formulario y nos pondremos en contacto contigo o llama al telefono: <b>(844) 305-0570</b></p>
+                    <p>Deja tus datos en esta seccion de formulario y nos pondremos en contacto contigo o llama al telefono: <b>{props.contactInfo.telefono}</b></p>
                     <b>Formulario</b>
                     {/* El formulario */}
                     <Block>
@@ -175,8 +175,8 @@ export default function ContactoPage(props) {
                     </Block>
                     <p>Te ofrecemos paquetes a tu medida.</p>
                     <p>Pregunta sin compromiso, ¡Nosotros te ayudamos!</p>
-                    <p><b>WhatsApp 844-277-8810</b></p>
-                    <p><b>cuentacon@rcg.com.mx</b></p>
+                    <p><b>WhatsApp {props.contactInfo.whatsapp}</b></p>
+                    <p><b>{props.contactInfo.correo}</b></p>
                 </Block>
             </Card>
         </Block>
