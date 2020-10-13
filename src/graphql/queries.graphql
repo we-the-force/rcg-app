@@ -171,6 +171,17 @@ query AboutUsPage {
   }
 }
 
+query ContactPage {
+  contactInfo: contacto {
+    direccion
+    telefono
+    whatsapp
+    correo
+    img {url}
+    video {url}
+  } 
+}
+
 query AvisoPrivacidadPage {
   avisoPrivacidad: avisoDePrivacidad {
     descripcion
