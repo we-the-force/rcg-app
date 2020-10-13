@@ -15,12 +15,9 @@ export default function NewsCategoria(props) {
     moment.locale('es');
     const { className, articulo } = props;
     let DB_url = f7.methods.get_URL_DB();
-
-    console.log(props);
-    const urlThing = `http://${window.location.hostname}/articulo/${props.articulo.url}/`;
-    const encodedUrlThing = encodeURIComponent(urlThing);
-
-    // console.log(`Url thing:\r\n   1.- ${urlThing}\r\n   2.- ${encodedUrlThing}`);
+    let url = f7.methods.get_URL();
+    const urlThing = url + `/articulo/${articulo.url}/`;
+    const urlEncoded = encodeURIComponent(urlThing);
     return (
         <Card className={`NewsCategoria_cont ${className}`}>
             <Block className="head">
@@ -30,19 +27,11 @@ export default function NewsCategoria(props) {
                 </Block>
                 <Block className="share display-flex align-items-center">
                     <p>Compartir:</p>
-                    {/* <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
-                        <img src={Twitter} alt="" />
-                    </a>
-                    <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
-                        <img src={Face} alt="" />
-                    </a> */}
-
-
-                    <a className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=La wea tweet y asi%0D%0A`} data-size="large">
+                    <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=La wea tweet y asi%0D`} data-size="large">
                         <img src={Twitter} alt="" />
                     </a>
                     <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
-                        <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
+                        <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
                             <img src={Face} alt="" />
                         </a>
                     </div>
