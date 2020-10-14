@@ -19,7 +19,6 @@ export default class SwiperNews extends Component {
                 <Block className={`recomendados display-flex flex-direction-column align-content-stretch ${display}`}>
                     <Block className="head display-flex justify-content-space-between align-items-center">
                         <h1>Te Recomandamos</h1>
-                        <a href="">Mostrar mas</a>
                     </Block>
                 </Block>
                 <Block className="swiper_cont">

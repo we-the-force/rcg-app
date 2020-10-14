@@ -53,7 +53,6 @@ export default class ArticuloPanel extends Component {
         let urlThing = url + `/articulo/${articulo.url}/`;
         //let encodedUrlThing = encodeURIComponent(urlThing);
         let result = formatText(articulo.description);
-        console.log(recomendados);
 
         return (
             <Block className="articulo_panel center_panel">
@@ -118,7 +117,7 @@ export default class ArticuloPanel extends Component {
                             <Block className="share display-flex align-items-center justify-content-flex-end">
                                 <p>Compartir:</p>
                                 <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
-                                <img src={TWIconx3} alt="" />
+                                    <img src={TWIconx3} alt="" />
                                 </a>
                                 <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
                                     <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
@@ -133,6 +132,20 @@ export default class ArticuloPanel extends Component {
                             <Block className="ads side">
                             </Block>
                         </Block>
+                    </Block>
+                    <Block className="comments tab">
+                        <div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
+                    </Block>
+                    <Block className="share tab display-flex align-items-center justify-content-flex-end">
+                        <p>Compartir:</p>
+                        <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
+                            <img src={TWIconx3} alt="" />
+                        </a>
+                        <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
+                            <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
+                                <img src={FBIconx3} alt="" />
+                            </a>
+                        </div>
                     </Block>
                     <Block className="ads_cont">
                         <Block className="ads bar">
