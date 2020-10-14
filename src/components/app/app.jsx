@@ -91,9 +91,13 @@ export default class extends React.Component {
         get_URL_DB: () => {
           return this.state.data.db_url;
         },
+        get_URL: () => {
+          return this.state.data.url;
+        },
       },
       data: {
         db_url: `http://${window.location.hostname}:1337`,
+        url: `http://${window.location.hostname}:8080`,
         categorias: [],
         categoriaActual: '',
         radioStations: [],

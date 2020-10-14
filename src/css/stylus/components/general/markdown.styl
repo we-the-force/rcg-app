@@ -1,0 +1,71 @@
+.markdown
+    padding 0px
+    margin 0px
+
+    ul, ol
+        padding-left 25px
+
+    .titulo
+        width 100%
+        margin 0px
+        padding 0px
+        padding-left 5px
+        font font_2
+        color #000
+        text-transform capitalize
+
+    .parrafo
+        width 100%
+        font font_8
+        line-height 16px
+        text-align justify
+        color #000
+
+    .link
+        font font_6
+        color #2AAAE0
+
+    .imagen_cont
+        position relative
+        width 100%
+
+        img
+            position absolute
+            top 0
+            left 0
+            height 100%
+            width 100%
+            object-fit cover
+            border-radius 6px
+
+        &:after
+            content ''
+            display block
+            padding-top calc(200 / 300 * 100%)
+
+    blockquote
+        background linear-gradient(360deg, #EC1B23 43.39%, #FF5C63 125.23%)
+        border-radius 6px
+        padding-top 60px
+        margin 20px 0px
+        width 100%
+        position relative
+
+        p
+            font font_24 !important
+            color white !important
+            padding 20px
+            width 100%
+            text-transform capitalize
+            text-align center !important
+            box-sizing border-box
+
+        &:after
+            content '\201D'
+            position absolute
+            font font_r
+            color white
+            margin-top 20px
+            top 0px
+            left 50%
+            transform translateX(-50%)
