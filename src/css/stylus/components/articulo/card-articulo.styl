@@ -37,6 +37,7 @@
 
                 img
                     width 100%
+                    height 100%
 
     .title_cont
         padding 0px
@@ -103,78 +104,63 @@
 
             .articulo_cont
                 padding 0px
+                display flex
+                flex-direction column
 
-                /* p
-                    margin-top 0px
-                    margin-bottom 20px
-                    padding 0px
-                    font font_8
-                    line-height 16px
-                    text-align justify
-                    text-transform capitalize
-                    color black
+                .child
+                    &:nth-child(1)
+                        order: 0
+                    &:nth-child(2)
+                        order: 1
+                    &:nth-child(3)
+                        order: 2
+                    &:nth-child(4)
+                        order: 4
+                    &:nth-child(5)
+                        order: 5
+                    &:nth-child(6)
+                        order: 6
+                    &:nth-child(n+7)
+                        order: 8
+                    &:nth-last-child(2)
+                        order: 3 !important
+                    &:nth-last-child(1)
+                        order: 7 !important
 
-                .quotes
-                    width 100%
-                    height 200px
-                    background #FA565D
-                    margin-bottom 20px
+                .ads.side
+                    position relative
+                    width 90%
+                    margin 8px auto
+                    border-radius 6px
 
                     &:after
-                        content '\201C'
-                        position absolute
-                        margin-left 25px
-                        margin-right 25px
-                        font font_r
-                        color white
-                        top 0
-                        left 0
-                        margin-top 15px
-
-                    &:before
-                        content '\201D'
-                        position absolute
-                        margin-left 25px
-                        margin-right 25px
-                        font font_r
-                        color white
-                        bottom 0px
-                        right 0px
-                        margin-bottom -38px
-
-                    .text
-                        font_mix(normal, 18px, 20px)
-                        color white
-                        text-transform capitalize
-                        text-align center
-                        margin 0px 25px
-                        width 100% */
+                        content ''
+                        display block
+                        padding-top calc(300 / 200 * 90%)
 
             .tags
                 padding 0px
-                font font_8
                 text-transform capitalize
-                margin-bottom 50px
+                margin-bottom 30px
 
                 p
                     color black
+                    font font_8
                     font-weight 500
                     margin 0px
+                    line-height 20px
                     padding-right 10px
                     white-space nowrap
 
-                .links
-                    padding 0px
-
-                    a
-                        font font_8
-                        line-height 20px
-                        color red
-                        padding-right 10px
+                a
+                    font font_8
+                    line-height 20px
+                    color red
+                    padding-right 10px
 
             .comments
                 width 100%
-                height 150px
+                height fit-content
 
             .share
                 padding 10px 0px
@@ -194,6 +180,7 @@
 
                     img
                         width 100%
+                        height 100%
 
     .ads_cont
         width 100%
@@ -202,6 +189,7 @@
         margin-right -15px
 
         .ads.bar
+            border-radius 4px
             margin-left auto
             margin-right auto
 

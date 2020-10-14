@@ -1,9 +1,9 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, Fragment } from 'react';
 import SwiperNews from '@/components/general/swiper_news.jsx';
 import marked from 'marked';
 import JsxParser from 'react-jsx-parser'
-import TWIconx3 from '@/static/icons/TW_Icon_x3.png';
-import FBIconx3 from '@/static/icons/FB_Icon_x3.png';
+import TWIconx3 from '@/static/icons/TW_Icon_x4.png';
+import FBIconx3 from '@/static/icons/FB_Icon_x4.png';
 import { useMutation, gql } from '@apollo/client';
 import { UpdateVisitas } from '@/graphql/queries.graphql';
 import { onError } from "apollo-link-error";
@@ -24,14 +24,18 @@ export function formatText(x) {
     let parrafoTag = /(<p([^>]*)>)/gi;
     let codeTag = /(<\/?code([^>]*)>)/gi;
     let listTag = /(<li([^>]*)>)/gi;
+    let listChildTag = /<(ol|ul)([^>]*)>/gi;
     let anchorTag = /(<a([^>]*)>)/gi;
+    let quoteTag = /<blockquote([^>]*)>/gi;
     let imgTag = /(<p[^>]*>)([^<]*)<img\s*([^>]*)\s*src=["'`]([^"`']+)["`']\s*([^>]*)(\/?>)(<\/p>)/gi;
-    value = value.replace(titleTag, '<h$2 className="titulo">');
-    value = value.replace(parrafoTag, '<p className="parrafo">');
+    value = value.replace(titleTag, '<h$2 className="child titulo">');
+    value = value.replace(parrafoTag, '<p className="child parrafo">');
     value = value.replace(codeTag, '');
+    value = value.replace(listChildTag, '<$1 className="child">');
+    value = value.replace(quoteTag, '<blockquote $1 className="child">');
     value = value.replace(listTag, '<li $2 className="parrafo">');
     value = value.replace(anchorTag, '<a $2 className="link external" target="_blank">');
-    value = value.replace(imgTag, `<div className="imagen_cont">$2<img $3 src="${DB_url}$4" $5 /></div>`);
+    value = value.replace(imgTag, `<div className="imagen_cont child">$2<img $3 src="${DB_url}$4" $5 /></div>`);
     value = value.replace(/\n/gi, ``);
     return (value);
 }
@@ -40,17 +44,17 @@ export default class ArticuloPanel extends Component {
         super(props);
     }
     componentDidMount() {
-        /* console.log("Mounted"); */
         FB.XFBML.parse();
     }
     render() {
-        let { articulo } = this.props
+        let { articulo, recomendados } = this.props
         const DB_url = f7.methods.get_URL_DB();
         const url = f7.methods.get_URL();
         let urlThing = url + `/articulo/${articulo.url}/`;
-        let encodedUrlThing = encodeURIComponent(urlThing);
+        //let encodedUrlThing = encodeURIComponent(urlThing);
         let result = formatText(articulo.description);
-        console.log(result);
+        console.log(recomendados);
+
         return (
             <Block className="articulo_panel center_panel">
                 <Card className="articulo">
@@ -88,37 +92,39 @@ export default class ArticuloPanel extends Component {
                                 components={{ Block }}
                                 jsx={`
                                     <div className="articulo_cont markdown">
-                                    <Block className="ads side">
-                                    </Block>
                                     ${result}
-                                    <Block className="ads side">
+                                    <Block className="child ads side">
+                                    </Block>
+                                    <Block className="child ads side">
                                     </Block>
                                     </div>`
                                 }
                             />
-                            <Block className="tags display-flex justify-content-flex-start align-items-flex-start">
+                            <Block className="tags">
                                 <p>
                                     Tags Relacionados:
                                 </p>
-                                <Block className="links">
-                                    <a href=""> Coahuila </a>
-                                    <a href=""> Saltillo </a>
-                                    <a href=""> Reporte </a>
-                                    <a href=""> Alcalde </a>
-                                    <a href=""> RCG </a>
-                                </Block>
+                                {
+                                    articulo.tags.map((tag, i) => {
+                                        return (
+                                            <a key={i} href="">{tag.nombre}</a>
+                                        )
+                                    })
+                                }
                             </Block>
                             <Block className="comments">
                                 <div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
                             </Block>
-                            <Block className="share display-flex align-items-center">
+                            <Block className="share display-flex align-items-center justify-content-flex-end">
                                 <p>Compartir:</p>
-                                <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
-                                    <img src={TWIconx3} alt="" />
+                                <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
+                                <img src={TWIconx3} alt="" />
                                 </a>
-                                <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
-                                    <img src={FBIconx3} alt="" />
-                                </a>
+                                <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
+                                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
+                                        <img src={FBIconx3} alt="" />
+                                    </a>
+                                </div>
                             </Block>
                         </Block>
                         <Block className="right_side">
@@ -132,7 +138,7 @@ export default class ArticuloPanel extends Component {
                         <Block className="ads bar">
                         </Block>
                     </Block>
-                    <SwiperNews articulos={[]} />
+                    <SwiperNews articulos={recomendados} />
                 </Card>
             </Block>
         );

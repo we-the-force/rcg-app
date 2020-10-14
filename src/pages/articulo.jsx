@@ -8,8 +8,8 @@ import Footer from '@/components/general/footer';
 import ArticuloPanel from '@/components/articulo/articulo-panel';
 import AdsTop from '@/components/general/ads_top';
 import { f7, f7ready } from 'framework7-react';
-import { useQuery, gql, useMutation } from '@apollo/client';
-import { ArticuloPage } from '@/graphql/queries.graphql';
+import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
+import { ArticuloPage, Recomendados, RecomendadosCateg } from '@/graphql/queries.graphql';
 import { UpdateArticulo } from '@/graphql/mutations.graphql';
 import {
     Page,
@@ -20,9 +20,20 @@ import {
 export default function Articulo(props) {
     const { url } = props;
     const [flag, setFlag] = useState(false);
+    const [recomendados, setRecomendados] = useState([]);
     const [updateArticulo] = useMutation(UpdateArticulo, {
+        onCompleted: (data) => {}
+    });
+
+    const [getRecomendados] = useLazyQuery(Recomendados, {
         onCompleted: (data) => {
-            console.log('ahoy', data);
+            setRecomendados(data.swiper);
+        }
+    });
+
+    const [getRecomendadosCateg] = useLazyQuery(RecomendadosCateg, {
+        onCompleted: (data) => {
+            setRecomendados(data.swiper);
         }
     });
 
@@ -30,6 +41,21 @@ export default function Articulo(props) {
         variables: { url },
         onCompleted: (data) => {
             setFlag(true);
+            if(data.articulos[0].tags.length > 0){
+                getRecomendados({
+                    variables:
+                    {
+                        tag: data.articulos[0].tags[0].nombre
+                    }
+                });
+            }else{
+                getRecomendadosCateg({
+                    variables:
+                    {
+                        categ: data.articulos[0].categoria.nombre
+                    }
+                });
+            }
         }
     });
 
@@ -67,7 +93,7 @@ export default function Articulo(props) {
 
     let centerPanel = loading ?
         'Loading' :
-        <ArticuloPanel articulo={data.articulos[0]} />;
+        <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();

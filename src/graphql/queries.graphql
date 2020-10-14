@@ -35,7 +35,19 @@ query HomePage {
 }
 
 query ArticuloPage($url: String) {
-  articulos(where: { url: $url }) {
+  articulos: articulos(where: { url: $url }) {
+    ...ArticulosData
+  }
+}
+
+query Recomendados($tag: String){
+  swiper: articulos(where: { tags: { nombre: $tag} }, limit: 9) {
+    ...ArticulosData
+  }
+}
+
+query RecomendadosCateg($categ: String){
+  swiper: articulos(where: { categoria: { nombre: $categ} }, limit: 9) {
     ...ArticulosData
   }
 }
