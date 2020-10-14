@@ -30,6 +30,8 @@ export default function AboutUs(props) {
 
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
+    
+    let { contactInfo } = data;
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     let rightPanel = f7.methods.getArticulosRightPanel();
@@ -40,7 +42,6 @@ export default function AboutUs(props) {
                 <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                    <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
                             <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
@@ -49,7 +50,8 @@ export default function AboutUs(props) {
                         <Block className="center_pan">
                             {/* aqui va el panel central */}
                             {/* <AboutUsPanel nosotrosInfo={data.nosotrosInfo}/> */}
-                            <ContactoPanel contactInfo={data.contactInfo}/>
+                            <AdsTop />
+                            <ContactoPanel contactInfo={contactInfo} />
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />
