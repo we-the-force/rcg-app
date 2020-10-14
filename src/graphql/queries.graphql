@@ -352,9 +352,6 @@ fragment ArticulosData on Articulo {
     nombre
     id
   }
-  comentarios {
-    valor
-  }
 }
 
 fragment ScheduleData on ProgramacionSemana {
