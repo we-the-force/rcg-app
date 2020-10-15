@@ -181,13 +181,15 @@ export default function CalcasPanel(props) {
             </Block>
             <Popup className="popupCalca errorPopup" opened={errorPopup} onPopupClosed={() => setErrorPopup(false)}>
                 <Block className="back">
-                    Oops : ocurrio un error intentalo de nuevo mas tarde.
-                <Button>Ok</Button>
+                    <p> ¡Oops! </p>
+                    <p>Ocurrio un error intentalo de nuevo mas tarde.</p>
+                    <Button onClick={() => setErrorPopup(false)}>Ok</Button>
+                    <Button>Ok</Button>
                 </Block>
             </Popup>
             <Popup className="popupCalca successPopup" opened={successPopup} onPopupClosed={() => setSuccessPopup(false)}>
                 <Block className="back">
-                    Tu Calca se ha registrado exitosamente.
+                    <p> Tu Calca se ha registrado exitosamente.</p>
                 <Button onClick={() => setSuccessPopup(false)}>Ok</Button>
                 </Block>
             </Popup>
