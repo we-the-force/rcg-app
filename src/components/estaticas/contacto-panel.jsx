@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { f7 } from "framework7-react";
 import radio from "@/static/imgs/Radio_contacto.png";
@@ -6,12 +6,26 @@ import tv from "@/static/imgs/TV_contacto.png";
 import espect from "@/static/imgs/Espect_contacto.png";
 import spantalla from "@/static/imgs/Super_pantalla_contacto.png";
 import media from "@/static/imgs/Media_contacto.png";
-import { Block, Card, BlockHeader } from "framework7-react";
+import { Block, Card, BlockHeader, Input } from "framework7-react";
 
 export default function ContactoPanel(props) {
     const DB_url = f7.methods.get_URL_DB();
+    const [nombre, setNombre] = useState('');
+    const [address, setAddress] = useState('');
+    const [asunto, setAsunto] = useState('');
+    const [mssg, setMssg] = useState('');
+    const [errorPopup, setErrorPopup] = useState(false);
+    const [successPopup, setSuccessPopup] = useState(false);
     let { correo, direccion, telefono, video, whatsapp } = props.contactInfo;
-    //var isRequesting = false;
+
+    const handleChange = (val, set) => {
+        set(val);
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log('handeling submit');
+    }
 
     return (
         <Block className="center_panel contacto_panel">
@@ -60,27 +74,68 @@ export default function ContactoPanel(props) {
                         </p>
                     </Block>
                     {/* El formulario */}
-                    <form
-                        onSubmit={() => {
-                            console.log("jeje");
-                        }}
-                    >
+                    <form onSubmit={handleSubmit}>
                         <div className="titulo">
                             <p>formulario</p>
                         </div>
-                        <input
+                        <Input
+                            value={nombre}
+                            required
+                            validate
+                            validateOnBlur
+                            pattern="^([a-zA-ZñÑ]+ ?)+"
+                            errorMessage="Porfavor llene este campo"
+                            clearButton
                             id="formulario-name"
                             type="text"
-                            placeholder="Nombre Completo*"
+                            placeholder="Nombre Completo"
+                            onChange={(e) => { handleChange(e.target.value, setNombre) }}
+                            onInputClear={() => { handleChange('', setNombre) }}
                         />
-                        <input
+                        <Input
+                            value={address}
+                            required
+                            validate
+                            validateOnBlur
+                            pattern="^[^ ][\w\W ]*"
+                            errorMessage="Porfavor llene este campo"
+                            clearButton
                             id="formulario-address"
                             type="text"
                             placeholder="Direccion de Correo Completa*"
+                            onChange={(e) => { handleChange(e.target.value, setAddress) }}
+                            onInputClear={() => { handleChange('', setAddress) }}
                         />
-                        <input id="formulario-subject" type="text" placeholder="Asunto" />
-                        <input id="formulario-message" type="text" placeholder="Mensaje" />
-                        <input id="formulario-send" type="button" value="Enviar" />
+                        <Input
+                            value={asunto}
+                            required
+                            validate
+                            validateOnBlur
+                            pattern="^[^ ][\w\W ]*"
+                            errorMessage="Porfavor llene este campo"
+                            clearButton
+                            id="formulario-subject"
+                            type="text"
+                            placeholder="Asunto"
+                            onChange={(e) => { handleChange(e.target.value, setAsunto) }}
+                            onInputClear={() => { handleChange('', setAsunto) }}
+                        />
+                        <Input
+                            value={mssg}
+                            required
+                            validate
+                            validateOnBlur
+                            resizable
+                            pattern="^[^ ][\w\W ]*"
+                            errorMessage="Porfavor llene este campo"
+                            clearButton
+                            id="formulario-message"
+                            type="textarea"
+                            placeholder="Mensaje"
+                            onChange={(e) => { handleChange(e.target.value, setMssg) }}
+                            onInputClear={() => { handleChange('', setMssg) }}
+                        />
+                        <Input className="enviar" id="formulario-send" type="submit" value="Enviar" />
                     </form>
                     <div className="parrafo_bottom">
                         <p>Te ofrecemos paquetes a tu medida.</p>
