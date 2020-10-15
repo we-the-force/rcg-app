@@ -40,14 +40,14 @@ query ArticuloPage($url: String) {
   }
 }
 
-query Recomendados($tag: String){
-  swiper: articulos(where: { tags: { nombre: $tag} }, limit: 9) {
+query Recomendados($tag: String) {
+  swiper: articulos(where: { tags: { nombre: $tag } }, limit: 9) {
     ...ArticulosData
   }
 }
 
-query RecomendadosCateg($categ: String){
-  swiper: articulos(where: { categoria: { nombre: $categ} }, limit: 9) {
+query RecomendadosCateg($categ: String) {
+  swiper: articulos(where: { categoria: { nombre: $categ } }, limit: 9) {
     ...ArticulosData
   }
 }
@@ -189,9 +189,13 @@ query ContactPage {
     telefono
     whatsapp
     correo
-    img {url}
-    video {url}
-  } 
+    img {
+      url
+    }
+    video {
+      url
+    }
+  }
 }
 
 query AvisoPrivacidadPage {
@@ -255,6 +259,12 @@ query CatalogoPage {
   }
 }
 
+query SchedulePage($station: String, $radio_tv: Boolean) {
+  tv: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
+    ...StationData
+  }
+}
+
 #borrar de aqui pa adelante si no los uso
 
 query SearchArticulosByTag($tags: [String]) {
@@ -263,30 +273,26 @@ query SearchArticulosByTag($tags: [String]) {
   }
 }
 
-query SchedulePage($station: String, $date: String) {
-  categorias {
-    nombre
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  programacionSemanas(
-    where: { canal_estacion: { url: $station }, fecha_inicio_gte: $date }
-    sort: "fecha_inicio:asc"
-  ) {
-    ...ScheduleData
-    # id
-    # programacion {
-    #   lunes{programa{Nombre}}
-    # }
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
+#query SchedulePage($station: String, $date: String) {
+#  categorias {
+#    nombre
+#  }
+#  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+#    ...StationData
+#  }
+#  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+#    ...StationData
+#  }
+#  programacionSemanas(
+#    where: { canal_estacion: { url: $station }, fecha_inicio_gte: $date }
+#    sort: "fecha_inicio:asc"
+#  ) {
+#    ...ScheduleData
+#  }
+#  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+#    ...ArticulosData
+#  }
+#}
 
 query NotFoundPage {
   radio_stations: canalEstacions(where: { Radio_TV: false }) {
