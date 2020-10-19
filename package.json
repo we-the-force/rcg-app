@@ -43,6 +43,7 @@
     "react-dom": "^16.13.1",
     "react-jsx-parser": "^1.25.1",
     "react-player": "^2.6.1",
+    "react-router-sitemap": "^1.2.0",
     "template7": "^1.4.2"
   },
   "devDependencies": {
