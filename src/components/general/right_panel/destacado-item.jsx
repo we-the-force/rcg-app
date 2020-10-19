@@ -27,7 +27,7 @@ export default function DestItem(props) {
             }
             <Block className="dest-cont">
                 <BlockHeader>
-                    <a className="autor">{autor.nombre}</a>&nbsp;-&nbsp;
+                    <a className="autor" href={`/autor/${autor.url}`}>{autor.nombre}</a>&nbsp;-&nbsp;
                     <p className="fecha">{moment(fecha).format('D MMMM')}</p>
                 </BlockHeader>
                 <BlockTitle>
@@ -45,7 +45,7 @@ export default function DestItem(props) {
                                     return (<a href="" className="etiqueta" key={i}>{tag.nombre}</a>);
                                 }
                                 else {
-                                    return (<Fragment key={i}><a href="" className="etiqueta">{tag.nombre}</a>, </Fragment>);
+                                    return (<Fragment key={i}><a href={`/busqueda/${tag.nombre}`} className="etiqueta">{tag.nombre}</a>, </Fragment>);
                                 }
                             })
                         }

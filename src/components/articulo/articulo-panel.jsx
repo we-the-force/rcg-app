@@ -75,7 +75,7 @@ export default class ArticuloPanel extends Component {
                     </Block>
                     <Block className="title_cont">
                         <Block className="head display-flex justify-content-flex-start">
-                            <p className="autor"> {articulo.autor.nombre} </p> - <p className="fecha"> {articulo.fecha} </p>
+                            <a className="autor" href={`/autor/${articulo.autor.url}`}> {articulo.autor.nombre} </a> - <p className="fecha"> {articulo.fecha} </p>
                         </Block>
                         <Block className="titulo">{articulo.Titulo}</Block>
                         <Block className="img_cont display-flex flex-direction-column">
@@ -106,7 +106,7 @@ export default class ArticuloPanel extends Component {
                                 {
                                     articulo.tags.map((tag, i) => {
                                         return (
-                                            <a key={i} href="">{tag.nombre}</a>
+                                            <a key={i} href={`/busqueda/${tag.nombre}`}>{tag.nombre}</a>
                                         )
                                     })
                                 }

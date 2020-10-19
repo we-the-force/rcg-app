@@ -263,6 +263,9 @@ query SchedulePage($station: String, $radio_tv: Boolean) {
   tv: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
     ...StationData
   }
+  programacion: programacionSemanas(where: {canal_estacion: {url: $station}}) {
+    ...ScheduleData
+  }
 }
 
 #borrar de aqui pa adelante si no los uso
@@ -335,6 +338,7 @@ fragment ArticulosData on Articulo {
   Titulo
   autor {
     nombre
+    url
   }
   fecha
   cover {
