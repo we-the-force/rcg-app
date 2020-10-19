@@ -338,6 +338,7 @@ fragment ArticulosData on Articulo {
   Titulo
   autor {
     nombre
+    url
   }
   fecha
   cover {
