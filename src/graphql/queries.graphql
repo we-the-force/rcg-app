@@ -185,16 +185,10 @@ query AboutUsPage {
 
 query ContactPage {
   contactInfo: contacto {
-    direccion
     telefono
     whatsapp
     correo
-    img {
-      url
-    }
-    video {
-      url
-    }
+    video_source
   }
 }
 
