@@ -1,6 +1,6 @@
 import ScheduleTable from '@/components/general/schedule-table';
 import ReactPlayer from 'react-player';
-import React, { Component, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon_TV from '@/static/icons/tv_dark.png';
 import bk_img from '@/static/imgs/Rcg.png';
 import SwiperNews from '@/components/general/swiper_news.jsx';
@@ -14,26 +14,11 @@ import {
     f7
 } from 'framework7-react';
 
-var placeHolderVideos = [
-    'https://www.youtube.com/watch?v=lXMskKTw3Bc',
-    'https://www.youtube.com/watch?v=4aneAWxzOUk',
-    'https://www.youtube.com/watch?v=bpszIdtcWQc',
-    'https://www.youtube.com/watch?v=iWj_USKu0mI',
-    'https://www.youtube.com/watch?v=ZwL-L8v-f4g',
-    'https://www.youtube.com/watch?v=b7zTQ0AHiYY',
-    'https://www.youtube.com/watch?v=E4av4GX7mw8',
-    'https://www.youtube.com/watch?v=BFoaeZ-ptHo',
-    'https://www.youtube.com/watch?v=fmTwlDG7INM',
-    'https://www.youtube.com/watch?v=TTSer9C5SrY'
-]
-
-const RandomLink = () => {
-    return placeHolderVideos[Math.floor(Math.random() * placeHolderVideos.length)];
-}
-
 export default function TVPanel(props) {
     const { canal, canales, programacion, table_id } = props;
     const [playPause, setPlayPause] = useState(false);
+    const [nombrePrograma, setNombrePrograma] = useState('');
+    const [descPrograma, setDescPrograma] = useState('');
     const url = f7.methods.get_URL();
     const DB_url = f7.methods.get_URL_DB();
     let urlThing = url + `/tv/${canal[0].url}/`;
@@ -41,6 +26,38 @@ export default function TVPanel(props) {
     const handlePlayPause = () => {
         setPlayPause(!playPause);
     }
+
+    const setProgramaActual = (x,y) => {
+        setNombrePrograma(x);
+        setDescPrograma(y);
+    }
+
+    const getProgram = () => {
+        let dia = moment().format('dddd').normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        let x = '',y = '';
+        if(programacion && programacion.length > 0){
+            let programaActual = programacion[0].programacion[dia].filter((el) => {
+                if(moment().isBefore(moment(el.hora_final, 'kk:mm:ss.sss')) && moment().isAfter(moment(el.hora_inicio, 'kk:mm:ss.sss'))){
+                    return true
+                }else{
+                    return false
+                }
+            });
+            if(programaActual.length > 0){
+                x = programaActual[0].programa.Nombre;
+                y = programaActual[0].programa.Descripcion;
+            }
+        }
+        setProgramaActual(x,y);
+    }
+
+    useEffect(() => {
+        getProgram();
+        const interval = setInterval(() => {
+            getProgram();
+        }, 150000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <Block className="tv_panel center_panel">
@@ -67,23 +84,24 @@ export default function TVPanel(props) {
                 <Block className="middle-cont">
                     <BlockHeader className="program-name">
                         <h2>
-                            Nombre del programa
+                            {nombrePrograma}
                         </h2>
                     </BlockHeader>
                     <Block className="player-wrapper">
                         {/* Aqui va el stream */}
                         <a onClick={handlePlayPause}>
+                            <Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon>
                             <ReactPlayer className="player" url={canal[0].source_url} playing={playPause} />
                         </a>
                     </Block>
                     <p className="programa-desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+                        {descPrograma}
                     </p>
                 </Block>
                 <Block className="tabla_programacion">
                     <BlockHeader>Programacion:</BlockHeader>
                     {/* La tablita de programacion */}
-                    {/* <ScheduleTable prog={programacion} table_id={table_id} /> {/* pendiente */}
+                    <ScheduleTable prog={programacion[0].programacion} table_id={table_id} />
                 </Block>
                 {
                     canales.length > 0 &&

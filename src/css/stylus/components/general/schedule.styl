@@ -11,10 +11,20 @@
             width 0px
             margin 0px
 
+            &:last-of-type
+                display none
+
         .tab-link
             font font_14
             color #D7D7D7
             text-transform capitalize
+            min-width 35px
+
+            &.mobile 
+                display flex
+
+            &.desk
+                display none
 
             &.tab-link-active
                 color #B71F25

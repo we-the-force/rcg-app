@@ -259,11 +259,11 @@ query CatalogoPage {
   }
 }
 
-query SchedulePage($station: String, $radio_tv: Boolean) {
+query SchedulePage($station: String, $date: String $radio_tv: Boolean) {
   tv: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
     ...StationData
   }
-  programacion: programacionSemanas(where: {canal_estacion: {url: $station}}) {
+  programacion: programacionSemanas(where: {canal_estacion: {url: $station}, fecha_inicio: $date}) {
     ...ScheduleData
   }
 }

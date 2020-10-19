@@ -20,11 +20,10 @@ import {
 
 export default function TV(props) {
     let { name } = props;
-    let startOfWeek = moment().startOf('week').format('YYYY-MM-DD');
+    let startOfWeek = moment().startOf('isoWeek').format('YYYY-MM-DD');
     const { loading, error, data } = useQuery(SchedulePage, {
         variables: { station: name, date: startOfWeek, radio_tv: true }
     });
-    /*  var currentChannel = {};*/
 
     useEffect(() => {
         f7ready((f7) => {
@@ -32,15 +31,8 @@ export default function TV(props) {
         });
     }, []);
 
-    /* if (data != undefined) {
-        currentChannel = data.tv_channels.find(x => x.url === name)
-    } */
-
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
-    /* if (currentChannel === undefined) {
-        f7.views.main.router.navigate('/404/');
-    } */
     let { tv, programacion } = data;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
