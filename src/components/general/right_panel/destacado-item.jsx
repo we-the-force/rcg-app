@@ -18,7 +18,6 @@ export default function DestItem(props) {
     let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
     let otherTags = /(<([^>]+)>)/gi;
     newDesc = newDesc.replace(titlesRegEx, '').replace(otherTags, '').replace(/\n/gi, ' ').match(/^.{300}/gi);
-    console.log(autor);
     return (
         <Block className={"dest-item"}>
             {props.image &&
