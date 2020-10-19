@@ -22,7 +22,7 @@ export default function NewsCategoria(props) {
         <Card className={`NewsCategoria_cont ${className}`}>
             <Block className="head">
                 <Block className='info'>
-                    <Link className="autor">{articulo.autor.nombre}</Link>&nbsp;-&nbsp;
+                    <Link className="autor" href={`/autor/${articulo.autor.url}`}>{articulo.autor.nombre}</Link>&nbsp;-&nbsp;
                         <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
                 </Block>
                 <Block className="share display-flex align-items-center">
