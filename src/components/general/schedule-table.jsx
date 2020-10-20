@@ -113,28 +113,32 @@ export default function ScheduleTable(props) {
                 {tabla.map((val, key) => {
                     return (
                         <Fragment key={key}>
-                            <Link className="desk" tabLink={"#" + days[key] + "-" + table_id} tabLinkActive={key === 0 ? true : false} >{days[key]}</Link>
-                            <Link className="mobile" tabLink={"#" + days[key] + "-" + table_id} tabLinkActive={key === 0 ? true : false} >{days_mobile[key]}</Link>
-                            <hr/>
+                            <Link tabLink={"#" + days[key] + "-" + table_id} tabLinkActive={key === 0 ? true : false} >
+                                <div className="desk">
+                                    {days[key]}
+                                </div>
+                                <div className="mobile">
+                                    {days_mobile[key]}
+                                </div>
+                            </Link>
+                            <hr />
                         </Fragment>
                     );
                 })}
             </Toolbar>
             <Tabs className="week_tabs">
                 {tabla.map((val, key) => {
-                    /* let active = key === 0 ? true : false;
                     return (
-                        <Tab id={val.day + "-" + this.props.table_id} tabActive={active} key={key}>
+                        <Tab id={days[key] + "-" + table_id} tabActive={key === 0 ? true : false} key={key}>
                             <Toolbar tabbar>
                                 {
-                                    val.horas.map((val_2, key_2) => {
-                                        let active_2 = key_2 === 0 ? true : false;
+                                    val.map((hora, key_hora) => {
                                         return (
-                                            <Link key={key_2} tabLink={"#" + val.day + "-tab-" + (key_2 + 1)} className={"v" + (key_2 % 2 + 1)} tabLinkActive={active_2}>
+                                            <Link key={key_hora} tabLink={"#" + days[key] + "-tab-" + (key_hora + 1)} tabLinkActive={key_hora === 0 ? true : false}>
                                                 <div className="time">
-                                                    <p>{val_2.time}</p>
+                                                    <p>{hora.inicio}</p>
                                                 </div>
-                                                <p className="text">{val_2.name}</p>
+                                                <p className="text">{hora.nombre}</p>
                                             </Link>
                                         );
                                     })
@@ -142,11 +146,9 @@ export default function ScheduleTable(props) {
                             </Toolbar>
                             <Tabs className="tabs-content">
                                 {
-                                    val.horas.map((val_2, key_2) => {
-                                        let active_2 = key_2 === 0 ? true : false;
-                                        // console.log("Creating description stuff");
+                                    val.map((hora, key_hora) => {
                                         return (
-                                            <Tab key={key_2} id={val.day + "-tab-" + (key_2 + 1)} className="tab-content" tabActive={active_2}>
+                                            <Tab key={key_hora} id={days[key] + "-tab-" + (key_hora + 1)} className="tab-content" tabActive={key_hora === 0 ? true : false}>
                                                 <Block className="img_cont">
                                                     <img src={Locutor} alt="" />
                                                     <div>
@@ -155,11 +157,10 @@ export default function ScheduleTable(props) {
                                                 </Block>
                                                 <Block className="content">
                                                     <BlockHeader>
-                                                        {val_2.name}
-                                                        // Nombre Programa 
+                                                        {hora.nombre}
                                                     </BlockHeader>
                                                     <p className="text">
-                                                        {val_2.desc}
+                                                        {hora.desc}
                                                     </p>
                                                 </Block>
                                             </Tab>
@@ -168,7 +169,7 @@ export default function ScheduleTable(props) {
                                 }
                             </Tabs>
                         </Tab>
-                    ); */
+                    );
                 })}
             </Tabs>
         </Block>

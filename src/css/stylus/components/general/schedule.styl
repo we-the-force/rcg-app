@@ -20,10 +20,10 @@
             text-transform capitalize
             min-width 35px
 
-            &.mobile 
+            .mobile
                 display flex
 
-            &.desk
+            .desk
                 display none
 
             &.tab-link-active
@@ -86,13 +86,13 @@
                             padding-left 12px
                             width 83%
 
-                        &.v1
+                        &:nth-child(odd)
                             background #D6D6D6
 
                             .time
                                 background #C9C9C9
 
-                        &.v2
+                        &:nth-child(even)
                             background #E4E4E4
 
                             .time
@@ -120,6 +120,7 @@
                                         left unset
                                         top 50%
                                         transform translate(10px, -50%) rotate(45deg)
+
                                     &:before
                                         content ''
                                         width 40%
@@ -206,3 +207,12 @@
                             -webkit-line-clamp 7
                             -webkit-box-orient vertical
                             overflow hidden
+
+    @media (min-width 640px)
+        .week_toolbar
+            .tab-link
+                .mobile
+                    display none
+
+                .desk
+                    display flex
