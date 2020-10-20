@@ -14,14 +14,17 @@ export default class AutorPanel extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         let { autor, articulosNum, articulos } = this.props;
         let DB_url = f7.methods.get_URL_DB();
+        let autorUrl = autor[0].img ? DB_url + autor[0].img.url : "";
+        console.log(autor);
         return (
             <Block className="autor center_panel">
                 <Card className="autor_head">
                     <Block className="image_cont">
-                        <img src={DB_url + autor[0].img.url} />
+                        <img src={autorUrl} />
                     </Block>
                     <Block className="info_cont">
                         <Block className="name_info">

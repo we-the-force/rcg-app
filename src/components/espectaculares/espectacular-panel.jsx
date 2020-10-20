@@ -10,6 +10,8 @@ import {
 export default function EspectacularPanel(props) {
     const { info, clientes } = props;
     let DB_url = f7.methods.get_URL_DB();
+    let nosotrosImagen = info.NosotrosImagen ? DB_url + info.NosotrosImagen.url : "";
+    let porqueNosotrosImagen = info.PorqueNosotrosImagen ? DB_url + info.PorqueNosotrosImagen.url : "";
     return (
         <Block className="center_panel espectacular_panel">
             <Card>
@@ -24,7 +26,7 @@ export default function EspectacularPanel(props) {
                         </div>
                     </div>
                     <div className="img_cont">
-                        <img src={DB_url + info.NosotrosImagen.url} alt="" />
+                        <img src={nosotrosImagen} alt="" />
                     </div>
                 </Block>
             </Card>
@@ -37,7 +39,7 @@ export default function EspectacularPanel(props) {
                         <p>{info.porque_nosotros}</p>
                     </div>
                     <div className="img_cont">
-                        <img src={DB_url + info.PorqueNosotrosImagen.url} alt="" />
+                        <img src={porqueNosotrosImagen} alt="" />
                     </div>
                 </Block>
             </Card>
