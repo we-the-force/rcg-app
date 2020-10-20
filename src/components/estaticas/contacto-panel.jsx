@@ -16,7 +16,7 @@ export default function ContactoPanel(props) {
     const [mssg, setMssg] = useState('');
     const [errorPopup, setErrorPopup] = useState(false);
     const [successPopup, setSuccessPopup] = useState(false);
-    let { correo, telefono, video_url, whatsapp } = props.contactInfo;
+    let { correo, telefono, video_source, whatsapp } = props.contactInfo;
 
     const resetData = () => {
         setAddress('');
@@ -46,6 +46,7 @@ export default function ContactoPanel(props) {
             f7.preloader.hide();
             setErrorPopup(true)
         });
+
     }
 
     return (
@@ -62,7 +63,7 @@ export default function ContactoPanel(props) {
                             <ReactPlayer
                                 className="player"
                                 controls={true}
-                                url={video_url}
+                                url={video_source}
                                 playing={false}
                             />
                         </Block>
