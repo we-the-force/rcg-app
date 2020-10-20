@@ -1,7 +1,7 @@
 .card.tv
     margin-top 0px
     padding 16px 12px
-    margin-bottom 15px
+    margin-bottom 0px
 
     .header_cont
         padding 0px
@@ -80,9 +80,18 @@
             .icon
                 z-index 2
                 position absolute
+                font-size 90px
+                color #d0d0d0
                 top 50%
                 left 50%
                 transform translate(-50%, -50%)
+
+                &.play_arrow
+                    opacity 0.6
+
+                &.pause
+                    opacity 0
+                    transition opacity 0.3s ease-in-out 0.3s
 
         .programa-desc
             font font_6
@@ -103,7 +112,7 @@
 
     .mas_canales
         no-mar-no-pad()
-        margin-bottom 20px
+        margin-bottom 0px
 
         .block-header
             margin 15px 0px
@@ -155,6 +164,7 @@
                     position relative
                     height 100%
                     width 100%
+
                     &:after
                         content ''
                         display block
@@ -180,4 +190,89 @@
                     margin-top 5px
                     text-transform capitalize
                     color #000
-                    //text-shadow 0px 0px 4px rgba(0, 0, 0, 0.8)
+                    // text-shadow 0px 0px 4px rgba(0, 0, 0, 0.8)
+
+    @media (min-width 640px)
+        padding 20px 10px
+
+        .header_cont
+            margin-bottom 20px
+
+            .share
+                padding 0px 8px
+
+        .middle-cont
+            .program-name
+                order 1
+
+                h2
+                    margin-top 14px
+                    margin-bottom 7px
+
+            .player-wrapper
+                order 0
+                margin-left 0px
+                width 100%
+                padding-top calc(270 / 480 * 100%)
+
+                .icon
+                    font-size 120px
+
+            .programa-desc
+                order 2
+                margin 0px
+                font font_8
+                margin-bottom 25px
+
+        .mas_canales
+            display grid
+            grid-template-columns 1fr 1fr
+            grid-column-gap 5px
+
+            .block-header
+                grid-column 1 / 3
+
+            .canal
+                width 100%
+
+                .canal_content
+                    .image_cont
+                        &:after
+                            padding-top calc(200 / 325 * 100%)
+
+                    .title
+                        padding-left 15px
+                        font font_7
+
+    @media (min-width 1024px)
+        padding 20px 18px
+
+        .header_cont
+            .card-header
+                .icon
+                    display block !important
+
+        .middle-cont
+            .programa-desc
+                font font_10
+
+        .mas_canales
+            display block
+            width 80%
+
+            .canal
+                width 100%
+
+                .canal_content
+                    .image_cont
+                        &:after
+                            padding-top calc(182 / 410 * 100%)
+
+                    .title
+                        position absolute
+                        bottom 10px
+                        left 15px
+                        padding-left 15px
+                        font font_12
+                        color white
+                        text-shadow 0px 0px 4px rgba(0, 0, 0, 0.8)

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Locutor from '@/static/imgs/locutor.png'
+import moment from 'moment';
 import {
     Toolbar,
     Block,
@@ -8,7 +9,7 @@ import {
     Tabs,
     Tab
 } from 'framework7-react';
-
+/* 
 var schedule = [];
 
 function CreateScheduleObject(sourceObject)
@@ -58,86 +59,119 @@ function CreateDaySchedule(dayName, daySchedule)
         }
     }
     return auxObject;
-}
+} */
 
-export default class ScheduleTable extends Component {
-    constructor(props) {
-        super(props);
-        // console.log("ScheduleTable.constructor() ", props.prog);
-        schedule = CreateScheduleObject(props.prog.programacion);
-        this.state = {}
+export default function ScheduleTable(props) {
+    const { prog, table_id } = props;
+    const days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+    const days_mobile = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+
+    const setTable = (x) => {
+        let newTable = days.map((day) => {
+            let value = [];
+
+            if (x[day].length > 0) {
+                value = x[day].map((program) => {
+                    return {
+                        day: day,
+                        inicio: moment(program.hora_inicio, 'kk:mm:ss.sss').format('HH:mm'),
+                        nombre: program.programa.Nombre,
+                        desc: program.programa.Descripcion
+                    };
+                });
+
+            }
+
+            let numEmpty = 9 - value.length;
+
+            if (numEmpty > 0) {
+                for (let i = 0; i < numEmpty; i++) {
+                    value.push({
+                        day: day,
+                        inicio: "--:--",
+                        nombre: "Sin programacion",
+                        desc: "No hay descripcion de este programa"
+                    })
+                }
+            }
+
+            value.sort(function (a, b) {
+                let isBefore = moment(a.inicio, 'kk:mm').isBefore(moment(b.inicio, 'kk:mm'));
+                return (isBefore ? -1 : 1);
+            });
+
+            return value;
+        });
+        return newTable;
     }
-    render() {
-        return (
-            <Block className="schedule">
-                {/* Columns */}
-                <Toolbar tabbar className="week_toolbar">
-                    {/* { console.log('Propies') }
-                    { console.log(this) } */}
-                    {schedule.map((val, key) => {
-                        let active = key === 0 ? true : false;
-                        let dis = (schedule.length - 1) === key ? 'display-none' : 'display-flex';
-                        return (
-                            <Fragment key={key}>
-                                <Link tabLink={"#" + val.day + "-" + this.props.table_id} tabLinkActive={active} >{val.day}</Link>
-                                <hr className={dis} />
-                            </Fragment>
-                        );
-                    })}
-                </Toolbar>
-                <Tabs className="week_tabs">
-                    {schedule.map((val, key) => {
-                        let active = key === 0 ? true : false;
-                        return (
-                            <Tab id={val.day + "-" + this.props.table_id} tabActive={active} key={key}>
-                                <Toolbar tabbar>
-                                    {
-                                        val.horas.map((val_2, key_2) => {
-                                            let active_2 = key_2 === 0 ? true : false;
-                                            return (
-                                                <Link key={key_2} tabLink={"#" + val.day + "-tab-" + (key_2 + 1)} className={"v" + (key_2 % 2 + 1)} tabLinkActive={active_2}>
-                                                    <div className="time">
-                                                        <p>{val_2.time}</p>
+
+    let tabla = setTable(prog);
+    return (
+        <Block className="schedule">
+            {/* Columns */}
+            <Toolbar tabbar className="week_toolbar">
+                {tabla.map((val, key) => {
+                    return (
+                        <Fragment key={key}>
+                            <Link tabLink={"#" + days[key] + "-" + table_id} tabLinkActive={key === 0 ? true : false} >
+                                <div className="desk">
+                                    {days[key]}
+                                </div>
+                                <div className="mobile">
+                                    {days_mobile[key]}
+                                </div>
+                            </Link>
+                            <hr />
+                        </Fragment>
+                    );
+                })}
+            </Toolbar>
+            <Tabs className="week_tabs">
+                {tabla.map((val, key) => {
+                    return (
+                        <Tab id={days[key] + "-" + table_id} tabActive={key === 0 ? true : false} key={key}>
+                            <Toolbar tabbar>
+                                {
+                                    val.map((hora, key_hora) => {
+                                        return (
+                                            <Link key={key_hora} tabLink={"#" + days[key] + "-tab-" + (key_hora + 1)} tabLinkActive={key_hora === 0 ? true : false}>
+                                                <div className="time">
+                                                    <p>{hora.inicio}</p>
+                                                </div>
+                                                <p className="text">{hora.nombre}</p>
+                                            </Link>
+                                        );
+                                    })
+                                }
+                            </Toolbar>
+                            <Tabs className="tabs-content">
+                                {
+                                    val.map((hora, key_hora) => {
+                                        return (
+                                            <Tab key={key_hora} id={days[key] + "-tab-" + (key_hora + 1)} className="tab-content" tabActive={key_hora === 0 ? true : false}>
+                                                <Block className="img_cont">
+                                                    <img src={Locutor} alt="" />
+                                                    <div>
+                                                        <p>Nombre Del Locutor</p>
                                                     </div>
-                                                    <p className="text">{val_2.name}</p>
-                                                </Link>
-                                            );
-                                        })
-                                    }
-                                </Toolbar>
-                                <Tabs className="tabs-content">
-                                    {
-                                        val.horas.map((val_2, key_2) => {
-                                            let active_2 = key_2 === 0 ? true : false;
-                                            // console.log("Creating description stuff");
-                                            return (
-                                                <Tab key={key_2} id={val.day + "-tab-" + (key_2 + 1)} className="tab-content" tabActive={active_2}>
-                                                    <Block className="img_cont">
-                                                        <img src={Locutor} alt="" />
-                                                        <div>
-                                                            <p>Nombre Del Locutor</p>
-                                                        </div>
-                                                    </Block>
-                                                    <Block className="content">
-                                                        <BlockHeader>
-                                                            {val_2.name}
-                                                            {/* Nombre Programa */}
-                                                        </BlockHeader>
-                                                        <p className="text">
-                                                            {val_2.desc}
-                                                            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. */}
-                                                        </p>
-                                                    </Block>
-                                                </Tab>
-                                            );
-                                        })
-                                    }
-                                </Tabs>
-                            </Tab>
-                        );
-                    })}
-                </Tabs>
-            </Block>
-        );
-    }
+                                                </Block>
+                                                <Block className="content">
+                                                    <BlockHeader>
+                                                        {hora.nombre}
+                                                    </BlockHeader>
+                                                    <p className="text">
+                                                        {hora.desc}
+                                                    </p>
+                                                </Block>
+                                            </Tab>
+                                        );
+                                    })
+                                }
+                            </Tabs>
+                        </Tab>
+                    );
+                })}
+            </Tabs>
+        </Block>
+    );
 }
