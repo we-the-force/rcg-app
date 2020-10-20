@@ -71,7 +71,7 @@ export default function TVPanel(props) {
                     </CardHeader>
                     <Block className="share display-flex align-items-center">
                         <p>Compartir:</p>
-                        <a className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=La wea tweet y asi%0D%0A`} data-size="large">
+                        <a className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
                             <img src="../static/icons/TW_Icon_x3.png" alt="" />
                         </a>
                         <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
@@ -104,11 +104,11 @@ export default function TVPanel(props) {
                     <ScheduleTable prog={programacion[0].programacion} table_id={table_id} />
                 </Block>
                 {
-                    canales.length > 0 &&
+                    canales.length > 1 &&
                     <Block className="mas_canales">
                         <BlockHeader>Más Canales</BlockHeader>
                         {canales.map((channel, key) => {
-                            if (channel.url === canal[0].url) {
+                            if (channel.url !== canal[0].url) {
                                 return (
                                     <Block key={key} className="canal">
                                         <Block className="icon_tv display-flex justify-content-center align-items-center">
@@ -133,60 +133,3 @@ export default function TVPanel(props) {
         </Block>
     );
 }
-
-/* constructor(props) {
-    super(props);
-    // console.log("TV-Panel props: ", props);
-    if (props.prog.length > 0)
-    {
-        this.programacion = JSON.parse(JSON.stringify(props.prog[0]));
-
-        // console.log('this.programacion', this.programacion.programacion.martes);
-        this.programacion.programacion.domingo.sort(this.sortFunction);
-        this.programacion.programacion.lunes.sort(this.sortFunction);
-        this.programacion.programacion.martes.sort(this.sortFunction);
-        this.programacion.programacion.miercoles.sort(this.sortFunction);
-        this.programacion.programacion.jueves.sort(this.sortFunction);
-        this.programacion.programacion.viernes.sort(this.sortFunction);
-        this.programacion.programacion.sabado.sort(this.sortFunction);
-        // console.log('this.programacion', this.programacion.programacion.martes);
-    }
-    else
-    {
-        // console.log('prog was empty');
-        this.programacion = {
-            programacion: {
-                domingo: [],
-                lunes: [],
-                martes: [],
-                miercoles: [],
-                jueves: [],
-                viernes: [],
-                sabado: []
-            }
-        };
-    }
-    if (props.channel != undefined)
-    {
-        this.moreChannels = JSON.parse(JSON.stringify(props.channel_list));
-        for (let i = 0; i < this.moreChannels.length; i++)
-        {
-            if (this.moreChannels[i].url === props.channel.url)
-            {
-                this.moreChannels.splice(i, 1);
-                break;
-            }
-        }
-    }
-    else
-    {
-        this.moreChannels = [];
-    }
-    console.log("Props:\r\n", props);
-    this.urlThing = `http://${window.location.hostname}/tv/${props.channel.url}/`;
-    this.encodedUrlThing = encodeURIComponent(this.urlThing);
-}
-sortFunction(a, b){
-    let isBefore = moment(a.hora_inicio, 'HH:mm:ss.sss').isBefore(moment(b.hora_inicio, 'HH:mm:ss.sss'));
-    return (isBefore ? -1 : 1);
-} */
