@@ -28,20 +28,22 @@ export default function CatalogoPanel(props) {
 
     const EspectTwoFaces = (prop) => {
         const { el, index } = prop;
+        let cara1Url = el.cara1 ? DB_url + el.cara1.url : "";
+        let cara2Url = el.cara2 ? DB_url + el.cara2.url : "";
         return (
             <Fragment>
                 <Link className="img_cont" onClick={() => { handleClick(el, ((index * 2) + 1)) }}>
                     <div className="name">
                         <p>{el.id_espectacular} - cara 1</p>
                     </div>
-                    <img src={DB_url + el.cara1.url} alt="" />
+                    <img src={cara1Url} alt="" />
                     <p className="lugar">{el.lugar}</p>
                 </Link>
                 <Link className="img_cont" onClick={() => { handleClick(el, ((index * 2) + 2)) }}>
                     <div className="name">
                         <p>{el.id_espectacular} - cara 2</p>
                     </div>
-                    <img src={DB_url + el.cara2.url} alt="" />
+                    <img src={cara2Url} alt="" />
                     <p className="lugar">{el.lugar}</p>
                 </Link>
             </Fragment>

@@ -51,9 +51,10 @@ export default function EspectacularPanel(props) {
                     <Block className="content">
                         {
                             clientes.map((cliente, key) => {
+                                let clienteUrl = cliente.logo ? DB_url + cliente.logo.url : "";
                                 return (
                                     <div className="img_cont" key={key}>
-                                        <img src={DB_url + cliente.logo.url} alt="" />
+                                        <img src={clienteUrl} alt="" />
                                     </div>
                                 )
                             })
