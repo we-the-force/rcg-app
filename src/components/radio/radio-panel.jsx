@@ -27,6 +27,15 @@ export default function RadioPanel(props) {
     const url = f7.methods.get_URL();
     const DB_url = f7.methods.get_URL_DB();
     let urlThing = url + `/radio/${estacion[0].url}/`;
+    let prog = programacion[0] ? programacion[0].programacion : {
+        domingo: [],
+        jueves: [],
+        lunes: [],
+        martes: [],
+        miercoles: [],
+        sabado: [],
+        viernes: []
+    }
 
     const handlePlayPause = () => {
         setSourceURL(source_url);
@@ -135,7 +144,7 @@ export default function RadioPanel(props) {
                 {/* La tablita de programacion */}
                 <Block className="tabla_programacion">
                     <BlockHeader>Programacion:</BlockHeader>
-                    <ScheduleTable prog={programacion[0].programacion} table_id={table_id} />
+                    <ScheduleTable prog={prog} table_id={table_id} />
                 </Block>
                 {/* mas canales xD */}
                 {

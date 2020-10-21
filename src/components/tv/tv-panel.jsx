@@ -22,6 +22,15 @@ export default function TVPanel(props) {
     const url = f7.methods.get_URL();
     const DB_url = f7.methods.get_URL_DB();
     let urlThing = url + `/tv/${canal[0].url}/`;
+    let prog = programacion[0] ? programacion[0].programacion : {
+        domingo: [],
+        jueves: [],
+        lunes: [],
+        martes: [],
+        miercoles: [],
+        sabado: [],
+        viernes: []
+    }
 
     const handlePlayPause = () => {
         setPlayPause(!playPause);
@@ -101,7 +110,7 @@ export default function TVPanel(props) {
                 <Block className="tabla_programacion">
                     <BlockHeader>Programacion:</BlockHeader>
                     {/* La tablita de programacion */}
-                    <ScheduleTable prog={programacion[0].programacion} table_id={table_id} />
+                    <ScheduleTable prog={prog} table_id={table_id} />
                 </Block>
                 {
                     canales.length > 1 &&
