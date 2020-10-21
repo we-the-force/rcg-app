@@ -1,7 +1,7 @@
 .card.radio_center_card
     margin-top 0px
-    padding 20px 18px
-    margin-bottom 15px
+    padding 16px 12px
+    margin-bottom 0px
 
     .header_cont
         padding 0px
@@ -9,11 +9,16 @@
 
         .card-header
             padding 0px
-            font font_12
-            color grey_d_3
-            text-transform capitalize
+
+            h1
+                margin 0px
+                padding 0px
+                font font_12
+                color grey_d_3
+                text-transform capitalize
 
             .icon
+                display none
                 color red
 
             &:after
@@ -23,50 +28,38 @@
             padding 0px 8px
 
             p
-                font font_3
+                font font_22
                 text-transform capitalize
-                color #444444
+                color #000
                 margin 0px
 
             a
                 padding-left 5px
-                width 25px
-                height 25px
+                width 20px
+                height 20px
 
                 img
                     width 100%
-
-    .info-programa
-        padding 20px 0px
-
-        .titulo-programa
-            font font_13
-            color grey_d
-            margin-bottom 5px
-
-        .texto-programa
-            no-mar-no-pad()
-            font font_10
-            color grey
-            text-transform capitalize
+                    height 100%
 
     .tabla_programacion
         no-mar-no-pad()
         margin-bottom 20px
 
         .block-header
-            margin 20px 0px 10px 0px
+            margin 0px 0px 10px 0px
             font font_3
             text-transform capitalize
             color grey_d
 
     .mas_canales
         no-mar-no-pad()
-        margin-bottom 20px
+        margin-bottom 0px
 
         .block-header
             margin 15px 0px
-            font font_3
+            margin-top 0px
+            font font_5
             text-transform capitalize
             color grey_d
 
@@ -100,26 +93,51 @@
                     z-index -1
 
             .canal_content
-                width 80%
+                width 100%
                 left 0
-                padding 15px 0px 0px 15px
+                padding 12px 0px 0px 12px
+                display flex
+                flex-direction column
+                box-sizing border-box
+                align-items flex-start
+                justify-content center
 
-                img
-                    padding 0px
+                .image_cont
+                    position relative
+                    height 100%
                     width 100%
-                    object-fit cover
+
+                    &:after
+                        content ''
+                        display block
+                        padding-top calc(125 / 314 * 100%)
+
+                    img
+                        position absolute
+                        top 0px
+                        left 0px
+                        padding 0px
+                        width 100%
+                        height 100%
+                        object-fit cover
+                        margin 0px
+                        border-radius 6px
 
                 .title
                     position absolute
-                    bottom 0px
-                    left 15px
                     padding 0px
-                    margin-left 15px
-                    margin-bottom 15px
-                    font font_12
+                    padding-left 5px
+                    font font_10
+                    margin 0px
+                    margin-top 5px
                     text-transform capitalize
-                    color white
-                    text-shadow 0px 0px 4px rgba(0, 0, 0, 0.8)
+                    color #000
+                    // bottom 0px
+                    // left 15px
+                    // margin-left 15px
+                    // margin-bottom 15px
+                    // color white
+                    // text-shadow 0px 0px 4px rgba(0, 0, 0, 0.8)
 
     .radio-wrapper
         margin 15px 0px
@@ -133,7 +151,60 @@
             display block
             padding-top calc(240 / 1140 * 100%) // aspect radio
 
+        .radio-ui-mobile
+            display flex
+            flex-direction column
+            justify-content center
+            align-items center
+
+            .logo-radio
+                position relative
+                width 70%
+                padding 0px
+
+                &:after
+                    content ''
+                    display block
+                    padding-top calc(189 / 236 * 100%)
+
+                img
+                    position absolute
+                    top 0px
+                    left 0px
+                    width 100%
+                    height 100%
+                    object-fit cover
+                    border-radius 6px
+
+            .title
+                margin 12px 0px
+                width 100%
+                color #2d2d2d
+                font font_23
+                text-align center
+                text-transform capitalize
+
+            .range-slider
+                --f7-theme-color red
+
+            .play_pause_button 
+                width 45px
+                height 45px
+                border-radius 50%
+                background red
+                display flex
+                justify-content center
+                align-items center
+
+                .icon
+                    font-size 25px
+                    color white
+            /* .title
+            .range-slider
+            .play_pause_button */
+
         .radio-ui
+            display none !important
             position absolute
             top 0
             left 0
@@ -223,3 +294,68 @@
                     width 100%
                     height 100%
                     object-fit content
+
+    @media (min-width 640px)
+        padding 20px 10px
+
+        .header_cont
+            margin-bottom 20px
+
+            .share
+                padding 0px 8px
+
+        .mas_canales
+            display grid
+            grid-template-columns 1fr 1fr
+            grid-column-gap 5px
+
+            .block-header
+                grid-column 1 / 3
+
+            .canal
+                width 100%
+
+                .canal_content
+                    .image_cont
+                        &:after
+                            padding-top calc(200 / 325 * 100%)
+
+                    .title
+                        padding-left 15px
+                        font font_7
+        
+        .radio-wrapper
+            .radio-ui-mobile
+                display none
+
+            .radio-ui
+                display flex !important
+
+    @media (min-width 1024px)
+        padding 20px 18px
+
+        .header_cont
+            .card-header
+                .icon
+                    display block !important
+                    
+        .mas_canales
+            display block
+            width 80%
+
+            .canal
+                width 100%
+
+                .canal_content
+                    .image_cont
+                        &:after
+                            padding-top calc(182 / 410 * 100%)
+
+                    .title
+                        position absolute
+                        bottom 10px
+                        left 15px
+                        padding-left 15px
+                        font font_12
+                        color white
+                        text-shadow 0px 0px 4px rgba(0, 0, 0, 0.8)

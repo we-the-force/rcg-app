@@ -7,7 +7,9 @@ import {
     BlockHeader,
     Link,
     Tabs,
-    Tab
+    Tab,
+    Icon,
+    f7
 } from 'framework7-react';
 /* 
 var schedule = [];
@@ -65,6 +67,7 @@ export default function ScheduleTable(props) {
     const { prog, table_id } = props;
     const days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
     const days_mobile = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+    const DB_url = f7.methods.get_URL_DB();
 
     const setTable = (x) => {
         let newTable = days.map((day) => {
@@ -76,7 +79,8 @@ export default function ScheduleTable(props) {
                         day: day,
                         inicio: moment(program.hora_inicio, 'kk:mm:ss.sss').format('HH:mm'),
                         nombre: program.programa.Nombre,
-                        desc: program.programa.Descripcion
+                        desc: program.programa.Descripcion,
+                        url: program.programa.cover ? program.programa.cover.url : null
                     };
                 });
 
@@ -90,7 +94,8 @@ export default function ScheduleTable(props) {
                         day: day,
                         inicio: "--:--",
                         nombre: "Sin programacion",
-                        desc: "No hay descripcion de este programa"
+                        desc: "No hay descripcion de este programa",
+                        url: null
                     })
                 }
             }
@@ -147,13 +152,11 @@ export default function ScheduleTable(props) {
                             <Tabs className="tabs-content">
                                 {
                                     val.map((hora, key_hora) => {
+                                        let img = hora.url ? <img src={DB_url + hora.url} alt="" /> : <Icon material="image"></Icon>;
                                         return (
                                             <Tab key={key_hora} id={days[key] + "-tab-" + (key_hora + 1)} className="tab-content" tabActive={key_hora === 0 ? true : false}>
                                                 <Block className="img_cont">
-                                                    <img src={Locutor} alt="" />
-                                                    <div>
-                                                        <p>Nombre Del Locutor</p>
-                                                    </div>
+                                                    {img}
                                                 </Block>
                                                 <Block className="content">
                                                     <BlockHeader>

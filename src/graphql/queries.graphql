@@ -262,6 +262,15 @@ query SchedulePage($station: String, $date: String $radio_tv: Boolean) {
   }
 }
 
+query SchedulePageRadio($station: String, $date: String $radio_tv: Boolean) {
+  radio: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
+    ...StationData
+  }
+  programacion: programacionSemanas(where: {canal_estacion: {url: $station}, fecha_inicio: $date}) {
+    ...ScheduleData
+  }
+}
+
 #borrar de aqui pa adelante si no los uso
 
 query SearchArticulosByTag($tags: [String]) {
@@ -361,6 +370,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     martes {
@@ -369,6 +381,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     miercoles {
@@ -377,6 +392,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     jueves {
@@ -385,6 +403,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     viernes {
@@ -393,6 +414,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     sabado {
@@ -401,6 +425,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     domingo {
@@ -409,6 +436,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
   }
