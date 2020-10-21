@@ -10,8 +10,8 @@ import {
 export default function EspectacularPanel(props) {
     const { info, clientes } = props;
     let DB_url = f7.methods.get_URL_DB();
-    let nosotrosImagen = info.NosotrosImagen ? DB_url + info.NosotrosImagen.url : "";
-    let porqueNosotrosImagen = info.PorqueNosotrosImagen ? DB_url + info.PorqueNosotrosImagen.url : "";
+    let nosotrosImagen = info.NosotrosImagen ? DB_url + info.NosotrosImagen.url : "/static/icons/image_x2.png";
+    let porqueNosotrosImagen = info.PorqueNosotrosImagen ? DB_url + info.PorqueNosotrosImagen.url : "/static/icons/image_x2.png";
     return (
         <Block className="center_panel espectacular_panel">
             <Card>
@@ -51,7 +51,7 @@ export default function EspectacularPanel(props) {
                     <Block className="content">
                         {
                             clientes.map((cliente, key) => {
-                                let clienteUrl = cliente.logo ? DB_url + cliente.logo.url : "";
+                                let clienteUrl = cliente.logo ? DB_url + cliente.logo.url : "/static/icons/image_x2.png";
                                 return (
                                     <div className="img_cont" key={key}>
                                         <img src={clienteUrl} alt="" />

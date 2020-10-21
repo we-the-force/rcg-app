@@ -28,8 +28,8 @@ export default function CatalogoPanel(props) {
 
     const EspectTwoFaces = (prop) => {
         const { el, index } = prop;
-        let cara1Url = el.cara1 ? DB_url + el.cara1.url : "";
-        let cara2Url = el.cara2 ? DB_url + el.cara2.url : "";
+        let cara1Url = el.cara1 ? DB_url + el.cara1.url : "/static/icons/image_x2.png";
+        let cara2Url = el.cara2 ? DB_url + el.cara2.url : "/static/icons/image_x2.png";
         return (
             <Fragment>
                 <Link className="img_cont" onClick={() => { handleClick(el, ((index * 2) + 1)) }}>
