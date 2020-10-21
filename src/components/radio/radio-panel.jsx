@@ -85,7 +85,7 @@ export default function RadioPanel(props) {
                         <Block className="logo-radio">
                             <img src={DB_url + logo.url} alt="" />
                         </Block>
-                        <h1 className="title">{nombre}</h1>
+                        <h2 className="title">{nombre}</h2>
                         <Range
                             min={0}
                             max={1}
@@ -93,9 +93,9 @@ export default function RadioPanel(props) {
                             value={volume}
                             onRangeChange={handleVolumeChange}
                         ></Range>
-                        <div className="play_pause_button">
+                        <a className="play_pause_button" onClick={handlePlayPause}>
                             <Icon material={playPause ? 'pause' : 'play_arrow'} /> 
-                        </div>
+                        </a>
                     </Block>
                     <Block className="radio-ui display-flex flex-direction-column">
                         <Block className="display-flex top-wrapper">
