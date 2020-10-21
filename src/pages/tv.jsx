@@ -8,6 +8,7 @@ import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import TVPanel from '@/components/tv/tv-panel';
 import NotFoundPanel from '@/components/not-found-panel';
+import LoadingPanel from '@/components/loading/loading-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
 import { SchedulePage } from '@/graphql/queries.graphql';
@@ -31,15 +32,22 @@ export default function TV(props) {
         });
     }, []);
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
-    let { tv, programacion } = data;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
-    let centerPanel = tv.length > 0 ?
-        <TVPanel canal={tv} canales={leftPanelTV} programacion={programacion} table_id={name} /> :
-        <NotFoundPanel />;
+
+    let centerPanel;
+
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        let { tv, programacion } = data;
+        centerPanel = tv.length > 0 ?
+            <TVPanel canal={tv} canales={leftPanelTV} programacion={programacion} table_id={name} /> :
+            <NotFoundPanel />;
+    }
     return (
         <Page pageContent={false} name="tv">
             <PageContent>

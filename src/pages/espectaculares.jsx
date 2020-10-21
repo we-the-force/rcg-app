@@ -7,6 +7,7 @@ import EspectacularPanel from '@/components/espectaculares/espectacular-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import { useQuery } from '@apollo/client';
 import { EspectacularPage } from '@/graphql/queries.graphql';
+import LoadingPanel from '@/components/loading/loading-panel';
 import {
     Page,
     Block,
@@ -24,10 +25,17 @@ export default function Espectaculares(props) {
         });
     }, []);
 
-    if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
+    let centerPanel;
+    
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        const { info, clientes } = data;
+        centerPanel = <EspectacularPanel info={info} clientes={clientes} />;
+    }
 
-    const { info, clientes } = data;
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
@@ -37,21 +45,18 @@ export default function Espectaculares(props) {
                 <Nav
                     espectaculares
                     categorias={f7.methods.getCategorias()}
-                    tv_channels={f7.methods.getTV()}
+                    tv_channels={leftPanelTV}
                     radio_stations={leftPanelRadio}
                 />
-                {/* navbar espectaculares */}
-                {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={f7.methods.getTV()} radio_stations={leftPanelRadio} />
-                            <LeftPanelTablet tv_channels={f7.methods.getTV()} radio_stations={leftPanelRadio} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan wo_right_pan">
                             <AdsTop />
-                            <EspectacularPanel info={info} clientes={clientes} />
-                            {/* aqui va el panel central */}
+                            {centerPanel}
                         </Block>
                     </Block>
                 </Block>

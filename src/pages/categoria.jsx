@@ -5,6 +5,7 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import CategoriaPanel from '@/components/categoria/categoria-panel';
+import LoadingPanel from '@/components/loading/loading-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import { useQuery, useLazyQuery } from '@apollo/client';
@@ -65,7 +66,8 @@ export default function Categoria(props) {
     }, []);
 
     let centerPanel = loading && first ?
-        'Loading' :
+        error ? 'error' :
+            <LoadingPanel /> :
         <CategoriaPanel
             articulos={articulos}
             categoria={nombre}

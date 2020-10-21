@@ -55,8 +55,6 @@ export default function RadioPanel(props) {
         setVolume(parseFloat(e));
     }
 
-    console.log(estaciones);
-
     return (
         <Block className="radio_panel center_panel">
             {/* tarjetita principal radio */}

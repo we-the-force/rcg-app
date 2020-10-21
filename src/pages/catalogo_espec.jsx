@@ -4,9 +4,8 @@ import LeftPanel from '@/components/general/left_panel/left-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import CatalogoPanel from '@/components/catalogo/catalogo-panel';
-
+import LoadingPanel from '@/components/loading/loading-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
-
 import { useQuery } from '@apollo/client';
 import { CatalogoPage } from '@/graphql/queries.graphql';
 
@@ -27,9 +26,9 @@ export default function Catalogo(props) {
         });
     }, []);
 
-    if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
-
+    let centerPanel = loading ? error ? 'error' :
+        <LoadingPanel /> :
+        <CatalogoPanel data={data} />;
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
@@ -47,7 +46,7 @@ export default function Catalogo(props) {
                         <Block className="center_pan wo_right_pan">
                             <AdsTop />
                             {/* aqui va el panel central */}
-                            <CatalogoPanel data={data} />
+                            {centerPanel}
                         </Block>
                     </Block>
                 </Block>

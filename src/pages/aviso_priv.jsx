@@ -5,6 +5,7 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AvisoPrivacidadPanel from '@/components/estaticas/aviso-privacidad-panel';
+import LoadingPanel from '@/components/loading/loading-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import { useQuery } from '@apollo/client';
@@ -26,10 +27,16 @@ export default function AvisoPrivacidad(props) {
         });
     }, []);
 
-    if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
-    
-    const { avisoPrivacidad } = data;
+    let centerPanel;
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        const { avisoPrivacidad } = data;
+        centerPanel = <AvisoPrivacidadPanel avisoPriv={avisoPrivacidad} />;
+    }
+
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
@@ -50,7 +57,7 @@ export default function AvisoPrivacidad(props) {
                         </Block>
                         <Block className="center_pan wo_right_pan">
                             <AdsTop />
-                            <AvisoPrivacidadPanel avisoPriv={avisoPrivacidad} />
+                            {centerPanel}
                         </Block>
                     </Block>
                 </Block>

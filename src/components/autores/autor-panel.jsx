@@ -19,7 +19,6 @@ export default class AutorPanel extends Component {
         let { autor, articulosNum, articulos } = this.props;
         let DB_url = f7.methods.get_URL_DB();
         let autorUrl = autor[0].img ? DB_url + autor[0].img.url : "/static/icons/person_x2.png";
-        console.log(autor);
         return (
             <Block className="autor center_panel">
                 <Card className="autor_head">

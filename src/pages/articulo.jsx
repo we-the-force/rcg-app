@@ -7,6 +7,7 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import Footer from '@/components/general/footer';
 import ArticuloPanel from '@/components/articulo/articulo-panel';
 import AdsTop from '@/components/general/ads_top';
+import LoadingPanel from '@/components/loading/loading-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
 import { ArticuloPage, Recomendados, RecomendadosCateg } from '@/graphql/queries.graphql';
@@ -22,7 +23,7 @@ export default function Articulo(props) {
     const [flag, setFlag] = useState(false);
     const [recomendados, setRecomendados] = useState([]);
     const [updateArticulo] = useMutation(UpdateArticulo, {
-        onCompleted: (data) => {}
+        onCompleted: (data) => { }
     });
 
     const [getRecomendados] = useLazyQuery(Recomendados, {
@@ -41,14 +42,14 @@ export default function Articulo(props) {
         variables: { url },
         onCompleted: (data) => {
             setFlag(true);
-            if(data.articulos[0].tags.length > 0){
+            if (data.articulos[0].tags.length > 0) {
                 getRecomendados({
                     variables:
                     {
                         tag: data.articulos[0].tags[0].nombre
                     }
                 });
-            }else{
+            } else {
                 getRecomendadosCateg({
                     variables:
                     {
@@ -91,8 +92,8 @@ export default function Articulo(props) {
         }
     }, [flag]);
 
-    let centerPanel = loading ?
-        'Loading' :
+    let centerPanel = loading ? error ? 'error' :
+        <LoadingPanel /> :
         <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();

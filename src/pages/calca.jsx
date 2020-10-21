@@ -7,8 +7,7 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import CalcasPanel from '@/components/calcas/calcas-panel';
-import { useQuery } from '@apollo/client';
-import { CalcaPage } from '@/graphql/queries.graphql';
+import LoadingPanel from '@/components/loading/loading-panel';
 import {
     Page,
     Block,

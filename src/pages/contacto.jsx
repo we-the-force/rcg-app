@@ -5,10 +5,9 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import ContactoPanel from '@/components/estaticas/contacto-panel';
-
+import LoadingPanel from '@/components/loading/loading-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
-
 import { useQuery } from '@apollo/client';
 import { ContactPage } from '@/graphql/queries.graphql';
 import {
@@ -28,10 +27,17 @@ export default function AboutUs(props) {
         });
     }, []);
 
-    if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
+    let centerPanel;
     
-    let { contactInfo } = data;
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        let { contactInfo } = data;
+        centerPanel = <ContactoPanel contactInfo={contactInfo} />;
+    }
+    
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     let rightPanel = f7.methods.getArticulosRightPanel();
@@ -49,9 +55,8 @@ export default function AboutUs(props) {
                         </Block>
                         <Block className="center_pan">
                             {/* aqui va el panel central */}
-                            {/* <AboutUsPanel nosotrosInfo={data.nosotrosInfo}/> */}
                             <AdsTop />
-                            <ContactoPanel contactInfo={contactInfo} />
+                            {centerPanel}
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />

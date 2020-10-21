@@ -7,8 +7,6 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import NotFoundPanel from '@/components/not-found-panel';
-import {useQuery} from '@apollo/client';
-import {NotFoundPage} from '@/graphql/queries.graphql';
 import { 
   Page,
   PageContent, 
@@ -19,17 +17,13 @@ import {
 
 export default function NotFound(props) {
 
-  const {loading, error, data} = useQuery(NotFoundPage)
-
   useEffect(() => {
     f7ready((f7) => {
       f7.methods.handleCategoriaActual('');
     });
   }, []);
 
-  if (loading) return "Loading...";
-  if (error) return `Error! ${error.message}`;
-
+  let rightPanel = f7.methods.getArticulosRightPanel();
   let leftPanelTV = f7.methods.getTV();
   let leftPanelRadio = f7.methods.getRadio();
   return (
@@ -47,21 +41,13 @@ export default function NotFound(props) {
               <NotFoundPanel/>
             </Block>
             <Block className="right_pan">
-                <RightPanel newsInfo={data.articulosDestacadosRaros} />
-                <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                <RightPanel newsInfo={rightPanel} />
+                <RightPanelTablet newsInfo={rightPanel} />
             </Block>
           </Block>
         </Block>
         <Footer/>
       </PageContent>
     </Page>
-
-    // <Page>
-    //   <Navbar title="Not found" backLink="Back" />
-    //   <Block strong>
-    //     <p>Sorry</p>
-    //     <p>Requested content not found.</p>
-    //   </Block>
-    // </Page>
   );
 } 

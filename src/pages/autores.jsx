@@ -6,6 +6,7 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import RightPanel from '@/components/general/right_panel/right-panel';
 import AutoresPanel from '@/components/autores/autores-panel.jsx'
 import Footer from '@/components/general/footer';
+import LoadingPanel from '@/components/loading/loading-panel';
 import { useQuery } from '@apollo/client';
 import AdsTop from '@/components/general/ads_top';
 import { AutoresPage } from '@/graphql/queries.graphql';
@@ -17,7 +18,6 @@ import {
 } from 'framework7-react';
 
 export default function Autores(props) {
-
     const { loading, error, data } = useQuery(AutoresPage);
 
     useEffect(() => {
@@ -26,19 +26,23 @@ export default function Autores(props) {
         });
     }, []);
 
-    if (loading) return "loading...";
-    if (error) return `Error! ${error.message}`;
+    let centerPanel, numNoticias;
 
-    let numNoticias = data.autorArticulos.groupBy.autor.map((val) => {
-        let elem = {
-            autor: val.key,
-            articulos: val.connection.aggregate.count,
-        }
-        return elem;
-    });
-
-    let { autores } = data;
-
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        numNoticias = data.autorArticulos.groupBy.autor.map((val) => {
+            let elem = {
+                autor: val.key,
+                articulos: val.connection.aggregate.count,
+            }
+            return elem;
+        });
+        let { autores } = data;
+        centerPanel = <AutoresPanel autores={autores} numNoticias={numNoticias} />
+    }
     const rightPanel = f7.methods.getArticulosRightPanel();
     const leftPanelTV = f7.methods.getTV();
     const leftPanelRadio = f7.methods.getRadio();
@@ -56,7 +60,7 @@ export default function Autores(props) {
                         </Block>
                         <Block className="center_pan">
                             <AdsTop />
-                            <AutoresPanel autores={autores} numNoticias={numNoticias} />
+                            {centerPanel}
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />

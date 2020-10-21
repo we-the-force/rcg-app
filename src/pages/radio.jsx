@@ -8,6 +8,7 @@ import RadioPanel from '@/components/radio/radio-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import NotFoundPanel from '@/components/not-found-panel';
+import LoadingPanel from '@/components/loading/loading-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
 import { SchedulePageRadio } from '@/graphql/queries.graphql';
@@ -20,14 +21,11 @@ import {
 
 
 export default function Radio(props) {
-    //let station = props.f7route.params.name;
     let { name } = props;
     let startOfWeek = moment().startOf('isoWeek').format('YYYY-MM-DD');
-    //let date = moment().startOf('week').format('YYYY-MM-DD');
     const { loading, error, data } = useQuery(SchedulePageRadio, {
         variables: { station: name, date: startOfWeek, radio_tv: false }
     });
-    var currentStation = {};
 
     useEffect(() => {
         f7ready((f7) => {
@@ -35,21 +33,22 @@ export default function Radio(props) {
         });
     }, []);
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
-
-    if (currentStation === undefined)
-    {
-        f7.views.main.router.navigate('/404/');
-    }
-
-    let { radio, programacion } = data;
+    
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
-    let centerPanel = radio.length > 0 ?
-        <RadioPanel estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} /> :
-        <NotFoundPanel />;
+    let centerPanel;
+    
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        let { radio, programacion } = data;
+        centerPanel = radio.length > 0 ?
+            <RadioPanel estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} /> :
+            <NotFoundPanel />;
+    }
     return (
         <Page pageContent={false} name='radio'>
             <PageContent>

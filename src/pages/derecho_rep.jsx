@@ -7,6 +7,7 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import DerechoReplicaPanel from '@/components/estaticas/derecho-rep-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
+import LoadingPanel from '@/components/loading/loading-panel';
 import {useQuery} from '@apollo/client';
 import {DerechoReplicaPage} from '@/graphql/queries.graphql';
 import {
@@ -26,10 +27,17 @@ export default function DerechoReplica(props) {
         });
     }, []);
 
-    if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
+    let centerPanel;
+    
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        const { content } = data;
+        centerPanel = <DerechoReplicaPanel content={content}/>;
+    }
 
-    const { content } = data;
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
@@ -47,7 +55,7 @@ export default function DerechoReplica(props) {
                         <Block className="center_pan wo_right_pan">
                             {/* aqui va el panel central */}
                             <AdsTop />
-                            <DerechoReplicaPanel content={content}/>
+                            {centerPanel}
                         </Block>
                     </Block>
                 </Block>

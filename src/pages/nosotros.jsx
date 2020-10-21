@@ -9,6 +9,7 @@ import AdsTop from '@/components/general/ads_top';
 import AboutUsPanel from '@/components/estaticas/about-us-panel';
 import { useQuery } from '@apollo/client';
 import { AboutUsPage } from '@/graphql/queries.graphql';
+import LoadingPanel from '@/components/loading/loading-panel';
 import {
     Page,
     Block,
@@ -25,10 +26,18 @@ export default function AboutUs(props) {
             f7.methods.handleCategoriaActual('');
         });
     }, []);
-
-    if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
-    const { nosotrosInfo } = data;
+    
+    let centerPanel;
+    
+    if (loading) {
+        centerPanel = <LoadingPanel />;
+    } else if (error) {
+        centerPanel = 'Error';
+    } else {
+        const { nosotrosInfo } = data;
+        centerPanel = <AboutUsPanel nosotrosInfo={nosotrosInfo} />;
+    }
+    
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
@@ -50,7 +59,7 @@ export default function AboutUs(props) {
                         </Block>
                         <Block className="center_pan">
                             <AdsTop />
-                            <AboutUsPanel nosotrosInfo={nosotrosInfo} />
+                            {centerPanel}
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />
