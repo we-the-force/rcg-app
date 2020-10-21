@@ -115,17 +115,6 @@
                                 color white
 
                                 &.text
-                                    &:after
-                                        content ''
-                                        opacity 1
-                                        width 21.21px
-                                        height 21.21px
-                                        position absolute
-                                        background red_2
-                                        right 0
-                                        left unset
-                                        top 50%
-                                        transform translate(10px, -50%) rotate(45deg)
 
                                     &:before
                                         content ''
@@ -163,25 +152,30 @@
                 .tab-content
                     position relative // mobile
                     height 100%
-                    // padding 15px
-                    // flex-direction column
-                    flex-direction column-reverse
+                    padding 15px
+                    flex-direction column
+                    // flex-direction column-reverse
                     box-sizing border-box
+                    background-repeat no-repeat
+                    background-size 150% auto
+                    background-position 100% top
+                    background-image url('../static/imgs/card_back_7.png')
+                    transform scaleX(-1)
+                    margin-top 10px
+                    border-radius 6px  
+                    align-items flex-end
 
-                    // background-repeat no-repeat
-                    // background-size 200% auto
-                    // background-position 100% top
-                    // background-image url('../static/imgs/card_back_7.png')
                     .img_cont
-                        position absolute
-                        top 15px
-                        left 15px
+                        position relative
+                        top 0
+                        left 0
                         border-radius 8px
                         padding 0px
                         padding-top calc(126 / 182 * 65%)
                         // height 55%
                         width 65%
                         background #C9C9C9
+                        transform scaleX(-1)
 
                         img
                             position absolute
@@ -223,15 +217,16 @@
                         // height 45%
                         height 60%
                         overflow hidden
-                        padding 15px
-                        padding-top 11vw
+                        //padding 15px
+                        //padding-top 11vw
+                        padding-top 15px
                         z-index -1
                         border-radius 6px
-                        filter drop-shadow(0px 6.91564px 6.91564px rgba(0, 0, 0, 0.1))
-                        background-repeat no-repeat
-                        background-size 160% auto
-                        background-position 100% top
-                        background-image url('../static/imgs/card_back_7.png')
+                        // filter drop-shadow(0px 6.91564px 6.91564px rgba(0, 0, 0, 0.1))
+                        // background-repeat no-repeat
+                        // background-size 160% auto
+                        // background-position 100% top
+                        // background-image url('../static/imgs/card_back_7.png')
                         transform scaleX(-1)
 
                         .block-header
@@ -239,7 +234,7 @@
                             color #272727
                             text-transform capitalize
                             margin 9px 0px 4px 0px
-                            transform scaleX(-1)
+                            // transform scaleX(-1)
 
                         .text
                             font font_6
@@ -249,7 +244,7 @@
                             -webkit-line-clamp 7
                             -webkit-box-orient vertical
                             overflow hidden
-                            transform scaleX(-1)
+                            // transform scaleX(-1)
 
     @media (min-width 640px)
         .week_toolbar
@@ -263,6 +258,7 @@
         .week_tabs
             .tab-active
                 flex-direction row
+
                 .toolbar
                     height 243px
                     width 60%
@@ -279,8 +275,16 @@
                         &.tab-link-active
                             p.text
                                 &:after
-                                    width 19.09px !important
-                                    height 19.09px !important
+                                    content ''
+                                    opacity 1
+                                    width 19.01px
+                                    height 19.01px
+                                    position absolute
+                                    background red_2
+                                    right 0
+                                    left unset
+                                    top 50%
+                                    transform translate(10px, -50%) rotate(45deg)
 
                                 &:before
                                     height 27px !important
@@ -300,19 +304,24 @@
                         background-size 200% auto
                         background-position 100% top
                         background-image url('../static/imgs/card_back_7.png')
+                        transform scaleX(1)
+                        margin-top 0px
+                        border-radius 0px
 
                         .img_cont
                             position relative
                             top 0
                             left 0
-                            width 60%
-                            padding-top calc(126 / 182 * 60%)
+                            width 65%
+                            padding-top calc(126 / 182 * 65%)
+                            transform scaleX(1)
 
                         .content
                             padding 0px
                             min-height 50%
                             height fit-content
                             background none
+                            transform scaleX(1)
 
                             .text
                                 -webkit-line-clamp 5

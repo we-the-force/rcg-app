@@ -11,57 +11,6 @@ import {
     Icon,
     f7
 } from 'framework7-react';
-/* 
-var schedule = [];
-
-function CreateScheduleObject(sourceObject)
-{
-    let auxSchedule = [];
-    // console.log("CreateScheduleObject!", sourceObject);
-
-    auxSchedule.push(CreateDaySchedule("domingo", sourceObject.domingo));
-    auxSchedule.push(CreateDaySchedule("lunes", sourceObject.lunes));
-    auxSchedule.push(CreateDaySchedule("martes", sourceObject.martes));
-    auxSchedule.push(CreateDaySchedule("miercoles", sourceObject.miercoles));
-    auxSchedule.push(CreateDaySchedule("jueves", sourceObject.jueves));
-    auxSchedule.push(CreateDaySchedule("viernes", sourceObject.viernes));
-    auxSchedule.push(CreateDaySchedule("sabado", sourceObject.sabado));
-
-    return auxSchedule;
-    // console.log("Result:",auxSchedule);
-}
-
-function CreateDaySchedule(dayName, daySchedule)
-{
-    let auxObject = {
-        day: dayName,
-        horas: []
-    };
-    // console.log(`${dayName} schedule:`);
-    if (daySchedule.length > 0)
-    {
-        daySchedule.forEach(hourSchedule => {
-            auxObject.horas.push({
-                time: hourSchedule.hora_inicio.substring(0, 5),
-                name: hourSchedule.programa.Nombre,
-                desc: hourSchedule.programa.Descripcion
-            })
-        })
-    }
-    else
-    {
-        // console.log("AAAAH ESTA VACIO");
-        for (let i = 0; i < 9; i++)
-        {
-            auxObject.horas.push({
-                time: "--:--",
-                name: "Sin programacion",
-                desc: "Ayyy, se me paso poner programacion aqui lmao"
-            })
-        }
-    }
-    return auxObject;
-} */
 
 export default function ScheduleTable(props) {
     const { prog, table_id } = props;
