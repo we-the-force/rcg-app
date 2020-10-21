@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import NewsCard from '../news-card';
+import NewsCategoria from '@/components/cards_news/news_categoria.jsx';
+import back_head from '@/static/imgs/card_back_6.png'
 import {
     Card,
     CardHeader,
@@ -7,33 +8,24 @@ import {
 } from 'framework7-react';
 
 export default class NewsPanel extends Component {
-    constructor() {
-        super();
-        this.state = {}
+    constructor(props) {
+        super(props);
     }
     render() {
+        const { categoria, articulos } = this.props;
         return (
             <Block className="categoria_panel center_panel">
-                <Card className="head">
-                    {/* { console.log(this.props) } */}
-                    <CardHeader> {this.props.categoria} </CardHeader>
+                <Card className="new_head">
+                    <CardHeader>{categoria}</CardHeader>
+                    <div className="head_logo">
+                        <img src={back_head} alt="" />
+                    </div>
                 </Card>
-                {/* Lista de NewsCards */}
-                { this.props.articulos.map((articulo, i) => {
-                    return (<NewsCard key={i} articulo={articulo}/>);
-                }) }
-                {/* <NewsCard />
-                <Block className="ads bar"></Block>
-                <NewsCard />
-                <NewsCard />
-                <Block className="ads bar"></Block>
-                <NewsCard />
-                <NewsCard />
-                <Block className="ads bar"></Block>
-                <NewsCard />
-                <NewsCard />
-                <Block className="ads bar"></Block> */}
-                {/* te recomendamos */}
+                {
+                    articulos.map((articulo, i) => {
+                        return (<NewsCategoria className="" key={i} articulo={articulo} />);
+                    })
+                }
             </Block>
         );
     }

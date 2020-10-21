@@ -9,95 +9,159 @@ import BusquedaPanel from '@/components/busqueda/busqueda-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import { f7, f7ready } from 'framework7-react';
-import { useQuery } from '@apollo/client';
-import { BusquedaPage } from '@/graphql/queries.graphql';
+import { useLazyQuery, useQuery } from '@apollo/client';
+import { BusquedaTag, BusquedaTitulo, BusquedaDesc } from '@/graphql/queries.graphql';
 import {
     Page,
     Block,
     PageContent,
     Card,
-    CardHeader
+    CardHeader,
+    Preloader
 } from 'framework7-react';
 
 export default function Busqueda(props) {
-    let terms = formatParams(props.params);
-    const { loading, error, data } = useQuery(BusquedaPage, {
-        variables: {terms}
+    const values = props.params.trim().toString();
+    const limitStatic = 20;
+    const [type, setType] = useState(-1);
+    const [isCalled, setIsCalled] = useState(false);
+    const [results, setResults] = useState([]);
+    const [limit, setLimit] = useState(limitStatic);
+    const [inicial, setInicial] = useState(0);
+    const [allowInfinite, setAllowInfinite] = useState(true);
+    const [preloader, setPreloader] = useState(false);
+    const [callApi, setCallApi] = useState(false);
+    const [firstCharge, setFirstCharge] = useState(true);
+    const [data, setData] = useState(false);
+    const [getTitulo, valuesTitulo] = useLazyQuery(BusquedaTitulo, {
+        onCompleted: (data) => { handleCompleted(data) }
     });
+    const [getTag, valuesTag] = useLazyQuery(BusquedaTag, {
+        onCompleted: (data) => { handleCompleted(data) }
+    });
+    const [getDesc, valuesDesc] = useLazyQuery(BusquedaDesc, {
+        onCompleted: (data) => { handleCompleted(data) }
+    });
+
+    const handleCompleted = (data) => {
+        setIsCalled(true);
+        setData(data);
+    }
+
+    const loadMore = () => {
+        if (!allowInfinite) return;
+        setFirstCharge(false);
+        setAllowInfinite(false);
+        setPreloader(true);
+        setCallApi(!callApi);
+    };
 
     //efecto para quitar etiqueta roja
     useEffect(() => {
         f7ready((f7) => {
             f7.methods.handleCategoriaActual('');
+            setType(0);
         });
     }, []);
 
-    function formatParams(searchTerms) {
-        let auxTerms = searchTerms.trim().toString().split(" ");
-
-        let finalParams = [];
-        auxTerms.forEach((keyword) => {
-            let trimmedKeyword = keyword.trim();
-            if (trimmedKeyword !== "")
+    useEffect(() => {
+        let _arguments = {
+            variables:
             {
-                finalParams.push(trimmedKeyword);
+                values: values,
+                inicio: inicial,
+                limite: limit
             }
-        });
+        };
+        switch (type) {
+            case 0:
+                getTitulo(_arguments);
+                break;
+            case 1:
+                getDesc(_arguments);
+                break;
+            case 2:
+                getTag(_arguments);
+                break;
+            default:
+                setPreloader(false);
+                break;
+        }
+    }, [type, callApi]);
 
-        return finalParams;
+    if (isCalled && data) {
+        let val = data.articulos
+        let length = val.length;
+        let underLimit = (length < limit && length > 0);
+        let nothing = (length === 0);
+        let done = (length === limit);
+        let newType = type + 1;
+        setResults(results.concat(val));
+        setData(false)
+        if (underLimit) setLimit(limit - length);
+        if (!done) {
+            setInicial(0);
+            setType(newType);
+        } else {
+            let newInicial = inicial + limit;
+            setIsCalled(false);
+            setInicial(newInicial);
+            setLimit(limitStatic);
+            setPreloader(false);
+            setAllowInfinite(true);
+        }
     }
 
-    var searchResults = []
-    if (data != undefined)
-    {
-        data.searchTitulo.forEach((articulo) => {
-            searchResults.push(articulo);
-        });
-        data.searchTag.forEach((articulo) => {
-            if (searchResults.filter(a => a.url === articulo.url).length === 0)
-            {
-                searchResults.push(articulo);
-            }
-        });
-    }
-
-    if (loading) return "loading...";
-    if (error) return `Error! ${error.message}`;
+    let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading);
+    let centerPanel = isLoading && firstCharge ? <p>loading</p> : <BusquedaPanel title={values} articulos={results} />;
+    let rightPanel = f7.methods.getArticulosRightPanel();
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
     return (
         <Page pageContent={false} name="busqueda">
-            <PageContent>
+            <PageContent
+                infinite
+                infiniteDistance={50}
+                infinitePreloader={false}
+                onInfinite={() => { loadMore() }}
+            >
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                <Nav
+                    categorias={f7.methods.getCategorias()}
+                    tv_channels={leftPanelTV}
+                    radio_stations={leftPanelRadio}
+                />
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
-                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel
+                                tv_channels={leftPanelTV}
+                                radio_stations={leftPanelRadio}
+                            />
+                            <LeftPanelTablet
+                                tv_channels={leftPanelTV}
+                                radio_stations={leftPanelRadio}
+                            />
                         </Block>
-                        <Block className="center_pan">
+                        <Block className="center_pan search">
                             <AdsTop />
-                            <BusquedaPanel/>
-                            {/* {
-                                (searchResults.length === 0) &&
-                                <Block className="categoria_panel center_panel">
-                                    <Card className="head">
-                                        <CardHeader>Resultados</CardHeader>
-                                    </Card>
-                                    <Card>
-                                        <p>Tu busqueda no obtuvo resultados, intenta con diferentes terminos</p>
-                                    </Card>
+                            {centerPanel}
+                            {preloader &&
+                                <Block className="display-flex justify-content-center align-items-center">
+                                    <Preloader color="red" ></Preloader>
                                 </Block>
-                            } */}
+                            }
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDestacadosRaros} />
-                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>
-                <Footer />
             </PageContent>
         </Page>
     );
+
+
 }

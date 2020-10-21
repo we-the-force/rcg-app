@@ -1,25 +1,36 @@
 .dest-item
     no-mar-no-pad()
+    padding 10px
+    padding-bottom 0px
 
     .img_cont
-        display flex
-        padding 10px
+        position relative
+        width 100%
+        display block
+
+        &:after
+            content ''
+            display block
+            padding-top calc(95 / 170 * 100%)
 
         img
+            position absolute
+            top 0
+            left 0
             width 100%
             height 100%
             object-fit cover
 
     .dest-cont
-        border-bottom 1px solid #EBEBEB
+        border-bottom 1px dashed #EBEBEB
         padding 0px 0px 10px 0px
-        margin 0px 10px
+        margin 10px 0px 0px 0px
 
         &:before
             content none
 
         .block-header
-            margin 10px 0px
+            margin 0px
             display flex
             font font_6
             color #989898
@@ -34,20 +45,26 @@
                 color #989898
 
         .block-title
-            margin 10px 0px
-            font font_7
+            margin 5px 0px
+            font font_15
             color #191919
             text-transform capitalize
             white-space normal
 
         .cont
-            margin 10px 0px
-            font font_1
+            margin 0px
+            font font_6
             color #191919
             text-transform capitalize
+            display -webkit-box
+            -webkit-line-clamp 3
+            -webkit-box-orient vertical
+            overflow hidden
 
         .block-footer
-            margin 10px 0px 
+            margin 0px
+            margin-top 5px
+
             a.more
                 font font_6
                 color #2AAAE0
@@ -57,12 +74,27 @@
                 margin 0px
 
                 &.tag
+                    width 60%
+                    display -webkit-box
+                    -webkit-line-clamp 1
+                    -webkit-box-orient vertical
+                    overflow hidden
                     color #989898
                     text-transform capitalize
 
                     .etiqueta
                         color #EC1B23
 
-    &.nobord
+    &:last-child
         .dest-cont
             border-bottom none
+
+    @media (min-width 1024px)
+        .img_cont
+            &:after
+                padding-top calc(100 / 180 * 100%)
+        .dest-cont
+            border-bottom 1px solid #EBEBEB
+
+            .block-title
+                margin 5px 0px

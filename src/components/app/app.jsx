@@ -14,12 +14,13 @@ import { onError } from 'apollo-link-error';
 import { HttpLink } from 'apollo-link-http';
 
 const errorLink = onError(({ graphQLErrors }) => {
-  if (graphQLErrors) graphQLErrors.map(({ message }) => console.error('!!GraphQL Error!!', message));
+  if (graphQLErrors) graphQLErrors.map(({ message }) => {/* console.error('!!GraphQL Error!!', message) */});
 })
+
 const client = new ApolloClient({
   uri: `http://${window.location.hostname}:1337/graphql`,
   cache: new InMemoryCache(),
-  link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${window.location.hostname}:1337/graphql` })])
+  link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${window.location.hostname}:1337/graphql` })]),
 });
 
 export default class extends React.Component {
@@ -34,7 +35,7 @@ export default class extends React.Component {
       // pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
       view: {
         pushState: true,
-        pushStateRoot: `${window.location.protocol}//${window.location.hostname}`,
+        pushStateRoot: `${window.location.protocol}//${window.location.hostname}:8080`,
         pushStateSeparator: '',
       },
 
@@ -90,9 +91,13 @@ export default class extends React.Component {
         get_URL_DB: () => {
           return this.state.data.db_url;
         },
+        get_URL: () => {
+          return this.state.data.url;
+        },
       },
       data: {
         db_url: `http://${window.location.hostname}:1337`,
+        url: `http://${window.location.hostname}:8080`,
         categorias: [],
         categoriaActual: '',
         radioStations: [],

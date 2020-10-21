@@ -16,7 +16,7 @@ export default function AutorCard(props) {
     let DB_url = f7.methods.get_URL_DB();
     let imagen, id, nombre, articulos, face, twitt, insta, url;
     if(autor){
-        imagen = DB_url + autor.img.url;
+        imagen = autor.img ? DB_url + autor.img.url : "/static/icons/person_x2.png";
         id = autor.id;
         nombre = autor.nombre;
         articulos = numArticulos ? numArticulos.articulos : '0';
@@ -34,7 +34,6 @@ export default function AutorCard(props) {
         insta = "https://www.instagram.com";
         url = "";
     }
-    console.log(`Autor: ${nombre}\r\nArticulos: ${articulos}`);
     return (
         <Card className={"autor_card " + className}>
             <Block className="back">

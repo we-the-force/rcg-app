@@ -1,0 +1,233 @@
+.calca_panel
+    .title
+        margin 0px
+        margin-top 20px
+        margin-bottom 15px
+        padding 0px
+
+        p
+            font font_10
+            text-transform capitalize
+            color #000
+            text-align center
+            width 100%
+            margin 0px
+
+    .bottom
+        margin 15px 20px
+        padding 0px
+
+        p
+            width 100%
+            margin 0px
+            padding 0px
+            font font_4
+            text-align center
+            color #000
+
+            b
+                font-weight 500
+
+    .card
+        padding 5px
+
+        .back
+            margin 0px
+            border-radius 6px
+            background #F0F0F0
+            padding 14px 7px
+            padding-bottom calc(100 / 345 * 100%) !important
+
+            .categoria_cont
+                background #fff
+                margin 0px
+                padding 2px 30px 2px 6px
+                width fit-content
+
+                p
+                    color red
+                    text-align center
+                    text-transform capitalize
+                    font font_14
+
+            .city,.city2
+                width 100%
+                position absolute
+                bottom 0
+                right 0
+                z-index 0
+
+            .city2
+                display none
+
+            .logo_cont
+                position absolute
+                bottom 0
+                right 0
+                margin 7px
+                width 90px
+
+                &:after
+                    content ''
+                    display block
+                    padding-top calc(50 / 100 * 100%)
+
+                img
+                    position absolute
+                    bottom 0
+                    right 0
+                    width 100%
+                    height 100%
+
+            form
+                z-index 1
+
+                .two_inputs
+                    margin 15px 0px
+                    width 100%
+                    display flex
+                    padding 0px
+                    z-index 1
+
+                    .input
+                        margin 0px
+                        width 50%
+
+                        &:first-child
+                            margin-right 3.5px
+
+                        &:last-child
+                            margin-left 3.5px
+
+                .input
+                    margin 15px 0px
+                    padding 0px
+                    z-index 1
+
+                    input
+                        height 25px
+                        background #FFFFFF
+                        box-shadow 0px 0px 6px rgba(0, 0, 0, 0.08)
+                        border-radius 15px
+                        padding-left 12px
+
+                    input::placeholder
+                        color #E2E2E2
+                        text-transform capitalize
+                        font font_8
+
+                    .input-error-message
+                        padding-left 12px
+
+                    .input-clear-button
+                        height 25px
+                        top 0
+                        margin-top 0px
+
+                        &:after
+                            font-size 12px
+                            height 12px
+                            width 12px
+                            position absolute
+                            top 50%
+                            transform translate(-3px, -50%)
+
+                    &.input-invalid
+                        margin-bottom 25px
+
+                        input
+                            box-shadow 0px 0px 6px rgba(255, 0, 0, 0.3)
+
+                    &:after
+                        content none
+
+                .privacity
+                    margin 0px
+                    padding 0px
+                    line-height 10px
+
+                    input
+                        margin 0px
+                        margin-left 12px
+                        margin-right 5px
+                        height 10px
+                        width 10px
+                        background #FFFFFF
+
+                    .input-info
+                        top 0
+                        left 27px
+                        margin 0px
+                        width fit-content
+
+                        p
+                            margin 0px
+                            width fit-content
+                            font font_6
+                            color #837C7C
+
+                            a
+                                font-weight bold
+                                color red
+
+                    &.input-invalid
+                        .input-info
+                            display block
+
+                .registrar
+                    width 100px
+                    height 22px
+                    margin-top 25px
+                    margin-bottom 0px
+
+                    input
+                        padding 0px
+                        font font_15
+                        text-align center
+                        text-transform capitalize
+                        color #fff
+                        border none
+                        width 100%
+                        height 100%
+                        background linear-gradient(360deg, #EC1E26 0%, #FF686E 101.14%), #EC1B23
+                        box-shadow 0px 0px 6px rgba(0, 0, 0, 0.08)
+                        border-radius 15px
+
+    @media (min-width 640px)
+        .card
+            .back
+                padding 13px 30px !important
+
+                form
+                    width 60%
+
+                    .two_inputs
+                        width 80%
+                        min-width 300px
+
+                        .input
+                            width 140px
+
+                            &:first-child
+                                margin-right 7.5px
+
+                            &:last-child
+                                margin-left 7.5px
+
+                    .num_calca
+                        width 80%
+
+                    .registrar
+                        margin-top 45px
+
+
+                .city
+                    display none
+
+                .city2
+                    display block
+                    width 54%
+
+                .categoria_cont
+                    p
+                        font font_3

@@ -7,9 +7,10 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import RadioPanel from '@/components/radio/radio-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
+import NotFoundPanel from '@/components/not-found-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
-import { CategoriasNavbar, SchedulePage } from '@/graphql/queries.graphql';
+import { SchedulePageRadio } from '@/graphql/queries.graphql';
 import moment from 'moment';
 import {
     Page,
@@ -19,10 +20,12 @@ import {
 
 
 export default function Radio(props) {
-    let station = props.f7route.params.name;
-    let date = moment().startOf('week').format('YYYY-MM-DD');
-    const { loading, error, data } = useQuery(SchedulePage, {
-        variables: { station, date },
+    //let station = props.f7route.params.name;
+    let { name } = props;
+    let startOfWeek = moment().startOf('isoWeek').format('YYYY-MM-DD');
+    //let date = moment().startOf('week').format('YYYY-MM-DD');
+    const { loading, error, data } = useQuery(SchedulePageRadio, {
+        variables: { station: name, date: startOfWeek, radio_tv: false }
     });
     var currentStation = {};
 
@@ -32,10 +35,6 @@ export default function Radio(props) {
         });
     }, []);
 
-    if (data != undefined) {
-        currentStation = data.radio_stations.find(x => x.url === station);
-    }
-
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
 
@@ -43,28 +42,31 @@ export default function Radio(props) {
     {
         f7.views.main.router.navigate('/404/');
     }
+
+    let { radio, programacion } = data;
+    let rightPanel = f7.methods.getArticulosRightPanel();
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
+    let centerPanel = radio.length > 0 ?
+        <RadioPanel estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} /> :
+        <NotFoundPanel />;
     return (
-        <Page pageContent={false} name='tv'>
-            {/* { console.log(data) } */}
-            {/* {console.log(currentStation)} */}
+        <Page pageContent={false} name='radio'>
             <PageContent>
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                    <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
-                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
-                            {
-                                (currentStation != undefined) &&
-                                <RadioPanel station={currentStation} station_list={data.radio_stations} prog={data.programacionSemanas} table_id={props.name} />
-                            }
+                            <AdsTop />
+                            {centerPanel}
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDestacadosRaros} />
-                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>

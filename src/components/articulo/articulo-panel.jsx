@@ -1,127 +1,131 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import SwiperNews from '@/components/general/swiper_news.jsx';
 import marked from 'marked';
-import TWIconx3 from '@/static/icons/TW_Icon_x3.png';
-import FBIconx3 from '@/static/icons/FB_Icon_x3.png';
+import JsxParser from 'react-jsx-parser'
+import TWIconx3 from '@/static/icons/TW_Icon_x4.png';
+import FBIconx3 from '@/static/icons/FB_Icon_x4.png';
 import { useMutation, gql } from '@apollo/client';
 import { UpdateVisitas } from '@/graphql/queries.graphql';
-import {onError} from "apollo-link-error";
+import { onError } from "apollo-link-error";
 import {
     Block,
     Card,
     CardHeader,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    Link,
+    f7
 } from 'framework7-react';
-// import { render } from 'stylus';
 
-
-
-
-// export default function ArticuloPanel(props) {
+export function formatText(x) {
+    const DB_url = f7.methods.get_URL_DB();
+    let value = marked(x);
+    let titleTag = /(<h([1-6])([^>]*)>)/gi;
+    let parrafoTag = /(<p([^>]*)>)/gi;
+    let codeTag = /(<\/?code([^>]*)>)/gi;
+    let listTag = /(<li([^>]*)>)/gi;
+    let listChildTag = /<(ol|ul)([^>]*)>/gi;
+    let anchorTag = /(<a([^>]*)>)/gi;
+    let quoteTag = /<blockquote([^>]*)>/gi;
+    let imgTag = /(<p[^>]*>)([^<]*)<img\s*([^>]*)\s*src=["'`]([^"`']+)["`']\s*([^>]*)(\/?>)(<\/p>)/gi;
+    value = value.replace(titleTag, '<h$2 className="child titulo">');
+    value = value.replace(parrafoTag, '<p className="child parrafo">');
+    value = value.replace(codeTag, '');
+    value = value.replace(listChildTag, '<$1 className="child">');
+    value = value.replace(quoteTag, '<blockquote $1 className="child">');
+    value = value.replace(listTag, '<li $2 className="parrafo">');
+    value = value.replace(anchorTag, '<a $2 className="link external" target="_blank">');
+    value = value.replace(imgTag, `<div className="imagen_cont child">$2<img $3 src="${DB_url}$4" $5 /></div>`);
+    value = value.replace(/\n/gi, ``);
+    return (value);
+}
 export default class ArticuloPanel extends Component {
     constructor(props) {
         super(props);
-        // var MarkdownIt = require('markdown-it');
-        // this.md = new MarkdownIt();
-        // this.result = this.md.render(props.articulo.description);
-        this.result = marked(props.articulo.description);
-
-        console.log("El this.result:\r\n",this.result);
     }
     componentDidMount() {
-        console.log("Mounted");
         FB.XFBML.parse();
     }
     render() {
+        let { articulo, recomendados } = this.props
+        const DB_url = f7.methods.get_URL_DB();
+        const url = f7.methods.get_URL();
+        let urlThing = url + `/articulo/${articulo.url}/`;
+        //let encodedUrlThing = encodeURIComponent(urlThing);
+        let result = formatText(articulo.description);
+
         return (
             <Block className="articulo_panel center_panel">
                 <Card className="articulo">
                     <Block className="header_cont display-flex justify-content-space-between">
                         <CardHeader>
-                            <a href={`/categoria/${this.props.articulo.categoria.nombre}`}>{this.props.articulo.categoria.nombre}</a>
+                            <a href={`/categoria/${articulo.categoria.nombre}`}>{articulo.categoria.nombre}</a>
                         </CardHeader>
                         <Block className="share display-flex align-items-center">
                             <p>Compartir:</p>
-                            <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
+                            <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
                                 <img src={TWIconx3} alt="" />
                             </a>
-                            <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
-                                <img src={FBIconx3} alt="" />
-                            </a>
+                            <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
+                                <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
+                                    <img src={FBIconx3} alt="" />
+                                </a>
+                            </div>
                         </Block>
                     </Block>
                     <Block className="title_cont">
                         <Block className="head display-flex justify-content-flex-start">
-                            <p className="autor"> {this.props.articulo.autor.nombre} </p> - <p className="fecha"> {this.props.articulo.fecha} </p>
+                            <a className="autor" href={`/autor/${articulo.autor.url}`}> {articulo.autor.nombre} </a> - <p className="fecha"> {articulo.fecha} </p>
                         </Block>
-                        <Block className="titulo">{this.props.articulo.Titulo}</Block>
+                        <Block className="titulo">{articulo.Titulo}</Block>
                         <Block className="img_cont display-flex flex-direction-column">
-                            {/* <img src="../static/imgs/418464-PD8PXQ-214 1.png" alt="" /> */}
-                            <img src={`http://${window.location.hostname}:1337${this.props.articulo.cover.url}`} alt="" />
-                            <Block className="foot display-flex justify-content-flex-start align-items-center">
-                                <p className="pieTitulo">Pie de foto</p> - <p className="pie">Pie de foto</p>
-                            </Block>
+                            <img src={DB_url + articulo.cover.url} alt="" />
+                            {/* <Block className="foot display-flex justify-content-flex-start align-items-center">
+                            <p className="pieTitulo">Pie de foto</p> - <p className="pie">Pie de foto</p>
+                        </Block> */}
                         </Block>
                     </Block>
                     <Block className="content display-flex align-items-flex-start">
                         <Block className="left_side">
-    
-                            <Block className="articulo_cont">
-                                <p dangerouslySetInnerHTML={{ __html: this.result }}>
-                                    {/* {console.log("La weaaaaa", this.result)} */}
-                                    {/* {this.result} */}
-                                    {/* {this.props.articulo.description}
-
-                                    aaah
-                                    <br/>
-                                    <br/>
-                                    {this.md.render(this.props.articulo.description)} */}
-                                    {/* aqui va el contenido */}
-                                    {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. */}
-                                </p>
-                                {/* <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
-                                </p> */}
-                                <Block className="quotes display-flex align-items-center">
-                                    {/* <p className="comillas up">&#8220;</p> */}
-                                    <p className="text"> El cafe con leche es como el cafe, pero con leche</p>
-                                    {/* <p className="comillas down">&#8221;</p> */}
-                                </Block>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
-                                </p>
-                            </Block>
-                            <Block className="tags display-flex justify-content-flex-start align-items-flex-start">
+                            <JsxParser
+                                components={{ Block }}
+                                jsx={`
+                                    <div className="articulo_cont markdown">
+                                    ${result}
+                                    <Block className="child ads side">
+                                    </Block>
+                                    <Block className="child ads side">
+                                    </Block>
+                                    </div>`
+                                }
+                            />
+                            <Block className="tags">
                                 <p>
                                     Tags Relacionados:
                                 </p>
-                                <Block className="links">
-                                    <a href=""> Coahuila </a>
-                                    <a href=""> Saltillo </a>
-                                    <a href=""> Reporte </a>
-                                    <a href=""> Alcalde </a>
-                                    <a href=""> RCG </a>
-                                </Block>
+                                {
+                                    articulo.tags.map((tag, i) => {
+                                        return (
+                                            <a key={i} href={`/busqueda/${tag.nombre}`}>{tag.nombre}</a>
+                                        )
+                                    })
+                                }
                             </Block>
                             <Block className="comments">
-    
+                                <div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
                             </Block>
-                            <Block className="share display-flex align-items-center">
+                            <Block className="share display-flex align-items-center justify-content-flex-end">
                                 <p>Compartir:</p>
-                                <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
+                                <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
                                     <img src={TWIconx3} alt="" />
                                 </a>
-                                <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
-                                    <img src={FBIconx3} alt="" />
-                                </a>
-                            </Block>
-                            <Block>
-                                Comentario
-                                <div className="fb-comments" data-href={`http://${window.location.hostname}:8080/articulo/${this.props.articulo.url}/`} data-numposts="" data-width=""></div>
+                                <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
+                                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
+                                        <img src={FBIconx3} alt="" />
+                                    </a>
+                                </div>
                             </Block>
                         </Block>
-    
                         <Block className="right_side">
                             <Block className="ads side">
                             </Block>
@@ -129,24 +133,27 @@ export default class ArticuloPanel extends Component {
                             </Block>
                         </Block>
                     </Block>
+                    <Block className="comments tab">
+                        <div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
+                    </Block>
+                    <Block className="share tab display-flex align-items-center justify-content-flex-end">
+                        <p>Compartir:</p>
+                        <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
+                            <img src={TWIconx3} alt="" />
+                        </a>
+                        <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
+                            <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`} className="fb-xfbml-parse-ignore external">
+                                <img src={FBIconx3} alt="" />
+                            </a>
+                        </div>
+                    </Block>
                     <Block className="ads_cont">
                         <Block className="ads bar">
                         </Block>
                     </Block>
-                    <SwiperNews articulos={[]}/>
+                    <SwiperNews articulos={recomendados} />
                 </Card>
             </Block>
-        )
+        );
     }
-    
 }
-// export default class ArticuloPanel extends Component {
-//     constructor() {
-//         super();
-//     }
-//     render() {
-//         return (
-            
-//         );
-//     }
-// }

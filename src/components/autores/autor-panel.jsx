@@ -14,15 +14,17 @@ export default class AutorPanel extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
-        let { autor, articulosNum } = this.props;
-        if(autor.length <= 0) return <NotFoundPanel/>
+        let { autor, articulosNum, articulos } = this.props;
         let DB_url = f7.methods.get_URL_DB();
+        let autorUrl = autor[0].img ? DB_url + autor[0].img.url : "/static/icons/person_x2.png";
+        console.log(autor);
         return (
             <Block className="autor center_panel">
                 <Card className="autor_head">
                     <Block className="image_cont">
-                        <img src={DB_url + autor[0].img.url} />
+                        <img src={autorUrl} />
                     </Block>
                     <Block className="info_cont">
                         <Block className="name_info">
@@ -36,18 +38,13 @@ export default class AutorPanel extends Component {
                         </Block>
                     </Block>
                 </Card>
-                <NewsBusqueda />
-                <NewsBusqueda />
-                <NewsBusqueda />
-                <NewsBusqueda />
-                <NewsBusqueda />
-                {/* {
-                        this.props.autorInfo.articulos.map((articulo, key) => {
-                            return (
-                                <NewsCard key={key} articulo={articulo} />
-                            );
-                        })
-                    } */}
+                {
+                    articulos.map((articulo, key) => {
+                        return (
+                            <NewsBusqueda key={key} className="" articulo={articulo} />
+                        );
+                    })
+                }
             </Block>
         );
     }

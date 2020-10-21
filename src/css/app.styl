@@ -12,7 +12,6 @@
 @import './stylus/components/articulo/card-articulo.styl'
 @import './stylus/components/general/left_panel/cards-left-panel.styl'
 @import './stylus/components/general/right_panel/cards-right-panel.styl'
-@import './stylus/components/cards-news.styl'
 @import './stylus/components/tv/card-tv.styl'
 @import './stylus/components/radio/card-radio.styl'
 @import './stylus/components/general/swiper.styl'
@@ -32,9 +31,23 @@
 @import './stylus/components/cards_news/news_home.styl'
 @import './stylus/components/cards_news/news_busqueda.styl'
 @import './stylus/components/cards_news/news_swiper.styl'
+@import './stylus/components/cards_news/news_categoria.styl'
 @import './stylus/components/autores/autor.styl'
 @import './stylus/components/autores/autores.styl'
 @import './stylus/components/autores/card-autor.styl'
+@import './stylus/components/estaticas/nosotros.styl'
+@import './stylus/components/estaticas/av-priv.styl'
+@import './stylus/components/estaticas/der-replica.styl'
+@import './stylus/components/estaticas/faq.styl'
+@import './stylus/components/estaticas/contacto.styl'
+@import './stylus/components/calcas/calcas.styl'
+@import './stylus/components/popovers/popup-calca.styl'
+@import './stylus/components/popovers/popup-contact.styl'
+@import './stylus/components/busqueda/busqueda.styl'
+@import './stylus/components/espectaculares/espectaculares.styl'
+@import './stylus/components/catalogo/catalogo.styl'
+@import './stylus/components/popovers/popup-photo.styl'
+@import './stylus/components/general/markdown.styl'
 
 /* iOS Cordova Tweak */
 .device-cordova.device-ios
@@ -43,6 +56,10 @@
 /* Your app custom styles here */
 .page-content
   background white_l
+  padding-bottom 60px
+
+  @media (min-width 640px)
+    padding-bottom 0px
 
   &.darkTheme
     background grey_d
@@ -52,7 +69,6 @@
 
 .main_cont
   width auto
-  // width fit-content //active
   margin 0px auto
   padding 0px
 
@@ -64,6 +80,7 @@
     padding 0px
 
     .center_pan
+      min-height calc(100vh - 60px)
       margin 0px
       padding 5px 10px
       width 100%
@@ -82,8 +99,12 @@
           margin 10px
           padding 0px
           position relative
-          height 0
-          padding-top calc(60 / 468 * 100%)
+          height 100%
+
+          &:after
+            content ''
+            display flex
+            padding-top calc(60 / 468 * 100%)
 
           .ads
             position absolute
@@ -103,6 +124,11 @@
       .center_pan
         width calc(100% - 135px) !important
         padding-left 0px
+
+        &.wo_right_pan
+          width calc(100% - 90px) !important
+          padding-left 10px
+          padding-right 10px
 
       .left_pan
         display block
@@ -126,6 +152,9 @@
         width calc(100% - 410px) !important
         padding-right 0px
         padding-left 0px
+
+        &.wo_right_pan
+          width calc(100% - 190px) !important
 
       .left_pan
         width 14%

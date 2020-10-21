@@ -1,0 +1,36 @@
+mutation CreateCalca(
+  $nombre: String!
+  $dir: String!
+  $ciudad: String!
+  $tel: String!
+  $serial: String!
+) {
+  createCalca(
+    input: {
+      data: {
+        nombre: $nombre
+        direccion: $dir
+        ciudad: $ciudad
+        telefono: $tel
+        numero_calca: $serial
+      }
+    }
+  ) {
+    calca {
+      nombre
+      direccion
+      ciudad
+      telefono
+      numero_calca
+    }
+  }
+}
+
+mutation UpdateArticulo($id: ID!, $visitas: Int) {
+  updateArticulo(input: { where: { id: $id }, data: { visitas: $visitas } }) {
+    articulo {
+      id
+      visitas
+    }
+  }
+}

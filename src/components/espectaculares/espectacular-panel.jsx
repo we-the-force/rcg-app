@@ -1,46 +1,70 @@
-import React, {Component} from 'react';
-
+import React, { Component } from 'react';
+import Portada from '@/static/imgs/Espectaculares-Portada 1.png'
 import {
-    Page,
     Block,
     Card,
-    CardHeader,
-    Link,
-    PageContent
+    BlockHeader,
+    f7
 } from 'framework7-react';
 
-export default class EspectacularPanel extends Component {
-    constructor(props) {
-        super(props);
-        // console.log("EspectacularPanel", props);
-    }
-    render() {
-        return (
-            <Block className="center_panel">
-                <Card>
-                    <h2>NOSOTROS</h2>
-                    <p>{this.props.espectacularInfo.nosotros}</p>
-                </Card>
-                <Card>
-                    <h2>¿POR QUÉ NOSOTROS?</h2>
-                    <p>{this.props.espectacularInfo.porque_nosotros}</p>
-                </Card>
-                <Card>
-                    <h2>NUESTROS CLIENTES</h2>
-                    <Block className="display-flex">
+export default function EspectacularPanel(props) {
+    const { info, clientes } = props;
+    let DB_url = f7.methods.get_URL_DB();
+    let nosotrosImagen = info.NosotrosImagen ? DB_url + info.NosotrosImagen.url : "/static/icons/image_x2.png";
+    let porqueNosotrosImagen = info.PorqueNosotrosImagen ? DB_url + info.PorqueNosotrosImagen.url : "/static/icons/image_x2.png";
+    return (
+        <Block className="center_panel espectacular_panel">
+            <Card>
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>nosotros</h2>
+                    </BlockHeader>
+                    <div className="content">
+                        <p>{info.nosotros}</p>
+                        <div className="quote">
+                            <p className="text">RCG espectaculares somos una empresa líder en publicidad, por la permanencia y crecimiento continuo de nuestros clientes. Además, contamos con personal profesional cualificado para garantizar y superar sus expectativas en innovación publicitaria.</p>
+                        </div>
+                    </div>
+                    <div className="img_cont">
+                        <img src={nosotrosImagen} alt="" />
+                    </div>
+                </Block>
+            </Card>
+            <Card>
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>¿por qué nosotros?</h2>
+                    </BlockHeader>
+                    <div className="content">
+                        <p>{info.porque_nosotros}</p>
+                    </div>
+                    <div className="img_cont">
+                        <img src={porqueNosotrosImagen} alt="" />
+                    </div>
+                </Block>
+            </Card>
+            <Card className="clientes">
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>nuestros clientes</h2>
+                    </BlockHeader>
+                    <Block className="content">
                         {
-                            this.props.clientes.map((cliente, key) => {
-                                // console.log("Clientes\r\n: ", cliente);
-                                return(
-                                    <Block key={key}>
-                                        <img src={`http://${window.location.hostname}:1337${cliente.logo.url}`} alt="" />
-                                    </Block>
+                            clientes.map((cliente, key) => {
+                                let clienteUrl = cliente.logo ? DB_url + cliente.logo.url : "/static/icons/image_x2.png";
+                                return (
+                                    <div className="img_cont" key={key}>
+                                        <img src={clienteUrl} alt="" />
+                                    </div>
                                 )
                             })
                         }
                     </Block>
-                </Card>
-            </Block>
-        )
-    }
+                </Block>
+            </Card>
+            <div className="portada_cont">
+                <img src={Portada} alt="" />
+            </div>
+        </Block>
+    )
 }

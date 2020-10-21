@@ -1,264 +1,146 @@
-import React, {Component} from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { f7 } from 'framework7-react';
 
 import {
-    Page,
     Block,
     Card,
-    CardHeader,
+    BlockHeader,
     Link,
-    PageContent
+    PhotoBrowser
 } from 'framework7-react';
 
-export default class CatalogoPanel extends Component {
-    listContainsCategory(category, list)
-    {
-        for (let i = 0; i < list.length; i++)
-        {
-            if (list[i].zone === category)
-            {
-                return true;
-            }
-        }
-        return false;
+export default function CatalogoPanel(props) {
+    const { centro, norte, oriente, poniente, sur } = props.data;
+    const DB_url = f7.methods.get_URL_DB();
+    const photoBrowser = useRef(null);
+    const [photos, setPhotos] = useState([]);
+
+    const handleClick = (el, face) => {
+        let newPhotos = [];
+        props.data[el.zona].map((el, i) => {
+            newPhotos.push(DB_url + el.cara1.url);
+            newPhotos.push(DB_url + el.cara2.url);
+        });
+        setPhotos(newPhotos);
+        photoBrowser.current.open(face - 1);
     }
-    constructor(props) {
-        super(props);
-        // console.log(props);
 
-        // this.espectaculares = [];
-
-        // props.catalogoInfo.forEach((espectacular) => {
-        //     console.log(espectacular);
-        //     if (this.listContainsCategory(espectacular.zona, this.espectaculares))
-        //     {
-        //         console.log("Si como no");
-        //     }
-        //     else
-        //     {
-        //         console.log("Chale que siempre no");
-        //     }
-        // });
-
-        //searchResults.filter(a => a.url === articulo.url).length === 0
-
-
-    }
-    render() {
+    const EspectTwoFaces = (prop) => {
+        const { el, index } = prop;
+        let cara1Url = el.cara1 ? DB_url + el.cara1.url : "/static/icons/image_x2.png";
+        let cara2Url = el.cara2 ? DB_url + el.cara2.url : "/static/icons/image_x2.png";
         return (
-            <Block className="center_panel">
-                <Card>
-                    <h2>ZONA CENTRO</h2>
-                    <Block className="display-flex">
-                        {
-                            this.props.catalogoInfo.centro.map((espectacular, key) => {
-                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                // console.log("Cara1: ", espectacular.cara1);
-                                let htmlCara1 = "";
-                                let htmlCara2 = "";
-                                if (espectacular.cara1 != null)
-                                {
-                                    htmlCara1 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 1</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara1);
-                                }
-                                if (espectacular.cara2 != null)
-                                {
-                                    htmlCara2 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 2</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara2);
-                                }
-                                return (
-                                    <Block key={key} className="display-flex">
-                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
-                                        {htmlCara1}
-                                        {htmlCara2}
-                                    </Block>
-                                )
-                            })
-                        }
-                    </Block>
-                </Card>
-                <Card>
-                    <h2>ZONA NORTE</h2>
-                    <Block className="display-flex">
-                        {
-                            this.props.catalogoInfo.norte.map((espectacular, key) => {
-                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                // console.log("Cara1: ", espectacular.cara1);
-                                let htmlCara1 = "";
-                                let htmlCara2 = "";
-                                if (espectacular.cara1 != null)
-                                {
-                                    htmlCara1 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 1</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara1);
-                                }
-                                if (espectacular.cara2 != null)
-                                {
-                                    htmlCara2 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 2</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara2);
-                                }
-                                return (
-                                    <Block key={key} className="display-flex">
-                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
-                                        {htmlCara1}
-                                        {htmlCara2}
-                                    </Block>
-                                )
-                            })
-                        }
-                    </Block>
-                </Card>
-                <Card>
-                    <h2>ZONA ORIENTE</h2>
-                    <Block className="display-flex">
-                        {
-                            this.props.catalogoInfo.oriente.map((espectacular, key) => {
-                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                // console.log("Cara1: ", espectacular.cara1);
-                                let htmlCara1 = "";
-                                let htmlCara2 = "";
-                                if (espectacular.cara1 != null)
-                                {
-                                    htmlCara1 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 1</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara1);
-                                }
-                                if (espectacular.cara2 != null)
-                                {
-                                    htmlCara2 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 2</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara2);
-                                }
-                                return (
-                                    <Block key={key} className="display-flex">
-                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
-                                        {htmlCara1}
-                                        {htmlCara2}
-                                    </Block>
-                                )
-                            })
-                        }
-                    </Block>
-                </Card>
-                <Card>
-                    <h2>ZONA PONIENTE</h2>
-                    <Block className="display-flex">
-                        {
-                            this.props.catalogoInfo.poniente.map((espectacular, key) => {
-                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                // console.log("Cara1: ", espectacular.cara1);
-                                let htmlCara1 = "";
-                                let htmlCara2 = "";
-                                if (espectacular.cara1 != null)
-                                {
-                                    htmlCara1 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 1</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara1);
-                                }
-                                if (espectacular.cara2 != null)
-                                {
-                                    htmlCara2 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 2</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara2);
-                                }
-                                return (
-                                    <Block key={key} className="display-flex">
-                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
-                                        {htmlCara1}
-                                        {htmlCara2}
-                                    </Block>
-                                )
-                            })
-                        }
-                    </Block>
-                </Card>
-                <Card>
-                    <h2>ZONA SUR</h2>
-                    <Block className="display-flex">
-                        {
-                            this.props.catalogoInfo.sur.map((espectacular, key) => {
-                                // console.log(`Data: (${espectacular.id_espectacular})\r\n`, espectacular);
-                                // console.log("Cara1: ", espectacular.cara1);
-                                let htmlCara1 = "";
-                                let htmlCara2 = "";
-                                if (espectacular.cara1 != null)
-                                {
-                                    htmlCara1 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 1</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara1.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara1);
-                                }
-                                if (espectacular.cara2 != null)
-                                {
-                                    htmlCara2 = (
-                                        <Block>
-                                            <p>{espectacular.id_espectacular} - Cara 2</p>
-                                            <img src={`http://${window.location.hostname}:1337${espectacular.cara2.url}`}/>
-                                            <p>{espectacular.lugar} - Fecha</p>
-                                        </Block>
-                                    );
-                                    // console.log("Cara1 :D\r\n", htmlCara2);
-                                }
-                                return (
-                                    <Block key={key} className="display-flex">
-                                        {/* <div dangerouslySetInnerHTML={htmlCara1}/> */}
-                                        {htmlCara1}
-                                        {htmlCara2}
-                                    </Block>
-                                )
-                            })
-                        }
-                    </Block>
-                </Card>
-            </Block>
-        )
+            <Fragment>
+                <Link className="img_cont" onClick={() => { handleClick(el, ((index * 2) + 1)) }}>
+                    <div className="name">
+                        <p>{el.id_espectacular} - cara 1</p>
+                    </div>
+                    <img src={cara1Url} alt="" />
+                    <p className="lugar">{el.lugar}</p>
+                </Link>
+                <Link className="img_cont" onClick={() => { handleClick(el, ((index * 2) + 2)) }}>
+                    <div className="name">
+                        <p>{el.id_espectacular} - cara 2</p>
+                    </div>
+                    <img src={cara2Url} alt="" />
+                    <p className="lugar">{el.lugar}</p>
+                </Link>
+            </Fragment>
+        );
     }
+
+    return (
+        <Block className="center_panel catalogo_panel">
+            <PhotoBrowser
+                photos={photos}
+                ref={photoBrowser}
+                theme="dark"
+                type="popup"
+                routableModals={false}
+                popupCloseLinkText="Cerrar"
+                navbarOfText="de"
+            />
+            <Card>
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>zona centro</h2>
+                    </BlockHeader>
+                    <Block className="content">
+                        {
+                            centro.map((el, i) => {
+                                return (
+                                    <EspectTwoFaces key={i} el={el} index={i} />
+                                );
+                            })
+                        }
+                    </Block>
+                </Block>
+            </Card>
+            <Card>
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>zona norte</h2>
+                    </BlockHeader>
+                    <Block className="content">
+                        {
+                            norte.map((el, i) => {
+                                return (
+                                    <EspectTwoFaces key={i} el={el} index={i} />
+                                );
+                            })
+                        }
+                    </Block>
+                </Block>
+            </Card>
+            <Card>
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>zona oriente</h2>
+                    </BlockHeader>
+                    <Block className="content">
+                        {
+                            oriente.map((el, i) => {
+                                return (
+                                    <EspectTwoFaces key={i} el={el} index={i} />
+                                );
+                            })
+                        }
+                    </Block>
+                </Block>
+            </Card>
+            <Card>
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>zona poniente</h2>
+                    </BlockHeader>
+                    <Block className="content">
+                        {
+                            poniente.map((el, i) => {
+                                return (
+                                    <EspectTwoFaces key={i} el={el} index={i} />
+                                );
+                            })
+                        }
+                    </Block>
+                </Block>
+            </Card>
+            <Card>
+                <Block className="back">
+                    <BlockHeader>
+                        <h2>zona sur</h2>
+                    </BlockHeader>
+                    <Block className="content">
+                        {
+                            sur.map((el, i) => {
+                                return (
+                                    <EspectTwoFaces key={i} el={el} index={i} />
+                                );
+                            })
+                        }
+                    </Block>
+                </Block>
+            </Card>
+        </Block>
+    )
 }

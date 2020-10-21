@@ -7,81 +7,63 @@ import RightPanelTablet from '@/components/general/right_panel/right-panel-table
 import Footer from '@/components/general/footer';
 import ArticuloPanel from '@/components/articulo/articulo-panel';
 import AdsTop from '@/components/general/ads_top';
-import { f7,f7ready } from 'framework7-react';
-import { useQuery, gql, useMutation } from '@apollo/client';
-import { ArticuloPage } from '@/graphql/queries.graphql';
+import { f7, f7ready } from 'framework7-react';
+import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
+import { ArticuloPage, Recomendados, RecomendadosCateg } from '@/graphql/queries.graphql';
+import { UpdateArticulo } from '@/graphql/mutations.graphql';
 import {
     Page,
     Block,
     PageContent
 } from 'framework7-react';
 
-const UPDATE_VISITAS = gql`
-    mutation UpdateArticulo($id: ID!, $visitas: Int) {
-        updateArticulo(
-            input: {
-                where: {id: $id}
-                data: {visitas: $visitas}
-            }
-        )
-        {
-            articulo {
-                id
-                visitas
-            }
-        }
-    }
-`;
-
 export default function Articulo(props) {
-    let url = props.url;
-    const [NPDV, setNPDV] = useState(null);
-    const { loading, error, data } = useQuery(ArticuloPage, {
-        variables: { url },
+    const { url } = props;
+    const [flag, setFlag] = useState(false);
+    const [recomendados, setRecomendados] = useState([]);
+    const [updateArticulo] = useMutation(UpdateArticulo, {
+        onCompleted: (data) => {}
+    });
+
+    const [getRecomendados] = useLazyQuery(Recomendados, {
         onCompleted: (data) => {
-            // console.log("El data como no", data);
-            setNPDV(data);
+            setRecomendados(data.swiper);
         }
     });
 
-    const [updateArticulo] = useMutation(UPDATE_VISITAS);
+    const [getRecomendadosCateg] = useLazyQuery(RecomendadosCateg, {
+        onCompleted: (data) => {
+            setRecomendados(data.swiper);
+        }
+    });
 
-    useEffect(() => {
-        // console.log('Use Effect como no', NPDV);
-        var addView = false;
-        if (NPDV != null && NPDV.articulos.length > 0) {
-            var sourceViewedArticles = window.sessionStorage.getItem('viewedArticles');
-            // console.log("Viewed articles", sourceViewedArticles);
-            if (sourceViewedArticles != null) {
-                let jsonArticles = JSON.parse(sourceViewedArticles)
-                // console.log("Thing existed: ",jsonArticles);
-                if (jsonArticles.includes(NPDV.articulos[0].url)) {
-                    // console.log("Ya estaba, no agregues nada pls");
-                }
-                else {
-                    addView = true;
-                    jsonArticles.push(NPDV.articulos[0].url);
-                    window.sessionStorage.setItem('viewedArticles', JSON.stringify(jsonArticles));
-                }
-            }
-            else {
-                addView = true;
-                // console.log("viewed articles was null, creating thing");
-                sourceViewedArticles = [];
-                sourceViewedArticles.push(NPDV.articulos[0].url);
-                // console.log("viewedArticles after adding current one", sourceViewedArticles);
-                let jsonArticles = JSON.stringify(sourceViewedArticles);
-                window.sessionStorage.setItem('viewedArticles', jsonArticles);
-            }
-            if (addView) {
-                const visitas = NPDV.articulos[0].visitas + 1;
-                // console.log(`Las visitas ahora son: ${visitas}`);
-                const id = NPDV.articulos[0].id
-                // console.log(`Updating article '${id}' with ${visitas}`);
-                updateArticulo({ variables: { "id": id, "visitas": visitas } });
+    const { loading, error, data } = useQuery(ArticuloPage, {
+        variables: { url },
+        onCompleted: (data) => {
+            setFlag(true);
+            if(data.articulos[0].tags.length > 0){
+                getRecomendados({
+                    variables:
+                    {
+                        tag: data.articulos[0].tags[0].nombre
+                    }
+                });
+            }else{
+                getRecomendadosCateg({
+                    variables:
+                    {
+                        categ: data.articulos[0].categoria.nombre
+                    }
+                });
             }
         }
-    }, [NPDV]);
+    });
+
+    const addVisitas = () => {
+        let visitas = data.articulos[0].visitas + 1;
+        let id = data.articulos[0].id;
+        updateArticulo({ variables: { "id": id, "visitas": visitas } });
+    }
 
     useEffect(() => {
         f7ready((f7) => {
@@ -89,41 +71,50 @@ export default function Articulo(props) {
         });
     }, []);
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
-    if (data.articulos.length === 0)
-    {
-        // El articulo no existia, redirecciona a 404.
-        console.log("This: ", f7.views.main);
-        f7.views.main.router.navigate('/404/');
-    }
-    console.log("Ayy el articulo se termino?", data);
+    useEffect(() => {
+        if (flag) {
+            let viewedArticles = window.sessionStorage.getItem('viewedArticles');
+            if (viewedArticles != null) {
+                let jsonArticles = JSON.parse(viewedArticles);
+                if (!jsonArticles.includes(data.articulos[0].url)) {
+                    jsonArticles.push(data.articulos[0].url);
+                    window.sessionStorage.setItem('viewedArticles', JSON.stringify(jsonArticles));
+                    addVisitas();
+                }
+            }
+            else {
+                viewedArticles = [data.articulos[0].url];
+                let jsonArticles = JSON.stringify(viewedArticles);
+                window.sessionStorage.setItem('viewedArticles', jsonArticles);
+                addVisitas();
+            }
+        }
+    }, [flag]);
+
+    let centerPanel = loading ?
+        'Loading' :
+        <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
+    let rightPanel = f7.methods.getArticulosRightPanel();
+    let leftPanelTV = f7.methods.getTV();
+    let leftPanelRadio = f7.methods.getRadio();
     return (
         <Page pageContent={false} name="articulo">
             <PageContent>
-                {/* ads */}
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
-                    <AdsTop />
                     <Block className="paneles">
                         <Block className="left_pan">
-                            <LeftPanel tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
-                            <LeftPanelTablet tv_channels={data.tv_channels} radio_stations={data.radio_stations} />
+                            <LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                            <LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                         </Block>
                         <Block className="center_pan">
-                            {
-                                (data.articulos.length > 0) &&
-                                <ArticuloPanel articulo={data.articulos[0]} />
-                            }
-                            {
-                                (data.articulos.length === 0) &&
-                                <p>AAAAAAAH</p>
-                            }
+                            <AdsTop />
+                            {centerPanel}
                         </Block>
                         <Block className="right_pan">
-                            <RightPanel newsInfo={data.articulosDestacadosRaros} />
-                            <RightPanelTablet newsInfo={data.articulosDestacadosRaros} />
+                            <RightPanel newsInfo={rightPanel} />
+                            <RightPanelTablet newsInfo={rightPanel} />
                         </Block>
                     </Block>
                 </Block>

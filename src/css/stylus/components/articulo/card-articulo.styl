@@ -1,19 +1,20 @@
 .card.articulo
     width 100%
     margin 0px
-    padding 15px
+    padding 10px
     box-sizing border-box
 
     .header_cont
         padding 0px
+        padding-top 5px
 
         .card-header
-            padding 0px 0px 0px 7px
+            padding 0px
             min-height unset !important
 
             a
-                padding-right 10px
-                font font_7
+                padding 0px
+                font font_2
                 text-transform capitalize
                 color #303030
 
@@ -21,29 +22,30 @@
                 content none
 
         .share
-            padding 15px 7px 0px 0px
+            padding 0px
 
             p
-                font font_3
+                font font_22
                 text-transform capitalize
-                color #444444
+                color #000
                 margin 0px
 
             a
                 padding-left 5px
-                width 25px
-                height 25px
+                width 20px
+                height 20px
 
                 img
                     width 100%
+                    height 100%
 
     .title_cont
-        padding 15px 0px 0px 0px
+        padding 0px
 
         .head
-            padding 0px 0px 0px 7px
+            padding 0px
             margin 10px 0px
-            font font_8
+            font font_6
             color #979797
             text-transform capitalize
 
@@ -59,41 +61,37 @@
 
         .titulo
             padding 0px
-            font font_9
+            font font_12
             text-transform capitalize
             color #242424
             white-space normal
 
         .img_cont
-            padding 10px 0px
+            margin 10px 0px
+            padding 0px
             width 100%
+            position relative
 
             img
+                position absolute
+                top 0
+                left 0
+                height 100%
                 width 100%
                 object-fit cover
+                border-radius 6px
 
-            .foot
-                padding 0px 0px 0px 7px
-                margin 10px 0px
-                font font_8
-                color #5e5e5e
-                text-transform capitalize
-
-                p
-                    margin 0px
-
-                .pieTitulo
-                    padding-right 5px
-                    font-weight bold
-
-                .pie
-                    padding-left 5px
+            &:after
+                content ''
+                display block
+                padding-top calc(271 / 326 * 100%)
 
     .content
         margin 0px
         padding 10px 0px
 
         .right_side
+            display none
             padding 0px
             width fit-content
 
@@ -102,82 +100,75 @@
                 margin-bottom 20px
 
         .left_side
-            padding 0px 20px
+            padding 0px 5px
 
             .articulo_cont
                 padding 0px
+                display flex
+                flex-direction column
 
-                p
-                    margin-top 0px
-                    margin-bottom 20px
-                    padding 0px
-                    font font_8
-                    line-height 16px
-                    text-align justify
-                    text-transform capitalize
-                    color black
+                .child
+                    &:nth-child(1)
+                        order 0
 
-                .quotes
-                    width 100%
-                    height 200px
-                    background #FA565D
-                    margin-bottom 20px
+                    &:nth-child(2)
+                        order 1
+
+                    &:nth-child(3)
+                        order 2
+
+                    &:nth-child(4)
+                        order 4
+
+                    &:nth-child(5)
+                        order 5
+
+                    &:nth-child(6)
+                        order 6
+
+                    &:nth-child(n+7)
+                        order 8
+
+                    &:nth-last-child(2)
+                        order 3 !important
+
+                    &:nth-last-child(1)
+                        order 7 !important
+
+                .ads.side
+                    position relative
+                    width 90%
+                    margin 8px auto
+                    border-radius 6px
 
                     &:after
-                        content '\201C'
-                        position absolute
-                        margin-left 25px
-                        margin-right 25px
-                        font font_r
-                        color white
-                        top 0
-                        left 0
-                        margin-top 15px
-
-                    &:before
-                        content '\201D'
-                        position absolute
-                        margin-left 25px
-                        margin-right 25px
-                        font font_r
-                        color white
-                        bottom 0px
-                        right 0px
-                        margin-bottom -38px
-
-                    .text
-                        font_mix(normal, 18px, 20px)
-                        color white
-                        text-transform capitalize
-                        text-align center
-                        margin 0px 25px
-                        width 100%
+                        content ''
+                        display block
+                        padding-top calc(300 / 200 * 90%)
 
             .tags
                 padding 0px
-                font font_8
                 text-transform capitalize
-                margin-bottom 50px
+                margin-bottom 30px
 
                 p
                     color black
+                    font font_8
                     font-weight 500
                     margin 0px
+                    line-height 20px
                     padding-right 10px
                     white-space nowrap
 
-                .links
-                    padding 0px
-
-                    a
-                        font font_8
-                        line-height 20px
-                        color red
-                        padding-right 10px
+                a
+                    font font_8
+                    line-height 20px
+                    color red
+                    padding-right 10px
 
             .comments
                 width 100%
-                height 150px
+                height fit-content
 
             .share
                 padding 10px 0px
@@ -197,6 +188,33 @@
 
                     img
                         width 100%
+                        height 100%
+
+    .comments.tab
+        display none
+        width 100%
+        height fit-content
+
+    .share.tab
+        display none !important
+        padding 10px 0px
+        border-top 0.3px solid #D5D5D5
+        border-bottom 0.3px solid #D5D5D5
+
+        p
+            font font_3
+            text-transform capitalize
+            color #444444
+            margin 0px
+
+        a
+            padding-left 5px
+            width 25px
+            height 25px
+
+            img
+                width 100%
+                height 100%
 
     .ads_cont
         width 100%
@@ -205,91 +223,54 @@
         margin-right -15px
 
         .ads.bar
+            border-radius 4px
             margin-left auto
             margin-right auto
 
     .recomendados
         margin-top 40px
-    //    padding 0px
-//
-    //    .head
-    //        padding 0px 0px 15px 0px
-//
-    //        /* margin-bottom 50vh */
-    //        h1
-    //            padding-right 10px
-    //            margin 0px
-    //            font font_7
-    //            text-transform capitalize
-    //            color #303030
-//
-    //        a
-    //            font font_10
-    //            color #2AAAE0
-    //            margin 0px
-//
-    //.swiper-container
-    //    padding-bottom 50px
-//
-    //    .swiper-scrollbar
-    //        width 35%
-    //        height 10px
-    //        margin 20px auto
-    //        bottom 0px
-    //        left 50%
-    //        background #ECECEC
-    //        transform translateX(-50%)
-//
-    //        .swiper-scrollbar-drag
-    //            background red
-    //            border-radius 6.66667px
-//
-    //    .swiper-button-prev
-    //        width 20px
-    //        height 20px
-    //        bottom 0px
-    //        left 0px
-    //        top unset
-    //        margin-top 15px
-    //        margin-bottom 15px
-    //        margin-left calc(32.5% - 30px)
-    //        margin-right 15px
-    //        
-//
-    //        &:after
-    //            content 'play_arrow'
-    //            font-family 'Material Icons'
-    //            font-size 25px
-    //            width 100%
-    //            height 100%
-    //            transform scaleX(-1)
-    //            display flex
-    //            justify-content center
-    //            align-items center
-    //            color red
-//
-    //    .swiper-button-next
-    //        width 20px
-    //        height 20px
-    //        right 0px
-    //        bottom 0px
-    //        top unset
-    //        margin-top 15px
-    //        margin-bottom 15px
-    //        margin-left 15px
-    //        margin-right calc(32.5% - 30px)
-//
-    //        &:after
-    //            content 'play_arrow'
-    //            font-family 'Material Icons'
-    //            font-size 25px
-    //            width 100%
-    //            height 100%
-    //            display flex
-    //            justify-content center
-    //            align-items center
-    //            color red
-//
-    //    .swiper-button-disabled
-    //        &:after
-    //            color #c4c4c4
+
+    @media (min-width 640px)
+        .title_cont
+            .img_cont
+                margin-top 5px
+
+                &:after
+                    padding-top calc(271 / 665 * 100%)
+
+        .content
+            .right_side
+                display block
+                padding 0px 12px
+
+            .left_side
+                padding 0px 10px
+
+                .articulo_cont
+
+                    .child
+                        order 0px
+
+                        &.ads
+                            display none !important
+                .comments
+                    display none
+
+                .share
+                    display none !important
+
+        .comments.tab
+            display block
+
+        .share.tab
+            display flex !important
+
+    @media (min-width 1024px)
+        .title_cont
+            .head
+                .autor
+                    font-weight 500
+
+            .img_cont
+                &:after
+                    padding-top calc(271 / 575 * 100%)

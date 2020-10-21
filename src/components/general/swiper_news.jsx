@@ -19,7 +19,6 @@ export default class SwiperNews extends Component {
                 <Block className={`recomendados display-flex flex-direction-column align-content-stretch ${display}`}>
                     <Block className="head display-flex justify-content-space-between align-items-center">
                         <h1>Te Recomandamos</h1>
-                        <a href="">Mostrar mas</a>
                     </Block>
                 </Block>
                 <Block className="swiper_cont">
@@ -27,7 +26,7 @@ export default class SwiperNews extends Component {
                         init
                         navigation
                         scrollbar
-                        params={{ slidesPerView: 3, spaceBetween: 10 }}
+                        params={{ slidesPerView: 3, spaceBetween: 10}}
                     >
                         {
                             articulos.map((val, i) => {

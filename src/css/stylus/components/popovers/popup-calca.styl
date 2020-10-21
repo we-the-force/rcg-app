@@ -1,0 +1,43 @@
+.popupCalca
+    width 300px !important
+    height fit-content !important
+    border-radius 6px !important
+    padding 5px
+    margin 0px !important
+
+    .back
+        width 100%
+        height 100%
+        border-radius 6px
+        margin 0px
+        background #F0F0F0
+        display flex
+        flex-direction column
+        align-items center
+        padding 20px
+
+        p
+            text-align center
+            padding 0px
+            margin 0px
+            color #000
+            font font_10
+
+        .button
+            width 100px
+            height 22px
+            background linear-gradient(360deg, #EC1E26 0%, #FF686E 101.14%), #EC1B23
+            box-shadow 0px 0px 6px rgba(0, 0, 0, 0.08)
+            border-radius 15px
+            padding 0px
+            font font_14
+            line-height 22px
+            text-align center
+            text-transform capitalize
+            color #fff
+            margin-top 10px
+
+    &.modal-in
+        top 50%
+        left 50%
+        transform translate(-50%, -50%) translate3d(0, 0, 0) !important

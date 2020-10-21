@@ -34,6 +34,24 @@ query HomePage {
   }
 }
 
+query ArticuloPage($url: String) {
+  articulos: articulos(where: { url: $url }) {
+    ...ArticulosData
+  }
+}
+
+query Recomendados($tag: String) {
+  swiper: articulos(where: { tags: { nombre: $tag } }, limit: 9) {
+    ...ArticulosData
+  }
+}
+
+query RecomendadosCateg($categ: String) {
+  swiper: articulos(where: { categoria: { nombre: $categ } }, limit: 9) {
+    ...ArticulosData
+  }
+}
+
 query AutorPage($url: String) {
   autor: autors(where: { url: $url }) {
     id
@@ -41,18 +59,13 @@ query AutorPage($url: String) {
     img {
       url
     }
-    articulos(limit: 20) {
-      ...ArticulosData
-    }
     twitter_link
     facebook_link
     instagram_link
     url
   }
 
-  autorArticulos: articulosConnection(
-    where: { autor: { url: $url } }
-  ) {
+  autorArticulos: articulosConnection(where: { autor: { url: $url } }) {
     groupBy {
       autor {
         key
@@ -117,147 +130,52 @@ query AutoresPage {
   }
 }
 
-query ArticuloPage($url: String) {
-  articulos(where: { url: $url }) {
-    ...ArticulosData
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+query BusquedaAutor($url: String, $inicio: Int, $limite: Int) {
+  articulos(where: { autor: { url: $url } }, start: $inicio, limit: $limite) {
     ...ArticulosData
   }
 }
 
-query BorraEsteMasAdelante {
-  articulosLocal: articulos(where: { categoria: { id: 1 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosEstatal: articulos(where: { categoria: { id: 2 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosNacional: articulos(where: { categoria: { id: 3 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosInternacional: articulos(where: { categoria: { id: 4 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosDeporte: articulos(where: { categoria: { id: 5 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosEspectaculo: articulos(where: { categoria: { id: 6 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosDestacados: articulos(where: { categoria: { id: 7 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosFundacion: articulos(where: { categoria: { id: 8 } }, limit: 5) {
-    ...ArticulosData
-  }
-  articulosSaludCultura: articulos(where: { categoria: { id: 9 } }, limit: 5) {
-    ...ArticulosData
-  }
-}
-
-query CategoriaPage($categoria: String) {
-  articulos(where: { categoria: { nombre: $categoria } }) {
-    ...ArticulosData
-  }
-  categorias {
-    nombre
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
-
-query TopArticulos {
-  articulos(where: { relevante: true }) {
-    ...ArticulosData
-  }
-}
-
-query BusquedaPage($terms: [String]) {
-  searchTitulo: articulos(where: { Titulo_contains: $terms }) {
-    ...ArticulosData
-  }
-  # searchTag: articulos(where: {tags: {nombre_in: $terms}}) {
-  searchTag: articulos(where: { tags: { nombre_contains: $terms } }) {
-    ...ArticulosData
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
-}
-
-query SearchArticulosByTag($tags: [String]) {
-  articulos(where: { tags: { nombre_in: $tags } }) {
-    ...ArticulosData
-  }
-}
-
-query SchedulePage($station: String, $date: String) {
-  categorias {
-    nombre
-  }
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  programacionSemanas(
-    where: { canal_estacion: { url: $station }, fecha_inicio_gte: $date }
-    sort: "fecha_inicio:asc"
+query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
+  articulos(
+    where: { description_contains: $values }
+    start: $inicio
+    limit: $limite
   ) {
-    ...ScheduleData
-    # id
-    # programacion {
-    #   lunes{programa{Nombre}}
-    # }
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
     ...ArticulosData
   }
 }
 
-query NotFoundPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
+query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
+  articulos(
+    where: { Titulo_contains: $values }
+    start: $inicio
+    limit: $limite
+  ) {
+    ...ArticulosData
   }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
+}
+query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
+  articulos(
+    where: { tags: { nombre_contains: $values } }
+    start: $inicio
+    limit: $limite
+  ) {
+    ...ArticulosData
   }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+}
+
+query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
+  articulos(
+    where: { categoria: { nombre: $categoria } }
+    start: $inicio
+    limit: $limite
+  ) {
     ...ArticulosData
   }
 }
 
 query AboutUsPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
-    ...ArticulosData
-  }
   nosotrosInfo: nosotro {
     descripcion
     info_mid
@@ -265,14 +183,32 @@ query AboutUsPage {
   }
 }
 
+query ContactPage {
+  contactInfo: contacto {
+    telefono
+    whatsapp
+    correo
+    video_source
+  }
+}
+
+query AvisoPrivacidadPage {
+  avisoPrivacidad: avisoDePrivacidad {
+    descripcion
+  }
+}
+
+query DerechoReplicaPage {
+  content: derechoDeReplica {
+    nombre
+    direccion
+    telefono
+    correo
+  }
+}
+
 query FaqPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  faqInfo: preguntasFrecuente {
+  faq: preguntasFrecuente {
     preguntas {
       pregunta
       respuesta
@@ -281,16 +217,15 @@ query FaqPage {
 }
 
 query EspectacularPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  espectacularInfo {
-    quienes_somos
-    porque_nosotros
+  info: espectacularInfo {
     nosotros
+    porque_nosotros
+    NosotrosImagen {
+      url
+    }
+    PorqueNosotrosImagen {
+      url
+    }
   }
   clientes: espectacularClientes {
     nombre
@@ -301,12 +236,6 @@ query EspectacularPage {
 }
 
 query CatalogoPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
   norte: espectaculars(where: { zona: "norte" }) {
     ...EspectacularData
   }
@@ -324,43 +253,54 @@ query CatalogoPage {
   }
 }
 
-query DerechoReplicaPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+query SchedulePage($station: String, $date: String $radio_tv: Boolean) {
+  tv: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
     ...StationData
   }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  contactoInfo: derechoDeReplica {
-    nombre
-    direccion
-    telefono
-    correo
+  programacion: programacionSemanas(where: {canal_estacion: {url: $station}, fecha_inicio: $date}) {
+    ...ScheduleData
   }
 }
 
-query AvisoPrivacidadPage {
-  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+query SchedulePageRadio($station: String, $date: String $radio_tv: Boolean) {
+  radio: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
     ...StationData
   }
-  tv_channels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  avisoPrivacidad: avisoDePrivacidad {
-    descripcion
+  programacion: programacionSemanas(where: {canal_estacion: {url: $station}, fecha_inicio: $date}) {
+    ...ScheduleData
   }
 }
 
-mutation UpdateArticulo($id: ID!, $visitas: Int) {
-  updateArticulo(input: { where: { id: $id }, data: { visitas: $visitas } }) {
-    articulo {
-      id
-      visitas
-    }
+#borrar de aqui pa adelante si no los uso
+
+query SearchArticulosByTag($tags: [String]) {
+  articulos(where: { tags: { nombre_in: $tags } }) {
+    ...ArticulosData
   }
 }
 
-query CalcaPage {
+#query SchedulePage($station: String, $date: String) {
+#  categorias {
+#    nombre
+#  }
+#  radio_stations: canalEstacions(where: { Radio_TV: false }) {
+#    ...StationData
+#  }
+#  tv_channels: canalEstacions(where: { Radio_TV: true }) {
+#    ...StationData
+#  }
+#  programacionSemanas(
+#    where: { canal_estacion: { url: $station }, fecha_inicio_gte: $date }
+#    sort: "fecha_inicio:asc"
+#  ) {
+#    ...ScheduleData
+#  }
+#  articulosDestacadosRaros: articulos(sort: "fecha:desc", limit: 5) {
+#    ...ArticulosData
+#  }
+#}
+
+query NotFoundPage {
   radio_stations: canalEstacions(where: { Radio_TV: false }) {
     ...StationData
   }
@@ -401,6 +341,7 @@ fragment ArticulosData on Articulo {
   Titulo
   autor {
     nombre
+    url
   }
   fecha
   cover {
@@ -414,9 +355,6 @@ fragment ArticulosData on Articulo {
   categoria {
     nombre
     id
-  }
-  comentarios {
-    valor
   }
 }
 
@@ -432,6 +370,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     martes {
@@ -440,6 +381,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     miercoles {
@@ -448,6 +392,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     jueves {
@@ -456,6 +403,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     viernes {
@@ -464,6 +414,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     sabado {
@@ -472,6 +425,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
     domingo {
@@ -480,6 +436,9 @@ fragment ScheduleData on ProgramacionSemana {
       programa {
         Nombre
         Descripcion
+        cover{
+          url
+        }
       }
     }
   }

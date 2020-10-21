@@ -9,7 +9,9 @@ import {
     SwiperSlide,
     Block,
     BlockHeader,
-    BlockFooter, Link
+    BlockFooter, 
+    Link,
+    f7
 } from 'framework7-react';
 export default class Masthead extends Component {
     constructor(props) {
@@ -18,6 +20,7 @@ export default class Masthead extends Component {
     }
     render() {
         const { banner, relevante } = this.props;
+        let DB_url = f7.methods.get_URL_DB();
         /* banner contiene los articulos del banner */
         /* relevante contiene los mas relevantes en caso de que no se complete con el banner */
         /* accedo solo a los valores que necesito */
@@ -74,7 +77,7 @@ export default class Masthead extends Component {
                                     return (
                                         <SwiperSlide key={i}>
                                             <Block className="background">
-                                                <img src={`http://${window.location.hostname}:1337${item.cover.url}`} alt="" />
+                                                <img src={DB_url + item.cover.url} alt="" />
                                                 <Block className="label">
                                                     <Link href={"/categoria/" + item.categoria.nombre} className="categoria upperscale">{item.categoria.nombre}</Link>
                                                 </Block>

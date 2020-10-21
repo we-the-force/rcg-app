@@ -1,27 +1,46 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import marked from 'marked';
+import city from '@/static/imgs/city.png'
+import Logo from '@/static/imgs/Logo_negro.png'
 import {
     Block,
     Card,
-    CardHeader
+    BlockHeader
 } from 'framework7-react';
 
 export default class AboutUsPanel extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
     }
     render() {
+        let { nombre, direccion, telefono, correo } = this.props.content;
         return (
-            <Block className="center_panel">
+            <Block className="center_panel der_replica_panel">
                 <Card>
-                    <h1>DERECHO DE REPLICA</h1>
-                    <br/>
-                    <p>RESPONSABLE DE DERECHO DE REPLICA</p>
-                    <p>NOMBRE: {this.props.contactInfo.nombre}</p>
-                    <p>DIRECCION: {this.props.contactInfo.direccion}</p>
-                    <p>TELEFONO: {this.props.contactInfo.telefono}</p>
-                    <p>EMAIL: {this.props.contactInfo.correo}</p>
+                    <Block className="back">
+                        <BlockHeader>
+                            <h1>Derecho de replica</h1>
+                        </BlockHeader>
+                        <div className="content">
+                            <p className="uppercase">Responsable de derecho de replica</p>
+                            <div className="parrafo">Nombre:
+                                <div className="info">{this.props.content.nombre}</div>
+                            </div>
+                            <div className="parrafo">Direccion:
+                                <div className="info">{this.props.content.direccion}</div>
+                            </div>
+                            <div className="parrafo">Telefono:
+                                <div className="info">{this.props.content.telefono}</div>
+                            </div>
+                            <div className="parrafo">Email:
+                                <div className="info">{this.props.content.correo}</div>
+                            </div>
+                        </div>
+                        <img className="city" src={city} alt="" />
+                        <div className="logo_cont">
+                            <img src={Logo} alt="" />
+                        </div>
+                    </Block>
                 </Card>
             </Block>
         )
