@@ -50,7 +50,6 @@ export default function Busqueda(props) {
 
     const loadMore = () => {
         if (!allowInfinite) return;
-        setFirstCharge(false);
         setAllowInfinite(false);
         setPreloader(true);
         setCallApi(!callApi);
@@ -119,7 +118,7 @@ export default function Busqueda(props) {
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     return (
-        <Page pageContent={false} name="busqueda">
+        <Page pageContent={false} name="busqueda" onPageInit={() => { setFirstCharge(false) }}>
             <PageContent
                 infinite
                 infiniteDistance={50}

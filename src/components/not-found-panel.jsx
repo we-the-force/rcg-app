@@ -12,16 +12,16 @@ export default class NotFoundPanel extends Component {
     }
     render() {
         return (
-            <Block className="center_panel">
+            <Block className="center_panel not_found_panel">
                 <Card className="new_head">
                     <CardHeader>404 Contenido no encontrado</CardHeader>
                     <div className="head_logo">
                         <img src={back_head} alt="" />
                     </div>
                 </Card>
-                <Card>
-                    <h1>Gracias Usuario!</h1>
-                    <h2>Pero el contenido esta en otro castillo!</h2>
+                <Card className="not_found_card">
+                    <h2>Gracias por su preferencia!</h2>
+                    <p>Pero el contenido que esta buscando no ha sido encontrado</p>
                 </Card>
             </Block>
         )
