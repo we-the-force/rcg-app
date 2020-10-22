@@ -6,6 +6,7 @@ import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import BusquedaPanel from '@/components/busqueda/busqueda-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import { f7, f7ready } from 'framework7-react';
@@ -113,7 +114,7 @@ export default function Busqueda(props) {
 
     let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading);
     let isError = (valuesTitulo.error || valuesDesc.error || valuesTag.error);
-    let centerPanel = isLoading && firstCharge ? isError ? <p>Error</p> : <LoadingPanel /> : <BusquedaPanel title={values} articulos={results} />;
+    let centerPanel = isLoading && firstCharge ? isError ? <ErrorPanel /> : <LoadingPanel /> : <BusquedaPanel title={values} articulos={results} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();

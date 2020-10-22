@@ -8,6 +8,7 @@ import DerechoReplicaPanel from '@/components/estaticas/derecho-rep-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import {useQuery} from '@apollo/client';
 import {DerechoReplicaPage} from '@/graphql/queries.graphql';
 import {
@@ -32,7 +33,7 @@ export default function DerechoReplica(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel /> ;
     } else {
         const { content } = data;
         centerPanel = <DerechoReplicaPanel content={content}/>;

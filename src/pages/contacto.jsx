@@ -6,6 +6,7 @@ import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import ContactoPanel from '@/components/estaticas/contacto-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import { useQuery } from '@apollo/client';
@@ -32,7 +33,7 @@ export default function AboutUs(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel /> ;
     } else {
         let { contactInfo } = data;
         centerPanel = <ContactoPanel contactInfo={contactInfo} />;

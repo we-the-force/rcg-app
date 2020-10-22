@@ -5,6 +5,7 @@ import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import CatalogoPanel from '@/components/catalogo/catalogo-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import { useQuery } from '@apollo/client';
 import { CatalogoPage } from '@/graphql/queries.graphql';
@@ -26,7 +27,8 @@ export default function Catalogo(props) {
         });
     }, []);
 
-    let centerPanel = loading ? error ? 'error' :
+    let centerPanel = loading ? error ? 
+        <ErrorPanel /> :
         <LoadingPanel /> :
         <CatalogoPanel data={data} />;
     let leftPanelTV = f7.methods.getTV();

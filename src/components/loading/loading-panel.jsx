@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import back_head from '@/static/imgs/card_back_6.png'
+import React from 'react';
 import {
     Block,
-    Card,
-    CardHeader
+    Card
 } from 'framework7-react';
 
 export default function LoadingPanel(props) {

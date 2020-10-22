@@ -9,6 +9,7 @@ import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import NotFoundPanel from '@/components/not-found-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
 import { SchedulePageRadio } from '@/graphql/queries.graphql';
@@ -42,7 +43,7 @@ export default function Radio(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel />;
     } else {
         let { radio, programacion } = data;
         centerPanel = radio.length > 0 ?

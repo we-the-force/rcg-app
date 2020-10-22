@@ -6,6 +6,7 @@ import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AvisoPrivacidadPanel from '@/components/estaticas/aviso-privacidad-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import { useQuery } from '@apollo/client';
@@ -31,7 +32,7 @@ export default function AvisoPrivacidad(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel /> ;
     } else {
         const { avisoPrivacidad } = data;
         centerPanel = <AvisoPrivacidadPanel avisoPriv={avisoPrivacidad} />;

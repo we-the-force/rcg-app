@@ -6,6 +6,7 @@ import AdsTop from '@/components/general/ads_top';
 import FaqPanel from '@/components/estaticas/faq-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import { useQuery } from '@apollo/client';
 import { FaqPage } from '@/graphql/queries.graphql';
 
@@ -31,7 +32,7 @@ export default function Faq(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel /> ;
     } else {
         const { faq } = data;
         centerPanel = <FaqPanel faq={faq} />;

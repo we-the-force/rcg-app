@@ -8,6 +8,7 @@ import Footer from '@/components/general/footer';
 import ArticuloPanel from '@/components/articulo/articulo-panel';
 import AdsTop from '@/components/general/ads_top';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
 import { ArticuloPage, Recomendados, RecomendadosCateg } from '@/graphql/queries.graphql';
@@ -92,8 +93,10 @@ export default function Articulo(props) {
         }
     }, [flag]);
 
-    let centerPanel = loading ? error ? 'error' :
-        <LoadingPanel /> :
+    let centerPanel = loading ?
+        error ?
+            <ErrorPanel /> :
+            <LoadingPanel /> :
         <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();

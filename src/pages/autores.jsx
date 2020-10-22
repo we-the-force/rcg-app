@@ -7,6 +7,7 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import AutoresPanel from '@/components/autores/autores-panel.jsx'
 import Footer from '@/components/general/footer';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import { useQuery } from '@apollo/client';
 import AdsTop from '@/components/general/ads_top';
 import { AutoresPage } from '@/graphql/queries.graphql';
@@ -31,7 +32,7 @@ export default function Autores(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel /> ;
     } else {
         numNoticias = data.autorArticulos.groupBy.autor.map((val) => {
             let elem = {

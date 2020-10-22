@@ -9,6 +9,7 @@ import Footer from '@/components/general/footer';
 import AdsTop from '@/components/general/ads_top';
 import HomePanel from '@/components/home/home-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
 import { CategoriasNavbar, HomePage } from '@/graphql/queries.graphql';
@@ -38,7 +39,7 @@ export default function Home(props) {
     center = <LoadingPanel />;
     mast = null;
   } else if (error) {
-    center = <p>Error</p>
+    center = <ErrorPanel /> 
   } else {
     const { banner, categorias, relevante } = data;
     center = <HomePanel noticias={categorias} relevante={relevante} />;

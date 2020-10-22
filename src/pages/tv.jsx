@@ -9,6 +9,7 @@ import AdsTop from '@/components/general/ads_top';
 import TVPanel from '@/components/tv/tv-panel';
 import NotFoundPanel from '@/components/not-found-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import { f7, f7ready } from 'framework7-react';
 import { useQuery } from '@apollo/client';
 import { SchedulePage } from '@/graphql/queries.graphql';
@@ -41,7 +42,7 @@ export default function TV(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel />;
     } else {
         let { tv, programacion } = data;
         centerPanel = tv.length > 0 ?

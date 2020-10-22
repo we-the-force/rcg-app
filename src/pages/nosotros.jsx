@@ -10,6 +10,7 @@ import AboutUsPanel from '@/components/estaticas/about-us-panel';
 import { useQuery } from '@apollo/client';
 import { AboutUsPage } from '@/graphql/queries.graphql';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import {
     Page,
     Block,
@@ -32,7 +33,7 @@ export default function AboutUs(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel />;
     } else {
         const { nosotrosInfo } = data;
         centerPanel = <AboutUsPanel nosotrosInfo={nosotrosInfo} />;

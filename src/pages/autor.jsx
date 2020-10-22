@@ -6,6 +6,7 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import AutorPanel from '@/components/autores/autor-panel.jsx';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import NotFoundPanel from '@/components/not-found-panel';
 import Footer from '@/components/general/footer';
 import { useQuery, useLazyQuery } from '@apollo/client';
@@ -74,7 +75,8 @@ export default function Autor(props) {
             articulos: val.connection.aggregate.count,
         }
     }) : [];
-    let centerPanel = loading ? error ? 'error' :
+    let centerPanel = loading ? error ? 
+        <ErrorPanel /> :
         <LoadingPanel /> :
         <AutorPanel
             articulos={articulos}

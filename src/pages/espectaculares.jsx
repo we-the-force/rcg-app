@@ -8,6 +8,7 @@ import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import { useQuery } from '@apollo/client';
 import { EspectacularPage } from '@/graphql/queries.graphql';
 import LoadingPanel from '@/components/loading/loading-panel';
+import ErrorPanel from '@/components/error-panel';
 import {
     Page,
     Block,
@@ -30,7 +31,7 @@ export default function Espectaculares(props) {
     if (loading) {
         centerPanel = <LoadingPanel />;
     } else if (error) {
-        centerPanel = 'Error';
+        centerPanel = <ErrorPanel />;
     } else {
         const { info, clientes } = data;
         centerPanel = <EspectacularPanel info={info} clientes={clientes} />;
