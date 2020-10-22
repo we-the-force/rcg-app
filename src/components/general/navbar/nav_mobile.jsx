@@ -129,8 +129,8 @@ export default function navMobile(props) {
                         <div className="box foot">
                             <Block className="display-flex flex-direction-column justify-content-center align-items-center">
                                 <div className="avisos display-flex">
-                                    <Link  href="/derecho_replica"  onClick={() => setNavPopup(false)}>Derecho de replica</Link>
-                                    <Link  href="/aviso_privacidad" onClick={() => setNavPopup(false)}>Aviso de privacidad</Link>
+                                    <Link  href="/derecho-replica"  onClick={() => setNavPopup(false)}>Derecho de replica</Link>
+                                    <Link  href="/aviso-privacidad" onClick={() => setNavPopup(false)}>Aviso de privacidad</Link>
                                     <Link  href="/faq"              onClick={() => setNavPopup(false)}>Preguntas Frecuentes</Link>
                                 </div>
                                 <div className="opis">
