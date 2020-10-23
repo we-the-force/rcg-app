@@ -17,12 +17,12 @@ export default function EspectacularPanel(props) {
             <Card>
                 <Block className="back">
                     <BlockHeader>
-                        <h2>nosotros</h2>
+                        <h2>Nosotros</h2>
                     </BlockHeader>
                     <div className="content">
                         <p>{info.nosotros}</p>
                         <div className="quote">
-                            <p className="text">RCG espectaculares somos una empresa líder en publicidad, por la permanencia y crecimiento continuo de nuestros clientes. Además, contamos con personal profesional cualificado para garantizar y superar sus expectativas en innovación publicitaria.</p>
+                            <p className="text">RCG espectaculares somos una empresa líder en publicidad, por la permanencia y crecimiento contínuo de nuestros clientes. Además, contamos con personal profesional cualificado para garantizar y superar sus expectativas en innovación publicitaria.</p>
                         </div>
                     </div>
                     <div className="img_cont">
@@ -33,7 +33,7 @@ export default function EspectacularPanel(props) {
             <Card>
                 <Block className="back">
                     <BlockHeader>
-                        <h2>¿por qué nosotros?</h2>
+                        <h2>¿Por qué nosotros?</h2>
                     </BlockHeader>
                     <div className="content">
                         <p>{info.porque_nosotros}</p>
