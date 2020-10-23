@@ -108,7 +108,7 @@ export default function TVPanel(props) {
                     </p>
                 </Block>
                 <Block className="tabla_programacion">
-                    <BlockHeader>Programacion:</BlockHeader>
+                    <BlockHeader>Programación:</BlockHeader>
                     {/* La tablita de programacion */}
                     <ScheduleTable prog={prog} table_id={table_id} />
                 </Block>

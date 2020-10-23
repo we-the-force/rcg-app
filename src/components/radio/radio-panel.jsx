@@ -139,9 +139,9 @@ export default function RadioPanel(props) {
                         </Block>
                     </Block>
                 </Block>
-                {/* La tablita de programacion */}
+                {/* La tablita de programación */}
                 <Block className="tabla_programacion">
-                    <BlockHeader>Programacion:</BlockHeader>
+                    <BlockHeader>Programación:</BlockHeader>
                     <ScheduleTable prog={prog} table_id={table_id} />
                 </Block>
                 {/* más canales xD */}

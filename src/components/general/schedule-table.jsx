@@ -42,8 +42,8 @@ export default function ScheduleTable(props) {
                     value.push({
                         day: day,
                         inicio: "--:--",
-                        nombre: "Sin programacion",
-                        desc: "No hay descripcion de este programa",
+                        nombre: "Sin programación",
+                        desc: "No hay descripción de este programa",
                         url: null
                     })
                 }
