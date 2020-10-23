@@ -109,7 +109,7 @@ export default function ContactoPanel(props) {
                                 validate
                                 validateOnBlur
                                 pattern="^([a-zA-ZñÑ]+ ?)+"
-                                errorMessage="Porfavor llene este campo"
+                                errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="formulario-name"
                                 type="text"
@@ -123,11 +123,11 @@ export default function ContactoPanel(props) {
                                 validate
                                 validateOnBlur
                                 pattern="^[^ ][\w\W ]*"
-                                errorMessage="Porfavor llene este campo"
+                                errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="formulario-address"
                                 type="text"
-                                placeholder="Direccion de Correo Completa*"
+                                placeholder="Dirección de Correo Completa*"
                                 onChange={(e) => { handleChange(e.target.value, setAddress) }}
                                 onInputClear={() => { handleChange('', setAddress) }}
                             />
@@ -137,7 +137,7 @@ export default function ContactoPanel(props) {
                                 validate
                                 validateOnBlur
                                 pattern="^[^ ][\w\W ]*"
-                                errorMessage="Porfavor llene este campo"
+                                errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="formulario-subject"
                                 type="text"
@@ -152,7 +152,7 @@ export default function ContactoPanel(props) {
                                 validateOnBlur
                                 resizable
                                 pattern="^[^ ][\w\W ]*"
-                                errorMessage="Porfavor llene este campo"
+                                errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="formulario-message"
                                 type="textarea"
@@ -244,7 +244,7 @@ export default function ContactoPanel(props) {
         if (contactRequest.address === "")
         {
             auxResponse.result = false;
-            auxResponse.message += errors === 0 ? "Te falta la direccion de correo" : " y la direccion de correo";
+            auxResponse.message += errors === 0 ? "Te falta la dirección de correo" : " y la dirección de correo";
             errors++;
         }
         if (contactRequest.subject === "")
