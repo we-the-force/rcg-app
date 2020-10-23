@@ -133,6 +133,7 @@ export default class extends React.Component {
     )
   }
   componentDidMount() {
+
     client.query({
       query: AppQuery
     }).then(res => {
@@ -155,6 +156,8 @@ export default class extends React.Component {
       if (Device.cordova) {
         cordovaApp.init(f7);
       }
+      console.log(Devide);
+      console.log(f7);
       // Call F7 APIs here
     })
   }
