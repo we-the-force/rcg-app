@@ -87,7 +87,7 @@ export default function CalcasPanel(props) {
                                 validate
                                 validateOnBlur
                                 pattern="^([a-zA-ZñÑ]+ ?)+"
-                                errorMessage="Porfavor llene este campo"
+                                errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="calca-name"
                                 type="text"
@@ -101,11 +101,11 @@ export default function CalcasPanel(props) {
                                 validate
                                 validateOnBlur
                                 pattern="^[^ ][\w\W ]*"
-                                errorMessage="Porfavor llene este campo"
+                                errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="calca-address"
                                 type="text"
-                                placeholder="Direccion Completa"
+                                placeholder="Dirección Completa"
                                 onChange={(e) => { handleChange(e.target.value, setDireccion) }}
                                 onInputClear={() => { handleChange('', setDireccion) }}
                             />
@@ -116,7 +116,7 @@ export default function CalcasPanel(props) {
                                     validate
                                     validateOnBlur
                                     pattern="^[^ ][\w\W ]*"
-                                    errorMessage="Porfavor llene este campo"
+                                    errorMessage="Por favor llene este campo"
                                     clearButton
                                     id="calca-city"
                                     type="text"
@@ -130,7 +130,7 @@ export default function CalcasPanel(props) {
                                     validate
                                     validateOnBlur
                                     pattern="^[0-9]{10}$"
-                                    errorMessage="Ingrese un numero de telefono valido!"
+                                    errorMessage="Ingrese un número de teléfono valido!"
                                     clearButton
                                     id="calca-phone"
                                     type="text"
@@ -145,7 +145,7 @@ export default function CalcasPanel(props) {
                                 validate
                                 validateOnBlur
                                 pattern="^[^ ][\w\W ]*"
-                                errorMessage="Porfavor llene este campo"
+                                errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="calca-serial"
                                 type="text"
@@ -176,13 +176,13 @@ export default function CalcasPanel(props) {
                     </Block>
                 </Card>
                 <Block className="bottom">
-                    <p>Si aun no tienes tu <b>Calca</b> acude a nuestras pegas de calcas los viernes de <b>7:00am</b> a <b>9:00pm</b> en diferentes puntos de la ciudad, no te pierdas la programación de <b>Radio</b> y <b>Televisión</b> para saber donde estaremos pegando calcas</p>
+                    <p>Si aún no tienes tu <b>Calca</b> acude a nuestras pegas de calcas los viernes de <b>7:00am</b> a <b>9:00pm</b> en diferentes puntos de la ciudad, no te pierdas la programación de <b>Radio</b> y <b>Televisión</b> para saber dónde estaremos pegando calcas.</p>
                 </Block>
             </Block>
             <Popup className="popupCalca errorPopup" opened={errorPopup} onPopupClosed={() => setErrorPopup(false)}>
                 <Block className="back">
                     <p> ¡Oops! </p>
-                    <p>Ocurrio un error intentalo de nuevo más tarde.</p>
+                    <p>Ocurrió un error intentalo de nuevo más tarde.</p>
                     <Button onClick={() => setErrorPopup(false)}>Ok</Button>
                     <Button>Ok</Button>
                 </Block>

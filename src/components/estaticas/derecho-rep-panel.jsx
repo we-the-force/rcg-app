@@ -26,7 +26,7 @@ export default class AboutUsPanel extends Component {
                             <div className="parrafo">Nombre:
                                 <div className="info">{this.props.content.nombre}</div>
                             </div>
-                            <div className="parrafo">Direccion:
+                            <div className="parrafo">Dirección:
                                 <div className="info">{this.props.content.direccion}</div>
                             </div>
                             <div className="parrafo">Telefono:
