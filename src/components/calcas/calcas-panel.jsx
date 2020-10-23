@@ -164,7 +164,7 @@ export default function CalcasPanel(props) {
                                 type="checkbox"
                                 onChange={(e) => { handleChange(e.target.checked, setAvPriv) }}
                             >
-                                <p slot="info">Acepto el <a href="/aviso_privacidad" className="external" target="_blank">Aviso de Privacidad</a></p>
+                                <p slot="info">Acepto el <a href="/aviso-privacidad" className="external" target="_blank">Aviso de Privacidad</a></p>
                             </Input>
                             <Input className="registrar" id="calca-button" type="submit" value="Registrar" />
                         </form>

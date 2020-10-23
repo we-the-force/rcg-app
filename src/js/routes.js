@@ -59,11 +59,11 @@ var routes = [
     component: CategoriaPage,
   },
   {
-    path: '/aviso_privacidad',
+    path: '/aviso-privacidad',
     component: AvisoPrivacidad,
   },
   {
-    path: '/derecho_replica',
+    path: '/derecho-replica',
     component: DerechoReplica,
   },
   {

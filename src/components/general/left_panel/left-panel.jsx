@@ -82,8 +82,8 @@ export default function LeftPanel(props) {
             </Card>
             <Block className="more display-flex flex-direction-column justify-content-flex-start align-items-flex-start">
                 <div className="flex_wrap display-flex justify-content-flex-start align-items-center">
-                    <Link href="/derecho_replica">Derecho de réplica</Link>
-                    <Link href="/aviso_privacidad">Aviso de privacidad</Link>
+                    <Link href="/derecho-replica">Derecho de replica</Link>
+                    <Link href="/aviso-privacidad">Aviso de privacidad</Link>
                     <Link href="/faq">Preguntas Frecuentes</Link>
                 </div>
                 <div className="display-flex justify-content-flex-start align-items-center">

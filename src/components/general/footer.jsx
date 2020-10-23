@@ -27,9 +27,9 @@ export default class Footer extends Component {
                 </a>
                 <Block className="center links">
                     <div className="cont display-flex">
-                        <Link href="/derecho_replica">Derecho de replica</Link>
+                        <Link href="/derecho-replica">Derecho de replica</Link>
                         <hr />
-                        <Link href="/aviso_privacidad">Aviso de privacidad</Link>
+                        <Link href="/aviso-privacidad">Aviso de privacidad</Link>
                         <hr />
                         <Link href="/faq">Preguntas Frecuentes</Link>
                         {/* <hr />
