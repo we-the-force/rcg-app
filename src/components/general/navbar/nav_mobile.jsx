@@ -109,10 +109,10 @@ export default function navMobile(props) {
                         <div className="box follow">
                             <Block>
                                 <BlockHeader><img src={twred} alt="" /><p>Síguenos En:</p></BlockHeader>
-                                <Link  href="https://www.facebook.com" target="_blank" className="redes external" ><img src={face} alt="" /></Link>
-                                <Link  href="https://www.twitter.com" target="_blank" className="redes external"  ><img src={tw} alt="" /></Link>
-                                <Link  href="https://www.youtube.com" target="_blank" className="redes external"  ><img src={you} alt="" /></Link>
-                                <Link  href="https://www.instagram.com" target="_blank" className="redes external"><img src={insta} alt="" /></Link>
+                                <Link  href="https://www.facebook.com/rcgoficial" target="_blank" className="redes external" ><img src={face} alt="" /></Link>
+                                <Link  href="https://www.twitter.com/RCGoficial" target="_blank" className="redes external"  ><img src={tw} alt="" /></Link>
+                                <Link  href="https://www.youtube.com/user/RCGNOTICIAS" target="_blank" className="redes external"  ><img src={you} alt="" /></Link>
+                                <Link  href="https://www.instagram.com/rcgoficial" target="_blank" className="redes external"><img src={insta} alt="" /></Link>
                             </Block>
                         </div>
                         <div className="box RCG">

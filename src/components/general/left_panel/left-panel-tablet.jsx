@@ -129,16 +129,16 @@ export default function LeftPanelTablet(props) {
                 onPopupClose={(e) => { changeBackdropClose(setRedesPop, redes_pop[1]) }}
             >
                 <Block className="social_cont display-flex justify-content-space-between align-items-center">
-                    <a className="external" target="_blank" href="https://www.facebook.com">
+                    <a className="external" target="_blank" href="https://www.facebook.com/rcgoficial">
                         <img src={FBIcon} alt="" srcSet="" />
                     </a>
-                    <a className="external" target="_blank" href="https://www.twitter.com">
+                    <a className="external" target="_blank" href="https://www.twitter.com/RCGoficial">
                         <img src={TWIcon} alt="" srcSet="" />
                     </a>
-                    <a className="external" target="_blank" href="https://www.youtube.com">
+                    <a className="external" target="_blank" href="https://www.youtube.com/user/RCGNOTICIAS">
                         <img src={YTIcon} alt="" srcSet="" />
                     </a>
-                    <a className="external" target="_blank" href="https://www.instagram.com">
+                    <a className="external" target="_blank" href="https://www.instagram.com/rcgoficial">
                         <img src={IGIcon} alt="" srcSet="" />
                     </a>
                 </Block>

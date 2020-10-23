@@ -60,16 +60,16 @@ export default function LeftPanel(props) {
                     Síguenos en:
                     </CardHeader>
                 <Block className="social_cont display-flex justify-content-space-between align-items-center">
-                    <a href="https://www.facebook.com" className="external" target="_blank">
+                    <a href="https://www.facebook.com/rcgoficial" className="external" target="_blank">
                         <img src={FBIcon} alt="" srcSet="" />
                     </a>
-                    <a href="https://www.twitter.com" className="external" target="_blank">
+                    <a href="https://www.twitter.com/RCGoficial" className="external" target="_blank">
                         <img src={TWIcon} alt="" srcSet="" />
                     </a>
-                    <a href="https://www.youtube.com" className="external" target="_blank">
+                    <a href="https://www.youtube.com/user/RCGNOTICIAS" className="external" target="_blank">
                         <img src={YTIcon} alt="" srcSet="" />
                     </a>
-                    <a href="https://www.instagram.com" className="external" target="_blank">
+                    <a href="https://www.instagram.com/rcgoficial" className="external" target="_blank">
                         <img src={IGIcon} alt="" srcSet="" />
                     </a>
                 </Block>
