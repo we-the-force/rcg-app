@@ -21,7 +21,7 @@ export default function navMobile(props) {
         navLinks = <Fragment>
             <Link href="/" className="uppercase">Inicio</Link>
             <hr />
-            <Link href="/catalogo" className="uppercase">Galeria</Link>
+            <Link href="/catalogo" className="uppercase">Galería</Link>
             <hr />
             <Link href="/contacto" className="uppercase">Contacto</Link>
         </Fragment>;
