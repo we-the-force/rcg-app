@@ -19,7 +19,7 @@ export default class HomePanel extends Component {
             <Block className="home center_panel">
                 <Card className="relevantes_home">
                     <CardHeader>
-                        <p className="title">Lo Mas Relevante</p>
+                        <p className="title">Lo Más Relevante</p>
                     </CardHeader>
                     <Block id="grid1" className="grid-cont">
                         <NewsRelevantes noticia={relevante[0]} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />

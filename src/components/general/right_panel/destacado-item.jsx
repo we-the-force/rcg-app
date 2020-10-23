@@ -50,7 +50,7 @@ export default function DestItem(props) {
                             })
                         }
                     </p>
-                    <a className="more" href={`/articulo/${url}/`}>Mostrar mas</a>
+                    <a className="more" href={`/articulo/${url}/`}>Mostrar más</a>
                 </BlockFooter>
             </Block>
         </Block>

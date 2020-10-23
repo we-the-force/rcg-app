@@ -22,7 +22,7 @@ export default class Masthead extends Component {
         const { banner, relevante } = this.props;
         let DB_url = f7.methods.get_URL_DB();
         /* banner contiene los articulos del banner */
-        /* relevante contiene los mas relevantes en caso de que no se complete con el banner */
+        /* relevante contiene los más relevantes en caso de que no se complete con el banner */
         /* accedo solo a los valores que necesito */
         let banners = banner.map((val) => {
             return {

@@ -144,7 +144,7 @@ export default function RadioPanel(props) {
                     <BlockHeader>Programacion:</BlockHeader>
                     <ScheduleTable prog={prog} table_id={table_id} />
                 </Block>
-                {/* mas canales xD */}
+                {/* más canales xD */}
                 {
                     estaciones.length > 1 &&
                     <Block className="mas_canales">

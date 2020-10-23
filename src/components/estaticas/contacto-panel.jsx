@@ -174,7 +174,7 @@ export default function ContactoPanel(props) {
             <Popup className="popupContact errorPopup" opened={errorPopup} onPopupClosed={() => setErrorPopup(false)}>
                 <Block className="back">
                     <p> ¡Oops! </p>
-                    <p>Ocurrio un error intentalo de nuevo mas tarde.</p>
+                    <p>Ocurrio un error intentalo de nuevo más tarde.</p>
                     <Button onClick={() => setErrorPopup(false)}>Ok</Button>
                 </Block>
             </Popup>

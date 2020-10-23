@@ -14,7 +14,7 @@ export default function ErrorPanel(props) {
                 </div>
             </Card>
             <Card className="error_card">
-                <h2>Intentalo de nuevo mas tarde</h2>
+                <h2>Intentalo de nuevo más tarde</h2>
                 <p>{props.error}</p>
             </Card>
         </Block>
