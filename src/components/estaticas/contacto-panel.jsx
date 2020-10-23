@@ -74,7 +74,7 @@ export default function ContactoPanel(props) {
                             </Block>
                             <Block id="tv" className="contacto_icon">
                                 <img src={tv} alt="" />
-                                <p>Television</p>
+                                <p>Televisión</p>
                             </Block>
                             <Block id="espect" className="contacto_icon">
                                 <img src={espect} alt="" />
@@ -91,11 +91,11 @@ export default function ContactoPanel(props) {
                         </Block>
                         <Block className="info">
                             <p className="titulo">Incrementa tus ventas</p>
-                            <p className="text">a traves de nuestros diferentes medios</p>
-                            <h1 className="warning">¡Anunciate!</h1>
+                            <p className="text">a través de nuestros diferentes medios.</p>
+                            <h1 className="warning">¡Anúnciate!</h1>
                             <p className="parrafo">
-                                Deja tus datos en esta seccion de formulario y nos pondremos en
-                                contacto contigo o llama al telefono: <b>{telefono}</b>
+                                Deja tus datos en esta sección de formulario y nos pondremos en
+                                contacto contigo o llama al teléfono: <b>{telefono}</b>
                             </p>
                         </Block>
                         {/* El formulario */}
@@ -174,7 +174,7 @@ export default function ContactoPanel(props) {
             <Popup className="popupContact errorPopup" opened={errorPopup} onPopupClosed={() => setErrorPopup(false)}>
                 <Block className="back">
                     <p> ¡Oops! </p>
-                    <p>Ocurrio un error intentalo de nuevo más tarde.</p>
+                    <p>Ocurrió un error intentalo de nuevo más tarde.</p>
                     <Button onClick={() => setErrorPopup(false)}>Ok</Button>
                 </Block>
             </Popup>

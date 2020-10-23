@@ -176,7 +176,7 @@ export default function CalcasPanel(props) {
                     </Block>
                 </Card>
                 <Block className="bottom">
-                    <p>Si aun no tienes tu <b>Calca</b> acude a nuestras pegas de calcas los viernes de <b>7:00am</b> a <b>9:00pm</b> en diferentes puntos de la ciudad, no te pierdas la programación de <b>Radio</b> y <b>Television</b> para saber donde estaremos pegando calcas</p>
+                    <p>Si aun no tienes tu <b>Calca</b> acude a nuestras pegas de calcas los viernes de <b>7:00am</b> a <b>9:00pm</b> en diferentes puntos de la ciudad, no te pierdas la programación de <b>Radio</b> y <b>Televisión</b> para saber donde estaremos pegando calcas</p>
                 </Block>
             </Block>
             <Popup className="popupCalca errorPopup" opened={errorPopup} onPopupClosed={() => setErrorPopup(false)}>
