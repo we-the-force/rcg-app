@@ -19,10 +19,10 @@ export default class AboutUsPanel extends Component {
                 <Card>
                     <Block className="back">
                         <BlockHeader>
-                            <h1>Derecho de replica</h1>
+                            <h1>Derecho de réplica</h1>
                         </BlockHeader>
                         <div className="content">
-                            <p className="uppercase">Responsable de derecho de replica</p>
+                            <p className="uppercase">Responsable de derecho de réplica</p>
                             <div className="parrafo">Nombre:
                                 <div className="info">{this.props.content.nombre}</div>
                             </div>

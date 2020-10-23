@@ -108,7 +108,7 @@ export default function navMobile(props) {
                         </div>
                         <div className="box follow">
                             <Block>
-                                <BlockHeader><img src={twred} alt="" /><p>Siguenos En:</p></BlockHeader>
+                                <BlockHeader><img src={twred} alt="" /><p>Síguenos En:</p></BlockHeader>
                                 <Link  href="https://www.facebook.com" target="_blank" className="redes external" ><img src={face} alt="" /></Link>
                                 <Link  href="https://www.twitter.com" target="_blank" className="redes external"  ><img src={tw} alt="" /></Link>
                                 <Link  href="https://www.youtube.com" target="_blank" className="redes external"  ><img src={you} alt="" /></Link>
@@ -129,7 +129,7 @@ export default function navMobile(props) {
                         <div className="box foot">
                             <Block className="display-flex flex-direction-column justify-content-center align-items-center">
                                 <div className="avisos display-flex">
-                                    <Link  href="/derecho_replica"  onClick={() => setNavPopup(false)}>Derecho de replica</Link>
+                                    <Link  href="/derecho_replica"  onClick={() => setNavPopup(false)}>Derecho de réplica</Link>
                                     <Link  href="/aviso_privacidad" onClick={() => setNavPopup(false)}>Aviso de privacidad</Link>
                                     <Link  href="/faq"              onClick={() => setNavPopup(false)}>Preguntas Frecuentes</Link>
                                 </div>

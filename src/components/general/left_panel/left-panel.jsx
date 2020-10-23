@@ -57,7 +57,7 @@ export default function LeftPanel(props) {
             </Card>
             <Card className="left_pan_card social">
                 <CardHeader>
-                    Siguenos en:
+                    Síguenos en:
                     </CardHeader>
                 <Block className="social_cont display-flex justify-content-space-between align-items-center">
                     <a href="https://www.facebook.com" className="external" target="_blank">
@@ -82,7 +82,7 @@ export default function LeftPanel(props) {
             </Card>
             <Block className="more display-flex flex-direction-column justify-content-flex-start align-items-flex-start">
                 <div className="flex_wrap display-flex justify-content-flex-start align-items-center">
-                    <Link href="/derecho_replica">Derecho de replica</Link>
+                    <Link href="/derecho_replica">Derecho de réplica</Link>
                     <Link href="/aviso_privacidad">Aviso de privacidad</Link>
                     <Link href="/faq">Preguntas Frecuentes</Link>
                 </div>

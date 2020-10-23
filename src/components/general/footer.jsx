@@ -58,7 +58,7 @@ export default class Footer extends Component {
                     </a>
                 </Block>
                 <Block className="display-flex justify-content-space-between align-items-center social-mobile">
-                    <p>Siguenos en:</p>
+                    <p>Síguenos en:</p>
                     <Block className="icons display-flex justify-content-space-between align-items-center ">
                         <a href="#" className="display-flex justify-content-center align-items-center">
                             <img src={FBIcon} alt="" srcSet="" />
