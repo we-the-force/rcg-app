@@ -91,7 +91,7 @@ export default function navMobile(props) {
                         <div className="box services">
                             <Block>
                                 <BlockHeader><img src={services} alt="" /> <p>Servicios</p></BlockHeader>
-                                {/* <Link>Fundacion RCG</Link> */}
+                                {/* <Link>Fundación RCG</Link> */}
                                 <Link  href="/espectaculares" onClick={() => setNavPopup(false)}>Espectaculares</Link>
                                 <Link  href="/calca" onClick={() => setNavPopup(false)}>Registra Tu Calca</Link>
                             </Block>

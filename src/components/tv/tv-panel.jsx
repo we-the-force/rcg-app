@@ -16,7 +16,7 @@ import {
 
 export default function TVPanel(props) {
     const { canal, canales, programacion, table_id } = props;
-    const [playPause, setPlayPause] = useState(false);
+    const [playPause, setPlayPause] = useState(true);
     const [nombrePrograma, setNombrePrograma] = useState('');
     const [descPrograma, setDescPrograma] = useState('');
     const url = f7.methods.get_URL();
