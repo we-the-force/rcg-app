@@ -23,6 +23,6 @@ Framework7.use(Framework7React)
 
 // Mount React App
 ReactDOM.render(
-  React.createElement(App),
-  document.getElementById('app'),
+    React.createElement(App),
+    document.getElementById('app'),
 );
