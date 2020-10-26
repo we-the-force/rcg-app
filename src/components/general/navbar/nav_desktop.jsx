@@ -31,7 +31,7 @@ export default function navMobile(props) {
             let dis = (itemsShow.length - 1) == key ? 'display-none' : 'display-flex';
             return (
                 <Fragment key={key}>
-                    <Link href={"/categoria/" + val.nombre} className="uppercase">{val.nombre}</Link>
+                    <Link href={"/categoria/" + val.url} className="uppercase">{val.nombre}</Link>
                     <hr className={dis} />
                 </Fragment>);
         })
@@ -72,7 +72,7 @@ export default function navMobile(props) {
                 <List>
                     {itemsPop.map((val, key) => {
                         return (
-                            <ListItem key={key} link={`/categoria/${val.nombre}`} popoverClose className="uppercase" >{val.nombre}</ListItem>
+                            <ListItem key={key} link={`/categoria/${val.url}`} popoverClose className="uppercase" >{val.nombre}</ListItem>
                         );
                     })}
                     <ListItem link="/autores" className="uppercase" popoverClose>autores</ListItem>

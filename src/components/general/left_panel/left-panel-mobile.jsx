@@ -20,7 +20,7 @@ export default function LeftPanelMobile(props) {
         navLinks = categorias.length > 0 ? categorias.map((val, key) => {
             let current = categoria === val.nombre ? 'current' : '';
             return (
-                <ListItem link={`/categoria/${val.nombre}`} view="#main-view" key={key} className={`uppercase ${current}`} panelClose>{val.nombre}</ListItem>
+                <ListItem link={`/categoria/${val.url}`} view="#main-view" key={key} className={`uppercase ${current}`} panelClose>{val.nombre}</ListItem>
             )
         }) : [];
         navLinks.push(<ListItem link="/autores" view="#main-view" className="uppercase autores" key="autores-item" panelClose>autores</ListItem>);

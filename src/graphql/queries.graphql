@@ -1,6 +1,7 @@
 query AppQuery {
   categorias {
     nombre
+    url
   }
   tvChannels: canalEstacions(where: { Radio_TV: true }) {
     ...StationData
@@ -167,7 +168,7 @@ query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
 
 query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
   articulos(
-    where: { categoria: { nombre: $categoria } }
+    where: { categoria: { url: $categoria } }
     start: $inicio
     limit: $limite
   ) {
