@@ -21,6 +21,7 @@ import {
 export default function Categoria(props) {
     const { nombre } = props;
     const limitStatic = 20;
+    const [catNombre, setCatNombre] = useState("");
     const [allowInfinite, setAllowInfinite] = useState(true);
     const [preloader, setPreloader] = useState(false);
     const [inicial, setInicial] = useState(0);
@@ -37,6 +38,8 @@ export default function Categoria(props) {
             setPreloader(false);
             setInicial(newInicial);
             setArticulos(articulos.concat(data.articulos));
+            // console.log(data);
+            setCatNombre(data.categorias[0].nombre);
         }
     });
 
@@ -71,7 +74,7 @@ export default function Categoria(props) {
             <LoadingPanel /> :
         <CategoriaPanel
             articulos={articulos}
-            categoria={nombre}
+            categoria={catNombre}
         />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();

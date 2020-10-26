@@ -76,7 +76,7 @@ export default function RightPanel(props) {
             </Block>
             <Block className="right_panel_down">
                 {cards}
-                <Card className="right_panel_down_card tags">
+                {/* <Card className="right_panel_down_card tags">
                     <CardHeader>
                         Tags
                         </CardHeader>
@@ -87,7 +87,7 @@ export default function RightPanel(props) {
                         <ListItem link="#">Alcalde</ListItem>
                         <ListItem link="#">RCG</ListItem>
                     </List>
-                </Card>
+                </Card> */}
             </Block>
         </Block>
     );
