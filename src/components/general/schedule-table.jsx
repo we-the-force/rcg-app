@@ -15,6 +15,7 @@ import {
 export default function ScheduleTable(props) {
     const { prog, table_id } = props;
     const days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+    const days_accent = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
     const days_mobile = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
     const DB_url = f7.methods.get_URL_DB();
 
@@ -69,7 +70,7 @@ export default function ScheduleTable(props) {
                         <Fragment key={key}>
                             <Link tabLink={"#" + days[key] + "-" + table_id} tabLinkActive={key === 0 ? true : false} >
                                 <div className="desk">
-                                    {days[key]}
+                                    {days_accent[key]}
                                 </div>
                                 <div className="mobile">
                                     {days_mobile[key]}

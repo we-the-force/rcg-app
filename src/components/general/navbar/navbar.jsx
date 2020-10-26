@@ -10,7 +10,9 @@ export default function Nav(props) {
 	if (categorias.length <= 0) return null;
 
 	let [categ_show, categ_pop, type] = useData(categorias);
-
+    // console.log("Categorais despues del useData");
+    // console.log(categ_show);
+    // console.log(categ_pop);
 	return (
 		<Fragment>
 			<Navbar sliding noHairline noShadow>
@@ -25,7 +27,7 @@ export default function Nav(props) {
 function useData(data) {
 	/* recibe categorias */
 	const [categ, setCateg] = useState({
-		categ_show: [""] /* categorias a mostrar */,
+		categ_show: [] /* categorias a mostrar */,
 		categ_pop: [] /* categorias en el menu pop */,
 		type: "",
 	});
@@ -33,7 +35,7 @@ function useData(data) {
 	let thisType = "";
 	useEffect(() => {
 		function handleResize() {
-			let categorias = [...data];
+            let categorias = [...data];
 			let w = window.innerWidth;
 			thisType = "desktop";
 			if (w > 1420) {
