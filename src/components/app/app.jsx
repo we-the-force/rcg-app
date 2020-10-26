@@ -161,7 +161,6 @@ export default class extends React.Component {
 			});
 
 			window.addEventListener("popstate", function (e) {
-				console.log("si esta entrando");
 				if ($(".popover.modal-in").length) {
 					f7.popover.close(".popover.modal-in");
 					return false;
