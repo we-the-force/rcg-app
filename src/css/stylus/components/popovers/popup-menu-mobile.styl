@@ -1,6 +1,7 @@
 .menuPopup
     height 89vh
     overflow visible
+    z-index 0
 
     .page-content
         padding 0px
@@ -134,6 +135,13 @@
 
     &.modal-in
         transform translate3d(0, 11vh, 0)
+        transition transform 400ms ease
+        z-index 10501
+    &.modal-out
+        transition transform 400ms ease, z-index 0ms ease 400ms
+
+        //z-index 10501
+        //transition z-index 0s ease-in-out 400ms
 
     @media (orientation landscape)
         height 80vh

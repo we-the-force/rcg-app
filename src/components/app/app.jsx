@@ -149,18 +149,31 @@ export default class extends React.Component {
 			});
 		this.$f7ready((f7) => {
 			// Init cordova APIs (see cordova-app.js)
+			const $ = f7.$;
 			if (Device.cordova) {
 				cordovaApp.init(f7);
 			}
-      // Call F7 APIs here
-      window.addEventListener("orientationchange", function () {
-        if (!!f7.popup.get() && f7.popup.get().el.classList.contains("menuPopup")){
-          f7.popup.close();
-        }
-      });
+			// Call F7 APIs here
+			window.addEventListener("orientationchange", function () {
+				if (!!f7.popup.get() && f7.popup.get().el.classList.contains("menuPopup")) {
+					f7.popup.close();
+				}
+			});
+
+			window.addEventListener("popstate", function (e) {
+				if ($(".popover.modal-in").length) {
+					f7.popover.close(".popover.modal-in");
+					return false;
+				}
+				if ($(".popup.modal-in").length) {
+					f7.popup.close(".popup.modal-in");
+					return false;
+				}
+
+				if ($(".panel.panel-in").length) {
+					f7.panel.close(".panel.panel-in");
+				}
+			});
 		});
-		//document.addEventListener("backbutton", function () {
-		//  console.log("ahoy doc");
-		//});
 	}
 }
