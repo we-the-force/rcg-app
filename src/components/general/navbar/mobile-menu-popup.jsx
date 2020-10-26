@@ -17,6 +17,7 @@ export default function mobileMenuPopup(props) {
 			//TODO: ToLowercase como no
 			let searchValue = e.target.value.trim();
 			if (searchValue !== "") {
+				f7.popup.close();
 				f7.views.main.router.navigate(`/busqueda/${encodeURI(e.target.value)}`);
 			}
 		}
@@ -27,14 +28,7 @@ export default function mobileMenuPopup(props) {
 		<Popup className="menuPopup">
 			<Navbar sliding noHairline noShadow className="navPopup">
 				<NavLeft>
-					<Link
-						className="categorias panel-open"
-						data-panel=".panel-left-mobile"
-						iconMaterial="menu"
-						icon="menu"
-						color="red"
-						popupClose
-					></Link>
+					<Link className="categorias panel-open" data-panel=".panel-left-mobile" iconMaterial="menu" icon="menu" color="red" popupClose></Link>
 				</NavLeft>
 				<a className="logo" href="/">
 					<img src={LogoBlanco} alt="" />
