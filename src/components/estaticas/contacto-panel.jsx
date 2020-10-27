@@ -122,7 +122,7 @@ export default function ContactoPanel(props) {
                                 required
                                 validate
                                 validateOnBlur
-                                pattern="^[^ ][\w\W ]*"
+                                pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$"
                                 errorMessage="Por favor llene este campo"
                                 clearButton
                                 id="formulario-address"
