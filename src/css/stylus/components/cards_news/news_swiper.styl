@@ -34,6 +34,7 @@
             overflow hidden
 
         .block-footer
+            display none
             width 100%
             font font_8
             color #E4E4E4
@@ -46,3 +47,8 @@
         object-fit cover
         z-index -1
         border-radius 8px
+
+    @media (min-width 640px)
+        .cont
+            .block-footer
+                display block
