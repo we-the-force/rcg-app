@@ -37,7 +37,8 @@ export default function Catalogo(props) {
         <Page pageContent={false} name="catalogo_espectaculares">
             <PageContent>
                 {/* Top Navbar */}
-                <Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+                <Nav 
+                    espectaculares categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
                 {/* Page content */}
                 <Block className="main_cont display-flex flex-direction-column justify-content-center">
                     <Block className="paneles">
