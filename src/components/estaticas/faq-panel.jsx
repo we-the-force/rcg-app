@@ -28,7 +28,7 @@ export default class FaqPage extends Component {
                                     </Block>
                                 );
                             })}
-                            <p className="bottom_p">¿Te fueron de utilidad nuestras respuestas? ¿Aún tienes dudas acerca de nuestros servicios? <a href="/contacto">Llámanos</a> o <a href="/contacto">esbríbenos</a> y con gusto te atenderemos</p>
+                            <p className="bottom_p">¿Te fueron de utilidad nuestras respuestas? ¿Aún tienes dudas acerca de nuestros servicios? <a href="/contacto">Llámanos</a> o <a href="/contacto">escríbenos</a> y con gusto te atenderemos</p>
                         </div>
                         <img className="city" src={city} alt="" />
                     </Block>                    
