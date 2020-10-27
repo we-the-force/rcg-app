@@ -96,6 +96,19 @@ export default function Busqueda(props) {
         let nothing = (length === 0);
         let done = (length === limit);
         let newType = type + 1;
+
+        //console.log('-----------');
+        //for (let i = 0; i < results.length; i++) {
+        //    for (let j = 0; j < val.length; j++) {
+        //        console.log('++++++++++');
+        //        console.log(results[i].id);
+        //        console.log(val[j].id);
+        //        if (results[i].id === val[j].id) {
+        //            val.splice(j, 1);
+        //        }
+        //    }   
+        //}   
+
         setResults(results.concat(val));
         setData(false)
         if (underLimit) setLimit(limit - length);
@@ -114,7 +127,15 @@ export default function Busqueda(props) {
 
     let isLoading = (valuesTitulo.loading || valuesDesc.loading || valuesTag.loading);
     let isError = (valuesTitulo.error || valuesDesc.error || valuesTag.error);
-    let centerPanel = isLoading && firstCharge ? isError ? <ErrorPanel /> : <LoadingPanel /> : <BusquedaPanel title={values} articulos={results} />;
+    let newResults = [...results];
+    for (let i = 0; i < newResults.length; i++) {
+		for (let j = i + 1; j < newResults.length; j++) {
+			if (newResults[i].id === newResults[j].id) {
+				newResults.splice(j, 1);
+			}
+		}
+	}
+    let centerPanel = isLoading && firstCharge ? isError ? <ErrorPanel /> : <LoadingPanel /> : <BusquedaPanel first={type} title={values} articulos={newResults} />;
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
