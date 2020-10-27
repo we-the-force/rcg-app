@@ -43,10 +43,11 @@ export default function AutorCard(props) {
                 <Link popupClose href={`/autor/${url}`} className="nombre">{nombre}</Link>
                 <Link popupClose href={`/autor/${url}`} className="noticias"> {articulos} Noticias</Link>
                 <p className="redes_label">Redes:</p>
+                {console.log(`Cosos\r\nF: ${face}, T: ${twitt}, I: ${insta}`)}
                 <Block className="redes_cont">
-                    <a href={face} className="external" target="_blank"><img src={FBIcon} /></a>
-                    <a href={twitt} className="external" target="_blank"><img src={TWIcon} /></a>
-                    <a href={insta} className="external" target="_blank"><img src={IGIcon} /></a>
+                    <a href={face}  className={`external${(face ==  null) ? " gray" : ""}`} target="_blank"><img src={FBIcon} /></a>
+                    <a href={twitt} className={`external${(twitt == null) ? " gray" : ""}`} target="_blank"><img src={TWIcon} /></a>
+                    <a href={insta} className={`external${(insta == null) ? " gray" : ""}`} target="_blank"><img src={IGIcon} /></a>
                 </Block>
             </Block>
         </Card>

@@ -31,9 +31,9 @@ export default class AutorPanel extends Component {
                             <p className="noticias">{articulosNum} Noticias</p>
                         </Block>
                         <Block className="redes_cont">
-                            <a href={autor[0].facebook_link} className="external" target="_blank"><img src={FBIcon} /></a>
-                            <a href={autor[0].twitter_link} className="external" target="_blank"><img src={TWIcon} /></a>
-                            <a href={autor[0].instagram_link} className="external" target="_blank"><img src={IGIcon} /></a>
+                            <a href={autor[0].facebook_link}  className={`external${(autor[0].facebook_link  == null) ? " gray" : ""}`} target="_blank"><img src={FBIcon} /></a>
+                            <a href={autor[0].twitter_link}   className={`external${(autor[0].twitter_link   == null) ? " gray" : ""}`} target="_blank"><img src={TWIcon} /></a>
+                            <a href={autor[0].instagram_link} className={`external${(autor[0].instagram_link == null) ? " gray" : ""}`} target="_blank"><img src={IGIcon} /></a>
                         </Block>
                     </Block>
                 </Card>
