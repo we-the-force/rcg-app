@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import TestImage from '@/static/imgs/Image.png';
 import moment from 'moment';
+import marked from "marked";
 import {
     Block,
     Link,
@@ -12,6 +13,15 @@ export default function NewsBusqueda(props) {
     moment.locale('es');
     const { className, articulo } = props;
     let DB_url = f7.methods.get_URL_DB();
+
+	let newDesc = marked(articulo.description);
+	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+	let otherTags = /(<([^>]+)>)/gi;
+	newDesc = newDesc
+		.replace(titlesRegEx, "")
+		.replace(otherTags, "")
+		.replace(/\n/gi, " ")
+		.match(/^.{300}/gi);
     return (
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">
@@ -27,7 +37,7 @@ export default function NewsBusqueda(props) {
                         <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
                     </Block>
                     <Link className="title" href={`/articulo/${articulo.url}/`}>{articulo.Titulo}</Link>
-                    <p className="preview">{articulo.description}</p>
+                    <p className="preview">{newDesc}</p>
                     <a className="more" href={'/articulo/' + articulo.url + '/'}>Ver más</a>
                 </Block>
             </Block>

@@ -3,6 +3,7 @@ import TestImage from '@/static/imgs/Image.png';
 import Twitter from '@/static/icons/TW_Icon_x3.png';
 import Face from '@/static/icons/FB_Icon_x3.png';
 import moment from 'moment';
+import marked from "marked";
 import {
     Block,
     Link,
@@ -18,6 +19,15 @@ export default function NewsCategoria(props) {
     let url = f7.methods.get_URL();
     const urlThing = url + `/articulo/${articulo.url}/`;
     const urlEncoded = encodeURIComponent(urlThing);
+
+	let newDesc = marked(articulo.description);
+	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+	let otherTags = /(<([^>]+)>)/gi;
+	newDesc = newDesc
+		.replace(titlesRegEx, "")
+		.replace(otherTags, "")
+		.replace(/\n/gi, " ")
+		.match(/^.{300}/gi);
     return (
         <Card className={`NewsCategoria_cont ${className}`}>
             <Block className="head">
@@ -44,7 +54,7 @@ export default function NewsCategoria(props) {
                         <img src={DB_url + articulo.cover.url} alt="" />
                     </a>
                 </div>
-                <p className="preview">{articulo.description}</p>
+                <p className="preview">{newDesc}</p>
                 <div className="more_cont">
                     <a className="more" href={`/articulo/${articulo.url}/`}>Ver más</a>
                 </div>

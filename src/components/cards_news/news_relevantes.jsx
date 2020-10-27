@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import TestImage from '@/static/imgs/grayback.jpg';
 import moment from 'moment';
+import marked from 'marked';
 import { f7, f7ready } from 'framework7-react';
 import {
     Block,
@@ -18,9 +19,13 @@ export default function NewsRelevantes(props) {
     let DB_url = f7.methods.get_URL_DB();
     let imagen, categoria, content, Titulo, fecha, url;
     if (noticia) {
+        let newDesc = marked(noticia.description);
+        let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+        let otherTags = /(<([^>]+)>)/gi;
+        newDesc = newDesc.replace(titlesRegEx, '').replace(otherTags, '').replace(/\n/gi, ' ').match(/^.{300}/gi);
         imagen = DB_url + noticia.cover.url;
         categoria = noticia.categoria.nombre;
-        content = noticia.description;
+        content = newDesc;
         Titulo = noticia.Titulo;
         fecha = moment(noticia.fecha);
         url = `/articulo/${noticia.url}/`;
