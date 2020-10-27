@@ -127,7 +127,7 @@ export default function mobileMenuPopup(props) {
 						<Block className="display-flex flex-direction-column justify-content-center align-items-center">
 							<div className="avisos display-flex">
 								<Link href="/derecho-replica" popupClose>
-									Derecho de replica
+									Derecho de réplica
 								</Link>
 								<Link href="/aviso-privacidad" popupClose>
 									Aviso de privacidad
