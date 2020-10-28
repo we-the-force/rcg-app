@@ -42,3 +42,6 @@ cordova/www/
 
 # Production build
 www/
+
+#deploy script
+deploy.sh

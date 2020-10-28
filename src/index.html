@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <!--
+    <meta charset="utf-8">
+    <!--
   Customize this policy to fit your own app's needs. For more guidance, see:
       https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
   Some notes:
@@ -10,60 +11,60 @@
     * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
       * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-  <meta 
-    http-equiv="Content-Security-Policy" 
-    content="
+    <meta http-equiv="Content-Security-Policy" content="
       default-src * 'self' 'unsafe-inline' 'unsafe-eval' blob: data: gap: content:;
-    "
-  >
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-  
-  <meta name="description" content="Noticias en tiempo real. Periodismo de investigación, tendencias, videos, política, opinión, deportes, espectáculos de México y el mundo.">
-  <meta name="keywords" content="Noticias, México, Coahuila, Saltillo, Coronavirus">
-  <link rel="canonical" href="https://rcg.com.mx/">
-  <link rel="shortlink" href="https://rcg.com.mx/">
-  <link rel="alternate" href="https://rcg.com.mx/" hreflang="es" />
-  <meta name="robots" content="noindex,nofollow">
+    ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
 
-  <meta property="og:site_name" content="RCG">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rcg.com.mx">
-  <meta property="og:title" content="RCG">
-  <meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo.">
-  <meta property="og:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+    <meta name="description" content="Noticias en tiempo real. Periodismo de investigación, tendencias, videos, política, opinión, deportes, espectáculos de México y el mundo.">
+    <meta name="keywords" content="Noticias, México, Coahuila, Saltillo, Coronavirus">
+    <link rel="canonical" href="https://rcg.com.mx/">
+    <link rel="shortlink" href="https://rcg.com.mx/">
+    <link rel="alternate" href="https://rcg.com.mx/" hreflang="es" />
+    <meta name="robots" content="noindex,nofollow">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@RCGoficial">
-  <meta name="twitter:url" content="https://rcg.com.mx/">
-  <meta name="twitter:title" content="RCG">
-  <meta name="twitter:description" content="Las Noticias de México, Coahuila y Saltillo.">
+    <meta property="og:site_name" content="RCG">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rcg.com.mx">
+    <meta property="og:title" content="RCG">
+    <meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo.">
+    <meta property="og:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-  <meta property="twitter:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png">
-  <meta property="twitter:title" content="RCG">
-  <meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo.">
-  <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
-  <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@RCGoficial">
+    <meta name="twitter:url" content="https://rcg.com.mx/">
+    <meta name="twitter:title" content="RCG">
+    <meta name="twitter:description" content="Las Noticias de México, Coahuila y Saltillo.">
 
-  <meta name="theme-color" content="#007aff">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <title>RCG | El Gigante de Coahuila</title>
-  <% if (process.env.TARGET === 'web') { %>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
-  <link rel="apple-touch-icon" href="static/icons/apple-touch-icon.png">
-  <link rel="icon" href="/static/icons/favicon.png">
-  <link rel="manifest" href="/manifest.json">
-  <% } %>
-  <!-- built styles file will be auto injected -->
+    <meta property="twitter:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png">
+    <meta property="twitter:title" content="RCG">
+    <meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo.">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
+
+    <script data-ad-client="ca-pub-5946382133965347" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <meta name="theme-color" content="#007aff">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>RCG | El Gigante de Coahuila</title>
+    <% if (process.env.TARGET === 'web') { %>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+        <link rel="apple-touch-icon" href="static/icons/apple-touch-icon.png">
+        <link rel="icon" href="/static/icons/favicon.png">
+        <link rel="manifest" href="/manifest.json">
+        <% } %>
+            <!-- built styles file will be auto injected -->
 </head>
+
 <body>
-  <div id="app"></div>
-  <!-- <script>
+    <div id="app"></div>
+    <!-- <script>
     console.log("fbAsyncInit");
     window.fbAsyncInit = function() {
       FB.init({
@@ -78,57 +79,73 @@
       }, function(response){});
     };
   </script> -->
-  <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=693607127910625&autoLogAppEvents=1" nonce="Z8ezH9YB"></script>
-<% if (process.env.TARGET === 'cordova') { %>
-  <script src="cordova.js"></script>
-<% } %>
-<script type="application/ld+json">{
- "@context" : "http://schema.org",
- "@type" : "Organization",
- "name" : "RCG",
- "url" : "https://rcg.com.mx",
- "sameAs" : [
-   "https://twitter.com/RCGoficial",
-   "https://www.facebook.com/rcgoficial",
-   "https://www.instagram.com/rcgoficial/"
-  ],
- "address": {
-   "@type": "PostalAddress",
-   "streetAddress": "Carr. Monterrey - Saltillo 7740, Los Rodríguez.",
-   "addressLocality": "Saltillo",
-   "addressRegion": "Coahuila",
-   "postalCode": "25200",
-   "addressCountry": "MX"
- }
-}</script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180714259-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=693607127910625&autoLogAppEvents=1" nonce="Z8ezH9YB"></script>
+    <% if (process.env.TARGET === 'cordova') { %>
+        <script src="cordova.js"></script>
+        <% } %>
+            <script type="application/ld+json">
+                {
+                    "@context": "http://schema.org",
+                    "@type": "Organization",
+                    "name": "RCG",
+                    "url": "https://rcg.com.mx",
+                    "sameAs": [
+                        "https://twitter.com/RCGoficial",
+                        "https://www.facebook.com/rcgoficial",
+                        "https://www.instagram.com/rcgoficial/"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Carr. Monterrey - Saltillo 7740, Los Rodríguez.",
+                        "addressLocality": "Saltillo",
+                        "addressRegion": "Coahuila",
+                        "postalCode": "25200",
+                        "addressCountry": "MX"
+                    }
+                }
+            </script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180714259-1"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-180714259-1');
-</script>
-<!-- Facebook Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '823839871704925');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+
+                gtag('config', 'UA-180714259-1');
+            </script>
+            <!-- Facebook Pixel Code -->
+            <script>
+                ! function(f, b, e, v, n, t, s) {
+                    if (f.fbq) return;
+                    n = f.fbq = function() {
+                        n.callMethod ?
+                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    };
+                    if (!f._fbq) f._fbq = n;
+                    n.push = n;
+                    n.loaded = !0;
+                    n.version = '2.0';
+                    n.queue = [];
+                    t = b.createElement(e);
+                    t.async = !0;
+                    t.src = v;
+                    s = b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t, s)
+                }(window, document, 'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '823839871704925');
+                fbq('track', 'PageView');
+            </script>
+            <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=823839871704925&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Facebook Pixel Code -->
+            <!-- End Facebook Pixel Code -->
 
-  <!-- built script files will be auto injected -->
+            <!-- built script files will be auto injected -->
 </body>
+
 </html>
