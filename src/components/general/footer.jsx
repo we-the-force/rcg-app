@@ -44,16 +44,16 @@ export default class Footer extends Component {
                     </div>
                 </Block>
                 <Block className="right display-flex justify-content-space-between align-items-center social-desk">
-                    <a href="#" className="faceIcon display-flex justify-content-center align-items-center">
+                    <a href="https://www.facebook.com/rcgoficial" className="faceIcon display-flex justify-content-center align-items-center external">
                         <img src={FaceFoot} alt="" />
                     </a>
-                    <a href="#" className="twitIcon display-flex justify-content-center align-items-center">
+                    <a href="https://www.twitter.com/RCGoficial" className="twitIcon display-flex justify-content-center align-items-center external">
                         <img src={TwitFoot} alt="" />
                     </a>
-                    <a href="#" className="youIcon display-flex justify-content-center align-items-center">
+                    <a href="https://www.youtube.com/user/RCGNOTICIAS" className="youIcon display-flex justify-content-center align-items-center external">
                         <img src={YouFoot} alt="" />
                     </a>
-                    <a href="#" className="instaIcon display-flex justify-content-center align-items-center">
+                    <a href="https://www.instagram.com/rcgoficial" className="instaIcon display-flex justify-content-center align-items-center external">
                         <img src={InstaFoot} alt="" />
                     </a>
                 </Block>
