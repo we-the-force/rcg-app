@@ -14,8 +14,8 @@ export default class adsTop extends Component {
 					<Block className="ads">
 						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 						<ins
-							class="adsbygoogle"
-							style="display:block"
+							className="adsbygoogle"
+							style={{display: 'block'}}
 							data-ad-client="ca-pub-5946382133965347"
 							data-ad-slot="7621123541"
 							data-ad-format="auto"
