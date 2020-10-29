@@ -106,18 +106,6 @@ export default class extends React.Component {
 	}
 
 	render() {
-		let tablet = false,
-			desktop = false,
-			mobile = false;
-		let w = window.innerWidth;
-		if (w >= 1024) {
-			desktop = true;
-		} else if (w >= 640) {
-			tablet = true;
-		} else {
-			mobile = true;
-		}
-
 		return (
 			<ApolloProvider client={client}>
 				<App params={this.state}>
@@ -154,9 +142,18 @@ export default class extends React.Component {
 				cordovaApp.init(f7);
 			}
 			// Call F7 APIs here
-			window.addEventListener("orientationchange", function () {
-				if (!!f7.popup.get() && f7.popup.get().el.classList.contains("menuPopup")) {
-					f7.popup.close();
+			window.addEventListener("orientationchange", function (e) {
+				if ($(".popup.modal-in").length) {
+					f7.popup.close(".popup.modal-in");
+					return false;
+				}
+				if ($(".popover.modal-in").length) {
+					f7.popover.close(".popover.modal-in");
+					return false;
+				}
+				if ($(".panel.panel-in").length) {
+					f7.panel.close(".panel.panel-in");
+					return false;
 				}
 			});
 
@@ -172,6 +169,7 @@ export default class extends React.Component {
 
 				if ($(".panel.panel-in").length) {
 					f7.panel.close(".panel.panel-in");
+					return false;
 				}
 			});
 		});

@@ -68,16 +68,6 @@ export default function navMobile(props) {
             <NavRight>
                 <img src={navGraph} alt="" />
             </NavRight>
-            <Popover className="popover-menu">
-                <List>
-                    {itemsPop.map((val, key) => {
-                        return (
-                            <ListItem key={key} link={`/categoria/${val.url}`} popoverClose className="uppercase" >{val.nombre}</ListItem>
-                        );
-                    })}
-                    <ListItem link="/autores" className="uppercase" popoverClose>autores</ListItem>
-                </List>
-            </Popover>
         </Fragment>
     );
 }

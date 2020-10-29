@@ -32,7 +32,7 @@ export default function navMobile(props) {
     return (
         <Fragment>
             <NavLeft>
-                <Link className="categorias panel-open" data-panel=".panel-left-mobile" iconMaterial="menu" icon="menu" color="red"></Link>
+                <Link panelOpen="left" className="categorias" iconMaterial="menu" icon="menu" color="red"></Link>
             </NavLeft>
             <a className="logo" href="/">
                 <img src={LogoBlanco} alt="" />

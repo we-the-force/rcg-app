@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Mobile from "./nav_mobile";
 import Desk from "./nav_desktop";
 import PopMenu from "./mobile-menu-popup";
-import { ListGroup, Navbar, f7 } from "framework7-react";
+import { Popover, Navbar, List, ListItem, f7 } from "framework7-react";
 
 export default function Nav(props) {
 	let { categorias, home, espectaculares } = props;
@@ -10,16 +10,26 @@ export default function Nav(props) {
 	if (categorias.length <= 0) return null;
 
 	let [categ_show, categ_pop, type] = useData(categorias);
-    // console.log("Categorais despues del useData");
-    // console.log(categ_show);
-    // console.log(categ_pop);
+	// console.log("Categorais despues del useData");
+	// console.log(categ_show);
+	// console.log(categ_pop);
 	return (
 		<Fragment>
 			<Navbar sliding noHairline noShadow>
 				{type === "desktop" && <Desk itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />}
-				{type === "mobile" && <Mobile/>}
+				{type === "mobile" && <Mobile />}
 			</Navbar>
-			<PopMenu  tv_channels={props.tv_channels} radio_stations={props.radio_stations}  />
+			<PopMenu tv_channels={props.tv_channels} radio_stations={props.radio_stations} />
+			<Popover className="popover-menu">
+				<List>
+					{categ_pop.map((val, key) => {
+						return (
+							<ListItem key={key} link={`/categoria/${val.url}`} popoverClose className="uppercase" >{val.nombre}</ListItem>
+						);
+					})}
+					<ListItem link="/autores" className="uppercase" popoverClose>autores</ListItem>
+				</List>
+			</Popover>
 		</Fragment>
 	);
 }
@@ -35,7 +45,7 @@ function useData(data) {
 	let thisType = "";
 	useEffect(() => {
 		function handleResize() {
-            let categorias = [...data];
+			let categorias = [...data];
 			let w = window.innerWidth;
 			thisType = "desktop";
 			if (w > 1420) {

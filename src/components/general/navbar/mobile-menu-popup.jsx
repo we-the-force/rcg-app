@@ -28,7 +28,7 @@ export default function mobileMenuPopup(props) {
 		<Popup className="menuPopup">
 			<Navbar sliding noHairline noShadow className="navPopup">
 				<NavLeft>
-					<Link className="categorias panel-open" data-panel=".panel-left-mobile" iconMaterial="menu" icon="menu" color="red" popupClose></Link>
+					<Link panelOpen="left" className="categorias" iconMaterial="menu" icon="menu" color="red" popupClose></Link>
 				</NavLeft>
 				<a className="logo" href="/">
 					<img src={LogoBlanco} alt="" />
