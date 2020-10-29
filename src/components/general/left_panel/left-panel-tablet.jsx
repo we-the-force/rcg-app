@@ -59,15 +59,19 @@ export default function LeftPanelTablet(props) {
             <Link onClick={(e) => { changeBackdropOpen(e, setMorePop) }} className="icon-link servicios"><img src={services} alt="" /></Link>
             <Link onClick={(e) => { changeBackdropOpen(e, setRedesPop) }} className="icon-link redes"><img src={twred} alt="" /></Link>
             <Link onClick={(e) => { changeBackdropOpen(e, setNosotrosPop) }} className="icon-link nosotros" iconMaterial="perm_contact_calendar" icon="nosotros"></Link>
+            <Link onClick={(e) => {
+                let html = document.getElementsByTagName("html")[0];
+                html.classList.toggle('theme-dark');
+            }} className="icon-link theme" iconMaterial="brightness_low" icon="theme"></Link>
 
             <div className="links">
                 <Link href="/derecho-replica" className="text-link derecho-replica">Derecho de réplica</Link>
                 <Link href="/aviso-privacidad" className="text-link aviso-privacidad">Aviso de privacidad</Link>
                 <Link href="/faq" className="text-link">Preguntas Frecuentes</Link>
 
-                <Link className="text-link OPI-2017">OPI 2017</Link>
+                {/*<Link className="text-link OPI-2017">OPI 2017</Link>
                 <Link className="text-link OPi-2018">OPI 2018</Link>
-                <Link className="text-link SEG">SEG</Link>
+    <Link className="text-link SEG">SEG</Link>*/}
                 <p>©2020 RCG</p>
             </div>
 

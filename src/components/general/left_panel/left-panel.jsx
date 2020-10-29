@@ -12,6 +12,7 @@ import {
     ListItem,
     Block,
     Link,
+    Icon
 } from 'framework7-react';
 
 export default function LeftPanel(props) {
@@ -80,6 +81,15 @@ export default function LeftPanel(props) {
                     <ListItem link="/contacto">Contacto</ListItem>
                 </List>
             </Card>
+            <Block className="theme">
+                <a onClick={()=>{
+                    let html = document.getElementsByTagName("html")[0];
+                    html.classList.toggle('theme-dark');
+                }}>
+                    Modo Oscuro 
+                    <Icon material="brightness_low"></Icon>
+                </a>
+            </Block>
             <Block className="more display-flex flex-direction-column justify-content-flex-start align-items-flex-start">
                 <div className="flex_wrap display-flex justify-content-flex-start align-items-center">
                     <Link href="/derecho-replica">Derecho de réplica</Link>

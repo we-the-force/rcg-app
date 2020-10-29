@@ -59,13 +59,24 @@
         display none !important
 
     .logo
+        position relative
         order 3
         width 45%
         display flex
         margin-top 20px
 
+        &:after
+            content ''
+            display flex
+            padding-top calc(65 / 133 * 100%)
+
         img
-            width 100%
+            position absolute
+            top 0
+            left 0
+            width 100% !important
+            height 100% !important
+            margin 0px
             object-fit cover
 
     @media (min-width 640px)
@@ -77,7 +88,7 @@
             order 2
             margin 0px
             padding 0px
-            
+
             hr
                 border 0.25px solid #878787
                 height 14px
@@ -116,5 +127,12 @@
             width 150px
             margin 8px auto 8px 16px
             padding 0px
+            height 42px
+
+            &:after
+                content none
+
             img
-                width 85px
+                position relative
+                width 85px !important
+                object-fit cover

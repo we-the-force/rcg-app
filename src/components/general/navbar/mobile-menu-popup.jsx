@@ -120,8 +120,16 @@ export default function mobileMenuPopup(props) {
 							</Link>
 						</Block>
 					</div>
-					<div className="box empty">
-						<Block></Block>
+					<div className="box theme">
+						<Block className="theme">
+							<a className="popup-close" onClick={() => { 
+								let html = document.getElementsByTagName("html")[0];
+								html.classList.toggle('theme-dark');
+							 }}>
+								Modo Oscuro
+                    			<Icon material="brightness_low"></Icon>
+							</a>
+						</Block>
 					</div>
 					<div className="box foot">
 						<Block className="display-flex flex-direction-column justify-content-center align-items-center">
