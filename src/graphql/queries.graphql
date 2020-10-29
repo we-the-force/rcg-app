@@ -22,6 +22,7 @@ query HomePage {
   }
   categorias {
     nombre
+    url
     articulos(sort: "fecha:desc", limit: 16) {
       ...ArticulosData
     }
