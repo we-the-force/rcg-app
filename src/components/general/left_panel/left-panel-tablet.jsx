@@ -62,7 +62,11 @@ export default function LeftPanelTablet(props) {
             <Link onClick={(e) => {
                 let html = document.getElementsByTagName("html")[0];
                 html.classList.toggle('theme-dark');
-            }} className="icon-link theme" iconMaterial="brightness_low" icon="theme"></Link>
+            }} className="icon-link light theme" iconF7="sun_max" icon="theme"></Link>
+            <Link onClick={(e) => {
+                let html = document.getElementsByTagName("html")[0];
+                html.classList.toggle('theme-dark');
+            }} className="icon-link dark theme" iconF7="sun_min_fill" icon="theme"></Link>
 
             <div className="links">
                 <Link href="/derecho-replica" className="text-link derecho-replica">Derecho de réplica</Link>

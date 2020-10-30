@@ -5,6 +5,8 @@ import YTIcon from '@/static/icons/YT_Icon.png'
 import IGIcon from '@/static/icons/IG_Icon.png'
 import TVLight from '@/static/icons/tv_light.png'
 import MIC from '@/static/icons/microphone.png'
+import TVDark from '@/static/icons/tv_dark.png'
+import MICDark from '@/static/icons/microphone_dark.png'
 import {
     Card,
     CardHeader,
@@ -22,7 +24,8 @@ export default function LeftPanel(props) {
             <Card className="left_pan_card envivo">
                 <CardHeader className="justify-content-flex-start align-items-flex-end">
                     <div className="icon display-flex justify-content-flex-start align-items-flex-end">
-                        <img src={TVLight} alt="" />
+                        <img className="light" src={TVLight} alt="" />
+                        <img className="dark" src={TVDark} alt="" />
                     </div>
                         en vivo
                     </CardHeader>
@@ -37,7 +40,8 @@ export default function LeftPanel(props) {
             <Card className="left_pan_card radio_card">
                 <CardHeader className="justify-content-flex-start align-items-flex-end">
                     <div className="icon display-flex justify-content-center align-items-flex-end">
-                        <img src={MIC} alt="" />
+                        <img className="light" src={MIC} alt="" />
+                        <img className="dark" src={MICDark} alt="" />
                     </div>
                         Radio
                     </CardHeader>
@@ -87,7 +91,8 @@ export default function LeftPanel(props) {
                     html.classList.toggle('theme-dark');
                 }}>
                     Modo Oscuro 
-                    <Icon material="brightness_low"></Icon>
+                    <Icon className="light" f7="sun_max"></Icon>
+                    <Icon className="dark" f7="sun_min_fill"></Icon>
                 </a>
             </Block>
             <Block className="more display-flex flex-direction-column justify-content-flex-start align-items-flex-start">
@@ -96,11 +101,11 @@ export default function LeftPanel(props) {
                     <Link href="/aviso-privacidad">Aviso de privacidad</Link>
                     <Link href="/faq">Preguntas Frecuentes</Link>
                 </div>
-                <div className="display-flex justify-content-flex-start align-items-center">
+                {/* <div className="display-flex justify-content-flex-start align-items-center">
                     <Link href={false}>OPI 2017</Link>
                     <Link href={false}>OPI 2018</Link>
                     <Link href={false}>SEG</Link>
-                </div>
+                </div> */}
                 <p>©2020 RCG</p>
             </Block>
         </Block>

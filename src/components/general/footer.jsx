@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import LogoNegro from '@/static/imgs/Logo_negro.png'
+import LogoBlanco from '@/static/imgs/Logo_blanco.png'
 import FaceFoot from '@/static/icons/footer_face.png'
 import TwitFoot from '@/static/icons/footer_twit.png'
 import YouFoot from '@/static/icons/footer_you.png'
 import InstaFoot from '@/static/icons/footer_insta.png'
-
+import FaceFoot_d from '@/static/icons/footer_face_d.png'
+import TwitFoot_d from '@/static/icons/footer_twit_d.png'
+import YouFoot_d from '@/static/icons/footer_you_d.png'
+import InstaFoot_d from '@/static/icons/footer_insta_d.png'
 import TWIcon from '@/static/icons/TW_Icon.png'
 import FBIcon from '@/static/icons/FB_Icon.png'
 import YTIcon from '@/static/icons/YT_Icon.png'
@@ -23,7 +27,8 @@ export default class Footer extends Component {
         return (
             <Block className="footer display-flex justify-content-space-between">
                 <a href="/" className="left logo">
-                    <img src={LogoNegro} alt="" />
+                    <img className="black" src={LogoNegro} alt="" />
+                    <img className="white" src={LogoBlanco} alt="" />
                 </a>
                 <Block className="center links">
                     <div className="cont display-flex">
@@ -45,16 +50,20 @@ export default class Footer extends Component {
                 </Block>
                 <Block className="right display-flex justify-content-space-between align-items-center social-desk">
                     <a href="https://www.facebook.com/rcgoficial" className="faceIcon display-flex justify-content-center align-items-center external">
-                        <img src={FaceFoot} alt="" />
+                        <img className="light" src={FaceFoot} alt="" />
+                        <img className="dark" src={FaceFoot_d} alt="" />
                     </a>
                     <a href="https://www.twitter.com/RCGoficial" className="twitIcon display-flex justify-content-center align-items-center external">
-                        <img src={TwitFoot} alt="" />
+                        <img className="light" src={TwitFoot} alt="" />
+                        <img className="dark" src={TwitFoot_d} alt="" />
                     </a>
                     <a href="https://www.youtube.com/user/RCGNOTICIAS" className="youIcon display-flex justify-content-center align-items-center external">
-                        <img src={YouFoot} alt="" />
+                        <img className="light" src={YouFoot} alt="" />
+                        <img className="dark" src={YouFoot_d} alt="" />
                     </a>
                     <a href="https://www.instagram.com/rcgoficial" className="instaIcon display-flex justify-content-center align-items-center external">
-                        <img src={InstaFoot} alt="" />
+                        <img className="light" src={InstaFoot} alt="" />
+                        <img className="dark" src={InstaFoot_d} alt="" />
                     </a>
                 </Block>
                 <Block className="display-flex justify-content-space-between align-items-center social-mobile">

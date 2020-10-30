@@ -10,7 +10,22 @@
             min-height unset
             padding 9px 0px
             margin 0px 8px 0px 14px
-            border-bottom 1px solid #EFEFEF
+            border-bottom none
+
+            &:after
+                content ''
+                position absolute
+                background-color #EFEFEF
+                display block
+                z-index 0
+                top auto
+                right auto
+                bottom 0
+                left 0
+                height 1px
+                width 100%
+                transform-origin 50% 100%
+                transform scaleY(calc((1 / var(--f7-device-pixel-ratio))))
 
             .icon
                 width 16px
@@ -19,6 +34,12 @@
 
                 img
                     height 100%
+
+                    &.light
+                        display block
+
+                    &.dark
+                        display none
 
         .item-content
             padding-left 10px
@@ -104,9 +125,6 @@
 
         &:after
             content none
-
-    &.darkTheme
-        background-color grey_d_3
 
     &:after
         content ''
