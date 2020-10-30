@@ -46,7 +46,7 @@ export default function NewsRelevantes(props) {
                 <Link href={"/categoria/" + categoria} className={"categoria upperscale " + skeleton}>{categoria}</Link>
             </Block>
             <Block className={`add`}>
-                <a className='link-target' onClick={(e)=>{console.log(e);}} href={url} />
+                <a className='link-target' href={url} />
                 <Link iconMaterial="add" onClick={() => { setModal(modal == '' ? 'modal-in' : '') }} />
                 <Block className={`content`}>
                     <p className={skeleton}>{content}</p>
