@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Portada from "@/static/imgs/Espectaculares-Portada 1.png";
+import PortadaDark from "@/static/imgs/Espectaculares-Portada 2.png";
 import marked from "marked";
 import JsxParser from "react-jsx-parser";
 import { Block, Card, BlockHeader, f7 } from "framework7-react";
@@ -90,7 +91,8 @@ export default function EspectacularPanel(props) {
 				</Block>
 			</Card>
 			<div className="portada_cont">
-				<img src={Portada} alt="" />
+				<img className="light" src={Portada} alt="" />
+				<img className="dark" src={PortadaDark} alt="" />
 			</div>
 		</Block>
 	);

@@ -6,6 +6,11 @@ import tv from "@/static/imgs/TV_contacto.png";
 import espect from "@/static/imgs/Espect_contacto.png";
 import spantalla from "@/static/imgs/Super_pantalla_contacto.png";
 import media from "@/static/imgs/Media_contacto.png";
+import radio_dark from "@/static/imgs/Radio_contacto_black.png";
+import tv_dark from "@/static/imgs/tv_contact_dark.png";
+import espect_dark from "@/static/imgs/Espect_contacto_dark.png";
+import spantalla_dark from "@/static/imgs/super_pant_dark.png";
+import media_dark from "@/static/imgs/social_media_dark.png";
 import { Block, Card, BlockHeader, Input, Popup, Button } from "framework7-react";
 
 export default function ContactoPanel(props) {
@@ -69,23 +74,28 @@ export default function ContactoPanel(props) {
                         </Block>
                         <Block className="icons_cont display-flex">
                             <Block id="radio" className="contacto_icon">
-                                <img src={radio} alt="" />
+                                <img className="light" src={radio} alt="" />
+                                <img className="dark" src={radio_dark} alt="" />
                                 <p>Radio</p>
                             </Block>
                             <Block id="tv" className="contacto_icon">
-                                <img src={tv} alt="" />
+                                <img className="light" src={tv} alt="" />
+                                <img className="dark" src={tv_dark} alt="" />
                                 <p>Televisión</p>
                             </Block>
                             <Block id="espect" className="contacto_icon">
-                                <img src={espect} alt="" />
+                                <img className="light" src={espect} alt="" />
+                                <img className="dark" src={espect_dark} alt="" />
                                 <p>Espectaculares</p>
                             </Block>
                             <Block id="spantalla" className="contacto_icon">
-                                <img src={spantalla} alt="" />
+                                <img className="light" src={spantalla} alt="" />
+                                <img className="dark" src={spantalla_dark} alt="" />
                                 <p>Super Pantalla</p>
                             </Block>
                             <Block id="media" className="contacto_icon">
-                                <img src={media} alt="" />
+                                <img className="light" src={media} alt="" />
+                                <img className="dark" src={media_dark} alt="" />
                                 <p>Redes Sociales</p>
                             </Block>
                         </Block>
