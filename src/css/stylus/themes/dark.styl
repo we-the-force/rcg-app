@@ -249,13 +249,6 @@
         .parrafo
             color #fff
 
-        blockquote
-            p
-                color #1b1b1b
-
-            &:after
-                color #1b1b1b
-
     .card.articulo
         .header_cont
             .card-header
@@ -422,6 +415,10 @@
 
             .radio-ui
                 .top-wrapper
+                    .logo-radio
+                        &:after
+                            background-image url('../static/icons/microphone_dark.png')
+
                     .content-radio
                         .title
                             color #fff
@@ -436,7 +433,73 @@
                     .controls
                         a
                             .icon
-                                color #434343
+                                color #fff
 
                         .range-slider
-                            --f7-theme-color #545454
+                            --f7-theme-color #c0c0c0
+
+    .not_found_panel
+        .not_found_card
+            h2
+                color #fff
+
+            p
+                color #fff
+
+    .NewsBusqueda_cont
+        .background
+            background #2b2b2b
+
+            .content
+                .info
+                    .fecha
+                        color #979797
+
+                .title
+                    color #fff
+
+                .preview
+                    color #b6b6b6
+
+    .grid-cont
+        .modal-in
+            .add
+                background #232323
+
+                .content
+                    p
+                        color #fff
+
+    .nosotros_panel
+        .card
+            .back
+                background #2a2a2a
+
+            &.city
+                .back
+                    .cityImg
+                        &.dark
+                            display block
+
+                        &.light
+                            display none
+
+                    .logo_cont
+                        .dark
+                            display block
+
+                        .light
+                            display none
+
+            &.quote
+                &:before
+                    color white
+
+            &.bottom
+                .back
+                    .logo_cont
+                        .dark
+                            display block
+
+                        .light
+                            display none

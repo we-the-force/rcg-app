@@ -38,12 +38,24 @@
                         left 9px
                         width 27%
 
+                    .dark
+                        display none
+
+                    .light
+                        display block
+
                 .cityImg
                     width 100%
                     position absolute
                     bottom 0
                     left 0
                     z-index 0
+
+                    &.dark
+                        display none
+
+                    &.light
+                        display block
 
         &.quote
             background linear-gradient(360deg, #EC1B23 43.39%, #FF5C63 125.23%)
@@ -68,7 +80,7 @@
                 transform translateX(-50%)
 
         &.bottom
-            padding 20px 9px 5px 9px
+            padding 5px
 
             .back
                 .logo_cont
@@ -85,6 +97,12 @@
                     img
                         position absolute
                         width 27%
+
+                    .dark
+                        display none
+
+                    .light
+                        display block
 
     @media (min-width 640px)
         .head
