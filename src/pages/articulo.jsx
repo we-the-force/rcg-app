@@ -39,18 +39,20 @@ export default function Articulo(props) {
 		variables: { url },
 		onCompleted: (data) => {
 			setFlag(true);
-			if (data.articulos[0].tags.length > 0) {
-				getRecomendados({
-					variables: {
-						tag: data.articulos[0].tags[0].nombre,
-					},
-				});
-			} else {
-				getRecomendadosCateg({
-					variables: {
-						categ: data.articulos[0].categoria.nombre,
-					},
-				});
+			if (data.articulos.length > 0) {
+				if (data.articulos[0].tags.length > 0) {
+					getRecomendados({
+						variables: {
+							tag: data.articulos[0].tags[0].nombre,
+						},
+					});
+				} else {
+					getRecomendadosCateg({
+						variables: {
+							categ: data.articulos[0].categoria.nombre,
+						},
+					});
+				}
 			}
 		},
 	});
@@ -62,14 +64,14 @@ export default function Articulo(props) {
 	};
 
 	useEffect(() => {
-        window.addEventListener("backbutton", () => console.log("ahoy"));
+		window.addEventListener("backbutton", () => console.log("ahoy"));
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
 		});
 	}, []);
 
 	useEffect(() => {
-		if (flag) {
+		if (flag && data.articulos.length > 0) {
 			let viewedArticles = window.sessionStorage.getItem("viewedArticles");
 			if (viewedArticles != null) {
 				let jsonArticles = JSON.parse(viewedArticles);
@@ -87,7 +89,22 @@ export default function Articulo(props) {
 		}
 	}, [flag]);
 
-	let centerPanel = loading ? error ? <ErrorPanel /> : <LoadingPanel /> : <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
+	let centerPanel;
+
+	if (loading) {
+		if (error) {
+			centerPanel = <ErrorPanel />;
+		} else {
+			centerPanel = <LoadingPanel />;
+		}
+	} else {
+		if (data.articulos.length > 0) {
+			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
+		} else {
+			centerPanel = <ErrorPanel error="No pudimos encontrar el articulo que buscas" />;
+		}
+	}
+
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
