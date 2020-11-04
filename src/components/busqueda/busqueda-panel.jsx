@@ -14,8 +14,8 @@ export default function BusquedaPanel(props) {
     if(first === 3 && articulos.length === 0){
         content = <div className="not_found_panel">
             <Card className="not_found_card">
-                <h2>La busqueda no trajo resultados</h2>
-                <p>intenta usando diferentes terminos</p>
+                <h2>La búsqueda no trajo resultados.</h2>
+                <p>Intenta usando diferentes términos.</p>
             </Card>
         </div>
     }
@@ -23,7 +23,7 @@ export default function BusquedaPanel(props) {
 	return (
 		<Block className="busqueda_panel center_panel">
 			<Card className="new_head">
-				<CardHeader>Busqueda: {title}</CardHeader>
+				<CardHeader>Búsqueda: {title}</CardHeader>
 				<div className="head_logo">
 					<img src={back_head} alt="" />
 				</div>
