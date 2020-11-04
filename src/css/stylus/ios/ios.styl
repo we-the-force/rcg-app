@@ -1,9 +1,20 @@
 .ios
+    .schedule
+        .week_tabs
+            .tab-active
+                .toolbar
+                    .toolbar-inner
+                        box-sizing content-box
+
+                @media (min-width 640px)
+                    .tabs-content
+                        margin-left 0px !important
+
     .navbar
         .navbar-inner
             overflow hidden
 
-    .NewsHome_cont,.NewsBusqueda_cont
+    .NewsHome_cont, .NewsBusqueda_cont
         .content
             .title, .autor
                 overflow visible !important
