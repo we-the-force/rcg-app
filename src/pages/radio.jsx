@@ -48,7 +48,7 @@ export default function Radio(props) {
         let { radio, programacion } = data;
         centerPanel = radio.length > 0 ?
             <RadioPanel estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} /> :
-            <NotFoundPanel />;
+            <ErrorPanel error="No pudimos encontrar la estación que buscas" />;
     }
     return (
         <Page pageContent={false} name='radio'>

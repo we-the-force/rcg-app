@@ -6,7 +6,7 @@ export default function ErrorPanel(props) {
 	return (
 		<Block className="center_panel error_panel">
 			<Card className="new_head">
-				<CardHeader>Ooops! Ocurrio un Error </CardHeader>
+				<CardHeader>Ooops!</CardHeader>
 				<div className="head_logo">
 					<img src={back_head} alt="" />
 				</div>

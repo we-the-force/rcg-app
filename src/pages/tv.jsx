@@ -47,7 +47,7 @@ export default function TV(props) {
         let { tv, programacion } = data;
         centerPanel = tv.length > 0 ?
             <TVPanel canal={tv} canales={leftPanelTV} programacion={programacion} table_id={name} /> :
-            <NotFoundPanel />;
+            <ErrorPanel error="No pudimos encontrar el canal que buscas" />;;
     }
     return (
         <Page pageContent={false} name="tv">
