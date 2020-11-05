@@ -8,7 +8,7 @@ import CategoriaPanel from "@/components/categoria/categoria-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import Footer from "@/components/general/footer";
-import AdsTop from "@/components/general/ads_top";
+import AdsTop from "@/components/general/ads/ads_top";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { CategoriaPage } from "@/graphql/queries.graphql";
 import { f7, f7ready } from "framework7-react";

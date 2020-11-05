@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Nav from '@/components/general/navbar/navbar';
 import LeftPanel from '@/components/general/left_panel/left-panel';
 import Footer from '@/components/general/footer';
-import AdsTop from '@/components/general/ads_top';
+import AdsTop from '@/components/general/ads/ads_top';
 import FaqPanel from '@/components/estaticas/faq-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import LoadingPanel from '@/components/loading/loading-panel';

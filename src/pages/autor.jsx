@@ -11,7 +11,7 @@ import NotFoundPanel from "@/components/not-found-panel";
 import Footer from "@/components/general/footer";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { AutorPage, BusquedaAutor } from "@/graphql/queries.graphql";
-import AdsTop from "@/components/general/ads_top";
+import AdsTop from "@/components/general/ads/ads_top";
 import { f7, f7ready } from "framework7-react";
 import { Page, Block, PageContent, Preloader } from "framework7-react";
 

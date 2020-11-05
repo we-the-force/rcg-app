@@ -8,7 +8,7 @@ import AvisoPrivacidadPanel from '@/components/estaticas/aviso-privacidad-panel'
 import LoadingPanel from '@/components/loading/loading-panel';
 import ErrorPanel from '@/components/error-panel';
 import Footer from '@/components/general/footer';
-import AdsTop from '@/components/general/ads_top';
+import AdsTop from '@/components/general/ads/ads_top';
 import { useQuery } from '@apollo/client';
 import { AvisoPrivacidadPage } from '@/graphql/queries.graphql';
 import {

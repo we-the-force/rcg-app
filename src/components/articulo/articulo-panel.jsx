@@ -4,6 +4,9 @@ import marked from "marked";
 import JsxParser from "react-jsx-parser";
 import TWIconx3 from "@/static/icons/TW_Icon_x4.png";
 import FBIconx3 from "@/static/icons/FB_Icon_x4.png";
+import AdsInArticle from "@/components/general/ads/ads_in_article";
+import AdsRightArticle from "@/components/general/ads/ads_right_article";
+import AdsFeed from "@/components/general/ads/ads_feed";
 import { useMutation, gql } from "@apollo/client";
 import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
@@ -99,14 +102,14 @@ export default class ArticuloPanel extends Component {
 					<Block className="content display-flex align-items-flex-start">
 						<Block className="left_side">
 							<JsxParser
-								components={{ Block }}
+								components={{ Block, AdsInArticle }}
 								jsx={`
                                     <div className="articulo_cont markdown">
                                     ${result}
-                                    <Block className="child ads side">
-                                    </Block>
-                                    <Block className="child ads side">
-                                    </Block>
+                                    <AdsInArticle className="child">
+                                    </AdsInArticle>
+                                    <AdsInArticle className="child">
+                                    </AdsInArticle>
                                     </div>`}
 							/>
 							<Block className="tags">
@@ -149,8 +152,8 @@ export default class ArticuloPanel extends Component {
 							</Block>
 						</Block>
 						<Block className="right_side">
-							<Block className="ads side"></Block>
-							<Block className="ads side"></Block>
+							<AdsRightArticle></AdsRightArticle>
+							<AdsRightArticle></AdsRightArticle>
 						</Block>
 					</Block>
 					<Block className="comments tab">
@@ -182,7 +185,7 @@ export default class ArticuloPanel extends Component {
 						</div>
 					</Block>
 					<Block className="ads_cont">
-						<Block className="ads bar"></Block>
+						<AdsFeed />
 					</Block>
 					<SwiperNews articulos={recomendados} />
 				</Card>

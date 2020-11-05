@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
 import AutorCard from '@/components/autores/autor-card.jsx';
+import AdsSearch from "@/components/general/ads/ads_search";
 import {
     Block,
     Card,
@@ -9,6 +10,7 @@ import {
     ListItem,
     f7
 } from 'framework7-react';
+import adsSearch from '../ads/ads_search';
 
 export default function RightPanel(props) {
 
@@ -72,7 +74,7 @@ export default function RightPanel(props) {
                         search
                     </span>
                 </Block>
-                <Block className="ads square"></Block>
+                <AdsSearch/>
             </Block>
             <Block className="right_panel_down">
                 {cards}

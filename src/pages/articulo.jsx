@@ -6,7 +6,7 @@ import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import RightPanelTablet from "@/components/general/right_panel/right-panel-tablet";
 import Footer from "@/components/general/footer";
 import ArticuloPanel from "@/components/articulo/articulo-panel";
-import AdsTop from "@/components/general/ads_top";
+import AdsTop from "@/components/general/ads/ads_top";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import { f7, f7ready } from "framework7-react";

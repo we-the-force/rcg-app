@@ -9,7 +9,7 @@ import Footer from '@/components/general/footer';
 import LoadingPanel from '@/components/loading/loading-panel';
 import ErrorPanel from '@/components/error-panel';
 import { useQuery } from '@apollo/client';
-import AdsTop from '@/components/general/ads_top';
+import AdsTop from '@/components/general/ads/ads_top';
 import { AutoresPage } from '@/graphql/queries.graphql';
 import { f7, f7ready } from 'framework7-react';
 import {

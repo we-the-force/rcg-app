@@ -6,7 +6,7 @@ import RightPanel from '@/components/general/right_panel/right-panel';
 import LeftPanelTablet from '@/components/general/left_panel/left-panel-tablet';
 import RightPanelTablet from '@/components/general/right_panel/right-panel-tablet';
 import Footer from '@/components/general/footer';
-import AdsTop from '@/components/general/ads_top';
+import AdsTop from '@/components/general/ads/ads_top';
 import HomePanel from '@/components/home/home-panel';
 import LoadingPanel from '@/components/loading/loading-panel';
 import ErrorPanel from '@/components/error-panel';
