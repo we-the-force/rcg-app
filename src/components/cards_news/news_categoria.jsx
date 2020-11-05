@@ -37,7 +37,7 @@ export default function NewsCategoria(props) {
                 </Block>
                 <Block className="share display-flex align-items-center">
                     <p>Compartir:</p>
-                    <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=La wea tweet y asi%0D`} data-size="large">
+                    <a target="_blank" className="faceIcon display-flex justify-content-center align-items-center external" href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`} data-size="large">
                         <img src={Twitter} alt="" />
                     </a>
                     <div className="faceIcon display-flex justify-content-center align-items-center external" data-href={urlThing} data-layout="button_count" data-size="small">
