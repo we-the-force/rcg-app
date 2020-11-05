@@ -39,8 +39,8 @@ export default class ArticuloPanel extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		document.addEventListener("fb_init", (e) => FB.XFBML.parse());
-		//FB.XFBML.parse();
+		//document.addEventListener("fb_init", (e) => FB.XFBML.parse());
+		FB.XFBML.parse();
 	}
 	render() {
 		let { articulo, recomendados } = this.props;

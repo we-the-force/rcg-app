@@ -12,7 +12,7 @@ export default class adsTop extends Component {
 				<Block className="left"></Block>
 				<Block className="center">
 					<Block className="ads">
-						{/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 						<ins
 							className="adsbygoogle"
 							style={{display: 'block',height: '100%'}}
@@ -21,7 +21,7 @@ export default class adsTop extends Component {
 							data-ad-format="auto"
 							data-full-width-responsive="true"
 						></ins>
-						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script> */}
+						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 					</Block>
 				</Block>
 				<Block className="right"></Block>

@@ -67,9 +67,9 @@ export default class HomePanel extends Component {
 					}
 					let ad = i % 2 === 1 ? <AdsFeed /> : null;
 					return (
-						<Fragment>
+						<Fragment  key={i}>
 							{ad}
-							<Card className="categoria" key={i}>
+							<Card className="categoria">
 								<CardHeader>
 									<p className="title">{val.nombre}</p>
 									<a href={"/categoria/" + val.url} className="link-more">
