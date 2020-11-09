@@ -28,6 +28,8 @@ export default function Calcas(props) {
     let rightPanel = f7.methods.getArticulosRightPanel();
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
+    const logo = f7.methods.getLogo();
+    const DB_url = f7.methods.get_URL_DB();
     return (
         <Page pageContent={false} name="calca">
             <PageContent>
@@ -42,7 +44,7 @@ export default function Calcas(props) {
                         </Block>
                         <Block className="center_pan">
                             <AdsTop />
-                            <CalcasPanel />
+                            <CalcasPanel logo={DB_url + logo}/>
                         </Block>
                         <Block className="right_pan">
                             <RightPanel newsInfo={rightPanel} />

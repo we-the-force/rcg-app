@@ -21,6 +21,8 @@ import {
 
 export default function DerechoReplica(props) {
     const {loading, error, data} = useQuery(DerechoReplicaPage);
+    const logo = f7.methods.getLogo();
+    const DB_url = f7.methods.get_URL_DB();
 
     useEffect(() => {
         f7ready((f7) => {
@@ -36,11 +38,12 @@ export default function DerechoReplica(props) {
         centerPanel = <ErrorPanel /> ;
     } else {
         const { content } = data;
-        centerPanel = <DerechoReplicaPanel content={content}/>;
+        centerPanel = <DerechoReplicaPanel logo={DB_url + logo} content={content}/>;
     }
 
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
+
     return (
         <Page pageContent={false} name="nosotros">
             <PageContent>

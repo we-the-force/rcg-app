@@ -39,6 +39,8 @@ export default function Radio(props) {
     let leftPanelTV = f7.methods.getTV();
     let leftPanelRadio = f7.methods.getRadio();
     let centerPanel;
+    const logo = f7.methods.getLogo();
+    const DB_url = f7.methods.get_URL_DB();
     
     if (loading) {
         centerPanel = <LoadingPanel />;
@@ -47,7 +49,7 @@ export default function Radio(props) {
     } else {
         let { radio, programacion } = data;
         centerPanel = radio.length > 0 ?
-            <RadioPanel estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} /> :
+            <RadioPanel logo={DB_url + logo} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} /> :
             <ErrorPanel error="No pudimos encontrar la estación que buscas" />;
     }
     return (

@@ -22,6 +22,10 @@ import {
 export default function AboutUs(props) {
     const { loading, error, data } = useQuery(AboutUsPage);
 
+    const logo = f7.methods.getLogo();
+    const logoDark = f7.methods.getLogoDarkMode();
+    const DB_url = f7.methods.get_URL_DB();
+
     useEffect(() => {
         f7ready((f7) => {
             f7.methods.handleCategoriaActual('');
@@ -36,7 +40,7 @@ export default function AboutUs(props) {
         centerPanel = <ErrorPanel />;
     } else {
         const { nosotrosInfo } = data;
-        centerPanel = <AboutUsPanel nosotrosInfo={nosotrosInfo} />;
+        centerPanel = <AboutUsPanel logoD={DB_url + logoDark} logo={DB_url + logo} nosotrosInfo={nosotrosInfo} />;
     }
     
     let rightPanel = f7.methods.getArticulosRightPanel();
