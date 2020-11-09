@@ -15,7 +15,9 @@ import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
 
 export default function AvisoPrivacidad(props) {
 	const { loading, error, data } = useQuery(AvisoPrivacidadPage);
+
 	const logo = f7.methods.getLogo();
+	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
 
 	useEffect(() => {
@@ -40,7 +42,13 @@ export default function AvisoPrivacidad(props) {
 		<Page pageContent={false} name="nosotros">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+				<Nav
+					categorias={f7.methods.getCategorias()}
+					tv_channels={leftPanelTV}
+					radio_stations={leftPanelRadio}
+					logoD={DB_url + logoDark}
+					logo={DB_url + logo}
+				/>
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
@@ -54,7 +62,7 @@ export default function AvisoPrivacidad(props) {
 						</Block>
 					</Block>
 				</Block>
-				<Footer />
+				<Footer logoD={DB_url + logoDark} logo={DB_url + logo} />
 			</PageContent>
 		</Page>
 	);
