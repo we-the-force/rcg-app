@@ -74,6 +74,8 @@ export default class ArticuloPanel extends Component {
 					<meta property="twitter:image" content={DB_url + articulo.cover.url} />
 					<meta property="twitter:title" content={articulo.Titulo} />
 					<meta property="twitter:description" content={firstLine} />
+
+					
 				</Helmet>
 				<Card className="articulo">
 					<Block className="header_cont display-flex justify-content-space-between">
