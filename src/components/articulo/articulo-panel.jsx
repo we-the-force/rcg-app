@@ -7,6 +7,7 @@ import FBIconx3 from "@/static/icons/FB_Icon_x4.png";
 import AdsInArticle from "@/components/general/ads/ads_in_article";
 import AdsRightArticle from "@/components/general/ads/ads_right_article";
 import AdsFeed from "@/components/general/ads/ads_feed";
+import {Helmet} from "react-helmet";
 import { useMutation, gql } from "@apollo/client";
 import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
@@ -49,9 +50,33 @@ export default class ArticuloPanel extends Component {
 		let urlThing = url + `/articulo/${articulo.url}/`;
 		//let encodedUrlThing = encodeURIComponent(urlThing);
 		let result = formatText(articulo.description);
+		var firstLine = result.split('\n', 1)[0];
+		
 
 		return (
 			<Block className="articulo_panel center_panel">
+				<Helmet>
+					<meta property="og:site_name" content="RCG" />
+					<meta property="og:type" content="website" />
+					<meta property="og:url" content={urlThing} />
+					<meta property="og:title" content={articulo.Titulo} />
+					<meta property="og:description" content={firstLine} />
+					<meta property="og:image" content={DB_url + articulo.cover.url} />
+					<meta property="og:image:width" content="1200" />
+					<meta property="og:image:height" content="630" />
+
+					<meta name="twitter:card" content="summary_large_image" />
+					<meta name="twitter:creator" content="@RCGoficial" />
+					<meta name="twitter:url" content={urlThing} />
+					<meta name="twitter:title" content={articulo.Titulo} />
+					<meta name="twitter:description" content={firstLine} />
+
+					<meta property="twitter:image" content={DB_url + articulo.cover.url} />
+					<meta property="twitter:title" content={articulo.Titulo} />
+					<meta property="twitter:description" content={firstLine} />
+
+					
+				</Helmet>
 				<Card className="articulo">
 					<Block className="header_cont display-flex justify-content-space-between">
 						<CardHeader>
