@@ -42,7 +42,7 @@ export default function Home(props) {
 	} else {
 		const { banner, categorias, relevante } = data;
 		center = <HomePanel noticias={categorias} relevante={relevante} />;
-		mast = <Masthead logoD={DB_url + logoDark} logo={DB_url + logo} banner={banner} relevante={relevante} />;
+		mast = <Masthead logo={DB_url + logo} banner={banner} relevante={relevante} />;
 	}
 	//const { banner, categorias, relevante } = data ;
 	//let mast = banner && relevante ? <Masthead banner={banner} relevante={relevante} /> : null;

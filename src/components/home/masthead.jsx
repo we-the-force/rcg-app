@@ -65,7 +65,7 @@ export default function Masthead(props) {
 			{articulos.length > 0 && (
 				<Fragment>
 					<Block className="logo">
-						<img src={RCGlogo} alt="" />
+						<img src={props.logo} alt="" />
 					</Block>
 					<Swiper ref={swiper} pagination params={{ loop: true }}>
 						{articulos.map((item, i) => {
