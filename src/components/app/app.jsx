@@ -9,6 +9,7 @@ import { AppQuery } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors)
@@ -116,10 +117,34 @@ export default class extends React.Component {
 	render() {
 		return (
 			<ApolloProvider client={client}>
+				<HelmetProvider>
 				<App params={this.state}>
+				<Helmet>
+				<meta property="og:site_name" content="RCG" />
+						<meta property="og:type" content="website" />
+						<meta property="og:url" content="https://rcg.com.mx" />
+						<meta property="og:title" content="RCG" />
+						<meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo." />
+						<meta property="og:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
+						<meta property="og:image:width" content="1200" />
+						<meta property="og:image:height" content="630" />
+
+						<meta name="twitter:card" content="summary_large_image" />
+						<meta name="twitter:creator" content="@RCGoficial" />
+						<meta name="twitter:url" content="https://rcg.com.mx/" />
+						<meta name="twitter:title" content="RCG" />
+						<meta name="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
+
+						<meta property="twitter:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
+						<meta property="twitter:title" content="RCG" />
+						<meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
+
+
+					</Helmet>
 					<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
 					<View id="main-view" main className="safe-areas" url="/" />
 				</App>
+				</HelmetProvider>
 			</ApolloProvider>
 		);
 	}
