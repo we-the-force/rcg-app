@@ -74,6 +74,12 @@ export default class extends React.Component {
 				getCategorias: () => {
 					return this.state.data.categorias;
 				},
+				getLogo: () => {
+					return this.state.data.logo;
+				},
+				getLogoDarkMode: () => {
+					return this.state.data.logo;
+				},
 				getCategoriaActual: () => {
 					return this.state.data.categoriaActual;
 				},
@@ -101,6 +107,8 @@ export default class extends React.Component {
 				radioStations: [],
 				tvChannels: [],
 				articulosRightPanel: [],
+				logo: "",
+				logoDarkMode: "",
 			},
 		};
 	}
@@ -121,7 +129,6 @@ export default class extends React.Component {
 				query: AppQuery,
 			})
 			.then((res) => {
-				// console.log("app.jsx did mount", res);
 				this.setState((prevState) => {
 					return {
 						...prevState,
@@ -131,6 +138,8 @@ export default class extends React.Component {
 							radioStations: res.data.radioStations,
 							tvChannels: res.data.tvChannels,
 							articulosRightPanel: res.data.rightPanel,
+							logo: res.data.setting.LogoRCG.url,
+							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
 						},
 					};
 				});

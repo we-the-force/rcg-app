@@ -135,7 +135,7 @@ export default function RadioPanel(props) {
                             </Block>
                         </Block>
                         <Block className="logo-RCG">
-                            <img src={RCGlogo} alt="" />
+                            <img src={props.logo} alt="" />
                         </Block>
                     </Block>
                 </Block>

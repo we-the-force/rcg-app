@@ -38,7 +38,7 @@ export default class AboutUsPanel extends Component {
                         </div>
                         <img className="city" src={city} alt="" />
                         <div className="logo_cont">
-                            <img src={Logo} alt="" />
+                            <img src={this.props.logo} alt="" />
                         </div>
                     </Block>
                 </Card>

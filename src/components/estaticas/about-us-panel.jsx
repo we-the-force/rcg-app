@@ -55,8 +55,8 @@ export default class AboutUsPanel extends Component {
 				<Card className="city">
 					<Block className="back">
 						<div className="logo_cont">
-							<img className="light" src={Logo} alt="" />
-							<img className="dark" src={LogoBlanco} alt="" />
+							<img className="light" src={this.props.logo} alt="" />
+							<img className="dark" src={this.props.logoD} alt="" />
 						</div>
 						<JsxParser
 							components={{ Block }}
@@ -83,8 +83,8 @@ export default class AboutUsPanel extends Component {
                         </div>`}
 						/>
 						<div className="logo_cont">
-							<img className="light" src={Logo} alt="" />
-							<img className="dark" src={LogoBlanco} alt="" />
+							<img className="light" src={this.props.logo} alt="" />
+							<img className="dark" src={this.props.logoD} alt="" />
 						</div>
 					</Block>
 				</Card>

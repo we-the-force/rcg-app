@@ -106,6 +106,10 @@ export default function Autor(props) {
 	);
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
+
+	const logo = f7.methods.getLogo();
+	const logoDark = f7.methods.getLogoDarkMode();
+	const DB_url = f7.methods.get_URL_DB();
 	return (
 		<Page pageContent={false} name="autor">
 			<PageContent
@@ -117,7 +121,13 @@ export default function Autor(props) {
 				}}
 			>
 				{/* Top Navbar */}
-				<Nav categorias={f7.methods.getCategorias()} tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+				<Nav
+					categorias={f7.methods.getCategorias()}
+					tv_channels={leftPanelTV}
+					radio_stations={leftPanelRadio}
+					logoD={DB_url + logoDark}
+					logo={DB_url + logo}
+				/>
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
@@ -137,7 +147,7 @@ export default function Autor(props) {
 						<Block className="right_pan">{rightPanel}</Block>
 					</Block>
 				</Block>
-				{footer && <Footer />}
+				{footer && <Footer logoD={DB_url + logoDark} logo={DB_url + logo} />}
 			</PageContent>
 		</Page>
 	);

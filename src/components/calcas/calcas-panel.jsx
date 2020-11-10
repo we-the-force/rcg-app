@@ -5,7 +5,7 @@ import back_head from '@/static/imgs/card_back_6.png'
 import city from '@/static/imgs/city.png'
 import cityB from "@/static/imgs/city_black.png";
 import city2 from '@/static/imgs/city2.png'
-import Logo from '@/static/imgs/logo_rojo_blanco.png'
+//import Logo from '@/static/imgs/logo_rojo_blanco.png'
 import {
     Block,
     Card,
@@ -173,7 +173,7 @@ export default function CalcasPanel(props) {
                         <img className="cityB" src={cityB} alt="" />
                         <img className="city2" src={city2} alt="" />
                         <div className="logo_cont">
-                            <img src={Logo} alt="" />
+                            <img src={props.logo} alt="" />
                         </div>
                     </Block>
                 </Card>

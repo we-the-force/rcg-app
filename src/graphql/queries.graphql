@@ -1,289 +1,275 @@
 query AppQuery {
-  categorias {
-    nombre
-    url
-  }
-  tvChannels: canalEstacions(where: { Radio_TV: true }) {
-    ...StationData
-  }
-  radioStations: canalEstacions(where: { Radio_TV: false }) {
-    ...StationData
-  }
-  rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
-    ...ArticulosData
-  }
+	categorias {
+		nombre
+		url
+	}
+	setting {
+		LogoRCG {
+			url
+		}
+		LogoRCGModoOscuro {
+			url
+		}
+	}
+	tvChannels: canalEstacions(where: { Radio_TV: true }) {
+		...StationData
+	}
+	radioStations: canalEstacions(where: { Radio_TV: false }) {
+		...StationData
+	}
+	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
+		...ArticulosData
+	}
 }
 
 query HomePage {
-  banner: banners(sort: "posicion:desc", limit: 10) {
-    articulo {
-      ...ArticulosData
-    }
-  }
-  categorias {
-    nombre
-    url
-    articulos(sort: "fecha:desc", limit: 16) {
-      ...ArticulosData
-    }
-  }
-  relevante: articulos(
-    sort: "fecha:desc"
-    where: { relevante: true }
-    limit: 8
-  ) {
-    ...ArticulosData
-  }
+	banner: banners(sort: "posicion:desc", limit: 10) {
+		articulo {
+			...ArticulosData
+		}
+	}
+	categorias {
+		nombre
+		url
+		articulos(sort: "fecha:desc", limit: 16) {
+			...ArticulosData
+		}
+	}
+	relevante: articulos(sort: "fecha:desc", where: { relevante: true }, limit: 8) {
+		...ArticulosData
+	}
 }
 
 query ArticuloPage($url: String) {
-  articulos: articulos(where: { url: $url }) {
-    ...ArticulosData
-  }
+	articulos: articulos(where: { url: $url }) {
+		...ArticulosData
+	}
 }
 
 query Recomendados($tag: String) {
-  swiper: articulos(where: { tags: { nombre: $tag } }, limit: 9) {
-    ...ArticulosData
-  }
+	swiper: articulos(where: { tags: { nombre: $tag } }, limit: 9) {
+		...ArticulosData
+	}
 }
 
 query RecomendadosCateg($categ: String) {
-  swiper: articulos(where: { categoria: { nombre: $categ } }, limit: 9) {
-    ...ArticulosData
-  }
+	swiper: articulos(where: { categoria: { nombre: $categ } }, limit: 9) {
+		...ArticulosData
+	}
 }
 
 query AutorPage($url: String) {
-  autor: autors(where: { url: $url }) {
-    id
-    nombre
-    img {
-      url
-    }
-    twitter_link
-    facebook_link
-    instagram_link
-    url
-  }
+	autor: autors(where: { url: $url }) {
+		id
+		nombre
+		img {
+			url
+		}
+		twitter_link
+		facebook_link
+		instagram_link
+		url
+	}
 
-  autorArticulos: articulosConnection(where: { autor: { url: $url } }) {
-    groupBy {
-      autor {
-        key
-        connection {
-          aggregate {
-            count
-          }
-        }
-      }
-    }
-  }
+	autorArticulos: articulosConnection(where: { autor: { url: $url } }) {
+		groupBy {
+			autor {
+				key
+				connection {
+					aggregate {
+						count
+					}
+				}
+			}
+		}
+	}
 
-  autores: autors(limit: 3, where: { url_ne: $url }) {
-    id
-    nombre
-    img {
-      url
-    }
-    twitter_link
-    facebook_link
-    instagram_link
-    url
-  }
+	autores: autors(limit: 3, where: { url_ne: $url }) {
+		id
+		nombre
+		img {
+			url
+		}
+		twitter_link
+		facebook_link
+		instagram_link
+		url
+	}
 
-  autoresArticulos: articulosConnection {
-    groupBy {
-      autor {
-        key
-        connection {
-          aggregate {
-            count
-          }
-        }
-      }
-    }
-  }
+	autoresArticulos: articulosConnection {
+		groupBy {
+			autor {
+				key
+				connection {
+					aggregate {
+						count
+					}
+				}
+			}
+		}
+	}
 }
 
 query AutoresPage {
-  autores: autors {
-    id
-    nombre
-    img {
-      url
-    }
-    twitter_link
-    facebook_link
-    instagram_link
-    url
-  }
-  autorArticulos: articulosConnection {
-    groupBy {
-      autor {
-        key
-        connection {
-          aggregate {
-            count
-          }
-        }
-      }
-    }
-  }
+	autores: autors {
+		id
+		nombre
+		img {
+			url
+		}
+		twitter_link
+		facebook_link
+		instagram_link
+		url
+	}
+	autorArticulos: articulosConnection {
+		groupBy {
+			autor {
+				key
+				connection {
+					aggregate {
+						count
+					}
+				}
+			}
+		}
+	}
 }
 
 query BusquedaAutor($url: String, $inicio: Int, $limite: Int) {
-  articulos(where: { autor: { url: $url } }, start: $inicio, limit: $limite) {
-    ...ArticulosData
-  }
+	articulos(where: { autor: { url: $url } }, start: $inicio, limit: $limite) {
+		...ArticulosData
+	}
 }
 
 query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
-  articulos(
-    where: { description_contains: $values }
-    start: $inicio
-    limit: $limite
-  ) {
-    ...ArticulosData
-  }
+	articulos(where: { description_contains: $values }, start: $inicio, limit: $limite) {
+		...ArticulosData
+	}
 }
 
 query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
-  articulos(
-    where: { Titulo_contains: $values }
-    start: $inicio
-    limit: $limite
-  ) {
-    ...ArticulosData
-  }
+	articulos(where: { Titulo_contains: $values }, start: $inicio, limit: $limite) {
+		...ArticulosData
+	}
 }
 query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
-  articulos(
-    where: { tags: { nombre_contains: $values } }
-    start: $inicio
-    limit: $limite
-  ) {
-    ...ArticulosData
-  }
+	articulos(where: { tags: { nombre_contains: $values } }, start: $inicio, limit: $limite) {
+		...ArticulosData
+	}
 }
 
 query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
-  articulos(
-    where: { categoria: { url: $categoria } }
-    start: $inicio
-    limit: $limite
-  ) {
-    ...ArticulosData
-  }
-  categorias(
-    where: {url : $categoria}
-  ) {
-    nombre
-  }
+	articulos(where: { categoria: { url: $categoria } }, start: $inicio, limit: $limite) {
+		...ArticulosData
+	}
+	categorias(where: { url: $categoria }) {
+		nombre
+	}
 }
 
 query AboutUsPage {
-  nosotrosInfo: nosotro {
-    descripcion
-    info_mid
-    info_bottom
-  }
+	nosotrosInfo: nosotro {
+		descripcion
+		info_mid
+		info_bottom
+	}
 }
 
 query ContactPage {
-  contactInfo: contacto {
-    telefono
-    whatsapp
-    correo
-    video_source
-  }
+	contactInfo: contacto {
+		telefono
+		whatsapp
+		correo
+		video_source
+	}
 }
 
 query AvisoPrivacidadPage {
-  avisoPrivacidad: avisoDePrivacidad {
-    descripcion
-  }
+	avisoPrivacidad: avisoDePrivacidad {
+		descripcion
+	}
 }
 
 query DerechoReplicaPage {
-  content: derechoDeReplica {
-    nombre
-    direccion
-    telefono
-    correo
-  }
+	content: derechoDeReplica {
+		nombre
+		direccion
+		telefono
+		correo
+	}
 }
 
 query FaqPage {
-  faq: preguntasFrecuente {
-    preguntas {
-      pregunta
-      respuesta
-    }
-  }
+	faq: preguntasFrecuente {
+		preguntas {
+			pregunta
+			respuesta
+		}
+	}
 }
 
 query EspectacularPage {
-  info: espectacularInfo {
-    nosotros
-    porque_nosotros
-    NosotrosImagen {
-      url
-    }
-    PorqueNosotrosImagen {
-      url
-    }
-  }
-  clientes: espectacularClientes {
-    nombre
-    logo {
-      url
-    }
-  }
+	info: espectacularInfo {
+		nosotros
+		porque_nosotros
+		NosotrosImagen {
+			url
+		}
+		PorqueNosotrosImagen {
+			url
+		}
+	}
+	clientes: espectacularClientes {
+		nombre
+		logo {
+			url
+		}
+	}
 }
 
 query CatalogoPage {
-  norte: espectaculars(where: { zona: "norte" }) {
-    ...EspectacularData
-  }
-  sur: espectaculars(where: { zona: "sur" }) {
-    ...EspectacularData
-  }
-  oriente: espectaculars(where: { zona: "oriente" }) {
-    ...EspectacularData
-  }
-  poniente: espectaculars(where: { zona: "poniente" }) {
-    ...EspectacularData
-  }
-  centro: espectaculars(where: { zona: "centro" }) {
-    ...EspectacularData
-  }
+	norte: espectaculars(where: { zona: "norte" }) {
+		...EspectacularData
+	}
+	sur: espectaculars(where: { zona: "sur" }) {
+		...EspectacularData
+	}
+	oriente: espectaculars(where: { zona: "oriente" }) {
+		...EspectacularData
+	}
+	poniente: espectaculars(where: { zona: "poniente" }) {
+		...EspectacularData
+	}
+	centro: espectaculars(where: { zona: "centro" }) {
+		...EspectacularData
+	}
 }
 
-query SchedulePage($station: String, $date: String $radio_tv: Boolean) {
-  tv: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
-    ...StationData
-  }
-  programacion: programacionSemanas(where: {canal_estacion: {url: $station}, fecha_inicio: $date}) {
-    ...ScheduleData
-  }
+query SchedulePage($station: String, $date: String, $radio_tv: Boolean) {
+	tv: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
+		...StationData
+	}
+	programacion: programacionSemanas(where: { canal_estacion: { url: $station }, fecha_inicio: $date }) {
+		...ScheduleData
+	}
 }
 
-query SchedulePageRadio($station: String, $date: String $radio_tv: Boolean) {
-  radio: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
-    ...StationData
-  }
-  programacion: programacionSemanas(where: {canal_estacion: {url: $station}, fecha_inicio: $date}) {
-    ...ScheduleData
-  }
+query SchedulePageRadio($station: String, $date: String, $radio_tv: Boolean) {
+	radio: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
+		...StationData
+	}
+	programacion: programacionSemanas(where: { canal_estacion: { url: $station }, fecha_inicio: $date }) {
+		...ScheduleData
+	}
 }
 
 #borrar de aqui pa adelante si no los uso
 
 query SearchArticulosByTag($tags: [String]) {
-  articulos(where: { tags: { nombre_in: $tags } }) {
-    ...ArticulosData
-  }
+	articulos(where: { tags: { nombre_in: $tags } }) {
+		...ArticulosData
+	}
 }
 
 #query SchedulePage($station: String, $date: String) {
@@ -308,133 +294,133 @@ query SearchArticulosByTag($tags: [String]) {
 #}
 
 fragment EspectacularData on Espectacular {
-  id_espectacular
-  cara1 {
-    url
-  }
-  cara2 {
-    url
-  }
-  lugar
-  zona
+	id_espectacular
+	cara1 {
+		url
+	}
+	cara2 {
+		url
+	}
+	lugar
+	zona
 }
 
 fragment StationData on CanalEstacion {
-  nombre
-  url
-  source_url
-  logo {
-    url
-  }
-  descripcion
-  Radio_TV
+	nombre
+	url
+	source_url
+	logo {
+		url
+	}
+	descripcion
+	Radio_TV
 }
 
 fragment ArticulosData on Articulo {
-  id
-  url
-  Titulo
-  autor {
-    nombre
-    url
-  }
-  fecha
-  cover {
-    url
-  }
-  description
-  visitas
-  tags {
-    nombre
-  }
-  categoria {
-    nombre
-    id
-  }
+	id
+	url
+	Titulo
+	autor {
+		nombre
+		url
+	}
+	fecha
+	cover {
+		url
+	}
+	description
+	visitas
+	tags {
+		nombre
+	}
+	categoria {
+		nombre
+		id
+	}
 }
 
 fragment ScheduleData on ProgramacionSemana {
-  id
-  canal_estacion {
-    nombre
-  }
-  programacion {
-    lunes {
-      hora_inicio
-      hora_final
-      programa {
-        Nombre
-        Descripcion
-        cover{
-          url
-        }
-      }
-    }
-    martes {
-      hora_inicio
-      hora_final
-      programa {
-        Nombre
-        Descripcion
-        cover{
-          url
-        }
-      }
-    }
-    miercoles {
-      hora_inicio
-      hora_final
-      programa {
-        Nombre
-        Descripcion
-        cover{
-          url
-        }
-      }
-    }
-    jueves {
-      hora_inicio
-      hora_final
-      programa {
-        Nombre
-        Descripcion
-        cover{
-          url
-        }
-      }
-    }
-    viernes {
-      hora_inicio
-      hora_final
-      programa {
-        Nombre
-        Descripcion
-        cover{
-          url
-        }
-      }
-    }
-    sabado {
-      hora_inicio
-      hora_final
-      programa {
-        Nombre
-        Descripcion
-        cover{
-          url
-        }
-      }
-    }
-    domingo {
-      hora_inicio
-      hora_final
-      programa {
-        Nombre
-        Descripcion
-        cover{
-          url
-        }
-      }
-    }
-  }
+	id
+	canal_estacion {
+		nombre
+	}
+	programacion {
+		lunes {
+			hora_inicio
+			hora_final
+			programa {
+				Nombre
+				Descripcion
+				cover {
+					url
+				}
+			}
+		}
+		martes {
+			hora_inicio
+			hora_final
+			programa {
+				Nombre
+				Descripcion
+				cover {
+					url
+				}
+			}
+		}
+		miercoles {
+			hora_inicio
+			hora_final
+			programa {
+				Nombre
+				Descripcion
+				cover {
+					url
+				}
+			}
+		}
+		jueves {
+			hora_inicio
+			hora_final
+			programa {
+				Nombre
+				Descripcion
+				cover {
+					url
+				}
+			}
+		}
+		viernes {
+			hora_inicio
+			hora_final
+			programa {
+				Nombre
+				Descripcion
+				cover {
+					url
+				}
+			}
+		}
+		sabado {
+			hora_inicio
+			hora_final
+			programa {
+				Nombre
+				Descripcion
+				cover {
+					url
+				}
+			}
+		}
+		domingo {
+			hora_inicio
+			hora_final
+			programa {
+				Nombre
+				Descripcion
+				cover {
+					url
+				}
+			}
+		}
+	}
 }

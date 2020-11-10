@@ -5,7 +5,7 @@ import PopMenu from "./mobile-menu-popup";
 import { Popover, Navbar, List, ListItem, f7 } from "framework7-react";
 
 export default function Nav(props) {
-	let { categorias, home, espectaculares } = props;
+	let { categorias, home, espectaculares, logo, logoD } = props;
 
 	if (categorias.length <= 0) return null;
 
@@ -16,18 +16,22 @@ export default function Nav(props) {
 	return (
 		<Fragment>
 			<Navbar sliding noHairline noShadow>
-				{type === "desktop" && <Desk itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />}
-				{type === "mobile" && <Mobile />}
+				{type === "desktop" && <Desk logo={logo} logoD={logoD} itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />}
+				{type === "mobile" && <Mobile logo={logo} logoD={logoD} />}
 			</Navbar>
-			<PopMenu tv_channels={props.tv_channels} radio_stations={props.radio_stations} />
+			<PopMenu tv_channels={props.tv_channels} radio_stations={props.radio_stations} logo={logo} logoD={logoD} />
 			<Popover className="popover-menu">
 				<List>
 					{categ_pop.map((val, key) => {
 						return (
-							<ListItem key={key} link={`/categoria/${val.url}`} popoverClose className="uppercase" >{val.nombre}</ListItem>
+							<ListItem key={key} link={`/categoria/${val.url}`} popoverClose className="uppercase">
+								{val.nombre}
+							</ListItem>
 						);
 					})}
-					<ListItem link="/autores" className="uppercase" popoverClose>autores</ListItem>
+					<ListItem link="/autores" className="uppercase" popoverClose>
+						autores
+					</ListItem>
 				</List>
 			</Popover>
 		</Fragment>

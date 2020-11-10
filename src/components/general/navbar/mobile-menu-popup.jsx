@@ -31,7 +31,7 @@ export default function mobileMenuPopup(props) {
 					<Link panelOpen="left" className="categorias" iconMaterial="menu" icon="menu" color="red" popupClose></Link>
 				</NavLeft>
 				<a className="logo" href="/">
-					<img src={LogoBlanco} alt="" />
+					<img src={props.logoD} alt="" />
 				</a>
 				<NavRight>
 					<Link className="menuIcon" iconMaterial="close" icon="close" color="red" popupClose></Link>
