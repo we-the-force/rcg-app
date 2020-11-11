@@ -79,7 +79,7 @@ export default class extends React.Component {
 					return this.state.data.logo;
 				},
 				getLogoDarkMode: () => {
-					return this.state.data.logo;
+					return this.state.data.logoDarkMode;
 				},
 				getCategoriaActual: () => {
 					return this.state.data.categoriaActual;
