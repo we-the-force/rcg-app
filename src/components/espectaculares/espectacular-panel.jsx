@@ -117,6 +117,8 @@ export default class EspectacularPanel extends Component {
 				<div className="portada_cont">
 					<img className="light" src={Portada} alt="" />
 					<img className="dark" src={PortadaDark} alt="" />
+					<img className="logo light" src={this.props.logo} alt="" />
+					<img className="logo dark" src={this.props.logoD} alt="" />
 				</div>
 			</Block>
 		);

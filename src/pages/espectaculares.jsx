@@ -14,6 +14,10 @@ import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
 export default function Espectaculares(props) {
 	const { loading, error, data } = useQuery(EspectacularPage);
 
+	const logo = f7.methods.getLogo();
+	const logoDark = f7.methods.getLogoDarkMode();
+	const DB_url = f7.methods.get_URL_DB();
+
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("espectaculares");
@@ -28,15 +32,11 @@ export default function Espectaculares(props) {
 		centerPanel = <ErrorPanel />;
 	} else {
 		const { info, clientes } = data;
-		centerPanel = <EspectacularPanel info={info} clientes={clientes} />;
+		centerPanel = <EspectacularPanel logo={DB_url + logo} logoD={DB_url + logoDark} info={info} clientes={clientes} />;
 	}
 
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
-
-	const logo = f7.methods.getLogo();
-	const logoDark = f7.methods.getLogoDarkMode();
-	const DB_url = f7.methods.get_URL_DB();
 	return (
 		<Page pageContent={false} name="espectaculares">
 			<PageContent>

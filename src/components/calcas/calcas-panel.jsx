@@ -173,7 +173,8 @@ export default function CalcasPanel(props) {
                         <img className="cityB" src={cityB} alt="" />
                         <img className="city2" src={city2} alt="" />
                         <div className="logo_cont">
-                            <img src={props.logo} alt="" />
+                            <img className="light" src={props.logo} alt="" />
+                            <img className="dark" src={props.logoD} alt="" />
                         </div>
                     </Block>
                 </Card>

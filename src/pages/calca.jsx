@@ -44,7 +44,7 @@ export default function Calcas(props) {
 						</Block>
 						<Block className="center_pan">
 							<AdsTop />
-							<CalcasPanel logo={DB_url + logo} />
+							<CalcasPanel logo={DB_url + logo} logoD={DB_url + logoDark} />
 						</Block>
 						<Block className="right_pan">
 							<RightPanel newsInfo={rightPanel} />
