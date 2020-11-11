@@ -7,7 +7,7 @@ import FBIconx3 from "@/static/icons/FB_Icon_x4.png";
 import AdsInArticle from "@/components/general/ads/ads_in_article";
 import AdsRightArticle from "@/components/general/ads/ads_right_article";
 import AdsFeed from "@/components/general/ads/ads_feed";
-import { Helmet } from "react-helmet";
+import {Helmet, HelmetProvider} from "react-helmet-async";
 import { useMutation, gql } from "@apollo/client";
 import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
@@ -65,7 +65,8 @@ export default class ArticuloPanel extends Component {
 		let result = formatText(articulo.description);
 		var firstLine = result.split("\n", 1)[0];
 		return (
-			<Block className="articulo_panel center_panel">
+			<HelmetProvider>
+			<Block className="articulo_panel center_panel helmet">
 				<Helmet>
 					<meta property="og:site_name" content="RCG" />
 					<meta property="og:type" content="website" />
@@ -225,6 +226,7 @@ export default class ArticuloPanel extends Component {
 					<SwiperNews articulos={recomendados} />
 				</Card>
 			</Block>
+			</HelmetProvider>
 		);
 	}
 }
