@@ -34,12 +34,16 @@ export default class Footer extends Component {
 						<Link href="/aviso-privacidad">Aviso de privacidad</Link>
 						<hr />
 						<Link href="/faq">Preguntas Frecuentes</Link>
-						{/* <hr />
-                        <Link href={false}>OPI 2017</Link>
+						<hr />
+                        <Link className="external" target="_blank" href={"http://www.rcg.com.mx/registro/"}>SOLICITUDES USO DE INFRAESTRUCTURA</Link>
                         <hr />
-                        <Link href={false}>OPI 2018</Link>
+                        <Link className="external" target="_blank" href={false}>OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA</Link>
+						<hr />
+                        <Link className="external" target="_blank" href={"http://rcg.com.mx/oferta/"}>OPI 2017</Link>
                         <hr />
-                        <Link href={false}>SEG</Link> */}
+                        <Link className="external" target="_blank" href={"http://www.rcg.com.mx/ofertapublica/"}>OPI 2018</Link>
+                        <hr />
+                        <Link className="external" target="_blank" href={"http://www.rcg.com.mx/ofertapublica/login"}>SEG</Link>
 					</div>
 					<div>
 						<p>©2020 RCG</p>
