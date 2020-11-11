@@ -9,7 +9,8 @@ import { AppQuery } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from "react-helmet-async";
+
 
 const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors)
@@ -19,9 +20,9 @@ const errorLink = onError(({ graphQLErrors }) => {
 });
 
 const client = new ApolloClient({
-	uri: `http://${window.location.hostname}:1337/graphql`,
+	uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql`,
 	cache: new InMemoryCache(),
-	link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${window.location.hostname}:1337/graphql` })]),
+	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 });
 
 export default class extends React.Component {
@@ -36,7 +37,7 @@ export default class extends React.Component {
 			// pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
 			view: {
 				pushState: true,
-				pushStateRoot: `${window.location.protocol}//${window.location.hostname}:8080`,
+				pushStateRoot: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
 				pushStateSeparator: "",
 			},
 
@@ -101,8 +102,8 @@ export default class extends React.Component {
 				},
 			},
 			data: {
-				db_url: `http://${window.location.hostname}:1337`,
-				url: `http://${window.location.hostname}:8080`,
+				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
+				url: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
 				categorias: [],
 				categoriaActual: "",
 				radioStations: [],
@@ -118,32 +119,30 @@ export default class extends React.Component {
 		return (
 			<ApolloProvider client={client}>
 				<HelmetProvider>
-				<App params={this.state}>
-				<Helmet>
-				<meta property="og:site_name" content="RCG" />
-						<meta property="og:type" content="website" />
-						<meta property="og:url" content="https://rcg.com.mx" />
-						<meta property="og:title" content="RCG" />
-						<meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo." />
-						<meta property="og:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
-						<meta property="og:image:width" content="1200" />
-						<meta property="og:image:height" content="630" />
+					<App params={this.state}>
+						<Helmet>
+							<meta property="og:site_name" content="RCG" />
+							<meta property="og:type" content="website" />
+							<meta property="og:url" content="https://rcg.com.mx" />
+							<meta property="og:title" content="RCG" />
+							<meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo." />
+							<meta property="og:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
+							<meta property="og:image:width" content="1200" />
+							<meta property="og:image:height" content="630" />
 
-						<meta name="twitter:card" content="summary_large_image" />
-						<meta name="twitter:creator" content="@RCGoficial" />
-						<meta name="twitter:url" content="https://rcg.com.mx/" />
-						<meta name="twitter:title" content="RCG" />
-						<meta name="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
+							<meta name="twitter:card" content="summary_large_image" />
+							<meta name="twitter:creator" content="@RCGoficial" />
+							<meta name="twitter:url" content="https://rcg.com.mx/" />
+							<meta name="twitter:title" content="RCG" />
+							<meta name="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
 
-						<meta property="twitter:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
-						<meta property="twitter:title" content="RCG" />
-						<meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
-
-
-					</Helmet>
-					<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-					<View id="main-view" main className="safe-areas" url="/" />
-				</App>
+							<meta property="twitter:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
+							<meta property="twitter:title" content="RCG" />
+							<meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
+						</Helmet>
+						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+						<View id="main-view" main className="safe-areas" url="/" />
+					</App>
 				</HelmetProvider>
 			</ApolloProvider>
 		);
