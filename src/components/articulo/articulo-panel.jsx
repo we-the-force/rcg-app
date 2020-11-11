@@ -16,32 +16,36 @@ import { Block, Card, CardHeader, Swiper, SwiperSlide, Link, f7 } from "framewor
 export function formatText(x) {
 	const DB_url = f7.methods.get_URL_DB();
 	let value = marked(x);
+	let frameProp = /<iframe([^>]*)(frameborder="([^"])")([^>]*)>/gi;
+	let fullScreenProp = /<iframe([^>]*)(allowfullscreen)([^>]*)>/gi;
+	let strokeProp = /stroke-width/gi;
+	let fillRuleProp = /fill-rule/gi;
+	let dateTimeProp = /datetime/gi;
 	let titleTag = /(<h([1-6])([^>]*)>)/gi;
 	let brTag = /<br>/gi;
-	let parrafoTag = /(<p([^>]*)>)/gi;
-	//let codeTag = /<code([^>]*)>([^<]*)<\/code>/gi;
+	let parrafoTag = /(<p ([^>]*)>)/gi;
 	let listTag = /(<li([^>]*)>)/gi;
 	let listChildTag = /<(ol|ul)([^>]*)>/gi;
 	let anchorTag = /(<a([^>]*)>)/gi;
-	let frameProp = /<iframe([^>]*)(frameborder="([^"])")([^>]*)>/gi;
-	let fullScreenProp = /<iframe([^>]*)(allowfullscreen)([^>]*)>/gi;
-	let imgTag = /(<p[^>]*>)([^<]*)<img\s*([^>]*)\s*src=["'`]([^"`']+)["`']\s*([^>]*)(\/?>)(<\/p>)/gi;
-	let NotTags = /<(?!\/?(p|h([1-6])|li|ol|ul|a|iframe|blockquote|b|img|div|u|br|cite|del|i|strong)(?=>|\s.*>))\/?.*?>/gi;
+	//let insta = /(<blockquote[^>]* class="instagram-media" [^>]*>(.*?)<\/blockquote>)/gi;
+	let imgTag = /(<p [^>]*>)([^<]*)<img\s*([^>]*)\s*src=["'`]([^"`']+)["`']\s*([^>]*)(\/?>)(<\/p>)/gi;
+	let NotTags = /<(?!\/?(p|h([1-6])|li|ol|ul|a|iframe|blockquote|b|img|div|u|br|cite|del|i|strong|time|g|path|svg)(?=>|\s.*>))\/?.*?>/gi;
 	value = value.replace(titleTag, '<h$2 className="child titulo">');
 	value = value.replace(parrafoTag, '<p className="child parrafo">');
-	//value = value.replace(codeTag, '');
 	value = value.replace(frameProp, '<iframe $1 frameBorder="$3" $4>');
+	value = value.replace(strokeProp, "strokeWidth");
+	value = value.replace(fillRuleProp, "fillRule");
+	value = value.replace(dateTimeProp, "dateTime");
 	value = value.replace(fullScreenProp, "<iframe $1 allowFullScreen $3>");
 	value = value.replace(listChildTag, '<$1 className="child">');
-	value = value.replace(brTag, '<br/>');
-	value = value.replace(NotTags, '');
+	value = value.replace(brTag, "<br/>");
+	value = value.replace(NotTags, "");
 	value = value.replace(listTag, '<li $2 className="parrafo">');
 	value = value.replace(anchorTag, '<a $2 className="link external" target="_blank">');
 	value = value.replace(imgTag, `<div className="imagen_cont child">$2<img $3 src="${DB_url}$4" $5 /></div>`);
-	value = value.replace(/\n/gi, ``);
+	//value = value.replace(insta, `$1`);
+	//value = value.replace(/\n/gi, ``);
 	return value;
-	//value = value.replace(quoteTag, '<blockquote className="$2 child">');
-	//let quoteTag = /<blockquote ?(class="([^>]*)"|[^>]*)>/gi;
 }
 export default class ArticuloPanel extends Component {
 	constructor(props) {
@@ -131,6 +135,7 @@ export default class ArticuloPanel extends Component {
 					</Block>
 					<Block className="content display-flex align-items-flex-start">
 						<Block className="left_side">
+							{result}
 							<JsxParser
 								components={{ Block, AdsInArticle }}
 								jsx={`
