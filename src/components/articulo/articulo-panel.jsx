@@ -65,7 +65,11 @@ export default class ArticuloPanel extends Component {
 		const url = f7.methods.get_URL();
 		let urlThing = url + `/articulo/${articulo.url}/`;
 		let result = formatText(articulo.description);
-		var firstLine = result.split("\n", 1)[0];
+		let otherTags = /(<([^>]+)>)/gi;
+		let firstLine = result
+			.replace(otherTags, "")
+			.replace(/\n/gi, " ")
+			.match(/^.{0,200}/gi);
 		return (
 			<HelmetProvider>
 				<Block className="articulo_panel center_panel helmet">
