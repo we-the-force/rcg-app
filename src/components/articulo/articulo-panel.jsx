@@ -53,9 +53,10 @@ export default class ArticuloPanel extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		FB.XFBML.parse();
+		//FB.XFBML.parse();
 	}
 	componentDidUpdate() {
+		FB.XFBML.parse();
 		twttr.widgets.load();
 		window.instgrm.Embeds.process();
 	}
