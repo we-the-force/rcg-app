@@ -28,7 +28,7 @@ module.exports = {
         path: resolvePath(isCordova ? 'cordova/www' : 'www'),
         filename: 'js/[name].js',
         chunkFilename: 'js/[name].js',
-        publicPath: '/',
+        publicPath: '',
         hotUpdateChunkFilename: 'hot/hot-update.js',
         hotUpdateMainFilename: 'hot/hot-update.json',
     },
