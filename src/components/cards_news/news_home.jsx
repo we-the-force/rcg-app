@@ -16,7 +16,7 @@ export default function NewsHome(props) {
 		.replace(titlesRegEx, "")
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
-		.match(/^.{300}/gi);
+		.match(/^.{0,300}/gi);
 	return (
 		<Block className={`NewsHome_cont ${className}`}>
 			<Block className="img_cont">

@@ -22,7 +22,7 @@ export default function NewsRelevantes(props) {
         let newDesc = marked(noticia.description);
         let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
         let otherTags = /(<([^>]+)>)/gi;
-        newDesc = newDesc.replace(titlesRegEx, '').replace(otherTags, '').replace(/\n/gi, ' ').match(/^.{300}/gi);
+        newDesc = newDesc.replace(titlesRegEx, '').replace(otherTags, '').replace(/\n/gi, ' ').match(/^.{0,300}/gi);
         imagen = DB_url + noticia.cover.url;
         categoria = noticia.categoria.nombre;
         content = newDesc;

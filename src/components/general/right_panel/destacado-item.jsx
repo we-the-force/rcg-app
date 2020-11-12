@@ -15,7 +15,7 @@ export default function DestItem(props) {
 		.replace(titlesRegEx, "")
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
-		.match(/^.{300}/gi);
+		.match(/^.{0,300}/gi);
 	return (
 		<Block className={"dest-item"}>
 			{props.image && (

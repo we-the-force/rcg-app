@@ -27,7 +27,7 @@ export default function NewsCategoria(props) {
 		.replace(titlesRegEx, "")
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
-		.match(/^.{300}/gi);
+		.match(/^.{0,300}/gi);
     return (
         <Card className={`NewsCategoria_cont ${className}`}>
             <Block className="head">

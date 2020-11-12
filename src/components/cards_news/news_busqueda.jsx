@@ -21,7 +21,7 @@ export default function NewsBusqueda(props) {
 		.replace(titlesRegEx, "")
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
-		.match(/^.{300}/gi);
+		.match(/^.{0,300}/gi);
     return (
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">

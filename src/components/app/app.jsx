@@ -36,9 +36,9 @@ export default class extends React.Component {
 
 			// pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
 			view: {
-				pushState: true,
-				pushStateRoot: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
-				pushStateSeparator: "",
+				pushState: false,
+				//pushStateRoot: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
+				//pushStateSeparator: "",
 			},
 
 			autoDarkTheme: true,
