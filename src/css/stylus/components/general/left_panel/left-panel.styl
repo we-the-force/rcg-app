@@ -33,19 +33,36 @@
                 white-space normal
                 margin 2px
                 font font_4
+                font-size 9px
                 color #606060
 
         .theme
             margin 10px 0px
-            padding 0px 7px
+            padding 8px 7px
+            padding-left 14px
+            position relative
+            overflow hidden
+            border-radius 8px
+            background #1d1d1d
+
+            .back
+                z-index -1
+                position absolute
+                background #ec1b23
+                width 200px
+                height 200px
+                left 0
+                bottom 0
+                box-shadow 0px 0px 6px rgba(0, 0, 0, 0.1)
+                transform rotate(38deg) translate(50px, 140px)
 
             a
-                color #606060
+                color #fff
                 font font_14
 
                 i
                     padding-left 5px
-                    color #606060
+                    color #fff
                     font-size 12px
 
                     &.dark

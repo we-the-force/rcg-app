@@ -79,7 +79,14 @@ export default function LeftPanel(props) {
 					<ListItem link="/contacto">Contacto</ListItem>
 				</List>
 			</Card>
-			<Block className="theme">
+			<Block className="theme" onClick={() => {
+				let html = document.getElementsByTagName("html")[0];
+				html.classList.toggle("theme-dark");
+			}}>
+				<div className="back" onClick={() => {
+					let html = document.getElementsByTagName("html")[0];
+					html.classList.toggle("theme-dark");
+				}}></div>
 				<a
 					onClick={() => {
 						let html = document.getElementsByTagName("html")[0];
