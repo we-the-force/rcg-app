@@ -19,74 +19,128 @@ import NotFoundPage from '../pages/404.jsx';
 var routes = [{
         path: '/',
         component: HomePage,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/articulo/:url/',
         component: Articulo,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/tv/:name',
         component: TV,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/radio/:name',
         component: Radio,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/busqueda/:params',
         component: Busqueda,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/nosotros',
         component: Nosotros,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/calca',
         component: Calca,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/nosotros',
         component: Nosotros,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/contacto',
         component: ContactsPage,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/categoria/:nombre',
         component: CategoriaPage,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/aviso-privacidad',
         component: AvisoPrivacidad,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/derecho-replica',
         component: DerechoReplica,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/espectaculares',
         component: Espectaculares,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/catalogo',
         component: Catalogo,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/faq',
         component: FAQ,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/autores',
         component: Autores,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '/autor/:url',
         component: Autor,
+        options: {
+            clearPreviousHistory: true
+        },
     },
     {
         path: '(.*)',
         component: NotFoundPage,
+        options: {
+            clearPreviousHistory: true
+        },
     },
 ];
 
