@@ -29,6 +29,11 @@ export default function TV(props) {
 		});
 	}, []);
 
+	const removePlayer = () => {
+		let player = document.getElementsByClassName("player")[0];
+		player.remove();
+	}
+
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
@@ -52,7 +57,7 @@ export default function TV(props) {
 			);
 	}
 	return (
-		<Page pageContent={false} name="tv">
+		<Page onPageBeforeOut={removePlayer} pageContent={false} name="tv">
 			<PageContent>
 				{/* Top Navbar */}
 				<Nav

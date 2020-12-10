@@ -86,7 +86,7 @@ export default function RadioPanel(props) {
                         playing={playPause}
                         volume={volume}
                         muted={muted}
-                        className="display-none"
+                        className="display-none radio-player"
                     />
                     <Block className="radio-ui-mobile">
                         <Block className="logo-radio">

@@ -29,6 +29,11 @@ export default function Radio(props) {
 		});
 	}, []);
 
+	const removePlayer = () => {
+		let player = document.getElementsByClassName("radio-player")[0];
+		player.remove();
+	}
+
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
@@ -52,7 +57,7 @@ export default function Radio(props) {
 			);
 	}
 	return (
-		<Page pageContent={false} name="radio">
+		<Page onPageBeforeOut={removePlayer} pageContent={false} name="radio">
 			<PageContent>
 				<Nav
 					categorias={f7.methods.getCategorias()}
