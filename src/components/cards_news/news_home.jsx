@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import TestImage from "@/static/imgs/grayback.jpg";
+import IMG from '@/static/imgs/grayback.jpg';
 import moment from "moment";
 import marked from "marked";
 import { Block, Link, BlockFooter, f7 } from "framework7-react";
@@ -17,11 +17,12 @@ export default function NewsHome(props) {
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
 		.match(/^.{0,300}/gi);
+	let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 	return (
 		<Block className={`NewsHome_cont ${className}`}>
 			<Block className="img_cont">
 				<Link href={`/articulo/${articulo.url}/`}>
-					<img src={DB_url + articulo.cover.url} alt="" />
+					<img src={cover} alt="" />
 				</Link>
 			</Block>
 			<Block className="img_foot">

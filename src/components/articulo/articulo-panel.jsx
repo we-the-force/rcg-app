@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import SwiperNews from "@/components/general/swiper_news.jsx";
+import IMG from '@/static/imgs/grayback.jpg';
 import marked from "marked";
 import JsxParser from "react-jsx-parser";
 import TWIconx3 from "@/static/icons/TW_Icon_x4.png";
@@ -71,6 +72,7 @@ export default class ArticuloPanel extends Component {
 			.replace(otherTags, "")
 			.replace(/\n/gi, " ")
 			.match(/^.{0,200}/gi);
+		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 		return (
 			<HelmetProvider>
 				<Block className="articulo_panel center_panel helmet">
@@ -80,7 +82,7 @@ export default class ArticuloPanel extends Component {
 						<meta property="og:url" content={urlThing} />
 						<meta property="og:title" content={articulo.Titulo} />
 						<meta property="og:description" content={firstLine} />
-						<meta property="og:image" content={DB_url + articulo.cover.url} />
+						<meta property="og:image" content={cover} />
 						<meta property="og:image:width" content="1200" />
 						<meta property="og:image:height" content="630" />
 
@@ -90,7 +92,7 @@ export default class ArticuloPanel extends Component {
 						<meta name="twitter:title" content={articulo.Titulo} />
 						<meta name="twitter:description" content={firstLine} />
 
-						<meta property="twitter:image" content={DB_url + articulo.cover.url} />
+						<meta property="twitter:image" content={cover} />
 						<meta property="twitter:title" content={articulo.Titulo} />
 						<meta property="twitter:description" content={firstLine} />
 					</Helmet>
@@ -135,7 +137,7 @@ export default class ArticuloPanel extends Component {
 							</Block>
 							<Block className="titulo">{articulo.Titulo}</Block>
 							<Block className="img_cont display-flex flex-direction-column">
-								<img src={DB_url + articulo.cover.url} alt="" />
+								<img src={cover} alt="" />
 							</Block>
 						</Block>
 						<Block className="content display-flex align-items-flex-start">

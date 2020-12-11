@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import IMG from '@/static/imgs/grayback.jpg';
 import TestImage from '@/static/imgs/grayback.jpg';
 import moment from 'moment';
 import marked from 'marked';
@@ -23,7 +24,7 @@ export default function NewsRelevantes(props) {
         let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
         let otherTags = /(<([^>]+)>)/gi;
         newDesc = newDesc.replace(titlesRegEx, '').replace(otherTags, '').replace(/\n/gi, ' ').match(/^.{0,300}/gi);
-        imagen = DB_url + noticia.cover.url;
+        imagen = noticia.cover ? DB_url + noticia.cover.url : IMG;
         categoria = noticia.categoria.nombre;
         content = newDesc;
         Titulo = noticia.Titulo;

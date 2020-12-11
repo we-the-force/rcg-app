@@ -4,6 +4,7 @@ import img1 from "@/static/imgs/418464-PD8PXQ-214 1.png";
 import img2 from "@/static/imgs/fondo-sj-e1540342434825 1.png";
 import img3 from "@/static/imgs/Rcg.png";
 import img4 from "@/static/imgs/Image.png";
+import IMG from '@/static/imgs/grayback.jpg';
 import { Swiper, SwiperSlide, Block, BlockHeader, BlockFooter, Link, f7 } from "framework7-react";
 export default function Masthead(props) {
     const { banner, relevante } = props;
@@ -72,7 +73,7 @@ export default function Masthead(props) {
 							return (
 								<SwiperSlide key={i}>
 									<Block className="background">
-										<img src={DB_url + item.cover.url} alt="" />
+										<img src={item.cover ? DB_url + item.cover.url : IMG} alt="" />
 										<Block className="label">
 											<Link href={"/categoria/" + item.categoria.nombre} className="categoria upperscale">
 												{item.categoria.nombre}

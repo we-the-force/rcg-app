@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import TestImage from '@/static/imgs/Image.png';
+import IMG from '@/static/imgs/grayback.jpg';
 import Twitter from '@/static/icons/TW_Icon_x3.png';
 import Face from '@/static/icons/FB_Icon_x3.png';
 import moment from 'moment';
@@ -27,7 +27,9 @@ export default function NewsCategoria(props) {
 		.replace(titlesRegEx, "")
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
-		.match(/^.{0,300}/gi);
+        .match(/^.{0,300}/gi);
+        
+    let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
     return (
         <Card className={`NewsCategoria_cont ${className}`}>
             <Block className="head">
@@ -51,7 +53,7 @@ export default function NewsCategoria(props) {
                 <Link className="title" href={`/articulo/${articulo.url}/`}>{articulo.Titulo}</Link>
                 <div className="img_cont">
                     <a href={`/articulo/${articulo.url}/`}>
-                        <img src={DB_url + articulo.cover.url} alt="" />
+                        <img src={cover} alt="" />
                     </a>
                 </div>
                 <p className="preview">{newDesc}</p>

@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import TestImage from '@/static/imgs/Image.png';
 import moment from 'moment';
+import IMG from '@/static/imgs/grayback.jpg';
 import marked from "marked";
 import {
     Block,
@@ -21,14 +22,15 @@ export default function NewsBusqueda(props) {
 		.replace(titlesRegEx, "")
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
-		.match(/^.{0,300}/gi);
+        .match(/^.{0,300}/gi);
+    let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
     return (
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">
                 <Block className="img_cont">
                     <p className="categoria upperscale">{articulo.categoria.nombre}</p>
                     <a className="title" href={`/articulo/${articulo.url}/`}>
-                        <img src={DB_url + articulo.cover.url} alt="" />
+                        <img src={cover} alt="" />
                     </a>
                 </Block>
                 <Block className='content'>

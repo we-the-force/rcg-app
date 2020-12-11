@@ -16,11 +16,12 @@ export default function DestItem(props) {
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
 		.match(/^.{0,300}/gi);
+	let imgn = cover ? DB_url + cover.url : IMG;
 	return (
 		<Block className={"dest-item"}>
 			{props.image && (
 				<Link popupClose href={`/articulo/${url}/`} className="img_cont">
-					<img src={DB_url + cover.url} alt="" />
+					<img src={imgn} alt="" />
 				</Link>
 			)}
 			<Block className="dest-cont">
