@@ -35,7 +35,7 @@ export default function NewsBusqueda(props) {
                 </Block>
                 <Block className='content'>
                     <Block className='info'>
-                        <Link className="autor" href={`/autor/${articulo.autor.url}`}>{articulo.autor.nombre}</Link>&nbsp;-&nbsp;
+                        <Link className="autor" href={articulo.autor ? `/autor/${articulo.autor.url}` : '/autores'}>{articulo.autor ? articulo.autor.nombre : 'Sin Autor'}</Link>&nbsp;-&nbsp;
                         <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
                     </Block>
                     <Link className="title" href={`/articulo/${articulo.url}/`}>{articulo.Titulo}</Link>

@@ -26,8 +26,8 @@ export default function DestItem(props) {
 			)}
 			<Block className="dest-cont">
 				<BlockHeader>
-					<Link popupClose className="autor" href={`/autor/${autor.url}`}>
-						{autor.nombre}
+					<Link popupClose className="autor" href={autor ? `/autor/${autor.url}` : '/autores'}>
+						{autor ? autor.nombre : 'Ain Autor'}
 					</Link>
 					&nbsp;-&nbsp;
 					<p className="fecha">{moment(fecha).format("D MMMM")}</p>

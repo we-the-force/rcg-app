@@ -26,7 +26,7 @@ export default function NewsHome(props) {
 				</Link>
 			</Block>
 			<Block className="img_foot">
-				<Link href={`/autor/${articulo.autor.url}`} className="autor">{articulo.autor.nombre}</Link>&nbsp;-&nbsp;
+				<Link href={articulo.autor ? `/autor/${articulo.autor.url}` : '/autores'} className="autor">{articulo.autor ? articulo.autor.nombre : 'Sin Autor'}</Link>&nbsp;-&nbsp;
 				<p className="fecha">{moment(articulo.fecha).format("D MMMM")}</p>
 			</Block>
 			<Block className="content">

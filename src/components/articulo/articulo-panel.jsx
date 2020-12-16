@@ -129,9 +129,9 @@ export default class ArticuloPanel extends Component {
 						</Block>
 						<Block className="title_cont">
 							<Block className="head display-flex justify-content-flex-start">
-								<a className="autor" href={`/autor/${articulo.autor.url}`}>
+								<a className="autor" href={articulo.autor ? `/autor/${articulo.autor.url}` : '/autores'}>
 									{" "}
-									{articulo.autor.nombre}{" "}
+									{articulo.autor ? articulo.autor.nombre : 'Sin Autor'}{" "}
 								</a>{" "}
 								- <p className="fecha"> {articulo.fecha} </p>
 							</Block>
