@@ -68,7 +68,7 @@ export default function Masthead(props) {
 				<Fragment>
 					<Block className="logo">
 						<img src={props.logo} alt="" />
-						<img src={twenyforseven} alt="" />
+						<img className="doscuatrosiete" src={twenyforseven} alt="" />
 					</Block>
 					<Swiper ref={swiper} pagination params={{ loop: true }}>
 						{articulos.map((item, i) => {
