@@ -38,9 +38,9 @@ export default function navMobile(props) {
 			navLinks.push(
 				<Fragment key="autoresLink">
 					<hr />
-					<Link href="/autores" className="uppercase">
+					{/* <Link href="/autores" className="uppercase">
 						autores{" "}
-					</Link>
+					</Link> */}
 				</Fragment>
 			);
 		}
