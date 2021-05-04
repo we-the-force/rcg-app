@@ -23,7 +23,7 @@ export default function LeftPanelMobile(props) {
                 <ListItem link={`/categoria/${val.url}`} view="#main-view" key={key} className={`uppercase ${current}`} panelClose>{val.nombre}</ListItem>
             )
         }) : [];
-        navLinks.push(<ListItem link="/autores" view="#main-view" className="uppercase autores" key="autores-item" panelClose>autores</ListItem>);
+        // navLinks.push(<ListItem link="/autores" view="#main-view" className="uppercase autores" key="autores-item" panelClose>autores</ListItem>);
     }
 
     /* if (f7 != undefined) {

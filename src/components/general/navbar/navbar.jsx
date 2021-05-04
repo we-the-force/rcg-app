@@ -29,9 +29,9 @@ export default function Nav(props) {
 							</ListItem>
 						);
 					})}
-					<ListItem link="/autores" className="uppercase" popoverClose>
+					{/* <ListItem link="/autores" className="uppercase" popoverClose>
 						autores
-					</ListItem>
+					</ListItem> */}
 				</List>
 			</Popover>
 		</Fragment>
