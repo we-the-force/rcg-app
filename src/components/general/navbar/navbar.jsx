@@ -53,17 +53,17 @@ function useData(data) {
 			let w = window.innerWidth;
 			thisType = "desktop";
 			if (w > 1420) {
-				cant = 9;
+				cant = 10;
 			} else if (w >= 1320) {
-				cant = 8; //9 links
+				cant = 9; //9 links
 			} else if (w >= 1200) {
-				cant = 7; //9 links
+				cant = 8; //9 links
 			} else if (w >= 1024) {
-				cant = 6; //7 lnks
+				cant = 7; //7 lnks
 			} else if (w >= 768) {
-				cant = 4; //6 links
+				cant = 5; //6 links
 			} else if (w >= 640) {
-				cant = 3; //4 links
+				cant = 4; //4 links
 			} else {
 				thisType = "mobile";
 			}
