@@ -4,6 +4,7 @@ import img1 from "@/static/imgs/418464-PD8PXQ-214 1.png";
 import img2 from "@/static/imgs/fondo-sj-e1540342434825 1.png";
 import img3 from "@/static/imgs/Rcg.png";
 import img4 from "@/static/imgs/Image.png";
+import twenyforseven from "@/static/imgs/24-7.png";
 import IMG from '@/static/imgs/grayback.jpg';
 import { Swiper, SwiperSlide, Block, BlockHeader, BlockFooter, Link, f7 } from "framework7-react";
 export default function Masthead(props) {
@@ -67,6 +68,7 @@ export default function Masthead(props) {
 				<Fragment>
 					<Block className="logo">
 						<img src={props.logo} alt="" />
+						<img src={twenyforseven} alt="" />
 					</Block>
 					<Swiper ref={swiper} pagination params={{ loop: true }}>
 						{articulos.map((item, i) => {
