@@ -13,6 +13,7 @@ import { useMutation, gql } from "@apollo/client";
 import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
 import { Block, Card, CardHeader, Swiper, SwiperSlide, Link, f7 } from "framework7-react";
+import parse from 'html-react-parser';
 
 export function formatText(x) {
 	const DB_url = f7.methods.get_URL_DB();
@@ -146,7 +147,7 @@ export default class ArticuloPanel extends Component {
 									components={{ Block, AdsInArticle }}
 									jsx={`
                                     <div className="articulo_cont markdown">
-                                    ${result}
+                                    ${parse(articulo.description)}
                                     <AdsInArticle className="child">
                                     </AdsInArticle>
                                     <AdsInArticle className="child">
