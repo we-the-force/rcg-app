@@ -143,6 +143,9 @@ export default class ArticuloPanel extends Component {
 						</Block>
 						<Block className="content display-flex align-items-flex-start">
 							<Block className="left_side">
+								<div>
+									{parse(articulo.description)}
+								</div>
 								<JsxParser
 									components={{ Block, AdsInArticle }}
 									jsx={`
