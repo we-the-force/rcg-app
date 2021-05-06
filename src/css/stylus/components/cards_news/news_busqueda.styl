@@ -70,7 +70,6 @@
 
             .title
                 font font_14
-                text-transform capitalize
                 color #242424
                 margin 0px
                 margin-bottom 0.7vw
@@ -79,6 +78,8 @@
                 -webkit-line-clamp 2
                 -webkit-box-orient vertical
                 overflow hidden
+                &:first-letter
+                    text-transform uppercase
 
             .preview
                 font font_6
