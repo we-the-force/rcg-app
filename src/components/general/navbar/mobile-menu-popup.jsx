@@ -66,9 +66,9 @@ export default function mobileMenuPopup(props) {
 							<Link href="/espectaculares" popupClose>
 								Espectaculares
 							</Link>
-							<Link href="/calca" popupClose>
+							{/* <Link href="/calca" popupClose>
 								Registra Tu Calca
-							</Link>
+							</Link> */}
 						</Block>
 					</div>
 					<div className="box estaciones">

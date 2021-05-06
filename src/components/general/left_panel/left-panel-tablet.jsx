@@ -201,9 +201,9 @@ export default function LeftPanelTablet(props) {
 					<ListItem popupClose link="/espectaculares">
 						Espectaculares
 					</ListItem>
-					<ListItem popupClose link="/calca">
+					{/* <ListItem popupClose link="/calca">
 						Registra tu calca
-					</ListItem>
+					</ListItem> */}
 				</List>
 			</Popup>
 			<Popup

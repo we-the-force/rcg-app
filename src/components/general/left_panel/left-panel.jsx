@@ -53,7 +53,7 @@ export default function LeftPanel(props) {
 				<List>
 					{/* <ListItem link="#">Fundación RCG</ListItem> */}
 					<ListItem link="/espectaculares">Espectaculares</ListItem>
-					<ListItem link="/calca">Registra tu calca</ListItem>
+					{/* <ListItem link="/calca">Registra tu calca</ListItem> */}
 				</List>
 			</Card>
 			<Card className="left_pan_card social">

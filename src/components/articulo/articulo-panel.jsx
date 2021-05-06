@@ -151,7 +151,7 @@ export default class ArticuloPanel extends Component {
 									jsx={`
                                     <div className="articulo_cont markdown">
                                     ${parse(articulo.description)}
-                                    <AdsInArticle className="child">
+                                    <AdsInArticle classNamwe="child">
                                     </AdsInArticle>
                                     <AdsInArticle className="child">
                                     </AdsInArticle>
