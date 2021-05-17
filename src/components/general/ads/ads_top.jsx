@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, Block } from "framework7-react";
+import uane from "../../../static/imgs/uane.gif"
 
 export default class adsTop extends Component {
 	constructor() {
@@ -13,14 +14,15 @@ export default class adsTop extends Component {
 				<Block className="center">
 					<Block className="ads">
 						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<ins
+						{/* <ins
 							className="adsbygoogle"
 							style={{display: 'block',height: '100%'}}
 							data-ad-client="ca-pub-5946382133965347"
 							data-ad-slot="7621123541"
 							data-ad-format="auto"
 							data-full-width-responsive="true"
-						></ins>
+						></ins> */}
+						<img src={uane} alt="" />
 						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 					</Block>
 				</Block>
