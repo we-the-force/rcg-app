@@ -22,7 +22,10 @@ export default class adsTop extends Component {
 							data-ad-format="auto"
 							data-full-width-responsive="true"
 						></ins> */}
-						<img src={uane} alt="" />
+						<img src={uane} alt="" style={{
+							width: '100%',
+							height: 'auto'
+						}}/>
 						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 					</Block>
 				</Block>
