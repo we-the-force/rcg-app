@@ -137,6 +137,7 @@ export default class ArticuloPanel extends Component {
 								- <p className="fecha"> {articulo.fecha} </p>
 							</Block>
 							<Block className="titulo">{articulo.Titulo}</Block>
+							<Block className="sumario">{articulo.Sumario}</Block>
 							<Block className="img_cont display-flex flex-direction-column">
 								<img src={cover} alt="" />
 							</Block>
