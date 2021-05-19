@@ -64,6 +64,7 @@ export default class ArticuloPanel extends Component {
 	}
 	render() {
 		let { articulo, recomendados } = this.props;
+		console.log(articulo);
 		const DB_url = f7.methods.get_URL_DB();
 		const url = f7.methods.get_URL();
 		let urlThing = url + `/articulo/${articulo.url}/`;
