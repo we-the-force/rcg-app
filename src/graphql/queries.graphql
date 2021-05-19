@@ -320,6 +320,7 @@ fragment ArticulosData on Articulo {
 	id
 	url
 	Titulo
+	Sumario
 	autor {
 		nombre
 		url
