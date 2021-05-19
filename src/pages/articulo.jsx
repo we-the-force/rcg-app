@@ -99,6 +99,7 @@ export default function Articulo(props) {
 		}
 	} else {
 		if (data.articulos.length > 0) {
+			console.log(data);
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 		} else {
 			centerPanel = <ErrorPanel error="No pudimos encontrar el articulo que buscas" />;
