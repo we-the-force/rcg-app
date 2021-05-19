@@ -146,7 +146,7 @@ export default class ArticuloPanel extends Component {
 								<div>
 									{parse(articulo.description)}
 								</div>
-								<JsxParser
+								{/* <JsxParser
 									components={{ Block, AdsInArticle }}
 									jsx={`
                                     <div className="articulo_cont markdown">
@@ -156,7 +156,7 @@ export default class ArticuloPanel extends Component {
                                     <AdsInArticle className="child">
                                     </AdsInArticle>
                                     </div>`}
-								/>
+								/> */}
 								<Block className="tags">
 									<p>Tags Relacionados:</p>
 									{articulo.tags.map((tag, i) => {
