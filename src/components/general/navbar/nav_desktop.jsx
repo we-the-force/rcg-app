@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import LogoBlanco from "@/static/imgs/Logo_blanco.png";
 import navGraph from "@/static/imgs/nav_graph.png";
+import doscuatrosiete from "@/static/imgs/24-7.png";
 import { Navbar, NavLeft, NavRight, Block, Icon, Link, Popover, List, ListItem, f7 } from "framework7-react";
 
 export default function navMobile(props) {
@@ -58,16 +59,19 @@ export default function navMobile(props) {
 	return (
 		<Fragment>
 			<NavLeft className={home ? "home" : ""}>
-				{home && <img className="home" src={navGraph} alt="" />}
+				{/* {home && <img className="home" src={navGraph} alt="" />}
 				{!home && (
 					<a href="/">
 						<img src={props.logoD} alt="" />
 					</a>
-				)}
+				)} */}
+				<a href="/">
+					<img src={props.logoD} alt="" />
+				</a>
 			</NavLeft>
 			{navLinks}
 			<NavRight>
-				<img src={navGraph} alt="" />
+				<img src={doscuatrosiete} alt="" />
 			</NavRight>
 		</Fragment>
 	);
