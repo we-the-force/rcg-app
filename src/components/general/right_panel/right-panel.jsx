@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
 import AutorCard from '@/components/autores/autor-card.jsx';
 import AdsSearch from "@/components/general/ads/ads_search";
+import satelite from "../../../static/imgs/sat.png"
 import {
     Block,
     Card,
@@ -78,6 +79,7 @@ export default function RightPanel(props) {
             </Block>
             <Block className="right_panel_down">
                 {cards}
+                <img src={satelite} alt="" />
                 {/* <Card className="right_panel_down_card tags">
                     <CardHeader>
                         Tags
