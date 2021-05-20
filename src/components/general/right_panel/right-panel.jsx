@@ -79,7 +79,7 @@ export default function RightPanel(props) {
             </Block>
             <Block className="right_panel_down">
                 {cards}
-                <img src={satelite} alt="" />
+                <img src={satelite} alt="" className="sat" />
                 {/* <Card className="right_panel_down_card tags">
                     <CardHeader>
                         Tags
