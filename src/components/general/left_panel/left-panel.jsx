@@ -80,6 +80,7 @@ export default function LeftPanel(props) {
 			<Card className="left_pan_card about">
 				<List>
 					<ListItem link="/nosotros">Nosotros</ListItem>
+					<ListItem link="/autores">Autores</ListItem>
 					<ListItem link="/contacto">Contacto</ListItem>
 				</List>
 			</Card>
