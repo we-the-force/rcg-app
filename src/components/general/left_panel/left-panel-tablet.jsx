@@ -3,6 +3,8 @@ import TVLight from "@/static/icons/tv_light.png";
 import services from "@/static/icons/servicios.png";
 import radio from "@/static/icons/microphone.png";
 import twred from "@/static/icons/TW_red.png";
+import tiktok from "@/static/imgs/tiktok.png";
+
 import contact from "@/static/icons/Contact.png";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
@@ -226,6 +228,9 @@ export default function LeftPanelTablet(props) {
 					</a>
 					<a className="external" target="_blank" href="https://www.instagram.com/rcgoficial">
 						<img src={IGIcon} alt="" srcSet="" />
+					</a>
+					<a href="https://vm.tiktok.com/ZMetcg3vD/" className="external" target="_blank">
+						<img src={tiktok} alt="" srcSet="" />
 					</a>
 				</Block>
 			</Popup>

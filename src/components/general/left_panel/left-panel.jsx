@@ -3,6 +3,7 @@ import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
+import tiktok from "@/static/imgs/tiktok.png";
 import TVLight from "@/static/icons/tv_light.png";
 import MIC from "@/static/icons/microphone.png";
 import TVDark from "@/static/icons/tv_dark.png";
@@ -70,6 +71,9 @@ export default function LeftPanel(props) {
 					</a>
 					<a href="https://www.instagram.com/rcgoficial" className="external" target="_blank">
 						<img src={IGIcon} alt="" srcSet="" />
+					</a>
+					<a href="https://vm.tiktok.com/ZMetcg3vD/" className="external" target="_blank">
+						<img src={tiktok} alt="" srcSet="" />
 					</a>
 				</Block>
 			</Card>
