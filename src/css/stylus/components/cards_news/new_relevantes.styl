@@ -55,13 +55,15 @@
 
                 p
                     font font_8
-                    text-transform capitalize
+                    
                     color #191919
                     padding 0px 15%
                     display -webkit-box
                     -webkit-line-clamp 5
                     -webkit-box-orient vertical
                     overflow hidden
+                    &:first-letter
+                        text-transform capitalize
 
             .link
                 z-index 3
