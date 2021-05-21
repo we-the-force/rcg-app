@@ -33,7 +33,7 @@ export default function NewsHome(props) {
 				<Link className="title" href={`/articulo/${articulo.url}/`}>
 					{articulo.Titulo}
 				</Link>
-				<p className="preview">{newDesc}</p>
+				{/* <p className="preview">{newDesc}</p> */}
 			</Block>
 		</Block>
 	);

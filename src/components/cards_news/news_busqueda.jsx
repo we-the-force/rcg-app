@@ -39,7 +39,7 @@ export default function NewsBusqueda(props) {
                         <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
                     </Block>
                     <Link className="title" href={`/articulo/${articulo.url}/`}>{articulo.Titulo}</Link>
-                    <p className="preview">{newDesc}</p>
+                    {/* <p className="preview">{newDesc}</p> */}
                     <a className="more" href={'/articulo/' + articulo.url + '/'}>Ver más</a>
                 </Block>
             </Block>

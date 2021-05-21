@@ -56,7 +56,7 @@ export default function NewsCategoria(props) {
                         <img src={cover} alt="" />
                     </a>
                 </div>
-                <p className="preview">{newDesc}</p>
+                {/* <p className="preview">{newDesc}</p> */}
                 <div className="more_cont">
                     <a className="more" href={`/articulo/${articulo.url}/`}>Ver más</a>
                 </div>
