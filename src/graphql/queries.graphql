@@ -160,7 +160,7 @@ query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
 }
 
 query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
-	articulos(where: { categoria: { url: $categoria } }, start: $inicio, limit: $limite) {
+	articulos(sort: "fecha:desc", where: { categoria: { url: $categoria } }, start: $inicio, limit: $limite) {
 		...ArticulosData
 	}
 	categorias(where: { url: $categoria }) {
