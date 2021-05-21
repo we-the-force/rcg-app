@@ -84,7 +84,6 @@
             .preview
                 font font_6
                 text-align justify
-                text-transform capitalize
                 color #404040
                 margin 0px
                 margin-bottom 0.7vw
@@ -93,6 +92,9 @@
                 -webkit-line-clamp 3
                 -webkit-box-orient vertical
                 overflow hidden
+                &:first-letter
+                    text-transform capitalize
+
 
             @media (min-width 360px)
                 .info

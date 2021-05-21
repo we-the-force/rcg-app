@@ -62,12 +62,14 @@
             margin 5px 0px
             padding 0px
             font font_8
-            text-transform capitalize
             color #191919
             display -webkit-box
             -webkit-line-clamp 4
             -webkit-box-orient vertical
             overflow hidden
+            &:first-letter
+                text-transform capitalize
+
 
     &.grid-item.first
         .img_cont
