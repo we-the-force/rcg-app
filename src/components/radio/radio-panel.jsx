@@ -134,10 +134,10 @@ export default function RadioPanel(props) {
                                 ></Range>
                             </Block>
                         </Block>
-                        <Block className="logo-RCG">
+                        {/* <Block className="logo-RCG">
                             <img className="light" src={props.logo} alt="" />
                             <img className="dark" src={props.logoD} alt="" />
-                        </Block>
+                        </Block> */}
                     </Block>
                 </Block>
                 {/* La tablita de programación */}
