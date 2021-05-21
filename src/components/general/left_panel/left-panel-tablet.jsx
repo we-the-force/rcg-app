@@ -3,7 +3,7 @@ import TVLight from "@/static/icons/tv_light.png";
 import services from "@/static/icons/servicios.png";
 import radio from "@/static/icons/microphone.png";
 import twred from "@/static/icons/TW_red.png";
-import tiktok from "@/static/imgs/tiktok.png";
+import tiktok from "@/static/imgs/tictoc.png";
 
 import contact from "@/static/icons/Contact.png";
 import TWIcon from "@/static/icons/TW_Icon.png";

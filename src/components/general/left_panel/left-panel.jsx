@@ -3,7 +3,7 @@ import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
-import tiktok from "@/static/imgs/tiktok.png";
+import tiktok from "@/static/imgs/tictoc.png";
 import TVLight from "@/static/icons/tv_light.png";
 import MIC from "@/static/icons/microphone.png";
 import TVDark from "@/static/icons/tv_dark.png";
