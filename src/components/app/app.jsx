@@ -34,7 +34,7 @@ export default class extends React.Component {
 			name: "RCG webpage", // App name
 			theme: "auto", // Automatic theme detection
 
-			// pushStateRoot: window.location.protocol + '//' + window.location.hostname + ':8080',
+			pushStateRoot: window.location.protocol + '//' + window.location.hostname + '',
 			view: {
 				pushState: true,
 				pushStateRoot: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
