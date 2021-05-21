@@ -55,8 +55,6 @@ export default function Home(props) {
 			<PageContent>
 				{/* ads */}
 				{/* masthead */}
-				{mast}
-				{/* Top Navbar */}
 				<Nav
 					home
 					categorias={f7.methods.getCategorias()}
@@ -65,6 +63,9 @@ export default function Home(props) {
 					logoD={DB_url + logoDark}
 					logo={DB_url + logo}
 				/>
+				{mast}
+				{/* Top Navbar */}
+				
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
