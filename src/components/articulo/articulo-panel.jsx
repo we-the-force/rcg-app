@@ -57,7 +57,30 @@ export default class ArticuloPanel extends Component {
 		super(props);
 	}
 	componentDidMount() {
+		let { articulo, recomendados } = this.props;
+		const DB_url = f7.methods.get_URL_DB();
+		const url = f7.methods.get_URL();
+		let urlThing = url + `/articulo/${articulo.url}/`;
+		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 		//FB.XFBML.parse();
+		document.querySelector('meta[name="description"]').setAttribute("content", articulo.Sumario);
+
+		document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
+		document.querySelector('meta[property="og:title"]').setAttribute("content", articulo.Titulo);
+		document.querySelector('meta[property="og:description"]').setAttribute("content", articulo.Sumario);
+		document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
+
+		document.querySelector('meta[property="twitter:title"]').setAttribute("content", articulo.Titulo);
+		document.querySelector('meta[property="twitter:description"]').setAttribute("content", articulo.Sumario);
+		document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
+
+		document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
+		document.querySelector('meta[name="twitter:title"]').setAttribute("content", articulo.Titulo);
+		document.querySelector('meta[name="twitter:description"]').setAttribute("content", articulo.Sumario);
+		document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
+
+		document.title = articulo.Titulo;
+
 	}
 	componentDidUpdate() {
 		FB.XFBML.parse();
@@ -81,7 +104,7 @@ export default class ArticuloPanel extends Component {
 		return (
 				<Block className="articulo_panel center_panel helmet">
 
-					<Helmet>
+					{/* <Helmet>
 						<title>RCG - {articulo.Titulo}</title>
 						<meta name="description" content={firstLine}/>
 
@@ -103,7 +126,7 @@ export default class ArticuloPanel extends Component {
 						<meta property="twitter:image" content="https://wetheforcestudios.com/og.png"/>
 						<meta property="twitter:title" content={articulo.Titulo}/>
 						<meta property="twitter:description" content={firstLine}/>
-					</Helmet>
+					</Helmet> */}
 					<Card className="articulo">
 						<Block className="header_cont display-flex justify-content-space-between">
 							<CardHeader>

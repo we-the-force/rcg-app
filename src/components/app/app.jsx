@@ -132,7 +132,7 @@ export default class extends React.Component {
 							<meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo." />
 							<meta property="og:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
 							<meta property="og:image:width" content="1200" />
-							<meta property="og:image:height" content="630" />
+							<meta property="og:image:height" content="720" />
 
 							<meta name="twitter:card" content="summary_large_image" />
 							<meta name="twitter:creator" content="@RCGoficial" />
