@@ -78,7 +78,6 @@ export default class ArticuloPanel extends Component {
 		return (
 			<HelmetProvider context={helmetContext}>
 				<Block className="articulo_panel center_panel helmet">
-				<App>
 
 					<Helmet>
 						<meta description={firstLine} />
@@ -104,7 +103,6 @@ export default class ArticuloPanel extends Component {
 						<meta property="twitter:title" content={articulo.Titulo}/>
 						<meta property="twitter:description" content={firstLine}/>
 					</Helmet>
-					</App>
 					<Card className="articulo">
 						<Block className="header_cont display-flex justify-content-space-between">
 							<CardHeader>
