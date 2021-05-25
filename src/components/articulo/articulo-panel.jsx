@@ -15,6 +15,9 @@ import { onError } from "apollo-link-error";
 import { Block, Card, CardHeader, Swiper, SwiperSlide, Link, f7 } from "framework7-react";
 import parse from 'html-react-parser';
 
+const { helmet } = helmetContext;
+
+
 export function formatText(x) {
 	const DB_url = f7.methods.get_URL_DB();
 	let value = marked(x);
@@ -78,6 +81,7 @@ export default class ArticuloPanel extends Component {
 		return (
 			<HelmetProvider context={helmetContext}>
 				<Block className="articulo_panel center_panel helmet">
+				<App>
 
 					<Helmet>
 						<meta description={firstLine} />
@@ -103,6 +107,7 @@ export default class ArticuloPanel extends Component {
 						<meta property="twitter:title" content={articulo.Titulo}/>
 						<meta property="twitter:description" content={firstLine}/>
 					</Helmet>
+					</App>
 					<Card className="articulo">
 						<Block className="header_cont display-flex justify-content-space-between">
 							<CardHeader>
@@ -248,4 +253,3 @@ export default class ArticuloPanel extends Component {
 	}
 }
 
-const { helmet } = helmetContext;
