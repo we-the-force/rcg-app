@@ -124,7 +124,7 @@ export default class extends React.Component {
 			<ApolloProvider client={client}>
 				<HelmetProvider context={helmetContext}>
 					<App params={this.state}>
-						<Helmet>
+						{/* <Helmet>
 							<meta property="og:site_name" content="RCG" />
 							<meta property="og:type" content="website" />
 							<meta property="og:url" content="https://rcg.com.mx" />
@@ -143,7 +143,7 @@ export default class extends React.Component {
 							<meta property="twitter:image" content="https://www.rcg.com.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
 							<meta property="twitter:title" content="RCG" />
 							<meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
-						</Helmet>
+						</Helmet> */}
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>
