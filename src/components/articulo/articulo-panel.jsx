@@ -76,30 +76,35 @@ export default class ArticuloPanel extends Component {
 			.match(/^.{0,200}/gi);
 		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 		return (
-			<HelmetProvider>
+			<HelmetProvider context={helmetContext}>
 				<Block className="articulo_panel center_panel helmet">
+				<App>
+
 					<Helmet>
 						<meta description={firstLine} />
 						<title>RCG - {articulo.Titulo}</title>
-						<meta property="og:site_name" content="RCG" />
-						<meta property="og:type" content="website" />
-						<meta property="og:url" content={urlThing} />
-						<meta property="og:title" content={articulo.Titulo} />
-						<meta property="og:description" content={firstLine} />
-						<meta property="og:image" content={cover} />
-						<meta property="og:image:width" content="1200" />
-						<meta property="og:image:height" content="630" />
+						
 
-						<meta name="twitter:card" content="summary_large_image" />
-						<meta name="twitter:creator" content="@RCGoficial" />
-						<meta name="twitter:url" content={urlThing} />
-						<meta name="twitter:title" content={articulo.Titulo} />
-						<meta name="twitter:description" content={firstLine} />
+						<meta property="og:site_name" content="RCG"/>
+						<meta property="og:type" content="website"/>
+						<meta property="og:url" content={urlThing}/>
+						<meta property="og:title" content={articulo.Titulo}/>
+						<meta property="og:description" content={firstLine}/>
+						<meta property="og:image" content={cover}/>
+						<meta property="og:image:width" content="1280"/>
+						<meta property="og:image:height" content="720"/>
 
-						<meta property="twitter:image" content={cover} />
-						<meta property="twitter:title" content={articulo.Titulo} />
-						<meta property="twitter:description" content={firstLine} />
+						<meta name="twitter:card" content="summary_large_image"/>
+						<meta name="twitter:creator" content="@RCGoficial"/>
+						<meta name="twitter:url" content={urlThing}/>
+						<meta name="twitter:title" content={articulo.Titulo}/>
+						<meta name="twitter:description" content={firstLine}/>
+
+						<meta property="twitter:image" content="https://wetheforcestudios.com/og.png"/>
+						<meta property="twitter:title" content={articulo.Titulo}/>
+						<meta property="twitter:description" content={firstLine}/>
 					</Helmet>
+					</App>
 					<Card className="articulo">
 						<Block className="header_cont display-flex justify-content-space-between">
 							<CardHeader>
