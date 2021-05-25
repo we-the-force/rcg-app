@@ -61,7 +61,8 @@ export default class ArticuloPanel extends Component {
 		const DB_url = f7.methods.get_URL_DB();
 		const url = f7.methods.get_URL();
 		let urlThing = url + `/articulo/${articulo.url}/`;
-		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+		console.log(articulo.cover.url);
+		let cover = articulo.cover ? DB_url + articulo.cover.url : 'IMG';
 		//FB.XFBML.parse();
 		document.querySelector('meta[name="description"]').setAttribute("content", articulo.Sumario);
 
