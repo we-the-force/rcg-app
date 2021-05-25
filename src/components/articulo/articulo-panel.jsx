@@ -73,7 +73,7 @@ export default class ArticuloPanel extends Component {
 		//FB.XFBML.parse();
 		document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
-		// document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
+		document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
 		document.querySelector('meta[property="og:title"]').setAttribute("content", articulo.Titulo);
 		document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
 		// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
@@ -82,7 +82,7 @@ export default class ArticuloPanel extends Component {
 		document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
 		// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
 
-		// document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
+		document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
 		document.querySelector('meta[name="twitter:title"]').setAttribute("content", articulo.Titulo);
 		document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
 		// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
