@@ -79,6 +79,8 @@ export default class ArticuloPanel extends Component {
 			<HelmetProvider>
 				<Block className="articulo_panel center_panel helmet">
 					<Helmet>
+						<meta description={firstLine} />
+						<title>RCG - {articulo.Titulo}</title>
 						<meta property="og:site_name" content="RCG" />
 						<meta property="og:type" content="website" />
 						<meta property="og:url" content={urlThing} />
@@ -169,7 +171,7 @@ export default class ArticuloPanel extends Component {
 										);
 									})}
 								</Block>
-								<Link href="http://149.28.252.152/articulo/andrea-meza-y-su-camino-antes-de-miss-universo/" external>External</Link>
+								
 								<Block className="comments">
 									<div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
 								</Block>
