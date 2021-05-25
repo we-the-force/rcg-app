@@ -15,7 +15,6 @@ import { onError } from "apollo-link-error";
 import { Block, Card, CardHeader, Swiper, SwiperSlide, Link, f7 } from "framework7-react";
 import parse from 'html-react-parser';
 
-const { helmet } = helmetContext;
 
 
 export function formatText(x) {
@@ -66,6 +65,8 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
+		const { helmet } = helmetContext;
+
 		let { articulo, recomendados } = this.props;
 		console.log(articulo);
 		const DB_url = f7.methods.get_URL_DB();
