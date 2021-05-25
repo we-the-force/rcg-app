@@ -249,3 +249,5 @@ export default class ArticuloPanel extends Component {
 		);
 	}
 }
+
+const { helmet } = helmetContext;
