@@ -169,6 +169,7 @@ export default class ArticuloPanel extends Component {
 										);
 									})}
 								</Block>
+								<Link href="http://149.28.252.152/articulo/andrea-meza-y-su-camino-antes-de-miss-universo/" external>External</Link>
 								<Block className="comments">
 									<div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
 								</Block>
