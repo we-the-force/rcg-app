@@ -8,7 +8,7 @@ import FBIconx3 from "@/static/icons/FB_Icon_x4.png";
 import AdsInArticle from "@/components/general/ads/ads_in_article";
 import AdsRightArticle from "@/components/general/ads/ads_right_article";
 import AdsFeed from "@/components/general/ads/ads_feed";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Helmet} from "react-helmet-async";
 import { useMutation, gql } from "@apollo/client";
 import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
@@ -65,7 +65,6 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
-		const { helmet } = helmetContext;
 
 		let { articulo, recomendados } = this.props;
 		console.log(articulo);
@@ -80,9 +79,7 @@ export default class ArticuloPanel extends Component {
 			.match(/^.{0,200}/gi);
 		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 		return (
-			<HelmetProvider context={helmetContext}>
 				<Block className="articulo_panel center_panel helmet">
-				<App>
 
 					<Helmet>
 						<meta description={firstLine} />
@@ -108,7 +105,6 @@ export default class ArticuloPanel extends Component {
 						<meta property="twitter:title" content={articulo.Titulo}/>
 						<meta property="twitter:description" content={firstLine}/>
 					</Helmet>
-					</App>
 					<Card className="articulo">
 						<Block className="header_cont display-flex justify-content-space-between">
 							<CardHeader>
@@ -249,7 +245,6 @@ export default class ArticuloPanel extends Component {
 						<SwiperNews articulos={recomendados} />
 					</Card>
 				</Block>
-			</HelmetProvider>
 		);
 	}
 }

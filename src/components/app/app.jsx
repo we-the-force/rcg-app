@@ -11,6 +11,7 @@ import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
+const helmetContext = {};
 
 const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors)
@@ -26,6 +27,7 @@ const client = new ApolloClient({
 });
 
 export default class extends React.Component {
+
 	constructor() {
 		super();
 		this.state = {
@@ -116,9 +118,11 @@ export default class extends React.Component {
 	}
 
 	render() {
+		const { helmet } = helmetContext;
+
 		return (
 			<ApolloProvider client={client}>
-				<HelmetProvider>
+				<HelmetProvider context={helmetContext}>
 					<App params={this.state}>
 						<Helmet>
 							<meta property="og:site_name" content="RCG" />
