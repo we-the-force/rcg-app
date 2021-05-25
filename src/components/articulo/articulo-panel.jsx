@@ -82,9 +82,8 @@ export default class ArticuloPanel extends Component {
 				<Block className="articulo_panel center_panel helmet">
 
 					<Helmet>
-						<meta description={firstLine} />
 						<title>RCG - {articulo.Titulo}</title>
-						
+						<meta name="description" content={firstLine}/>
 
 						<meta property="og:site_name" content="RCG"/>
 						<meta property="og:type" content="website"/>
