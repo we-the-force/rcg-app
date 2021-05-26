@@ -11,6 +11,7 @@ export default class HomePanel extends Component {
 	}
 	render() {
 		const { noticias, relevante } = this.props;
+		console.log(relevante);
 		let noticias_filtradas = noticias.filter((val, i) => {
 			return val.articulos.length > 0;
 		});
