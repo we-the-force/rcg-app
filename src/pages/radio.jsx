@@ -49,6 +49,7 @@ export default function Radio(props) {
 		centerPanel = <ErrorPanel />;
 	} else {
 		let { radio, programacion } = data;
+		console.log(programacion);
 		centerPanel =
 			radio.length > 0 ? (
 				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} />
