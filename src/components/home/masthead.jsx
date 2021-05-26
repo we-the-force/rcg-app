@@ -94,12 +94,12 @@ export default function Masthead(props) {
 											</Link>
 											<BlockFooter>
 												<Link className="autor" href={"/autores"}>
-													{item.autor.nombre}&nbsp;-&nbsp;
+													{item.autor.nombre}&nbsp;-&nbsp;{item.fecha}&nbsp;-&nbsp;Foto por: {item.creditos}
 												</Link>
 												
-												<p className="fecha">{item.fecha}&nbsp;-&nbsp;</p>
+												{/* <p className="fecha"></p>
 												
-												<p className="creditos">Foto por: {item.creditos}</p>
+												<p className="creditos"></p> */}
 											</BlockFooter>
 										</Block>
 									</Block>
