@@ -21,7 +21,6 @@ export default class NewsPanel extends Component {
 			);
 		}
 		const { categoria, articulos } = this.props;
-		console.log(articulos);
 		let coahuila = categoria === "Coahuila" ? <Coahuila catego={categoria} /> : null;
 		return (
 			<Block className="categoria_panel center_panel">
@@ -34,33 +33,34 @@ export default class NewsPanel extends Component {
 				{coahuila}
 
 				<Card className="relevantes_home">
-					<CardHeader>
-						<p className="title">Lo Más Relevante</p>
-					</CardHeader>
 					<Block id="grid1" className="grid-cont">
-						<NewsRelevantes noticia={relevante[0]} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
+						<NewsRelevantes noticia={articulos[0]} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
 					</Block>
 					<Block id="grid2" className="grid-cont">
-						<NewsRelevantes noticia={relevante[1]} id="item1" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={relevante[2]} id="item2" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={relevante[3]} id="item3" className="mob-large-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={articulos[1]} id="item1" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={articulos[2]} id="item2" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={articulos[3]} id="item3" className="mob-large-small tab-medium desk-medium" />
 					</Block>
 					<Block id="grid3" className="grid-cont">
-						<NewsRelevantes noticia={relevante[4]} id="item1" className="tab-large desk-large-small" />
-						<NewsRelevantes noticia={relevante[5]} id="item2" className="tab-large desk-small" />
-						<NewsRelevantes noticia={relevante[6]} id="item3" className="desk-small" />
-						<NewsRelevantes noticia={relevante[7]} id="item4" className="desk-large" />
+						<NewsRelevantes noticia={articulos[4]} id="item1" className="tab-large desk-large-small" />
+						<NewsRelevantes noticia={articulos[5]} id="item2" className="tab-large desk-small" />
+						<NewsRelevantes noticia={articulos[6]} id="item3" className="desk-small" />
+						<NewsRelevantes noticia={articulos[7]} id="item4" className="desk-large" />
 					</Block>
 				</Card>
 
 				{articulos.map((articulo, i) => {
-					let ad = i % 2 === 1 ? <AdsFeed /> : null;
-					return (
-						<Fragment key={i}>
-							{ad}
-							<NewsCategoria className="" articulo={articulo} />
-						</Fragment>
-					);
+					if(i > 7){
+						let ad = i % 2 === 1 ? <AdsFeed /> : null;
+						return (
+							<Fragment key={i}>
+								{ad}
+								<NewsCategoria className="" articulo={articulo} />
+							</Fragment>
+						);
+					}else{
+						return null;
+					}
 				})}
 			</Block>
 		);
