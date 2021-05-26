@@ -11,8 +11,27 @@ export default class NewsPanel extends Component {
 	render() {
 		function Coahuila(props) {
 			const catCoahuila = props.catego;
-			if (catCoahuila=="Coahuila") {
-				return (
+			// if (catCoahuila=="Coahuila") {
+			// 	return (
+			// 		<Card className="new_head">
+
+			// 			<CardHeader>
+			// 				<Link href="/busqueda/Saltillo">Saltillo</Link>
+			// 				<Link href="/busqueda/Torreon">Torreón</Link>
+			// 				<Link href="/busqueda/Monclova">Monclova</Link>
+			// 				<Link href="/busqueda/Sabinas">Sabinas</Link>
+			// 				<Link href="/busqueda/Piedras">Piedras</Link>
+			// 			</CardHeader>
+			// 		</Card>
+
+			// 	);
+			// } else {
+			// 	return (null);
+
+			// }
+			return (
+				<Card className="new_head">
+
 					<CardHeader>
 						<Link href="/busqueda/Saltillo">Saltillo</Link>
 						<Link href="/busqueda/Torreon">Torreón</Link>
@@ -20,11 +39,9 @@ export default class NewsPanel extends Component {
 						<Link href="/busqueda/Sabinas">Sabinas</Link>
 						<Link href="/busqueda/Piedras">Piedras</Link>
 					</CardHeader>
-				);
-			} else {
-				return (null);
+				</Card>
 
-			}
+			);
 			
 		}
 		const { categoria, articulos } = this.props;
@@ -37,10 +54,8 @@ export default class NewsPanel extends Component {
 					</div>
 					<Coahuila catego={categoria} />
 				</Card>
-				<Card className="new_head">
 					
-					<Coahuila catego={categoria} />
-				</Card>
+				<Coahuila catego={categoria} />
 				{articulos.map((articulo, i) => {
 					let ad = i % 2 === 1 ? <AdsFeed /> : null;
 					return (
