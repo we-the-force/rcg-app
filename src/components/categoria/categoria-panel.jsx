@@ -11,37 +11,25 @@ export default class NewsPanel extends Component {
 	render() {
 		function Coahuila(props) {
 			const catCoahuila = props.catego;
-			// if (catCoahuila=="Coahuila") {
-			// 	return (
-			// 		<Card className="new_head">
+			if (catCoahuila=="Coahuila") {
+				return (
+					<Card className="new_head coahuila-tags">
 
-			// 			<CardHeader>
-			// 				<Link href="/busqueda/Saltillo">Saltillo</Link>
-			// 				<Link href="/busqueda/Torreon">Torreón</Link>
-			// 				<Link href="/busqueda/Monclova">Monclova</Link>
-			// 				<Link href="/busqueda/Sabinas">Sabinas</Link>
-			// 				<Link href="/busqueda/Piedras">Piedras</Link>
-			// 			</CardHeader>
-			// 		</Card>
 
-			// 	);
-			// } else {
-			// 	return (null);
+							<Link href="/busqueda/Saltillo">Saltillo</Link>
+							<Link href="/busqueda/Torreon">Torreón</Link>
+							<Link href="/busqueda/Monclova">Monclova</Link>
+							<Link href="/busqueda/Sabinas">Sabinas</Link>
+							<Link href="/busqueda/Piedras">Piedras</Link>
 
-			// }
-			return (
-				<Card className="new_head coahuila-tags">
+					</Card>
 
-					<CardHeader>
-						<Link href="/busqueda/Saltillo">Saltillo</Link>
-						<Link href="/busqueda/Torreon">Torreón</Link>
-						<Link href="/busqueda/Monclova">Monclova</Link>
-						<Link href="/busqueda/Sabinas">Sabinas</Link>
-						<Link href="/busqueda/Piedras">Piedras</Link>
-					</CardHeader>
-				</Card>
+				);
+			} else {
+				return (null);
 
-			);
+			}
+			
 			
 		}
 		const { categoria, articulos } = this.props;
@@ -52,7 +40,6 @@ export default class NewsPanel extends Component {
 					<div className="head_logo">
 						<img src={back_head} alt="" />
 					</div>
-					<Coahuila catego={categoria} />
 				</Card>
 					
 				<Coahuila catego={categoria} />
