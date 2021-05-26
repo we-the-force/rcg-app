@@ -122,3 +122,67 @@
 
                     &.mobile
                         display none
+
+.categoria_panel
+    &.relevantes_home
+        padding 5px
+
+        .grid-cont
+            display grid
+            grid-gap 8px
+            padding 4px
+
+            &#grid1
+                grid-template-areas 'uno'
+
+                #item1
+                    grid-area uno
+
+            &#grid2
+                grid-template-areas 'uno dos' 'tres tres'
+
+                #item1
+                    grid-area uno
+
+                #item2
+                    grid-area dos
+
+                #item3
+                    grid-area tres
+
+            &#grid3
+                display none
+
+        @media (min-width 640px)
+            .grid-cont
+                &#grid2
+                    grid-template-areas 'uno dos tres'
+
+                &#grid3
+                    display grid !important
+                    grid-template-areas 'uno dos'
+
+                    #item1
+                        grid-area uno
+
+                    #item2
+                        grid-area dos
+
+                    #item3
+                        display none
+
+                    #item4
+                        display none
+
+        @media (min-width 1024px)
+            .grid-cont
+                &#grid3
+                    grid-template-areas 'uno uno cuatro cuatro' 'dos tres cuatro cuatro'
+
+                    #item3
+                        display block
+                        grid-area tres
+
+                    #item4
+                        display block
+                        grid-area cuatro
