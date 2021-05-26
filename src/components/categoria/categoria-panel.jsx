@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import NewsCategoria from "@/components/cards_news/news_categoria.jsx";
+import NewsRelevantes from "@/components/cards_news/news_relevantes.jsx";
 import back_head from "@/static/imgs/card_back_6.png";
 import AdsFeed from "@/components/general/ads/ads_feed";
 import { Card, CardHeader, Block, Link } from "framework7-react";
