@@ -321,6 +321,7 @@ fragment ArticulosData on Articulo {
 	url
 	Titulo
 	Sumario
+	cover_creditos
 	autor {
 		nombre
 		url

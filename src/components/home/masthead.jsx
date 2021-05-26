@@ -23,6 +23,7 @@ export default function Masthead(props) {
 			Titulo: val.articulo.Titulo,
 			autor: val.articulo.autor,
 			fecha: val.articulo.fecha,
+			creditos: val.articulo.cover_creditos,
 		};
 	});
 
@@ -35,6 +36,7 @@ export default function Masthead(props) {
 			Titulo: val.Titulo,
 			autor: val.autor,
 			fecha: val.fecha,
+			creditos: val.cover_creditos,
 		};
 	});
 
@@ -96,6 +98,8 @@ export default function Masthead(props) {
 												</Link>
 												&nbsp;-&nbsp;
 												<p className="fecha">{item.fecha}</p>
+												&nbsp;-&nbsp;
+												<p className="creditos">Foto por: {item.creditos}</p>
 											</BlockFooter>
 										</Block>
 									</Block>
