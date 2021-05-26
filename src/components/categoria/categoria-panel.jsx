@@ -19,7 +19,7 @@ export default class NewsPanel extends Component {
 							<Link href="/busqueda/Saltillo">Saltillo</Link>
 							<Link href="/busqueda/Torreon">Torreón</Link>
 							<Link href="/busqueda/Monclova">Monclova</Link>
-							<Link href="/busqueda/Sabinas">Sabinas</Link>
+							<Link href="/busqueda/Acuna">Acuña</Link>
 							<Link href="/busqueda/Piedras">Piedras</Link>
 
 					</Card>
