@@ -33,6 +33,7 @@ export default class NewsPanel extends Component {
 			
 		}
 		const { categoria, articulos } = this.props;
+		let coahuila = categoria === "Coahuila" ? <Coahuila catego={categoria} /> : null;
 		return (
 			<Block className="categoria_panel center_panel">
 				<Card className="new_head">
@@ -41,8 +42,7 @@ export default class NewsPanel extends Component {
 						<img src={back_head} alt="" />
 					</div>
 				</Card>
-					
-				<Coahuila catego={categoria} />
+				{coahuila}
 				{articulos.map((articulo, i) => {
 					let ad = i % 2 === 1 ? <AdsFeed /> : null;
 					return (
