@@ -9,6 +9,24 @@ export default class NewsPanel extends Component {
 		super(props);
 	}
 	render() {
+		function Coahuila(props) {
+			const catCoahuila = props.catego;
+			if (catCoahuila=="Coahuila") {
+				return (
+					<CardHeader>
+						<Link href="/busqueda/Saltillo">Saltillo</Link>
+						<Link href="/busqueda/Torreon">Torreón</Link>
+						<Link href="/busqueda/Monclova">Monclova</Link>
+						<Link href="/busqueda/Sabinas">Sabinas</Link>
+						<Link href="/busqueda/Piedras">Piedras</Link>
+					</CardHeader>
+				);
+			} else {
+				return (null);
+
+			}
+			
+		}
 		const { categoria, articulos } = this.props;
 		return (
 			<Block className="categoria_panel center_panel">
@@ -17,6 +35,11 @@ export default class NewsPanel extends Component {
 					<div className="head_logo">
 						<img src={back_head} alt="" />
 					</div>
+					<Coahuila catego={categoria} />
+				</Card>
+				<Card className="new_head">
+					
+					<Coahuila catego={categoria} />
 				</Card>
 				{articulos.map((articulo, i) => {
 					let ad = i % 2 === 1 ? <AdsFeed /> : null;
