@@ -14,8 +14,11 @@ import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
 import { Block, Card, CardHeader, Swiper, SwiperSlide, Link, f7 } from "framework7-react";
 import parse from 'html-react-parser';
-import banner1 from "../../../static/imgs/banners/200x300_01.png"
-import banner2 from "../../../static/imgs/banners/200x300_02.png"
+import banner1 from "@/static/imgs/banners/200x300_01.png"
+import banner2 from "@/static/imgs/banners/200x300_02.png"
+import banner3 from "@/static/imgs/banners/790x80_01.png"
+import banner4 from "@/static/imgs/banners/790x80_03.png"
+import banner5 from "@/static/imgs/banners/790x80_02.png"
 
 
 
@@ -293,7 +296,7 @@ export default class ArticuloPanel extends Component {
 							</div>
 						</Block>
 						<Block className="ads_cont">
-							<AdsFeed />
+							<img src={banner3} alt="" />
 						</Block>
 						<SwiperNews articulos={recomendados} />
 					</Card>

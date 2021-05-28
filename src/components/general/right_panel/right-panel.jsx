@@ -3,6 +3,7 @@ import DestItem from '@/components/general/right_panel/destacado-item';
 import AutorCard from '@/components/autores/autor-card.jsx';
 import AdsSearch from "@/components/general/ads/ads_search";
 import satelite from "../../../static/imgs/sat.png"
+import bannersearch from "@/static/imgs/banners/200x300_03.png"
 import {
     Block,
     Card,
@@ -75,7 +76,8 @@ export default function RightPanel(props) {
                         search
                     </span>
                 </Block>
-                <AdsSearch/>
+                {/* <AdsSearch/> */}
+                <img src={bannersearch} alt="" />
             </Block>
             <Block className="right_panel_down">
                 {cards}
