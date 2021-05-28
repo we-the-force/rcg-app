@@ -14,6 +14,8 @@ import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
 import { Block, Card, CardHeader, Swiper, SwiperSlide, Link, f7 } from "framework7-react";
 import parse from 'html-react-parser';
+import banner1 from "../../../static/imgs/banners/200x300_01.png"
+import banner2 from "../../../static/imgs/banners/200x300_02.png"
 
 
 
@@ -256,8 +258,10 @@ export default class ArticuloPanel extends Component {
 								</Block>
 							</Block>
 							<Block className="right_side">
-								<AdsRightArticle></AdsRightArticle>
-								<AdsRightArticle></AdsRightArticle>
+								<img src={banner1} alt="" />
+								<img src={banner2} alt="" />
+								{/* <AdsRightArticle></AdsRightArticle>
+								<AdsRightArticle></AdsRightArticle> */}
 							</Block>
 						</Block>
 						<Block className="comments tab">
