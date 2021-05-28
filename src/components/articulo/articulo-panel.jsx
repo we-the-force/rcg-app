@@ -97,18 +97,18 @@ export default class ArticuloPanel extends Component {
 	}
 	render() {
 
-		// let { articulo, recomendados } = this.props;
-		// console.log(articulo);
-		// const DB_url = f7.methods.get_URL_DB();
-		// const url = f7.methods.get_URL();
-		// let urlThing = url + `/articulo/${articulo.url}/`;
-		// let result = formatText(articulo.description);
-		// let otherTags = /(<([^>]+)>)/gi;
-		// let firstLine = result
-		// 	.replace(otherTags, "")
-		// 	.replace(/\n/gi, " ")
-		// 	.match(/^.{0,200}/gi);
-		// let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+		let { articulo, recomendados } = this.props;
+		console.log(articulo);
+		const DB_url = f7.methods.get_URL_DB();
+		const url = f7.methods.get_URL();
+		let urlThing = url + `/articulo/${articulo.url}/`;
+		let result = formatText(articulo.description);
+		let otherTags = /(<([^>]+)>)/gi;
+		let firstLine = result
+			.replace(otherTags, "")
+			.replace(/\n/gi, " ")
+			.match(/^.{0,200}/gi);
+		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 
 		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
