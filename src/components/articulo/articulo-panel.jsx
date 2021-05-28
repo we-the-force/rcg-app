@@ -75,7 +75,7 @@ export default class ArticuloPanel extends Component {
 		console.log(articulo.cover.url);
 		// let cover = articulo.cover ? DB_url + articulo.cover.url : 'IMG';
 		let cover = DB_url + articulo.cover.url;
-		//FB.XFBML.parse();
+		FB.XFBML.parse();
 		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
 		// document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
