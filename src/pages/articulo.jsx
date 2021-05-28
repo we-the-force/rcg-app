@@ -139,36 +139,36 @@ export default function Articulo(props) {
 		if (data.articulos.length > 0) {
 			console.log(data);
 
-			let articulo = data.articulos[0];
-			console.log(articulo);
+			let article = data.articulos[0];
+			console.log(article);
 			const DB_url = f7.methods.get_URL_DB();
 			const url = f7.methods.get_URL();
-			let urlThing = url + `/articulo/${articulo.url}/`;
-			let result = formatText(articulo.description);
+			let urlThing = url + `/articulo/${article.url}/`;
+			let result = formatText(article.description);
 			let otherTags = /(<([^>]+)>)/gi;
 			let firstLine = result
 				.replace(otherTags, "")
 				.replace(/\n/gi, " ")
 				.match(/^.{0,200}/gi);
-			let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+			let cover = article.cover ? DB_url + article.cover.url : IMG;
 
 			document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
 			document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
-			document.querySelector('meta[property="og:title"]').setAttribute("content", articulo.Titulo);
+			document.querySelector('meta[property="og:title"]').setAttribute("content", article.Titulo);
 			document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
 			// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
 
-			document.querySelector('meta[property="twitter:title"]').setAttribute("content", articulo.Titulo);
+			document.querySelector('meta[property="twitter:title"]').setAttribute("content", article.Titulo);
 			document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
 			// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
 
 			document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
-			document.querySelector('meta[name="twitter:title"]').setAttribute("content", articulo.Titulo);
+			document.querySelector('meta[name="twitter:title"]').setAttribute("content", article.Titulo);
 			document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
 			// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
 
-			document.title = articulo.Titulo;
+			document.title = article.Titulo;
 
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 		} else {
