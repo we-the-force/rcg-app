@@ -14,11 +14,11 @@ import { UpdateVisitas } from "@/graphql/queries.graphql";
 import { onError } from "apollo-link-error";
 import { Block, Card, CardHeader, Swiper, SwiperSlide, Link, f7 } from "framework7-react";
 import parse from 'html-react-parser';
-import banner1 from "@/static/imgs/banners/200x300_01.png"
-import banner2 from "@/static/imgs/banners/200x300_02.png"
-import banner3 from "@/static/imgs/banners/790x80_01.png"
-import banner4 from "@/static/imgs/banners/790x80_03.png"
-import banner5 from "@/static/imgs/banners/790x80_02.png"
+import banner1 from "@/static/imgs/200x300_01.png"
+import banner2 from "@/static/imgs/200x300_02.png"
+import banner3 from "@/static/imgs/790x80_01.png"
+import banner4 from "@/static/imgs/790x80_03.png"
+import banner5 from "@/static/imgs/790x80_02.png"
 
 
 
