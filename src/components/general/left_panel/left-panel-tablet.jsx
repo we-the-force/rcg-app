@@ -122,19 +122,19 @@ export default function LeftPanelTablet(props) {
 				<Link href="/faq" className="text-link">
 					Preguntas Frecuentes
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"http://www.rcg.com.mx/registro/"}>
+				<Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}>
 					SOLICITUDES USO DE INFRAESTRUCTURA
 				</Link>
 				<Link className="lowercase text-link external" target="_blank" href={false}>
 					OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"http://rcg.com.mx/oferta/"}>
+				<Link className="lowercase text-link external" target="_blank" href={"https://rcgmedia.mx/oferta/"}>
 					OPI 2017
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"http://www.rcg.com.mx/ofertapublica/"}>
+				<Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}>
 					OPI 2018
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"http://www.rcg.com.mx/ofertapublica/login"}>
+				<Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}>
 					SEG
 				</Link>
 				{/*<Link className="text-link OPI-2017">OPI 2017</Link>

@@ -108,19 +108,19 @@ export default function LeftPanel(props) {
 					<Link href="/derecho-replica">Derecho de réplica</Link>
 					<Link href="/aviso-privacidad">Aviso de privacidad</Link>
 					<Link href="/faq">Preguntas Frecuentes</Link>
-					<Link className="external" target="_blank" href={"http://www.rcg.com.mx/registro/"}>
+					<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}>
 						SOLICITUDES USO DE INFRAESTRUCTURA
 					</Link>
 					<Link className="external" target="_blank" href={false}>
 						OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 					</Link>
-					<Link className="external" target="_blank" href={"http://rcg.com.mx/oferta/"}>
+					<Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}>
 						OPI 2017
 					</Link>
-					<Link className="external" target="_blank" href={"http://www.rcg.com.mx/ofertapublica/"}>
+					<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}>
 						OPI 2018
 					</Link>
-					<Link className="external" target="_blank" href={"http://www.rcg.com.mx/ofertapublica/login"}>
+					<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}>
 						SEG
 					</Link>
 				</div>
