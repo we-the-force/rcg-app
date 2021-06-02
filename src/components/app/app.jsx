@@ -49,8 +49,8 @@ export default class extends React.Component {
 			routes: routes,
 
 			// Register service worker
-			serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
-			// serviceWorker: Device.cordova ? {} : { path: "/OneSignalSDKWorker.js" },
+			// serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
+			serviceWorker: Device.cordova ? {} : { path: "/OneSignalSDKWorker.js" },
 			// Input settings
 			input: {
 				scrollIntoViewOnFocus: Device.cordova && !Device.electron,
