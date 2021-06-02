@@ -62,16 +62,6 @@
     <meta property="twitter:title" content="RCG MEDIA" />
     <meta property="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-            });
-        });
-    </script>
-
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
     <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
 
@@ -182,6 +172,17 @@
             <!-- End Facebook Pixel Code -->
 
             <!-- built script files will be auto injected -->
+
+
+            <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+            <script>
+                window.OneSignal = window.OneSignal || [];
+                OneSignal.push(function() {
+                    OneSignal.init({
+                        appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+                    });
+                });
+            </script>
 </body>
 
 </html>
