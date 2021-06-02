@@ -70,6 +70,15 @@
     <meta name="theme-color" content="#007aff">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+            });
+        });
+    </script>
     <title>RCG | El Gigante de Coahuila</title>
     <% if (process.env.TARGET === 'web') { %>
         <meta name="apple-mobile-web-app-capable" content="yes">
