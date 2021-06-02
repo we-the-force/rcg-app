@@ -49,7 +49,7 @@ export default class extends React.Component {
 			routes: routes,
 
 			// Register service worker
-			serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
+			serviceWorker: Device.cordova ? {} : { path: "/OneSignalSDKWorker.js" },
 			// Input settings
 			input: {
 				scrollIntoViewOnFocus: Device.cordova && !Device.electron,
@@ -173,12 +173,23 @@ export default class extends React.Component {
 					};
 				});
 			});
+		// Notification.requestPermission(function (params) {
+		// 	console.log("n "+params);
+		// });
+			// Notification.requestPermission(res => {
+			// 	console.log("result " + res);
+			// });
 		this.$f7ready((f7) => {
 			// Init cordova APIs (see cordova-app.js)
 			const $ = f7.$;
 			if (Device.cordova) {
 				cordovaApp.init(f7);
 			}
+
+			// Notification.requestPermission().then(function(e) {
+			// 	console.log(e);
+			// });
+
 			// Call F7 APIs here
 			window.addEventListener("orientationchange", function (e) {
 				if ($(".popup.modal-in").length) {
