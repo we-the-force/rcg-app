@@ -58,7 +58,7 @@
     <meta name="twitter:title" content="RCG MEDIA" />
     <meta name="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
 
-    <meta property="twitter:image" content="https://http://149.28.252.152/static/imgs/rcg-graph.png" />
+    <meta property="twitter:image" content="https://149.28.252.152/static/imgs/rcg-graph.png" />
     <meta property="twitter:title" content="RCG MEDIA" />
     <meta property="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
 
@@ -70,15 +70,7 @@
     <meta name="theme-color" content="#007aff">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        var OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-            });
-        });
-    </script>
+
     <title>RCG | El Gigante de Coahuila</title>
     <% if (process.env.TARGET === 'web') { %>
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -112,6 +104,15 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=693607127910625&autoLogAppEvents=1" nonce="Z8ezH9YB"></script>
     <div id="app"></div>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+            });
+        });
+    </script>
     <% if (process.env.TARGET === 'cordova') { %>
         <script src="cordova.js"></script>
         <% } %>
