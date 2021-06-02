@@ -83,7 +83,7 @@
 
             <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
             <script>
-                window.OneSignal = window.OneSignal || [];
+                var OneSignal = window.OneSignal || [];
                 OneSignal.push(function() {
                     OneSignal.init({
                         appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
@@ -91,8 +91,10 @@
                             enable: true,
                         },
                     });
+                    OneSignal.showNativePrompt();
                 });
             </script>
+
 </head>
 
 <body>
