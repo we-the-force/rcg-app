@@ -13,6 +13,9 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const helmetContext = {};
 
+window.OneSignal = window.OneSignal || [];
+const OneSignal = window.OneSignal;
+
 const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors)
 		graphQLErrors.map(({ message }) => {
@@ -27,7 +30,6 @@ const client = new ApolloClient({
 });
 
 export default class extends React.Component {
-
 	constructor() {
 		super();
 		this.state = {
@@ -153,6 +155,11 @@ export default class extends React.Component {
 		);
 	}
 	componentDidMount() {
+        OneSignal.push(()=> {
+            OneSignal.init({
+                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+            });
+        });
 		client
 			.query({
 				query: AppQuery,
