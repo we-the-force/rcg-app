@@ -152,6 +152,7 @@ export default class extends React.Component {
 			</ApolloProvider>
 		);
 	}
+
 	componentDidMount() {
 		
 		client
@@ -188,8 +189,8 @@ export default class extends React.Component {
 				cordovaApp.init(f7);
 			}
 
-			window.OneSignal = window.OneSignal || [];
-			const OneSignal = window.OneSignal;
+			var OneSignal = window.OneSignal || [];
+			// const OneSignal = window.OneSignal;
 			
 			OneSignal.push(()=> {
 				OneSignal.init({
