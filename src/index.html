@@ -62,6 +62,16 @@
     <meta property="twitter:title" content="RCG MEDIA" />
     <meta property="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
 
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+            });
+        });
+    </script>
+
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
     <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
 
@@ -71,7 +81,6 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="" defer></script>
 
     <title>RCG | El Gigante de Coahuila</title>
     <% if (process.env.TARGET === 'web') { %>
