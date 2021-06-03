@@ -131,8 +131,10 @@ export default class ArticuloPanel extends Component {
 			.replace(/\n/gi, " ")
 			.match(/^.{0,200}/gi);
 		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
-		let handleClick = () => {
-			postToFeed(articulo.Titulo, firstLine, firstLine, cover);
+		let handleClick = (title, desc, url, img) => {
+			var obj = {method: 'feed',link: url, picture: img, name: title,description: desc};
+			function callback(response){}
+			FB.ui(obj, callback);
 
 			return false;
 		}
@@ -205,7 +207,7 @@ export default class ArticuloPanel extends Component {
 										target="_blank"
 										// href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`}
 										className="btnShare external"
-										onClick={handleClick}
+										onClick={handleClick(articulo.Titulo, firstLine, urlThing, cover)}
 									>
 										<img src={FBIconx3} alt="" />
 									</a>
