@@ -12,23 +12,13 @@ self.addEventListener("message", function (event) {
 self.addEventListener("push", function (event) {
 	console.log("[Service Worker] Push Received.");
 	console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
-	// Notification.requestPermission(function (result) {
-	// 	if (result === "denied") {
-	// 		console.log("Permission wasn't granted. Allow a retry.");
-	// 		return;
-	// 	} else if (result === "default") {
-	// 		console.log("The permission request was dismissed.");
-	// 		return;
-	// 	}
 
-		const title = "Push Codelab";
-		const options = {
-			body: "Yay it works.",
-			icon: "images/icon.png",
-			badge: "images/badge.png",
-		};
+	const title = "Push Codelab";
+	const options = {
+		body: "Yay it works.",
+		icon: "images/icon.png",
+		badge: "images/badge.png",
+	};
 
-		event.waitUntil(self.registration.showNotification(title, options));
-	// });
-	// event.waitUntil(app.);
+	event.waitUntil(self.registration.showNotification(title, options));
 });
