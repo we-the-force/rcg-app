@@ -203,7 +203,7 @@ export default class ArticuloPanel extends Component {
 								>
 									<a
 										target="_blank"
-										href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`}
+										// href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`}
 										className="btnShare external"
 										onClick={handleClick}
 									>
