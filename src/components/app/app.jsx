@@ -191,7 +191,7 @@ export default class extends React.Component {
 
 			if ('serviceWorker' in navigator) {
 				console.log("ser in nav");
-				navigator.serviceWorker.register('./OneSignalSDKWorker.js').then(reg => {
+				navigator.serviceWorker.register('/src/OneSignalSDKWorker.js').then(reg => {
 					reg.addEventListener('updatefound', () => {
 			
 						// An updated service worker has appeared in reg.installing!
