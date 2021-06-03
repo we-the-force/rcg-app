@@ -76,6 +76,23 @@ export default class ArticuloPanel extends Component {
 		// let cover = articulo.cover ? DB_url + articulo.cover.url : 'IMG';
 		let cover = DB_url + articulo.cover.url;
 		FB.XFBML.parse();
+
+
+		window.fbAsyncInit = function(){
+		FB.init({
+					appId: '783490095698730', status: true, cookie: true, xfbml: true }); 
+		};
+		(function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+					if(d.getElementById(id)) {return;}
+					js = d.createElement('script'); js.id = id; 
+					js.async = true;js.src = "//connect.facebook.net/es_ES/all" + (debug ? "/debug" : "") + ".js";
+					ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+		function postToFeed(title, desc, url, image){
+		var obj = {method: 'feed',link: url, picture: image, name: title,description: desc};
+		function callback(response){}
+		FB.ui(obj, callback);
+		}
+		
 		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
 		// document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
@@ -101,7 +118,7 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
-
+		
 		let { articulo, recomendados } = this.props;
 		console.log(articulo);
 		const DB_url = f7.methods.get_URL_DB();
@@ -114,7 +131,11 @@ export default class ArticuloPanel extends Component {
 			.replace(/\n/gi, " ")
 			.match(/^.{0,200}/gi);
 		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+		let handleClick = () => {
+			postToFeed(articulo.Titulo, firstLine, firstLine, cover);
 
+			return false;
+		}
 		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
 		// document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
@@ -183,7 +204,8 @@ export default class ArticuloPanel extends Component {
 									<a
 										target="_blank"
 										href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`}
-										className="fb-xfbml-parse-ignore external"
+										className="btnShare external"
+										onClick={handleClick}
 									>
 										<img src={FBIconx3} alt="" />
 									</a>
