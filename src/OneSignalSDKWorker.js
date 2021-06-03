@@ -22,6 +22,6 @@
 //     };
 //     event.waitUntil(self.registration.showNotification(title, options));
 // });
-var window = self.window;
+var window = {};
 
 importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');
