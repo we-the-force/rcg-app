@@ -161,8 +161,8 @@ export default function Articulo(props) {
 	const DB_url = f7.methods.get_URL_DB();
 	let article = data.articulos[0];
 	console.log(article);
-	const url = f7.methods.get_URL();
-	let urlThing = url + `/articulo/${article.url}/`;
+	const ogurl = f7.methods.get_URL();
+	let urlThing = ogurl + `/articulo/${article.url}/`;
 	let result = formatText(article.description);
 	let otherTags = /(<([^>]+)>)/gi;
 	let firstLine = result
