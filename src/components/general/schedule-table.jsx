@@ -52,19 +52,20 @@ export default function ScheduleTable(props) {
                     t.add(1, 'h');
                 } while (t.isBefore(hora_f));
             });
-            // let numEmpty = 9 - value.length;
+            
+            let numEmpty = 9 - value.length;
 
-            // if (numEmpty > 0) {
-            //     for (let i = 0; i < numEmpty; i++) {
-            //         value.push({
-            //             day: day,
-            //             inicio: "--:--",
-            //             nombre: "Sin programación",
-            //             desc: "No hay descripción de este programa",
-            //             url: null
-            //         })
-            //     }
-            // }
+            if (numEmpty > 0) {
+                for (let i = 0; i < numEmpty; i++) {
+                    newValue.push({
+                        day: day,
+                        inicio: "--:--",
+                        nombre: "Sin programación",
+                        desc: "No hay descripción de este programa",
+                        url: null
+                    })
+                }
+            }
 
             newValue.sort(function (a, b) {
                 let isBefore = moment(a.inicio, 'kk:mm').isBefore(moment(b.inicio, 'kk:mm'));
