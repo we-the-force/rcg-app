@@ -28,12 +28,12 @@ export default function ScheduleTable(props) {
                     return {
                         day: day,
                         inicio: moment(program.hora_inicio, 'kk:mm:ss.sss').format('HH:mm'),
+                        fin: moment(program.hora_final, 'kk:mm:ss.sss').format('HH:mm'),
                         nombre: program.programa.Nombre,
                         desc: program.programa.Descripcion,
                         url: program.programa.cover ? program.programa.cover.url : null
                     };
                 });
-
             }
 
             let numEmpty = 9 - value.length;
@@ -88,14 +88,23 @@ export default function ScheduleTable(props) {
                             <Toolbar tabbar>
                                 {
                                     val.map((hora, key_hora) => {
-                                        return (
-                                            <Link key={key_hora} tabLink={"#" + days[key] + "-tab-" + (key_hora + 1)} tabLinkActive={key_hora === 0 ? true : false}>
-                                                <div className="time">
-                                                    <p>{hora.inicio}</p>
-                                                </div>
-                                                <p className="text">{hora.nombre}</p>
-                                            </Link>
-                                        );
+                                        let hora_f = moment(hora.fin);
+                                        let t = moment(hora.inicio);
+                                        let links = [];
+                                        let i = 0;
+                                        do{
+                                            links.push(
+                                                <Link key={key_hora + i} tabLink={"#" + days[key] + "-tab-" + (key_hora + 1)} tabLinkActive={key_hora === 0 ? true : false}>
+                                                    <div className="time">
+                                                        <p>{t.format("HH:mm")}</p>
+                                                    </div>
+                                                    <p className="text">{hora.nombre}</p>
+                                                </Link>
+                                            );
+                                            i++;
+                                            t.add(1, 'h');
+                                        }while(t.isBefore(hora_f));
+                                        return links;
                                     })
                                 }
                             </Toolbar>
