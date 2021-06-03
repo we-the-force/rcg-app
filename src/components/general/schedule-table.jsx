@@ -41,7 +41,6 @@ export default function ScheduleTable(props) {
             value.map((prog) => {
                 let hora_f = moment(prog.fin, 'kk:mm:ss.sss');
                 let t = moment(prog.inicio, 'kk:mm:ss.sss');
-                let i = 0;
                 do {
                     newValue.push({
                         day: prog.day,
@@ -50,6 +49,7 @@ export default function ScheduleTable(props) {
                         desc: prog.desc,
                         url: prog.url
                     });
+                    t.add(1, 'h');
                 } while (t.isBefore(hora_f));
             });
             // let numEmpty = 9 - value.length;
