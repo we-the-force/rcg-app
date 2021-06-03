@@ -13,7 +13,6 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const helmetContext = {};
 
-
 const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors)
 		graphQLErrors.map(({ message }) => {
@@ -36,7 +35,7 @@ export default class extends React.Component {
 			name: "RCG webpage", // App name
 			theme: "auto", // Automatic theme detection
 
-			pushStateRoot: window.location.protocol + '//' + window.location.hostname + '',
+			pushStateRoot: window.location.protocol + "//" + window.location.hostname + "",
 			view: {
 				pushState: true,
 				pushStateRoot: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
@@ -154,7 +153,6 @@ export default class extends React.Component {
 	}
 
 	componentDidMount() {
-		
 		client
 			.query({
 				query: AppQuery,
@@ -179,9 +177,9 @@ export default class extends React.Component {
 		// Notification.requestPermission(function (params) {
 		// 	console.log("n "+params);
 		// });
-			// Notification.requestPermission(res => {
-			// 	console.log("result " + res);
-			// });
+		// Notification.requestPermission(res => {
+		// 	console.log("result " + res);
+		// });
 		this.$f7ready((f7) => {
 			// Init cordova APIs (see cordova-app.js)
 			const $ = f7.$;
@@ -189,38 +187,49 @@ export default class extends React.Component {
 				cordovaApp.init(f7);
 			}
 
+			var OneSignal = window.OneSignal || [];
+			OneSignal.push(function () {
+				OneSignal.init({
+					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+					notifyButton: {
+						enable: true,
+					},
+				});
+				OneSignal.showNativePrompt();
+			});
+
 			// if ('serviceWorker' in navigator) {
 			// 	navigator.serviceWorker.register('/src/OneSignalSDKWorker.js').then(reg => {
 			// 		reg.addEventListener('updatefound', () => {
-			
+
 			// 			// An updated service worker has appeared in reg.installing!
 			// 			newWorker = reg.installing;
-			
+
 			// 			newWorker.addEventListener('statechange', () => {
-			
+
 			// 				// Has service worker state changed?
 			// 				switch (newWorker.state) {
 			// 					case 'installed':
-			
+
 			// 						// There is a new service worker available, show the notification
 			// 						if (navigator.serviceWorker.controller) {
 			// 							toastWithCallback.open();
 			// 						}
-			
+
 			// 						break;
 			// 				}
 			// 			});
 			// 		});
-			
+
 			// 		/*     swRegistration = reg;
 			// 			Notification.requestPermission();
 			// 			initializeUI(); */
-			
+
 			// 	}).catch(function(err) {
 			// 		// registration failed :(
 			// 		console.log('ServiceWorker registration failed: ', err);
 			// 	});
-			
+
 			// 	let refreshing;
 			// 	// The event listener that is fired when the service worker updates
 			// 	// Here we reload the page
@@ -233,7 +242,7 @@ export default class extends React.Component {
 
 			// var OneSignal = window.OneSignal || [];
 			// // const OneSignal = window.OneSignal;
-			
+
 			// OneSignal.push(()=> {
 			// 	OneSignal.init({
 			// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
