@@ -40,7 +40,7 @@ export default function ScheduleTable(props) {
             let newValue = [];
             value.map((prog) => {
                 let hora_f = moment(prog.fin, 'kk:mm:ss.sss');
-                let t = moment(hora.inicio, 'kk:mm:ss.sss');
+                let t = moment(prog.inicio, 'kk:mm:ss.sss');
                 let i = 0;
                 do {
                     newValue.push({
