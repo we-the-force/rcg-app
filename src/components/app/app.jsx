@@ -49,8 +49,8 @@ export default class extends React.Component {
 			routes: routes,
 
 			// Register service worker
-			serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
-			// serviceWorker: Device.cordova ? {} : { path: "/OneSignalSDKWorker.js" },
+			// serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
+			serviceWorker: Device.cordova ? {} : { path: "/OneSignalSDKWorker.js" },
 			// Input settings
 			input: {
 				scrollIntoViewOnFocus: Device.cordova && !Device.electron,
@@ -189,48 +189,47 @@ export default class extends React.Component {
 				cordovaApp.init(f7);
 			}
 
-			if ('serviceWorker' in navigator) {
-				console.log("ser in nav");
-				navigator.serviceWorker.register('/src/OneSignalSDKWorker.js').then(reg => {
-					reg.addEventListener('updatefound', () => {
+			// if ('serviceWorker' in navigator) {
+			// 	navigator.serviceWorker.register('/src/OneSignalSDKWorker.js').then(reg => {
+			// 		reg.addEventListener('updatefound', () => {
 			
-						// An updated service worker has appeared in reg.installing!
-						newWorker = reg.installing;
+			// 			// An updated service worker has appeared in reg.installing!
+			// 			newWorker = reg.installing;
 			
-						newWorker.addEventListener('statechange', () => {
+			// 			newWorker.addEventListener('statechange', () => {
 			
-							// Has service worker state changed?
-							switch (newWorker.state) {
-								case 'installed':
+			// 				// Has service worker state changed?
+			// 				switch (newWorker.state) {
+			// 					case 'installed':
 			
-									// There is a new service worker available, show the notification
-									if (navigator.serviceWorker.controller) {
-										toastWithCallback.open();
-									}
+			// 						// There is a new service worker available, show the notification
+			// 						if (navigator.serviceWorker.controller) {
+			// 							toastWithCallback.open();
+			// 						}
 			
-									break;
-							}
-						});
-					});
+			// 						break;
+			// 				}
+			// 			});
+			// 		});
 			
-					/*     swRegistration = reg;
-						Notification.requestPermission();
-						initializeUI(); */
+			// 		/*     swRegistration = reg;
+			// 			Notification.requestPermission();
+			// 			initializeUI(); */
 			
-				}).catch(function(err) {
-					// registration failed :(
-					console.log('ServiceWorker registration failed: ', err);
-				});
+			// 	}).catch(function(err) {
+			// 		// registration failed :(
+			// 		console.log('ServiceWorker registration failed: ', err);
+			// 	});
 			
-				let refreshing;
-				// The event listener that is fired when the service worker updates
-				// Here we reload the page
-				navigator.serviceWorker.addEventListener('controllerchange', function() {
-					if (refreshing) return;
-					window.location.reload();
-					refreshing = true;
-				});
-			}
+			// 	let refreshing;
+			// 	// The event listener that is fired when the service worker updates
+			// 	// Here we reload the page
+			// 	navigator.serviceWorker.addEventListener('controllerchange', function() {
+			// 		if (refreshing) return;
+			// 		window.location.reload();
+			// 		refreshing = true;
+			// 	});
+			// }
 
 			// var OneSignal = window.OneSignal || [];
 			// // const OneSignal = window.OneSignal;
