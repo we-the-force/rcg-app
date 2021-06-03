@@ -53,7 +53,7 @@ export default function ScheduleTable(props) {
                 } while (t.isBefore(hora_f));
             });
             
-            let numEmpty = 9 - value.length;
+            let numEmpty = 9 - newValue.length;
 
             if (numEmpty > 0) {
                 for (let i = 0; i < numEmpty; i++) {
