@@ -46,9 +46,9 @@ export default function ScheduleTable(props) {
                     newValue.push({
                         day: prog.day,
                         inicio: moment(t).format('HH:mm'),
-                        nombre: program.programa.Nombre,
-                        desc: program.programa.Descripcion,
-                        url: program.programa.cover ? program.programa.cover.url : null
+                        nombre: prog.programa.Nombre,
+                        desc: prog.programa.Descripcion,
+                        url: prog.programa.cover ? prog.programa.cover.url : null
                     });
                 } while (t.isBefore(hora_f));
             });
