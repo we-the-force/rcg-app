@@ -100,3 +100,7 @@ framework7 assets --ui
 
 Love Framework7? Support project by donating or pledging on patreon:
 https://patreon.com/vladimirkharlampidi# rcg-app
+
+##build android requirments
+https://cordova.apache.org/docs/en/latest/guide/cli/index.html
+
