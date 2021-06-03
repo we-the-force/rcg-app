@@ -172,7 +172,7 @@ export default function Articulo(props) {
 	const DB_url = f7.methods.get_URL_DB();
 	let article = data.articulos[0];
 	console.log(article);
-	const DB_url = f7.methods.get_URL_DB();
+	// const DB_url = f7.methods.get_URL_DB();
 	const url = f7.methods.get_URL();
 	let urlThing = url + `/articulo/${article.url}/`;
 	let result = formatText(article.description);
