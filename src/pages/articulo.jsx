@@ -152,23 +152,7 @@ export default function Articulo(props) {
 				.match(/^.{0,200}/gi);
 			let cover = article.cover ? DB_url + article.cover.url : IMG;
 
-			document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
-
-			document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
-			document.querySelector('meta[property="og:title"]').setAttribute("content", article.Titulo);
-			document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
-			// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
-
-			document.querySelector('meta[property="twitter:title"]').setAttribute("content", article.Titulo);
-			document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
-			// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
-
-			document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
-			document.querySelector('meta[name="twitter:title"]').setAttribute("content", article.Titulo);
-			document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
-			// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
-
-			document.title = article.Titulo;
+			
 
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 		} else {
@@ -187,7 +171,28 @@ export default function Articulo(props) {
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
 	return (
-		<Page pageContent={false} name="articulo">
+		<Page pageContent={false} name="articulo"
+		onPageInit={() => {
+			console.log('pageinit articulo');
+			document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
+
+			document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
+			document.querySelector('meta[property="og:title"]').setAttribute("content", article.Titulo);
+			document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
+			// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
+
+			document.querySelector('meta[property="twitter:title"]').setAttribute("content", article.Titulo);
+			document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
+			// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
+
+			document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
+			document.querySelector('meta[name="twitter:title"]').setAttribute("content", article.Titulo);
+			document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
+			// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
+
+			document.title = article.Titulo;;
+		}}
+		>
 			<PageContent>
 				{/* Top Navbar */}
 				<Nav
