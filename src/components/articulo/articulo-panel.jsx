@@ -19,7 +19,7 @@ import banner2 from "@/static/imgs/200x300_02.png"
 import banner3 from "@/static/imgs/790x80_01.png"
 import banner4 from "@/static/imgs/790x80_03.png"
 import banner5 from "@/static/imgs/790x80_02.png"
-
+import {InlineShareButtons} from 'sharethis-reactjs';
 
 
 export function formatText(x) {
@@ -78,20 +78,7 @@ export default class ArticuloPanel extends Component {
 		FB.XFBML.parse();
 
 
-		window.fbAsyncInit = function(){
-		FB.init({
-					appId: '783490095698730', status: true, cookie: true, xfbml: true }); 
-		};
-		(function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-					if(d.getElementById(id)) {return;}
-					js = d.createElement('script'); js.id = id; 
-					js.async = true;js.src = "//connect.facebook.net/es_ES/all" + (debug ? "/debug" : "") + ".js";
-					ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
-		function postToFeed(title, desc, url, image){
-		var obj = {method: 'feed',link: url, picture: image, name: title,description: desc};
-		function callback(response){}
-		FB.ui(obj, callback);
-		}
+		
 		
 		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
@@ -132,11 +119,7 @@ export default class ArticuloPanel extends Component {
 			.match(/^.{0,200}/gi);
 		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 		let handleClick = (title, desc, url, img) => {
-			var obj = {method: 'feed',link: url, picture: img, name: title,description: desc};
-			function callback(response){}
-			FB.ui(obj, callback);
-
-			return false;
+			
 		}
 		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
@@ -188,7 +171,7 @@ export default class ArticuloPanel extends Component {
 								<a href={`/categoria/${articulo.categoria.nombre}`}>{articulo.categoria.nombre}</a>
 							</CardHeader>
 							<Block className="share display-flex align-items-center">
-								<p>Compartir:</p>
+								{/* <p>Compartir:</p>
 								<a
 									target="_blank"
 									className="faceIcon display-flex justify-content-center align-items-center external"
@@ -211,7 +194,34 @@ export default class ArticuloPanel extends Component {
 									>
 										<img src={FBIconx3} alt="" />
 									</a>
-								</div>
+								</div> */}
+								<InlineShareButtons
+										config={{
+												alignment: 'right',  // alignment of buttons (left, center, right)
+												color: 'social',      // set the color of buttons (social, white)
+												enabled: true,        // show/hide buttons (true, false)
+												font_size: 16,        // font size for the buttons
+												labels: 'cta',        // button labels (cta, counts, null)
+												language: 'es',       // which language to use (see LANGUAGES)
+												networks: [           // which networks to include (see SHARING NETWORKS)
+														'whatsapp',
+														'facebook',
+														'twitter'
+												],
+												padding: 12,          // padding within buttons (INTEGER)
+												radius: 4,            // the corner radius on each button (INTEGER)
+												show_total: true,
+												size: 40,             // the size of each button (INTEGER)
+
+												// OPTIONAL PARAMETERS
+												url: urlThing, // (defaults to current url)
+												image: cover,  // (defaults to og:image or twitter:image)
+												description: firstLine,       // (defaults to og:description or twitter:description)
+												title: articulo.Titulo,            // (defaults to og:title or twitter:title)
+												  // (only for email sharing)
+												username: 'RCGoficial' // (only for twitter sharing)
+										}}
+								/>
 							</Block>
 						</Block>
 						<Block className="title_cont">
