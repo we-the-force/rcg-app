@@ -27,35 +27,51 @@ export default function ScheduleTable(props) {
                 value = x[day].map((program) => {
                     return {
                         day: day,
-                        inicio: moment(program.hora_inicio, 'kk:mm:ss.sss').format('HH:mm'),
+                        inicio: program.hora_inicio,
+                        // inicio: moment(program.hora_inicio, 'kk:mm:ss.sss').format('HH:mm'),
+                        fin: program.hora_final,
                         nombre: program.programa.Nombre,
                         desc: program.programa.Descripcion,
                         url: program.programa.cover ? program.programa.cover.url : null
                     };
                 });
-
             }
 
-            let numEmpty = 9 - value.length;
+            let newValue = [];
+            value.map((prog) => {
+                let hora_f = moment(prog.fin, 'kk:mm:ss.sss');
+                let t = moment(prog.inicio, 'kk:mm:ss.sss');
+                let i = 0;
+                do {
+                    newValue.push({
+                        day: prog.day,
+                        inicio: moment(t).format('HH:mm'),
+                        nombre: prog.nombre,
+                        desc: prog.desc,
+                        url: prog.url
+                    });
+                } while (t.isBefore(hora_f));
+            });
+            // let numEmpty = 9 - value.length;
 
-            if (numEmpty > 0) {
-                for (let i = 0; i < numEmpty; i++) {
-                    value.push({
-                        day: day,
-                        inicio: "--:--",
-                        nombre: "Sin programación",
-                        desc: "No hay descripción de este programa",
-                        url: null
-                    })
-                }
-            }
+            // if (numEmpty > 0) {
+            //     for (let i = 0; i < numEmpty; i++) {
+            //         value.push({
+            //             day: day,
+            //             inicio: "--:--",
+            //             nombre: "Sin programación",
+            //             desc: "No hay descripción de este programa",
+            //             url: null
+            //         })
+            //     }
+            // }
 
-            value.sort(function (a, b) {
+            newValue.sort(function (a, b) {
                 let isBefore = moment(a.inicio, 'kk:mm').isBefore(moment(b.inicio, 'kk:mm'));
                 return (isBefore ? -1 : 1);
             });
 
-            return value;
+            return newValue;
         });
         return newTable;
     }

@@ -2,9 +2,19 @@
 <html>
 
 <head>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+            });
+            // OneSignal.showNativePrompt();
+        });
+    </script>
     <meta charset="utf-8">
     <!--
-  Customize this policy to fit your own app's needs. For more guidance, see:
+        Customize this policy to fit your own app's needs. For more guidance, see:
       https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
   Some notes:
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -43,24 +53,24 @@
     <meta property="twitter:title" content="RCG MEDIA">
     <meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo."> -->
 
-<meta property="og:site_name" content="RCG MEDIA" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://rcg.com.mx" />
-<meta property="og:title" content="RCG MEDIA" />
-<meta property="og:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
-<meta property="og:image" content="https://http://149.28.252.152/static/imgs/rcg-graph.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="720" />
+    <meta property="og:site_name" content="RCG MEDIA" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rcg.com.mx" />
+    <meta property="og:title" content="RCG MEDIA" />
+    <meta property="og:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
+    <meta property="og:image" content="https://http://149.28.252.152/static/imgs/rcg-graph.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="720" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:creator" content="@RCGoficial" />
-<meta name="twitter:url" content="https://rcg.com.mx/" />
-<meta name="twitter:title" content="RCG MEDIA" />
-<meta name="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@RCGoficial" />
+    <meta name="twitter:url" content="https://rcg.com.mx/" />
+    <meta name="twitter:title" content="RCG MEDIA" />
+    <meta name="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
 
-<meta property="twitter:image" content="https://http://149.28.252.152/static/imgs/rcg-graph.png" />
-<meta property="twitter:title" content="RCG MEDIA" />
-<meta property="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
+    <meta property="twitter:image" content="https://149.28.252.152/static/imgs/rcg-graph.png" />
+    <meta property="twitter:title" content="RCG MEDIA" />
+    <meta property="twitter:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
 
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
     <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
@@ -70,6 +80,8 @@
     <meta name="theme-color" content="#007aff">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
+
+
     <title>RCG | El Gigante de Coahuila</title>
     <% if (process.env.TARGET === 'web') { %>
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -78,6 +90,8 @@
         <link rel="icon" href="/static/icons/favicon.png">
         <link rel="manifest" href="/manifest.json">
         <% } %>
+
+
 </head>
 
 <body>
@@ -110,8 +124,8 @@
                 {
                     "@context": "http://schema.org",
                     "@type": "Organization",
-                    "name": "RCG", MEDIA
-                    "url": "https://rcgmedia.mx",
+                    "name": "RCG",
+                    MEDIA "url": "https://rcgmedia.mx",
                     "sameAs": [
                         "https://twitter.com/RCGoficial",
                         "https://www.facebook.com/rcgoficial",
