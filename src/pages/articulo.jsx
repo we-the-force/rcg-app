@@ -172,13 +172,13 @@ let cover;
 	
 
 
-	let rightPanel = f7.methods.getArticulosRightPanel();
-	let leftPanelTV = f7.methods.getTV();
-	let leftPanelRadio = f7.methods.getRadio();
+	// let rightPanel = f7.methods.getArticulosRightPanel();
+	// let leftPanelTV = f7.methods.getTV();
+	// let leftPanelRadio = f7.methods.getRadio();
 
-	const logo = f7.methods.getLogo();
-	const logoDark = f7.methods.getLogoDarkMode();
-	const DB_url = f7.methods.get_URL_DB();
+	// const logo = f7.methods.getLogo();
+	// const logoDark = f7.methods.getLogoDarkMode();
+	// const DB_url = f7.methods.get_URL_DB();
 	// let article = data.articulos[0];
 	// console.log(article);
 	// const ogurl = f7.methods.get_URL();
