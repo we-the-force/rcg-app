@@ -57,6 +57,23 @@ export default function Articulo(props) {
 	const { url } = props;
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
+
+let rightPanel = f7.methods.getArticulosRightPanel();
+let leftPanelTV = f7.methods.getTV();
+let leftPanelRadio = f7.methods.getRadio();
+
+const logo = f7.methods.getLogo();
+const logoDark = f7.methods.getLogoDarkMode();
+const DB_url = f7.methods.get_URL_DB();
+let article;
+
+const ogurl = f7.methods.get_URL();
+let urlThing = ogurl + `/articulo/${article.url}/`;
+let result;
+let otherTags = /(<([^>]+)>)/gi;
+let firstLine;
+let cover = article.cover ? DB_url + article.cover.url : IMG;
+
 	const [updateArticulo] = useMutation(UpdateArticulo, {
 		onCompleted: (data) => {},
 	});
@@ -78,6 +95,13 @@ export default function Articulo(props) {
 		onCompleted: (data) => {
 			setFlag(true);
 			if (data.articulos.length > 0) {
+				console.log(data);
+				article=data.articulos[0];
+				result= formatText(article.description);
+				firstLine = result
+				.replace(otherTags, "")
+				.replace(/\n/gi, " ")
+				.match(/^.{0,200}/gi);
 				if (data.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {
@@ -137,10 +161,7 @@ export default function Articulo(props) {
 		}
 	} else {
 		if (data.articulos.length > 0) {
-			console.log(data);
-
 			
-
 			
 
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
@@ -152,24 +173,7 @@ export default function Articulo(props) {
 	
 
 
-	let rightPanel = f7.methods.getArticulosRightPanel();
-	let leftPanelTV = f7.methods.getTV();
-	let leftPanelRadio = f7.methods.getRadio();
-
-	const logo = f7.methods.getLogo();
-	const logoDark = f7.methods.getLogoDarkMode();
-	const DB_url = f7.methods.get_URL_DB();
-	let article = data.articulos[0];
-	console.log(article);
-	const ogurl = f7.methods.get_URL();
-	let urlThing = ogurl + `/articulo/${article.url}/`;
-	let result = formatText(article.description);
-	let otherTags = /(<([^>]+)>)/gi;
-	let firstLine = result
-		.replace(otherTags, "")
-		.replace(/\n/gi, " ")
-		.match(/^.{0,200}/gi);
-	let cover = article.cover ? DB_url + article.cover.url : IMG;
+	
 	return (
 		<Page pageContent={false} name="articulo"
 		onPageInit={() => {
