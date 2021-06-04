@@ -68,11 +68,11 @@ const DB_url = f7.methods.get_URL_DB();
 let article;
 
 const ogurl = f7.methods.get_URL();
-let urlThing = ogurl + `/articulo/${article.url}/`;
+let urlThing;
 let result;
 let otherTags = /(<([^>]+)>)/gi;
 let firstLine;
-let cover = article.cover ? DB_url + article.cover.url : IMG;
+let cover;
 
 	const [updateArticulo] = useMutation(UpdateArticulo, {
 		onCompleted: (data) => {},
@@ -98,10 +98,12 @@ let cover = article.cover ? DB_url + article.cover.url : IMG;
 				console.log(data);
 				article=data.articulos[0];
 				result= formatText(article.description);
+				urlThing = ogurl + `/articulo/${article.url}/`;
 				firstLine = result
 				.replace(otherTags, "")
 				.replace(/\n/gi, " ")
 				.match(/^.{0,200}/gi);
+				cover = article.cover ? DB_url + article.cover.url : IMG;
 				if (data.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {
