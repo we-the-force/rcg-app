@@ -58,7 +58,7 @@ export default function Articulo(props) {
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
 
-let rightPanelvar = f7.methods.getArticulosRightPanel();
+let rightPanel = f7.methods.getArticulosRightPanel();
 let leftPanelTV = f7.methods.getTV();
 let leftPanelRadio = f7.methods.getRadio();
 
