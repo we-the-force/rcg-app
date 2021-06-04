@@ -58,7 +58,7 @@ export default function Articulo(props) {
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
 
-let rightPanel = f7.methods.getArticulosRightPanel();
+let rightPanelvar = f7.methods.getArticulosRightPanel();
 let leftPanelTV = f7.methods.getTV();
 let leftPanelRadio = f7.methods.getRadio();
 
@@ -233,7 +233,7 @@ let cover;
 							{centerPanel}
 						</Block>
 						<Block className="right_pan">
-							<RightPanel newsInfo={rightPanel} />
+							<RightPanel newsInfo={rightPanelvar} />
 							<RightPanelTablet newsInfo={rightPanel} />
 						</Block>
 					</Block>
