@@ -163,9 +163,6 @@ let cover;
 		}
 	} else {
 		if (data.articulos.length > 0) {
-			
-			
-
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 		} else {
 			centerPanel = <ErrorPanel error="No pudimos encontrar el articulo que buscas" />;
@@ -175,29 +172,46 @@ let cover;
 	
 
 
-	
+	let rightPanel = f7.methods.getArticulosRightPanel();
+	let leftPanelTV = f7.methods.getTV();
+	let leftPanelRadio = f7.methods.getRadio();
+
+	const logo = f7.methods.getLogo();
+	const logoDark = f7.methods.getLogoDarkMode();
+	const DB_url = f7.methods.get_URL_DB();
+	// let article = data.articulos[0];
+	// console.log(article);
+	// const ogurl = f7.methods.get_URL();
+	// let urlThing = ogurl + `/articulo/${article.url}/`;
+	// let result = formatText(article.description);
+	// let otherTags = /(<([^>]+)>)/gi;
+	// let firstLine = result
+	// 	.replace(otherTags, "")
+	// 	.replace(/\n/gi, " ")
+	// 	.match(/^.{0,200}/gi);
+	// let cover = article.cover ? DB_url + article.cover.url : IMG;
 	return (
 		<Page pageContent={false} name="articulo"
-		onPageInit={() => {
-			console.log('pageinit articulo');
-			document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
+		// onPageInit={() => {
+		// 	console.log('pageinit articulo');
+		// 	document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
-			document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
-			document.querySelector('meta[property="og:title"]').setAttribute("content", article.Titulo);
-			document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
-			// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
+		// 	document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
+		// 	document.querySelector('meta[property="og:title"]').setAttribute("content", article.Titulo);
+		// 	document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
+		// 	// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
 
-			document.querySelector('meta[property="twitter:title"]').setAttribute("content", article.Titulo);
-			document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
-			// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
+		// 	document.querySelector('meta[property="twitter:title"]').setAttribute("content", article.Titulo);
+		// 	document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
+		// 	// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
 
-			document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
-			document.querySelector('meta[name="twitter:title"]').setAttribute("content", article.Titulo);
-			document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
-			// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
+		// 	document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
+		// 	document.querySelector('meta[name="twitter:title"]').setAttribute("content", article.Titulo);
+		// 	document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
+		// 	// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
 
-			document.title = article.Titulo;;
-		}}
+		// 	document.title = article.Titulo;;
+		// }}
 		>
 			<PageContent>
 				{/* Top Navbar */}
