@@ -233,7 +233,7 @@ let cover;
 							{centerPanel}
 						</Block>
 						<Block className="right_pan">
-							<RightPanel newsInfo={rightPanelvar} />
+							<RightPanel newsInfo={rightPanel} />
 							<RightPanelTablet newsInfo={rightPanel} />
 						</Block>
 					</Block>
