@@ -10,34 +10,71 @@ const apiURL = "api.rcgmedia.mx";
 
 app.get("/articulo/:url", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
-	// variables.url = request.params.url;
+	const query = `query ArticuloMeta($url: String) {
+		articulos: articulos(where: { url: $url }) {
+			Titulo,
+			description,
+			cover{
+				url
+			}
+		}
+	}`;
+
+	const postData = JSON.stringify({
+		query: query,
+		operationName: "ArticuloMeta",
+		variables: { url: request.params.url },
+	});
+
 	const options = {
 		hostname: apiURL,
 		port: 443,
-		path: "/articulos?url=" + request.params.url,
-		method: "GET",
+		path: "/graphql",
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			"Content-Length": Buffer.byteLength(postData),
+		},
 	};
-	const req = https.request(options, (res) => {
-		console.log(`statusCode: ${res.statusCode}`);
-		res.on("data", (d) => {
-			process.stdout.write(d);
+
+	const req = http.request(options, (res) => {
+		console.log(`STATUS: ${res.statusCode}`);
+		console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+		res.setEncoding("utf8");
+		res.on("data", (chunk) => {
+			console.log(`BODY: ${chunk}`);
+		});
+		res.on("end", () => {
+			console.log("No more data in response.");
 		});
 	});
 
-	req.on("error", (error) => {
-		console.error(error);
+	req.on("error", (e) => {
+		console.error(`problem with request: ${e.message}`);
 	});
 
+	// Write data to request body
+	req.write(postData);
 	req.end();
 
-	// .get(apiURL + "/articulos?url=" + request.params.url, (res) => {
+	// const options = {
+	// 	hostname: apiURL,
+	// 	port: 443,
+	// 	path: "/articulos?url=" + request.params.url,
+	// 	method: "GET",
+	// };
+	// const req = https.request(options, (res) => {
+	// 	console.log(`statusCode: ${res.statusCode}`);
 	// 	res.on("data", (d) => {
-	// 		console.log("data ", d);
+	// 		process.stdout.write(d);
 	// 	});
-	// })
-	// .on("error", (err) => {
-	// 	console.log("Error: ", err.message);
 	// });
+
+	// req.on("error", (error) => {
+	// 	console.error(error);
+	// });
+
+	// req.end();
 	fs.readFile(filePath, "utf8", function (err, data) {
 		if (err) {
 			return console.log(err);
