@@ -25,7 +25,6 @@ var variables = {
 app.get("/articulo/:url", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
 	variables.url = request.params.url;
-	console.log("var "+variables.url);
 	fetch(apiURL, {
 		method: "post",
 		headers: {
@@ -34,8 +33,8 @@ app.get("/articulo/:url", function (request, response) {
 		body: JSON.stringify({ query, variables }),
 	})
 		.then((response) => {
-			console.log("resp "+response);
-			response.json()
+			console.log("resp "+response.json());
+			return response.json()
 		})
 		.then((data) => {
 			console.log("data "+data);
