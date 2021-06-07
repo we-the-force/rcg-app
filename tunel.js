@@ -9,7 +9,7 @@ const URL = "https://rcgmedia.mx";
 const apiURL = "api.rcgmedia.mx";
 
 app.get("/articulo/:url", function (request, response) {
-	const filePath = path.resolve(__dirname, "./www", "index.html");
+	let filePath = path.resolve(__dirname, "./www", "index.html");
 	const query = `query ArticuloMeta($url: String) {
 		articulos: articulos(where: { url: $url }) {
 			Titulo,
@@ -41,15 +41,29 @@ app.get("/articulo/:url", function (request, response) {
 		res.setEncoding("utf8");
 		res.on("data", (chunk) => {
 			var newChunk = JSON.parse(chunk);
-			console.log(`BODY: ${newChunk.data.articulos[0].Titulo}`);
+			var articuloTitulo = newChunk.data.articulos[0].Titulo;
+			var articuloDesc = newChunk.data.articulos[0].description;
+			var articuloCover = URL + newChunk.data.articulos[0].cover.url;
+
+			fs.readFile(filePath, "utf8", function (err, data) {
+				if (err) {
+					return console.log(err);
+				}
+				data = data.replace(/\$OG_TITLE/g, articuloTitulo);
+				data = data.replace(/\$OG_DESCRIPTION/g, articuloDesc);
+				result = data.replace(/\$OG_IMAGE/g, articuloCover);
+				filePath = result;
+			});
 		});
 		res.on("end", () => {
 			console.log("No more data in response.");
+			response.send(filePath);
 		});
 	});
 
 	req.on("error", (e) => {
 		console.error(`problem with request: ${e.message}`);
+		response.send(filePath);
 	});
 
 	// Write data to request body
@@ -74,15 +88,7 @@ app.get("/articulo/:url", function (request, response) {
 	// });
 
 	// req.end();
-	fs.readFile(filePath, "utf8", function (err, data) {
-		if (err) {
-			return console.log(err);
-		}
-		data = data.replace(/\$OG_TITLE/g, "Articulo Page");
-		data = data.replace(/\$OG_DESCRIPTION/g, "Articulo description");
-		result = data.replace(/\$OG_IMAGE/g, "https://i.imgur.com/V7irMl8.png");
-		response.send(result);
-	});
+	
 });
 
 app.use(express.static(path.resolve(__dirname, "./www")));
