@@ -19,6 +19,8 @@ app.get("/", function (request, response) {
 		data = data.replace(/\$OG_TITLE/g, "Home Page");
 		data = data.replace(/\$OG_DESCRIPTION/g, "Home page description");
 		result = data.replace(/\$OG_IMAGE/g, "https://i.imgur.com/V7irMl8.png");
+
+		console.log(result);
 		response.send(result);
 	});
 });
