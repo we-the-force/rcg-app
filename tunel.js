@@ -5,7 +5,6 @@ const path = require("path");
 const fs = require("fs");
 
 app.get("/", function (request, response) {
-	response.send("hello");
 	const filePath = path.resolve(__dirname, "./www", "index.html");
 
 	// read in the index.html file
@@ -14,20 +13,15 @@ app.get("/", function (request, response) {
 			return console.log(err);
 		}
 
-		console.log(data);
-
 		// replace the special strings with server generated strings
 		data = data.replace(/\$OG_TITLE/g, "Home Page");
 		data = data.replace(/\$OG_DESCRIPTION/g, "Home page description");
 		result = data.replace(/\$OG_IMAGE/g, "https://i.imgur.com/V7irMl8.png");
-
-		console.log(result);
 		response.send(result);
 	});
 });
 
-app.get("/articulo/", function (request, response) {
-	response.send("hello art");
+app.get("/articulo/*", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
 	fs.readFile(filePath, "utf8", function (err, data) {
 		if (err) {
