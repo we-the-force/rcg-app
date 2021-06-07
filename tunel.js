@@ -47,7 +47,7 @@ app.get("/articulo/:url", function (request, response) {
 			var newChunk = JSON.parse(chunk);
 			articuloTitulo = newChunk.data.articulos[0].Titulo;
 			articuloDesc = newChunk.data.articulos[0].description;
-			articuloCover = apiURL + newChunk.data.articulos[0].cover.url;
+			articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
 		});
 		res.on("end", () => {
 			console.log("No more data in response.");
