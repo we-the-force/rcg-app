@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const path = require("path");
 const fs = require("fs");
-const https = require('https');
+const https = require("https");
 
 const URL = "https://rcgmedia.mx";
 const apiURL = "https://api.rcgmedia.mx";
@@ -11,11 +11,15 @@ const apiURL = "https://api.rcgmedia.mx";
 app.get("/articulo/:url", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
 	// variables.url = request.params.url;
-	https.get(apiURL + "/articulos?url=" + request.params.url, res => {
-		console.log(res);
-	  }).on('error', err => {
-		console.log('Error: ', err.message);
-	  });
+	https
+		.get(apiURL + "/articulos?url=" + request.params.url, (res) => {
+			res.on("data", (d) => {
+				console.log("data ", d);
+			});
+		})
+		.on("error", (err) => {
+			console.log("Error: ", err.message);
+		});
 	fs.readFile(filePath, "utf8", function (err, data) {
 		if (err) {
 			return console.log(err);
