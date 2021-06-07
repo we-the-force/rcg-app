@@ -9,7 +9,7 @@ const URL = "https://rcgmedia.mx";
 const apiURL = "api.rcgmedia.mx";
 
 app.get("/articulo/:url", function (request, response) {
-	let filePath = path.resolve(__dirname, "./www", "index.html");
+	const filePath = path.resolve(__dirname, "./www", "index.html");
 	const query = `query ArticuloMeta($url: String) {
 		articulos: articulos(where: { url: $url }) {
 			Titulo,
@@ -37,14 +37,20 @@ app.get("/articulo/:url", function (request, response) {
 		},
 	};
 
+	let articuloTitulo = "";
+	let articuloDesc = "";
+	let articuloCover = "";
+
 	const req = https.request(options, (res) => {
 		res.setEncoding("utf8");
 		res.on("data", (chunk) => {
 			var newChunk = JSON.parse(chunk);
-			var articuloTitulo = newChunk.data.articulos[0].Titulo;
-			var articuloDesc = newChunk.data.articulos[0].description;
-			var articuloCover = URL + newChunk.data.articulos[0].cover.url;
-
+			articuloTitulo = newChunk.data.articulos[0].Titulo;
+			articuloDesc = newChunk.data.articulos[0].description;
+			articuloCover = URL + newChunk.data.articulos[0].cover.url;
+		});
+		res.on("end", () => {
+			console.log("No more data in response.");
 			fs.readFile(filePath, "utf8", function (err, data) {
 				if (err) {
 					return console.log(err);
@@ -52,18 +58,14 @@ app.get("/articulo/:url", function (request, response) {
 				data = data.replace(/\$OG_TITLE/g, articuloTitulo);
 				data = data.replace(/\$OG_DESCRIPTION/g, articuloDesc);
 				result = data.replace(/\$OG_IMAGE/g, articuloCover);
-				filePath = result;
+				response.send(result);
 			});
-		});
-		res.on("end", () => {
-			console.log("No more data in response.");
-			response.send(filePath);
 		});
 	});
 
 	req.on("error", (e) => {
 		console.error(`problem with request: ${e.message}`);
-		response.send(filePath);
+		response.sendFile(filePath);
 	});
 
 	// Write data to request body
