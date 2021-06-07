@@ -42,7 +42,8 @@ app.get("/articulo/:url", function (request, response) {
 			result = data.replace(/\$OG_IMAGE/g, "https://i.imgur.com/V7irMl8.png");
 			response.send(result);
 		});
-	});
+	})
+	.catch(error => console.error(error));
 });
 
 app.use(express.static(path.resolve(__dirname, "./www")));
