@@ -5,6 +5,7 @@ const path = require("path");
 const fs = require("fs");
 
 app.get("/", function (request, response) {
+	response.send("hello");
 	const filePath = path.resolve(__dirname, "./www", "index.html");
 
 	// read in the index.html file
@@ -26,6 +27,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/articulo/", function (request, response) {
+	response.send("hello art");
 	const filePath = path.resolve(__dirname, "./www", "index.html");
 	fs.readFile(filePath, "utf8", function (err, data) {
 		if (err) {
@@ -38,7 +40,7 @@ app.get("/articulo/", function (request, response) {
 	});
 });
 
-app.use(express.static(path.resolve(__dirname, "./www")));
+// app.use(express.static(path.resolve(__dirname, "./www")));
 
 // app.get("*", function (request, response) {
 // 	const filePath = path.resolve(__dirname, "./www", "index.html");
