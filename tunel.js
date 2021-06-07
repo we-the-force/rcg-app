@@ -21,9 +21,9 @@ const fs = require("fs");
 // 	});
 // });
 
-app.get("/articulo/*", function (request, response) {
+app.get("/articulo/:url", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
-	console.log(request);
+	console.log(request.params);
 	fs.readFile(filePath, "utf8", function (err, data) {
 		if (err) {
 			return console.log(err);
