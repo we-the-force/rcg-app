@@ -113,7 +113,7 @@ let cover;
 				} else {
 					getRecomendadosCateg({
 						variables: {
-							categ: data.articulos[0].categoria.nombre,
+							categ: data.articulos[0].categoria ? data.articulos[0].categoria.nombre : "",
 						},
 					});
 				}

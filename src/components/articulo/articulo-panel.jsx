@@ -168,7 +168,7 @@ export default class ArticuloPanel extends Component {
 					<Card className="articulo">
 						<Block className="header_cont display-flex justify-content-space-between">
 							<CardHeader>
-								<a href={`/categoria/${articulo.categoria.nombre}`}>{articulo.categoria.nombre}</a>
+								<a href={articulo.categoria ? `/categoria/${articulo.categoria.nombre}` : ""}>{articulo.categoria ? articulo.categoria.nombre : ""}</a>
 							</CardHeader>
 							<Block className="share display-flex align-items-center">
 								{/* <p>Compartir:</p>
