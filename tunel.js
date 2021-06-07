@@ -29,6 +29,7 @@ app.get("/articulo/:url", function (request, response) {
 		}),
 	})
 	.then(result => {
+		console.log(result);
 		return result.json();
 	})
 	.then(article => {
