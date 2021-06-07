@@ -30,10 +30,10 @@ export default function DestItem(props) {
 						{autor ? autor.nombre : 'Ain Autor'}
 					</Link>
 					&nbsp;-&nbsp;
-					<p className="fecha">{moment(fecha).format("D MMMM")}</p>
+					{/* <p className="fecha">{moment(fecha).format("D MMMM")}</p> */}
 				</BlockHeader>
 				<BlockTitle>{Titulo}</BlockTitle>
-				<p className="cont">{newDesc}</p>
+				{/* <p className="cont">{newDesc}</p>
 				<BlockFooter className="display-flex justify-content-space-between">
 					<p className="tag">
 						Tags&nbsp;
@@ -60,7 +60,7 @@ export default function DestItem(props) {
 					<Link popupClose className="more" href={`/articulo/${url}/`}>
 						Mostrar más
 					</Link>
-				</BlockFooter>
+				</BlockFooter> */}
 			</Block>
 		</Block>
 	);
