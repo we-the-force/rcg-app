@@ -79,14 +79,14 @@ export default function Masthead(props) {
 									<Block className="background">
 										<img src={item.cover ? DB_url + item.cover.url : IMG} alt="" />
 										<Block className="label">
-											<Link href={"/categoria/" + item.categoria ? item.categoria.nombre : ""} className="categoria upperscale">
-												{item.categoria.nombre ? item.categoria.nombre : ""}
+											<Link href={"/categoria/" + item.categoria.nombre} className="categoria upperscale">
+												{item.categoria.nombre}
 											</Link>
 										</Block>
 										<Block className="bottom-cont">
 											<Block className="label-desk">
-												<Link href={"/categoria/" + item.categoria ? item.categoria.nombre : ""} className="categoria upperscale">
-													{item.categoria.nombre ? item.categoria.nombre : ""}
+												<Link href={"/categoria/" + item.categoria.nombre} className="categoria upperscale">
+													{item.categoria.nombre}
 												</Link>
 											</Block>
 											<Link className="title" href={`/articulo/${item.url}/`}>
