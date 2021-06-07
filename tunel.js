@@ -6,7 +6,7 @@ const fs = require("fs");
 const https = require("https");
 
 const URL = "https://rcgmedia.mx";
-const apiURL = "https://api.rcgmedia.mx";
+const apiURL = "api.rcgmedia.mx";
 
 app.get("/articulo/:url", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
