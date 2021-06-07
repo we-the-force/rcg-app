@@ -40,9 +40,8 @@ app.get("/articulo/:url", function (request, response) {
 	const req = https.request(options, (res) => {
 		res.setEncoding("utf8");
 		res.on("data", (chunk) => {
-			var newChunk = JSON.parse(chunk);
-			var stringToLog = JSON.stringify({newChunk.data});
-			console.log(`BODY: ${stringToLog}`);
+			// var newChunk = JSON.parse(chunk);
+			console.log(`BODY: ${chunk.data.articulos}`);
 		});
 		res.on("end", () => {
 			console.log("No more data in response.");
