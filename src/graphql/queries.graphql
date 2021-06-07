@@ -81,7 +81,7 @@ query AutorPage($url: String) {
 		url
 	}
 
-	autorArticulos: articulosConnection(where: { autor: { url: $url } }) {
+	autorArticulos: articulosConnection(sort: "fecha:desc", where: { autor: { url: $url } }) {
 		groupBy {
 			autor {
 				key
