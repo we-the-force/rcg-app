@@ -13,6 +13,8 @@ app.get("/", function (request, response) {
 			return console.log(err);
 		}
 
+		console.log(data);
+
 		// replace the special strings with server generated strings
 		data = data.replace(/\$OG_TITLE/g, "Home Page");
 		data = data.replace(/\$OG_DESCRIPTION/g, "Home page description");
@@ -36,9 +38,9 @@ app.get("/articulo/", function (request, response) {
 
 app.use(express.static(path.resolve(__dirname, "./www")));
 
-app.get("*", function (request, response) {
-	const filePath = path.resolve(__dirname, "./www", "index.html");
-	response.sendFile(filePath);
-});
+// app.get("*", function (request, response) {
+// 	const filePath = path.resolve(__dirname, "./www", "index.html");
+// 	response.sendFile(filePath);
+// });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
