@@ -147,7 +147,7 @@ query AutoresPage {
 }
 
 query BusquedaAutor($url: String, $inicio: Int, $limite: Int) {
-	articulos(where: { autor: { url: $url } }, start: $inicio, limit: $limite) {
+	articulos(sort: "fecha:desc",where: { autor: { url: $url } }, start: $inicio, limit: $limite) {
 		...ArticulosData
 	}
 }
