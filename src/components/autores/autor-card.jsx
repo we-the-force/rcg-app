@@ -42,7 +42,7 @@ export default function AutorCard(props) {
 					{" "}
 					{articulos} Noticias
 				</Link>
-				<p className="redes_label">Redes:</p>
+				{/* <p className="redes_label">Redes:</p>
 				<Block className="redes_cont">
 					<a href={face} className={`external${face == null ? " gray" : ""}`} target="_blank">
 						<img src={FBIcon} />
@@ -53,7 +53,7 @@ export default function AutorCard(props) {
 					<a href={insta} className={`external${insta == null ? " gray" : ""}`} target="_blank">
 						<img src={IGIcon} />
 					</a>
-				</Block>
+				</Block> */}
 			</Block>
 		</Card>
 	);
