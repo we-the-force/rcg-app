@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
         var OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
@@ -11,7 +11,7 @@
             });
             // OneSignal.showNativePrompt();
         });
-    </script>
+    </script> -->
     <meta charset="utf-8">
     <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
@@ -186,25 +186,28 @@
             <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=823839871704925&ev=PageView&noscript=1" /></noscript>
             <script type="application/ld+json">
-            {
-              "@context": "https://schema.org/",
-              "@type": "WebSite",
-              "name": "RCG MEDIA",
-              "url": "https://rcgmedia.mx",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://rcgmedia.mx/busqueda/{search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }
+                {
+                    "@context": "https://schema.org/",
+                    "@type": "WebSite",
+                    "name": "RCG MEDIA",
+                    "url": "https://rcgmedia.mx",
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://rcgmedia.mx/busqueda/{search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                }
             </script>
             <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63884347-1"></script>
             <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'UA-63884347-1');
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+                gtag('config', 'UA-63884347-1');
             </script>
             <!-- End Facebook Pixel Code -->
 
