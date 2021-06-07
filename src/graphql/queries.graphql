@@ -46,6 +46,16 @@ query ArticuloPage($url: String) {
 	}
 }
 
+query ArticuloMeta($url: String) {
+	articulos: articulos(where: { url: $url }) {
+		Titulo,
+		description,
+		cover{
+			url
+		}
+	}
+}
+
 query Recomendados($tag: String) {
 	swiper: articulos(where: { tags: { nombre: $tag } }, limit: 9) {
 		...ArticulosData
