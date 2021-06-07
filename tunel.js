@@ -34,7 +34,7 @@ app.get("/articulo/*", function (request, response) {
 	});
 });
 
-// app.use(express.static(path.resolve(__dirname, "./www")));
+app.use(express.static(path.resolve(__dirname, "./www")));
 
 // app.get("*", function (request, response) {
 // 	const filePath = path.resolve(__dirname, "./www", "index.html");
