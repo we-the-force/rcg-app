@@ -71,25 +71,6 @@ app.get("/articulo/:url", function (request, response) {
 	// Write data to request body
 	req.write(postData);
 	req.end();
-
-	// const options = {
-	// 	hostname: apiURL,
-	// 	port: 443,
-	// 	path: "/articulos?url=" + request.params.url,
-	// 	method: "GET",
-	// };
-	// const req = https.request(options, (res) => {
-	// 	console.log(`statusCode: ${res.statusCode}`);
-	// 	res.on("data", (d) => {
-	// 		process.stdout.write(d);
-	// 	});
-	// });
-
-	// req.on("error", (error) => {
-	// 	console.error(error);
-	// });
-
-	// req.end();
 	
 });
 
