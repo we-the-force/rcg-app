@@ -9,7 +9,7 @@ const URL = "https://rcgmedia.mx";
 const apiURL = "api.rcgmedia.mx";
 
 app.get("/articulo/:url", function (request, response) {
-	const filePath = path.resolve(__dirname, "./www", "index.html");
+	const filePath = path.resolve(__dirname, "/var/www/html/", "index.html");
 	const query = `query ArticuloMeta($url: String) {
 		articulos: articulos(where: { url: $url }) {
 			Titulo,
@@ -74,6 +74,6 @@ app.get("/articulo/:url", function (request, response) {
 	
 });
 
-app.use(express.static(path.resolve(__dirname, "./www")));
+app.use(express.static(path.resolve(__dirname, "/var/www/html/")));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
