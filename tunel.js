@@ -9,13 +9,15 @@ const URL = "https://rcgmedia.mx";
 const apiURL = "https://api.rcgmedia.mx";
 
 const query = `
-	query articulos(where: { url: $url }) {
+	query{
+	 articulos(where: { url: $url }) {
 		Titulo,
 		description,
 		cover{
 			url
 		}
 	}
+}
 `;
 
 var variables = {
@@ -33,7 +35,7 @@ app.get("/articulo/:url", function (request, response) {
 		body: JSON.stringify({ query, variables }),
 	})
 		.then((response) => {
-			console.log("resp "+response.json());
+			console.log("resp "+response.data);
 			return response.json()
 		})
 		.then((data) => {
