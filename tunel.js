@@ -23,7 +23,7 @@ const fs = require("fs");
 
 app.get("/articulo/*", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
-	console.log(__dirname);
+	console.log(request);
 	fs.readFile(filePath, "utf8", function (err, data) {
 		if (err) {
 			return console.log(err);
