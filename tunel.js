@@ -37,7 +37,7 @@ app.get("/articulo/:url", function (request, response) {
 		},
 	};
 
-	const req = http.request(options, (res) => {
+	const req = https.request(options, (res) => {
 		console.log(`STATUS: ${res.statusCode}`);
 		console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
 		res.setEncoding("utf8");
