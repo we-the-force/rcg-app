@@ -27,7 +27,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
     <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
 
-    <meta name="description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más.">
+    <!-- <meta name="description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más."> -->
+    <meta name="description" content="$OG_DESCRIPTION">
     <meta name="keywords" content="Noticias, México, Coahuila, Saltillo, Coronavirus">
     <link rel="canonical" href="https://rcgmedia.mx/">
     <link rel="shortlink" href="https://rcgmedia.mx/">
@@ -56,9 +57,12 @@
     <meta property="og:site_name" content="RCG MEDIA" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rcg.com.mx" />
-    <meta property="og:title" content="RCG MEDIA" />
-    <meta property="og:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." />
-    <meta property="og:image" content="https://http://149.28.252.152/static/imgs/rcg-graph.png" />
+    <meta property="og:title" content="$OG_TITLE" />
+    <!-- <meta property="og:title" content="RCG MEDIA" /> -->
+    <meta property="og:description" content="$OG_DESCRIPTION" />
+    <!-- <meta property="og:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." /> -->
+    <meta property="og:image" content="$OG_IMAGE" />
+    <!-- <meta property="og:image" content="https://rcgmedia.mx/static/imgs/rcg-graph.png" /> -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="720" />
 
@@ -81,8 +85,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
 
-
-    <title>RCG | El Gigante de Coahuila</title>
+    <title>$OG_TITLE</title>
+    <!-- <title>RCG | El Gigante de Coahuila</title> -->
     <% if (process.env.TARGET === 'web') { %>
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
