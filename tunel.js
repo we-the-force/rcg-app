@@ -11,15 +11,33 @@ const apiURL = "https://api.rcgmedia.mx";
 app.get("/articulo/:url", function (request, response) {
 	const filePath = path.resolve(__dirname, "./www", "index.html");
 	// variables.url = request.params.url;
-	https
-		.get(apiURL + "/articulos?url=" + request.params.url, (res) => {
-			res.on("data", (d) => {
-				console.log("data ", d);
-			});
-		})
-		.on("error", (err) => {
-			console.log("Error: ", err.message);
+	const options = {
+		hostname: apiURL,
+		port: 443,
+		path: "/articulos?url=" + request.params.url,
+		method: "GET",
+	};
+	const req = https.request(options, (res) => {
+		console.log(`statusCode: ${res.statusCode}`);
+		res.on("data", (d) => {
+			process.stdout.write(d);
 		});
+	});
+
+	req.on("error", (error) => {
+		console.error(error);
+	});
+
+	req.end();
+
+	// .get(apiURL + "/articulos?url=" + request.params.url, (res) => {
+	// 	res.on("data", (d) => {
+	// 		console.log("data ", d);
+	// 	});
+	// })
+	// .on("error", (err) => {
+	// 	console.log("Error: ", err.message);
+	// });
 	fs.readFile(filePath, "utf8", function (err, data) {
 		if (err) {
 			return console.log(err);
