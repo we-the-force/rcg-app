@@ -5,11 +5,11 @@ import img2 from "@/static/imgs/fondo-sj-e1540342434825 1.png";
 import img3 from "@/static/imgs/Rcg.png";
 import img4 from "@/static/imgs/Image.png";
 import twenyforseven from "@/static/imgs/24-7.png";
-import IMG from '@/static/imgs/grayback.jpg';
+import IMG from "@/static/imgs/grayback.jpg";
 import { Swiper, SwiperSlide, Block, BlockHeader, BlockFooter, Link, f7 } from "framework7-react";
 export default function Masthead(props) {
-    const { banner, relevante } = props;
-    const swiper = useRef(null);
+	const { banner, relevante } = props;
+	const swiper = useRef(null);
 	let DB_url = f7.methods.get_URL_DB();
 	/* banner contiene los articulos del banner */
 	/* relevante contiene los más relevantes en caso de que no se complete con el banner */
@@ -54,12 +54,12 @@ export default function Masthead(props) {
 	}
 
 	/* traigo solo los primeros 10 */
-    articulos = articulos.slice(0, 9);
-    console.log(articulos[0]);
-    useEffect(() => {
+	articulos = articulos.slice(0, 9);
+	console.log(articulos[0]);
+	useEffect(() => {
 		const interval = setInterval(() => {
-            let el_swiper = swiper.current.swiper;
-            el_swiper.slideNext(1000);
+			let el_swiper = swiper.current.swiper;
+			el_swiper.slideNext(1000);
 		}, 8000);
 		return () => clearInterval(interval);
 	}, []);
@@ -80,13 +80,13 @@ export default function Masthead(props) {
 										<img src={item.cover ? DB_url + item.cover.url : IMG} alt="" />
 										<Block className="label">
 											<Link href={item.categoria ? "/categoria/" + item.categoria.nombre : ""} className="categoria upperscale">
-												{item.categoria.nombre}
+												{item.categoria ? item.categoria.nombre : ""}
 											</Link>
 										</Block>
 										<Block className="bottom-cont">
 											<Block className="label-desk">
-												<Link href={"/categoria/" +item.categoria.nombre} className="categoria upperscale">
-													{item.categoria.nombre}
+												<Link href={item.categoria ? "/categoria/" + item.categoria.nombre : ""} className="categoria upperscale">
+													{item.categoria ? item.categoria.nombre : ""}
 												</Link>
 											</Block>
 											<Link className="title" href={`/articulo/${item.url}/`}>
@@ -96,7 +96,7 @@ export default function Masthead(props) {
 												<Link className="autor" href={"/autores"}>
 													{item.autor ? item.autor.nombre : ""}&nbsp;-&nbsp;{item.fecha}&nbsp;-&nbsp;Foto por: {item.creditos}
 												</Link>
-												
+
 												{/* <p className="fecha"></p>
 												
 												<p className="creditos"></p> */}
