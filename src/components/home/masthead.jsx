@@ -72,7 +72,7 @@ export default function Masthead(props) {
 						<img src={props.logo} alt="" />
 						<img className="doscuatrosiete" src={twenyforseven} alt="" />
 					</Block> */}
-					<Swiper ref={swiper} pagination params={{ loop: true }}>
+					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
 						{articulos.map((item, i) => {
 							return (
 								<SwiperSlide key={i}>
