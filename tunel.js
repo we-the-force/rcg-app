@@ -51,6 +51,7 @@ app.get("/articulo/:url", function (request, response) {
 		});
 		res.on("end", () => {
 			console.log("No more data in response.");
+			response.sendFile(filePath);
 			fs.readFile(filePath, "utf8", function (err, data) {
 				if (err) {
 					return console.log(err);
