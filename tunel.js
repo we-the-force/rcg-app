@@ -38,6 +38,7 @@ app.get("/articulo/:url", function (request, response) {
 	};
 
 	let articuloTitulo = "";
+	let articuloURL = "";
 	let articuloDesc = "";
 	let articuloCover = "";
 
@@ -45,6 +46,7 @@ app.get("/articulo/:url", function (request, response) {
 		res.setEncoding("utf8");
 		res.on("data", (chunk) => {
 			var newChunk = JSON.parse(chunk);
+			articuloURL = URL + "/articulo/" + request.params.url;
 			articuloTitulo = newChunk.data.articulos[0].Titulo;
 			articuloDesc = newChunk.data.articulos[0].description.replace(/(<([^>]+)>)/gi, "").substr(0,50);
 			articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
@@ -55,6 +57,7 @@ app.get("/articulo/:url", function (request, response) {
 				if (err) {
 					return console.log(err);
 				}
+				data = data.replace(/__OG_URL__/g, articuloURL);
 				data = data.replace(/__OG_TITLE__/g, articuloTitulo);
 				data = data.replace(/__OG_DESCRIPTION__/g, articuloDesc);
 				result = data.replace(/__OG_IMAGE__/g, articuloCover);
