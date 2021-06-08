@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import SwiperNews from "@/components/general/swiper_news.jsx";
 import IMG from '@/static/imgs/grayback.jpg';
+import moment from 'moment';
+
 import marked from "marked";
 import JsxParser from "react-jsx-parser";
 import TWIconx3 from "@/static/icons/TW_Icon_x4.png";
@@ -23,6 +25,8 @@ import {InlineShareButtons} from 'sharethis-reactjs';
 
 
 export function formatText(x) {
+ moment.locale('es');
+
 	const DB_url = f7.methods.get_URL_DB();
 	let value = marked(x);
 	let frameProp = /<iframe([^>]*)(frameborder="([^"])")([^>]*)>/gi;
@@ -230,7 +234,8 @@ export default class ArticuloPanel extends Component {
 									{" "}
 									{articulo.autor ? articulo.autor.nombre : 'Sin Autor'}{" "}
 								</a>{" "}
-								- <p className="fecha"> {articulo.fecha} </p>
+								{/* - <p className="fecha"> {articulo.fecha} </p> */}
+								- <p className="fecha"> {moment(articulo.created_at).format('D MMMM YYYY, h:mm a')} </p>
 							</Block>
 							<Block className="titulo">{articulo.Titulo}</Block>
 							<Block className="sumario">{articulo.Sumario}</Block>
