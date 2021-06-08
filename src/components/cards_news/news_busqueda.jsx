@@ -28,7 +28,7 @@ export default function NewsBusqueda(props) {
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">
                 <Block className="img_cont">
-                    <p className="categoria upperscale">{articulo.categoria.nombre}</p>
+                    <p className="categoria upperscale">{articulo.categoria ? articulo.categoria.nombre : ""}</p>
                     <a className="title" href={`/articulo/${articulo.url}/`}>
                         <img src={cover} alt="" />
                     </a>

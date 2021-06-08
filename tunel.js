@@ -9,7 +9,7 @@ const URL = "https://rcgmedia.mx";
 const apiURL = "api.rcgmedia.mx";
 
 app.get("/articulo/:url", function (request, response) {
-	const filePath = path.resolve(__dirname, "./www", "index.html");
+	const filePath = path.resolve(__dirname, "/var/www/html/", "index.html");
 	const query = `query ArticuloMeta($url: String) {
 		articulos: articulos(where: { url: $url }) {
 			Titulo,
@@ -37,54 +37,43 @@ app.get("/articulo/:url", function (request, response) {
 		},
 	};
 
+	let articuloTitulo = "";
+	let articuloDesc = "";
+	let articuloCover = "";
+
 	const req = https.request(options, (res) => {
 		res.setEncoding("utf8");
 		res.on("data", (chunk) => {
-			// var newChunk = JSON.parse(chunk);
-			console.log(`BODY: ${chunk.data.articulos}`);
+			var newChunk = JSON.parse(chunk);
+			articuloTitulo = newChunk.data.articulos[0].Titulo;
+			articuloDesc = newChunk.data.articulos[0].description;
+			articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
 		});
 		res.on("end", () => {
 			console.log("No more data in response.");
+			fs.readFile(filePath, "utf8", function (err, data) {
+				if (err) {
+					return console.log(err);
+				}
+				data = data.replace(/\$OG_TITLE/g, articuloTitulo);
+				data = data.replace(/\$OG_DESCRIPTION/g, articuloDesc);
+				result = data.replace(/\$OG_IMAGE/g, articuloCover);
+				response.send(result);
+			});
 		});
 	});
 
 	req.on("error", (e) => {
 		console.error(`problem with request: ${e.message}`);
+		response.sendFile(filePath);
 	});
 
 	// Write data to request body
 	req.write(postData);
 	req.end();
-
-	// const options = {
-	// 	hostname: apiURL,
-	// 	port: 443,
-	// 	path: "/articulos?url=" + request.params.url,
-	// 	method: "GET",
-	// };
-	// const req = https.request(options, (res) => {
-	// 	console.log(`statusCode: ${res.statusCode}`);
-	// 	res.on("data", (d) => {
-	// 		process.stdout.write(d);
-	// 	});
-	// });
-
-	// req.on("error", (error) => {
-	// 	console.error(error);
-	// });
-
-	// req.end();
-	fs.readFile(filePath, "utf8", function (err, data) {
-		if (err) {
-			return console.log(err);
-		}
-		data = data.replace(/\$OG_TITLE/g, "Articulo Page");
-		data = data.replace(/\$OG_DESCRIPTION/g, "Articulo description");
-		result = data.replace(/\$OG_IMAGE/g, "https://i.imgur.com/V7irMl8.png");
-		response.send(result);
-	});
+	
 });
 
-app.use(express.static(path.resolve(__dirname, "./www")));
+app.use(express.static(path.resolve(__dirname, "/var/www/html/")));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
