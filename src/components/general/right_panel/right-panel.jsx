@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
+import ReactWeather, { useOpenWeather } from 'react-open-weather';
 import AutorCard from '@/components/autores/autor-card.jsx';
 import AdsSearch from "@/components/general/ads/ads_search";
 import satelite from "../../../static/imgs/sat.png"
@@ -15,7 +16,13 @@ import {
 import adsSearch from '../ads/ads_search';
 
 export default function RightPanel(props) {
-
+    const { weatherData, isLoading, errorMessage } = useOpenWeather({
+      key: '44b3416154c42704403b45cdfd3b99c5',
+      lat: '25.439032907263826',
+      lon: '-100.97394750602884',
+      lang: 'es',
+      unit: 'metric', // values are (metric, standard, imperial)
+    });
     const articuloSearch = (e) => {
         if (e.key === "Enter") {
             if (e.target.value.trim() !== "") {
@@ -77,8 +84,20 @@ export default function RightPanel(props) {
                     </span>
                 </Block>
                 {/* <AdsSearch/> */}
-                <img src={bannersearch} alt="" />
+                <br />
+                <ReactWeather
+                  isLoading={isLoading}
+                  errorMessage={errorMessage}
+                  data={weatherData}
+                  lang="es"
+                  locationLabel="Saltillo"
+                  unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+                  showForecast="false"
+                />
+                <br />
+                <img className="bannerSearch" src={bannersearch} alt="" />
             </Block>
+            
             <Block className="right_panel_down">
                 {cards}
                 <img src={satelite} alt="" className="sat" />
