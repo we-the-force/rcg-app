@@ -55,9 +55,9 @@ app.get("/articulo/:url", function (request, response) {
 				if (err) {
 					return console.log(err);
 				}
-				data = data.replace(/OG_TITLE/g, articuloTitulo);
-				data = data.replace(/\$OG_DESCRIPTION/g, articuloDesc);
-				result = data.replace(/\$OG_IMAGE/g, articuloCover);
+				data = data.replace(/__OG_TITLE__/g, articuloTitulo);
+				data = data.replace(/__OG_DESCRIPTION__/g, articuloDesc);
+				result = data.replace(/__OG_IMAGE__/g, articuloCover);
 				response.send(result);
 			});
 		});
