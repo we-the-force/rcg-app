@@ -337,6 +337,7 @@ fragment ArticulosData on Articulo {
 		url
 	}
 	fecha
+	created_at
 	cover {
 		url
 	}
