@@ -46,12 +46,11 @@ app.get("/articulo/:url", function (request, response) {
 		res.on("data", (chunk) => {
 			var newChunk = JSON.parse(chunk);
 			articuloTitulo = newChunk.data.articulos[0].Titulo;
-			articuloDesc = newChunk.data.articulos[0].description;
+			articuloDesc = newChunk.data.articulos[0].description.substr(0,50);
 			articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
 		});
 		res.on("end", () => {
 			console.log("No more data in response.");
-			response.sendFile(filePath);
 			fs.readFile(filePath, "utf8", function (err, data) {
 				if (err) {
 					return console.log(err);
