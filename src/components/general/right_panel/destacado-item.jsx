@@ -25,13 +25,13 @@ export default function DestItem(props) {
 				</Link>
 			)}
 			<Block className="dest-cont">
-				<BlockHeader>
+				{/* <BlockHeader>
 					<Link popupClose className="autor" href={autor ? `/autor/${autor.url}` : '/autores'}>
 						{autor ? autor.nombre : 'Ain Autor'}
 					</Link>
 					&nbsp;-&nbsp;
-					{/* <p className="fecha">{moment(fecha).format("D MMMM")}</p> */}
-				</BlockHeader>
+					<p className="fecha">{moment(fecha).format("D MMMM")}</p>
+				</BlockHeader> */}
 				<BlockTitle>{Titulo}</BlockTitle>
 				{/* <p className="cont">{newDesc}</p>
 				<BlockFooter className="display-flex justify-content-space-between">
