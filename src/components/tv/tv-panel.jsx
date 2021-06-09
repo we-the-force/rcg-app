@@ -31,6 +31,10 @@ export default function TVPanel(props) {
 		setPlayPause(!playPause);
 	};
 
+	const handlePIP = () => {
+		console.log("pip");
+	};
+
 	const setProgramaActual = (x, y) => {
 		setNombrePrograma(x);
 		setDescPrograma(y);
@@ -111,6 +115,9 @@ export default function TVPanel(props) {
 							<ReactPlayer className="player" url={canal[0].source_url} playing={playPause} />
 						</a>
 					</Block>
+					<a onClick={handlePIP}>
+						<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
+					</a>
 					<p className="programa-desc">{descPrograma}</p>
 				</Block>
 				<Block className="tabla_programacion">
