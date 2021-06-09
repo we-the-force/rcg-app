@@ -58,6 +58,7 @@ export default function RadioPanel(props) {
     const handlePIP = async (e) => {
 		e.preventDefault();
 		let player = document.getElementsByClassName("radio-player")[0].firstChild;
+        console.log(ReactPlayer.canEnablePIP(source_url));
 		await player.requestPictureInPicture();
 	};
 
