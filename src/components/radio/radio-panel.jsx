@@ -43,8 +43,8 @@ export default function RadioPanel(props) {
     }
 
     const handleStop = () => {
-        setSourceURL(null);
         setPlayPause(false);
+        setSourceURL(null);
     }
 
     const handleToggleMuted = () => {
@@ -54,6 +54,12 @@ export default function RadioPanel(props) {
     const handleVolumeChange = e => {
         setVolume(parseFloat(e));
     }
+
+    const handlePIP = async (e) => {
+		e.preventDefault();
+		let player = document.getElementsByClassName("player")[0].firstChild;
+		await player.requestPictureInPicture();
+	};
 
     return (
         <Block className="radio_panel center_panel">
@@ -133,6 +139,9 @@ export default function RadioPanel(props) {
                                     value={volume}
                                     onRangeChange={handleVolumeChange}
                                 ></Range>
+                                <a onClick={(e) => {handlePIP(e)}}>
+                                    <Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
+                                </a>
                             </Block>
                         </Block>
                         {/* <Block className="logo-RCG">

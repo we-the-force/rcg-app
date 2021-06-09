@@ -34,7 +34,6 @@ export default function TVPanel(props) {
 	const handlePIP = async (e) => {
 		e.preventDefault();
 		let player = document.getElementsByClassName("player")[0].firstChild;
-		console.log(player);
 		await player.requestPictureInPicture();
 	};
 
