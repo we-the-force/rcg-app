@@ -31,7 +31,7 @@ export default function TVPanel(props) {
 		setPlayPause(!playPause);
 	};
 
-	const handlePIP = (e) => {
+	const handlePIP = async (e) => {
 		e.preventDefault();
 		let player = document.getElementsByClassName("player")[0];
 		console.log(player);
