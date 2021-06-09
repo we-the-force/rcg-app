@@ -30,7 +30,7 @@ export default function RightPanel(props) {
     if (newsInfo != undefined) {
         cards = (
             <Card className="right_panel_down_card destacado">
-                <CardHeader>Te Recomendamos</CardHeader>
+                <CardHeader>Mas Visto</CardHeader>
                 {
                     newsInfo.map((articulo, i) => {
                         return (
@@ -59,7 +59,7 @@ export default function RightPanel(props) {
     } else {
         cards = (
             <Card className="right_panel_down_card destacado">
-                <CardHeader>Te Recomendamos</CardHeader>
+                <CardHeader>Mas Visto</CardHeader>
                 <Block className={"dest-item"}>
                     <p>Not found</p>
                 </Block>
