@@ -57,7 +57,8 @@ export default function RadioPanel(props) {
 
     const handlePIP = async (e) => {
 		e.preventDefault();
-		let player = document.getElementsByClassName("player")[0].firstChild;
+		let player = document.getElementsByClassName("player")[0];
+        console.log(player);
 		await player.requestPictureInPicture();
 	};
 
