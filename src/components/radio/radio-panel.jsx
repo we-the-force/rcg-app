@@ -6,7 +6,6 @@ import Img_106 from '@/static/imgs/escuchadigital 1.png';
 import Img_103 from '@/static/imgs/fondo-sj-e1540342434825 1.png';
 import RCGlogo from '@/static/imgs/Logo_negro.png';
 import moment from 'moment';
-import { f7, f7ready } from "framework7-react";
 import React, { useRef, useState, useEffect } from "react";
 import {
     Card,
@@ -15,7 +14,8 @@ import {
     BlockHeader,
     Icon,
     Range,
-    f7
+    f7,
+    f7ready
 } from 'framework7-react';
 
 export default function RadioPanel(props) {
