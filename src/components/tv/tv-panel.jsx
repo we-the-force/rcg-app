@@ -25,14 +25,16 @@ export default function TVPanel(props) {
 				miercoles: [],
 				sabado: [],
 				viernes: [],
-		  };
+		};
 
 	const handlePlayPause = () => {
 		setPlayPause(!playPause);
 	};
 
-	const handlePIP = () => {
-		console.log("pip");
+	const handlePIP = async (e) => {
+		e.preventDefault();
+		let player = document.getElementsByClassName("player")[0].firstChild;
+		await player.requestPictureInPicture();
 	};
 
 	const setProgramaActual = (x, y) => {
@@ -112,10 +114,10 @@ export default function TVPanel(props) {
 						{/* Aqui va el stream */}
 						<a onClick={handlePlayPause}>
 							<Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon>
-							<ReactPlayer className="player" url={canal[0].source_url} playing={playPause} />
+							<ReactPlayer className="player" url={canal[0].source_url} playing={playPause} pip={true}/>
 						</a>
 					</Block>
-					<a onClick={handlePIP}>
+					<a onClick={(e) => {handlePIP(e)}}>
 						<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
 					</a>
 					<p className="programa-desc">{descPrograma}</p>
