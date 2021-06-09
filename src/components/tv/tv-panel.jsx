@@ -33,7 +33,9 @@ export default function TVPanel(props) {
 
 	const handlePIP = (e) => {
 		e.preventDefault();
-		console.log(ReactPlayer.canEnablePIP(canal[0].source_url));
+		let player = document.getElementsByClassName("player")[0];
+		console.log(player);
+		await player.requestFullscreen();
 	};
 
 	const setProgramaActual = (x, y) => {
