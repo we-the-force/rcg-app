@@ -159,12 +159,12 @@ query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
 }
 
 query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
-	articulos(where: { Titulo_contains: $values }, start: $inicio, limit: $limite) {
+	articulos(sort: "fecha:desc",where: { Titulo_contains: $values }, start: $inicio, limit: $limite) {
 		...ArticulosData
 	}
 }
 query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
-	articulos(where: { tags: { nombre_contains: $values } }, start: $inicio, limit: $limite) {
+	articulos(sort: "fecha:desc",where: { tags: { nombre_contains: $values } }, start: $inicio, limit: $limite) {
 		...ArticulosData
 	}
 }
