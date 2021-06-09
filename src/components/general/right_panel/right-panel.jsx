@@ -15,7 +15,7 @@ import {
 import adsSearch from '../ads/ads_search';
 
 export default function RightPanel(props) {
-
+    
     const articuloSearch = (e) => {
         if (e.key === "Enter") {
             if (e.target.value.trim() !== "") {
@@ -77,8 +77,12 @@ export default function RightPanel(props) {
                     </span>
                 </Block>
                 {/* <AdsSearch/> */}
-                <img src={bannersearch} alt="" />
+                <br />
+                <a target="_blank" href="https://hotelmix.es/weather/saltillo-5498"><img src="https://w.bookcdn.com/weather/picture/1_5498_1_4_137AE9_160_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=582&anc_id=33376"  alt="booked.net"/></a>
+                <br />
+                <img className="bannerSearch" src={bannersearch} alt="" />
             </Block>
+            
             <Block className="right_panel_down">
                 {cards}
                 <img src={satelite} alt="" className="sat" />
