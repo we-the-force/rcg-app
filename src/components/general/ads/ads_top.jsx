@@ -22,10 +22,13 @@ export default class adsTop extends Component {
 							data-ad-format="auto"
 							data-full-width-responsive="true"
 						></ins> */}
+						<Link href="https://www.uane.edu.mx/campus/saltillo" external>
 						<img src={uane} alt="" style={{
 							width: '100%',
 							height: 'auto'
 						}}/>
+						</Link>
+						
 						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 					</Block>
 				</Block>
