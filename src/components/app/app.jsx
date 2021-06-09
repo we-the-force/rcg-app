@@ -102,6 +102,62 @@ export default class extends React.Component {
 				get_URL: () => {
 					return this.state.data.url;
 				},
+				get_RadioURL: () => {
+					return this.state.data.radio_url;
+				},
+				set_RadioURL: (rad_url) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_url: rad_url,
+							},
+						};
+					});
+				},
+				get_RadioIMG: () => {
+					return this.state.data.radio_img;
+				},
+				set_RadioIMG: (rad_img) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_img: rad_img,
+							},
+						};
+					});
+				},
+				get_RadioName: () => {
+					return this.state.data.radio_name;
+				},
+				set_RadioName: (rad_name) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_name: rad_name,
+							},
+						};
+					});
+				},
+				get_RadioPlay: () => {
+					return this.state.data.radio_play_pause;
+				},
+				set_RadioPlay: (rad_play) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_play_pause: rad_play,
+							},
+						};
+					});
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -113,6 +169,10 @@ export default class extends React.Component {
 				articulosRightPanel: [],
 				logo: "",
 				logoDarkMode: "",
+				radio_url: "",
+				radio_name: "",
+				radio_img: "",
+				radio_play_pause: false
 			},
 		};
 	}

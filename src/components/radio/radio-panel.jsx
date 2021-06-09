@@ -18,10 +18,11 @@ import {
 } from 'framework7-react';
 
 export default function RadioPanel(props) {
-    const { estacion, estaciones, programacion, table_id } = props;
+    const { estacion, estaciones, programacion, table_id, isOut } = props;
     const { descripcion, source_url, nombre, logo } = estacion[0];
     const [sourceURL, setSourceURL] = useState(source_url);
     const [playPause, setPlayPause] = useState(false);
+    const [playWasTouched, setPlayWasTouched] = useState(false);
     const [volume, setVolume] = useState(0.8);
     const [muted, setMuted] = useState(false);
     const url = f7.methods.get_URL();
@@ -37,7 +38,20 @@ export default function RadioPanel(props) {
         viernes: []
     }
 
+    useEffect(() => {
+		f7ready((f7) => {
+            if(playWasTouched){
+                f7.methods.set_RadioURL(sourceURL);
+                f7.methods.set_RadioName(nombre);
+                f7.methods.set_RadioIMG(DB_url + logo.url);
+                f7.methods.set_RadioPlay(playPause);
+            }
+		});
+	}, [isOut]);
+
+
     const handlePlayPause = () => {
+        setPlayWasTouched(true);
         setSourceURL(source_url);
         setPlayPause(!playPause);
     }
@@ -58,7 +72,6 @@ export default function RadioPanel(props) {
     const handlePIP = async (e) => {
 		e.preventDefault();
 		let player = document.getElementsByClassName("radio-player")[0].firstChild;
-        console.log(ReactPlayer.canEnablePIP(source_url));
 		await player.requestPictureInPicture();
 	};
 
