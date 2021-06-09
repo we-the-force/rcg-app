@@ -25,16 +25,15 @@ export default function TVPanel(props) {
 				miercoles: [],
 				sabado: [],
 				viernes: [],
-		  };
+		};
 
 	const handlePlayPause = () => {
 		setPlayPause(!playPause);
 	};
 
-	const handlePIP = async (e) => {
+	const handlePIP = (e) => {
 		e.preventDefault();
-		let player = document.getElementsByClassName("player")[0];
-		await player.requestPictureInPicture();
+		console.log(ReactPlayer.canEnablePIP(canal[0].source_url));
 	};
 
 	const setProgramaActual = (x, y) => {
