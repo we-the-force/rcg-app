@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import ReactPlayer from 'react-player';
 import { f7, f7ready } from "framework7-react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
