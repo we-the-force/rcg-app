@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Block } from "framework7-react";
+import { Card, Block, Link } from "framework7-react";
 import uane from "../../../static/imgs/uane.gif"
 
 export default class adsTop extends Component {
