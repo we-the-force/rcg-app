@@ -218,7 +218,6 @@ export default class extends React.Component {
 				query: AppQuery,
 			})
 			.then((res) => {
-				console.log(res.data);
 				this.setState((prevState) => {
 					return {
 						...prevState,
