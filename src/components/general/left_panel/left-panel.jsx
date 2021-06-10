@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import ReactPlayer from 'react-player';
+import { f7, f7ready } from "framework7-react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
@@ -12,6 +14,19 @@ import { Card, CardHeader, List, ListItem, Block, Link, Icon } from "framework7-
 
 export default function LeftPanel(props) {
 	let { tv_channels, radio_stations } = props;
+	let radio_name = f7.methods.get_RadioName();
+	let radio_url = f7.methods.get_RadioURL();
+	let radio_img = f7.methods.get_RadioIMG();
+	let radio_play = f7.methods.get_RadioPlay();
+
+	const [sourceURL, setSourceURL] = useState(radio_url);
+	const [playPause, setPlayPause] = useState(radio_play);
+
+	const handlePlayPause = () => {
+        setSourceURL(radio_url);
+        setPlayPause(!playPause);
+    }
+
 	return (
 		<Block className="left_panel_cont">
 			<Card className="left_pan_card envivo">
@@ -41,6 +56,15 @@ export default function LeftPanel(props) {
 					Radio
 				</CardHeader>
 				<List>
+					{radio_url != "" && (
+						<ListItem title={radio_name}>
+							<ReactPlayer url={sourceURL} playing={playPause} volume={null} muted={false} className="display-none radio-left-player"/>
+							<img slot="media" src={radio_img} width="44" />
+							<a onClick={handlePlayPause}>
+								<Icon material={playPause ? "pause" : "play_arrow"} /> {/* pause */}
+							</a>
+						</ListItem>
+					)}
 					{radio_stations.map((station, key) => {
 						return (
 							<ListItem key={key} link={`/radio/${station.url}`}>
@@ -84,14 +108,20 @@ export default function LeftPanel(props) {
 					<ListItem link="/contacto">Contacto</ListItem>
 				</List>
 			</Card>
-			<Block className="theme" onClick={() => {
-				let html = document.getElementsByTagName("html")[0];
-				html.classList.toggle("theme-dark");
-			}}>
-				<div className="back" onClick={() => {
+			<Block
+				className="theme"
+				onClick={() => {
 					let html = document.getElementsByTagName("html")[0];
 					html.classList.toggle("theme-dark");
-				}}></div>
+				}}
+			>
+				<div
+					className="back"
+					onClick={() => {
+						let html = document.getElementsByTagName("html")[0];
+						html.classList.toggle("theme-dark");
+					}}
+				></div>
 				<a
 					onClick={() => {
 						let html = document.getElementsByTagName("html")[0];
