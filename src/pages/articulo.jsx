@@ -73,6 +73,7 @@ export default function Articulo(props) {
 	let article;
 
 	const ogurl = f7.methods.get_URL();
+	let urlThing;
 	let result;
 	let otherTags = /(<([^>]+)>)/gi;
 
