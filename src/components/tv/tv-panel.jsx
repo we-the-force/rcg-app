@@ -114,7 +114,7 @@ export default function TVPanel(props) {
 						{/* Aqui va el stream */}
 						<a onClick={handlePlayPause}>
 							<Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon>
-							<ReactPlayer className="player" url={canal[0].source_url} playing={playPause} pip={true}/>
+							<ReactPlayer className="player" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false}/>
 						</a>
 					</Block>
 					<a onClick={(e) => {handlePIP(e)}} class="pip_Btn">

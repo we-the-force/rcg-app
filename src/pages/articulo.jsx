@@ -58,21 +58,30 @@ export default function Articulo(props) {
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
 
-let rightPanel = f7.methods.getArticulosRightPanel();
-let leftPanelTV = f7.methods.getTV();
-let leftPanelRadio = f7.methods.getRadio();
+	let rightPanel = f7.methods.getArticulosRightPanel();
+	let leftPanelTV = f7.methods.getTV();
+	let leftPanelRadio = f7.methods.getRadio();
 
-const logo = f7.methods.getLogo();
-const logoDark = f7.methods.getLogoDarkMode();
-const DB_url = f7.methods.get_URL_DB();
-let article;
+	const logo = f7.methods.getLogo();
+	const logoDark = f7.methods.getLogoDarkMode();
+	const DB_url = f7.methods.get_URL_DB();
 
-const ogurl = f7.methods.get_URL();
-let urlThing;
-let result;
-let otherTags = /(<([^>]+)>)/gi;
-let firstLine;
-let cover;
+	let radio_name = f7.methods.get_RadioName();
+	let radio_url = f7.methods.get_RadioURL();
+	let radio_img = f7.methods.get_RadioIMG();
+
+	let article;
+
+	const ogurl = f7.methods.get_URL();
+	let urlThing;
+	let result;
+	let firstLine;
+	let cover;
+	let otherTags = /(<([^>]+)>)/gi;
+
+	console.log(radio_name);
+	console.log(radio_url);
+	console.log(radio_img);
 
 	const [updateArticulo] = useMutation(UpdateArticulo, {
 		onCompleted: (data) => {},
@@ -95,14 +104,13 @@ let cover;
 		onCompleted: (data) => {
 			setFlag(true);
 			if (data.articulos.length > 0) {
-				console.log(data);
-				article=data.articulos[0];
-				result= formatText(article.description);
+				article = data.articulos[0];
+				result = formatText(article.description);
 				urlThing = ogurl + `/articulo/${article.url}/`;
 				firstLine = result
-				.replace(otherTags, "")
-				.replace(/\n/gi, " ")
-				.match(/^.{0,200}/gi);
+					.replace(otherTags, "")
+					.replace(/\n/gi, " ")
+					.match(/^.{0,200}/gi);
 				cover = article.cover ? DB_url + article.cover.url : IMG;
 				if (data.articulos[0].tags.length > 0) {
 					getRecomendados({
@@ -169,9 +177,6 @@ let cover;
 		}
 	}
 
-	
-
-
 	// let rightPanel = f7.methods.getArticulosRightPanel();
 	// let leftPanelTV = f7.methods.getTV();
 	// let leftPanelRadio = f7.methods.getRadio();
@@ -191,27 +196,29 @@ let cover;
 	// 	.match(/^.{0,200}/gi);
 	// let cover = article.cover ? DB_url + article.cover.url : IMG;
 	return (
-		<Page pageContent={false} name="articulo"
-		// onPageInit={() => {
-		// 	console.log('pageinit articulo');
-		// 	document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
+		<Page
+			pageContent={false}
+			name="articulo"
+			// onPageInit={() => {
+			// 	console.log('pageinit articulo');
+			// 	document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
 
-		// 	document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
-		// 	document.querySelector('meta[property="og:title"]').setAttribute("content", article.Titulo);
-		// 	document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
-		// 	// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
+			// 	document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
+			// 	document.querySelector('meta[property="og:title"]').setAttribute("content", article.Titulo);
+			// 	document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
+			// 	// document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
 
-		// 	document.querySelector('meta[property="twitter:title"]').setAttribute("content", article.Titulo);
-		// 	document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
-		// 	// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
+			// 	document.querySelector('meta[property="twitter:title"]').setAttribute("content", article.Titulo);
+			// 	document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
+			// 	// document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
 
-		// 	document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
-		// 	document.querySelector('meta[name="twitter:title"]').setAttribute("content", article.Titulo);
-		// 	document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
-		// 	// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
+			// 	document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
+			// 	document.querySelector('meta[name="twitter:title"]').setAttribute("content", article.Titulo);
+			// 	document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
+			// 	// document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
 
-		// 	document.title = article.Titulo;;
-		// }}
+			// 	document.title = article.Titulo;;
+			// }}
 		>
 			<PageContent>
 				{/* Top Navbar */}
@@ -225,7 +232,7 @@ let cover;
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

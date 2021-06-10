@@ -28,6 +28,9 @@ export default function Catalogo(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	let radio_name = f7.methods.get_RadioName();
+	let radio_url = f7.methods.get_RadioURL();
+	let radio_img = f7.methods.get_RadioIMG();
 	return (
 		<Page pageContent={false} name="catalogo_espectaculares">
 			<PageContent>
@@ -44,7 +47,7 @@ export default function Catalogo(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan wo_right_pan">

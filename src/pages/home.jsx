@@ -50,6 +50,9 @@ export default function Home(props) {
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
+	let radio_name = f7.methods.get_RadioName();
+	let radio_url = f7.methods.get_RadioURL();
+	let radio_img = f7.methods.get_RadioIMG();
 	return (
 		<Page pageContent={false} name="home">
 			<PageContent>
@@ -70,7 +73,7 @@ export default function Home(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
