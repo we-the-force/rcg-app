@@ -16,19 +16,12 @@ export default function LeftPanel(props) {
 	let { tv_channels, radio_stations } = props;
 
 	const [sourceURL, setSourceURL] = useState("");
-	const [playPause, setPlayPause] = useState(false);
+	const [playPause, setPlayPause] = useState(true);
 
 	let radio_name = f7.methods.get_RadioName();
 	let radio_url = f7.methods.get_RadioURL();
 	let radio_img = f7.methods.get_RadioIMG();
 	let radio_play = f7.methods.get_RadioPlay();
-
-	useEffect(() => {
-		f7ready((f7) => {
-			setSourceURL(radio_url);
-			setPlayPause(radio_play);
-		});
-	}, []);
 
 	const handlePlayPause = () => {
         setSourceURL(radio_url);
