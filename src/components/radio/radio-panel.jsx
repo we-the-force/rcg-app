@@ -54,29 +54,28 @@ export default function RadioPanel(props) {
 
 
     const handlePlayPause = () => {
-        setPlayWasTouched(true);
-        setSourceURL(source_url);
-        setPlayPause(!playPause);
+        f7.methods.set_RadioPlay(!f7.methods.get_RadioPlay());
+        // setPlayWasTouched(true);
+        // setSourceURL(source_url);
+        // setPlayPause(!playPause);
     }
 
     const handleStop = () => {
-        setPlayPause(false);
-        setSourceURL(null);
+        f7.methods.set_RadioPlay(false);
+        f7.methods.set_RadioURL("");
+        // setPlayPause(false);
+        // setSourceURL(null);
     }
 
     const handleToggleMuted = () => {
-        setMuted(!muted);
+        f7.methods.set_RadioMuted(!f7.methods.get_RadioMuted());
+        // setMuted(!muted);
     }
 
     const handleVolumeChange = e => {
-        setVolume(parseFloat(e));
+        f7.methods.set_RadioVolume(parseFloat(e));
+        // setVolume(parseFloat(e));
     }
-
-    const handlePIP = async (e) => {
-		e.preventDefault();
-		let player = document.getElementsByClassName("radio-player")[0].firstChild;
-		await player.requestPictureInPicture();
-	};
 
     return (
         <Block className="radio_panel center_panel">
@@ -104,14 +103,6 @@ export default function RadioPanel(props) {
                 </Block>
                 {/* bloque de radio*/}
                 <Block className="radio-wrapper">
-                    <ReactPlayer
-                        url={sourceURL}
-                        playing={playPause}
-                        volume={volume}
-                        muted={muted}
-                        className="display-none radio-player"
-                        pip={true}
-                    />
                     <Block className="radio-ui-mobile">
                         <Block className="logo-radio">
                             <img src={DB_url + logo.url} alt="" />
@@ -156,9 +147,6 @@ export default function RadioPanel(props) {
                                     value={volume}
                                     onRangeChange={handleVolumeChange}
                                 ></Range>
-                                <a onClick={(e) => {handlePIP(e)}}>
-                                    <Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
-                                </a>
                             </Block>
                         </Block>
                         {/* <Block className="logo-RCG">

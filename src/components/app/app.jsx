@@ -1,4 +1,5 @@
 import React from "react";
+import ReactPlayer from 'react-player';
 import { Device } from "framework7/framework7-lite.esm.bundle.js";
 import { App, View } from "framework7-react";
 import cordovaApp from "../../js/cordova-app";
@@ -144,6 +145,48 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_RadioPlay: () => {
+					return this.state.data.radio_play;
+				},
+				set_RadioPlay: (radio_play) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_play: radio_play,
+							},
+						};
+					});
+				},
+				get_RadioVolume: () => {
+					return this.state.data.radio_volume;
+				},
+				set_RadioVolume: (radio_volume) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_volume: radio_volume,
+							},
+						};
+					});
+				},
+				get_RadioMuted: () => {
+					return this.state.data.radio_muted;
+				},
+				set_RadioMuted: (radio_muted) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_muted: radio_muted,
+							},
+						};
+					});
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -158,6 +201,9 @@ export default class extends React.Component {
 				radio_url: "",
 				radio_name: "",
 				radio_img: "",
+				radio_play: false,
+				radio_volume: 0.8,
+				radio_muted: false,
 			},
 		};
 	}
@@ -167,6 +213,13 @@ export default class extends React.Component {
 			<ApolloProvider client={client}>
 				<HelmetProvider context={helmetContext}>
 					<App params={this.state}>
+						<ReactPlayer
+							url={this.state.data.radio_url}
+							playing={this.state.data.radio_play}
+							volume={this.state.data.radio_volume}
+							muted={this.state.data.radio_muted}
+							className="display-none radio-player"
+						/>
 						{/* <Helmet>
 							<meta property="og:site_name" content="RCG" />
 							<meta property="og:type" content="website" />
