@@ -14,6 +14,7 @@ import { Card, CardHeader, List, ListItem, Block, Link, Icon } from "framework7-
 
 export default function LeftPanel(props) {
 	let { tv_channels, radio_stations } = props;
+
 	const [sourceURL, setSourceURL] = useState("");
 	const [playPause, setPlayPause] = useState(false);
 
@@ -22,16 +23,17 @@ export default function LeftPanel(props) {
 	let radio_img = f7.methods.get_RadioIMG();
 	let radio_play = f7.methods.get_RadioPlay();
 
-	setPlayPause(radio_play);
-	setSourceURL(radio_url);
+	useEffect(() => {
+		f7ready((f7) => {
+			setSourceURL(radio_url);
+			setPlayPause(radio_play);
+		});
+	}, []);
 
 	const handlePlayPause = () => {
         setSourceURL(radio_url);
         setPlayPause(!playPause);
     }
-
-	console.log(playPause);
-	console.log(sourceURL);
 
 	return (
 		<Block className="left_panel_cont">
