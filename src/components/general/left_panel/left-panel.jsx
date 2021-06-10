@@ -35,6 +35,9 @@ export default function LeftPanel(props) {
         setPlayPause(!playPause);
     }
 
+	console.log(sourceURL);
+	console.log(playPause);
+
 	return (
 		<Block className="left_panel_cont">
 			<Card className="left_pan_card envivo">
