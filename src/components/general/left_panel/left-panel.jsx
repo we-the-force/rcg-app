@@ -28,6 +28,8 @@ export default function LeftPanel(props) {
     }
 
 	useEffect(() => {
+		console.log("url "+radio_url);
+		setSourceURL(radio_url);
 		setPlayPause(true);
 	}, []);
 
