@@ -17,18 +17,15 @@ export default function LeftPanel(props) {
 	let radio_name = f7.methods.get_RadioName();
 	let radio_url = f7.methods.get_RadioURL();
 	let radio_img = f7.methods.get_RadioIMG();
-	let radio_play = f7.methods.get_RadioPlay();
+	// let radio_play = f7.methods.get_RadioPlay();
 
 	const [sourceURL, setSourceURL] = useState(radio_url);
-	const [playPause, setPlayPause] = useState(radio_play);
+	const [playPause, setPlayPause] = useState(true);
 
 	const handlePlayPause = () => {
         setSourceURL(radio_url);
         setPlayPause(!playPause);
     }
-
-	console.log(sourceURL);
-	console.log(playPause);
 
 	return (
 		<Block className="left_panel_cont">
