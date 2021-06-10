@@ -75,6 +75,8 @@ export default function Articulo(props) {
 	const ogurl = f7.methods.get_URL();
 	let urlThing;
 	let result;
+	let firstLine;
+	let cover;
 	let otherTags = /(<([^>]+)>)/gi;
 
 	console.log(radio_name);
