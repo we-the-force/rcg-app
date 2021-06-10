@@ -76,7 +76,6 @@ export default class ArticuloPanel extends Component {
 			.replace(otherTags, "")
 			.replace(/\n/gi, " ")
 			.match(/^.{0,200}/gi);
-		console.log(articulo.cover.url);
 		// let cover = articulo.cover ? DB_url + articulo.cover.url : 'IMG';
 		let cover = DB_url + articulo.cover.url;
 		// FB.XFBML.parse();
@@ -111,7 +110,6 @@ export default class ArticuloPanel extends Component {
 	render() {
 		
 		let { articulo, recomendados } = this.props;
-		console.log(articulo);
 		const DB_url = f7.methods.get_URL_DB();
 		const url = f7.methods.get_URL();
 		let urlThing = url + `/articulo/${articulo.url}/`;

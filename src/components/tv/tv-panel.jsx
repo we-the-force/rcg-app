@@ -117,7 +117,7 @@ export default function TVPanel(props) {
 							<ReactPlayer className="player" url={canal[0].source_url} playing={playPause} pip={true}/>
 						</a>
 					</Block>
-					<a onClick={(e) => {handlePIP(e)}}>
+					<a onClick={(e) => {handlePIP(e)}} class="pip_Btn">
 						<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
 					</a>
 					<p className="programa-desc">{descPrograma}</p>

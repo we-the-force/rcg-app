@@ -18,9 +18,8 @@ export default function LeftPanelMobile(props) {
         ]
     } else {
         navLinks = categorias.length > 0 ? categorias.map((val, key) => {
-            console.log(val);
-            console.log(categoria);
-            let current = categoria === val.nombre ? 'current' : '';
+            let name = val.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            let current = categoria === name ? 'current' : '';
             return (
                 <ListItem link={`/categoria/${val.url}`} view="#main-view" key={key} className={`uppercase ${current}`} panelClose>{val.nombre}</ListItem>
             )
