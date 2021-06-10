@@ -51,7 +51,8 @@ app.get("/articulo/:url", function (request, response) {
 			articuloDesc = newChunk.data.articulos[0].description.replace(/(<([^>]+)>)/gi, "").substr(0,50);
 			articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
 		});
-		res.on("end", () =>
+		res.on("end", () => {
+			console.log("No more data in response.");
 			fs.readFile(filePath, "utf8", function (err, data) {
 				if (err) {
 					return console.log(err);
