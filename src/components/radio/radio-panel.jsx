@@ -39,7 +39,7 @@ export default function RadioPanel(props) {
     }
 
     const handlePlayPause = () => {
-        this.props.updateInfo({
+        props.updateInfo({
             sourceURL: sourceURL,
             playPause: playPause,
             nombre: nombre,
