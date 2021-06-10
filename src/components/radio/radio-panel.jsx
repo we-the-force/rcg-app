@@ -45,6 +45,9 @@ export default function RadioPanel(props) {
                 f7.methods.set_RadioName(nombre);
                 f7.methods.set_RadioIMG(DB_url + logo.url);
             }
+            if(playWasTouched && !playPause){
+                f7.methods.set_RadioURL("");
+            }
 		});
 	}, [isOut]);
 
