@@ -41,11 +41,16 @@ export default function RadioPanel(props) {
 
     useEffect(() => {
 		f7ready((f7) => {
-            if(playWasTouched){
+            if(playWasTouched && playPause){
                 f7.methods.set_RadioURL(sourceURL);
                 f7.methods.set_RadioName(nombre);
                 f7.methods.set_RadioIMG(DB_url + logo.url);
                 f7.methods.set_RadioPlay(playPause);
+            }else{
+                f7.methods.set_RadioURL("");
+                f7.methods.set_RadioName("");
+                f7.methods.set_RadioIMG("");
+                f7.methods.set_RadioPlay(false);
             }
 		});
 	}, [isOut]);
