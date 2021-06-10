@@ -3,6 +3,8 @@ import IMG from '@/static/imgs/grayback.jpg';
 import TestImage from '@/static/imgs/grayback.jpg';
 import moment from 'moment';
 import marked from 'marked';
+import parse from 'html-react-parser';
+
 import { f7, f7ready } from 'framework7-react';
 import {
     Block,
@@ -20,10 +22,10 @@ export default function NewsRelevantes(props) {
     let DB_url = f7.methods.get_URL_DB();
     let imagen, categoria, content, Titulo, fecha, url;
     if (noticia) {
-        let newDesc = marked(noticia.description);
+        let newDesc = parse(noticia.description);
         let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
         let otherTags = /(<([^>]+)>)/gi;
-        newDesc = newDesc.replace(titlesRegEx, '').replace(otherTags, '').replace(/\n/gi, ' ').match(/^.{0,300}/gi);
+        // newDesc = newDesc.replace(titlesRegEx, '').replace(otherTags, '').replace(/\n/gi, ' ').match(/^.{0,300}/gi);
         imagen = noticia.cover ? DB_url + noticia.cover.url : IMG;
         categoria = noticia.categoria ? noticia.categoria.nombre : "";
         content = newDesc;
