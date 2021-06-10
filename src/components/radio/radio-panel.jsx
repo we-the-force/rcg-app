@@ -50,7 +50,7 @@ export default function RadioPanel(props) {
                 f7.methods.set_RadioURL("");
             }
 		});
-	}, [isOut]);
+	}, []);
 
 
     const handlePlayPause = () => {
