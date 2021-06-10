@@ -1,7 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import IMG from '@/static/imgs/grayback.jpg';
 import moment from "moment";
-import marked from "marked";
+// import marked from "marked";
+// import parse from 'html-react-parser';
+
 import { Block, Link, BlockFooter, f7 } from "framework7-react";
 
 // ano natsu no, kimi ga atama ni iru
@@ -9,14 +11,14 @@ export default function NewsHome(props) {
 	moment.locale("es");
 	const { className, articulo } = props;
 	let DB_url = f7.methods.get_URL_DB();
-	let newDesc = marked(articulo.description);
+	// let newDesc = marked(articulo.description);
 	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
 	let otherTags = /(<([^>]+)>)/gi;
-	newDesc = newDesc
-		.replace(titlesRegEx, "")
-		.replace(otherTags, "")
-		.replace(/\n/gi, " ")
-		.match(/^.{0,300}/gi);
+	// newDesc = newDesc
+	// 	.replace(titlesRegEx, "")
+	// 	.replace(otherTags, "")
+	// 	.replace(/\n/gi, " ")
+	// 	.match(/^.{0,300}/gi);
 	let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 	return (
 		<Block className={`NewsHome_cont ${className}`}>
