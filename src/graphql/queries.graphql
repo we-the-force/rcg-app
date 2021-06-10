@@ -72,6 +72,7 @@ query AutorPage($url: String) {
 	autor: autors(where: { url: $url }) {
 		id
 		nombre
+		descripcion
 		img {
 			url
 		}
