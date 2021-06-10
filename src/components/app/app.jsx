@@ -144,20 +144,6 @@ export default class extends React.Component {
 						};
 					});
 				},
-				get_RadioPlay: () => {
-					return this.state.data.radio_play_pause;
-				},
-				set_RadioPlay: (rad_play) => {
-					this.setState((prevState) => {
-						return {
-							...prevState,
-							data: {
-								...prevState.data,
-								radio_play_pause: rad_play,
-							},
-						};
-					});
-				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -172,14 +158,11 @@ export default class extends React.Component {
 				radio_url: "",
 				radio_name: "",
 				radio_img: "",
-				radio_play_pause: false
 			},
 		};
 	}
 
 	render() {
-		const { helmet } = helmetContext;
-
 		return (
 			<ApolloProvider client={client}>
 				<HelmetProvider context={helmetContext}>
