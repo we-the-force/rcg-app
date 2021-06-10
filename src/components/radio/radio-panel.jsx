@@ -39,10 +39,12 @@ export default function RadioPanel(props) {
     }
 
     const handlePlayPause = () => {
-        f7.methods.set_RadioPlay(playPause);
-        f7.methods.set_RadioURL(sourceURL);
-        f7.methods.set_RadioName(nombre);
-        f7.methods.set_RadioIMG(DB_url + logo.url);
+        this.props.updateInfo({
+            sourceURL: sourceURL,
+            playPause: playPause,
+            nombre: nombre,
+            image: DB_url + logo.url
+        });
         setSourceURL(source_url);
         setPlayPause(!playPause);
     }
