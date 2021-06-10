@@ -19,12 +19,8 @@ import { Page, Block, PageContent } from "framework7-react";
 export default function Radio(props) {
 	let { name } = props;
 	let startOfWeek = moment().startOf("isoWeek").format("YYYY-MM-DD");
-	const [sourceURL, setSourceURL] = useState("");
-    const [playPause, setPlayPause] = useState(false);
-	const [nombre, setNombre] = useState("");
-    const [image, setImage] = useState("");
 
-    // const [isOut, setIsOut] = useState(false);
+    const [isOut, setIsOut] = useState(false);
 
 	const { loading, error, data } = useQuery(SchedulePageRadio, {
 		variables: { station: name, date: startOfWeek, radio_tv: false },
@@ -39,18 +35,8 @@ export default function Radio(props) {
 	const removePlayer = () => {
 		let player = document.getElementsByClassName("radio-player")[0];
 		player.remove();
-
-        f7.methods.set_RadioPlay(playPause);
-        f7.methods.set_RadioURL(sourceURL);
-        f7.methods.set_RadioName(nombre);
-        f7.methods.set_RadioIMG(image);
-	}
-
-	const updateInfo = (obj) => {
-		setSourceURL(obj.sourceURL)
-		setPlayPause(obj.playPause);
-		setNombre(obj.nombre);
-		setImage(obj.image);
+        
+		setIsOut(true);
 	}
 
 	let rightPanel = f7.methods.getArticulosRightPanel();
@@ -70,7 +56,7 @@ export default function Radio(props) {
 		let { radio, programacion } = data;
 		centerPanel =
 			radio.length > 0 ? (
-				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} updateInfo={(obj)=>{updateInfo(obj)}}/>
+				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} isOut={isOut}/>
 			) : (
 				<ErrorPanel error="No pudimos encontrar la estación que buscas" />
 			);
