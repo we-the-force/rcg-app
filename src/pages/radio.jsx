@@ -21,6 +21,7 @@ export default function Radio(props) {
 	let startOfWeek = moment().startOf("isoWeek").format("YYYY-MM-DD");
 
     const [isOut, setIsOut] = useState(false);
+	const [playPause, setPlayPause] = useState(false);
 
 	const { loading, error, data } = useQuery(SchedulePageRadio, {
 		variables: { station: name, date: startOfWeek, radio_tv: false },
@@ -36,6 +37,7 @@ export default function Radio(props) {
 		let player = document.getElementsByClassName("radio-player")[0];
 		player.remove();
         
+		f7.methods.set_RadioIMG(playPause);
 		setIsOut(true);
 	}
 
@@ -56,7 +58,7 @@ export default function Radio(props) {
 		let { radio, programacion } = data;
 		centerPanel =
 			radio.length > 0 ? (
-				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} isOut={isOut}/>
+				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} isOut={isOut} playPause={playPause} setPlayPause={setPlayPause}/>
 			) : (
 				<ErrorPanel error="No pudimos encontrar la estación que buscas" />
 			);

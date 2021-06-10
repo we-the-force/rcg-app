@@ -23,7 +23,6 @@ export default function RadioPanel(props) {
     const { descripcion, source_url, nombre, logo } = estacion[0];
     const [playWasTouched, setPlayWasTouched] = useState(false);
     const [sourceURL, setSourceURL] = useState(source_url);
-    const [playPause, setPlayPause] = useState(false);
     const [volume, setVolume] = useState(0.8);
     const [muted, setMuted] = useState(false);
     const url = f7.methods.get_URL();
@@ -45,12 +44,6 @@ export default function RadioPanel(props) {
                 f7.methods.set_RadioURL(sourceURL);
                 f7.methods.set_RadioName(nombre);
                 f7.methods.set_RadioIMG(DB_url + logo.url);
-                f7.methods.set_RadioPlay(playPause);
-            }else{
-                f7.methods.set_RadioURL("");
-                f7.methods.set_RadioName("");
-                f7.methods.set_RadioIMG("");
-                f7.methods.set_RadioPlay(false);
             }
 		});
 	}, [isOut]);
