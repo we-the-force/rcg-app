@@ -62,7 +62,7 @@ export default function LeftPanel(props) {
 				<List>
 					{radio_url != "" && (
 						<ListItem title={radio_name}>
-							{/* <ReactPlayer url={sourceURL} playing={playPause} volume={null} muted={false} className="display-none radio-left-player"/> */}
+							<ReactPlayer url={sourceURL} playing={playPause} volume={null} muted={false} className="display-none radio-left-player"/>
 							<img slot="media" src={radio_img} width="44" />
 							<a onClick={handlePlayPause}>
 								<Icon material={playPause ? "pause" : "play_arrow"} /> {/* pause */}
