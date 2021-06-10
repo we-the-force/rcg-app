@@ -19,7 +19,7 @@ import {
 } from 'framework7-react';
 
 export default function RadioPanel(props) {
-    const { estacion, estaciones, programacion, table_id, isOut } = props;
+    const { estacion, estaciones, programacion, table_id, isOut, playPause, setPlayPause } = props;
     const { descripcion, source_url, nombre, logo } = estacion[0];
     const [playWasTouched, setPlayWasTouched] = useState(false);
     const [sourceURL, setSourceURL] = useState(source_url);
