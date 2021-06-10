@@ -26,6 +26,7 @@ export default class AutorPanel extends Component {
 						<Block className="name_info">
 							<p className="name">{autor[0].nombre}</p>
 							<p className="noticias">{articulosNum} Noticias</p>
+							<p className="descripcion">{autor[0].descripcion}</p>
 						</Block>
 						<Block className="redes_cont">
 							<a href={autor[0].facebook_link} className={`external${autor[0].facebook_link == null ? " gray" : ""}`} target="_blank">
