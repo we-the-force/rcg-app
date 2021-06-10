@@ -13,10 +13,10 @@ import MICDark from "@/static/icons/microphone_dark.png";
 import { Card, CardHeader, List, ListItem, Block, Link, Icon } from "framework7-react";
 
 export default function LeftPanel(props) {
-	let { tv_channels, radio_stations } = props;
-	let radio_name = f7.methods.get_RadioName();
-	let radio_url = f7.methods.get_RadioURL();
-	let radio_img = f7.methods.get_RadioIMG();
+	let { tv_channels, radio_stations, radio_name, radio_img, radio_url } = props;
+	// let radio_name = f7.methods.get_RadioName();
+	// let radio_url = f7.methods.get_RadioURL();
+	// let radio_img = f7.methods.get_RadioIMG();
 	// let radio_play = f7.methods.get_RadioPlay();
 
 	const [sourceURL, setSourceURL] = useState(radio_url);
@@ -28,7 +28,6 @@ export default function LeftPanel(props) {
     }
 
 	useEffect(() => {
-		console.log("url "+radio_url);
 		setSourceURL(radio_url);
 		setPlayPause(true);
 	}, []);

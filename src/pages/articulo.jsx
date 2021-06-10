@@ -104,7 +104,6 @@ export default function Articulo(props) {
 		onCompleted: (data) => {
 			setFlag(true);
 			if (data.articulos.length > 0) {
-				console.log(data);
 				article = data.articulos[0];
 				result = formatText(article.description);
 				urlThing = ogurl + `/articulo/${article.url}/`;
@@ -233,7 +232,7 @@ export default function Articulo(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
