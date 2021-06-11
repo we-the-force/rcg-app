@@ -13,9 +13,18 @@ export default function Masthead(props) {
 	let DB_url = f7.methods.get_URL_DB();
 	/* banner contiene los articulos del banner */
 	/* relevante contiene los más relevantes en caso de que no se complete con el banner */
+
+	let banners = banner.filter((val) => {
+		if(val.articulo == null){
+			return false;
+		}
+		return true;
+	});
+
 	/* accedo solo a los valores que necesito */
-	let banners = banner.map((val) => {
+	banners = banners.map((val) => {
 		return {
+			
 			id: val.articulo.id,
 			cover: val.articulo.cover,
 			categoria: val.articulo.categoria,
