@@ -60,7 +60,7 @@ export default function RadioPanel(props) {
         // setPlayWasTouched(true);
         // setSourceURL(source_url);
         setPlayPause(!playPause);
-        f7.methods.set_RadioPlay(playPause);
+        f7.methods.set_RadioPlay(!playPause);
     }
 
     const handleStop = () => {
