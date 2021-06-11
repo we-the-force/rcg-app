@@ -233,7 +233,7 @@ export default class extends React.Component {
 							<meta property="twitter:title" content="RCG" />
 							<meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
 						</Helmet> */}
-						<RadioPlayerStatic url={this.state.radio_url} play={this.state.radio_play} volume={this.state.radio_volume} muted={this.state.radio_muted}/>
+						<RadioPlayerStatic url={this.state.data.radio_url} play={this.state.data.radio_play} volume={this.state.data.radio_volume} muted={this.state.data.radio_muted}/>
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>

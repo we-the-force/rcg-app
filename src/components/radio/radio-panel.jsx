@@ -157,9 +157,9 @@ export default function RadioPanel(props) {
                                     value={volume}
                                     onRangeChange={handleVolumeChange}
                                 ></Range>
-                                <a onClick={(e) => {handlePIP(e)}}>
+                                {/* <a onClick={(e) => {handlePIP(e)}}>
                                     <Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
-                                </a>
+                                </a> */}
                             </Block>
                         </Block>
                         {/* <Block className="logo-RCG">
