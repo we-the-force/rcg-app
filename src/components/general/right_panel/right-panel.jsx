@@ -82,13 +82,10 @@ export default function RightPanel(props) {
                 <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" style={{ 
                     width: "200px", 
                     margin: "0 10px" 
-                    }}><img src="https://www.meteored.mx/wimages/foto72cf1120cd059af513a07ff2e59617e6.png"/></Link>
+                    }}><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"/></Link>
                 
                 <br />
-                <img sytle={{
-                    width: "200px",
-                    margin: "0 10px"
-                }} className="bannerSearch" src={bannersearch} alt="" />
+                <img  className="bannerSearch" src={bannersearch} alt="" sytle={{ width: "200px", margin: "0 10px" }}/>
             </Block>
             
             <Block className="right_panel_down">
