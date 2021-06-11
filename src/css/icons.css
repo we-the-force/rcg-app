@@ -19,12 +19,13 @@
     src: url("../fonts/Product-Sans-Regular.ttf");
 }
 
-@font-face {
+
+/* @font-face {
     font-family: "Product Sans";
     font-style: italic;
     font-weight: normal;
     src: url("../fonts/Product-Sans-Italic.ttf");
-}
+} */
 
 @font-face {
     font-family: "Product Sans";
@@ -33,12 +34,13 @@
     src: url("../fonts/Product-Sans-Bold.ttf");
 }
 
-@font-face {
+
+/* @font-face {
     font-family: "Product Sans";
     font-style: italic;
     font-weight: bold;
     src: url("../fonts/Product-Sans-Bold-Italic.ttf");
-}
+} */
 
 
 /* @font-face {
