@@ -52,6 +52,9 @@ export default function RadioPanel(props) {
 	// 	});
 	// }, [isOut]);
 
+    useEffect(() => {
+		f7.methods.set_RadioURL(source_url);
+	});
 
     const handlePlayPause = () => {
         // setPlayWasTouched(true);
