@@ -10,7 +10,7 @@ import { AppQuery } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 
 const helmetContext = {};
 
@@ -107,17 +107,15 @@ export default class extends React.Component {
 					return this.state.data.radio_url;
 				},
 				set_RadioURL: (rad_url) => {
-					if(rad_url != this.state.data.radio_url){
-						this.setState((prevState) => {
-							return {
-								...prevState,
-								data: {
-									...prevState.data,
-									radio_url: rad_url,
-								},
-							};
-						});
-					}
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_url: rad_url,
+							},
+						};
+					});
 				},
 				get_RadioIMG: () => {
 					return this.state.data.radio_img;
@@ -162,7 +160,7 @@ export default class extends React.Component {
 					});
 				},
 				get_RadioMuted: () => {
-					return this.state.data.radio_muted
+					return this.state.data.radio_muted;
 				},
 				set_RadioMuted: (radio_muted) => {
 					this.setState((prevState) => {
@@ -176,7 +174,7 @@ export default class extends React.Component {
 					});
 				},
 				get_RadioPlay: () => {
-					return this.state.data.radio_play
+					return this.state.data.radio_play;
 				},
 				set_RadioPlay: (radio_play) => {
 					this.setState((prevState) => {
@@ -215,27 +213,12 @@ export default class extends React.Component {
 			<ApolloProvider client={client}>
 				<HelmetProvider context={helmetContext}>
 					<App params={this.state}>
-						{/* <Helmet>
-							<meta property="og:site_name" content="RCG" />
-							<meta property="og:type" content="website" />
-							<meta property="og:url" content="https://rcgmedia.mx" />
-							<meta property="og:title" content="RCG" />
-							<meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo." />
-							<meta property="og:image" content="https://www.rcgmedia.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
-							<meta property="og:image:width" content="1200" />
-							<meta property="og:image:height" content="720" />
-
-							<meta name="twitter:card" content="summary_large_image" />
-							<meta name="twitter:creator" content="@RCGoficial" />
-							<meta name="twitter:url" content="https://rcgmedia.mx/" />
-							<meta name="twitter:title" content="RCG" />
-							<meta name="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
-
-							<meta property="twitter:image" content="https://www.rcgmedia.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png" />
-							<meta property="twitter:title" content="RCG" />
-							<meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
-						</Helmet> */}
-						<RadioPlayerStatic url={this.state.data.radio_url} play={this.state.data.radio_play} volume={this.state.data.radio_volume} muted={this.state.data.radio_muted}/>
+						<RadioPlayerStatic
+							url={this.state.data.radio_url}
+							play={this.state.data.radio_play}
+							volume={this.state.data.radio_volume}
+							muted={this.state.data.radio_muted}
+						/>
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>
@@ -265,84 +248,12 @@ export default class extends React.Component {
 					};
 				});
 			});
-		// Notification.requestPermission(function (params) {
-		// 	console.log("n "+params);
-		// });
-		// Notification.requestPermission(res => {
-		// 	console.log("result " + res);
-		// });
 		this.$f7ready((f7) => {
 			// Init cordova APIs (see cordova-app.js)
 			const $ = f7.$;
 			if (Device.cordova) {
 				cordovaApp.init(f7);
 			}
-
-			// var OneSignal = window.OneSignal || [];
-			// OneSignal.push(function () {
-			// 	OneSignal.init({
-			// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-			// 		notifyButton: {
-			// 			enable: true,
-			// 		},
-			// 	});
-			// 	OneSignal.showNativePrompt();
-			// });
-
-			// if ('serviceWorker' in navigator) {
-			// 	navigator.serviceWorker.register('/src/OneSignalSDKWorker.js').then(reg => {
-			// 		reg.addEventListener('updatefound', () => {
-
-			// 			// An updated service worker has appeared in reg.installing!
-			// 			newWorker = reg.installing;
-
-			// 			newWorker.addEventListener('statechange', () => {
-
-			// 				// Has service worker state changed?
-			// 				switch (newWorker.state) {
-			// 					case 'installed':
-
-			// 						// There is a new service worker available, show the notification
-			// 						if (navigator.serviceWorker.controller) {
-			// 							toastWithCallback.open();
-			// 						}
-
-			// 						break;
-			// 				}
-			// 			});
-			// 		});
-
-			// 		/*     swRegistration = reg;
-			// 			Notification.requestPermission();
-			// 			initializeUI(); */
-
-			// 	}).catch(function(err) {
-			// 		// registration failed :(
-			// 		console.log('ServiceWorker registration failed: ', err);
-			// 	});
-
-			// 	let refreshing;
-			// 	// The event listener that is fired when the service worker updates
-			// 	// Here we reload the page
-			// 	navigator.serviceWorker.addEventListener('controllerchange', function() {
-			// 		if (refreshing) return;
-			// 		window.location.reload();
-			// 		refreshing = true;
-			// 	});
-			// }
-
-			// var OneSignal = window.OneSignal || [];
-			// // const OneSignal = window.OneSignal;
-
-			// OneSignal.push(()=> {
-			// 	OneSignal.init({
-			// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-			// 	});
-			// });
-
-			// Notification.requestPermission().then(function(e) {
-			// 	console.log(e);
-			// });
 
 			// Call F7 APIs here
 			window.addEventListener("orientationchange", function (e) {
