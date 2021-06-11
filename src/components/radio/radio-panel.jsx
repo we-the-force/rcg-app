@@ -54,7 +54,7 @@ export default function RadioPanel(props) {
 
     useEffect(() => {
 		f7.methods.set_RadioURL(source_url);
-	});
+	}, []);
 
     const handlePlayPause = () => {
         // setPlayWasTouched(true);
