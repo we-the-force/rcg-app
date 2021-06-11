@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import Masthead from "@/components/home/masthead";
 import LeftPanel from "@/components/general/left_panel/left-panel";
@@ -12,7 +12,7 @@ import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import { f7, f7ready } from "framework7-react";
 import { useQuery } from "@apollo/client";
-import { CategoriasNavbar, HomePage } from "@/graphql/queries.graphql";
+import { HomePage } from "@/graphql/queries.graphql";
 import { Page, Block, PageContent } from "framework7-react";
 
 export default function Home(props) {
@@ -29,10 +29,6 @@ export default function Home(props) {
 		});
 	}, []);
 
-	//if (loading) return 'Loading...';
-	//pagina cargando
-	//if (error) return `Error! ${error.message}`;
-	//error en la pagina
 	let center, mast;
 	if (loading) {
 		center = <LoadingPanel />;
@@ -44,15 +40,9 @@ export default function Home(props) {
 		center = <HomePanel noticias={categorias} relevante={relevante} />;
 		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} />;
 	}
-	//const { banner, categorias, relevante } = data ;
-	//let mast = banner && relevante ? <Masthead banner={banner} relevante={relevante} /> : null;
-	//let center = loading ? <LoadingPanel /> : <HomePanel noticias={categorias} relevante={relevante} />;
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
-	let radio_name = f7.methods.get_RadioName();
-	let radio_url = f7.methods.get_RadioURL();
-	let radio_img = f7.methods.get_RadioIMG();
 	return (
 		<Page pageContent={false} name="home">
 			<PageContent>
@@ -73,7 +63,7 @@ export default function Home(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

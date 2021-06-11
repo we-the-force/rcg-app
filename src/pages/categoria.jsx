@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
 import RightPanel from "@/components/general/right_panel/right-panel";
@@ -9,7 +9,7 @@ import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
-import { useQuery, useLazyQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { CategoriaPage } from "@/graphql/queries.graphql";
 import { f7, f7ready } from "framework7-react";
 import { Page, Block, PageContent, Preloader } from "framework7-react";
@@ -87,9 +87,6 @@ export default function Categoria(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
-	let radio_name = f7.methods.get_RadioName();
-	let radio_url = f7.methods.get_RadioURL();
-	let radio_img = f7.methods.get_RadioIMG();
 	return (
 		<Page pageContent={false} name="categoria">
 			<PageContent
@@ -111,7 +108,7 @@ export default function Categoria(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

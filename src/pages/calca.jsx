@@ -7,8 +7,6 @@ import RightPanelTablet from "@/components/general/right_panel/right-panel-table
 import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
 import CalcasPanel from "@/components/calcas/calcas-panel";
-import LoadingPanel from "@/components/loading/loading-panel";
-import ErrorPanel from "@/components/error-panel";
 import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
 
 export default function Calcas(props) {
@@ -21,9 +19,6 @@ export default function Calcas(props) {
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
-	let radio_name = f7.methods.get_RadioName();
-	let radio_url = f7.methods.get_RadioURL();
-	let radio_img = f7.methods.get_RadioIMG();
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
@@ -42,7 +37,7 @@ export default function Calcas(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

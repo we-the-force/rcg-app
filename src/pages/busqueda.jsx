@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
 import RightPanel from "@/components/general/right_panel/right-panel";
-import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
 import BusquedaPanel from "@/components/busqueda/busqueda-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
@@ -10,9 +9,9 @@ import ErrorPanel from "@/components/error-panel";
 import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import RightPanelTablet from "@/components/general/right_panel/right-panel-tablet";
 import { f7, f7ready } from "framework7-react";
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { BusquedaTag, BusquedaTitulo, BusquedaDesc } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, Card, CardHeader, Preloader } from "framework7-react";
+import { Page, Block, PageContent, Preloader } from "framework7-react";
 
 export default function Busqueda(props) {
 	const values = props.params.trim().toString();
@@ -95,18 +94,6 @@ export default function Busqueda(props) {
 		let done = length === limit;
 		let newType = type + 1;
 
-		//console.log('-----------');
-		//for (let i = 0; i < results.length; i++) {
-		//    for (let j = 0; j < val.length; j++) {
-		//        console.log('++++++++++');
-		//        console.log(results[i].id);
-		//        console.log(val[j].id);
-		//        if (results[i].id === val[j].id) {
-		//            val.splice(j, 1);
-		//        }
-		//    }
-		//}
-
 		setResults(results.concat(val));
 		setData(false);
 		if (underLimit) setLimit(limit - length);
@@ -173,7 +160,7 @@ export default function Busqueda(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan search">

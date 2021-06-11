@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
 import RightPanel from "@/components/general/right_panel/right-panel";
@@ -7,7 +7,6 @@ import RightPanelTablet from "@/components/general/right_panel/right-panel-table
 import RadioPanel from "@/components/radio/radio-panel";
 import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
-import NotFoundPanel from "@/components/not-found-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import { f7, f7ready } from "framework7-react";
@@ -20,8 +19,6 @@ export default function Radio(props) {
 	let { name } = props;
 	let startOfWeek = moment().startOf("isoWeek").format("YYYY-MM-DD");
 
-    const [isOut, setIsOut] = useState(false);
-
 	const { loading, error, data } = useQuery(SchedulePageRadio, {
 		variables: { station: name, date: startOfWeek, radio_tv: false },
 	});
@@ -33,9 +30,8 @@ export default function Radio(props) {
 	}, []);
 
 	const removePlayer = () => {
-		// let player = document.getElementsByClassName("radio-player")[0];
-		// player.remove();
-		// setIsOut(true);
+		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
+
 	}
 
 	let rightPanel = f7.methods.getArticulosRightPanel();
@@ -54,7 +50,7 @@ export default function Radio(props) {
 		let { radio, programacion } = data;
 		centerPanel =
 			radio.length > 0 ? (
-				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} isOut={isOut}/>
+				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name}/>
 			) : (
 				<ErrorPanel error="No pudimos encontrar la estación que buscas" />
 			);
