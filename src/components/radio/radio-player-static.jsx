@@ -8,6 +8,10 @@ import {
 
 export default function RadioPanelStatic(props) {
     const {url, volume, play, muted} = props;
+    console.log(url);
+    console.log(volume);
+    console.log(play);
+    console.log(muted);
     return (
         <Block className="display-none">
             <ReactPlayer
