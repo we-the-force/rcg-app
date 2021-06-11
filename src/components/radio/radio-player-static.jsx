@@ -19,7 +19,7 @@ export default function RadioPanelStatic(props) {
                 playing={play}
                 volume={volume}
                 muted={muted}
-                stopOnUnmount={false}
+                // stopOnUnmount={false}
                 className="display-none radio-player"
             />
         </Block>
