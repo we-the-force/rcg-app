@@ -4,6 +4,7 @@ import { App, View } from "framework7-react";
 import cordovaApp from "../../js/cordova-app";
 import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
+import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import { AppQuery } from "@/graphql/queries.graphql";
 
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
@@ -144,6 +145,48 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_RadioVolume: () => {
+					return this.state.data.radio_volume;
+				},
+				set_RadioVolume: (rad_volume) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_volume: rad_volume,
+							},
+						};
+					});
+				},
+				get_RadioMuted: () => {
+					return this.state.data.radio_muted
+				},
+				set_RadioMuted: (radio_muted) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_muted: radio_muted,
+							},
+						};
+					});
+				},
+				get_RadioPlay: () => {
+					return this.state.data.radio_play
+				},
+				set_RadioPlay: (radio_play) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								radio_play: radio_play,
+							},
+						};
+					});
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -158,6 +201,9 @@ export default class extends React.Component {
 				radio_url: "",
 				radio_name: "",
 				radio_img: "",
+				radio_volume: 0.8,
+				radio_muted: false,
+				radio_play: false,
 			},
 		};
 	}
@@ -187,6 +233,7 @@ export default class extends React.Component {
 							<meta property="twitter:title" content="RCG" />
 							<meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo." />
 						</Helmet> */}
+						<RadioPlayerStatic url={this.state.radio_url} play={this.state.radio_play} volume={this.state.radio_volume} muted={this.state.radio_muted}/>
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>
