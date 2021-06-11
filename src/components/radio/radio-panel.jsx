@@ -52,13 +52,15 @@ export default function RadioPanel(props) {
 	// 	});
 	// }, [isOut]);
 
-    useEffect(() => {
-		f7.methods.set_RadioURL(source_url);
-	}, []);
+    // useEffect(() => {
+	// }, []);
 
     const handlePlayPause = () => {
         // setPlayWasTouched(true);
         // setSourceURL(source_url);
+        if(!playPause == true){
+            f7.methods.set_RadioURL(source_url);
+        }
         setPlayPause(!playPause);
         f7.methods.set_RadioPlay(!playPause);
     }
