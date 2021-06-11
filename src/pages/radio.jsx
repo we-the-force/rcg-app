@@ -33,9 +33,9 @@ export default function Radio(props) {
 	}, []);
 
 	const removePlayer = () => {
-		let player = document.getElementsByClassName("radio-player")[0];
-		player.remove();
-		setIsOut(true);
+		// let player = document.getElementsByClassName("radio-player")[0];
+		// player.remove();
+		// setIsOut(true);
 	}
 
 	let rightPanel = f7.methods.getArticulosRightPanel();

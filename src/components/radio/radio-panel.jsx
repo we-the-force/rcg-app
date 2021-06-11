@@ -39,44 +39,45 @@ export default function RadioPanel(props) {
         viernes: []
     }
 
-    useEffect(() => {
-		f7ready((f7) => {
-            if(playWasTouched && playPause){
-                f7.methods.set_RadioURL(sourceURL);
-                f7.methods.set_RadioName(nombre);
-                f7.methods.set_RadioIMG(DB_url + logo.url);
-            }
-            if(playWasTouched && !playPause){
-                f7.methods.set_RadioURL("");
-            }
-		});
-	}, [isOut]);
+    // useEffect(() => {
+	// 	f7ready((f7) => {
+    //         if(playWasTouched && playPause){
+    //             f7.methods.set_RadioURL(sourceURL);
+    //             f7.methods.set_RadioName(nombre);
+    //             f7.methods.set_RadioIMG(DB_url + logo.url);
+    //         }
+    //         if(playWasTouched && !playPause){
+    //             f7.methods.set_RadioURL("");
+    //         }
+	// 	});
+	// }, [isOut]);
 
+    useEffect(() => {
+		f7.methods.set_RadioURL(source_url);
+	}, []);
 
     const handlePlayPause = () => {
-        setPlayWasTouched(true);
-        setSourceURL(source_url);
+        // setPlayWasTouched(true);
+        // setSourceURL(source_url);
         setPlayPause(!playPause);
+        f7.methods.set_RadioPlay(!playPause);
     }
 
     const handleStop = () => {
         setPlayPause(false);
-        setSourceURL(null);
+        f7.methods.set_RadioPlay(false);
+        // setSourceURL(null);
     }
 
     const handleToggleMuted = () => {
         setMuted(!muted);
+        f7.methods.set_RadioPlay(muted);
     }
 
     const handleVolumeChange = e => {
         setVolume(parseFloat(e));
+        f7.methods.set_RadioVolume(volume);
     }
-
-    const handlePIP = async (e) => {
-		e.preventDefault();
-		let player = document.getElementsByClassName("radio-player")[0].firstChild;
-		await player.requestPictureInPicture();
-	};
 
     return (
         <Block className="radio_panel center_panel">
@@ -104,14 +105,14 @@ export default function RadioPanel(props) {
                 </Block>
                 {/* bloque de radio*/}
                 <Block className="radio-wrapper">
-                    <ReactPlayer
+                    {/* <ReactPlayer
                         url={sourceURL}
                         playing={playPause}
                         volume={volume}
                         muted={muted}
                         className="display-none radio-player"
                         pip={true}
-                    />
+                    /> */}
                     <Block className="radio-ui-mobile">
                         <Block className="logo-radio">
                             <img src={DB_url + logo.url} alt="" />
@@ -156,9 +157,9 @@ export default function RadioPanel(props) {
                                     value={volume}
                                     onRangeChange={handleVolumeChange}
                                 ></Range>
-                                <a onClick={(e) => {handlePIP(e)}}>
+                                {/* <a onClick={(e) => {handlePIP(e)}}>
                                     <Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
-                                </a>
+                                </a> */}
                             </Block>
                         </Block>
                         {/* <Block className="logo-RCG">
