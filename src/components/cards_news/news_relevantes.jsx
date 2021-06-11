@@ -3,6 +3,8 @@ import IMG from '@/static/imgs/grayback.jpg';
 import TestImage from '@/static/imgs/grayback.jpg';
 import moment from 'moment';
 import marked from 'marked';
+// import parse from 'html-react-parser';
+
 import { f7, f7ready } from 'framework7-react';
 import {
     Block,
