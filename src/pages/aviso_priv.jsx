@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
-import RightPanel from "@/components/general/right_panel/right-panel";
 import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
-import RightPanelTablet from "@/components/general/right_panel/right-panel-tablet";
 import AvisoPrivacidadPanel from "@/components/estaticas/aviso-privacidad-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
@@ -38,9 +36,6 @@ export default function AvisoPrivacidad(props) {
 
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
-	let radio_name = f7.methods.get_RadioName();
-	let radio_url = f7.methods.get_RadioURL();
-	let radio_img = f7.methods.get_RadioIMG();
 	return (
 		<Page pageContent={false} name="nosotros">
 			<PageContent>
@@ -56,7 +51,7 @@ export default function AvisoPrivacidad(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan wo_right_pan">

@@ -7,7 +7,6 @@ import RightPanelTablet from "@/components/general/right_panel/right-panel-table
 import AutorPanel from "@/components/autores/autor-panel.jsx";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import NotFoundPanel from "@/components/not-found-panel";
 import Footer from "@/components/general/footer";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { AutorPage, BusquedaAutor } from "@/graphql/queries.graphql";
@@ -71,7 +70,7 @@ export default function Autor(props) {
 						autor: val.key,
 						articulos: val.connection.aggregate.count,
 					};
-			  })
+			})
 			: [];
 
 	let centerPanel;
@@ -111,10 +110,6 @@ export default function Autor(props) {
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
 
-	let radio_name = f7.methods.get_RadioName();
-	let radio_url = f7.methods.get_RadioURL();
-	let radio_img = f7.methods.get_RadioIMG();
-
 	return (
 		<Page pageContent={false} name="autor">
 			<PageContent
@@ -136,7 +131,7 @@ export default function Autor(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radio_url={radio_url} radio_name={radio_name} radio_img={radio_img}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

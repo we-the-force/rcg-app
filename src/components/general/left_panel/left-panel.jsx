@@ -1,6 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
-import ReactPlayer from 'react-player';
-import { f7, f7ready } from "framework7-react";
+import React from "react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
@@ -13,23 +11,23 @@ import MICDark from "@/static/icons/microphone_dark.png";
 import { Card, CardHeader, List, ListItem, Block, Link, Icon } from "framework7-react";
 
 export default function LeftPanel(props) {
-	let { tv_channels, radio_stations, radio_name, radio_img, radio_url } = props;
+	let { tv_channels, radio_stations} = props;
 	// let radio_name = f7.methods.get_RadioName();
 	// let radio_url = f7.methods.get_RadioURL();
 	// let radio_img = f7.methods.get_RadioIMG();
 	// let radio_play = f7.methods.get_RadioPlay();
 
-	const [sourceURL, setSourceURL] = useState(radio_url);
-	const [playPause, setPlayPause] = useState(false);
+	// const [sourceURL, setSourceURL] = useState(radio_url);
+	// const [playPause, setPlayPause] = useState(false);
 
-	const handlePlayPause = () => {
-        setSourceURL(radio_url);
-        setPlayPause(!playPause);
-    }
+	// const handlePlayPause = () => {
+    //     setSourceURL(radio_url);
+    //     setPlayPause(!playPause);
+    // }
 
-	useEffect(() => {
-		setPlayPause(true);
-	}, [radio_url]);
+	// useEffect(() => {
+	// 	setPlayPause(true);
+	// }, [radio_url]);
 
 	return (
 		<Block className="left_panel_cont">
@@ -80,9 +78,7 @@ export default function LeftPanel(props) {
 			</Card>
 			<Card className="left_pan_card pages">
 				<List>
-					{/* <ListItem link="#">Fundación RCG</ListItem> */}
 					<ListItem link="/espectaculares">Espectaculares</ListItem>
-					{/* <ListItem link="/calca">Registra tu calca</ListItem> */}
 				</List>
 			</Card>
 			<Card className="left_pan_card social">
@@ -158,11 +154,6 @@ export default function LeftPanel(props) {
 						SEG
 					</Link>
 				</div>
-				{/* <div className="display-flex justify-content-flex-start align-items-center">
-                    <Link href={false}>OPI 2017</Link>
-                    <Link href={false}>OPI 2018</Link>
-                    <Link href={false}>SEG</Link>
-                </div> */}
 				<p>©2020 RCG</p>
 			</Block>
 		</Block>
