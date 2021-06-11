@@ -53,12 +53,19 @@ export default function RadioPanel(props) {
 	// }, [isOut]);
 
     useEffect(() => {
-		f7.methods.set_RadioURL(source_url);
+        if(f7.methods.get_RadioURL() == source_url){
+            setPlayPause(f7.methods.get_RadioPlay());
+            setMuted(f7.methods.get_RadioMuted());
+            setVolume(f7.methods.get_RadioVolume());
+        }
 	}, []);
 
     const handlePlayPause = () => {
         // setPlayWasTouched(true);
         // setSourceURL(source_url);
+        if(!playPause == true){
+            f7.methods.set_RadioURL(source_url);
+        }
         setPlayPause(!playPause);
         f7.methods.set_RadioPlay(!playPause);
     }
@@ -71,7 +78,7 @@ export default function RadioPanel(props) {
 
     const handleToggleMuted = () => {
         setMuted(!muted);
-        f7.methods.set_RadioPlay(muted);
+        f7.methods.set_RadioMuted(muted);
     }
 
     const handleVolumeChange = e => {

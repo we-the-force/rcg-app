@@ -107,15 +107,17 @@ export default class extends React.Component {
 					return this.state.data.radio_url;
 				},
 				set_RadioURL: (rad_url) => {
-					this.setState((prevState) => {
-						return {
-							...prevState,
-							data: {
-								...prevState.data,
-								radio_url: rad_url,
-							},
-						};
-					});
+					if(rad_url != this.state.data.radio_url){
+						this.setState((prevState) => {
+							return {
+								...prevState,
+								data: {
+									...prevState.data,
+									radio_url: rad_url,
+								},
+							};
+						});
+					}
 				},
 				get_RadioIMG: () => {
 					return this.state.data.radio_img;
