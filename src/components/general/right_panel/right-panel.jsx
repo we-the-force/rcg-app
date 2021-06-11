@@ -31,7 +31,7 @@ export default function RightPanel(props) {
     if (newsInfo != undefined) {
         cards = (
             <Card className="right_panel_down_card destacado">
-                <CardHeader>Mas Visto</CardHeader>
+                <CardHeader>Lo Más Visto</CardHeader>
                 {
                     newsInfo.map((articulo, i) => {
                         return (
@@ -60,7 +60,7 @@ export default function RightPanel(props) {
     } else {
         cards = (
             <Card className="right_panel_down_card destacado">
-                <CardHeader>Mas Visto</CardHeader>
+                <CardHeader>Lo Más Visto</CardHeader>
                 <Block className={"dest-item"}>
                     <p>Not found</p>
                 </Block>
@@ -79,10 +79,16 @@ export default function RightPanel(props) {
                 </Block>
                 {/* <AdsSearch/> */}
                 <br />
-                <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank"><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"/></Link>
+                <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" style={{ 
+                    width: "200px", 
+                    margin: "0 10px" 
+                    }}><img src="https://www.meteored.mx/wimages/foto72cf1120cd059af513a07ff2e59617e6.png"/></Link>
                 
                 <br />
-                <img className="bannerSearch" src={bannersearch} alt="" />
+                <img sytle={{
+                    width: "200px",
+                    margin: "0 10px"
+                }} className="bannerSearch" src={bannersearch} alt="" />
             </Block>
             
             <Block className="right_panel_down">
