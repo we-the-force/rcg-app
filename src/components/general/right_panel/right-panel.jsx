@@ -9,6 +9,7 @@ import {
     Card,
     CardHeader,
     List,
+    Link,
     ListItem,
     f7
 } from 'framework7-react';
@@ -78,7 +79,8 @@ export default function RightPanel(props) {
                 </Block>
                 {/* <AdsSearch/> */}
                 <br />
-                <a target="_blank" href="https://hotelmix.es/weather/saltillo-5498"><img src="https://w.bookcdn.com/weather/picture/1_5498_1_4_137AE9_160_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=582&anc_id=33376"  alt="booked.net"/></a>
+                <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank"><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"/></Link>
+                
                 <br />
                 <img className="bannerSearch" src={bannersearch} alt="" />
             </Block>
