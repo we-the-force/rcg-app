@@ -10,7 +10,7 @@ import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
-import { Popup, Block, Link, List, ListItem, f7 } from "framework7-react";
+import { Popup, Block, Link, List, ListItem, Icon, f7 } from "framework7-react";
 
 export default function LeftPanelTablet(props) {
 	let { tv_channels, radio_stations } = props;
