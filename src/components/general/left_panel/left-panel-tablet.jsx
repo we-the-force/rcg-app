@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TVLight from "@/static/icons/tv_light.png";
 import services from "@/static/icons/servicios.png";
 import radio from "@/static/icons/microphone.png";
@@ -10,17 +10,32 @@ import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
-import { Card, CardHeader, Page, Popup, Block, Link, List, ListItem, f7 } from "framework7-react";
+import { Popup, Block, Link, List, ListItem, Icon, f7 } from "framework7-react";
 
 export default function LeftPanelTablet(props) {
 	let { tv_channels, radio_stations } = props;
-	const [input, setInput] = useState("");
 	const [search_pop, setSearchPop] = useState([false, 0]);
 	const [tv_pop, setTVPop] = useState([false, 0]);
 	const [radio_pop, setRadioPop] = useState([false, 0]);
 	const [more_pop, setMorePop] = useState([false, 0]);
 	const [redes_pop, setRedesPop] = useState([false, 0]);
 	const [nosotros_pop, setNosotrosPop] = useState([false, 0]);
+
+
+	const [playPause, setPlayPause] = useState(false);
+	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+
+	let radio_name = f7.methods.get_RadioName();
+	let radio_img = f7.methods.get_RadioIMG();
+
+	const handlePlayPause = () => {
+		setPlayPause(!playPause);
+		f7.methods.set_RadioPlay(!playPause);
+	};
+
+	useEffect(() => {
+		setPlayPause(f7.methods.get_RadioPlay());
+	}, []);
 
 	const changeBackdropOpen = (e, set) => {
 		var x = document.getElementsByClassName("popup-backdrop");
@@ -181,6 +196,14 @@ export default function LeftPanelTablet(props) {
 				}}
 			>
 				<List>
+					{leftPlayerRadio && (
+						<ListItem title={radio_name} className="leftRadioPlayer">
+							<img slot="media" src={radio_img} />
+							<a onClick={handlePlayPause}>
+								<Icon material={playPause ? "pause" : "play_arrow"} />
+							</a>
+						</ListItem>
+					)}
 					{radio_stations.map((station, key) => {
 						return (
 							<ListItem key={key} link={`/radio/${station.url}`} popupClose>

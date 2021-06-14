@@ -108,10 +108,6 @@ export default class extends React.Component {
 				},
 				set_RadioURL: (rad_url) => {
 					this.setState((prevState) => {
-						console.log('rad');
-
-						console.log('rad: '+rad_url);
-
 						return {
 							...prevState,
 							data: {
@@ -191,6 +187,20 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_LeftRadioActive: () => {
+					return this.state.data.left_radio_active;
+				},
+				set_LeftRadioActive: (left_radio_active) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								left_radio_active: left_radio_active,
+							},
+						};
+					});
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -208,6 +218,7 @@ export default class extends React.Component {
 				radio_volume: 0.8,
 				radio_muted: false,
 				radio_play: false,
+				left_radio_active: false,
 			},
 		};
 	}

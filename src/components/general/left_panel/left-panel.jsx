@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
@@ -8,26 +8,34 @@ import TVLight from "@/static/icons/tv_light.png";
 import MIC from "@/static/icons/microphone.png";
 import TVDark from "@/static/icons/tv_dark.png";
 import MICDark from "@/static/icons/microphone_dark.png";
-import { Card, CardHeader, List, ListItem, Block, Link, Icon } from "framework7-react";
+import { Card, CardHeader, List, ListItem, Block, Link, Icon, f7 } from "framework7-react";
 
 export default function LeftPanel(props) {
-	let { tv_channels, radio_stations} = props;
-	// let radio_name = f7.methods.get_RadioName();
-	// let radio_url = f7.methods.get_RadioURL();
-	// let radio_img = f7.methods.get_RadioIMG();
-	// let radio_play = f7.methods.get_RadioPlay();
+	let { tv_channels, radio_stations } = props;
+	const [playPause, setPlayPause] = useState(false);
+	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
 
-	// const [sourceURL, setSourceURL] = useState(radio_url);
-	// const [playPause, setPlayPause] = useState(false);
+	let radio_name = f7.methods.get_RadioName();
+	let radio_img = f7.methods.get_RadioIMG();
 
-	// const handlePlayPause = () => {
-    //     setSourceURL(radio_url);
-    //     setPlayPause(!playPause);
-    // }
+	const handlePlayPause = () => {
+		setPlayPause(!playPause);
+		f7.methods.set_RadioPlay(!playPause);
+	};
+
+	useEffect(() => {
+		setPlayPause(f7.methods.get_RadioPlay());
+	}, []);
 
 	// useEffect(() => {
-	// 	setPlayPause(true);
-	// }, [radio_url]);
+	// 	if (f7.methods.get_RadioURL() == source_url) {
+	// 		//aqui quitar el reproductor izquierdo
+
+	// 		setPlayPause(f7.methods.get_RadioPlay());
+	// 		setMuted(f7.methods.get_RadioMuted());
+	// 		setVolume(f7.methods.get_RadioVolume());
+	// 	}
+	// }, []);
 
 	return (
 		<Block className="left_panel_cont">
@@ -58,15 +66,14 @@ export default function LeftPanel(props) {
 					Radio
 				</CardHeader>
 				<List>
-					{/* {radio_url != "" && (
-						<ListItem title={radio_name}>
-							<ReactPlayer url={sourceURL} playing={playPause} volume={null} muted={false} className="display-none radio-left-player"/>
-							<img slot="media" src={radio_img} width="44" />
+					{leftPlayerRadio && (
+						<ListItem title={radio_name} className="leftRadioPlayer">
+							<img slot="media" src={radio_img}/>
 							<a onClick={handlePlayPause}>
-								<Icon material={playPause ? "pause" : "play_arrow"} /> 
+								<Icon material={playPause ? "pause" : "play_arrow"} />
 							</a>
 						</ListItem>
-					)} */}
+					)}
 					{radio_stations.map((station, key) => {
 						return (
 							<ListItem key={key} link={`/radio/${station.url}`}>

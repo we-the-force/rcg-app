@@ -9,7 +9,7 @@
             text-transform capitalize
             min-height unset
             padding 9px 0px
-            margin 0px 8px 0px 14px
+            margin 0px 10px
             border-bottom none
 
             &:after
@@ -60,6 +60,43 @@
 
                 &:after
                     background-color #EFEFEF
+
+        .leftRadioPlayer 
+            margin 0 10px
+            .item-content
+                margin 0px
+                padding 0px
+                .item-media
+                    min-width 30px
+                    img
+                        width 30px
+                .item-inner
+                    padding-right 20px
+                    margin-left 5px
+
+                    .icon
+                        color red
+
+                    &:before
+                        content none
+
+                    &:after
+                        content none
+
+            &:after
+                content ''
+                position absolute
+                background-color #EFEFEF
+                display block
+                z-index 0
+                top auto
+                right auto
+                bottom 0
+                left 0
+                height 1px
+                width 100%
+                transform-origin 50% 100%
+                transform scaleY(calc((1 / var(--f7-device-pixel-ratio))))
 
     &.envivo
         margin-top 0px

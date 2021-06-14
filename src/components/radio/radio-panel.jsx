@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardHeader, Block, BlockHeader, Icon, Range, f7, f7ready } from "framework7-react";
 
 export default function RadioPanel(props) {
-	const { estacion, estaciones, programacion, table_id } = props;
+	const { estacion, estaciones, programacion, table_id, } = props;
 	const { descripcion, source_url, nombre, logo } = estacion[0];
 	const [playPause, setPlayPause] = useState(false);
 	const [volume, setVolume] = useState(0.8);
@@ -23,31 +23,27 @@ export default function RadioPanel(props) {
             sabado: [],
             viernes: [],
         };
-	
-		// console.log(estacion);
-		// console.log(estaciones);
-		// console.log(source_url);
 
 	useEffect(() => {
 		if (f7.methods.get_RadioURL() == source_url) {
-			//aqui quitar el reproductor izquierdo
+			f7.methods.set_LeftRadioActive(false);
+
 			setPlayPause(f7.methods.get_RadioPlay());
 			setMuted(f7.methods.get_RadioMuted());
 			setVolume(f7.methods.get_RadioVolume());
 		}
+
+		// f7.methods.set_RadioName(nombre);
+		// f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
 	}, []);
 
 	const handlePlayPause = () => {
 		if (!playPause == true && source_url != f7.methods.get_RadioURL()) {
-		// if (!playPause == true && rad_url != f7.methods.get_RadioURL()) {
-			//aqui quitar el reproductor izquierdo
-			
-			console.log('source');
-			console.log(source_url);
+			f7.methods.set_LeftRadioActive(false);	
 			f7.methods.set_RadioURL(source_url);
+			f7.methods.set_RadioName(nombre);
+			f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
 		}
-		console.log('source');
-		console.log(source_url);
 		setPlayPause(!playPause);
 		f7.methods.set_RadioPlay(!playPause);
 	};
@@ -59,7 +55,7 @@ export default function RadioPanel(props) {
 
 	const handleToggleMuted = () => {
 		setMuted(!muted);
-		f7.methods.set_RadioMuted(muted);
+		f7.methods.set_RadioMuted(!muted);
 	};
 
 	const handleVolumeChange = (e) => {
@@ -106,7 +102,7 @@ export default function RadioPanel(props) {
 				<Block className="radio-wrapper">
 					<Block className="radio-ui-mobile">
 						<Block className="logo-radio">
-							<img src={DB_url + logo.url} alt="" />
+							<img src={logo ? (DB_url + logo.url) : ""} alt="" />
 						</Block>
 						<h2 className="title">{nombre}</h2>
 						<Range min={0} max={1} step={0.01} value={volume} onRangeChange={handleVolumeChange}></Range>
@@ -117,7 +113,7 @@ export default function RadioPanel(props) {
 					<Block className="radio-ui display-flex flex-direction-column">
 						<Block className="display-flex top-wrapper">
 							<Block className="logo-radio">
-								<img src={DB_url + logo.url} alt="" />
+								<img src={logo ? (DB_url + logo.url) : ""} alt="" />
 							</Block>
 							<Block className="content-radio">
 								<h1 className="title">{nombre}</h1>
@@ -128,7 +124,7 @@ export default function RadioPanel(props) {
 							<Block className="controls display-flex align-items-center">
 								<a onClick={handlePlayPause}>
 									<Icon material={playPause ? "pause" : "play_arrow"} /> {/* pause */}
-								</a>isOut
+								</a>
 								<a onClick={handleStop}>
 									<Icon material="stop" />
 								</a>
@@ -158,7 +154,7 @@ export default function RadioPanel(props) {
 										</Block>
 										<a href={`/radio/${station.url}`} className="canal_content">
 											<div className="image_cont">
-												<img src={DB_url + station.logo.url} alt="" srcSet="" />
+												<img src={station.logo ? (DB_url + station.logo.url) : ""} alt="" srcSet="" />
 											</div>
 
 											<h2 className="title">{station.nombre}</h2>

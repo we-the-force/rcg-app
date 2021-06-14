@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
 import RightPanel from "@/components/general/right_panel/right-panel";
@@ -29,10 +29,7 @@ export default function Radio(props) {
 		});
 	}, []);
 
-	const removePlayer = () => {
-		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
-
-	}
+	
 
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
@@ -55,8 +52,16 @@ export default function Radio(props) {
 				<ErrorPanel error="No pudimos encontrar la estación que buscas" />
 			);
 	}
+
+	const activeLeftPlayer = () => {
+		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
+		if(f7.methods.get_RadioPlay()){
+			f7.methods.set_LeftRadioActive(true);
+		}
+	}
+
 	return (
-		<Page onPageBeforeOut={removePlayer} pageContent={false} name="radio">
+		<Page onPageBeforeOut={activeLeftPlayer} pageContent={false} name="radio">
 			<PageContent>
 				<Nav
 					categorias={f7.methods.getCategorias()}
