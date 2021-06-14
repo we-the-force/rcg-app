@@ -29,12 +29,7 @@ export default function Radio(props) {
 		});
 	}, []);
 
-	const activeLeftPlayer = () => {
-		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
-		if(f7.methods.get_RadioPlay()){
-			f7.methods.set_LeftRadioActive(true);
-		}
-	}
+	
 
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
@@ -57,6 +52,16 @@ export default function Radio(props) {
 				<ErrorPanel error="No pudimos encontrar la estación que buscas" />
 			);
 	}
+
+	const activeLeftPlayer = () => {
+		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
+		if(f7.methods.get_RadioPlay()){
+			f7.methods.set_LeftRadioActive(true);
+			f7.methods.set_RadioName(radio[0].nombre);
+			f7.methods.set_RadioIMG(radio[0].logo ? (DB_url + radio[0].logo.url) : "");
+		}
+	}
+
 	return (
 		<Page onPageBeforeOut={activeLeftPlayer} pageContent={false} name="radio">
 			<PageContent>

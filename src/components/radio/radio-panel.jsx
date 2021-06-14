@@ -97,7 +97,7 @@ export default function RadioPanel(props) {
 				<Block className="radio-wrapper">
 					<Block className="radio-ui-mobile">
 						<Block className="logo-radio">
-							<img src={DB_url + logo.url} alt="" />
+							<img src={logo ? (DB_url + logo.url) : ""} alt="" />
 						</Block>
 						<h2 className="title">{nombre}</h2>
 						<Range min={0} max={1} step={0.01} value={volume} onRangeChange={handleVolumeChange}></Range>
@@ -108,7 +108,7 @@ export default function RadioPanel(props) {
 					<Block className="radio-ui display-flex flex-direction-column">
 						<Block className="display-flex top-wrapper">
 							<Block className="logo-radio">
-								<img src={DB_url + logo.url} alt="" />
+								<img src={logo ? (DB_url + logo.url) : ""} alt="" />
 							</Block>
 							<Block className="content-radio">
 								<h1 className="title">{nombre}</h1>
@@ -149,7 +149,7 @@ export default function RadioPanel(props) {
 										</Block>
 										<a href={`/radio/${station.url}`} className="canal_content">
 											<div className="image_cont">
-												<img src={DB_url + station.logo.url} alt="" srcSet="" />
+												<img src={station.logo ? (DB_url + station.logo.url) : ""} alt="" srcSet="" />
 											</div>
 
 											<h2 className="title">{station.nombre}</h2>
