@@ -188,7 +188,7 @@ export default class extends React.Component {
 					});
 				},
 				get_LeftRadioActive: () => {
-					return this.state.data.LeftRadioActive;
+					return this.state.data.left_radio_active;
 				},
 				set_LeftRadioActive: (left_radio_active) => {
 					this.setState((prevState) => {
