@@ -8,12 +8,12 @@ import TVLight from "@/static/icons/tv_light.png";
 import MIC from "@/static/icons/microphone.png";
 import TVDark from "@/static/icons/tv_dark.png";
 import MICDark from "@/static/icons/microphone_dark.png";
-import { Card, CardHeader, List, ListItem, Block, Link, Icon } from "framework7-react";
+import { Card, CardHeader, List, ListItem, Block, Link, Icon, f7 } from "framework7-react";
 
 export default function LeftPanel(props) {
-	let { tv_channels, radio_stations } = props;
+	let { tv_channels, radio_stations, activeLeftPlayer } = props;
 	const [playPause, setPlayPause] = useState(false);
-	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+	// let leftPlayerRadio = f7.methods.get_LeftRadioActive();
 	// let radio_name = f7.methods.get_RadioName();
 	// let radio_url = f7.methods.get_RadioURL();
 	// let radio_img = f7.methods.get_RadioIMG();
@@ -69,7 +69,7 @@ export default function LeftPanel(props) {
 					Radio
 				</CardHeader>
 				<List>
-					{leftPlayerRadio && (
+					{activeLeftPlayer && (
 						<ListItem title={"aquivaelnombre"}>
 							{/* <img slot="media" src={radio_img} width="44" /> */}
 							<a onClick={handlePlayPause}>

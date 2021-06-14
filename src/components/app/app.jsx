@@ -234,7 +234,7 @@ export default class extends React.Component {
 							volume={this.state.data.radio_volume}
 							muted={this.state.data.radio_muted}
 						/>
-						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} activeLeftPlayer={this.state.data.radio_play}/>
+						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} activeLeftPlayer={this.state.data.left_radio_active}/>
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>
 				</HelmetProvider>
