@@ -24,9 +24,9 @@ export default function RadioPanel(props) {
             viernes: [],
         };
 	
-		console.log(estacion);
-		console.log(estaciones);
-		console.log(source_url);
+		// console.log(estacion);
+		// console.log(estaciones);
+		// console.log(source_url);
 
 	useEffect(() => {
 		if (f7.methods.get_RadioURL() == source_url) {
@@ -40,6 +40,7 @@ export default function RadioPanel(props) {
 	const handlePlayPause = () => {
 		if (!playPause == true && rad_url != f7.methods.get_RadioURL()) {
 			//aqui quitar el reproductor izquierdo
+			console.log(source_url);
 			f7.methods.set_RadioURL(source_url);
 		}
 		setPlayPause(!playPause);
