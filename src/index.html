@@ -127,27 +127,7 @@
     <% if (process.env.TARGET === 'cordova') { %>
         <script src="cordova.js"></script>
         <% } %>
-            <script type="application/ld+json">
-                {
-                    "@context": "http://schema.org",
-                    "@type": "Organization",
-                    "name": "RCG",
-                    MEDIA "url": "https://rcgmedia.mx",
-                    "sameAs": [
-                        "https://twitter.com/RCGoficial",
-                        "https://www.facebook.com/rcgoficial",
-                        "https://www.instagram.com/rcgoficial/"
-                    ],
-                    "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Carr. Monterrey - Saltillo 7740, Los Rodríguez.",
-                        "addressLocality": "Saltillo",
-                        "addressRegion": "Coahuila",
-                        "postalCode": "25200",
-                        "addressCountry": "MX"
-                    }
-                }
-            </script>
+            
             <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180714259-1"></script>
             <script>
@@ -191,9 +171,25 @@
             <script type="application/ld+json">
                 {
                     "@context": "https://schema.org/",
-                    "@type": "WebSite",
                     "name": "RCG MEDIA",
                     "url": "https://rcgmedia.mx",
+
+                    "@type": "Organization",
+                    "url": "https://rcgmedia.mx",
+                    "sameAs": [
+                        "https://twitter.com/RCGoficial",
+                        "https://www.facebook.com/rcgoficial",
+                        "https://www.instagram.com/rcgoficial/"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Carr. Monterrey - Saltillo 7740, Los Rodríguez.",
+                        "addressLocality": "Saltillo",
+                        "addressRegion": "Coahuila",
+                        "postalCode": "25200",
+                        "addressCountry": "MX"
+                    }
+
                     "potentialAction": {
                         "@type": "SearchAction",
                         "target": "https://rcgmedia.mx/busqueda/{search_term_string}",

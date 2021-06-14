@@ -1,0 +1,3 @@
+Sitemap: https://rcgmedia.mx/sitemap.xml
+User-agent: *
+Disallow:
