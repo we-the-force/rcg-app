@@ -237,10 +237,12 @@ export default class ArticuloPanel extends Component {
 							</Block>
 							<Block className="titulo">{articulo.Titulo}</Block>
 							<Block className="sumario">{articulo.Sumario}</Block>
+							
 							<Block className="img_cont display-flex flex-direction-column">
 								<img src={cover} alt="" />
-								<p>Foto por: {articulo.creditos}</p>
 								
+							</Block>
+							<Block><p>Foto por: {articulo.creditos}</p>
 							</Block>
 						</Block>
 						<Block className="content display-flex align-items-flex-start">
