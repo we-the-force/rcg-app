@@ -12,8 +12,10 @@ import { Card, CardHeader, List, ListItem, Block, Link, Icon, f7 } from "framewo
 
 export default function LeftPanel(props) {
 	let { tv_channels, radio_stations, activeLeftPlayer } = props;
+	// console.log(activeLeftPlayer);
 	const [playPause, setPlayPause] = useState(false);
-	// let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+	console.log(leftPlayerRadio);
 	// let radio_name = f7.methods.get_RadioName();
 	// let radio_url = f7.methods.get_RadioURL();
 	// let radio_img = f7.methods.get_RadioIMG();
@@ -69,7 +71,7 @@ export default function LeftPanel(props) {
 					Radio
 				</CardHeader>
 				<List>
-					{activeLeftPlayer && (
+					{leftPlayerRadio && (
 						<ListItem title={"aquivaelnombre"}>
 							{/* <img slot="media" src={radio_img} width="44" /> */}
 							<a onClick={handlePlayPause}>
