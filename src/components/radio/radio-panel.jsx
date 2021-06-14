@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardHeader, Block, BlockHeader, Icon, Range, f7, f7ready } from "framework7-react";
 
 export default function RadioPanel(props) {
-	const { estacion, estaciones, programacion, table_id } = props;
+	const { estacion, estaciones, programacion, table_id, } = props;
 	const { descripcion, source_url, nombre, logo } = estacion[0];
 	const [playPause, setPlayPause] = useState(false);
 	const [volume, setVolume] = useState(0.8);
@@ -32,6 +32,9 @@ export default function RadioPanel(props) {
 			setMuted(f7.methods.get_RadioMuted());
 			setVolume(f7.methods.get_RadioVolume());
 		}
+		
+		props.changeName(nombre);
+		props.changeIMG(logo ? (DB_url + logo.url) : "");
 	}, []);
 
 	const handlePlayPause = () => {
