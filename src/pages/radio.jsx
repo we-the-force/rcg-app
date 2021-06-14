@@ -53,17 +53,17 @@ export default function Radio(props) {
 			);
 	}
 
-	const activeLeftPlayer = () => {
+	const activeLeftPlayer = (radio) => {
 		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
 		if(f7.methods.get_RadioPlay()){
 			f7.methods.set_LeftRadioActive(true);
-			f7.methods.set_RadioName(radio[0].nombre);
-			f7.methods.set_RadioIMG(radio[0].logo ? (DB_url + radio[0].logo.url) : "");
+			f7.methods.set_RadioName(radio.nombre);
+			f7.methods.set_RadioIMG(radio.logo ? (DB_url + radio.logo.url) : "");
 		}
 	}
 
 	return (
-		<Page onPageBeforeOut={activeLeftPlayer} pageContent={false} name="radio">
+		<Page onPageBeforeOut={activeLeftPlayer(radio[0])} pageContent={false} name="radio">
 			<PageContent>
 				<Nav
 					categorias={f7.methods.getCategorias()}
