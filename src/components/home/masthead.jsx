@@ -101,15 +101,7 @@ export default function Masthead(props) {
 											<Link className="title" href={`/articulo/${item.url}/`}>
 												{item.Titulo}
 											</Link>
-											<BlockFooter>
-												<Link className="autor" href={"/autores"}>
-													{item.autor ? item.autor.nombre : ""}&nbsp;-&nbsp;{item.fecha}&nbsp;
-												</Link>
-
-												{/* <p className="fecha"></p>
-												
-												<p className="creditos"></p> */}
-											</BlockFooter>
+											
 										</Block>
 									</Block>
 								</SwiperSlide>
