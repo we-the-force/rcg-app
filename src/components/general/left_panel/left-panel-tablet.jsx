@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TVLight from "@/static/icons/tv_light.png";
 import services from "@/static/icons/servicios.png";
 import radio from "@/static/icons/microphone.png";
