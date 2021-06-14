@@ -38,7 +38,8 @@ export default function RadioPanel(props) {
 	}, []);
 
 	const handlePlayPause = () => {
-		if (!playPause == true && rad_url != f7.methods.get_RadioURL()) {
+		if (!playPause == true && source_url != f7.methods.get_RadioURL()) {
+		// if (!playPause == true && rad_url != f7.methods.get_RadioURL()) {
 			//aqui quitar el reproductor izquierdo
 			
 			console.log('source');
