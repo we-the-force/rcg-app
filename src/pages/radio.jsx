@@ -23,9 +23,6 @@ export default function Radio(props) {
 		variables: { station: name, date: startOfWeek, radio_tv: false },
 	});
 
-	const [nombre, setNombre] = useState("");
-	const [img, setIMG] = useState("");
-
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
@@ -50,7 +47,7 @@ export default function Radio(props) {
 		let { radio, programacion } = data;
 		centerPanel =
 			radio.length > 0 ? (
-				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name} changeName={setNombre} changeIMG={setIMG}/>
+				<RadioPanel logo={DB_url + logo} logoD={DB_url + logoDark} estacion={radio} estaciones={leftPanelRadio} programacion={programacion} table_id={name}/>
 			) : (
 				<ErrorPanel error="No pudimos encontrar la estación que buscas" />
 			);
@@ -60,8 +57,8 @@ export default function Radio(props) {
 		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
 		if(f7.methods.get_RadioPlay()){
 			f7.methods.set_LeftRadioActive(true);
-			f7.methods.set_RadioName(nombre);
-			f7.methods.set_RadioIMG(img);
+			// f7.methods.set_RadioName(nombre);
+			// f7.methods.set_RadioIMG(img);
 		}
 	}
 

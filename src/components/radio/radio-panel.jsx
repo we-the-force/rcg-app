@@ -32,9 +32,9 @@ export default function RadioPanel(props) {
 			setMuted(f7.methods.get_RadioMuted());
 			setVolume(f7.methods.get_RadioVolume());
 		}
-		
-		props.changeName(nombre);
-		props.changeIMG(logo ? (DB_url + logo.url) : "");
+
+		f7.methods.set_RadioName(nombre);
+		f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
 	}, []);
 
 	const handlePlayPause = () => {
