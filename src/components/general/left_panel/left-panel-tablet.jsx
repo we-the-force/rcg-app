@@ -21,6 +21,22 @@ export default function LeftPanelTablet(props) {
 	const [redes_pop, setRedesPop] = useState([false, 0]);
 	const [nosotros_pop, setNosotrosPop] = useState([false, 0]);
 
+
+	const [playPause, setPlayPause] = useState(false);
+	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+
+	let radio_name = f7.methods.get_RadioName();
+	let radio_img = f7.methods.get_RadioIMG();
+
+	const handlePlayPause = () => {
+		setPlayPause(!playPause);
+		f7.methods.set_RadioPlay(!playPause);
+	};
+
+	useEffect(() => {
+		setPlayPause(f7.methods.get_RadioPlay());
+	}, []);
+
 	const changeBackdropOpen = (e, set) => {
 		var x = document.getElementsByClassName("popup-backdrop");
 		x[0].classList.add("invisible");
@@ -180,6 +196,14 @@ export default function LeftPanelTablet(props) {
 				}}
 			>
 				<List>
+					{leftPlayerRadio && (
+						<ListItem title={radio_name} className="leftRadioPlayer">
+							<img slot="media" src={radio_img} />
+							<a onClick={handlePlayPause}>
+								<Icon material={playPause ? "pause" : "play_arrow"} />
+							</a>
+						</ListItem>
+					)}
 					{radio_stations.map((station, key) => {
 						return (
 							<ListItem key={key} link={`/radio/${station.url}`} popupClose>
