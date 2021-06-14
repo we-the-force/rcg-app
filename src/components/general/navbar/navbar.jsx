@@ -12,6 +12,7 @@ export default function Nav(props) {
 	let [categ_show, categ_pop, type] = useData(categorias);
 
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+	console.log(leftPlayerRadio);
 	// console.log("Categorais despues del useData");
 	// console.log(categ_show);
 	// console.log(categ_pop);
