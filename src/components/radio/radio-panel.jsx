@@ -41,6 +41,8 @@ export default function RadioPanel(props) {
 		if (!playPause == true && source_url != f7.methods.get_RadioURL()) {
 			f7.methods.set_LeftRadioActive(false);	
 			f7.methods.set_RadioURL(source_url);
+			f7.methods.set_RadioName(nombre);
+			f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
 		}
 		setPlayPause(!playPause);
 		f7.methods.set_RadioPlay(!playPause);

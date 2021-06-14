@@ -15,8 +15,8 @@ export default function LeftPanel(props) {
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
 
-	// let radio_name = f7.methods.get_RadioName();
-	// let radio_img = f7.methods.get_RadioIMG();
+	let radio_name = f7.methods.get_RadioName();
+	let radio_img = f7.methods.get_RadioIMG();
 
 	const handlePlayPause = () => {
 		setPlayPause(!playPause);
@@ -67,8 +67,8 @@ export default function LeftPanel(props) {
 				</CardHeader>
 				<List>
 					{leftPlayerRadio && (
-						<ListItem title={""}>
-							{/* <img slot="media" src={radio_img} width="44" /> */}
+						<ListItem title={radio_name}>
+							<img slot="media" src={radio_img} width="44" />
 							<a onClick={handlePlayPause}>
 								<Icon material={playPause ? "pause" : "play_arrow"} />
 							</a>
