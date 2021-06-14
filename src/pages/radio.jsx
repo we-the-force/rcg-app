@@ -61,7 +61,7 @@ export default function Radio(props) {
 	}
 
 	return (
-		<Page onPageBeforeOut={activeLeftPlayer()} pageContent={false} name="radio">
+		<Page onPageBeforeOut={activeLeftPlayer} pageContent={false} name="radio">
 			<PageContent>
 				<Nav
 					categorias={f7.methods.getCategorias()}
