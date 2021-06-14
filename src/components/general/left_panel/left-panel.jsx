@@ -67,7 +67,7 @@ export default function LeftPanel(props) {
 				</CardHeader>
 				<List>
 					{leftPlayerRadio && (
-						<ListItem title={radio_name} className="leftRadioPLayer">
+						<ListItem title={radio_name} className="leftRadioPlayer">
 							<img slot="media" src={radio_img} width="44" />
 							<a onClick={handlePlayPause}>
 								<Icon material={playPause ? "pause" : "play_arrow"} />
