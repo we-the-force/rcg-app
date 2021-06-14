@@ -11,8 +11,21 @@ export default function Nav(props) {
 
 	let [categ_show, categ_pop, type] = useData(categorias);
 
+	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
-	console.log(leftPlayerRadio);
+
+	let radio_name = f7.methods.get_RadioName();
+	let radio_img = f7.methods.get_RadioIMG();
+
+	const handlePlayPause = () => {
+		setPlayPause(!playPause);
+		f7.methods.set_RadioPlay(!playPause);
+	};
+
+	useEffect(() => {
+		setPlayPause(f7.methods.get_RadioPlay());
+	}, []);
+
 	// console.log("Categorais despues del useData");
 	// console.log(categ_show);
 	// console.log(categ_pop);
@@ -22,10 +35,10 @@ export default function Nav(props) {
 			{leftPlayerRadio && (
 				<Block className="radio-player-mobile">
 					<List>
-						<ListItem title={""}>
-							<img slot="media" src={""} />
-							<a >
-								<Icon material={"play_arrow"} />
+						<ListItem title={radio_name} className="leftRadioPlayer">
+							<img slot="media" src={radio_img} />
+							<a onClick={handlePlayPause}>
+								<Icon material={playPause ? "pause" : "play_arrow"} />
 							</a>
 						</ListItem>
 					</List>
