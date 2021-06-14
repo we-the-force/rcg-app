@@ -15,7 +15,7 @@ export default function LeftPanel(props) {
 	// console.log(activeLeftPlayer);
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
-	console.log("lrp" + leftPlayerRadio);
+	// console.log("lrp" + leftPlayerRadio);
 	// let radio_name = f7.methods.get_RadioName();
 	// let radio_url = f7.methods.get_RadioURL();
 	// let radio_img = f7.methods.get_RadioIMG();
