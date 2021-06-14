@@ -45,6 +45,8 @@ export default function RadioPanel(props) {
 			console.log(source_url);
 			f7.methods.set_RadioURL(source_url);
 		}
+		console.log('source');
+		console.log(source_url);
 		setPlayPause(!playPause);
 		f7.methods.set_RadioPlay(!playPause);
 	};
