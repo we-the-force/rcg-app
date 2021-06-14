@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
@@ -30,15 +30,15 @@ export default function LeftPanel(props) {
 		setPlayPause(f7.methods.get_RadioPlay());
 	}, []);
 
-	useEffect(() => {
-		if (f7.methods.get_RadioURL() == source_url) {
-			//aqui quitar el reproductor izquierdo
+	// useEffect(() => {
+	// 	if (f7.methods.get_RadioURL() == source_url) {
+	// 		//aqui quitar el reproductor izquierdo
 
-			setPlayPause(f7.methods.get_RadioPlay());
-			setMuted(f7.methods.get_RadioMuted());
-			setVolume(f7.methods.get_RadioVolume());
-		}
-	}, []);
+	// 		setPlayPause(f7.methods.get_RadioPlay());
+	// 		setMuted(f7.methods.get_RadioMuted());
+	// 		setVolume(f7.methods.get_RadioVolume());
+	// 	}
+	// }, []);
 
 	return (
 		<Block className="left_panel_cont">
