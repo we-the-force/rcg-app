@@ -84,8 +84,47 @@
             background-image url('../static/imgs/card_back_8.png')
 
     &.radio-popup:after
-        content none
-        background-image url('../static/imgs/card_back_9.png') !important
+        background-position 0 0
+        background-image url('../static/imgs/card_back_2.png') !important
+
+    &.radio-popup
+        .leftRadioPlayer 
+            margin 0 8px 0 14px
+            .item-content
+                margin 0px
+                padding 0px
+                .item-media
+                    min-width 35px
+                    img
+                        border-radius 6px
+                        width 35px
+                .item-inner
+                    padding-right 15px
+                    margin-left 5px
+
+                    .icon
+                        color red
+
+                    &:before
+                        content none
+
+                    &:after
+                        content none
+
+            &:after
+                content ''
+                position absolute
+                background-color #EFEFEF
+                display block
+                z-index 0
+                top auto
+                right auto
+                bottom 0
+                left 0
+                height 1px
+                width 100%
+                transform-origin 50% 100%
+                transform scaleY(calc((1 / var(--f7-device-pixel-ratio))))
 
     &.more-popup:after
         background-image url('../static/imgs/card_back_10.png') !important
