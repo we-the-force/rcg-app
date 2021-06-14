@@ -23,14 +23,11 @@ export default function RadioPanel(props) {
             sabado: [],
             viernes: [],
         };
-	
-		// console.log(estacion);
-		// console.log(estaciones);
-		// console.log(source_url);
 
 	useEffect(() => {
 		if (f7.methods.get_RadioURL() == source_url) {
 			//aqui quitar el reproductor izquierdo
+
 			setPlayPause(f7.methods.get_RadioPlay());
 			setMuted(f7.methods.get_RadioMuted());
 			setVolume(f7.methods.get_RadioVolume());
@@ -39,15 +36,9 @@ export default function RadioPanel(props) {
 
 	const handlePlayPause = () => {
 		if (!playPause == true && source_url != f7.methods.get_RadioURL()) {
-		// if (!playPause == true && rad_url != f7.methods.get_RadioURL()) {
-			//aqui quitar el reproductor izquierdo
-			
-			console.log('source');
-			console.log(source_url);
+			//aqui quitar el reproductor izquierdo		
 			f7.methods.set_RadioURL(source_url);
 		}
-		console.log('source');
-		console.log(source_url);
 		setPlayPause(!playPause);
 		f7.methods.set_RadioPlay(!playPause);
 	};
@@ -128,7 +119,7 @@ export default function RadioPanel(props) {
 							<Block className="controls display-flex align-items-center">
 								<a onClick={handlePlayPause}>
 									<Icon material={playPause ? "pause" : "play_arrow"} /> {/* pause */}
-								</a>isOut
+								</a>
 								<a onClick={handleStop}>
 									<Icon material="stop" />
 								</a>
