@@ -187,6 +187,20 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_LeftRadioActive: () => {
+					return this.state.data.LeftRadioActive;
+				},
+				set_LeftRadioActive: (left_radio_active) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								left_radio_active: left_radio_active,
+							},
+						};
+					});
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -204,6 +218,7 @@ export default class extends React.Component {
 				radio_volume: 0.8,
 				radio_muted: false,
 				radio_play: false,
+				left_radio_active: false,
 			},
 		};
 	}
@@ -219,7 +234,7 @@ export default class extends React.Component {
 							volume={this.state.data.radio_volume}
 							muted={this.state.data.radio_muted}
 						/>
-						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} activeLeftPlayer={this.state.data.radio_play}/>
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>
 				</HelmetProvider>

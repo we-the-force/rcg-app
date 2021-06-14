@@ -29,9 +29,11 @@ export default function Radio(props) {
 		});
 	}, []);
 
-	const removePlayer = () => {
+	const activeLeftPlayer = () => {
 		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
-
+		if(f7.methods.get_RadioPlay()){
+			f7.methods.set_LeftRadioActive(true);
+		}
 	}
 
 	let rightPanel = f7.methods.getArticulosRightPanel();
@@ -56,7 +58,7 @@ export default function Radio(props) {
 			);
 	}
 	return (
-		<Page onPageBeforeOut={removePlayer} pageContent={false} name="radio">
+		<Page onPageBeforeOut={activeLeftPlayer} pageContent={false} name="radio">
 			<PageContent>
 				<Nav
 					categorias={f7.methods.getCategorias()}
