@@ -11,11 +11,11 @@ import MICDark from "@/static/icons/microphone_dark.png";
 import { Card, CardHeader, List, ListItem, Block, Link, Icon, f7 } from "framework7-react";
 
 export default function LeftPanel(props) {
-	let { tv_channels, radio_stations, activeLeftPlayer } = props;
+	let { tv_channels, radio_stations } = props;
 	// console.log(activeLeftPlayer);
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
-	console.log(leftPlayerRadio);
+	console.log("lrp" + leftPlayerRadio);
 	// let radio_name = f7.methods.get_RadioName();
 	// let radio_url = f7.methods.get_RadioURL();
 	// let radio_img = f7.methods.get_RadioIMG();
