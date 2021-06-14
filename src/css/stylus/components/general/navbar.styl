@@ -113,7 +113,7 @@
         .right
             width 115px !important
 
-.radio-player-mobile
+.leftRadioPlayer
     position fixed
     bottom 100px
     z-index 500
@@ -121,16 +121,19 @@
     height 50px
     margin 0px
     padding 0px
-    .list
-        margin 0px
-        ul
-            background black
-            .item-content
-                .item-inner
-                    min-height 50px
-                    .icon 
-                        color red
-            &:after
-                content none
+    ul
+        background black
+        .item-content
+            .item-inner
+                min-height 50px
+                .icon 
+                    color red
+                .item-title
+                    color white
+            .item-media
+                width 44px
+                border-radius 10px
+        &:after
+            content none
     @media (min-width 640px)
         display none

@@ -33,16 +33,14 @@ export default function Nav(props) {
 		<Fragment>
 			{/* {true && ( */}
 			{leftPlayerRadio && (
-				<Block className="radio-player-mobile">
-					<List>
-						<ListItem title={radio_name} className="leftRadioPlayer">
-							<img slot="media" src={radio_img} />
-							<a onClick={handlePlayPause}>
-								<Icon material={playPause ? "pause" : "play_arrow"} />
-							</a>
-						</ListItem>
-					</List>
-				</Block>
+				<List className="leftRadioPlayer">
+					<ListItem title={radio_name} >
+						<img slot="media" src={radio_img} />
+						<a onClick={handlePlayPause}>
+							<Icon material={playPause ? "pause" : "play_arrow"} />
+						</a>
+					</ListItem>
+				</List>
 			)}
 			<Navbar sliding noHairline noShadow>
 				{type === "desktop" && <Desk logo={logo} logoD={logoD} itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />}
