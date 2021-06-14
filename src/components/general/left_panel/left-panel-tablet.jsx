@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import TVLight from "@/static/icons/tv_light.png";
 import services from "@/static/icons/servicios.png";
 import radio from "@/static/icons/microphone.png";
@@ -10,11 +10,10 @@ import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
-import { Card, CardHeader, Page, Popup, Block, Link, List, ListItem, f7 } from "framework7-react";
+import { Popup, Block, Link, List, ListItem, f7 } from "framework7-react";
 
 export default function LeftPanelTablet(props) {
 	let { tv_channels, radio_stations } = props;
-	const [input, setInput] = useState("");
 	const [search_pop, setSearchPop] = useState([false, 0]);
 	const [tv_pop, setTVPop] = useState([false, 0]);
 	const [radio_pop, setRadioPop] = useState([false, 0]);
