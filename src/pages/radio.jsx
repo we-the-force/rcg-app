@@ -57,8 +57,6 @@ export default function Radio(props) {
 		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
 		if(f7.methods.get_RadioPlay()){
 			f7.methods.set_LeftRadioActive(true);
-			// f7.methods.set_RadioName(nombre);
-			// f7.methods.set_RadioIMG(img);
 		}
 	}
 
