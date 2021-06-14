@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Mobile from "./nav_mobile";
 import Desk from "./nav_desktop";
 import PopMenu from "./mobile-menu-popup";
-import { Popover, Navbar, List, ListItem, f7 } from "framework7-react";
+import { Popover, Navbar, List, ListItem, f7, Block, Icon } from "framework7-react";
 
 export default function Nav(props) {
 	let { categorias, home, espectaculares, logo, logoD } = props;
@@ -10,11 +10,26 @@ export default function Nav(props) {
 	if (categorias.length <= 0) return null;
 
 	let [categ_show, categ_pop, type] = useData(categorias);
+
+	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
 	// console.log("Categorais despues del useData");
 	// console.log(categ_show);
 	// console.log(categ_pop);
 	return (
 		<Fragment>
+			{/* {true && ( */}
+			{leftPlayerRadio && (
+				<Block className="radio-player-mobile">
+					<List>
+						<ListItem title={""}>
+							<img slot="media" src={""} />
+							<a >
+								<Icon material={"play_arrow"} />
+							</a>
+						</ListItem>
+					</List>
+				</Block>
+			)}
 			<Navbar sliding noHairline noShadow>
 				{type === "desktop" && <Desk logo={logo} logoD={logoD} itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />}
 				{type === "mobile" && <Mobile logo={logo} logoD={logoD} />}
