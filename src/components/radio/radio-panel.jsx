@@ -23,6 +23,10 @@ export default function RadioPanel(props) {
             sabado: [],
             viernes: [],
         };
+	
+		console.log(estacion);
+		console.log(estaciones);
+		console.log(source_url);
 
 	useEffect(() => {
 		if (f7.methods.get_RadioURL() == source_url) {
