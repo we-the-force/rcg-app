@@ -55,7 +55,7 @@ export default function RadioPanel(props) {
 
 	const handleToggleMuted = () => {
 		setMuted(!muted);
-		f7.methods.set_RadioMuted(muted);
+		f7.methods.set_RadioMuted(!muted);
 	};
 
 	const handleVolumeChange = (e) => {
