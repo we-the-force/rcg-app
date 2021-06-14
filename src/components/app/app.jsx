@@ -108,6 +108,8 @@ export default class extends React.Component {
 				},
 				set_RadioURL: (rad_url) => {
 					this.setState((prevState) => {
+						console.log('rad');
+
 						console.log('rad: '+rad_url);
 
 						return {
