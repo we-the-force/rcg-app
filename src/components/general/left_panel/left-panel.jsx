@@ -12,16 +12,11 @@ import { Card, CardHeader, List, ListItem, Block, Link, Icon, f7 } from "framewo
 
 export default function LeftPanel(props) {
 	let { tv_channels, radio_stations } = props;
-	// console.log(activeLeftPlayer);
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
-	// console.log("lrp" + leftPlayerRadio);
-	// let radio_name = f7.methods.get_RadioName();
-	// let radio_url = f7.methods.get_RadioURL();
-	// let radio_img = f7.methods.get_RadioIMG();
-	// let radio_play = f7.methods.get_RadioPlay();
 
-	// const [sourceURL, setSourceURL] = useState(radio_url);
+	let radio_name = f7.methods.get_RadioName();
+	let radio_img = f7.methods.get_RadioIMG();
 
 	const handlePlayPause = () => {
 		setPlayPause(!playPause);
@@ -72,7 +67,7 @@ export default function LeftPanel(props) {
 				</CardHeader>
 				<List>
 					{leftPlayerRadio && (
-						<ListItem title={"aquivaelnombre"}>
+						<ListItem title={radio_name}>
 							{/* <img slot="media" src={radio_img} width="44" /> */}
 							<a onClick={handlePlayPause}>
 								<Icon material={playPause ? "pause" : "play_arrow"} />
