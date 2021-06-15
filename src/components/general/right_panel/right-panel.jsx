@@ -78,7 +78,7 @@ export default function RightPanel(props) {
                     </span>
                 </Block>
                 {/* <AdsSearch/> */}
-                <br />
+                {/* <br /> */}
                 <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"  /></Link>
                 
                 <br />
