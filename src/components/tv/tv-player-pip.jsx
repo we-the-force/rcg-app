@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import { Block, Icon } from "framework7-react";
+import { Block, f7, Icon } from "framework7-react";
 import React, { useEffect, useState } from "react";
 
 export default function TVPlayerPIP(props) {
@@ -14,7 +14,7 @@ export default function TVPlayerPIP(props) {
 
 	const handleClose = () => {
 		setPlayPause(false);
-		setActivePlayer(false);
+		f7.methods.set_TVActive(false);
 	};
 
 	useEffect(() => {
@@ -22,15 +22,9 @@ export default function TVPlayerPIP(props) {
 		setActivePlayer(active);
 	}, []);
 
-	// useEffect(() => {
-	// 	if(!active){
-	// 		setPlayPause(false);
-	// 	}
-	// }, [active]);
-
 	return (
-		<Block className={"player-wrapper tv-player-pip " + activePlayer ? "" : "display-none"}>
-			{/* Aqui va el stream */}
+		<Block className={"player-wrapper tv-player-pip"}>
+			
 			<Block className="controls">
 				<a className="anchorClose" onClick={handleClose}>
 					<Icon className="close" material="close"></Icon>

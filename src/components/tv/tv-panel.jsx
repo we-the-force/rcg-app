@@ -40,7 +40,6 @@ export default function TVPanel(props) {
 			f7.methods.set_TVURL(canal[0].source_url);
 			f7.methods.set_TVName(canal[0].nombre);
 		}
-		console.log(f7.methods.get_TVURL());
 		setPlayPause(!playPause);
 		f7.methods.set_TVPlay(!playPause);
 	};
