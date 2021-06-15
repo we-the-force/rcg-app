@@ -3,7 +3,7 @@ import { Block, Icon } from "framework7-react";
 import React, { useEffect, useState } from "react";
 
 export default function TVPlayerPIP(props) {
-	const { url } = props;
+	const { url, name, play } = props;
 
 	const [playPause, setPlayPause] = useState(false);
 
@@ -14,6 +14,10 @@ export default function TVPlayerPIP(props) {
 	const handleClose = () => {
 		console.log("close");
 	};
+
+	useEffect(() => {
+		setPlayPause(play);
+	}, []);
 
 	return (
 		<Block className="player-wrapper tv-player-pip">
@@ -28,7 +32,7 @@ export default function TVPlayerPIP(props) {
 			</Block>
 			<ReactPlayer className="player-tv" url={url} playing={playPause} pip={true} stopOnUnmount={false} />
             <Block className="info">
-				<p>Name</p>
+				<p>{name}</p>
 			</Block>
 		</Block>
 	);

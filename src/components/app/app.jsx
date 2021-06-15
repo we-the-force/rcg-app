@@ -202,6 +202,62 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_TVPlay: () => {
+					return this.state.data.tv_play;
+				},
+				set_TVPlay: (tv_play) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								tv_play: tv_play,
+							},
+						};
+					});
+				},
+				get_TVURL: () => {
+					return this.state.data.tv_url;
+				},
+				set_TVURL: (tv_url) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								tv_play: tv_url,
+							},
+						};
+					});
+				},
+				get_TVActive: () => {
+					return this.state.data.tv_active;
+				},
+				set_TVActive: (tv_active) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								tv_active: tv_active,
+							},
+						};
+					});
+				},
+				get_TVName: () => {
+					return this.state.data.tv_name;
+				},
+				set_TVName: (tv_name) => {
+					this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								tv_name: tv_name,
+							},
+						};
+					});
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -242,6 +298,8 @@ export default class extends React.Component {
 						{this.state.data.tv_active && (
 							<TVPlayerStatic
 								url={this.state.data.tv_url}
+								name={this.state.data.tv_name}
+								play={this.state.data.tv_play}
 							/>
 						)}
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />

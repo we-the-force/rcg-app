@@ -28,8 +28,11 @@ export default function TV(props) {
 		});
 	}, []);
 
-	const removePlayer = () => {
-		let player = document.getElementsByClassName("player")[0];
+	const beforeOut = () => {
+		if(f7.methods.get_TVPlay()){
+			f7.methods.set_TVActive(true);
+		}
+		let player = document.getElementsByClassName("player-in-page")[0];
 		player.remove();
 	}
 
@@ -55,8 +58,9 @@ export default function TV(props) {
 				<ErrorPanel error="No pudimos encontrar el canal que buscas" />
 			);
 	}
+
 	return (
-		<Page onPageBeforeOut={removePlayer} pageContent={false} name="tv">
+		<Page onPageBeforeOut={beforeOut} pageContent={false} name="tv">
 			<PageContent>
 				{/* Top Navbar */}
 				<Nav
