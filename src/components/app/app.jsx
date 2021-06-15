@@ -5,6 +5,7 @@ import cordovaApp from "../../js/cordova-app";
 import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
+import TVPlayerStatic from "@/components/tv/tv-player-pip";
 import { AppQuery } from "@/graphql/queries.graphql";
 
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
@@ -219,6 +220,10 @@ export default class extends React.Component {
 				radio_muted: false,
 				radio_play: false,
 				left_radio_active: false,
+				tv_play: false,
+				tv_url: "https://5caf24a595d94.streamlock.net:1937/stream23/stream23/playlist.m3u8",
+				tv_active: false,
+				tv_name: "",
 			},
 		};
 	}
@@ -234,6 +239,11 @@ export default class extends React.Component {
 							volume={this.state.data.radio_volume}
 							muted={this.state.data.radio_muted}
 						/>
+						{this.state.data.tv_active && (
+							<TVPlayerStatic
+								url={this.state.data.tv_url}
+							/>
+						)}
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>

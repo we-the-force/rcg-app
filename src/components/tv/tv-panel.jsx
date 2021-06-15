@@ -32,9 +32,9 @@ export default function TVPanel(props) {
 	};
 
 	const handlePIP = async (e) => {
-		e.preventDefault();
-		let player = document.getElementsByClassName("player")[0].firstChild;
-		await player.requestPictureInPicture();
+		// e.preventDefault();
+		// let player = document.getElementsByClassName("player")[0].firstChild;
+		// await player.requestPictureInPicture();
 	};
 
 	const setProgramaActual = (x, y) => {

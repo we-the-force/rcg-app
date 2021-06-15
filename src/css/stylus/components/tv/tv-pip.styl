@@ -1,0 +1,54 @@
+.player-wrapper.tv-player-pip
+    position fixed
+    margin 0px
+    padding 0px
+    bottom 0
+    right 25px
+    z-index 10000
+
+    .player-tv
+        width 400px !important
+        height 225px !important
+        bottom 50px
+
+    .controls
+        margin 0px
+        padding 0px
+        position absolute
+        top 0
+        left 0
+        width 400px
+        height 225px
+        display none
+        justify-content center
+        align-items center
+
+        .anchorPlay
+            .icon
+                font-size 72px
+                color white
+
+        .anchorClose
+            position absolute
+            right 0
+            top 0
+            .icon
+                font-size 24px
+                padding 8px
+                color white
+
+    .info
+        background white
+        margin 0px
+        padding 0px
+        height 30px
+
+        p
+            color black
+            font font_5
+            padding 6px
+
+    &:hover
+        .controls
+            display flex
+            background-color:rgba(0, 0, 0, 0.2);

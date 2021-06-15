@@ -113,7 +113,7 @@
         .right
             width 115px !important
 
-.leftRadioPlayer
+.leftRadioPlayer.nav
     position fixed
     bottom 100px
     z-index 500
@@ -125,7 +125,7 @@
         background black
         .item-content
             .item-inner
-                min-height 40px
+                min-height 50px
                 .icon 
                     color red
                 .item-title
@@ -138,5 +138,19 @@
                     border-radius 10px
         &:after
             content none
+    &:after
+        content ''
+        position absolute
+        background-color #EFEFEF
+        display block
+        z-index 0
+        top auto
+        right auto
+        bottom 0
+        left 0
+        height 1px
+        width 100%
+        transform-origin 50% 100%
+        transform scaleY(calc((1 / var(--f7-device-pixel-ratio))))
     @media (min-width 640px)
         display none
