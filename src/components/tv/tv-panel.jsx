@@ -27,14 +27,21 @@ export default function TVPanel(props) {
 				viernes: [],
 		};
 
-	const handlePlayPause = () => {
-		setPlayPause(!playPause);
-	};
+	useEffect(() => {
+		if (f7.methods.get_TVURL() == canal[0].source_url) {
+			f7.methods.set_TVActive(false);
+			setPlayPause(f7.methods.get_TVPlay());
+		}
+	}, []);
 
-	const handlePIP = async (e) => {
-		// e.preventDefault();
-		// let player = document.getElementsByClassName("player")[0].firstChild;
-		// await player.requestPictureInPicture();
+	const handlePlayPause = () => {
+		if (!playPause == true && canal[0].source_url != f7.methods.get_TVURL()) {
+			f7.methods.set_TVActive(false);
+			f7.methods.set_TVURL(canal[0].source_url);
+			f7.methods.set_TVName(canal[0].nombre);
+		}
+		setPlayPause(!playPause);
+		f7.methods.set_TVPlay(!playPause);
 	};
 
 	const setProgramaActual = (x, y) => {
@@ -114,12 +121,17 @@ export default function TVPanel(props) {
 						{/* Aqui va el stream */}
 						<a onClick={handlePlayPause}>
 							<Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon>
-							<ReactPlayer className="player" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false}/>
+							<ReactPlayer className="player-in-page" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false} />
 						</a>
 					</Block>
-					<a onClick={(e) => {handlePIP(e)}} class="pip_Btn">
+					{/* <a
+						onClick={(e) => {
+							handlePIP(e);
+						}}
+						class="pip_Btn"
+					>
 						<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
-					</a>
+					</a> */}
 					<p className="programa-desc">{descPrograma}</p>
 				</Block>
 				<Block className="tabla_programacion">
