@@ -64,7 +64,6 @@ export default function Masthead(props) {
 
 	/* traigo solo los primeros 10 */
 	articulos = articulos.slice(0, 9);
-	console.log(articulos[0]);
 	useEffect(() => {
 		const interval = setInterval(() => {
 			let el_swiper = swiper.current.swiper;
