@@ -225,7 +225,7 @@ export default class extends React.Component {
 							...prevState,
 							data: {
 								...prevState.data,
-								tv_play: tv_url,
+								tv_url: tv_url,
 							},
 						};
 					});
