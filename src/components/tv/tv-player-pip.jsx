@@ -1,36 +1,32 @@
 import ReactPlayer from "react-player";
-import { Block, Icon } from "framework7-react";
+import { Block, f7, Icon } from "framework7-react";
 import React, { useEffect, useState } from "react";
 
 export default function TVPlayerPIP(props) {
-	const { url, name, play, active } = props;
+	const { url, name, play } = props;
 
 	const [playPause, setPlayPause] = useState(false);
-	const [activePlayer, setActivePlayer] = useState(false);
 
 	const handlePlayPause = () => {
 		setPlayPause(!playPause);
+		f7.methods.set_TVPlay(!playPause);
 	};
 
 	const handleClose = () => {
 		setPlayPause(false);
-		setActivePlayer(false);
+		f7.methods.set_TVPlay(false);
+		f7.methods.set_TVActive(false);
+		f7.methods.set_TVURL("");
+		f7.methods.set_TVName("");
 	};
 
 	useEffect(() => {
 		setPlayPause(play);
-		setActivePlayer(active);
 	}, []);
 
-	// useEffect(() => {
-	// 	if(!active){
-	// 		setPlayPause(false);
-	// 	}
-	// }, [active]);
-
 	return (
-		<Block className={"player-wrapper tv-player-pip " + activePlayer ? "" : "display-none"}>
-			{/* Aqui va el stream */}
+		<Block className={"player-wrapper tv-player-pip"}>
+			
 			<Block className="controls">
 				<a className="anchorClose" onClick={handleClose}>
 					<Icon className="close" material="close"></Icon>

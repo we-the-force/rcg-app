@@ -29,7 +29,6 @@ export default function TV(props) {
 	}, []);
 
 	const beforeOut = () => {
-		console.log(f7.methods.get_TVURL());
 		if(f7.methods.get_TVPlay()){
 			f7.methods.set_TVActive(true);
 		}
