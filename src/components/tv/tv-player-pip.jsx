@@ -3,28 +3,33 @@ import { Block, Icon } from "framework7-react";
 import React, { useEffect, useState } from "react";
 
 export default function TVPlayerPIP(props) {
-	const { url, name, play } = props;
-
-	console.log(url);
-	console.log(name);
-	console.log(play);
+	const { url, name, play, active } = props;
 
 	const [playPause, setPlayPause] = useState(false);
+	const [activePlayer, setActivePlayer] = useState(false);
 
 	const handlePlayPause = () => {
 		setPlayPause(!playPause);
 	};
 
 	const handleClose = () => {
-		console.log("close");
+		setPlayPause(false);
+		setActivePlayer(false);
 	};
 
 	useEffect(() => {
 		setPlayPause(play);
+		setActivePlayer(active);
 	}, []);
 
+	// useEffect(() => {
+	// 	if(!active){
+	// 		setPlayPause(false);
+	// 	}
+	// }, [active]);
+
 	return (
-		<Block className="player-wrapper tv-player-pip">
+		<Block className={"player-wrapper tv-player-pip " + activePlayer ? "" : "display-none"}>
 			{/* Aqui va el stream */}
 			<Block className="controls">
 				<a className="anchorClose" onClick={handleClose}>
