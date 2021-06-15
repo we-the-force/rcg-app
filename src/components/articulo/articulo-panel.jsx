@@ -302,8 +302,12 @@ export default class ArticuloPanel extends Component {
 								</Block>
 							</Block>
 							<Block className="right_side">
+								<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank">
 								<img src={banner1} alt="" />
+
+								</Link>
 								<img src={banner2} alt="" />
+								<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank"></Link>
 								{/* <AdsRightArticle></AdsRightArticle>
 								<AdsRightArticle></AdsRightArticle> */}
 							</Block>
