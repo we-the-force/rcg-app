@@ -3,23 +3,25 @@ import { Block, f7, Icon } from "framework7-react";
 import React, { useEffect, useState } from "react";
 
 export default function TVPlayerPIP(props) {
-	const { url, name, play, active } = props;
+	const { url, name, play } = props;
 
 	const [playPause, setPlayPause] = useState(false);
-	const [activePlayer, setActivePlayer] = useState(false);
 
 	const handlePlayPause = () => {
 		setPlayPause(!playPause);
+		f7.methods.set_TVPlay(!playPause);
 	};
 
 	const handleClose = () => {
 		setPlayPause(false);
+		f7.methods.set_TVPlay(false);
 		f7.methods.set_TVActive(false);
+		f7.methods.set_TVURL("");
+		f7.methods.set_TVName("");
 	};
 
 	useEffect(() => {
 		setPlayPause(play);
-		setActivePlayer(active);
 	}, []);
 
 	return (

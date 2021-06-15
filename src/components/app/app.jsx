@@ -300,7 +300,6 @@ export default class extends React.Component {
 								url={this.state.data.tv_url}
 								name={this.state.data.tv_name}
 								play={this.state.data.tv_play}
-								active={this.state.data.tv_active}
 							/>
 						)}
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
