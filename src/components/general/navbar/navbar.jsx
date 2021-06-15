@@ -33,7 +33,7 @@ export default function Nav(props) {
 		<Fragment>
 			{/* {true && ( */}
 			{leftPlayerRadio && (
-				<List className="leftRadioPlayer">
+				<List className="leftRadioPlayer nav">
 					<ListItem title={radio_name} >
 						<img slot="media" src={radio_img} />
 						<a onClick={handlePlayPause}>
