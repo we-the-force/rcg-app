@@ -277,7 +277,7 @@ export default class extends React.Component {
 				radio_play: false,
 				left_radio_active: false,
 				tv_play: false,
-				tv_url: "https://5caf24a595d94.streamlock.net:1937/stream23/stream23/playlist.m3u8",
+				tv_url: "",
 				tv_active: false,
 				tv_name: "",
 			},
@@ -300,6 +300,7 @@ export default class extends React.Component {
 								url={this.state.data.tv_url}
 								name={this.state.data.tv_name}
 								play={this.state.data.tv_play}
+								active={this.state.data.tv_active}
 							/>
 						)}
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
