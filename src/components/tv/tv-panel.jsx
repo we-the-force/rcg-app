@@ -41,7 +41,7 @@ export default function TVPanel(props) {
 			f7.methods.set_TVName(canal[0].nombre);
 		}
 		setPlayPause(!playPause);
-		f7.methods.get_TVPlay(!playPause);
+		f7.methods.set_TVPlay(!playPause);
 	};
 
 	const setProgramaActual = (x, y) => {
