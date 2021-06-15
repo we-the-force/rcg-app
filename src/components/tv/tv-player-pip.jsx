@@ -5,6 +5,10 @@ import React, { useEffect, useState } from "react";
 export default function TVPlayerPIP(props) {
 	const { url, name, play } = props;
 
+	console.log(url);
+	console.log(name);
+	console.log(play);
+
 	const [playPause, setPlayPause] = useState(false);
 
 	const handlePlayPause = () => {

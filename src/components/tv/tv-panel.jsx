@@ -35,6 +35,7 @@ export default function TVPanel(props) {
 	}, []);
 
 	const handlePlayPause = () => {
+		console.log(canal[0].source_url);
 		if (!playPause == true && canal[0].source_url != f7.methods.get_TVURL()) {
 			f7.methods.set_TVActive(false);
 			f7.methods.set_TVURL(canal[0].source_url);
