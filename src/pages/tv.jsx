@@ -60,8 +60,6 @@ export default function TV(props) {
 			);
 	}
 
-	let RadioPlay = f7.methods.get_RadioPlay();
-
 	return (
 		<Page onPageBeforeOut={beforeOut} pageContent={false} name="tv">
 			<PageContent>
@@ -77,8 +75,8 @@ export default function TV(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio}  radioPlay={RadioPlay}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
 							<AdsTop />
