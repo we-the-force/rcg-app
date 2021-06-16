@@ -56,9 +56,9 @@ export default function TVPanel(props) {
 	};
 
 	const handleMiniPlayer = () => {
-		setPlayPause(false);
-		f7.methods.set_TVActive(true);
+		f7.methods.set_TVActive(true);;
 		f7.methods.set_LeftRadioActive(false);
+		f7.views.main.router.navigate('/');
 	};
 
 	const setProgramaActual = (x, y) => {
@@ -140,9 +140,11 @@ export default function TVPanel(props) {
 							<a className="anchorPlay" onClick={handlePlayPause}>
 								<Icon className="play" material={playPause ? "pause" : "play_arrow"}></Icon>
 							</a>
-							<a className="anchorPip" onClick={() => {}}>
-								<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
-							</a>
+							{!playPause && (
+								<a className="anchorPip" onClick={handleMiniPlayer}>
+									<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
+								</a>
+							)}
 						</Block>
 						{/* <a onClick={handlePlayPause}> */}
 						{/* <Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon> */}
