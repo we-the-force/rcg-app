@@ -25,7 +25,7 @@ export default function TVPanel(props) {
 				miercoles: [],
 				sabado: [],
 				viernes: [],
-		};
+		  };
 
 	let TVPlay = f7.methods.get_TVPlay();
 
@@ -37,7 +37,9 @@ export default function TVPanel(props) {
 	}, []);
 
 	useEffect(() => {
-		setPlayPause(TVPlay);
+		if (f7.methods.get_TVURL() == canal[0].source_url) {
+			setPlayPause(TVPlay);
+		}
 	}, [TVPlay]);
 
 	const handlePlayPause = () => {
@@ -46,11 +48,15 @@ export default function TVPanel(props) {
 			f7.methods.set_TVURL(canal[0].source_url);
 			f7.methods.set_TVName(canal[0].nombre);
 		}
-		if(!playPause){
+		if (!playPause) {
 			f7.methods.set_RadioPlay(false);
 		}
 		setPlayPause(!playPause);
 		f7.methods.set_TVPlay(!playPause);
+	};
+
+	const handleMiniPlayer = () => {
+		f7.views.main.router.navigate('/');
 	};
 
 	const setProgramaActual = (x, y) => {
@@ -128,10 +134,20 @@ export default function TVPanel(props) {
 					</BlockHeader>
 					<Block className="player-wrapper">
 						{/* Aqui va el stream */}
-						<a onClick={handlePlayPause}>
-							<Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon>
-							<ReactPlayer className="player-in-page" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false} />
-						</a>
+						<Block className="controls">
+							<a className="anchorPlay" onClick={handlePlayPause}>
+								<Icon className="play" material={playPause ? "pause" : "play_arrow"}></Icon>
+							</a>
+							{playPause && (
+								<a className="anchorPip" onClick={handleMiniPlayer}>
+									<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
+								</a>
+							)}
+						</Block>
+						{/* <a onClick={handlePlayPause}> */}
+						{/* <Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon> */}
+						<ReactPlayer className="player-in-page" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false} />
+						{/* </a> */}
 					</Block>
 					{/* <a
 						onClick={(e) => {

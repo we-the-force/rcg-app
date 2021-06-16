@@ -8,14 +8,11 @@
         height 100%
         padding 12px 0px
         box-sizing inherit
-        
-
 
         img
             width 100%
             height 100%
             object-fit contain
-    
 
     .left, .right
         .link
@@ -42,8 +39,6 @@
         top -55px
         bottom unset
 
-    
-
     @media (min-width 1024px)
         --f7-navbar-height 100px
 
@@ -60,7 +55,7 @@
 
         .right
             width 115px !important
-    
+
     @media (min-width 640px)
         position sticky
         --f7-navbar-height 50px
@@ -117,6 +112,7 @@
             img
                 // width 218px
                 margin 0px auto
+
 .leftRadioPlayer.nav
     position fixed
     bottom 55px
@@ -125,23 +121,31 @@
     height 50px
     margin 0px
     padding 0px
+
     ul
         background black
+
         .item-content
             .item-inner
                 min-height 50px
-                .icon 
+
+                .icon
                     color red
+
                 .item-title
                     color white
+
             .item-media
                 padding-top 5px
                 padding-bottom 5px
+
                 img
                     width 40px
                     border-radius 10px
+
         &:after
             content none
+
     &:after
         content ''
         position absolute
@@ -156,5 +160,6 @@
         width 100%
         transform-origin 50% 100%
         transform scaleY(calc((1 / var(--f7-device-pixel-ratio))))
+
     @media (min-width 640px)
         display none

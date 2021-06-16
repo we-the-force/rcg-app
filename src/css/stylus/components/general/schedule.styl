@@ -52,7 +52,7 @@
                     flex-direction column
                     overflow-y auto
                     height fit-content
-                    max-height 300px
+                    max-height 225px
                     // padding-right 15px
                     padding-right 0px
                     padding-left 0px
@@ -148,7 +148,7 @@
                 // width 37%
                 margin-left 0px
                 width 100%
-                height 82vw
+                height 70vw
                 border-radius 6px
 
                 .tab-content
@@ -262,39 +262,40 @@
                 flex-direction row
 
                 .toolbar
-                    height 243px
+                    height 300px
                     width 60%
 
                     .toolbar-inner
                         padding-right 15px
+                        max-height 300px
 
                     .tab-link
-                        min-height 27px
+                        min-height 25px !important
 
                         p
-                            line-height 27px !important
+                            line-height 25px !important
 
                         &.tab-link-active
                             p.text
                                 &:after
                                     content ''
                                     opacity 1
-                                    width 19.01px
-                                    height 19.01px
+                                    width 17.67px !important
+                                    height 17.67px !important
                                     position absolute
                                     background red_2
-                                    right 0
+                                    right 2px
                                     left unset
                                     top 50%
                                     transform translate(10px, -50%) rotate(45deg)
 
                                 &:before
-                                    height 27px !important
+                                    height 25px !important
 
                 .tabs-content
                     margin-left -15px
                     width 40%
-                    height 243px
+                    height 300px
 
                     .tab-content
                         padding 8px
@@ -332,11 +333,11 @@
         .week_tabs
             .tab-active
                 .toolbar
-                    height 270px
+                    height 300px
                     width 63%
 
                     .tab-link
-                        min-height 30px
+                        min-height 30px !important
 
                         p
                             line-height 30px !important
@@ -346,13 +347,14 @@
                                 &:after
                                     width 21.21px !important
                                     height 21.21px !important
+                                    right 0 !important
 
                                 &:before
                                     height 30px !important
 
                 .tabs-content
                     width 37%
-                    height 270px
+                    height 300px
 
                     .tab-content
                         padding 10px

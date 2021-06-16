@@ -30,18 +30,17 @@ export default function TVPlayerPIP(props) {
 
 	return (
 		<Block className={"player-wrapper tv-player-pip"}>
-			
 			<Block className="controls">
-				<a className="anchorClose" onClick={handleClose}>
-					<Icon className="close" material="close"></Icon>
-				</a>
 				<a className="anchorPlay" onClick={handlePlayPause}>
 					<Icon className="play" material={playPause ? "pause" : "play_arrow"}></Icon>
+				</a>
+				<a className="anchorClose" onClick={handleClose}>
+					<Icon className="close" material="close"></Icon>
 				</a>
 			</Block>
 			<ReactPlayer className="player-tv" url={url} playing={playPause} pip={true} stopOnUnmount={false} />
             <Block className="info">
-				<p>{name}</p>
+				{name}
 			</Block>
 		</Block>
 	);

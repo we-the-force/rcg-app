@@ -77,21 +77,53 @@
                 width 100% !important
                 height 100% !important
 
-            .icon
-                z-index 2
+            .controls
+                margin 0px
+                padding 0px
                 position absolute
-                font-size 90px
-                color #d0d0d0
-                top 50%
-                left 50%
-                transform translate(-50%, -50%)
+                top 0
+                left 0
+                width 100%
+                height 100%
+                display none
+                justify-content center
+                align-items center
 
-                &.play_arrow
-                    opacity 0.6
+                .anchorPlay
+                    .icon
+                        font-size 90px
+                        color #d0d0d0
 
-                &.pause
-                    opacity 0
-                    transition opacity 0.3s ease-in-out 0.3s
+                .anchorPip
+                    position absolute
+                    right 0
+                    bottom 0
+
+                    .icon
+                        font-size 24px
+                        padding 8px
+                        color white
+
+            &:hover
+                .controls
+                    display flex
+                    background-color rgba(0, 0, 0, 0.3)
+
+            // .icon
+            //     z-index 2
+            //     position absolute
+            //     font-size 90px
+            //     color #d0d0d0
+            //     top 50%
+            //     left 50%
+            //     transform translate(-50%, -50%)
+
+            //     &.play_arrow
+            //         opacity 0.6
+
+            //     &.pause
+            //         opacity 0
+            //         transition opacity 0.3s ease-in-out 0.3s
 
         .programa-desc
             font font_6
@@ -170,7 +202,7 @@
                 .image_cont
                     position relative
                     height 100%
-                    width auto
+                    width 100%
 
                     &:after
                         content ''
@@ -184,7 +216,7 @@
                         padding 0px
                         width 100%
                         height 100%
-                        object-fit cover
+                        object-fit contain
                         margin 0px
                         border-radius 6px
 
@@ -264,8 +296,9 @@
                 font font_10
 
         .mas_canales
-            display block
-            width 80%
+            display grid
+            grid-template-columns 1fr 1fr
+            grid-column-gap 5px
 
             .canal
                 width 100%
