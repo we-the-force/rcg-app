@@ -40,6 +40,7 @@ export default function AboutUs(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	let RadioPlay = f7.methods.get_RadioPlay();
 	return (
 		<Page pageContent={false} name="nosotros">
 			<PageContent>
@@ -55,8 +56,8 @@ export default function AboutUs(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
 						</Block>
 						<Block className="center_pan">
 							{/* aqui va el panel central */}

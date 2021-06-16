@@ -54,11 +54,16 @@ export default function Radio(props) {
 	}
 
 	const activeLeftPlayer = () => {
-		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
 		if(f7.methods.get_RadioPlay()){
+			f7.methods.set_TVPlay(false);
+			f7.methods.set_TVActive(false);
+			f7.methods.set_TVURL("");
+			f7.methods.set_TVName("");
 			f7.methods.set_LeftRadioActive(true);
 		}
 	}
+
+	let RadioPlay = f7.methods.get_RadioPlay();
 
 	return (
 		<Page onPageBeforeOut={activeLeftPlayer} pageContent={false} name="radio">
@@ -73,8 +78,8 @@ export default function Radio(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
 						</Block>
 						<Block className="center_pan">
 							<AdsTop />

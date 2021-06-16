@@ -31,6 +31,7 @@ export default function TV(props) {
 	const beforeOut = () => {
 		if(f7.methods.get_TVPlay()){
 			f7.methods.set_TVActive(true);
+			f7.methods.set_LeftRadioActive(false);
 		}
 		let player = document.getElementsByClassName("player-in-page")[0];
 		player.remove();
@@ -59,6 +60,8 @@ export default function TV(props) {
 			);
 	}
 
+	let RadioPlay = f7.methods.get_RadioPlay();
+
 	return (
 		<Page onPageBeforeOut={beforeOut} pageContent={false} name="tv">
 			<PageContent>
@@ -74,8 +77,8 @@ export default function TV(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-						<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio}  radioPlay={RadioPlay}/>
 						</Block>
 						<Block className="center_pan">
 							<AdsTop />

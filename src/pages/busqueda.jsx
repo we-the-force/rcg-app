@@ -129,9 +129,7 @@ export default function Busqueda(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
-	let radio_name = f7.methods.get_RadioName();
-	let radio_url = f7.methods.get_RadioURL();
-	let radio_img = f7.methods.get_RadioIMG();
+	let RadioPlay = f7.methods.get_RadioPlay();
 	return (
 		<Page
 			pageContent={false}
@@ -160,8 +158,8 @@ export default function Busqueda(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+						<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
 						</Block>
 						<Block className="center_pan search">
 							<AdsTop />
