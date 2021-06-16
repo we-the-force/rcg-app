@@ -27,12 +27,18 @@ export default function TVPanel(props) {
 				viernes: [],
 		};
 
+	let TVPlay = f7.methods.get_TVPlay();
+
 	useEffect(() => {
 		if (f7.methods.get_TVURL() == canal[0].source_url) {
 			f7.methods.set_TVActive(false);
-			setPlayPause(f7.methods.get_TVPlay());
+			setPlayPause(TVPlay);
 		}
 	}, []);
+
+	useEffect(() => {
+		setPlayPause(TVPlay);
+	}, [TVPlay]);
 
 	const handlePlayPause = () => {
 		if (!playPause == true && canal[0].source_url != f7.methods.get_TVURL()) {
