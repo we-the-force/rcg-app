@@ -168,6 +168,8 @@ export default function Articulo(props) {
 			centerPanel = <ErrorPanel error="No pudimos encontrar el articulo que buscas" />;
 		}
 	}
+
+	let RadioPlay = f7.methods.get_RadioPlay();
 	return (
 		<Page
 			pageContent={false}
@@ -185,8 +187,8 @@ export default function Articulo(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+						<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio}  radioPlay={RadioPlay}/>
 						</Block>
 						<Block className="center_pan">
 							<AdsTop />
