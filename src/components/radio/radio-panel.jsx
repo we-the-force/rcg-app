@@ -24,11 +24,13 @@ export default function RadioPanel(props) {
             viernes: [],
         };
 
+	let radioPlay = f7.methods.get_RadioPlay();
+
 	useEffect(() => {
 		if (f7.methods.get_RadioURL() == source_url) {
 			f7.methods.set_LeftRadioActive(false);
 
-			setPlayPause(f7.methods.get_RadioPlay());
+			setPlayPause(radioPlay);
 			setMuted(f7.methods.get_RadioMuted());
 			setVolume(f7.methods.get_RadioVolume());
 		}
@@ -36,6 +38,10 @@ export default function RadioPanel(props) {
 		// f7.methods.set_RadioName(nombre);
 		// f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
 	}, []);
+
+	useEffect(() => {
+		setPlayPause(radioPlay);
+	}, [radioPlay]);
 
 	const handlePlayPause = () => {
 		if (!playPause == true && source_url != f7.methods.get_RadioURL()) {
