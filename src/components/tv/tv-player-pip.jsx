@@ -8,6 +8,9 @@ export default function TVPlayerPIP(props) {
 	const [playPause, setPlayPause] = useState(false);
 
 	const handlePlayPause = () => {
+		if(!playPause){
+			f7.methods.set_RadioPlay(false);
+		}
 		setPlayPause(!playPause);
 		f7.methods.set_TVPlay(!playPause);
 	};

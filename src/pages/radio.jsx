@@ -56,6 +56,10 @@ export default function Radio(props) {
 	const activeLeftPlayer = () => {
 		//aqui poner el reproductor izquierdo si esta reproduciendo el radio
 		if(f7.methods.get_RadioPlay()){
+			f7.methods.set_TVPlay(false);
+			f7.methods.set_TVActive(false);
+			f7.methods.set_TVURL("");
+			f7.methods.set_TVName("");
 			f7.methods.set_LeftRadioActive(true);
 		}
 	}

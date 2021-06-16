@@ -31,6 +31,7 @@ export default function TV(props) {
 	const beforeOut = () => {
 		if(f7.methods.get_TVPlay()){
 			f7.methods.set_TVActive(true);
+			f7.methods.set_LeftRadioActive(false);
 		}
 		let player = document.getElementsByClassName("player-in-page")[0];
 		player.remove();
