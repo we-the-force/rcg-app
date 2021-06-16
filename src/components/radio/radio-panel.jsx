@@ -44,6 +44,9 @@ export default function RadioPanel(props) {
 			f7.methods.set_RadioName(nombre);
 			f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
 		}
+		if(!playPause){
+			f7.methods.set_TVPlay(false);
+		}
 		setPlayPause(!playPause);
 		f7.methods.set_RadioPlay(!playPause);
 	};
