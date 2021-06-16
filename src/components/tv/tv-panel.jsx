@@ -140,7 +140,7 @@ export default function TVPanel(props) {
 							<a className="anchorPlay" onClick={handlePlayPause}>
 								<Icon className="play" material={playPause ? "pause" : "play_arrow"}></Icon>
 							</a>
-							{!playPause && (
+							{playPause && (
 								<a className="anchorPip" onClick={handleMiniPlayer}>
 									<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
 								</a>
