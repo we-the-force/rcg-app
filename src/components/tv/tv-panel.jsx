@@ -37,7 +37,9 @@ export default function TVPanel(props) {
 	}, []);
 
 	useEffect(() => {
-		setPlayPause(TVPlay);
+		if (f7.methods.get_TVURL() == canal[0].source_url) {
+			setPlayPause(TVPlay);
+		}
 	}, [TVPlay]);
 
 	const handlePlayPause = () => {
@@ -51,6 +53,12 @@ export default function TVPanel(props) {
 		}
 		setPlayPause(!playPause);
 		f7.methods.set_TVPlay(!playPause);
+	};
+
+	const handleMiniPlayer = () => {
+		setPlayPause(false);
+		f7.methods.set_TVActive(true);
+		f7.methods.set_LeftRadioActive(false);
 	};
 
 	const setProgramaActual = (x, y) => {
