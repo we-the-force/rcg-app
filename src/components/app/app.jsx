@@ -303,7 +303,7 @@ export default class extends React.Component {
 							/>
 						)}
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-						<View id="main-view" main className="safe-areas" url="/" />
+						<View id="main-view" main className="safe-areas" url="/" radio_play={this.state.data.radio_play}/>
 					</App>
 				</HelmetProvider>
 			</ApolloProvider>

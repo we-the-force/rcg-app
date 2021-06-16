@@ -54,7 +54,8 @@ export function formatText(x) {
 }
 
 export default function Articulo(props) {
-	const { url } = props;
+	const { url, radio_play } = props;
+	console.log(radio_play);
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
 
