@@ -14,6 +14,7 @@ export default function LeftPanel(props) {
 	let { tv_channels, radio_stations } = props;
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+	let radioPlay = f7.methods.get_RadioPlay();
 
 	let radio_name = f7.methods.get_RadioName();
 	let radio_img = f7.methods.get_RadioIMG();
@@ -24,8 +25,8 @@ export default function LeftPanel(props) {
 	};
 
 	useEffect(() => {
-		setPlayPause(f7.methods.get_RadioPlay());
-	}, []);
+		setPlayPause(radioPlay);
+	}, [radioPlay]);
 
 	// useEffect(() => {
 	// 	if (f7.methods.get_RadioURL() == source_url) {

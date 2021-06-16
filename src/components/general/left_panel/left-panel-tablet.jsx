@@ -13,7 +13,7 @@ import IGIcon from "@/static/icons/IG_Icon.png";
 import { Popup, Block, Link, List, ListItem, Icon, f7 } from "framework7-react";
 
 export default function LeftPanelTablet(props) {
-	let { tv_channels, radio_stations, radioPlay } = props;
+	let { tv_channels, radio_stations } = props;
 	const [search_pop, setSearchPop] = useState([false, 0]);
 	const [tv_pop, setTVPop] = useState([false, 0]);
 	const [radio_pop, setRadioPop] = useState([false, 0]);
@@ -24,6 +24,7 @@ export default function LeftPanelTablet(props) {
 
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+	let radioPlay = f7.methods.get_RadioPlay();
 
 	let radio_name = f7.methods.get_RadioName();
 	let radio_img = f7.methods.get_RadioIMG();
@@ -35,7 +36,7 @@ export default function LeftPanelTablet(props) {
 
 	useEffect(() => {
 		setPlayPause(radioPlay);
-	}, []);
+	}, [radioPlay]);
 
 	const changeBackdropOpen = (e, set) => {
 		var x = document.getElementsByClassName("popup-backdrop");
