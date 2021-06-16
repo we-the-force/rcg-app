@@ -47,6 +47,7 @@ export default function RightPanelTablet(props) {
             <Popup className="vistos-popup right-popup-tablet" onPopupClose={changeBackdropClose}>
                 <Link popupClose=".vistos-popup" className="close" iconMaterial="add" icon="add"></Link>
                 <h1>{title}</h1>
+
                 <Block className="news-cont">
                     {cont}
                 </Block>
