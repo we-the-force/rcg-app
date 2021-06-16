@@ -27,7 +27,11 @@ var routes = [{
         path: '/articulo/:url/',
         component: Articulo,
         options: {
-            clearPreviousHistory: true
+            clearPreviousHistory: true,
+            props: {
+                foo: 'bar',
+                bar: true,
+            },
         },
     },
     {

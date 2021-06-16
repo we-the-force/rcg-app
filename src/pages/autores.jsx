@@ -48,8 +48,6 @@ export default function Autores(props) {
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
 
-	let RadioPlay = f7.methods.get_RadioPlay();
-
 	return (
 		<Page pageContent={false} name="autores">
 			<PageContent>
@@ -65,8 +63,8 @@ export default function Autores(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-						<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio}  radioPlay={RadioPlay}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
 							<AdsTop />

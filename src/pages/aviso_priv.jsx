@@ -36,7 +36,6 @@ export default function AvisoPrivacidad(props) {
 
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
-	let RadioPlay = f7.methods.get_RadioPlay();
 	return (
 		<Page pageContent={false} name="nosotros">
 			<PageContent>
@@ -52,8 +51,8 @@ export default function AvisoPrivacidad(props) {
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-						<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
-							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} radioPlay={RadioPlay}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
+							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan wo_right_pan">
 							<AdsTop />
