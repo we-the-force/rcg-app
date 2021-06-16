@@ -6,6 +6,7 @@ export default function TVPlayerPIP(props) {
 	const { url, name, play } = props;
 
 	const [playPause, setPlayPause] = useState(false);
+	let TVPlay = f7.methods.get_TVPlay();
 
 	const handlePlayPause = () => {
 		if(playPause){
@@ -24,8 +25,8 @@ export default function TVPlayerPIP(props) {
 	};
 
 	useEffect(() => {
-		setPlayPause(play);
-	}, []);
+		setPlayPause(TVPlay);
+	}, [TVPlay]);
 
 	return (
 		<Block className={"player-wrapper tv-player-pip"}>
