@@ -1,54 +1,150 @@
 .player-wrapper.tv-player-pip
     position fixed
+    bottom 55px
+    z-index 10000
+    width 100%
+    height 65px
     margin 0px
     padding 0px
-    bottom 0
-    right 25px
-    z-index 10000
+    background black
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
 
     .player-tv
-        width 400px !important
-        height 225px !important
-        bottom 50px
+        flex-grow 0
+        order 1
+        width 116px !important
+        height 65px !important
+        bottom 55px
+        min-width 115px
 
     .controls
-        margin 0px
-        padding 0px
-        position absolute
-        top 0
-        left 0
-        width 400px
-        height 225px
-        display none
-        justify-content center
-        align-items center
+        flex-grow 1
+        order 3
+        margin 0
+        padding 0
+        display flex
+        justify-content space-evenly
 
-        .anchorPlay
-            .icon
-                font-size 72px
-                color white
-
-        .anchorClose
-            position absolute
-            right 0
-            top 0
-            .icon
-                font-size 24px
-                padding 8px
-                color white
+        .icon
+            color red
+            font-size 30px
+            margin 5px
 
     .info
-        background white
+        flex-grow 2
+        order 2
+        background black
+        margin 0px
+        height 30px
+        color white
+        font font_5
+        padding 6px
+        white-space nowrap
+        overflow hidden
+        text-overflow ellipsis
+
+    &:after
+        content ''
+        position absolute
+        background-color #EFEFEF
+        display block
+        z-index 0
+        top auto
+        right auto
+        bottom 0
+        left 0
+        height 1px
+        width 100%
+        transform-origin 50% 100%
+        transform scaleY(calc((1 / var(--f7-device-pixel-ratio))))
+
+    // .item-content
+    // .item-inner
+    // min-height 50px
+    // .icon
+    // color red
+    // .item-title
+    // color white
+    // .item-media
+    // padding-top 5px
+    // padding-bottom 5px
+    // img
+    // width 40px
+    // border-radius 10px
+    // &:after
+    // content none
+    // &:after
+    // content ''
+    // position absolute
+    // background-color #EFEFEF
+    // display block
+    // z-index 0
+    // top auto
+    // right auto
+    // bottom 0
+    // left 0
+    // height 1px
+    // width 100%
+    // transform-origin 50% 100%
+    // transform scaleY(calc((1 / var(--f7-device-pixel-ratio))))
+    @media (min-width 640px)
+        height unset
+        width unset
+        position fixed
         margin 0px
         padding 0px
-        height 30px
+        bottom 0
+        right 25px
+        z-index 10000
+        display block
 
-        p
+        .player-tv
+            width 400px !important
+            height 225px !important
+            bottom 50px
+
+        .controls
+            margin 0px
+            padding 0px
+            position absolute
+            top 0
+            left 0
+            width 400px
+            height 225px
+            display none
+            justify-content center
+            align-items center
+
+            .anchorPlay
+                .icon
+                    font-size 72px
+                    color white
+
+            .anchorClose
+                position absolute
+                right 0
+                top 0
+
+                .icon
+                    font-size 24px
+                    padding 8px
+                    color white
+
+        .info
+            background white
+            margin 0px
+            height 30px
             color black
             font font_5
             padding 6px
 
-    &:hover
-        .controls
-            display flex
-            background-color:rgba(0, 0, 0, 0.2);
+        &:hover
+            .controls
+                display flex
+                background-color rgba(0, 0, 0, 0.2)
+
+        &:after
+            content none
