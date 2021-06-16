@@ -20,6 +20,9 @@ export default function LeftPanel(props) {
 	let radio_img = f7.methods.get_RadioIMG();
 
 	const handlePlayPause = () => {
+		if(!playPause){
+			f7.methods.set_TVPlay(false);
+		}
 		setPlayPause(!playPause);
 		f7.methods.set_RadioPlay(!playPause);
 	};

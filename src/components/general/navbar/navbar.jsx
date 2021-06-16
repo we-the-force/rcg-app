@@ -13,18 +13,22 @@ export default function Nav(props) {
 
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
+	let radioPlay = f7.methods.get_RadioPlay();
 
 	let radio_name = f7.methods.get_RadioName();
 	let radio_img = f7.methods.get_RadioIMG();
 
 	const handlePlayPause = () => {
+		if(!playPause){
+			f7.methods.set_TVPlay(false);
+		}
 		setPlayPause(!playPause);
 		f7.methods.set_RadioPlay(!playPause);
 	};
 
 	useEffect(() => {
-		setPlayPause(f7.methods.get_RadioPlay());
-	}, []);
+		setPlayPause(radioPlay);
+	}, [radioPlay]);
 
 	// console.log("Categorais despues del useData");
 	// console.log(categ_show);
