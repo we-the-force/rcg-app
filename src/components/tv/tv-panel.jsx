@@ -56,9 +56,10 @@ export default function TVPanel(props) {
 	};
 
 	const handleMiniPlayer = () => {
-		f7.methods.set_TVActive(true);;
-		f7.methods.set_LeftRadioActive(false);
+		console.log("ahoy");
 		f7.views.main.router.navigate('/');
+		f7.methods.set_TVActive(true);
+		f7.methods.set_LeftRadioActive(false);
 	};
 
 	const setProgramaActual = (x, y) => {
