@@ -51,7 +51,7 @@ export default class extends React.Component {
 
 			// Register service worker
 			// serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
-			serviceWorker: Device.cordova ? {} : { path: "/OneSignalSDKWorker.js" },
+			serviceWorker: { path: "/OneSignalSDKWorker.js" },
 			// Input settings
 			input: {
 				scrollIntoViewOnFocus: Device.cordova && !Device.electron,
@@ -296,14 +296,10 @@ export default class extends React.Component {
 							muted={this.state.data.radio_muted}
 						/>
 						{this.state.data.tv_active && (
-							<TVPlayerStatic
-								url={this.state.data.tv_url}
-								name={this.state.data.tv_name}
-								play={this.state.data.tv_play}
-							/>
+							<TVPlayerStatic url={this.state.data.tv_url} name={this.state.data.tv_name} play={this.state.data.tv_play} />
 						)}
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-						<View id="main-view" main className="safe-areas" url="/"/>
+						<View id="main-view" main className="safe-areas" url="/" />
 					</App>
 				</HelmetProvider>
 			</ApolloProvider>
@@ -338,6 +334,8 @@ export default class extends React.Component {
 				cordovaApp.init(f7);
 			}
 
+			// f7.serviceWorker.register("../../OneSignalSDKWorker.js", "/");
+
 			// Call F7 APIs here
 			window.addEventListener("orientationchange", function (e) {
 				if ($(".popup.modal-in").length) {
@@ -370,5 +368,60 @@ export default class extends React.Component {
 				}
 			});
 		});
+
+		let newWorker;
+
+		if ("serviceWorker" in navigator) {
+			console.log("si hay sw");
+			navigator.serviceWorker
+				.register("../../OneSignalSDKWorker.js")
+				.then((reg) => {
+					console.log("se registro");
+					reg.addEventListener("updatefound", () => {
+						console.log("update");
+						// An updated service worker has appeared in reg.installing!
+						newWorker = reg.installing;
+
+						newWorker.addEventListener("statechange", () => {
+							console.log("state changed " + newWorker.state);
+							// Has service worker state changed?
+							switch (newWorker.state) {
+								case "installed":
+									// There is a new service worker available, show the notification
+									console.log("controller? " + navigator.serviceWorker.controller);
+									if (navigator.serviceWorker.controller) {
+										console.log("ahoy");
+									}
+
+									break;
+							}
+						});
+					});
+
+					/*     swRegistration = reg;
+				  Notification.requestPermission();
+				  initializeUI(); */
+				})
+				.catch(function (err) {
+					// registration failed :(
+					console.log("ServiceWorker registration failed: ", err);
+				});
+
+			let refreshing;
+			// The event listener that is fired when the service worker updates
+			// Here we reload the page
+			navigator.serviceWorker.addEventListener("controllerchange", function () {
+				if (refreshing) return;
+				window.location.reload();
+				refreshing = true;
+			});
+		}
+
+		// window.OneSignal = window.OneSignal || [];
+		// 	OneSignal.push(function () {
+		// 		OneSignal.init({
+		// 			appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+		// 		});
+		// 	});
 	}
 }
