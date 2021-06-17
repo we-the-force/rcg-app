@@ -215,9 +215,9 @@ module.exports = {
             ],
         }),
         // ...(!isCordova ? [
-            new WorkboxPlugin.InjectManifest({
-                swSrc: resolvePath('src/OneSignalSDKWorker.js'),
-            }),
+            // new WorkboxPlugin.InjectManifest({
+            //     swSrc: resolvePath('src/OneSignalSDKWorker.js'),
+            // }),
         // ] : []),
 
     ],
