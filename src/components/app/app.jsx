@@ -369,6 +369,8 @@ export default class extends React.Component {
 			});
 		});
 
+		let newWorker;
+
 		if ("serviceWorker" in navigator) {
 			navigator.serviceWorker
 				.register("../../OneSignalSDKWorker.js")
