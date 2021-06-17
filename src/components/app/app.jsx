@@ -51,7 +51,7 @@ export default class extends React.Component {
 
 			// Register service worker
 			// serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
-			// serviceWorker: { path: "/OneSignalSDKWorker.js" },
+			serviceWorker: { path: "/OneSignalSDKWorker.js" },
 			// Input settings
 			input: {
 				scrollIntoViewOnFocus: Device.cordova && !Device.electron,
@@ -334,6 +334,8 @@ export default class extends React.Component {
 				cordovaApp.init(f7);
 			}
 
+			// f7.serviceWorker.register("../../OneSignalSDKWorker.js", "/");
+
 			// Call F7 APIs here
 			window.addEventListener("orientationchange", function (e) {
 				if ($(".popup.modal-in").length) {
@@ -367,11 +369,52 @@ export default class extends React.Component {
 			});
 		});
 
-		window.OneSignal = window.OneSignal || [];
-			OneSignal.push(function () {
-				OneSignal.init({
-					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker
+				.register("../../OneSignalSDKWorker.js")
+				.then((reg) => {
+					reg.addEventListener("updatefound", () => {
+						// An updated service worker has appeared in reg.installing!
+						newWorker = reg.installing;
+
+						newWorker.addEventListener("statechange", () => {
+							// Has service worker state changed?
+							switch (newWorker.state) {
+								case "installed":
+									// There is a new service worker available, show the notification
+									if (navigator.serviceWorker.controller) {
+										toastWithCallback.open();
+									}
+
+									break;
+							}
+						});
+					});
+
+					/*     swRegistration = reg;
+				  Notification.requestPermission();
+				  initializeUI(); */
+				})
+				.catch(function (err) {
+					// registration failed :(
+					console.log("ServiceWorker registration failed: ", err);
 				});
+
+			let refreshing;
+			// The event listener that is fired when the service worker updates
+			// Here we reload the page
+			navigator.serviceWorker.addEventListener("controllerchange", function () {
+				if (refreshing) return;
+				window.location.reload();
+				refreshing = true;
 			});
+		}
+
+		// window.OneSignal = window.OneSignal || [];
+		// 	OneSignal.push(function () {
+		// 		OneSignal.init({
+		// 			appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+		// 		});
+		// 	});
 	}
 }
