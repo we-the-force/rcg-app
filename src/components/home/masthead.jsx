@@ -8,18 +8,20 @@ import twenyforseven from "@/static/imgs/24-7.png";
 import IMG from "@/static/imgs/grayback.jpg";
 import { Swiper, SwiperSlide, Block, BlockHeader, BlockFooter, Link, f7 } from "framework7-react";
 export default function Masthead(props) {
-	const { banner, relevante } = props;
+	const { banner, anuncio, relevante } = props;
 	const swiper = useRef(null);
 	let DB_url = f7.methods.get_URL_DB();
 	/* banner contiene los articulos del banner */
 	/* relevante contiene los más relevantes en caso de que no se complete con el banner */
 
-	let banners = banner.filter((val) => {
-		if(val.articulo == null){
-			return false;
-		}
-		return true;
-	});
+	let banners = banner;
+	let anuncios = anuncio;
+	let bannerHorizontalUno = anuncios.bannerHorizontalUno;
+	let bannerHorizontalDos = anuncios.bannerHorizontalDos;
+	let bannerHorizontalTres = anuncios.bannerHorizontalTres;
+	console.log(bannerHorizontalUno);
+	console.log(bannerHorizontalDos);
+	console.log(bannerHorizontalTres);
 
 	/* accedo solo a los valores que necesito */
 	banners = banners.map((val) => {

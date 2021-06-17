@@ -28,6 +28,63 @@ query HomePage {
 			...ArticulosData
 		}
 	}
+	anuncio:anuncio{
+			bannerHorizontalUno {
+					alt
+					googleAds
+					link
+					deskImg {
+							url
+					}
+					mobileImg {
+							url
+					}
+			}
+			bannerHorizontalDos {
+					alt
+					googleAds
+					link
+					deskImg {
+							url
+					}
+					mobileImg {
+							url
+					}
+			}
+			bannerHorizontalTres {
+					alt
+					googleAds
+					link
+					deskImg {
+							url
+					}
+					mobileImg {
+							url
+					}
+			}
+			bannerHorizontalCuatro {
+					alt
+					googleAds
+					link
+					deskImg {
+							url
+					}
+					mobileImg {
+							url
+					}
+			}
+			bannerVerticalUno {
+					alt
+					googleAds
+					link
+					deskImg {
+							url
+					}
+					mobileImg {
+							url
+					}
+			}
+	}
 	categorias {
 		nombre
 		url
