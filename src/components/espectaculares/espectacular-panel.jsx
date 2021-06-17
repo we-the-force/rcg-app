@@ -3,7 +3,7 @@ import Portada from "@/static/imgs/Espectaculares-Portada 1.png";
 import PortadaDark from "@/static/imgs/Espectaculares-Portada 2.png";
 import marked from "marked";
 import JsxParser from "react-jsx-parser";
-import { Block, Card, BlockHeader, f7 } from "framework7-react";
+import { Block, Card, BlockHeader, Link, f7 } from "framework7-react";
 
 function formatText(x) {
 	const DB_url = f7.methods.get_URL_DB();
