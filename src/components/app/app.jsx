@@ -376,27 +376,33 @@ export default class extends React.Component {
 			navigator.serviceWorker
 				.register("../../OneSignalSDKWorker.js")
 				.then((reg) => {
-					console.log("se registro");
-					reg.addEventListener("updatefound", () => {
-						console.log("update");
-						// An updated service worker has appeared in reg.installing!
-						newWorker = reg.installing;
-
-						newWorker.addEventListener("statechange", () => {
-							console.log("state changed " + newWorker.state);
-							// Has service worker state changed?
-							switch (newWorker.state) {
-								case "installed":
-									// There is a new service worker available, show the notification
-									console.log("controller? " + navigator.serviceWorker.controller);
-									if (navigator.serviceWorker.controller) {
-										console.log("ahoy");
-									}
-
-									break;
-							}
+					window.OneSignal = window.OneSignal || [];
+					OneSignal.push(function () {
+						OneSignal.init({
+							appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
 						});
 					});
+					// console.log("se registro");
+					// reg.addEventListener("updatefound", () => {
+					// 	console.log("update");
+					// 	// An updated service worker has appeared in reg.installing!
+					// 	newWorker = reg.installing;
+
+					// 	newWorker.addEventListener("statechange", () => {
+					// 		console.log("state changed " + newWorker.state);
+					// 		// Has service worker state changed?
+					// 		switch (newWorker.state) {
+					// 			case "installed":
+					// 				// There is a new service worker available, show the notification
+					// 				console.log("controller? " + navigator.serviceWorker.controller);
+					// 				if (navigator.serviceWorker.controller) {
+					// 					console.log("ahoy");
+					// 				}
+
+					// 				break;
+					// 		}
+					// 	});
+					// });
 
 					/*     swRegistration = reg;
 				  Notification.requestPermission();
