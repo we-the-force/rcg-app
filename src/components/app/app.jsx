@@ -372,20 +372,25 @@ export default class extends React.Component {
 		let newWorker;
 
 		if ("serviceWorker" in navigator) {
+			console.log("si hay sw");
 			navigator.serviceWorker
 				.register("../../OneSignalSDKWorker.js")
 				.then((reg) => {
+					console.log("se registro");
 					reg.addEventListener("updatefound", () => {
+						console.log("update");
 						// An updated service worker has appeared in reg.installing!
 						newWorker = reg.installing;
 
 						newWorker.addEventListener("statechange", () => {
+							console.log("state changed " + newWorker.state);
 							// Has service worker state changed?
 							switch (newWorker.state) {
 								case "installed":
 									// There is a new service worker available, show the notification
+									console.log("controller? " + navigator.serviceWorker.controller);
 									if (navigator.serviceWorker.controller) {
-										toastWithCallback.open();
+										console.log("ahoy");
 									}
 
 									break;
