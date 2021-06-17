@@ -61,6 +61,19 @@ export default function CatalogoPanel(props) {
                 popupCloseLinkText="Cerrar"
                 navbarOfText="de"
             />
+            <Card className="new_head espectaculares_menu">
+					<Link href="/" className="uppercase">
+						Inicio
+					</Link>
+					<hr />
+					<Link href="/espectaculares" className="uppercase">
+						Información
+					</Link>
+					<hr />
+					<Link href="/contacto" className="uppercase">
+						Contacto
+					</Link>
+				</Card>
             <Card>
                 <Block className="back">
                     <BlockHeader>
