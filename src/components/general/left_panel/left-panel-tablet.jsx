@@ -244,7 +244,7 @@ export default function LeftPanelTablet(props) {
 					changeBackdropClose(setRedesPop, redes_pop[1]);
 				}}
 			>
-				<Block className="social_cont display-flex justify-content-space-between align-items-center">
+				<Block className="social_cont display-flex justify-content-left align-items-center">
 					<a className="external" target="_blank" href="https://www.facebook.com/rcgoficial">
 						<img src={FBIcon} alt="" srcSet="" />
 					</a>
@@ -260,8 +260,14 @@ export default function LeftPanelTablet(props) {
 					<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">
 						<img src={tiktok} alt="" srcSet="" />
 					</a>
+					<a href="https://t.me/RCGMedia" className="external" target="_blank">
+						<img src={telegramIcon} alt="Telegram" srcSet="" />
+					</a>
+					<a href="https://mx.linkedin.com/company/rcg-media-mexico" className="external" target="_blank">
+						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
+					</a>
 				</Block>
-				<Block className="social_cont display-flex justify-content-space-between align-items-center">
+				{/* <Block className="social_cont display-flex justify-content-left align-items-center">
 					<a href="https://t.me/RCGMedia" className="external" target="_blank">
 						<img src={telegramIcon} alt="Telegram" srcSet="" />
 					</a>
@@ -269,7 +275,7 @@ export default function LeftPanelTablet(props) {
 						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
 					</a>
 					
-				</Block>
+				</Block> */}
 			</Popup>
 			<Popup
 				className="nosotros-popup left-popup-tablet"
