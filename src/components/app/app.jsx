@@ -387,6 +387,12 @@ export default class extends React.Component {
 							// Has service worker state changed?
 							switch (newWorker.state) {
 								case "installed":
+									window.OneSignal = window.OneSignal || [];
+									OneSignal.push(function () {
+										OneSignal.init({
+											appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+										});
+									});
 									// There is a new service worker available, show the notification
 									console.log("controller? " + navigator.serviceWorker.controller);
 									if (navigator.serviceWorker.controller) {
