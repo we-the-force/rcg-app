@@ -18,7 +18,7 @@ import '../css/app.styl';
 // Import App Component
 import App from '@/components/app/app.jsx';
 
-import * as serviceWorker from '@/OneSignalSDKWorker';
+// import * as serviceWorker from '@/OneSignalSDKWorker';
 
 // Init F7 React Plugin
 Framework7.use(Framework7React)
@@ -29,4 +29,4 @@ ReactDOM.render(
     document.getElementById('app'),
 );
 
-serviceWorker.register();
+// serviceWorker.register();
