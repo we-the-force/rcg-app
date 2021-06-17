@@ -111,6 +111,23 @@ export default function LeftPanel(props) {
 						<img src={tiktok} alt="" srcSet="" />
 					</a>
 				</Block>
+				<Block className="social_cont display-flex justify-content-space-between align-items-center">
+					<a href="https://www.facebook.com/rcgoficial" className="external" target="_blank">
+						<img src={FBIcon} alt="" srcSet="" />
+					</a>
+					<a href="https://www.twitter.com/RCGoficial" className="external" target="_blank">
+						<img src={TWIcon} alt="" srcSet="" />
+					</a>
+					<a href="https://www.youtube.com/user/RCGNOTICIAS" className="external" target="_blank">
+						<img src={YTIcon} alt="" srcSet="" />
+					</a>
+					<a href="https://www.instagram.com/rcgoficial" className="external" target="_blank">
+						<img src={IGIcon} alt="" srcSet="" />
+					</a>
+					<a href="https://vm.tiktok.com/ZMetcg3vD/" className="external" target="_blank">
+						<img src={tiktok} alt="" srcSet="" />
+					</a>
+				</Block>
 			</Card>
 			<Card className="left_pan_card about">
 				<List>
