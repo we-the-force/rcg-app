@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
 import AutorCard from '@/components/autores/autor-card.jsx';
 import AdsSearch from "@/components/general/ads/ads_search";
-import satelite from "../../../static/imgs/sat.png"
+import satelite from "../../../static/imgs/sat.jpg"
 import bannersearch from "../../../static/imgs/200x300_03.png"
 import {
     Block,
