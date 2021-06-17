@@ -90,7 +90,7 @@
 
     <!-- <title>__OG_TITLE__</title> -->
     <title>RCG | El Gigante de Coahuila</title>
-    <% if (process.env.TARGET === 'web') { %>
+    <% if (process.env.TARGET==='web' ) { %>
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <link rel="apple-touch-icon" href="static/icons/apple-touch-icon.png">
@@ -98,7 +98,15 @@
         <link rel="manifest" href="/manifest.json">
         <% } %>
 
-
+            <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+            <script>
+                window.OneSignal = window.OneSignal || [];
+                OneSignal.push(function() {
+                    OneSignal.init({
+                        appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+                    });
+                });
+            </script>
 </head>
 
 <body>
@@ -124,10 +132,10 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=693607127910625&autoLogAppEvents=1" nonce="Z8ezH9YB"></script>
     <div id="app"></div>
-    <% if (process.env.TARGET === 'cordova') { %>
+    <% if (process.env.TARGET==='cordova' ) { %>
         <script src="cordova.js"></script>
         <% } %>
-            
+
             <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180714259-1"></script>
             <script>
@@ -167,7 +175,7 @@
 
 
             <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=823839871704925&ev=PageView&noscript=1" /></noscript>
+                    src="https://www.facebook.com/tr?id=823839871704925&ev=PageView&noscript=1" /></noscript>
             <script type="application/ld+json">
                 {
                     "@context": "https://schema.org/",
@@ -205,8 +213,11 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-63884347-1');
             </script>
-            <script
-                id="mcjs">!function (c, h, i, m, p) { m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p) }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/66c59de200fc45f635d07399d/e9029e0f42a821fca2fa7d512.js");</script>
+            <script id="mcjs">
+                ! function(c, h, i, m, p) {
+                    m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)
+                }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/66c59de200fc45f635d07399d/e9029e0f42a821fca2fa7d512.js");
+            </script>
             <!-- End Facebook Pixel Code -->
 
             <!-- built script files will be auto injected -->
