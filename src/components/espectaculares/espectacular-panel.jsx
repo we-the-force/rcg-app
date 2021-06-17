@@ -61,6 +61,19 @@ export default class EspectacularPanel extends Component {
 		let porque_nosotros = formatText(info.porque_nosotros);
 		return (
 			<Block className="center_panel espectacular_panel">
+				<Card className="new_head espectaculares_menu">
+					<Link href="/" className="uppercase">
+						Inicio
+					</Link>
+					<hr />
+					<Link href="/catalogo" className="uppercase">
+						Galería
+					</Link>
+					<hr />
+					<Link href="/contacto" className="uppercase">
+						Contacto
+					</Link>
+				</Card>
 				<Card>
 					<Block className="back">
 						<BlockHeader>
