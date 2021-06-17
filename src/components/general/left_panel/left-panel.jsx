@@ -3,6 +3,8 @@ import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
+import telegramIcon from "@/static/icons/telegram.png";
+import linkedinIcon from "@/static/icons/linkedin.png";
 import tiktok from "@/static/imgs/tictoc.png";
 import TVLight from "@/static/icons/tv_light.png";
 import MIC from "@/static/icons/microphone.png";
@@ -107,26 +109,18 @@ export default function LeftPanel(props) {
 					<a href="https://www.instagram.com/rcgoficial" className="external" target="_blank">
 						<img src={IGIcon} alt="" srcSet="" />
 					</a>
-					<a href="https://vm.tiktok.com/ZMetcg3vD/" className="external" target="_blank">
+					<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">
 						<img src={tiktok} alt="" srcSet="" />
 					</a>
 				</Block>
 				<Block className="social_cont display-flex justify-content-space-between align-items-center">
-					<a href="https://www.facebook.com/rcgoficial" className="external" target="_blank">
-						<img src={FBIcon} alt="" srcSet="" />
+					<a href="https://t.me/RCGMedia" className="external" target="_blank">
+						<img src={telegramIcon} alt="Telegram" srcSet="" />
 					</a>
-					<a href="https://www.twitter.com/RCGoficial" className="external" target="_blank">
-						<img src={TWIcon} alt="" srcSet="" />
+					<a href="https://mx.linkedin.com/company/rcg-media-mexico" className="external" target="_blank">
+						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
 					</a>
-					<a href="https://www.youtube.com/user/RCGNOTICIAS" className="external" target="_blank">
-						<img src={YTIcon} alt="" srcSet="" />
-					</a>
-					<a href="https://www.instagram.com/rcgoficial" className="external" target="_blank">
-						<img src={IGIcon} alt="" srcSet="" />
-					</a>
-					<a href="https://vm.tiktok.com/ZMetcg3vD/" className="external" target="_blank">
-						<img src={tiktok} alt="" srcSet="" />
-					</a>
+					
 				</Block>
 			</Card>
 			<Card className="left_pan_card about">

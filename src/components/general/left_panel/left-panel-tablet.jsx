@@ -4,7 +4,8 @@ import services from "@/static/icons/servicios.png";
 import radio from "@/static/icons/microphone.png";
 import twred from "@/static/icons/TW_red.png";
 import tiktok from "@/static/imgs/tictoc.png";
-
+import telegramIcon from "@/static/icons/telegram.png";
+import linkedinIcon from "@/static/icons/linkedin.png";
 import contact from "@/static/icons/Contact.png";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
@@ -256,9 +257,18 @@ export default function LeftPanelTablet(props) {
 					<a className="external" target="_blank" href="https://www.instagram.com/rcgoficial">
 						<img src={IGIcon} alt="" srcSet="" />
 					</a>
-					<a href="https://vm.tiktok.com/ZMetcg3vD/" className="external" target="_blank">
+					<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">
 						<img src={tiktok} alt="" srcSet="" />
 					</a>
+				</Block>
+				<Block className="social_cont display-flex justify-content-space-between align-items-center">
+					<a href="https://t.me/RCGMedia" className="external" target="_blank">
+						<img src={telegramIcon} alt="Telegram" srcSet="" />
+					</a>
+					<a href="https://mx.linkedin.com/company/rcg-media-mexico" className="external" target="_blank">
+						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
+					</a>
+					
 				</Block>
 			</Popup>
 			<Popup

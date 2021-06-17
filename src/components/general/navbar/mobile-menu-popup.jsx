@@ -9,6 +9,8 @@ import face from "@/static/icons/FB_Icon.png";
 import tw from "@/static/icons/TW_Icon.png";
 import you from "@/static/icons/YT_Icon.png";
 import insta from "@/static/icons/IG_Icon.png";
+import telegramIcon from "@/static/icons/telegram.png";
+import linkedinIcon from "@/static/icons/linkedin.png";
 import { Searchbar, NavLeft, NavRight, Popup, Link, Page, View, Icon, BlockHeader, Block, Navbar, Panel, List, ListItem, f7 } from "framework7-react";
 
 export default function mobileMenuPopup(props) {
@@ -105,6 +107,14 @@ export default function mobileMenuPopup(props) {
 								<img src={insta} alt="" />
 							</Link>
 						</Block>
+						<Block>
+							<a href="https://t.me/RCGMedia" className="external" target="_blank">
+								<img src={telegramIcon} alt="Telegram" srcSet="" />
+							</a>
+							<a href="https://mx.linkedin.com/company/rcg-media-mexico" className="external" target="_blank">
+								<img src={linkedinIcon} alt="Linkedin" srcSet="" />
+							</a>
+						</Block>
 					</div>
 					<div className="box RCG">
 						<Block>
@@ -117,6 +127,9 @@ export default function mobileMenuPopup(props) {
 							</Link>
 							<Link href="/contacto" popupClose>
 								Contacto
+							</Link>
+							<Link href="/autores" popupClose>
+								Autores
 							</Link>
 						</Block>
 					</div>
