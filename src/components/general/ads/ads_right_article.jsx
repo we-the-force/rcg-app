@@ -8,7 +8,7 @@ export default class adsRightArticle extends Component {
 	}
 	render() {
 		return (
-			<Block className={`ads rightArticle`}>
+			<Block className='adsads'>
 				{/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<ins
 					className="adsbygoogle"
