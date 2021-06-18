@@ -7,7 +7,12 @@ export default class adsTop extends Component {
 		super();
 		this.state = {};
 	}
+	useEffect(() => {
+			window.adsbygoogle = window.adsbygoogle || []
+			window.adsbygoogle.push({})
+	})
 	render() {
+		
 		return (
 			<Block className="ads_cont">
 				<Block className="left"></Block>
@@ -22,7 +27,7 @@ export default class adsTop extends Component {
 							data-ad-format="auto"
 							data-full-width-responsive="true"
 						></ins> */}
-						<ins class="adsbygoogle"
+						<ins className="adsbygoogle"
 										style={{display: 'block'}}
 										data-ad-client="ca-pub-9419050468962974"
 										data-ad-slot="2504924643"
