@@ -27,6 +27,7 @@ export default class adsTop extends Component {
 										data-ad-client="ca-pub-9419050468962974"
 										data-ad-slot="2504924643"
 										data-ad-format="auto"
+										data-adtest="on"
 										data-full-width-responsive="true"></ins>
 						<script>
 										(adsbygoogle = window.adsbygoogle || []).push({});
