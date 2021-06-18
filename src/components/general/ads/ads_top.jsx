@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { Card, Block, Link } from "framework7-react";
 import uane from "../../../static/imgs/uane.gif";
 
