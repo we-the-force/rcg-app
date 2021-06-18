@@ -15,14 +15,12 @@ export default class adsTop extends Component {
 			<Block className="ads_cont">
 				<Block className="left"></Block>
 				<Block className="center">
+					<Adsense
+						client="ca-pub-9419050468962974"
+						slot="2504924643"
+					/>
 					<Block className="ads">
-						<Adsense
-							client="ca-pub-9419050468962974"
-							slot="2504924643"
-							style={{ display: 'block' }}
-							layout="in-article"
-							format="fluid"
-						/>
+						
 						
 						{/* <ins className="adsbygoogle"
 										style={{display: 'block'}}
