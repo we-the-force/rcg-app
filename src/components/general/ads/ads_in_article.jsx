@@ -9,7 +9,7 @@ export default class adsInArticle extends Component {
 	render() {
 		return (
 			<Block className={`ads inArticle ${this.props.className}`}>
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				{/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<ins
 					className="adsbygoogle"
 					style={{ display: "block", textAlign: "center" }}
@@ -18,7 +18,7 @@ export default class adsInArticle extends Component {
 					data-ad-client="ca-pub-5946382133965347"
 					data-ad-slot="7267654347"
 				></ins>
-				<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+				<script>(adsbygoogle = window.adsbygoogle || []).push({});</script> */}
 			</Block>
 		);
 	}

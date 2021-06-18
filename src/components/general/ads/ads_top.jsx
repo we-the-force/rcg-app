@@ -13,7 +13,7 @@ export default class adsTop extends Component {
 				<Block className="left"></Block>
 				<Block className="center">
 					<Block className="ads">
-						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						{/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
 						{/* <ins
 							className="adsbygoogle"
 							style={{display: 'block',height: '100%'}}
@@ -22,6 +22,15 @@ export default class adsTop extends Component {
 							data-ad-format="auto"
 							data-full-width-responsive="true"
 						></ins> */}
+						<ins class="adsbygoogle"
+										style="display:block"
+										data-ad-client="ca-pub-9419050468962974"
+										data-ad-slot="2504924643"
+										data-ad-format="auto"
+										data-full-width-responsive="true"></ins>
+						<script>
+										(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
 						<Link href="https://www.uane.edu.mx/campus/saltillo" target="_blank" external>
 						<img src={uane} alt="" style={{
 							width: '100%',
@@ -29,7 +38,7 @@ export default class adsTop extends Component {
 						}}/>
 						</Link>
 						
-						<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+						{/* <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> */}
 					</Block>
 				</Block>
 				<Block className="right"></Block>
