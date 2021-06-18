@@ -4,17 +4,14 @@ import uane from "../../../static/imgs/uane.gif";
 
 
 
-export default class adsTop extends Component {
-	constructor() {
-		super();
-		this.state = {};
-	}
+export default function adsTop(props) {
 	
-	render() {
-		useEffect(() => {
-				window.adsbygoogle = window.adsbygoogle || []
-				window.adsbygoogle.push({})
-		})
+	useEffect(() => {
+			window.adsbygoogle = window.adsbygoogle || []
+			window.adsbygoogle.push({})
+	});
+	
+		
 		return (
 			<Block className="ads_cont">
 				<Block className="left"></Block>
@@ -50,5 +47,5 @@ export default class adsTop extends Component {
 				<Block className="right"></Block>
 			</Block>
 		);
-	}
+	
 }
