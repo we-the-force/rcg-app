@@ -23,7 +23,7 @@ export default class adsTop extends Component {
 							data-full-width-responsive="true"
 						></ins> */}
 						<ins class="adsbygoogle"
-										style="display:block"
+										style={{display: 'block'}}
 										data-ad-client="ca-pub-9419050468962974"
 										data-ad-slot="2504924643"
 										data-ad-format="auto"
