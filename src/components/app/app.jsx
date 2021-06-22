@@ -430,7 +430,7 @@ export default class extends React.Component {
 			// 	window.location.reload();
 			// 	refreshing = true;
 			// });
-		}
+		// }
 
 		// window.OneSignal = window.OneSignal || [];
 		// 	OneSignal.push(function () {
