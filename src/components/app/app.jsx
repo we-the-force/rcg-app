@@ -373,16 +373,10 @@ export default class extends React.Component {
 		});
 
 		OneSignal.push(()=> {
-			OneSignal.init(
-			  {
-				appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-			  },
-			  welcomeNotification: {
-				"title": "One Signal",
-				"message": "Thanks for subscribing!",
-			  } 
-			},
-		  });
+			OneSignal.init({
+					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+			});
+		});
 
 		// let newWorker;
 
