@@ -23,4 +23,4 @@
 //     event.waitUntil(self.registration.showNotification(title, options));
 // });
 
-importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');
+self.importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');

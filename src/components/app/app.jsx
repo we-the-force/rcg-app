@@ -29,6 +29,15 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 });
+window.OneSignal = window.OneSignal || [];
+const OneSignal = window.OneSignal;
+
+// OneSignal.push(() => {
+// 	OneSignal.init({
+// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+// 	});
+// });
+
 export default class extends React.Component {
 	constructor() {
 		super();
@@ -345,6 +354,13 @@ export default class extends React.Component {
 			if (Device.cordova) {
 				cordovaApp.init(f7);
 			}
+
+			OneSignal.push(() => {
+				OneSignal.init({
+					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+				});
+			});
+
 
 			// f7.serviceWorker.register("../../OneSignalSDKWorker.js", "/");
 
