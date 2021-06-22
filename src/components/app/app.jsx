@@ -413,14 +413,14 @@ export default class extends React.Component {
 					console.log("ServiceWorker registration failed: ", err);
 				});
 
-			let refreshing;
-			// The event listener that is fired when the service worker updates
-			// Here we reload the page
-			navigator.serviceWorker.addEventListener("controllerchange", function () {
-				if (refreshing) return;
-				window.location.reload();
-				refreshing = true;
-			});
+			// let refreshing;
+			// // The event listener that is fired when the service worker updates
+			// // Here we reload the page
+			// navigator.serviceWorker.addEventListener("controllerchange", function () {
+			// 	if (refreshing) return;
+			// 	window.location.reload();
+			// 	refreshing = true;
+			// });
 		}
 
 		// window.OneSignal = window.OneSignal || [];
