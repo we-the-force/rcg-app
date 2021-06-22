@@ -20,14 +20,14 @@ import App from "@/components/app/app.jsx";
 
 // import * as serviceWorker from '@/OneSignalSDKWorker';
 
-window.OneSignal = window.OneSignal || [];
-const OneSignal = window.OneSignal;
+// window.OneSignal = window.OneSignal || [];
+// const OneSignal = window.OneSignal;
 
-OneSignal.push(() => {
-	OneSignal.init({
-		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-	});
-});
+// OneSignal.push(() => {
+// 	OneSignal.init({
+// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+// 	});
+// });
 
 // Init F7 React Plugin
 Framework7.use(Framework7React);
