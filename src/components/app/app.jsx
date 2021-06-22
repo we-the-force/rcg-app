@@ -331,12 +331,6 @@ export default class extends React.Component {
 					};
 				});
 			});
-		this.$f7ready((f7) => {
-			// Init cordova APIs (see cordova-app.js)
-			const $ = f7.$;
-			if (Device.cordova) {
-				cordovaApp.init(f7);
-			}
 
 			window.OneSignal = window.OneSignal || [];
 			const OneSignal = window.OneSignal;
@@ -346,6 +340,15 @@ export default class extends React.Component {
 					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
 				});
 			});
+		
+		this.$f7ready((f7) => {
+			// Init cordova APIs (see cordova-app.js)
+			const $ = f7.$;
+			if (Device.cordova) {
+				cordovaApp.init(f7);
+			}
+
+			
 			// f7.serviceWorker.register("../../OneSignalSDKWorker.js", "/");
 
 			// Call F7 APIs here
