@@ -13,7 +13,7 @@ import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { HelmetProvider } from "react-helmet-async";
 
-import OneSignal from 'react-onesignal';
+// import OneSignal from 'react-onesignal';
 
 const helmetContext = {};
 
@@ -374,7 +374,7 @@ export default class extends React.Component {
 			});
 		});
 
-		OneSignal.initialize('2b8f51fa-8098-49d8-a9a5-a36441f41907');
+		// OneSignal.initialize('2b8f51fa-8098-49d8-a9a5-a36441f41907');
 
 
 		// OneSignal.push(()=> {
