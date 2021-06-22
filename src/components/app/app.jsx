@@ -28,6 +28,9 @@ const client = new ApolloClient({
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 });
 
+window.OneSignal = window.OneSignal || [];
+const OneSignal = window.OneSignal;
+
 export default class extends React.Component {
 	constructor() {
 		super();
@@ -369,49 +372,61 @@ export default class extends React.Component {
 			});
 		});
 
-		let newWorker;
+		OneSignal.push(()=> {
+			OneSignal.init(
+			  {
+				appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+			  },
+			  welcomeNotification: {
+				"title": "One Signal",
+				"message": "Thanks for subscribing!",
+			  } 
+			},
+		  });
 
-		if ("serviceWorker" in navigator) {
-			console.log("si hay sw");
-			navigator.serviceWorker
-				.register("../../OneSignalSDKWorker.js")
-				.then((reg) => {
-					console.log("se registro");
-					reg.addEventListener("updatefound", () => {
-						console.log("update");
-						// An updated service worker has appeared in reg.installing!
-						newWorker = reg.installing;
+		// let newWorker;
 
-						newWorker.addEventListener("statechange", () => {
-							console.log("state changed " + newWorker.state);
-							// Has service worker state changed?
-							switch (newWorker.state) {
-								case "installed":
-									window.OneSignal = window.OneSignal || [];
-									OneSignal.push(function () {
-										OneSignal.init({
-											appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-										});
-									});
-									// There is a new service worker available, show the notification
-									console.log("controller? " + navigator.serviceWorker.controller);
-									if (navigator.serviceWorker.controller) {
-										console.log("ahoy");
-									}
+		// if ("serviceWorker" in navigator) {
+		// 	console.log("si hay sw");
+		// 	navigator.serviceWorker
+		// 		.register("../../OneSignalSDKWorker.js")
+		// 		.then((reg) => {
+		// 			console.log("se registro");
+		// 			reg.addEventListener("updatefound", () => {
+		// 				console.log("update");
+		// 				// An updated service worker has appeared in reg.installing!
+		// 				newWorker = reg.installing;
 
-									break;
-							}
-						});
-					});
+		// 				newWorker.addEventListener("statechange", () => {
+		// 					console.log("state changed " + newWorker.state);
+		// 					// Has service worker state changed?
+		// 					switch (newWorker.state) {
+		// 						case "installed":
+		// 							window.OneSignal = window.OneSignal || [];
+		// 							OneSignal.push(function () {
+		// 								OneSignal.init({
+		// 									appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+		// 								});
+		// 							});
+		// 							// There is a new service worker available, show the notification
+		// 							console.log("controller? " + navigator.serviceWorker.controller);
+		// 							if (navigator.serviceWorker.controller) {
+		// 								console.log("ahoy");
+		// 							}
 
-					/*     swRegistration = reg;
-				  Notification.requestPermission();
-				  initializeUI(); */
-				})
-				.catch(function (err) {
-					// registration failed :(
-					console.log("ServiceWorker registration failed: ", err);
-				});
+		// 							break;
+		// 					}
+		// 				});
+		// 			});
+
+		// 			/*     swRegistration = reg;
+		// 		  Notification.requestPermission();
+		// 		  initializeUI(); */
+		// 		})
+		// 		.catch(function (err) {
+		// 			// registration failed :(
+		// 			console.log("ServiceWorker registration failed: ", err);
+		// 		});
 
 			// let refreshing;
 			// // The event listener that is fired when the service worker updates
