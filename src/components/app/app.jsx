@@ -13,6 +13,8 @@ import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { HelmetProvider } from "react-helmet-async";
 
+import OneSignal from 'react-onesignal';
+
 const helmetContext = {};
 
 const errorLink = onError(({ graphQLErrors }) => {
@@ -28,8 +30,8 @@ const client = new ApolloClient({
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 });
 
-window.OneSignal = window.OneSignal || [];
-const OneSignal = window.OneSignal;
+// window.OneSignal = window.OneSignal || [];
+// const OneSignal = window.OneSignal;
 
 export default class extends React.Component {
 	constructor() {
@@ -372,11 +374,14 @@ export default class extends React.Component {
 			});
 		});
 
-		OneSignal.push(()=> {
-			OneSignal.init({
-					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-			});
-		});
+		OneSignal.initialize('2b8f51fa-8098-49d8-a9a5-a36441f41907');
+
+
+		// OneSignal.push(()=> {
+		// 	OneSignal.init({
+		// 			appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+		// 	});
+		// });
 
 		// let newWorker;
 
