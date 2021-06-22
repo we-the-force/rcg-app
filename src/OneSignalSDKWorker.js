@@ -22,10 +22,4 @@
 //     };
 //     event.waitUntil(self.registration.showNotification(title, options));
 // });
-console.log(typeof window);
-console.log(self.window);
-console.log(self);
-if(typeof window != "object")
-    self.window = self;
-
-this.importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');
+importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');
