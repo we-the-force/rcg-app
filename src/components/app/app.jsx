@@ -30,8 +30,7 @@ const client = new ApolloClient({
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 });
 
-// window.OneSignal = window.OneSignal || [];
-// const OneSignal = window.OneSignal;
+
 
 export default class extends React.Component {
 	constructor() {
@@ -339,6 +338,14 @@ export default class extends React.Component {
 				cordovaApp.init(f7);
 			}
 
+			window.OneSignal = window.OneSignal || [];
+			const OneSignal = window.OneSignal;
+
+			OneSignal.push(() => {
+				OneSignal.init({
+					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+				});
+			});
 			// f7.serviceWorker.register("../../OneSignalSDKWorker.js", "/");
 
 			// Call F7 APIs here
@@ -375,7 +382,6 @@ export default class extends React.Component {
 		});
 
 		// OneSignal.initialize('2b8f51fa-8098-49d8-a9a5-a36441f41907');
-
 
 		// OneSignal.push(()=> {
 		// 	OneSignal.init({
@@ -427,14 +433,14 @@ export default class extends React.Component {
 		// 			console.log("ServiceWorker registration failed: ", err);
 		// 		});
 
-			// let refreshing;
-			// // The event listener that is fired when the service worker updates
-			// // Here we reload the page
-			// navigator.serviceWorker.addEventListener("controllerchange", function () {
-			// 	if (refreshing) return;
-			// 	window.location.reload();
-			// 	refreshing = true;
-			// });
+		// let refreshing;
+		// // The event listener that is fired when the service worker updates
+		// // Here we reload the page
+		// navigator.serviceWorker.addEventListener("controllerchange", function () {
+		// 	if (refreshing) return;
+		// 	window.location.reload();
+		// 	refreshing = true;
+		// });
 		// }
 
 		// window.OneSignal = window.OneSignal || [];
