@@ -405,7 +405,7 @@ export default class extends React.Component {
 					OneSignal.init({
 						appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
 					});
-			// 	});
+				});
 			// });
 			// 			reg.addEventListener("updatefound", () => {
 			// 				console.log("update");
