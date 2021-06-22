@@ -31,6 +31,7 @@ module.exports = {
         publicPath: '',
         hotUpdateChunkFilename: 'hot/hot-update.js',
         hotUpdateMainFilename: 'hot/hot-update.json',
+        globalObject: 'this',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json'],

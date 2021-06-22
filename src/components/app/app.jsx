@@ -391,23 +391,22 @@ export default class extends React.Component {
 
 		// let newWorker;
 
-		if ("serviceWorker" in navigator) {
+		// if ("serviceWorker" in navigator) {
 			
-			console.log("si hay sw");
-			navigator.serviceWorker
-			.register("../../OneSignalSDKWorker.js")
-			.then((reg) => {
+		// 	console.log("si hay sw");
+		// 	navigator.serviceWorker
+		// 	.register("../../OneSignalSDKWorker.js")
+		// 	.then((reg) => {
 				
-				console.log("se registro");
+		// 		console.log("se registro");
 				window.OneSignal = window.OneSignal || [];
 				const OneSignal = window.OneSignal;
-	
 				OneSignal.push(() => {
 					OneSignal.init({
 						appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
 					});
-				});
-			});
+			// 	});
+			// });
 			// 			reg.addEventListener("updatefound", () => {
 			// 				console.log("update");
 			// 				// An updated service worker has appeared in reg.installing!
@@ -452,6 +451,6 @@ export default class extends React.Component {
 			// 	window.location.reload();
 			// 	refreshing = true;
 			// });
-		}
+		// }
 	}
 }
