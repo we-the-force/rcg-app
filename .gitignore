@@ -45,3 +45,5 @@ www/
 
 #deploy script
 deploy.sh
+
+src/static/sitemap-articulos.xml
