@@ -32,7 +32,11 @@ export default function DestItem(props) {
 					&nbsp;-&nbsp;
 					<p className="fecha">{moment(fecha).format("D MMMM")}</p>
 				</BlockHeader> */}
-				<BlockTitle>{Titulo}</BlockTitle>
+				<BlockTitle>
+					<Link popupClose href={`/articulo/${url}/`}>
+						{Titulo}
+					</Link>
+				</BlockTitle>
 				{/* <p className="cont">{newDesc}</p>
 				<BlockFooter className="display-flex justify-content-space-between">
 					<p className="tag">
