@@ -45,7 +45,7 @@ export default function LeftPanelTablet(props) {
 	const changeBackdropOpen = (e, set) => {
 		var x = document.getElementsByClassName("popup-backdrop");
 		x[0].classList.add("invisible");
-		set([true, e.target.getBounditiktokngClientRect().top]);
+		set([true, e.target.getBoundingClientRect().top]);
 	};
 
 	const changeBackdropClose = (set, top) => {
