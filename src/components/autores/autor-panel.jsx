@@ -28,7 +28,7 @@ export default class AutorPanel extends Component {
 							<p className="noticias">{articulosNum} Noticias</p>
 							<p className="descripcion">{autor[0].descripcion}</p>
 						</Block>
-						<Block className="redes_cont">
+						{/* <Block className="redes_cont">
 							<a href={autor[0].facebook_link} className={`external${autor[0].facebook_link == null ? " gray" : ""}`} target="_blank">
 								<img src={FBIcon} />
 							</a>
@@ -38,7 +38,7 @@ export default class AutorPanel extends Component {
 							<a href={autor[0].instagram_link} className={`external${autor[0].instagram_link == null ? " gray" : ""}`} target="_blank">
 								<img src={IGIcon} />
 							</a>
-						</Block>
+						</Block> */}
 					</Block>
 				</Card>
 				{articulos.map((articulo, key) => {

@@ -97,10 +97,10 @@ export default function LeftPanel(props) {
 			<Card className="left_pan_card social">
 				<CardHeader>Síguenos en:</CardHeader>
 				<Block className="social_cont display-flex justify-content-left align-items-center">
-					<a href="https://www.facebook.com/rcgoficial" className="external" target="_blank">
+					<a href="https://www.facebook.com/rcgmedia.oficial" className="external" target="_blank">
 						<img src={FBIcon} alt="" srcSet="" />
 					</a>
-					<a href="https://www.twitter.com/RCGoficial" className="external" target="_blank">
+					<a href="https://twitter.com/rcg_media" className="external" target="_blank">
 						<img src={TWIcon} alt="" srcSet="" />
 					</a>
 					<a href="https://www.youtube.com/user/RCGNOTICIAS" className="external" target="_blank">
