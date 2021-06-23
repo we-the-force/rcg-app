@@ -13,6 +13,9 @@ import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
+import tiktok from "@/static/imgs/tictoc.png";
+import telegramIcon from "@/static/icons/telegram.png";
+import linkedinIcon from "@/static/icons/linkedin.png";
 import { Block, Link } from "framework7-react";
 
 export default class Footer extends Component {
@@ -35,15 +38,25 @@ export default class Footer extends Component {
 						<hr />
 						<Link href="/faq">Preguntas Frecuentes</Link>
 						<hr />
-                        <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}>SOLICITUDES USO DE INFRAESTRUCTURA</Link>
-                        <hr />
-                        <Link className="external" target="_blank" href={false}>OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA</Link>
+						<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}>
+							SOLICITUDES USO DE INFRAESTRUCTURA
+						</Link>
 						<hr />
-                        <Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}>OPI 2017</Link>
-                        <hr />
-                        <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}>OPI 2018</Link>
-                        <hr />
-                        <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}>SEG</Link>
+						<Link className="external" target="_blank" href={false}>
+							OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
+						</Link>
+						<hr />
+						<Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}>
+							OPI 2017
+						</Link>
+						<hr />
+						<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}>
+							OPI 2018
+						</Link>
+						<hr />
+						<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}>
+							SEG
+						</Link>
 					</div>
 					<div>
 						<p>©2020 RCG</p>
@@ -81,6 +94,15 @@ export default class Footer extends Component {
 						</a>
 						<a href="#" className="display-flex justify-content-center align-items-center">
 							<img src={IGIcon} alt="" srcSet="" />
+						</a>
+						<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">
+							<img src={tiktok} alt="" srcSet="" />
+						</a>
+						<a href="https://t.me/RCGMedia" className="external" target="_blank">
+							<img src={telegramIcon} alt="Telegram" srcSet="" />
+						</a>
+						<a href="https://mx.linkedin.com/company/rcg-media-mexico" className="external" target="_blank">
+							<img src={linkedinIcon} alt="Linkedin" srcSet="" />
 						</a>
 					</Block>
 				</Block>

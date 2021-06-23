@@ -7,6 +7,7 @@ import twred from "@/static/icons/TW_red.png";
 import contact from "@/static/icons/Contact.png";
 import face from "@/static/icons/FB_Icon.png";
 import tw from "@/static/icons/TW_Icon.png";
+import tiktok from "@/static/imgs/tictoc.png";
 import you from "@/static/icons/YT_Icon.png";
 import insta from "@/static/icons/IG_Icon.png";
 import telegramIcon from "@/static/icons/telegram.png";
@@ -105,6 +106,9 @@ export default function mobileMenuPopup(props) {
 							</Link>
 							<Link href="https://www.instagram.com/rcgoficial" target="_blank" className="redes external">
 								<img src={insta} alt="" />
+							</Link>
+							<Link href="https://www.tiktok.com/@rcgoficial?lang=es" target="_blank" className="redes external">
+								<img src={tiktok} alt="" />
 							</Link>
 							<Link href="https://t.me/RCGMedia" target="_blank" className="redes external">
 								<img src={telegramIcon} alt="" />
