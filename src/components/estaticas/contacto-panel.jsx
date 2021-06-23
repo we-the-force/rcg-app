@@ -57,6 +57,8 @@ export default function ContactoPanel(props) {
 	};
 
 	let areVideo = video_source != "" && video_source != null && video_source != undefined;
+    console.log(video_source);
+    console.log(areVideo);
 
 	return (
 		<Fragment>
@@ -66,10 +68,12 @@ export default function ContactoPanel(props) {
 						<BlockHeader>
 							<h1> Contacto</h1>
 						</BlockHeader>
-						<Block className="player-wrapper">
-							{/* url={DB_url + video.url} */}
-							{areVideo && <ReactPlayer className="player" controls={true} url={video_source} playing={false} />}
-						</Block>
+						{areVideo && (
+							<Block className="player-wrapper">
+								{/* url={DB_url + video.url} */}
+								<ReactPlayer className="player" controls={true} url={video_source} playing={false} />
+							</Block>
+						)}
 						<Block className="icons_cont display-flex">
 							<Block id="radio" className="contacto_icon">
 								<img className="light" src={radio} alt="" />
