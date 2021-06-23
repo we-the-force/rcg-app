@@ -83,16 +83,16 @@ export default class Footer extends Component {
 				<Block className="display-flex justify-content-space-between align-items-center social-mobile">
 					<p>Síguenos en:</p>
 					<Block className="icons display-flex justify-content-space-between align-items-center ">
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.facebook.com/rcgmedia.oficial" className="display-flex justify-content-center align-items-center">
 							<img src={FBIcon} alt="" srcSet="" />
 						</a>
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://twitter.com/rcg_media" className="display-flex justify-content-center align-items-center">
 							<img src={TWIcon} alt="" srcSet="" />
 						</a>
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.youtube.com/user/RCGNOTICIAS" className="display-flex justify-content-center align-items-center">
 							<img src={YTIcon} alt="" srcSet="" />
 						</a>
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.instagram.com/rcgoficial" className="display-flex justify-content-center align-items-center">
 							<img src={IGIcon} alt="" srcSet="" />
 						</a>
 						<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">
