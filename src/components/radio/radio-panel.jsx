@@ -29,7 +29,6 @@ export default function RadioPanel(props) {
 	useEffect(() => {
 		if (f7.methods.get_RadioURL() == source_url) {
 			f7.methods.set_LeftRadioActive(false);
-
 			setPlayPause(radioPlay);
 			setMuted(f7.methods.get_RadioMuted());
 			setVolume(f7.methods.get_RadioVolume());
@@ -40,7 +39,8 @@ export default function RadioPanel(props) {
 	}, []);
 
 	useEffect(() => {
-		setPlayPause(radioPlay);
+		if(f7.methods.get_RadioURL() == source_url)
+			setPlayPause(radioPlay);
 	}, [radioPlay]);
 
 	const handlePlayPause = () => {
