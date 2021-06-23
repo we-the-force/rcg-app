@@ -114,13 +114,13 @@ query ArticuloMeta($url: String) {
 }
 
 query Recomendados($tag: String) {
-	swiper: articulos(where: { tags: { nombre: $tag } }, limit: 9) {
+	swiper: articulos(sort: "fecha:desc",where: { tags: { nombre: $tag } }, limit: 9) {
 		...ArticulosData
 	}
 }
 
 query RecomendadosCateg($categ: String) {
-	swiper: articulos(where: { categoria: { nombre: $categ } }, limit: 9) {
+	swiper: articulos(sort: "fecha:desc",where: { categoria: { nombre: $categ } }, limit: 9) {
 		...ArticulosData
 	}
 }
