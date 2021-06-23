@@ -54,6 +54,8 @@ export default function ContactoPanel(props) {
 
     }
 
+    console.log(video_source);
+
     return (
         <Fragment>
 
