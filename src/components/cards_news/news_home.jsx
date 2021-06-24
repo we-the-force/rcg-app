@@ -20,6 +20,8 @@ export default function NewsHome(props) {
 	// 	.replace(/\n/gi, " ")
 	// 	.match(/^.{0,300}/gi);
 	let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+
+	console.log(cover);
 	return (
 		<Block className={`NewsHome_cont ${className}`}>
 			<Block className="img_cont">
