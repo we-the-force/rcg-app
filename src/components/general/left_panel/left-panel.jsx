@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
@@ -46,7 +46,10 @@ export default function LeftPanel(props) {
 					</div>
 					en vivo
 				</CardHeader>
-				<List>
+				<List><ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
 					{skeletonTV && (
 						<Fragment>
 							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
