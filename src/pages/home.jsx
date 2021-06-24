@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import Masthead from "@/components/home/masthead";
 import LeftPanel from "@/components/general/left_panel/left-panel";
@@ -11,7 +11,7 @@ import HomePanel from "@/components/home/home-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import { f7, f7ready } from "framework7-react";
-import { useQuery, useState, useLazyQuery } from "@apollo/client";
+import { useQuery, useLazyQuery } from "@apollo/client";
 import { HomePage } from "@/graphql/queries.graphql";
 import { Page, Block, PageContent, Preloader } from "framework7-react";
 
@@ -23,8 +23,8 @@ export default function Home(props) {
 	const DB_url = f7.methods.get_URL_DB();
 	const limitStatic = 2;
 
-	const [inicial, setInicial] = useState(0);
 	const [callApi, setCallApi] = useState(false);
+	const [inicial, setInicial] = useState(0);
 	const [categorias, setCategorias] = useState([]);
 	const [preloader, setPreloader] = useState(false);
 	const [allowInfinite, setAllowInfinite] = useState(true);
