@@ -18,9 +18,9 @@ export default class NewsSwiper extends Component {
 		if (articulo.cover) {
 			if (articulo.width > 500) {
 				let newUrl = articulo.cover.url.split("/");
-				cover = newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2];
+				cover = DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2];
 			} else {
-				cover = articulo.cover.url;
+				cover = DB_url + articulo.cover.url;
 			}
 		}
 

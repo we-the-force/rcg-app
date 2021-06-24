@@ -25,9 +25,9 @@ export default function NewsHome(props) {
 	if(articulo.cover){
 		let newUrl = articulo.cover.url.split("/");
 		if(first){
-			cover = articulo.width > 750 ? newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : articulo.cover.url;
+			cover = articulo.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
 		}else{
-			cover = articulo.width > 500 ? newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : articulo.cover.url;
+			cover = articulo.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
 	}
 
