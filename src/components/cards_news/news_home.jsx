@@ -21,13 +21,17 @@ export default function NewsHome(props) {
 	// 	.match(/^.{0,300}/gi);
 	// console.log(articulo.cover);
 	// console.log(articulo.cover ? articulo.cover.url : "");
-
+	let cover = IMG;
 	if(articulo.cover){
 		let newUrl = articulo.cover.url.split("/");
-		console.log(newUrl);
+		if(first){
+			cover = articulo.width > 750 ? newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : articulo.cover.url;
+		}else{
+			cover = articulo.width > 500 ? newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : articulo.cover.url;
+		}
 	}
 
-	let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+	// let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 
 	return (
 		<Block className={`NewsHome_cont ${className}`}>

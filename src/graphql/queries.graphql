@@ -398,6 +398,7 @@ fragment ArticulosData on Articulo {
 	created_at
 	cover {
 		url
+		width
 	}
 	description
 	visitas
