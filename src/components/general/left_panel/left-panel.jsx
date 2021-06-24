@@ -33,15 +33,7 @@ export default function LeftPanel(props) {
 		setPlayPause(radioPlay);
 	}, [radioPlay]);
 
-	// useEffect(() => {
-	// 	if (f7.methods.get_RadioURL() == source_url) {
-	// 		//aqui quitar el reproductor izquierdo
-
-	// 		setPlayPause(f7.methods.get_RadioPlay());
-	// 		setMuted(f7.methods.get_RadioMuted());
-	// 		setVolume(f7.methods.get_RadioVolume());
-	// 	}
-	// }, []);
+	console.log(tv_channels);
 
 	return (
 		<Block className="left_panel_cont">

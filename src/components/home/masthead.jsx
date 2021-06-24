@@ -11,17 +11,12 @@ export default function Masthead(props) {
 	const { banner, anuncio, relevante } = props;
 	const swiper = useRef(null);
 	let DB_url = f7.methods.get_URL_DB();
-	/* banner contiene los articulos del banner */
-	/* relevante contiene los más relevantes en caso de que no se complete con el banner */
 
 	let banners = banner;
 	let anuncios = anuncio;
 	let bannerHorizontalUno = anuncios.bannerHorizontalUno;
 	let bannerHorizontalDos = anuncios.bannerHorizontalDos;
 	let bannerHorizontalTres = anuncios.bannerHorizontalTres;
-	console.log(bannerHorizontalUno);
-	console.log(bannerHorizontalDos);
-	console.log(bannerHorizontalTres);
 
 	/* accedo solo a los valores que necesito */
 	banners = banners.map((val) => {
