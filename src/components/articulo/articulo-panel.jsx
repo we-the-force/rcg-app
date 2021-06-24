@@ -66,7 +66,7 @@ export default class ArticuloPanel extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		document.title = articulo.Titulo;
+		// document.title = articulo.Titulo;
 	}
 	componentDidUpdate() {
 		FB.XFBML.parse();
