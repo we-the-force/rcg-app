@@ -66,41 +66,7 @@ export default class ArticuloPanel extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		let { articulo, recomendados } = this.props;
-		const DB_url = f7.methods.get_URL_DB();
-		const url = f7.methods.get_URL();
-		let urlThing = url + `/articulo/${articulo.url}/`;
-		let result = formatText(articulo.description);
-		let otherTags = /(<([^>]+)>)/gi;
-		let firstLine = result
-			.replace(otherTags, "")
-			.replace(/\n/gi, " ")
-			.match(/^.{0,200}/gi);
-		// let cover = articulo.cover ? DB_url + articulo.cover.url : 'IMG';
-		let cover = DB_url + articulo.cover.url;
-		// FB.XFBML.parse();
-
-
-		
-		
-		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
-
-		// document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
-		// document.querySelector('meta[property="og:title"]').setAttribute("content", articulo.Titulo);
-		// document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
-		// // document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
-
-		// document.querySelector('meta[property="twitter:title"]').setAttribute("content", articulo.Titulo);
-		// document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
-		// // document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
-
-		// document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
-		// document.querySelector('meta[name="twitter:title"]').setAttribute("content", articulo.Titulo);
-		// document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
-		// // document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
-
 		document.title = articulo.Titulo;
-
 	}
 	componentDidUpdate() {
 		FB.XFBML.parse();
@@ -120,53 +86,9 @@ export default class ArticuloPanel extends Component {
 			.replace(/\n/gi, " ")
 			.match(/^.{0,200}/gi);
 		let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
-		let handleClick = (title, desc, url, img) => {
-			
-		}
-		// document.querySelector('meta[name="description"]').setAttribute("content", firstLine);
-
-		// document.querySelector('meta[property="og:url"]').setAttribute("content", urlThing);
-		// document.querySelector('meta[property="og:title"]').setAttribute("content", articulo.Titulo);
-		// document.querySelector('meta[property="og:description"]').setAttribute("content", firstLine);
-		// // document.querySelector('meta[property="og:image"]').setAttribute("content", cover);
-
-		// document.querySelector('meta[property="twitter:title"]').setAttribute("content", articulo.Titulo);
-		// document.querySelector('meta[property="twitter:description"]').setAttribute("content", firstLine);
-		// // document.querySelector('meta[property="twitter:image"]').setAttribute("content", cover);
-
-		// document.querySelector('meta[name="twitter:url"]').setAttribute("content", urlThing);
-		// document.querySelector('meta[name="twitter:title"]').setAttribute("content", articulo.Titulo);
-		// document.querySelector('meta[name="twitter:description"]').setAttribute("content", firstLine);
-		// // document.querySelector('meta[name="twitter:image"]').setAttribute("content", cover);
-
-		// document.title = articulo.Titulo;
-
 		return (
 				<Block className="articulo_panel center_panel helmet">
 
-					{/* <Helmet>
-						<title>RCG - {articulo.Titulo}</title>
-						<meta name="description" content={firstLine}/>
-
-						<meta property="og:site_name" content="RCG"/>
-						<meta property="og:type" content="website"/>
-						<meta property="og:url" content={urlThing}/>
-						<meta property="og:title" content={articulo.Titulo}/>
-						<meta property="og:description" content={firstLine}/>
-						<meta property="og:image" content={cover}/>
-						<meta property="og:image:width" content="1280"/>
-						<meta property="og:image:height" content="720"/>
-
-						<meta name="twitter:card" content="summary_large_image"/>
-						<meta name="twitter:creator" content="@RCGoficial"/>
-						<meta name="twitter:url" content={urlThing}/>
-						<meta name="twitter:title" content={articulo.Titulo}/>
-						<meta name="twitter:description" content={firstLine}/>
-
-						<meta property="twitter:image" content="https://wetheforcestudios.com/og.png"/>
-						<meta property="twitter:title" content={articulo.Titulo}/>
-						<meta property="twitter:description" content={firstLine}/>
-					</Helmet> */}
 					<Card className="articulo">
 						<Block className="header_cont display-flex justify-content-space-between">
 							<CardHeader>
@@ -250,17 +172,6 @@ export default class ArticuloPanel extends Component {
 								<div>
 									{parse(articulo.description)}
 								</div>
-								{/* <JsxParser
-									components={{ Block, AdsInArticle }}
-									jsx={`
-                                    <div className="articulo_cont markdown">
-                                    ${parse(articulo.description)}
-                                    <AdsInArticle classNamwe="child">
-                                    </AdsInArticle>
-                                    <AdsInArticle className="child">
-                                    </AdsInArticle>
-                                    </div>`}
-								/> */}
 								<Block className="tags">
 									<p>Tags Relacionados:</p>
 									{articulo.tags.map((tag, i) => {
