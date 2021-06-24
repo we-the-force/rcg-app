@@ -46,10 +46,7 @@ export default function LeftPanel(props) {
 					</div>
 					en vivo
 				</CardHeader>
-				<List><ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
+				<List>
 					{skeletonTV && (
 						<Fragment>
 							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
