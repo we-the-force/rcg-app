@@ -24,9 +24,9 @@ export default class HomePanel extends Component {
 						<NewsRelevantes noticia={relevante[0]} size={"medium"} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
 					</Block>
 					<Block id="grid2" className="grid-cont">
-						<NewsRelevantes noticia={relevante[1]} size={"small"} id="item1" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={relevante[2]} size={"small"} id="item2" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={relevante[3]} size={"small"} id="item3" className="mob-large-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={relevante[1]} size={"xsmall"} id="item1" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={relevante[2]} size={"xsmall"} id="item2" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={relevante[3]} size={"xsmall"} id="item3" className="mob-large-small tab-medium desk-medium" />
 					</Block>
 					<Block id="grid3" className="grid-cont">
 						<NewsRelevantes noticia={relevante[4]} size={"small"} id="item1" className="tab-large desk-large-small" />
