@@ -19,8 +19,8 @@ export default function NewsHome(props) {
 	// 	.replace(otherTags, "")
 	// 	.replace(/\n/gi, " ")
 	// 	.match(/^.{0,300}/gi);
-	console.log(articulo.cover.url);
-
+	console.log(articulo.cover);
+	console.log(articulo.cover ? articulo.cover.url : "");
 	let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
 
 	return (
