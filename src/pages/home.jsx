@@ -11,7 +11,7 @@ import HomePanel from "@/components/home/home-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import { f7, f7ready } from "framework7-react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useState, useLazyQuery } from "@apollo/client";
 import { HomePage } from "@/graphql/queries.graphql";
 import { Page, Block, PageContent, Preloader } from "framework7-react";
 
