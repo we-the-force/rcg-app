@@ -80,7 +80,7 @@ export default class HomePanel extends Component {
 								<Block className="grid-cont">
 									{articulosTop.map((val, i) => {
 										let first = i == 0 && articulosTop.length != 2 ? "first" : "";
-										return <NewsHome className={"grid-item " + first} key={i} articulo={val} />;
+										return <NewsHome className={"grid-item " + first} key={i} articulo={val} first={i == 0 ? true : false}/>;
 									})}
 									{articulosSwiper.length > 0 && (
 										<Fragment>
