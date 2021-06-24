@@ -33,7 +33,8 @@ export default function LeftPanel(props) {
 		setPlayPause(radioPlay);
 	}, [radioPlay]);
 
-	console.log(tv_channels);
+	let skeletonTV = tv_channels.length == 0;
+	let skeletonRadio = radio_stations.length == 0;
 
 	return (
 		<Block className="left_panel_cont">
@@ -46,6 +47,16 @@ export default function LeftPanel(props) {
 					en vivo
 				</CardHeader>
 				<List>
+					{skeletonTV && (
+						<Fragment>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+						</Fragment>
+					)}
 					{tv_channels.map((channel, key) => {
 						return (
 							<ListItem key={key} link={`/tv/${channel.url}`}>
@@ -71,6 +82,20 @@ export default function LeftPanel(props) {
 								<Icon material={playPause ? "pause" : "play_arrow"} />
 							</a>
 						</ListItem>
+					)}
+					{skeletonRadio && (
+						<Fragment>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
+							</ListItem>
+						</Fragment>
 					)}
 					{radio_stations.map((station, key) => {
 						return (
