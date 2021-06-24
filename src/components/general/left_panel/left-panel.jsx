@@ -22,7 +22,7 @@ export default function LeftPanel(props) {
 	let radio_img = f7.methods.get_RadioIMG();
 
 	const handlePlayPause = () => {
-		if(!playPause){
+		if (!playPause) {
 			f7.methods.set_TVPlay(false);
 		}
 		setPlayPause(!playPause);
@@ -74,7 +74,7 @@ export default function LeftPanel(props) {
 				<List>
 					{leftPlayerRadio && (
 						<ListItem title={radio_name} className="leftRadioPlayer">
-							<img slot="media" src={radio_img}/>
+							<img slot="media" src={radio_img} />
 							<a onClick={handlePlayPause}>
 								<Icon material={playPause ? "pause" : "play_arrow"} />
 							</a>
@@ -166,19 +166,24 @@ export default function LeftPanel(props) {
 					<Link href="/derecho-replica">Derecho de réplica</Link>
 					<Link href="/aviso-privacidad">Aviso de privacidad</Link>
 					<Link href="/faq">Preguntas Frecuentes</Link>
-					<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}>
+					{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}> */}
+					<Link className="external" target="_blank" href={false}>
 						SOLICITUDES USO DE INFRAESTRUCTURA
 					</Link>
+					{/* <Link className="external" target="_blank" href={false}> */}
 					<Link className="external" target="_blank" href={false}>
 						OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 					</Link>
-					<Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}>
+					{/* <Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}> */}
+					<Link className="external" target="_blank" href={false}>
 						OPI 2017
 					</Link>
-					<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}>
+					{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}> */}
+					<Link className="external" target="_blank" href={false}>
 						OPI 2018
 					</Link>
-					<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}>
+					{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}> */}
+					<Link className="external" target="_blank" href={false}>
 						SEG
 					</Link>
 				</div>

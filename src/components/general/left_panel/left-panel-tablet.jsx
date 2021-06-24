@@ -45,7 +45,7 @@ export default function LeftPanelTablet(props) {
 	const changeBackdropOpen = (e, set) => {
 		var x = document.getElementsByClassName("popup-backdrop");
 		x[0].classList.add("invisible");
-		set([true, e.target.getBounditiktokngClientRect().top]);
+		set([true, e.target.getBoundingClientRect().top]);
 	};
 
 	const changeBackdropClose = (set, top) => {
@@ -142,19 +142,24 @@ export default function LeftPanelTablet(props) {
 				<Link href="/faq" className="text-link">
 					Preguntas Frecuentes
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}>
+				{/* <Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}> */}
+				<Link className="lowercase text-link external" target="_blank" href={false}>
 					SOLICITUDES USO DE INFRAESTRUCTURA
 				</Link>
+				{/* <Link className="lowercase text-link external" target="_blank" href={false}> */}
 				<Link className="lowercase text-link external" target="_blank" href={false}>
 					OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"https://rcgmedia.mx/oferta/"}>
+				{/* <Link className="lowercase text-link external" target="_blank" href={"https://rcgmedia.mx/oferta/"}> */}
+				<Link className="lowercase text-link external" target="_blank" href={false}>
 					OPI 2017
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}>
+				{/* <Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}> */}
+				<Link className="lowercase text-link external" target="_blank" href={false}>
 					OPI 2018
 				</Link>
-				<Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}>
+				{/* <Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}> */}
+				<Link className="lowercase text-link external" target="_blank" href={false}>
 					SEG
 				</Link>
 				{/*<Link className="text-link OPI-2017">OPI 2017</Link>

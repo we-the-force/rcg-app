@@ -38,7 +38,8 @@ export default class Footer extends Component {
 						<hr />
 						<Link href="/faq">Preguntas Frecuentes</Link>
 						<hr />
-						<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}>
+						{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}> */}
+						<Link className="external" target="_blank" href={false}>
 							SOLICITUDES USO DE INFRAESTRUCTURA
 						</Link>
 						<hr />
@@ -46,15 +47,18 @@ export default class Footer extends Component {
 							OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 						</Link>
 						<hr />
-						<Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}>
+						{/* <Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}> */}
+						<Link className="external" target="_blank" href={false}>
 							OPI 2017
 						</Link>
 						<hr />
-						<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}>
+						{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}> */}
+						<Link className="external" target="_blank" href={false}>
 							OPI 2018
 						</Link>
 						<hr />
-						<Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}>
+						{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}> */}
+						<Link className="external" target="_blank" href={false}>
 							SEG
 						</Link>
 					</div>
@@ -83,16 +87,16 @@ export default class Footer extends Component {
 				<Block className="display-flex justify-content-space-between align-items-center social-mobile">
 					<p>Síguenos en:</p>
 					<Block className="icons display-flex justify-content-space-between align-items-center ">
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.facebook.com/rcgmedia.oficial" className="display-flex justify-content-center align-items-center">
 							<img src={FBIcon} alt="" srcSet="" />
 						</a>
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://twitter.com/rcg_media" className="display-flex justify-content-center align-items-center">
 							<img src={TWIcon} alt="" srcSet="" />
 						</a>
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.youtube.com/user/RCGNOTICIAS" className="display-flex justify-content-center align-items-center">
 							<img src={YTIcon} alt="" srcSet="" />
 						</a>
-						<a href="#" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.instagram.com/rcgoficial" className="display-flex justify-content-center align-items-center">
 							<img src={IGIcon} alt="" srcSet="" />
 						</a>
 						<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">

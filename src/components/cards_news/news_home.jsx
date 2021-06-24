@@ -9,17 +9,30 @@ import { Block, Link, BlockFooter, f7 } from "framework7-react";
 // ano natsu no, kimi ga atama ni iru
 export default function NewsHome(props) {
 	moment.locale("es");
-	const { className, articulo } = props;
+	const { className, articulo, first } = props;
 	let DB_url = f7.methods.get_URL_DB();
 	// let newDesc = marked(articulo.description);
-	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-	let otherTags = /(<([^>]+)>)/gi;
+	// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+	// let otherTags = /(<([^>]+)>)/gi;
 	// newDesc = newDesc
 	// 	.replace(titlesRegEx, "")
 	// 	.replace(otherTags, "")
 	// 	.replace(/\n/gi, " ")
 	// 	.match(/^.{0,300}/gi);
-	let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+	// console.log(articulo.cover);
+	// console.log(articulo.cover ? articulo.cover.url : "");
+	let cover = IMG;
+	if(articulo.cover){
+		let newUrl = articulo.cover.url.split("/");
+		if(first){
+			cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
+		}else{
+			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+		}
+	}
+
+	// let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+
 	return (
 		<Block className={`NewsHome_cont ${className}`}>
 			<Block className="img_cont">

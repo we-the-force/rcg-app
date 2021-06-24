@@ -85,15 +85,18 @@ query HomePage {
 					}
 			}
 	}
-	categorias {
-		nombre
-		url
-		articulos(sort: "fecha:desc", limit: 16) {
-			...ArticulosData
-		}
-	}
 	relevante: articulos(sort: "fecha:desc", where: { relevante: true }, limit: 8) {
 		...ArticulosData
+	}
+}
+
+query CategoriaHome($inicio: Int, $limite: Int) {
+	categorias(start: $inicio, limit: $limite) {
+		nombre
+		url
+		articulos(sort: "fecha:desc", limit: 9) {
+			...ArticulosData
+		}
 	}
 }
 
@@ -398,6 +401,7 @@ fragment ArticulosData on Articulo {
 	created_at
 	cover {
 		url
+		width
 	}
 	description
 	visitas
