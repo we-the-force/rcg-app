@@ -16,8 +16,6 @@ export default class NewsSwiper extends Component {
 
 		let cover = IMG;
 		if (articulo.cover) {
-            console.log(articulo.width);
-            console.log(newUrl[2]);
 			if (articulo.width > 500) {
 				let newUrl = articulo.cover.url.split("/");
 				cover = DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2];

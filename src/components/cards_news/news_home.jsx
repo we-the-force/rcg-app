@@ -24,8 +24,6 @@ export default function NewsHome(props) {
 	let cover = IMG;
 	if(articulo.cover){
 		let newUrl = articulo.cover.url.split("/");
-		console.log(articulo.width);
-		console.log(newUrl[2]);
 		if(first){
 			cover = articulo.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
 		}else{
