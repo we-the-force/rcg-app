@@ -95,7 +95,7 @@ export default function Home(props) {
 			>
 				{/* ads */}
 				{/* masthead */}
-				{!navbarLoading && (
+				{/* {!navbarLoading && ( */}
 					<Nav
 						home
 						categorias={f7.methods.getCategorias()}
@@ -105,8 +105,8 @@ export default function Home(props) {
 						logo={DB_url + logo}
 						loading={false}
 					/>
-				)}
-				{navbarLoading && <Nav radio_stations={leftPanelRadio} tv_channels={leftPanelTV} loading />}
+				{/* )} */}
+				{/* {navbarLoading && <Nav radio_stations={leftPanelRadio} tv_channels={leftPanelTV} loading />} */}
 				{mast}
 				{/* Top Navbar */}
 

@@ -8,7 +8,7 @@ import { Popover, Navbar, List, ListItem, f7, NavLeft, NavRight, Icon } from "fr
 export default function Nav(props) {
 	let { categorias, home, espectaculares, logo, logoD, loading } = props;
 
-	// if (categorias.length <= 0) return null;
+	if (categorias.length <= 0) return null;
 
 	let [categ_show, categ_pop, type] = useData(categorias);
 
@@ -45,7 +45,7 @@ export default function Nav(props) {
 				</List>
 			)}
 			<Navbar sliding noHairline noShadow>
-				{loading && (
+				{/* {loading && (
 					<Fragment>
 						<NavLeft className={home ? "home" : ""}>
 							<a href="/">
@@ -56,15 +56,14 @@ export default function Nav(props) {
 							<img src={doscuatrosiete} alt="" />
 						</NavRight>
 					</Fragment>
-				)}
+				)} */}
 				{type === "desktop" && !loading && (
-					<Desk logo={logo} logoD={logoD} itemsShow={categ_show} itemsPop={categ_pop.length} esp={espectaculares} home={home} />
+					<Desk logo={logo} logoD={logoD} itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />
 				)}
 				{type === "mobile" && !loading && <Mobile logo={logo} logoD={logoD} />}
 			</Navbar>
 			<PopMenu tv_channels={props.tv_channels} radio_stations={props.radio_stations} logo={logo} logoD={logoD} />
 			<Popover className="popover-menu">
-				{!loading && (
 					<List>
 						{categ_pop.map((val, key) => {
 							return (
@@ -74,7 +73,6 @@ export default function Nav(props) {
 							);
 						})}
 					</List>
-				)}
 			</Popover>
 		</Fragment>
 	);
