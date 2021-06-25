@@ -29,7 +29,12 @@ export default function NewsCategoria(props) {
 		.replace(/\n/gi, " ")
         .match(/^.{0,300}/gi);
         
-    let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+    let cover = IMG;
+    if (articulo.cover) {
+        let newUrl = articulo.cover.url.split("/");
+        cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
+    }
+    // let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
     return (
         <Card className={`NewsCategoria_cont ${className}`}>
             <Block className="head">

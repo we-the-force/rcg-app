@@ -22,7 +22,14 @@ export default function NewsBusqueda(props) {
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
         .match(/^.{0,300}/gi);
-    let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+
+    let cover = IMG;
+    if (articulo.cover) {
+        let newUrl = articulo.cover.url.split("/");
+        //cambiar a xs
+        cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+    }
+    // let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
     return (
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">

@@ -17,45 +17,8 @@ import { ArticuloPage, Recomendados, RecomendadosCateg } from "@/graphql/queries
 import { UpdateArticulo } from "@/graphql/mutations.graphql";
 import { Page, Block, PageContent } from "framework7-react";
 
-export function formatText(x) {
-	const DB_url = f7.methods.get_URL_DB();
-	let value = marked(x);
-	let frameProp = /<iframe([^>]*)(frameborder="([^"])")([^>]*)>/gi;
-	let fullScreenProp = /<iframe([^>]*)(allowfullscreen)([^>]*)>/gi;
-	let strokeProp = /stroke-width/gi;
-	let fillRuleProp = /fill-rule/gi;
-	let dateTimeProp = /datetime/gi;
-	let titleTag = /(<h([1-6])([^>]*)>)/gi;
-	let brTag = /<br>/gi;
-	let parrafoTag = /(<p ([^>]*)>)/gi;
-	let listTag = /(<li([^>]*)>)/gi;
-	let listChildTag = /<(ol|ul)([^>]*)>/gi;
-	let xmlnsLink = /xmlns:xlink="([^"]*)"/gi;
-	let xmlnsHref = /xlink:href="([^"]*)"/gi;
-	let anchorTag = /(<a([^>]*)>)/gi;
-	let imgTag = /(<p [^>]*>)([^<]*)<img\s*([^>]*)\s*src=["'`]([^"`']+)["`']\s*([^>]*)(\/?>)(<\/p>)/gi;
-	let NotTags = /<(?!\/?(p|h([1-6])|li|ol|ul|a|iframe|blockquote|b|img|div|u|br|cite|del|i|strong|time|g|path|svg)(?=>|\s.*>))\/?.*?>/gi;
-	value = value.replace(titleTag, '<h$2 className="child titulo">');
-	value = value.replace(parrafoTag, '<p className="child parrafo">');
-	value = value.replace(frameProp, '<iframe $1 frameBorder="$3" $4>');
-	value = value.replace(strokeProp, "strokeWidth");
-	value = value.replace(fillRuleProp, "fillRule");
-	value = value.replace(dateTimeProp, "dateTime");
-	value = value.replace(fullScreenProp, "<iframe $1 allowFullScreen $3>");
-	value = value.replace(listChildTag, '<$1 className="child">');
-	value = value.replace(brTag, "<br/>");
-	value = value.replace(NotTags, "");
-	value = value.replace(xmlnsLink, 'xmlnsXlink="$1"');
-	value = value.replace(xmlnsHref, 'xmlnsHref="$1"');
-	value = value.replace(listTag, '<li $2 className="parrafo">');
-	value = value.replace(anchorTag, '<a $2 className="link external" target="_blank">');
-	value = value.replace(imgTag, `<div className="imagen_cont child">$2<img $3 src="${DB_url}$4" $5 /></div>`);
-	return value;
-}
-
 export default function Articulo(props) {
-	const { url, radio_play } = props;
-	console.log(radio_play);
+	const { url } = props;
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
 
@@ -66,15 +29,6 @@ export default function Articulo(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
-
-	let article;
-
-	const ogurl = f7.methods.get_URL();
-	let urlThing;
-	let result;
-	let firstLine;
-	let cover;
-	let otherTags = /(<([^>]+)>)/gi;
 
 	const [updateArticulo] = useMutation(UpdateArticulo, {
 		onCompleted: (data) => {},
@@ -97,14 +51,6 @@ export default function Articulo(props) {
 		onCompleted: (data) => {
 			setFlag(true);
 			if (data.articulos.length > 0) {
-				article = data.articulos[0];
-				result = formatText(article.description);
-				urlThing = ogurl + `/articulo/${article.url}/`;
-				firstLine = result
-					.replace(otherTags, "")
-					.replace(/\n/gi, " ")
-					.match(/^.{0,200}/gi);
-				cover = article.cover ? DB_url + article.cover.url : IMG;
 				if (data.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {

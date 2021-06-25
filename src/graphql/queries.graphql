@@ -112,6 +112,7 @@ query ArticuloMeta($url: String) {
 		description,
 		cover{
 			url
+			width
 		}
 	}
 }
@@ -135,6 +136,7 @@ query AutorPage($url: String) {
 		descripcion
 		img {
 			url
+			width
 		}
 		twitter_link
 		facebook_link
@@ -160,6 +162,7 @@ query AutorPage($url: String) {
 		nombre
 		img {
 			url
+			width
 		}
 		twitter_link
 		facebook_link
@@ -187,6 +190,7 @@ query AutoresPage {
 		nombre
 		img {
 			url
+			width
 		}
 		twitter_link
 		facebook_link

@@ -16,7 +16,14 @@ export default function DestItem(props) {
 		.replace(otherTags, "")
 		.replace(/\n/gi, " ")
 		.match(/^.{0,300}/gi);
-	let imgn = cover ? DB_url + cover.url : IMG;
+
+	let imgn = IMG;
+    if (cover) {
+        let newUrl = cover.url.split("/");
+        //cambiar a xs
+        imgn = cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + cover.url;
+    }
+	// let imgn = cover ? DB_url + cover.url : IMG;
 	return (
 		<Block className={"dest-item"}>
 			{props.image && (

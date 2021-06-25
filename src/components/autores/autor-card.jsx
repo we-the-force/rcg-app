@@ -1,7 +1,4 @@
-import React, { Component } from "react";
-import TWIcon from "@/static/icons/TW_Icon.png";
-import FBIcon from "@/static/icons/FB_Icon.png";
-import IGIcon from "@/static/icons/IG_Icon.png";
+import React from "react";
 import photo from "@/static/imgs/grayback.jpg";
 import { f7 } from "framework7-react";
 import { Card, Link, Block } from "framework7-react";
@@ -11,7 +8,13 @@ export default function AutorCard(props) {
 	let DB_url = f7.methods.get_URL_DB();
 	let imagen, id, nombre, articulos, face, twitt, insta, url;
 	if (autor) {
-		imagen = autor.img ? DB_url + autor.img.url : "/static/icons/person_x2.png";
+		imagen = "/static/icons/person_x2.png";
+		if (autor.img) {
+			let newUrl = autor.img.url.split("/");
+			//cambiar a xsmall
+			imagen = autor.img.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + autor.img.url;
+		}
+		// imagen = autor.img ? DB_url + autor.img.url : ;
 		id = autor.id;
 		nombre = autor.nombre;
 		articulos = numArticulos ? numArticulos.articulos : "0";
