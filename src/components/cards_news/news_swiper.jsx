@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import IMG from "@/static/imgs/grayback.jpg";
 import moment from "moment";
 import { Block, BlockTitle, BlockFooter, Link, f7 } from "framework7-react";
+import { getDevice } from "framework7";
 
 export default class NewsSwiper extends Component {
 	constructor() {
@@ -10,9 +11,14 @@ export default class NewsSwiper extends Component {
 	}
 	render() {
 		moment.locale("es");
+
+		const device = getDevice();
+		console.log(device);
+		
 		let { articulo } = this.props;
 		let DB_url = f7.methods.get_URL_DB();
 		let skeleton = articulo ? "" : "skeleton-text";
+
 
 		let cover = IMG;
 		if (articulo.cover) {

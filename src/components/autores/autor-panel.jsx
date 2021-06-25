@@ -1,18 +1,20 @@
 import React, { Component, Fragment } from "react";
 import NewsBusqueda from "@/components/cards_news/news_busqueda.jsx";
-import NotFoundPanel from "@/components/not-found-panel";
 import AdsFeedLeft from "@/components/general/ads/ads_feed_left";
-import TWIcon from "@/static/icons/TW_Icon_x4.png";
-import FBIcon from "@/static/icons/FB_Icon_x4.png";
-import IGIcon from "@/static/icons/IG_Icon_x4.png";
 import { Card, Block, f7 } from "framework7-react";
+import { getDevice } from "framework7";
 
 export default class AutorPanel extends Component {
 	constructor(props) {
 		super(props);
 	}
 
+	
 	render() {
+		
+		const device = getDevice();
+		console.log(device);
+
 		let { autor, articulosNum, articulos } = this.props;
 		let DB_url = f7.methods.get_URL_DB();
 
