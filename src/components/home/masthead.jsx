@@ -9,13 +9,12 @@ export default function Masthead(props) {
 	const { banner, relevante, loading } = props;
 	const swiper = useRef(null);
 	const swiperLoading = useRef(null);
-	const [load , setLoad] = useState(loading);
 	let DB_url = f7.methods.get_URL_DB();
 
 	let banners = banner;
 	let articulos = [];
 
-	if (!load) {
+	if (!loading) {
 		banners = banners.map((val) => {
 			return {
 				id: val.articulo.id,
@@ -65,26 +64,16 @@ export default function Masthead(props) {
 		return () => clearInterval(interval);
 	}, []);
 
-	useEffect(() => {
-		if(loading == false){
-			let el_swiper = swiperLoading.current.swiper;
-			el_swiper.destroy();
-		}
-		setLoad(loading);
-	}, [loading]);
-
 	return (
 		<Block className="masthead">
-			{load && (
-				<Fragment>
-					<Swiper ref={swiperLoading} navigation pagination params={{ loop: true }}>
-						<SwiperSlide>
-							<Block className="background">
-								<img src={IMG} alt="" />
-							</Block>
-						</SwiperSlide>
-					</Swiper>
-				</Fragment>
+			{loading && (
+				<Swiper ref={swiperLoading} navigation pagination params={{ loop: true }}>
+					<SwiperSlide>
+						<Block className="background">
+							<img src={IMG} alt="" />
+						</Block>
+					</SwiperSlide>
+				</Swiper>
 			)}
 			{articulos.length > 0 && (
 				<Fragment>
