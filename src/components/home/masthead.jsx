@@ -8,6 +8,7 @@ export default function Masthead(props) {
 
 	const { banner, relevante, loading } = props;
 	const swiper = useRef(null);
+	const swiperLoading = useRef(null);
 	const [load , setLoad] = useState(loading);
 	let DB_url = f7.methods.get_URL_DB();
 
@@ -66,8 +67,8 @@ export default function Masthead(props) {
 
 	useEffect(() => {
 		if(loading == false){
-			let el_swiper = swiper.current.swiper;
-			el_swiper.removeSlide(0);
+			let el_swiper = swiperLoading.current.swiper;
+			el_swiper.destroy();
 		}
 		setLoad(loading);
 	}, [loading]);
@@ -76,7 +77,7 @@ export default function Masthead(props) {
 		<Block className="masthead">
 			{load && (
 				<Fragment>
-					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
+					<Swiper ref={swiperLoading} navigation pagination params={{ loop: true }}>
 						<SwiperSlide>
 							<Block className="background">
 								<img src={IMG} alt="" />
