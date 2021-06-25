@@ -106,7 +106,7 @@ export default function Home(props) {
 						loading={false}
 					/>
 				)}
-				{navbarLoading && <Nav loading />}
+				{navbarLoading && <Nav radio_stations={leftPanelRadio} tv_channels={leftPanelTV} loading />}
 				{mast}
 				{/* Top Navbar */}
 
