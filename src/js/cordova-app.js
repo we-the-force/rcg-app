@@ -174,12 +174,8 @@ var cordovaApp = {
 
     // Handle Keyboard
     cordovaApp.handleKeyboard();
-    document.addEventListener(
-      "deviceready",
-      this.onDeviceReady.bind(this),
-      false
-    );
-    cordovaApp.receivedEvent("deviceready");
+    
+    cordovaApp.receivedEvent();
     window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
       if (status.permissionStatus.hasPrompted == false) {
         OneSignal.addTrigger("prompt_ios", "true");
