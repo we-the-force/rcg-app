@@ -8,7 +8,7 @@ var cordovaApp = {
     if (!window.navigator.splashscreen || f7.device.electron) return;
     setTimeout(() => {
       window.navigator.splashscreen.hide();
-    }, 2000);
+    }, 0);
   },
   /*
   This method prevents back button tap to exit from app on android.
@@ -91,6 +91,34 @@ var cordovaApp = {
     - provides cross-platform view "shrinking" on keyboard open/close
     - hides keyboard accessory bar for all inputs except where it required
   */
+
+    receivedEvent: function() {
+    //START ONESIGNAL CODE
+    //Remove this method to stop OneSignal Debugging 
+    //window.plugins.OneSignal.setLogLevel({logLevel: 6, visualLevel: 0});
+
+    var notificationOpenedCallback = function(jsonData) {
+        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    };
+    // Set your iOS Settings
+    var iosSettings = {};
+    iosSettings["kOSSettingsKeyAutoPrompt"] = false;
+    iosSettings["kOSSettingsKeyInAppLaunchURL"] = false;
+
+    window.plugins.OneSignal.startInit("2b8f51fa-8098-49d8-a9a5-a36441f41907")
+      .handleNotificationOpened(notificationOpenedCallback)
+      .iOSSettings(iosSettings)
+      .inFocusDisplaying(
+        window.plugins.OneSignal.OSInFocusDisplayOption.Notification
+      )
+      .endInit();
+
+    // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+    window.plugins.OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
+        console.log("User accepted notifications: " + accepted);
+    });
+    //END ONESIGNAL CODE
+    },
   handleKeyboard: function () {
     var f7 = cordovaApp.f7;
     if (!window.Keyboard || !window.Keyboard.shrinkView || f7.device.electron) return;
@@ -146,6 +174,17 @@ var cordovaApp = {
 
     // Handle Keyboard
     cordovaApp.handleKeyboard();
+    document.addEventListener(
+      "deviceready",
+      this.onDeviceReady.bind(this),
+      false
+    );
+    cordovaApp.receivedEvent("deviceready");
+    window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
+      if (status.permissionStatus.hasPrompted == false) {
+        OneSignal.addTrigger("prompt_ios", "true");
+      }
+    });
   },
 };
 
