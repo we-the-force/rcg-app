@@ -7,12 +7,7 @@ export default class AutorPanel extends Component {
 	constructor(props) {
 		super(props);
 	}
-
-	
 	render() {
-		
-		console.log(f7.device);
-
 		let { autor, articulosNum, articulos } = this.props;
 		let DB_url = f7.methods.get_URL_DB();
 

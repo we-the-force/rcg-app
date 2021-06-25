@@ -11,7 +11,7 @@ export default class NewsSwiper extends Component {
 	render() {
 		moment.locale("es");
 
-		console.log(f7.device);
+		console.log(f7.device); //cambiar a xs 
 
 		let { articulo } = this.props;
 		let DB_url = f7.methods.get_URL_DB();

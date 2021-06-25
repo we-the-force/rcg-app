@@ -61,7 +61,8 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
-		console.log(f7.device);
+		const dev = f7.device;
+		let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
 		let { articulo, recomendados } = this.props;
 		const DB_url = f7.methods.get_URL_DB();
@@ -75,9 +76,12 @@ export default class ArticuloPanel extends Component {
 			.match(/^.{0,200}/gi);
 
 		let cover = IMG;
-		if (articulo.cover) {
+		if (articulo.cover && !areMobile) {
 			let newUrl = articulo.cover.url.split("/");
 			cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
+		} else if (areMobile) {
+			let newUrl = articulo.cover.url.split("/");
+			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
 		return (
 			<Block className="articulo_panel center_panel helmet">

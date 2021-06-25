@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import IMG from '@/static/imgs/grayback.jpg';
+import IMG from "@/static/imgs/grayback.jpg";
 import moment from "moment";
 import { Block, Link, BlockFooter, f7 } from "framework7-react";
 
@@ -7,18 +7,22 @@ import { Block, Link, BlockFooter, f7 } from "framework7-react";
 export default function NewsHome(props) {
 	moment.locale("es");
 
-	console.log(f7.device);
+	const dev = f7.device;
+	let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
 	const { className, articulo, first } = props;
 	let DB_url = f7.methods.get_URL_DB();
 	let cover = IMG;
-	if(articulo.cover){
+	if (articulo.cover && !areMobile) {
 		let newUrl = articulo.cover.url.split("/");
-		if(first){
+		if (first) {
 			cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
-		}else{
+		} else {
 			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
+	} else if (areMobile) {
+		let newUrl = articulo.cover.url.split("/");
+		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 	}
 
 	// let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
@@ -31,7 +35,10 @@ export default function NewsHome(props) {
 				</Link>
 			</Block>
 			<Block className="img_foot">
-				<Link href={articulo.autor ? `/autor/${articulo.autor.url}` : '/autores'} className="autor">{articulo.autor ? articulo.autor.nombre : 'Sin Autor'}</Link>&nbsp;-&nbsp;
+				<Link href={articulo.autor ? `/autor/${articulo.autor.url}` : "/autores"} className="autor">
+					{articulo.autor ? articulo.autor.nombre : "Sin Autor"}
+				</Link>
+				&nbsp;-&nbsp;
 				<p className="fecha">{moment(articulo.fecha).format("D MMMM")}</p>
 			</Block>
 			<Block className="content">

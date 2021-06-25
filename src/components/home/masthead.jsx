@@ -1,22 +1,18 @@
 import React, { useRef, useEffect, Fragment } from "react";
 import IMG from "@/static/imgs/grayback.jpg";
-import { Swiper, SwiperSlide, Block, BlockHeader, BlockFooter, Link, f7 } from "framework7-react";
+import { Swiper, SwiperSlide, Block, Link, f7 } from "framework7-react";
 
 export default function Masthead(props) {
 
-	console.log(f7.device);
+	const dev = f7.device;
+	let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
 	const { banner, anuncio, relevante } = props;
 	const swiper = useRef(null);
 	let DB_url = f7.methods.get_URL_DB();
 
 	let banners = banner;
-	let anuncios = anuncio;
-	let bannerHorizontalUno = anuncios.bannerHorizontalUno;
-	let bannerHorizontalDos = anuncios.bannerHorizontalDos;
-	let bannerHorizontalTres = anuncios.bannerHorizontalTres;
 
-	/* accedo solo a los valores que necesito */
 	banners = banners.map((val) => {
 		return {
 			
@@ -45,10 +41,9 @@ export default function Masthead(props) {
 	});
 
 	banners.reverse();
-	/* concateno los arreglos */
+
 	let articulos = banners.concat(relevantes);
 
-	/* quito los repetidos */
 	for (let i = 0; i < articulos.length; i++) {
 		for (let j = i + 1; j < articulos.length; j++) {
 			if (articulos[i].id === articulos[j].id) {
@@ -57,7 +52,6 @@ export default function Masthead(props) {
 		}
 	}
 
-	/* traigo solo los primeros 10 */
 	articulos = articulos.slice(0, 9);
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -73,10 +67,18 @@ export default function Masthead(props) {
 				<Fragment>
 					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
 						{articulos.map((item, i) => {
+							let cover = IMG;
+
+							if(areMobile){
+								let newUrl = item.cover.url.split("/");
+								//cambiar a xs
+								cover = item.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + item.cover.url;
+							}
+
 							return (
 								<SwiperSlide key={i}>
 									<Block className="background">
-										<img src={item.cover ? DB_url + item.cover.url : IMG} alt="" />
+										<img src={cover} alt="" />
 										<Block className="label">
 											<Link href={item.categoria ? "/categoria/" + item.categoria.nombre : ""} className="categoria upperscale">
 												{item.categoria ? item.categoria.nombre : ""}

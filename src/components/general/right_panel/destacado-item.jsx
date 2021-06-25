@@ -3,12 +3,9 @@ import marked from "marked";
 import moment from "moment";
 import IMG from '@/static/imgs/grayback.jpg';
 import { Block, BlockHeader, BlockTitle, BlockFooter, Link, f7 } from "framework7-react";
-import { getDevice } from "framework7";
 
 export default function DestItem(props) {
 	moment.locale("es");
-	
-	console.log(f7.device);
 
 	const { description, cover, autor, fecha, Titulo, tags, url } = props.articulo;
 	let DB_url = f7.methods.get_URL_DB();

@@ -12,8 +12,6 @@ import {
 export default function NewsBusqueda(props) {
     moment.locale('es');
 
-	console.log(f7.device);
-
     const { className, articulo } = props;
     let DB_url = f7.methods.get_URL_DB();
 

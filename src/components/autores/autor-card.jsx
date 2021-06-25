@@ -5,9 +5,6 @@ import { Card, Link, Block } from "framework7-react";
 import { getDevice } from "framework7";
 
 export default function AutorCard(props) {
-
-	console.log(f7.device);
-
 	const { autor, numArticulos, className } = props;
 	let DB_url = f7.methods.get_URL_DB();
 	let imagen, id, nombre, articulos, face, twitt, insta, url;
