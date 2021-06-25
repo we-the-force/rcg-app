@@ -8,13 +8,11 @@ import {
     Card,
     f7
 } from 'framework7-react';
-import { getDevice } from "framework7";
 
 export default function NewsBusqueda(props) {
     moment.locale('es');
 
-    const device = getDevice();
-	console.log(device);
+	console.log(f7.device);
 
     const { className, articulo } = props;
     let DB_url = f7.methods.get_URL_DB();

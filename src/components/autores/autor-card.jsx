@@ -6,8 +6,7 @@ import { getDevice } from "framework7";
 
 export default function AutorCard(props) {
 
-	const device = getDevice();
-	console.log(device);
+	console.log(f7.device);
 
 	const { autor, numArticulos, className } = props;
 	let DB_url = f7.methods.get_URL_DB();

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import NewsBusqueda from "@/components/cards_news/news_busqueda.jsx";
 import AdsFeedLeft from "@/components/general/ads/ads_feed_left";
 import { Card, Block, f7 } from "framework7-react";
-import { getDevice } from "framework7";
 
 export default class AutorPanel extends Component {
 	constructor(props) {
@@ -12,8 +11,7 @@ export default class AutorPanel extends Component {
 	
 	render() {
 		
-		const device = getDevice();
-		console.log(device);
+		console.log(f7.device);
 
 		let { autor, articulosNum, articulos } = this.props;
 		let DB_url = f7.methods.get_URL_DB();

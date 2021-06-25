@@ -2,14 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import IMG from '@/static/imgs/grayback.jpg';
 import moment from "moment";
 import { Block, Link, BlockFooter, f7 } from "framework7-react";
-import { getDevice } from "framework7";
 
 // ano natsu no, kimi ga atama ni iru
 export default function NewsHome(props) {
 	moment.locale("es");
 
-	const device = getDevice();
-	console.log(device);
+	console.log(f7.device);
 
 	const { className, articulo, first } = props;
 	let DB_url = f7.methods.get_URL_DB();

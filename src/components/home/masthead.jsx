@@ -1,12 +1,10 @@
 import React, { useRef, useEffect, Fragment } from "react";
 import IMG from "@/static/imgs/grayback.jpg";
 import { Swiper, SwiperSlide, Block, BlockHeader, BlockFooter, Link, f7 } from "framework7-react";
-import { getDevice } from "framework7";
 
 export default function Masthead(props) {
 
-	const device = getDevice();
-	console.log(device);
+	console.log(f7.device);
 
 	const { banner, anuncio, relevante } = props;
 	const swiper = useRef(null);

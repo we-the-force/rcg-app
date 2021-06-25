@@ -11,7 +11,6 @@ import banner1 from "@/static/imgs/200x300_01.png";
 import banner2 from "@/static/imgs/200x300_02.png";
 import banner3 from "@/static/imgs/790x80_01.png";
 import { InlineShareButtons } from "sharethis-reactjs";
-import { getDevice } from "framework7";
 
 export function formatText(x) {
 	moment.locale("es");
@@ -62,9 +61,7 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
-
-		const device = getDevice();
-		console.log(device);
+		console.log(f7.device);
 
 		let { articulo, recomendados } = this.props;
 		const DB_url = f7.methods.get_URL_DB();
