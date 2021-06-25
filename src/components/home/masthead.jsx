@@ -61,6 +61,8 @@ export default function Masthead(props) {
 		return () => clearInterval(interval);
 	}, []);
 
+	console.log("mast "+articulos.length);
+
 	return (
 		<Block className="masthead">
 			{articulos.length > 0 && (
