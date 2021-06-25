@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import Locutor from '@/static/imgs/locutor.png'
+import React, { Fragment } from 'react';
 import moment from 'moment';
 import {
     Toolbar,

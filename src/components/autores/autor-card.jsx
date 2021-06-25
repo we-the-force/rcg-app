@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import IGIcon from "@/static/icons/IG_Icon.png";
-import photo from "@/static/imgs/scarlet.jpeg";
+import photo from "@/static/imgs/grayback.jpg";
 import { f7 } from "framework7-react";
 import { Card, Link, Block } from "framework7-react";
 

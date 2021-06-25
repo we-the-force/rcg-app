@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import TestImage from '@/static/imgs/Image.png';
 import moment from 'moment';
 import IMG from '@/static/imgs/grayback.jpg';
 import marked from "marked";
