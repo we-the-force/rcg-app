@@ -66,15 +66,19 @@ export default function Home(props) {
 	}, []);
 
 	let center, mast;
+	let navbarLoading = false;
 	if (loading) {
 		center = <LoadingPanel />;
-		mast = <Masthead loading/>;;
+		mast = <Masthead loading />;
+		navbarLoading = true;
 	} else if (error) {
 		center = <ErrorPanel />;
+		navbarLoading = false;
 	} else {
 		const { banner, anuncio, relevante } = data;
 		center = <HomePanel noticias={categorias} relevante={relevante} />;
-		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} anuncio={anuncio} loading={false}/>;
+		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} anuncio={anuncio} loading={false} />;
+		navbarLoading = false;
 	}
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
@@ -91,17 +95,21 @@ export default function Home(props) {
 			>
 				{/* ads */}
 				{/* masthead */}
-				<Nav
-					home
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						home
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+						loading={false}
+					/>
+				)}
+				{navbarLoading && <Nav loading />}
 				{mast}
 				{/* Top Navbar */}
-				
+
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
@@ -124,7 +132,7 @@ export default function Home(props) {
 						</Block>
 					</Block>
 				</Block>
-				{footer &&  <Footer logoD={DB_url + logoDark} logo={DB_url + logo} />}
+				{footer && <Footer logoD={DB_url + logoDark} logo={DB_url + logo} />}
 			</PageContent>
 		</Page>
 	);
