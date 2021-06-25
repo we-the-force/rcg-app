@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import marked from "marked";
 import moment from "moment";
-import IMG from "@/static/imgs/IMG_01.png";
+import IMG from '@/static/imgs/grayback.jpg';
 import { Block, BlockHeader, BlockTitle, BlockFooter, Link, f7 } from "framework7-react";
 
 export default function DestItem(props) {
