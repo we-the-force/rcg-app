@@ -59,10 +59,11 @@ export default function Masthead(props) {
 		return () => clearInterval(interval);
 	}, []);
 
-	console.log("mast " + articulos.length);
-
 	return (
 		<Block className="masthead">
+			<Block>
+				test
+			</Block>
 			{articulos.length > 0 && (
 				<Fragment>
 					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
