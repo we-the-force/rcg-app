@@ -7,7 +7,7 @@ import { Popover, Navbar, List, ListItem, f7, Block, Icon } from "framework7-rea
 export default function Nav(props) {
 	let { categorias, home, espectaculares, logo, logoD, loading } = props;
 
-	if (categorias.length <= 0) return null;
+	// if (categorias.length <= 0) return null;
 
 	let [categ_show, categ_pop, type] = useData(categorias);
 
