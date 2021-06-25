@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, Fragment } from "react";
+import React, { useRef, useEffect, useState, Fragment } from "react";
 import IMG from "@/static/imgs/grayback.jpg";
 import { Swiper, SwiperSlide, Block, Link, f7 } from "framework7-react";
 
@@ -8,15 +8,14 @@ export default function Masthead(props) {
 
 	const { banner, relevante, loading } = props;
 	const swiper = useRef(null);
+	const [load , setLoad] = useState(loading);
 	let DB_url = f7.methods.get_URL_DB();
 
 	let banners = banner;
 	let articulos = [];
-
-	console.log(banners);
-	console.log(relevante);
+	
 	console.log(loading);
-	if (!loading) {
+	if (!load) {
 		banners = banners.map((val) => {
 			return {
 				id: val.articulo.id,
@@ -66,9 +65,13 @@ export default function Masthead(props) {
 		return () => clearInterval(interval);
 	}, []);
 
+	useEffect(() => {
+		setLoad(loading);
+	}, [loading]);
+
 	return (
 		<Block className="masthead">
-			{loading && (
+			{load && (
 				<Fragment>
 					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
 						<SwiperSlide>
