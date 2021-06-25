@@ -7,6 +7,8 @@ import { Popover, Navbar, List, ListItem, f7, Icon } from "framework7-react";
 export default function Nav(props) {
 	let { categorias, home, espectaculares, logo, logoD } = props;
 
+	console.log("categorias " + categorias.length);
+
 	if (categorias.length <= 0) return null;
 
 	console.log("pase nav");
