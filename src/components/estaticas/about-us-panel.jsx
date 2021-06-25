@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import marked from "marked";
 import city from "@/static/imgs/city.png";
 import cityB from "@/static/imgs/city_black.png";
-import Logo from "@/static/imgs/Logo_negro.png";
-import LogoBlanco from "@/static/imgs/Logo_blanco.png";
 import back_head from "@/static/imgs/card_back_6.png";
 import JsxParser from "react-jsx-parser";
 import { Block, Card, CardHeader, f7 } from "framework7-react";

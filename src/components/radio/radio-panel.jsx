@@ -33,9 +33,6 @@ export default function RadioPanel(props) {
 			setMuted(f7.methods.get_RadioMuted());
 			setVolume(f7.methods.get_RadioVolume());
 		}
-
-		// f7.methods.set_RadioName(nombre);
-		// f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
 	}, []);
 
 	useEffect(() => {

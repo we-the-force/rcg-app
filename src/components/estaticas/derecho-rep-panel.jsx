@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import marked from 'marked';
 import city from '@/static/imgs/city.png'
-import Logo from '@/static/imgs/Logo_negro.png'
 import {
     Block,
     Card,

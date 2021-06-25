@@ -2,8 +2,6 @@ import ScheduleTable from "@/components/general/schedule-table";
 import ReactPlayer from "react-player";
 import React, { useEffect, useState } from "react";
 import Icon_TV from "@/static/icons/tv_dark.png";
-import bk_img from "@/static/imgs/Rcg.png";
-import SwiperNews from "@/components/general/swiper_news.jsx";
 import moment from "moment";
 import { Card, CardHeader, Block, BlockHeader, Icon, f7 } from "framework7-react";
 
@@ -144,19 +142,8 @@ export default function TVPanel(props) {
 								</a>
 							)}
 						</Block>
-						{/* <a onClick={handlePlayPause}> */}
-						{/* <Icon className={playPause ? "pause" : "play_arrow"} material={playPause ? "pause" : "play_arrow"}></Icon> */}
 						<ReactPlayer className="player-in-page" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false} />
-						{/* </a> */}
 					</Block>
-					{/* <a
-						onClick={(e) => {
-							handlePIP(e);
-						}}
-						class="pip_Btn"
-					>
-						<Icon className="picture_in_picture_alt" material="picture_in_picture_alt"></Icon>
-					</a> */}
 					<p className="programa-desc">{descPrograma}</p>
 				</Block>
 				<Block className="tabla_programacion">

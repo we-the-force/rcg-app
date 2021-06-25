@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import marked from "marked";
 import image from "@/static/imgs/av_priv.png";
 import city from "@/static/imgs/city.png";
-import Logo from "@/static/imgs/Logo_negro.png";
 import JsxParser from "react-jsx-parser";
 import { Block, Card, BlockHeader, BlockFooter, f7 } from "framework7-react";
 

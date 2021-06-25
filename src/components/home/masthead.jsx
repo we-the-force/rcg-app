@@ -1,10 +1,4 @@
 import React, { useRef, useEffect, Fragment } from "react";
-import RCGlogo from "@/static/imgs/LOGO_negro_sobre_blanco.png";
-import img1 from "@/static/imgs/418464-PD8PXQ-214 1.png";
-import img2 from "@/static/imgs/fondo-sj-e1540342434825 1.png";
-import img3 from "@/static/imgs/Rcg.png";
-import img4 from "@/static/imgs/Image.png";
-import twenyforseven from "@/static/imgs/24-7.png";
 import IMG from "@/static/imgs/grayback.jpg";
 import { Swiper, SwiperSlide, Block, BlockHeader, BlockFooter, Link, f7 } from "framework7-react";
 export default function Masthead(props) {

@@ -1,29 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
-import LogoBlanco from "@/static/imgs/Logo_blanco.png";
-import navGraph from "@/static/imgs/nav_graph.png";
+import React, { Fragment } from "react";
 import doscuatrosiete from "@/static/imgs/24-7.png";
-import { Navbar, NavLeft, NavRight, Block, Icon, Link, Popover, List, ListItem, f7 } from "framework7-react";
+import { NavLeft, NavRight, Link } from "framework7-react";
 
 export default function navMobile(props) {
-	const { itemsShow, itemsPop, esp, home } = props;
+	const { itemsShow, itemsPop, home } = props;
 	var navLinks = [];
-	// if (esp) {
-	// 	navLinks = (
-	// 		<Fragment>
-	// 			<Link href="/" className="uppercase">
-	// 				Inicio
-	// 			</Link>
-	// 			<hr />
-	// 			<Link href="/catalogo" className="uppercase">
-	// 				Galería
-	// 			</Link>
-	// 			<hr />
-	// 			<Link href="/contacto" className="uppercase">
-	// 				Contacto
-	// 			</Link>
-	// 		</Fragment>
-	// 	);
-	// } else {
 	navLinks = itemsShow.map((val, key) => {
 		let dis = itemsShow.length - 1 == key ? "display-none" : "display-flex";
 		return (
@@ -39,9 +20,6 @@ export default function navMobile(props) {
 		navLinks.push(
 			<Fragment key="autoresLink">
 				<hr />
-				{/* <Link href="/autores" className="uppercase">
-					autores{" "}
-				</Link> */}
 			</Fragment>
 		);
 	}
@@ -55,7 +33,6 @@ export default function navMobile(props) {
 			</Fragment>
 		);
 	}
-	// }
 	return (
 		<Fragment>
 			<NavLeft className={home ? "home" : ""}>

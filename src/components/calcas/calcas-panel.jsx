@@ -5,7 +5,6 @@ import back_head from '@/static/imgs/card_back_6.png'
 import city from '@/static/imgs/city.png'
 import cityB from "@/static/imgs/city_black.png";
 import city2 from '@/static/imgs/city2.png'
-//import Logo from '@/static/imgs/logo_rojo_blanco.png'
 import {
     Block,
     Card,

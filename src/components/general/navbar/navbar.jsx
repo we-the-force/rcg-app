@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Mobile from "./nav_mobile";
 import Desk from "./nav_desktop";
 import PopMenu from "./mobile-menu-popup";
-import { Popover, Navbar, List, ListItem, f7, Block, Icon } from "framework7-react";
+import { Popover, Navbar, List, ListItem, f7, Icon } from "framework7-react";
 
 export default function Nav(props) {
 	let { categorias, home, espectaculares, logo, logoD } = props;
@@ -30,12 +30,8 @@ export default function Nav(props) {
 		setPlayPause(radioPlay);
 	}, [radioPlay]);
 
-	// console.log("Categorais despues del useData");
-	// console.log(categ_show);
-	// console.log(categ_pop);
 	return (
 		<Fragment>
-			{/* {true && ( */}
 			{leftPlayerRadio && (
 				<List className="leftRadioPlayer nav">
 					<ListItem title={radio_name} >
@@ -60,9 +56,6 @@ export default function Nav(props) {
 							</ListItem>
 						);
 					})}
-					{/* <ListItem link="/autores" className="uppercase" popoverClose>
-						autores
-					</ListItem> */}
 				</List>
 			</Popover>
 		</Fragment>
@@ -70,7 +63,6 @@ export default function Nav(props) {
 }
 
 function useData(data) {
-	/* recibe categorias */
 	const [categ, setCateg] = useState({
 		categ_show: [] /* categorias a mostrar */,
 		categ_pop: [] /* categorias en el menu pop */,

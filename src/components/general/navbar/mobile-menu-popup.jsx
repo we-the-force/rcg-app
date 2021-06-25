@@ -1,5 +1,4 @@
-import React, { Fragment, useRef, useState, useEffect } from "react";
-import LogoBlanco from "@/static/imgs/Logo_blanco.png";
+import React from "react";
 import TVLight from "@/static/icons/tv_light.png";
 import services from "@/static/icons/servicios.png";
 import radio from "@/static/icons/microphone.png";
@@ -12,7 +11,7 @@ import you from "@/static/icons/YT_Icon.png";
 import insta from "@/static/icons/IG_Icon.png";
 import telegramIcon from "@/static/icons/telegram.png";
 import linkedinIcon from "@/static/icons/linkedin.png";
-import { Searchbar, NavLeft, NavRight, Popup, Link, Page, View, Icon, BlockHeader, Block, Navbar, Panel, List, ListItem, f7 } from "framework7-react";
+import { NavLeft, NavRight, Popup, Link, Page, Icon, BlockHeader, Block, Navbar, f7 } from "framework7-react";
 
 export default function mobileMenuPopup(props) {
 	function articuloSearch(e) {
@@ -25,7 +24,6 @@ export default function mobileMenuPopup(props) {
 			}
 		}
 	}
-	// setNavPopup(false);
 	let { tv_channels, radio_stations } = props;
 	return (
 		<Popup className="menuPopup">

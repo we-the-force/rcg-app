@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import LogoNegro from "@/static/imgs/Logo_negro.png";
-import LogoBlanco from "@/static/imgs/Logo_blanco.png";
 import FaceFoot from "@/static/icons/footer_face.png";
 import TwitFoot from "@/static/icons/footer_twit.png";
 import YouFoot from "@/static/icons/footer_you.png";
