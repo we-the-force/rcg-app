@@ -25,7 +25,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-keyboard": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "onesignal-cordova-plugin": {}
     },
     "platforms": [
       "ios",
