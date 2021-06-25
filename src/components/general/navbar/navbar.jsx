@@ -64,7 +64,7 @@ export default function Nav(props) {
 			</Navbar>
 			<PopMenu tv_channels={props.tv_channels} radio_stations={props.radio_stations} logo={logo} logoD={logoD} />
 			<Popover className="popover-menu">
-				{!loading && (
+				{!loading && categ_pop != undefined (
 					<List>
 						{categ_pop.map((val, key) => {
 							return (
