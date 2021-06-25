@@ -13,8 +13,7 @@ export default function Masthead(props) {
 
 	let banners = banner;
 	let articulos = [];
-	
-	console.log(loading);
+
 	if (!load) {
 		banners = banners.map((val) => {
 			return {
@@ -66,6 +65,10 @@ export default function Masthead(props) {
 	}, []);
 
 	useEffect(() => {
+		if(loading == false){
+			let el_swiper = swiper.current.swiper;
+			el_swiper.removeSlide(0);
+		}
 		setLoad(loading);
 	}, [loading]);
 
