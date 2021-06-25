@@ -231,7 +231,33 @@
             <!-- End Facebook Pixel Code -->
 
             <!-- built script files will be auto injected -->
+            <script>
+                // if (localStorage.getItem("firstTime") === null) {
+                //     localStorage.setItem('firstTime', 'false');
+                //     setTimeout(() => {
+                //     // window.location.reload(true);
+                //     console.log('reload');
 
+                //     }, 5000);
+                //     window.addEventListener('beforeunload', function(event) {
+                //       console.log(`do something with the event:`, event);
+                //     //  localStorage.clear();
+                //     });
+                // } else {
+
+                // }
+                
+                window.onload = function() {
+                    if(!window.location.hash) {
+                        window.location = window.location + '#loaded';
+                        setTimeout(() => {
+                        window.location.reload(true);
+                        // console.log('reload');
+
+                        }, 4000);
+                    }
+                }
+            </script>
 
 </body>
 
