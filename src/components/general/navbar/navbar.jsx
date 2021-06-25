@@ -9,6 +9,8 @@ export default function Nav(props) {
 
 	if (categorias.length <= 0) return null;
 
+	console.log("pase nav");
+
 	let [categ_show, categ_pop, type] = useData(categorias);
 
 	const [playPause, setPlayPause] = useState(false);

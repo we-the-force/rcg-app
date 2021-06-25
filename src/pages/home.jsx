@@ -68,7 +68,7 @@ export default function Home(props) {
 	let center, mast;
 	if (loading) {
 		center = <LoadingPanel />;
-		mast = null;
+		mast = <Masthead loading/>;;
 	} else if (error) {
 		center = <ErrorPanel />;
 	} else {

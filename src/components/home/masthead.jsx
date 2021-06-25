@@ -6,11 +6,15 @@ export default function Masthead(props) {
 	const dev = f7.device;
 	let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
-	const { banner, anuncio, relevante } = props;
+	const { banner, relevante, loading } = props;
 	const swiper = useRef(null);
 	let DB_url = f7.methods.get_URL_DB();
 
 	let banners = banner;
+
+	console.log(banners);
+	console.log(relevante);
+	console.log(loading);
 
 	banners = banners.map((val) => {
 		return {
@@ -61,9 +65,17 @@ export default function Masthead(props) {
 
 	return (
 		<Block className="masthead">
-			<Block>
-				test
-			</Block>
+			{loading && (
+				<Fragment>
+					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
+						<SwiperSlide key={i}>
+							<Block className="background">
+								<img src={IMG} alt="" />
+							</Block>
+						</SwiperSlide>
+					</Swiper>
+				</Fragment>
+			)}
 			{articulos.length > 0 && (
 				<Fragment>
 					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
@@ -73,9 +85,9 @@ export default function Masthead(props) {
 							if (item.cover) {
 								let newUrl = item.cover.url.split("/");
 								//cambiar a xs
-								if(areMobile && item.cover.width > 500){
+								if (areMobile && item.cover.width > 500) {
 									cover = DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2];
-								}else{
+								} else {
 									cover = DB_url + item.cover.url;
 								}
 							}
