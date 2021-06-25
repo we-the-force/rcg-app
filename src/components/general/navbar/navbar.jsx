@@ -2,16 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import Mobile from "./nav_mobile";
 import Desk from "./nav_desktop";
 import PopMenu from "./mobile-menu-popup";
-import { Popover, Navbar, List, ListItem, f7, Icon } from "framework7-react";
+import { Popover, Navbar, List, ListItem, f7, Block, Icon } from "framework7-react";
 
 export default function Nav(props) {
 	let { categorias, home, espectaculares, logo, logoD } = props;
 
-	console.log("categorias " + categorias.length);
-
 	if (categorias.length <= 0) return null;
-
-	console.log("pase nav");
 
 	let [categ_show, categ_pop, type] = useData(categorias);
 
@@ -36,6 +32,7 @@ export default function Nav(props) {
 
 	return (
 		<Fragment>
+			{/* {true && ( */}
 			{leftPlayerRadio && (
 				<List className="leftRadioPlayer nav">
 					<ListItem title={radio_name} >
@@ -67,6 +64,7 @@ export default function Nav(props) {
 }
 
 function useData(data) {
+	/* recibe categorias */
 	const [categ, setCateg] = useState({
 		categ_show: [] /* categorias a mostrar */,
 		categ_pop: [] /* categorias en el menu pop */,

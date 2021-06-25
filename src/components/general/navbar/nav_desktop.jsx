@@ -4,6 +4,8 @@ import { NavLeft, NavRight, Link } from "framework7-react";
 
 export default function navMobile(props) {
 	const { itemsShow, itemsPop, home } = props;
+	console.log(itemsShow);
+	console.log(itemsPop);
 	var navLinks = [];
 	navLinks = itemsShow.map((val, key) => {
 		let dis = itemsShow.length - 1 == key ? "display-none" : "display-flex";
