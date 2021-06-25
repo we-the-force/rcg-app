@@ -11,50 +11,53 @@ export default function Masthead(props) {
 	let DB_url = f7.methods.get_URL_DB();
 
 	let banners = banner;
+	let articulos = [];
 
 	console.log(banners);
 	console.log(relevante);
 	console.log(loading);
+	if (!loading) {
+		banners = banners.map((val) => {
+			return {
+				id: val.articulo.id,
+				cover: val.articulo.cover,
+				categoria: val.articulo.categoria,
+				url: val.articulo.url,
+				Titulo: val.articulo.Titulo,
+				autor: val.articulo.autor,
+				fecha: val.articulo.fecha,
+				creditos: val.articulo.cover_creditos,
+			};
+		});
 
-	banners = banners.map((val) => {
-		return {
-			id: val.articulo.id,
-			cover: val.articulo.cover,
-			categoria: val.articulo.categoria,
-			url: val.articulo.url,
-			Titulo: val.articulo.Titulo,
-			autor: val.articulo.autor,
-			fecha: val.articulo.fecha,
-			creditos: val.articulo.cover_creditos,
-		};
-	});
+		let relevantes = relevante.map((val) => {
+			return {
+				id: val.id,
+				cover: val.cover,
+				categoria: val.categoria,
+				url: val.url,
+				Titulo: val.Titulo,
+				autor: val.autor,
+				fecha: val.fecha,
+				creditos: val.cover_creditos,
+			};
+		});
 
-	let relevantes = relevante.map((val) => {
-		return {
-			id: val.id,
-			cover: val.cover,
-			categoria: val.categoria,
-			url: val.url,
-			Titulo: val.Titulo,
-			autor: val.autor,
-			fecha: val.fecha,
-			creditos: val.cover_creditos,
-		};
-	});
+		banners.reverse();
 
-	banners.reverse();
+		articulos = banners.concat(relevantes);
 
-	let articulos = banners.concat(relevantes);
-
-	for (let i = 0; i < articulos.length; i++) {
-		for (let j = i + 1; j < articulos.length; j++) {
-			if (articulos[i].id === articulos[j].id) {
-				articulos.splice(j, 1);
+		for (let i = 0; i < articulos.length; i++) {
+			for (let j = i + 1; j < articulos.length; j++) {
+				if (articulos[i].id === articulos[j].id) {
+					articulos.splice(j, 1);
+				}
 			}
 		}
+
+		articulos = articulos.slice(0, 9);
 	}
 
-	articulos = articulos.slice(0, 9);
 	useEffect(() => {
 		const interval = setInterval(() => {
 			let el_swiper = swiper.current.swiper;
