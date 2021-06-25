@@ -71,7 +71,7 @@ export default function Masthead(props) {
 			{loading && (
 				<Fragment>
 					<Swiper ref={swiper} navigation pagination params={{ loop: true }}>
-						<SwiperSlide key={i}>
+						<SwiperSlide>
 							<Block className="background">
 								<img src={IMG} alt="" />
 							</Block>
