@@ -3,7 +3,6 @@ import IMG from "@/static/imgs/grayback.jpg";
 import { Swiper, SwiperSlide, Block, Link, f7 } from "framework7-react";
 
 export default function Masthead(props) {
-
 	const dev = f7.device;
 	let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
@@ -15,7 +14,6 @@ export default function Masthead(props) {
 
 	banners = banners.map((val) => {
 		return {
-			
 			id: val.articulo.id,
 			cover: val.articulo.cover,
 			categoria: val.articulo.categoria,
@@ -61,7 +59,7 @@ export default function Masthead(props) {
 		return () => clearInterval(interval);
 	}, []);
 
-	console.log("mast "+articulos.length);
+	console.log("mast " + articulos.length);
 
 	return (
 		<Block className="masthead">
@@ -71,10 +69,14 @@ export default function Masthead(props) {
 						{articulos.map((item, i) => {
 							let cover = IMG;
 
-							if(areMobile){
+							if (item.cover) {
 								let newUrl = item.cover.url.split("/");
 								//cambiar a xs
-								cover = item.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + item.cover.url;
+								if(areMobile && item.cover.width > 500){
+									cover = DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2];
+								}else{
+									cover = DB_url + item.cover.url;
+								}
 							}
 
 							return (
@@ -95,7 +97,6 @@ export default function Masthead(props) {
 											<Link className="title" href={`/articulo/${item.url}/`}>
 												{item.Titulo}
 											</Link>
-											
 										</Block>
 									</Block>
 								</SwiperSlide>
