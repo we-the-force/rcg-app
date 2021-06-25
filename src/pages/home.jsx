@@ -68,13 +68,13 @@ export default function Home(props) {
 	let center, mast;
 	if (loading) {
 		center = <LoadingPanel />;
-		mast = null;
+		mast = <Masthead loading/>;;
 	} else if (error) {
 		center = <ErrorPanel />;
 	} else {
 		const { banner, anuncio, relevante } = data;
 		center = <HomePanel noticias={categorias} relevante={relevante} />;
-		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} anuncio={anuncio} />;
+		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} anuncio={anuncio} loading={false}/>;
 	}
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
