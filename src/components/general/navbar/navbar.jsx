@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Mobile from "./nav_mobile";
 import Desk from "./nav_desktop";
 import PopMenu from "./mobile-menu-popup";
-import { Popover, Navbar, List, ListItem, f7, Block, Icon } from "framework7-react";
+import { Popover, Navbar, List, ListItem, f7, NavLeft, NavRight, Icon } from "framework7-react";
 
 export default function Nav(props) {
 	let { categorias, home, espectaculares, logo, logoD, loading } = props;
