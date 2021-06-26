@@ -74,18 +74,22 @@ export default function RightPanelTablet(props) {
                 <h1>{title}</h1>
         
                 <Block className="news-cont">
-                    <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" style={{
-                        width: '50%',
-                        display: 'inline-block'
-                    }} ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"  /></Link>
+                    <Block className="search_block">
+                        <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" style={{
+                            width: '50%',
+                            display: 'inline-block'
+                        }} ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"  /></Link>
 
-                    <Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank" style={{
-                        width: '50%',
-                        display: 'inline-block'
-                    }}>
-                    <img src={bannersearch} alt="" sytle={bannerSearch}/>
+                        <Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank" style={{
+                            width: '50%',
+                            display: 'inline-block'
+                        }}>
+                        <img src={bannersearch} alt="" sytle={bannerSearch}/>
 
-                    </Link>
+                        </Link>
+
+                    </Block>
+                    
                     {cont}
 
                     <img src={satelite} alt="" className="sat" />
