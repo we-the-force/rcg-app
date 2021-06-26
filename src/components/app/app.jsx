@@ -49,11 +49,13 @@ export default class extends React.Component {
 			name: "RCG webpage", // App name
 			theme: "auto", // Automatic theme detection
 
-			// pushStateRoot: window.location.protocol + "//" + window.location.hostname + "",
+			//NOTA: Si quitan push state para alguna prueba regresenlo porque luego no jala la url
+			//ATTE: SrLechuga
+			pushStateRoot: window.location.protocol + "//" + window.location.hostname + "",
 			view: {
-				// pushState: true,
-				// pushStateRoot: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
-				// pushStateSeparator: "",
+				pushState: true,
+				pushStateRoot: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
+				pushStateSeparator: "",
 			},
 
 			autoDarkTheme: true,
