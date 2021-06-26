@@ -24,6 +24,9 @@ export default function RightPanelTablet(props) {
         var x = document.getElementsByClassName("popup-backdrop");
         x[0].classList.add("invisible");
     }
+    const bannerSearch = {
+        height: '204px'
+    }
 
     const changeBackdropClose = () => {
         var x = document.getElementsByClassName("popup-backdrop");
@@ -80,9 +83,7 @@ export default function RightPanelTablet(props) {
                         width: '50%',
                         display: 'inline-block'
                     }}>
-                    <img src={bannersearch} alt="" sytle={{
-                        height: '204px'
-                    }}/>
+                    <img src={bannersearch} alt="" sytle={bannerSearch}/>
 
                     </Link>
                     {cont}
