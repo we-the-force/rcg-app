@@ -58,8 +58,10 @@ export default function Masthead(props) {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			let el_swiper = swiper.current.swiper;
-			el_swiper.slideNext(1000);
+			if(swiper != null && swiper.current != null){
+				let el_swiper = swiper.current.swiper;
+				el_swiper.slideNext(1000);
+			}
 		}, 8000);
 		return () => clearInterval(interval);
 	}, []);
