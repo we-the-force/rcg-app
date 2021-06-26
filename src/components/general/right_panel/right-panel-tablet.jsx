@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
-import bannersearch from "../../../static/imgs/200x300_03.png"
+import bannersearch from "../../../static/imgs/136x204_03.png"
 import satelite from "../../../static/imgs/sat.jpg"
 
 import AutorCard from '@/components/autores/autor-card.jsx';
