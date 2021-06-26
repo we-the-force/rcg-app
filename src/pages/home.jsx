@@ -109,11 +109,6 @@ export default function Home(props) {
 				)}
 				{navbarLoading && (
 					<Navbar sliding noHairline noShadow>
-						<NavLeft className={"home"}>
-							<a href="/">
-								<img src={DB_url + logoDark} alt="" />
-							</a>
-						</NavLeft>
 						<NavRight>
 							<img src={doscuatrosiete} alt="" />
 						</NavRight>
