@@ -112,6 +112,8 @@ var cordovaApp = {
         window.plugins.OneSignal.OSInFocusDisplayOption.Notification
       )
       .endInit();
+    console.log('onesignal');
+
 
     // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
     window.plugins.OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
