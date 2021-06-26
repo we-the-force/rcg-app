@@ -57,10 +57,10 @@ export default function Nav(props) {
 						</NavRight>
 					</Fragment>
 				)} */}
-				{type === "desktop" && !loading && (
+				{type === "desktop" && (
 					<Desk logo={logo} logoD={logoD} itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />
 				)}
-				{type === "mobile" && !loading && <Mobile logo={logo} logoD={logoD} />}
+				{type === "mobile" && <Mobile logo={logo} logoD={logoD} />}
 			</Navbar>
 			<PopMenu tv_channels={props.tv_channels} radio_stations={props.radio_stations} logo={logo} logoD={logoD} />
 			<Popover className="popover-menu">
