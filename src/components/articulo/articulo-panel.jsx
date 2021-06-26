@@ -163,7 +163,7 @@ export default class ArticuloPanel extends Component {
 							<img src={cover} alt="" />
 						</Block>
 						<Block>
-							<p>Foto por: {articulo.creditos}</p>
+							<p>{articulo.creditos}</p>
 						</Block>
 					</Block>
 					<Block className="content display-flex align-items-flex-start">

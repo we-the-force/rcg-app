@@ -19,7 +19,7 @@ export default class adsTop extends Component {
 						client="ca-pub-9419050468962974"
 						slot="2504924643"
 					/>
-					<Block className="ads">
+					<Block className="ads top">
 						
 						
 						{/* <ins className="adsbygoogle"

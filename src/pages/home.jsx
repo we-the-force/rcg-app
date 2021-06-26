@@ -10,10 +10,11 @@ import AdsTop from "@/components/general/ads/ads_top";
 import HomePanel from "@/components/home/home-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
+import doscuatrosiete from "@/static/imgs/24-7.png";
 import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { HomePage, CategoriaHome } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, Preloader } from "framework7-react";
+import { Page, Block, PageContent, Preloader, Navbar, NavLeft, NavRight, } from "framework7-react";
 
 export default function Home(props) {
 	//query de la pagina
@@ -95,7 +96,7 @@ export default function Home(props) {
 			>
 				{/* ads */}
 				{/* masthead */}
-				{/* {!navbarLoading && ( */}
+				{!navbarLoading && (
 					<Nav
 						home
 						categorias={f7.methods.getCategorias()}
@@ -105,8 +106,14 @@ export default function Home(props) {
 						logo={DB_url + logo}
 						loading={false}
 					/>
-				{/* )} */}
-				{/* {navbarLoading && <Nav radio_stations={leftPanelRadio} tv_channels={leftPanelTV} loading />} */}
+				)}
+				{navbarLoading && (
+					<Navbar sliding noHairline noShadow>
+						<NavRight>
+							<img src={doscuatrosiete} alt="" />
+						</NavRight>
+					</Navbar>
+				)}
 				{mast}
 				{/* Top Navbar */}
 
