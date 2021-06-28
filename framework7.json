@@ -24,7 +24,7 @@
     "preserveAssetsPaths": false,
     "inlineAssets": true
   },
-  "pkg": "io.framework7.RCG",
+  "pkg": "io.rcg.media",
   "cordova": {
     "folder": "cordova",
     "platforms": [
