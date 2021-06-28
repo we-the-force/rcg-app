@@ -16,7 +16,6 @@ import { Page, Block, PageContent, Preloader, Navbar, f7, f7ready } from "framew
 
 export default function Home(props) {
 	//query de la pagina
-	// const { loading, error, data } = useQuery(HomePage);
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
@@ -109,8 +108,8 @@ export default function Home(props) {
 	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
 	} else if(bannerNews.length > 0 && relevanteNews.length > 0 && !errorCat){
-		const { banner, relevante } = data;
-		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} loading={false} />;
+		// const { banner, relevante } = data;
+		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
 	}
@@ -118,7 +117,7 @@ export default function Home(props) {
 	if((categorias.length == 0 || relevanteNews.length == 0) && !errorCat && !errorRel){
 		center = <LoadingPanel />;
 	}else if(categorias.length > 0 && relevanteNews.length > 0 && !errorCat){
-		center = <HomePanel noticias={categorias} relevante={relevante} />;
+		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;
 	}
