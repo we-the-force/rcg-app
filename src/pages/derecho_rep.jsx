@@ -9,7 +9,7 @@ import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import { useQuery } from "@apollo/client";
 import { DerechoReplicaPage } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
+import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function DerechoReplica(props) {
 	const { loading, error, data } = useQuery(DerechoReplicaPage);

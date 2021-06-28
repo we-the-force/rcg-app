@@ -12,7 +12,7 @@ import AdsTop from "@/components/general/ads/ads_top";
 import { useLazyQuery } from "@apollo/client";
 import { CategoriaPage } from "@/graphql/queries.graphql";
 import { f7, f7ready } from "framework7-react";
-import { Page, Block, PageContent, Preloader } from "framework7-react";
+import { Page, Block, PageContent, Preloader, Navbar } from "framework7-react";
 export default function Categoria(props) {
 	const { nombre } = props;
 	const limitStatic = 20;

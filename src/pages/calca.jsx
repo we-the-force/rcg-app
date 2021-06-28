@@ -7,7 +7,7 @@ import RightPanelTablet from "@/components/general/right_panel/right-panel-table
 import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
 import CalcasPanel from "@/components/calcas/calcas-panel";
-import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
+import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function Calcas(props) {
 	useEffect(() => {

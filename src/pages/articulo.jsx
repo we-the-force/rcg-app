@@ -15,7 +15,7 @@ import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 import { ArticuloPage, Recomendados, RecomendadosCateg } from "@/graphql/queries.graphql";
 import { UpdateArticulo } from "@/graphql/mutations.graphql";
-import { Page, Block, PageContent } from "framework7-react";
+import { Page, Block, PageContent, Navbar } from "framework7-react";
 
 export default function Articulo(props) {
 	const { url } = props;

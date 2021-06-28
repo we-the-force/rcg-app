@@ -13,7 +13,7 @@ import { f7, f7ready } from "framework7-react";
 import { useQuery } from "@apollo/client";
 import { SchedulePageRadio } from "@/graphql/queries.graphql";
 import moment from "moment";
-import { Page, Block, PageContent } from "framework7-react";
+import { Page, Block, PageContent, Navbar } from "framework7-react";
 
 export default function Radio(props) {
 	let { name } = props;

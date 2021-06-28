@@ -9,7 +9,7 @@ import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
 import { useQuery } from "@apollo/client";
 import { AvisoPrivacidadPage } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
+import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function AvisoPrivacidad(props) {
 	const { loading, error, data } = useQuery(AvisoPrivacidadPage);

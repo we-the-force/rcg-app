@@ -10,7 +10,7 @@ import ErrorPanel from "@/components/error-panel";
 import { useQuery } from "@apollo/client";
 import { FaqPage } from "@/graphql/queries.graphql";
 
-import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
+import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function Faq(props) {
 	const { loading, error, data } = useQuery(FaqPage);

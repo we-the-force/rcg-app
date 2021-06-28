@@ -11,7 +11,7 @@ import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import RightPanelTablet from "@/components/general/right_panel/right-panel-tablet";
 import { useQuery } from "@apollo/client";
 import { ContactPage } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
+import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function AboutUs(props) {
 	const { loading, error, data } = useQuery(ContactPage);

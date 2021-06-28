@@ -11,7 +11,7 @@ import { useQuery } from "@apollo/client";
 import { AboutUsPage } from "@/graphql/queries.graphql";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
+import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function AboutUs(props) {
 	const { loading, error, data } = useQuery(AboutUsPage);

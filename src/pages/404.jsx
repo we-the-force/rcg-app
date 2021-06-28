@@ -7,7 +7,7 @@ import RightPanelTablet from "@/components/general/right_panel/right-panel-table
 import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
 import NotFoundPanel from "@/components/not-found-panel";
-import { Page, PageContent, Block, f7, f7ready } from "framework7-react";
+import { Page, PageContent, Block, f7, f7ready, Navbar } from "framework7-react";
 
 export default function NotFound(props) {
 	useEffect(() => {

@@ -11,7 +11,7 @@ import RightPanelTablet from "@/components/general/right_panel/right-panel-table
 import { f7, f7ready } from "framework7-react";
 import { useLazyQuery } from "@apollo/client";
 import { BusquedaTag, BusquedaTitulo, BusquedaDesc } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, Preloader } from "framework7-react";
+import { Page, Block, PageContent, Preloader, Navbar } from "framework7-react";
 
 export default function Busqueda(props) {
 	const values = props.params.trim().toString();

@@ -12,7 +12,7 @@ import { useQuery } from "@apollo/client";
 import AdsTop from "@/components/general/ads/ads_top";
 import { AutoresPage } from "@/graphql/queries.graphql";
 import { f7, f7ready } from "framework7-react";
-import { Page, Block, PageContent } from "framework7-react";
+import { Page, Block, PageContent, Navbar } from "framework7-react";
 
 export default function Autores(props) {
 	const { loading, error, data } = useQuery(AutoresPage);
