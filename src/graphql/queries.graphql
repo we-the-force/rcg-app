@@ -22,74 +22,95 @@ query AppQuery {
 	}
 }
 
-query HomePage {
+query HomeBanner {
 	banner: banners(sort: "posicion:desc", limit: 10) {
 		articulo {
-			...ArticulosData
+			id
+			url
+			Titulo
+			cover {
+				url
+				width
+			}
+			categoria {
+				nombre
+			}
 		}
-	}
-	anuncio:anuncio{
-			bannerHorizontalUno {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
-			bannerHorizontalDos {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
-			bannerHorizontalTres {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
-			bannerHorizontalCuatro {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
-			bannerVerticalUno {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
-	}
-	relevante: articulos(sort: "fecha:desc", where: { relevante: true }, limit: 8) {
-		...ArticulosData
 	}
 }
 
+query HomeRelevante {
+	relevante: articulos(sort: "fecha:desc", where: { relevante: true }, limit: 8) {
+		id
+		url
+		Titulo
+		cover {
+			url
+			width
+		}
+		categoria {
+			nombre
+		}
+	}
+}
+
+	# anuncio:anuncio{
+	# 		bannerHorizontalUno {
+	# 				alt
+	# 				googleAds
+	# 				link
+	# 				deskImg {
+	# 						url
+	# 				}
+	# 				mobileImg {
+	# 						url
+	# 				}
+	# 		}
+	# 		bannerHorizontalDos {
+	# 				alt
+	# 				googleAds
+	# 				link
+	# 				deskImg {
+	# 						url
+	# 				}
+	# 				mobileImg {
+	# 						url
+	# 				}
+	# 		}
+	# 		bannerHorizontalTres {
+	# 				alt
+	# 				googleAds
+	# 				link
+	# 				deskImg {
+	# 						url
+	# 				}
+	# 				mobileImg {
+	# 						url
+	# 				}
+	# 		}
+	# 		bannerHorizontalCuatro {
+	# 				alt
+	# 				googleAds
+	# 				link
+	# 				deskImg {
+	# 						url
+	# 				}
+	# 				mobileImg {
+	# 						url
+	# 				}
+	# 		}
+	# 		bannerVerticalUno {
+	# 				alt
+	# 				googleAds
+	# 				link
+	# 				deskImg {
+	# 						url
+	# 				}
+	# 				mobileImg {
+	# 						url
+	# 				}
+	# 		}
+	# }
 query CategoriaHome($inicio: Int, $limite: Int) {
 	categorias(start: $inicio, limit: $limite) {
 		nombre
