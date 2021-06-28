@@ -17,7 +17,6 @@ export default class AutorPanel extends Component {
 			//change xs
 			autorUrl = autor[0].img.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + autor[0].img.url;
 		}
-		// let autorUrl = autor[0].img ? DB_url + autor[0].img.url : "/static/icons/person_x2.png";
 		return (
 			<Block className="autor center_panel">
 				<Card className="autor_head">
@@ -30,17 +29,6 @@ export default class AutorPanel extends Component {
 							<p className="noticias">{articulosNum} Noticias</p>
 							<p className="descripcion">{autor[0].descripcion}</p>
 						</Block>
-						{/* <Block className="redes_cont">
-							<a href={autor[0].facebook_link} className={`external${autor[0].facebook_link == null ? " gray" : ""}`} target="_blank">
-								<img src={FBIcon} />
-							</a>
-							<a href={autor[0].twitter_link} className={`external${autor[0].twitter_link == null ? " gray" : ""}`} target="_blank">
-								<img src={TWIcon} />
-							</a>
-							<a href={autor[0].instagram_link} className={`external${autor[0].instagram_link == null ? " gray" : ""}`} target="_blank">
-								<img src={IGIcon} />
-							</a>
-						</Block> */}
 					</Block>
 				</Card>
 				{articulos.map((articulo, key) => {

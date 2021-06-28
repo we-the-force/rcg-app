@@ -7,21 +7,16 @@ import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import TVPlayerStatic from "@/components/tv/tv-player-pip";
 import { AppQuery } from "@/graphql/queries.graphql";
-
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { HelmetProvider } from "react-helmet-async";
 
-// import OneSignal from 'react-onesignal';
-
 const helmetContext = {};
 
 const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors)
-		graphQLErrors.map(({ message }) => {
-			/* console.error('!!GraphQL Error!!', message) */
-		});
+		graphQLErrors.map(({ message }) => {});
 });
 
 const client = new ApolloClient({
@@ -31,15 +26,9 @@ const client = new ApolloClient({
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 	// link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${process.env.API_HOSTNAME}/graphql` })]),
 });
+
 window.OneSignal = window.OneSignal || [];
 const OneSignal = window.OneSignal;
-
-// OneSignal.push(() => {
-// 	OneSignal.init({
-// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-// 	});
-// });
-
 export default class extends React.Component {
 	constructor() {
 		super();
@@ -63,10 +52,6 @@ export default class extends React.Component {
 			// App routes
 			routes: routes,
 
-			// Register service worker
-			// serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
-			// serviceWorker: { path: "/OneSignalSDKWorker.js" },
-			// Input settings
 			input: {
 				scrollIntoViewOnFocus: Device.cordova && !Device.electron,
 				scrollIntoViewCentered: Device.cordova && !Device.electron,
@@ -77,9 +62,6 @@ export default class extends React.Component {
 				androidOverlaysWebView: false,
 			},
 			methods: {
-				alert: function () {
-					app.dialog.alert("Hello World");
-				},
 				handleCategoriaActual: (cat) => {
 					this.setState((prevState) => {
 						return {
@@ -322,15 +304,6 @@ export default class extends React.Component {
 
 	componentDidMount() {
 
-		// window.OneSignal = window.OneSignal || [];
-		// const OneSignal = window.OneSignal;
-
-		// OneSignal.push(() => {
-		// 	OneSignal.init({
-		// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-		// 	});
-		// });
-
 		client
 			.query({
 				query: AppQuery,
@@ -365,9 +338,6 @@ export default class extends React.Component {
 				});
 			});
 
-
-			// f7.serviceWorker.register("../../OneSignalSDKWorker.js", "/");
-
 			// Call F7 APIs here
 			window.addEventListener("orientationchange", function (e) {
 				if ($(".popup.modal-in").length) {
@@ -400,71 +370,5 @@ export default class extends React.Component {
 				}
 			});
 		});
-
-		// OneSignal.initialize('2b8f51fa-8098-49d8-a9a5-a36441f41907');
-
-		// OneSignal.push(()=> {
-		// 	OneSignal.init({
-		// 			appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-		// 	});
-		// });
-
-		// let newWorker;
-
-		// if ("serviceWorker" in navigator) {
-			
-		// 	console.log("si hay sw");
-		// 	navigator.serviceWorker
-		// 	.register("../../OneSignalSDKWorker.js")
-		// 	.then((reg) => {
-				
-		// 		console.log("se registro");
-				
-			// });
-			// 			reg.addEventListener("updatefound", () => {
-			// 				console.log("update");
-			// 				// An updated service worker has appeared in reg.installing!
-			// 				newWorker = reg.installing;
-	
-			// 				newWorker.addEventListener("statechange", () => {
-			// 					console.log("state changed " + newWorker.state);
-			// 					// Has service worker state changed?
-			// 					switch (newWorker.state) {
-			// 						case "installed":
-			// 							window.OneSignal = window.OneSignal || [];
-			// 							OneSignal.push(function () {
-			// 								OneSignal.init({
-			// 									appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-			// 								});
-			// 							});
-			// 							// There is a new service worker available, show the notification
-			// 							console.log("controller? " + navigator.serviceWorker.controller);
-			// 							if (navigator.serviceWorker.controller) {
-			// 								console.log("ahoy");
-			// 							}
-	
-			// 							break;
-			// 					}
-			// 				});
-			// 			});
-	
-			// 			/*     swRegistration = reg;
-			// 		  Notification.requestPermission();
-			// 		  initializeUI(); */
-			// 		})
-			// 		.catch(function (err) {
-			// 			// registration failed :(
-			// 			console.log("ServiceWorker registration failed: ", err);
-			// 		});
-	
-			// let refreshing;
-			// // The event listener that is fired when the service worker updates
-			// // Here we reload the page
-			// navigator.serviceWorker.addEventListener("controllerchange", function () {
-			// 	if (refreshing) return;
-			// 	window.location.reload();
-			// 	refreshing = true;
-			// });
-		// }
 	}
 }
