@@ -54,63 +54,6 @@ query HomeRelevante {
 	}
 }
 
-	# anuncio:anuncio{
-	# 		bannerHorizontalUno {
-	# 				alt
-	# 				googleAds
-	# 				link
-	# 				deskImg {
-	# 						url
-	# 				}
-	# 				mobileImg {
-	# 						url
-	# 				}
-	# 		}
-	# 		bannerHorizontalDos {
-	# 				alt
-	# 				googleAds
-	# 				link
-	# 				deskImg {
-	# 						url
-	# 				}
-	# 				mobileImg {
-	# 						url
-	# 				}
-	# 		}
-	# 		bannerHorizontalTres {
-	# 				alt
-	# 				googleAds
-	# 				link
-	# 				deskImg {
-	# 						url
-	# 				}
-	# 				mobileImg {
-	# 						url
-	# 				}
-	# 		}
-	# 		bannerHorizontalCuatro {
-	# 				alt
-	# 				googleAds
-	# 				link
-	# 				deskImg {
-	# 						url
-	# 				}
-	# 				mobileImg {
-	# 						url
-	# 				}
-	# 		}
-	# 		bannerVerticalUno {
-	# 				alt
-	# 				googleAds
-	# 				link
-	# 				deskImg {
-	# 						url
-	# 				}
-	# 				mobileImg {
-	# 						url
-	# 				}
-	# 		}
-	# }
 query CategoriaHome($inicio: Int, $limite: Int) {
 	categorias(start: $inicio, limit: $limite) {
 		nombre
