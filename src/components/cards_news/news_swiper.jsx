@@ -14,8 +14,6 @@ export default class NewsSwiper extends Component {
 		let { articulo } = this.props;
 		let DB_url = f7.methods.get_URL_DB();
 		let skeleton = articulo ? "" : "skeleton-text";
-
-
 		let cover = IMG;
 		if (articulo.cover) {
 			if (articulo.cover.width > 500) {
