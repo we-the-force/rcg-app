@@ -141,7 +141,7 @@ export default function TVPanel(props) {
 								</a>
 							)}
 						</Block>
-						<ReactPlayer className="player-in-page" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false} />
+						<ReactPlayer className="player-in-page" url={canal[0].source_url} playing={playPause} pip={true} stopOnUnmount={false} playsinline/>
 					</Block>
 					<p className="programa-desc">{descPrograma}</p>
 				</Block>

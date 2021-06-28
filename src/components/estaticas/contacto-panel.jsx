@@ -67,7 +67,7 @@ export default function ContactoPanel(props) {
 						</BlockHeader>
 						{areVideo && (
 							<Block className="player-wrapper">
-								<ReactPlayer className="player" controls={true} url={video_source} playing={false} />
+								<ReactPlayer playsinline className="player" controls={true} url={video_source} playing={false} />
 							</Block>
 						)}
 						<Block className="icons_cont display-flex">
