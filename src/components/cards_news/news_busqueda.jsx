@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React from 'react';
 import moment from 'moment';
 import IMG from '@/static/imgs/grayback.jpg';
 import marked from "marked";
@@ -30,7 +30,6 @@ export default function NewsBusqueda(props) {
         //cambiar a xs
         cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
     }
-    // let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
     return (
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">
@@ -46,7 +45,6 @@ export default function NewsBusqueda(props) {
                         <p className="fecha">{moment(articulo.fecha).format('D MMMM')}</p>
                     </Block>
                     <Link className="title" href={`/articulo/${articulo.url}/`}>{articulo.Titulo}</Link>
-                    {/* <p className="preview">{newDesc}</p> */}
                     <a className="more" href={'/articulo/' + articulo.url + '/'}>Ver más</a>
                 </Block>
             </Block>

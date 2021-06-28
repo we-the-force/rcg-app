@@ -1,12 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useState } from "react";
 import IMG from "@/static/imgs/grayback.jpg";
 import TestImage from "@/static/imgs/grayback.jpg";
 import moment from "moment";
 import marked from "marked";
-// import parse from 'html-react-parser';
 
-import { f7, f7ready } from "framework7-react";
-import { Block, Link, Icon, BlockFooter } from "framework7-react";
+import { Block, Link, f7, BlockFooter } from "framework7-react";
 
 // ano natsu no, kimi ga atama ni iru
 export default function NewsRelevantes(props) {
