@@ -106,7 +106,7 @@ export default function Home(props) {
 	}, []);
 
 	let center, mast;
-	if ((bannerNews.length == 0 || relevanteNews == 0) && !errorBan && !errorRel) {
+	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
 	} else if(bannerNews.length > 0 && relevanteNews.length > 0 && !errorCat){
 		const { banner, relevante } = data;
@@ -115,7 +115,7 @@ export default function Home(props) {
 		mast = "";
 	}
 	
-	if((categorias.length == 0 || relevanteNews == 0) && !errorCat && !errorRel){
+	if((categorias.length == 0 || relevanteNews.length == 0) && !errorCat && !errorRel){
 		center = <LoadingPanel />;
 	}else if(categorias.length > 0 && relevanteNews.length > 0 && !errorCat){
 		center = <HomePanel noticias={categorias} relevante={relevante} />;
