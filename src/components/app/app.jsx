@@ -24,7 +24,7 @@ const client = new ApolloClient({
 	// uri: `http://${process.env.API_HOSTNAME}/graphql`,
 	cache: new InMemoryCache(),
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
-	link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${process.env.API_HOSTNAME}/graphql` })]),
+	// link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${process.env.API_HOSTNAME}/graphql` })]),
 });
 
 window.OneSignal = window.OneSignal || [];
@@ -256,8 +256,8 @@ export default class extends React.Component {
 				},
 			},
 			data: {
-				db_url: `http://${process.env.API_HOSTNAME}`,
-				url: `http://${process.env.APP_HOSTNAME}`,
+				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
+				url: `${process.env.PROTOCOL}://${process.env.APP_HOSTNAME}`,
 				categorias: [],
 				categoriaActual: "",
 				radioStations: [],
