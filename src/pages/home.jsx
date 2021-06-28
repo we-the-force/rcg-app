@@ -10,7 +10,6 @@ import AdsTop from "@/components/general/ads/ads_top";
 import HomePanel from "@/components/home/home-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import doscuatrosiete from "@/static/imgs/24-7.png";
 import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { HomePage, CategoriaHome } from "@/graphql/queries.graphql";

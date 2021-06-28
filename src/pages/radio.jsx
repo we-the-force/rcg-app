@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
 import RightPanel from "@/components/general/right_panel/right-panel";
@@ -9,11 +9,10 @@ import Footer from "@/components/general/footer";
 import AdsTop from "@/components/general/ads/ads_top";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import { f7, f7ready } from "framework7-react";
 import { useQuery } from "@apollo/client";
 import { SchedulePageRadio } from "@/graphql/queries.graphql";
 import moment from "moment";
-import { Page, Block, PageContent, Navbar } from "framework7-react";
+import { Page, Block, PageContent, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Radio(props) {
 	let { name } = props;

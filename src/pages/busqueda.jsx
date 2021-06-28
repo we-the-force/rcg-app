@@ -8,10 +8,9 @@ import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
 import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import RightPanelTablet from "@/components/general/right_panel/right-panel-tablet";
-import { f7, f7ready } from "framework7-react";
 import { useLazyQuery } from "@apollo/client";
 import { BusquedaTag, BusquedaTitulo, BusquedaDesc } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, Preloader, Navbar } from "framework7-react";
+import { Page, Block, PageContent, Preloader, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Busqueda(props) {
 	const values = props.params.trim().toString();
@@ -90,7 +89,6 @@ export default function Busqueda(props) {
 		let val = data.articulos;
 		let length = val.length;
 		let underLimit = length < limit && length > 0;
-		let nothing = length === 0;
 		let done = length === limit;
 		let newType = type + 1;
 

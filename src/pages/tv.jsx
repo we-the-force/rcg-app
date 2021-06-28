@@ -9,11 +9,10 @@ import AdsTop from "@/components/general/ads/ads_top";
 import TVPanel from "@/components/tv/tv-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import { f7, f7ready } from "framework7-react";
 import { useQuery } from "@apollo/client";
 import { SchedulePage } from "@/graphql/queries.graphql";
 import moment from "moment";
-import { Page, Block, PageContent, Navbar } from "framework7-react";
+import { Page, Block, PageContent, Navbar, f7, f7ready } from "framework7-react";
 
 export default function TV(props) {
 	let { name } = props;

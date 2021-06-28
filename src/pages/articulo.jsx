@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
 import RightPanel from "@/components/general/right_panel/right-panel";
-import marked from "marked";
-
 import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import RightPanelTablet from "@/components/general/right_panel/right-panel-tablet";
 import Footer from "@/components/general/footer";
@@ -11,11 +9,10 @@ import ArticuloPanel from "@/components/articulo/articulo-panel";
 import AdsTop from "@/components/general/ads/ads_top";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 import { ArticuloPage, Recomendados, RecomendadosCateg } from "@/graphql/queries.graphql";
 import { UpdateArticulo } from "@/graphql/mutations.graphql";
-import { Page, Block, PageContent, Navbar } from "framework7-react";
+import { Page, Block, PageContent, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Articulo(props) {
 	const { url } = props;

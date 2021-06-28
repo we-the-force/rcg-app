@@ -9,7 +9,6 @@ import ErrorPanel from "@/components/error-panel";
 import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import { useQuery } from "@apollo/client";
 import { CatalogoPage } from "@/graphql/queries.graphql";
-
 import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function Catalogo(props) {
