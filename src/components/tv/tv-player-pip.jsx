@@ -38,7 +38,7 @@ export default function TVPlayerPIP(props) {
 					<Icon className="close" material="close"></Icon>
 				</a>
 			</Block>
-			<ReactPlayer className="player-tv" url={url} playing={playPause} pip={true} stopOnUnmount={false} />
+			<ReactPlayer playsinline className="player-tv" url={url} playing={playPause} pip={true} stopOnUnmount={false} />
             <Block className="info">
 				{name}
 			</Block>
