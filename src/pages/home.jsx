@@ -108,7 +108,7 @@ export default function Home(props) {
 	let center, mast;
 	if ((bannerNews.length == 0 || relevanteNews == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
-	} else if(bannerNews.length > 0 && relevanteNews > 0 && !errorCat){
+	} else if(bannerNews.length > 0 && relevanteNews.length > 0 && !errorCat){
 		const { banner, relevante } = data;
 		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} loading={false} />;
 	}else {
@@ -117,7 +117,7 @@ export default function Home(props) {
 	
 	if((categorias.length == 0 || relevanteNews == 0) && !errorCat && !errorRel){
 		center = <LoadingPanel />;
-	}else if(categorias.length > 0 && relevanteNews > 0 && !errorCat){
+	}else if(categorias.length > 0 && relevanteNews.length > 0 && !errorCat){
 		center = <HomePanel noticias={categorias} relevante={relevante} />;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;
