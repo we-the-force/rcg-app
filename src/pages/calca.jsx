@@ -23,25 +23,27 @@ export default function Calcas(props) {
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
 
-	console.log(f7.methods.getCategorias());
-	console.log(leftPanelRadio);
-	console.log(leftPanelTV);
+	let navbarLoading = true;
+	if (f7.methods.getCategorias().length > 0 && leftPanelRadio.length > 0 && leftPanelTV.length) navbarLoading = false;
 	return (
 		<Page pageContent={false} name="calca">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && <Navbar sliding noHairline noShadow></Navbar>}
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
