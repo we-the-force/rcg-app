@@ -63,13 +63,9 @@ export default function mobileMenuPopup(props) {
 							<BlockHeader>
 								<img src={services} alt="" /> <p>Servicios</p>
 							</BlockHeader>
-							{/* <Link>Fundación RCG</Link> */}
 							<Link href="/espectaculares" popupClose>
 								Espectaculares
 							</Link>
-							{/* <Link href="/calca" popupClose>
-								Registra Tu Calca
-							</Link> */}
 						</Block>
 					</div>
 					<div className="box estaciones">
@@ -161,11 +157,6 @@ export default function mobileMenuPopup(props) {
 									Preguntas Frecuentes
 								</Link>
 							</div>
-							{/* <div className="opis">
-								<Link href={false}>OPI 2017</Link>
-								<Link href={false}>OPI 2018</Link>
-								<Link href={false}>SEG</Link>
-							</div> */}
 							<p>©2020 RCG</p>
 						</Block>
 					</div>

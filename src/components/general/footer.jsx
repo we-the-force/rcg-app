@@ -36,7 +36,6 @@ export default class Footer extends Component {
 						<hr />
 						<Link href="/faq">Preguntas Frecuentes</Link>
 						<hr />
-						{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}> */}
 						<Link className="external" target="_blank" href={false}>
 							SOLICITUDES USO DE INFRAESTRUCTURA
 						</Link>
@@ -45,17 +44,14 @@ export default class Footer extends Component {
 							OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 						</Link>
 						<hr />
-						{/* <Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}> */}
 						<Link className="external" target="_blank" href={false}>
 							OPI 2017
 						</Link>
 						<hr />
-						{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}> */}
 						<Link className="external" target="_blank" href={false}>
 							OPI 2018
 						</Link>
 						<hr />
-						{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}> */}
 						<Link className="external" target="_blank" href={false}>
 							SEG
 						</Link>

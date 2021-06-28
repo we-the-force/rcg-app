@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-
 import { NavLeft, NavRight, Link } from "framework7-react";
 
 export default function navMobile(props) {

@@ -27,7 +27,6 @@ export default function ScheduleTable(props) {
                     return {
                         day: day,
                         inicio: program.hora_inicio,
-                        // inicio: moment(program.hora_inicio, 'kk:mm:ss.sss').format('HH:mm'),
                         fin: program.hora_final,
                         nombre: program.programa.Nombre,
                         desc: program.programa.Descripcion,
@@ -79,7 +78,6 @@ export default function ScheduleTable(props) {
     let tabla = setTable(prog);
     return (
         <Block className="schedule">
-            {/* Columns */}
             <Toolbar tabbar className="week_toolbar">
                 {tabla.map((val, key) => {
                     return (

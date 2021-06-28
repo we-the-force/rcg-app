@@ -5,16 +5,14 @@ import PopMenu from "./mobile-menu-popup";
 import { Popover, Navbar, List, ListItem, f7, Icon } from "framework7-react";
 
 export default function Nav(props) {
-	let { categorias, home, espectaculares, logo, logoD, loading } = props;
+	let { categorias, home, espectaculares, logo, logoD } = props;
 
 	if (categorias.length <= 0) return null;
 
 	let [categ_show, categ_pop, type] = useData(categorias);
-
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
 	let radioPlay = f7.methods.get_RadioPlay();
-
 	let radio_name = f7.methods.get_RadioName();
 	let radio_img = f7.methods.get_RadioIMG();
 
@@ -32,7 +30,6 @@ export default function Nav(props) {
 
 	return (
 		<Fragment>
-			{/* {true && ( */}
 			{leftPlayerRadio && (
 				<List className="leftRadioPlayer nav">
 					<ListItem title={radio_name}>
@@ -44,18 +41,6 @@ export default function Nav(props) {
 				</List>
 			)}
 			<Navbar sliding noHairline noShadow>
-				{/* {loading && (
-					<Fragment>
-						<NavLeft className={home ? "home" : ""}>
-							<a href="/">
-								<img src={props.logoD} alt="" />
-							</a>
-						</NavLeft>
-						<NavRight>
-							<img src={doscuatrosiete} alt="" />
-						</NavRight>
-					</Fragment>
-				)} */}
 				{type === "desktop" && (
 					<Desk logo={logo} logoD={logoD} itemsShow={categ_show} itemsPop={categ_pop} esp={espectaculares} home={home} />
 				)}
