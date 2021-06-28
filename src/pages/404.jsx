@@ -24,6 +24,10 @@ export default function NotFound(props) {
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
 
+	console.log(f7.methods.getCategorias());
+	console.log(leftPanelRadio);
+	console.log(leftPanelTV);
+
 	return (
 		<Page pageContent={false} name="notFound">
 			<PageContent>

@@ -29,13 +29,13 @@ export default function TV(props) {
 	}, []);
 
 	const beforeOut = () => {
-		if(f7.methods.get_TVPlay()){
+		if (f7.methods.get_TVPlay()) {
 			f7.methods.set_TVActive(true);
 			f7.methods.set_LeftRadioActive(false);
 		}
 		let player = document.getElementsByClassName("player-in-page")[0];
 		player.remove();
-	}
+	};
 
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
@@ -45,11 +45,14 @@ export default function TV(props) {
 	const DB_url = f7.methods.get_URL_DB();
 
 	let centerPanel;
+	let navbarLoading = false;
 
 	if (loading) {
 		centerPanel = <LoadingPanel />;
+		navbarLoading = true;
 	} else if (error) {
 		centerPanel = <ErrorPanel />;
+		navbarLoading = false;
 	} else {
 		let { tv, programacion } = data;
 		centerPanel =
@@ -58,24 +61,28 @@ export default function TV(props) {
 			) : (
 				<ErrorPanel error="No pudimos encontrar el canal que buscas" />
 			);
+		navbarLoading = false;
 	}
 
 	return (
 		<Page onPageBeforeOut={beforeOut} pageContent={false} name="tv">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && <Navbar sliding noHairline noShadow></Navbar>}
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

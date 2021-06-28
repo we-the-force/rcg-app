@@ -25,14 +25,18 @@ export default function Espectaculares(props) {
 	}, []);
 
 	let centerPanel;
+	let navbarLoading = false;
 
 	if (loading) {
 		centerPanel = <LoadingPanel />;
+		navbarLoading = true;
 	} else if (error) {
 		centerPanel = <ErrorPanel />;
+		navbarLoading = false;
 	} else {
 		const { info, clientes } = data;
 		centerPanel = <EspectacularPanel logo={DB_url + logo} logoD={DB_url + logoDark} info={info} clientes={clientes} />;
+		navbarLoading = false;
 	}
 
 	let leftPanelTV = f7.methods.getTV();
@@ -41,14 +45,17 @@ export default function Espectaculares(props) {
 		<Page pageContent={false} name="espectaculares">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav
-					espectaculares
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						espectaculares	
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && <Navbar sliding noHairline noShadow></Navbar>}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">

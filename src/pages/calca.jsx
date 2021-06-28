@@ -22,6 +22,10 @@ export default function Calcas(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+
+	console.log(f7.methods.getCategorias());
+	console.log(leftPanelRadio);
+	console.log(leftPanelTV);
 	return (
 		<Page pageContent={false} name="calca">
 			<PageContent>

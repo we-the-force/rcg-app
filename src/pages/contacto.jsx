@@ -23,14 +23,18 @@ export default function AboutUs(props) {
 	}, []);
 
 	let centerPanel;
+	let navbarLoading = false;
 
 	if (loading) {
 		centerPanel = <LoadingPanel />;
+		navbarLoading = true;
 	} else if (error) {
 		centerPanel = <ErrorPanel />;
+		navbarLoading = false;
 	} else {
 		let { contactInfo } = data;
 		centerPanel = <ContactoPanel contactInfo={contactInfo} />;
+		navbarLoading = false;
 	}
 
 	let leftPanelTV = f7.methods.getTV();
@@ -44,13 +48,16 @@ export default function AboutUs(props) {
 		<Page pageContent={false} name="nosotros">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && <Navbar sliding noHairline noShadow></Navbar>}
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">

@@ -104,15 +104,10 @@ export default function Home(props) {
 						radio_stations={leftPanelRadio}
 						logoD={DB_url + logoDark}
 						logo={DB_url + logo}
-						loading={false}
 					/>
 				)}
 				{navbarLoading && (
-					<Navbar sliding noHairline noShadow>
-						<NavRight>
-							<img src={doscuatrosiete} alt="" />
-						</NavRight>
-					</Navbar>
+					<Navbar sliding noHairline noShadow> </Navbar>
 				)}
 				{mast}
 				{/* Top Navbar */}
