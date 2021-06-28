@@ -2,7 +2,7 @@
     display none
 
     a.close
-        transform rotate(45deg)
+        // transform rotate(45deg)
         // position absolute
         // top 0px
         // left -42px
@@ -14,10 +14,14 @@
         // background red
         // border-top-left-radius 50%
         // border-bottom-left-radius 50%
+        &.mobile
+            transform  rotate(45deg)
+            i
+                color red
 
         i
             font-size 30px
-            color red !important
+            color white
 
     h1
         font font_14
@@ -61,6 +65,8 @@
             background red
             border-top-left-radius 50%
             border-bottom-left-radius 50%
+            &.mobile
+                display none
 
             i
                 font-size 30px

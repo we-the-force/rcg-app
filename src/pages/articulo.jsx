@@ -15,7 +15,7 @@ import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 import { ArticuloPage, Recomendados, RecomendadosCateg } from "@/graphql/queries.graphql";
 import { UpdateArticulo } from "@/graphql/mutations.graphql";
-import { Page, Block, PageContent } from "framework7-react";
+import { Page, Block, PageContent, Navbar } from "framework7-react";
 
 export default function Articulo(props) {
 	const { url } = props;
@@ -101,38 +101,45 @@ export default function Articulo(props) {
 	}, [flag]);
 
 	let centerPanel;
-
+	let navbarLoading = false;
 	if (loading) {
 		if (error) {
 			centerPanel = <ErrorPanel />;
+			navbarLoading = false;
 		} else {
 			centerPanel = <LoadingPanel />;
+			navbarLoading = true;
 		}
 	} else {
 		if (data.articulos.length > 0) {
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
+			navbarLoading = false;
 		} else {
 			centerPanel = <ErrorPanel error="No pudimos encontrar el articulo que buscas" />;
+			navbarLoading = false;
 		}
 	}
 	return (
-		<Page
-			pageContent={false}
-			name="articulo"
-		>
+		<Page pageContent={false} name="articulo">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && (
+					<Navbar sliding noHairline noShadow>
+					</Navbar>
+				)}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-						<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

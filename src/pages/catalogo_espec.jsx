@@ -10,7 +10,7 @@ import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import { useQuery } from "@apollo/client";
 import { CatalogoPage } from "@/graphql/queries.graphql";
 
-import { Page, Block, PageContent, f7ready, f7 } from "framework7-react";
+import { Page, Block, PageContent, f7ready, f7, Navbar } from "framework7-react";
 
 export default function Catalogo(props) {
 	const { loading, error, data } = useQuery(CatalogoPage);
@@ -22,6 +22,7 @@ export default function Catalogo(props) {
 	}, []);
 
 	let centerPanel = loading ? error ? <ErrorPanel /> : <LoadingPanel /> : <CatalogoPanel data={data} />;
+	let navbarLoading = loading ? (error ? false : true) : false;
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
 
@@ -32,19 +33,22 @@ export default function Catalogo(props) {
 		<Page pageContent={false} name="catalogo_espectaculares">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav
-					espectaculares
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						espectaculares
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && <Navbar sliding noHairline noShadow></Navbar>}
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan wo_right_pan">

@@ -52,9 +52,6 @@ export default class ArticuloPanel extends Component {
 	constructor(props) {
 		super(props);
 	}
-	componentDidMount() {
-		// document.title = articulo.Titulo;
-	}
 	componentDidUpdate() {
 		FB.XFBML.parse();
 		twttr.widgets.load();
@@ -93,30 +90,6 @@ export default class ArticuloPanel extends Component {
 							</a>
 						</CardHeader>
 						<Block className="share display-flex align-items-center">
-							{/* <p>Compartir:</p>
-								<a
-									target="_blank"
-									className="faceIcon display-flex justify-content-center align-items-center external"
-									href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`}
-									data-size="large"
-								>
-									<img src={TWIconx3} alt="" />
-								</a>
-								<div
-									className="faceIcon display-flex justify-content-center align-items-center external"
-									data-href={urlThing}
-									data-layout="button_count"
-									data-size="small"
-								>
-									<a
-										target="_blank"
-										// href={`https://www.facebook.com/sharer/sharer.php?u=${urlThing}%26src=sdkpreparse`}
-										className="btnShare external"
-										onClick={handleClick(articulo.Titulo, firstLine, urlThing, cover)}
-									>
-										<img src={FBIconx3} alt="" />
-									</a>
-								</div> */}
 							<InlineShareButtons
 								config={{
 									alignment: "right", // alignment of buttons (left, center, right)
@@ -153,7 +126,6 @@ export default class ArticuloPanel extends Component {
 								{" "}
 								{articulo.autor ? articulo.autor.nombre : "Sin Autor"}{" "}
 							</a>{" "}
-							{/* - <p className="fecha"> {articulo.fecha} </p> */}-{" "}
 							<p className="fecha"> {moment(articulo.created_at).format("D MMMM YYYY, h:mm a")} </p>
 						</Block>
 						<Block className="titulo">{articulo.Titulo}</Block>
@@ -215,8 +187,6 @@ export default class ArticuloPanel extends Component {
 							</Link>
 							<img src={banner2} alt="" />
 							<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank"></Link>
-							{/* <AdsRightArticle></AdsRightArticle>
-								<AdsRightArticle></AdsRightArticle> */}
 						</Block>
 					</Block>
 					<Block className="comments tab">

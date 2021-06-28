@@ -14,7 +14,7 @@ import doscuatrosiete from "@/static/imgs/24-7.png";
 import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { HomePage, CategoriaHome } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, Preloader, Navbar, NavLeft, NavRight, } from "framework7-react";
+import { Page, Block, PageContent, Preloader, Navbar } from "framework7-react";
 
 export default function Home(props) {
 	//query de la pagina
@@ -104,15 +104,10 @@ export default function Home(props) {
 						radio_stations={leftPanelRadio}
 						logoD={DB_url + logoDark}
 						logo={DB_url + logo}
-						loading={false}
 					/>
 				)}
 				{navbarLoading && (
-					<Navbar sliding noHairline noShadow>
-						<NavRight>
-							<img src={doscuatrosiete} alt="" />
-						</NavRight>
-					</Navbar>
+					<Navbar sliding noHairline noShadow> </Navbar>
 				)}
 				{mast}
 				{/* Top Navbar */}

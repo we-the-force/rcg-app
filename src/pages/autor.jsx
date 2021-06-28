@@ -12,7 +12,7 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { AutorPage, BusquedaAutor } from "@/graphql/queries.graphql";
 import AdsTop from "@/components/general/ads/ads_top";
 import { f7, f7ready } from "framework7-react";
-import { Page, Block, PageContent, Preloader } from "framework7-react";
+import { Page, Block, PageContent, Preloader, Navbar } from "framework7-react";
 
 export default function Autor(props) {
 	const limitStatic = 20;
@@ -70,16 +70,19 @@ export default function Autor(props) {
 						autor: val.key,
 						articulos: val.connection.aggregate.count,
 					};
-			})
+			  })
 			: [];
 
 	let centerPanel;
+	let navbarLoading = false;
 
 	if (loading) {
 		if (error) {
 			centerPanel = <ErrorPanel />;
+			navbarLoading = false;
 		} else {
 			centerPanel = <LoadingPanel />;
+			navbarLoading = true;
 		}
 	} else {
 		if (data.autor.length > 0) {
@@ -90,8 +93,10 @@ export default function Autor(props) {
 					articulosNum={autorArticulos.groupBy.autor.length > 0 ? data.autorArticulos.groupBy.autor[0].connection.aggregate.count : 0}
 				/>
 			);
+			navbarLoading = false;
 		} else {
 			centerPanel = <ErrorPanel error="No pudimos encontrar el autor que buscas" />;
+			navbarLoading = false;
 		}
 	}
 
@@ -121,17 +126,23 @@ export default function Autor(props) {
 				}}
 			>
 				{/* Top Navbar */}
-				<Nav
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && (
+					<Navbar sliding noHairline noShadow>
+					</Navbar>
+				)}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

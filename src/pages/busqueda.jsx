@@ -11,7 +11,7 @@ import RightPanelTablet from "@/components/general/right_panel/right-panel-table
 import { f7, f7ready } from "framework7-react";
 import { useLazyQuery } from "@apollo/client";
 import { BusquedaTag, BusquedaTitulo, BusquedaDesc } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, Preloader } from "framework7-react";
+import { Page, Block, PageContent, Preloader, Navbar } from "framework7-react";
 
 export default function Busqueda(props) {
 	const values = props.params.trim().toString();
@@ -122,6 +122,7 @@ export default function Busqueda(props) {
 	}
 	let centerPanel =
 		isLoading && firstCharge ? isError ? <ErrorPanel /> : <LoadingPanel /> : <BusquedaPanel first={type} title={values} articulos={newResults} />;
+	let navbarLoading = isLoading && firstCharge ? (isError ? false : true) : false;
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
@@ -146,18 +147,21 @@ export default function Busqueda(props) {
 				}}
 			>
 				{/* Top Navbar */}
-				<Nav
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && <Navbar sliding noHairline noShadow></Navbar>}
 				{/* Page content */}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan search">

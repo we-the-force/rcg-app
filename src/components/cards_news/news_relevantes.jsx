@@ -42,7 +42,7 @@ export default function NewsRelevantes(props) {
                     imagen = noticia.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + noticia.cover.url;
 					break;
 				case "xsmall":
-                    imagen = noticia.cover.width > 250 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + noticia.cover.url;
+                    imagen = noticia.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + noticia.cover.url;
                     //aqui cambiar por xsmall cuando pueda
 					break;
 			}
