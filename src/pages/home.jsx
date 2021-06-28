@@ -127,9 +127,6 @@ export default function Home(props) {
 									<Preloader color="red"></Preloader>
 								</Block>
 							)}
-							<Block className="display-flex justify-content-center align-items-center">
-									<Preloader color="red"></Preloader>
-								</Block>
 						</Block>
 						<Block className="right_pan">
 							<RightPanel newsInfo={rightPanel} />
