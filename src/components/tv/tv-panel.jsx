@@ -23,7 +23,7 @@ export default function TVPanel(props) {
 				miercoles: [],
 				sabado: [],
 				viernes: [],
-		  };
+		};
 
 	let TVPlay = f7.methods.get_TVPlay();
 
@@ -131,7 +131,6 @@ export default function TVPanel(props) {
 						<h2>{nombrePrograma}</h2>
 					</BlockHeader>
 					<Block className="player-wrapper">
-						{/* Aqui va el stream */}
 						<Block className="controls">
 							<a className="anchorPlay" onClick={handlePlayPause}>
 								<Icon className="play" material={playPause ? "pause" : "play_arrow"}></Icon>
@@ -148,7 +147,6 @@ export default function TVPanel(props) {
 				</Block>
 				<Block className="tabla_programacion">
 					<BlockHeader>Programación:</BlockHeader>
-					{/* La tablita de programacion */}
 					<ScheduleTable prog={prog} table_id={table_id} />
 				</Block>
 				{canales.length > 1 && (
