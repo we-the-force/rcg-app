@@ -16,14 +16,14 @@ export default function navMobile(props) {
 			</Fragment>
 		);
 	});
-	if (itemsPop === 0) {
+	if (itemsPop.length === 0) {
 		navLinks.push(
 			<Fragment key="autoresLink">
 				<hr />
 			</Fragment>
 		);
 	}
-	if (itemsPop > 0) {
+	if (itemsPop.length > 0) {
 		navLinks.push(
 			<Fragment key="masLink">
 				<hr />
