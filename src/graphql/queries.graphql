@@ -51,6 +51,8 @@ query HomeRelevante {
 		categoria {
 			nombre
 		}
+		description
+		fecha
 	}
 }
 
