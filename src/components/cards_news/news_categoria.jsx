@@ -20,14 +20,14 @@ export default function NewsCategoria(props) {
 	let url = f7.methods.get_URL();
 	const urlThing = url + `/articulo/${articulo.url}/`;
 
-	let newDesc = marked(articulo.description);
-	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-	let otherTags = /(<([^>]+)>)/gi;
-	newDesc = newDesc
-		.replace(titlesRegEx, "")
-		.replace(otherTags, "")
-		.replace(/\n/gi, " ")
-		.match(/^.{0,300}/gi);
+	// let newDesc = marked(articulo.description);
+	// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+	// let otherTags = /(<([^>]+)>)/gi;
+	// newDesc = newDesc
+	// 	.replace(titlesRegEx, "")
+	// 	.replace(otherTags, "")
+	// 	.replace(/\n/gi, " ")
+	// 	.match(/^.{0,300}/gi);
 
 	let cover = IMG;
 	if (articulo.cover && !areMobile) {
