@@ -109,6 +109,9 @@ export default function Home(props) {
 		mast = <Masthead loading />;
 	} else if(bannerNews.length > 0 && relevanteNews.length > 0 && !errorCat){
 		// const { banner, relevante } = data;
+		console.log("mast ");
+		console.log("mast ban "+ bannerNews);
+		console.log("mast rel "+ relevanteNews);
 		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
@@ -117,6 +120,9 @@ export default function Home(props) {
 	if((categorias.length == 0 || relevanteNews.length == 0) && !errorCat && !errorRel){
 		center = <LoadingPanel />;
 	}else if(categorias.length > 0 && relevanteNews.length > 0 && !errorCat){
+		console.log("home ");
+		console.log("home cat "+ categorias);
+		console.log("home rel "+ relevanteNews);
 		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;
