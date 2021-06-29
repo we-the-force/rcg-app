@@ -44,9 +44,6 @@ export default function Home(props) {
 			setPreloader(false);
 			setInicial(newInicial);
 			setCategorias(categorias.concat(data.categorias));
-			if(redoCateg){
-				setRedoCateg(!redoCateg);
-			}
 		},
 		onError: (data) => {
 			setErrorCat(true);
