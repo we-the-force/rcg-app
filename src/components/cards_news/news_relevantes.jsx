@@ -30,6 +30,8 @@ export default function NewsRelevantes(props) {
 		fecha = moment(noticia.fecha);
 		url = `/articulo/${noticia.url}/`;
 
+		console.log("2");
+
 		if (noticia.cover) {
 			let newUrl = noticia.cover.url.split("/");
 			switch (size) {

@@ -23,6 +23,7 @@ export default class NewsPanel extends Component {
 		}
 		const { categoria, articulos } = this.props;
 		let coahuila = categoria === "Coahuila" ? <Coahuila catego={categoria} /> : null;
+		console.log("1");
 		return (
 			<Block className="categoria_panel center_panel">
 				<Card className="new_head">

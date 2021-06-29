@@ -36,6 +36,8 @@ export default function NewsCategoria(props) {
 		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 	}
 
+	console.log("3");
+
 	return (
 		<Card className={`NewsCategoria_cont ${className}`}>
 			<Block className="head">

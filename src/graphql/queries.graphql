@@ -248,7 +248,18 @@ query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
 
 query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
 	articulos(sort: "fecha:desc", where: { categoria: { url: $categoria } }, start: $inicio, limit: $limite) {
-		...ArticulosData
+		id
+		url
+		Titulo
+		cover {
+			url
+			width
+		}
+		categoria {
+			nombre
+		}
+		Sumario
+		fecha
 	}
 	categorias(where: { url: $categoria }) {
 		nombre
