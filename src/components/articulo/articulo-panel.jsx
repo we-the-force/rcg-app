@@ -81,7 +81,7 @@ export default class ArticuloPanel extends Component {
 			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
 		return (
-			<Block className="articulo_panel center_panel helmet">
+			<Block className="articulo_panel center_panel">
 				<Card className="articulo">
 					<Block className="header_cont display-flex justify-content-space-between">
 						<CardHeader>
