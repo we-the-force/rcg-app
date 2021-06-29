@@ -1,5 +1,4 @@
 import React from "react";
-import marked from "marked";
 import moment from "moment";
 import IMG from '@/static/imgs/grayback.jpg';
 import { Block, BlockTitle, Link, f7 } from "framework7-react";
@@ -7,18 +6,8 @@ import { Block, BlockTitle, Link, f7 } from "framework7-react";
 export default function DestItem(props) {
 	moment.locale("es");
 
-	const { description, cover, Titulo, url } = props.articulo;
+	const { cover, Titulo, url } = props.articulo;
 	let DB_url = f7.methods.get_URL_DB();
-	let newDesc = marked(description);
-	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-	let otherTags = /(<([^>]+)>)/gi;
-	newDesc = newDesc
-		.replace(titlesRegEx, "")
-		.replace(otherTags, "")
-		.replace(/\n/gi, " ")
-		.match(/^.{0,300}/gi);
-
-
 	let imgn = IMG;
     if (cover) {
         let newUrl = cover.url.split("/");

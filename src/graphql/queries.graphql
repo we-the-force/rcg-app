@@ -18,19 +18,26 @@ query AppLogos {
 
 query AppChannels {
 	tvChannels: canalEstacions(where: { Radio_TV: true }) {
-		...StationData
+		nombre
+		url
 	}
 }
 
 query AppStations {
 	radioStations: canalEstacions(where: { Radio_TV: false }) {
-		...StationData
+		nombre
+		url
 	}
 }
 
 query AppRightPanel {
 	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
-		...ArticulosData
+		cover {
+			url
+			width
+		}
+		url
+		Titulo
 	}
 }
 
