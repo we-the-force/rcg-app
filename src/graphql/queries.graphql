@@ -61,7 +61,17 @@ query CategoriaHome($inicio: Int, $limite: Int) {
 		nombre
 		url
 		articulos(sort: "fecha:desc", limit: 9) {
-			...ArticulosData
+			cover {
+				url
+				width
+			}
+			url
+			autor {
+				nombre
+				url
+			}
+			fecha
+			Titulo
 		}
 	}
 }
