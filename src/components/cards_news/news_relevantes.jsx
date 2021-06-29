@@ -30,15 +30,14 @@ export default function NewsRelevantes(props) {
 		fecha = moment(noticia.fecha);
 		url = `/articulo/${noticia.url}/`;
 
-		console.log("2");
-
+		
 		if (noticia.cover) {
 			let newUrl = noticia.cover.url.split("/");
 			switch (size) {
 				case "medium":
-                    imagen = noticia.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + noticia.cover.url;
+					imagen = noticia.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + noticia.cover.url;
 					break;
-				case "small":
+					case "small":
                     imagen = noticia.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + noticia.cover.url;
 					break;
 				case "xsmall":
@@ -56,6 +55,7 @@ export default function NewsRelevantes(props) {
 		fecha = moment(new Date());
 		url = "#";
 	}
+	console.log("2");
 	return (
 		<Block className={`NewsRel_Cont ${className} ${modal}`} id={id}>
 			<a href={url}>
