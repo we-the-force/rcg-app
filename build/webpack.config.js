@@ -54,7 +54,7 @@ module.exports = {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        sourceMap: false,
+        sourceMap: true,
         minify: (file, sourceMap, minimizerOptions) => {
           // The `minimizerOptions` option contains option from the `terserOptions` option
           // You can use `minimizerOptions.myCustomOption`
