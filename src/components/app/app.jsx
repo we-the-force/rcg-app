@@ -15,8 +15,7 @@ import { HelmetProvider } from "react-helmet-async";
 const helmetContext = {};
 
 const errorLink = onError(({ graphQLErrors }) => {
-	if (graphQLErrors)
-		graphQLErrors.map(({ message }) => {});
+	if (graphQLErrors) graphQLErrors.map(({ message }) => {});
 });
 
 const client = new ApolloClient({
@@ -302,8 +301,7 @@ export default class extends React.Component {
 		);
 	}
 
-	componentDidMount() {
-
+	componentWillMount() {
 		client
 			.query({
 				query: AppQuery,
@@ -324,7 +322,9 @@ export default class extends React.Component {
 					};
 				});
 			});
+	}
 
+	componentDidMount() {
 		this.$f7ready((f7) => {
 			// Init cordova APIs (see cordova-app.js)
 			const $ = f7.$;
