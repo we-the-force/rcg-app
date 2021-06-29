@@ -18,7 +18,9 @@ const errorLink = onError(({ graphQLErrors }) => {
 const client = new ApolloClient({
 	uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql`,
 	// uri: `http://${process.env.API_HOSTNAME}/graphql`,
-	cache: new InMemoryCache(),
+	cache: new InMemoryCache({
+		addTypename: false,
+	}),
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 	// link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${process.env.API_HOSTNAME}/graphql` })]),
 });
