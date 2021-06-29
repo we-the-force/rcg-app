@@ -19,7 +19,7 @@ export default function Home(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
-	const limitStatic = 2;
+	const limitStatic = 1;
 
 	const [callApi, setCallApi] = useState(false);
 	const [callBan, setCallBan] = useState(false);
@@ -44,6 +44,9 @@ export default function Home(props) {
 			setPreloader(false);
 			setInicial(newInicial);
 			setCategorias(categorias.concat(data.categorias));
+			if(redoCateg){
+				setRedoCateg(!redoCateg);
+			}
 		},
 		onError: (data) => {
 			setErrorCat(true);
