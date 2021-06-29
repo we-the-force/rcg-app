@@ -38,11 +38,29 @@ query AppRightPanel {
 		}
 		url
 		Titulo
+		image
 	}
 }
 
 query HomeBanner {
-	banner: banners(sort: "posicion:desc", limit: 10) {
+	banner: banners(sort: "posicion:desc", limit: 10, start: 1) {
+		articulo {
+			id
+			url
+			Titulo
+			cover {
+				url
+				width
+			}
+			categoria {
+				nombre
+			}
+		}
+	}
+}
+
+query AppBanner {
+	banner: banners(sort: "posicion:desc", limit: 1) {
 		articulo {
 			id
 			url
