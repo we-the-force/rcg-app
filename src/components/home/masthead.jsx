@@ -22,9 +22,6 @@ export default function Masthead(props) {
 				categoria: val.articulo.categoria,
 				url: val.articulo.url,
 				Titulo: val.articulo.Titulo,
-				autor: val.articulo.autor,
-				fecha: val.articulo.fecha,
-				creditos: val.articulo.cover_creditos,
 			};
 		});
 
@@ -35,9 +32,6 @@ export default function Masthead(props) {
 				categoria: val.categoria,
 				url: val.url,
 				Titulo: val.Titulo,
-				autor: val.autor,
-				fecha: val.fecha,
-				creditos: val.cover_creditos,
 			};
 		});
 

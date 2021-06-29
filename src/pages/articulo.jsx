@@ -116,6 +116,8 @@ export default function Articulo(props) {
 			navbarLoading = false;
 		}
 	}
+
+	console.log("0");
 	return (
 		<Page pageContent={false} name="articulo">
 			<PageContent>

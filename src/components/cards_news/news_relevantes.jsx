@@ -15,28 +15,29 @@ export default function NewsRelevantes(props) {
 	let DB_url = f7.methods.get_URL_DB();
 	let imagen, categoria, content, Titulo, fecha, url;
 	if (noticia) {
-		let newDesc = marked(noticia.description);
-		let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-		let otherTags = /(<([^>]+)>)/gi;
-		newDesc = newDesc
-			.replace(titlesRegEx, "")
-			.replace(otherTags, "")
-			.replace(/\n/gi, " ")
-			.match(/^.{0,300}/gi);
+		// let newDesc = marked(noticia.description);
+		// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+		// let otherTags = /(<([^>]+)>)/gi;
+		// newDesc = newDesc
+		// 	.replace(titlesRegEx, "")
+		// 	.replace(otherTags, "")
+		// 	.replace(/\n/gi, " ")
+		// 	.match(/^.{0,300}/gi);
 		imagen = IMG;
 		categoria = noticia.categoria ? noticia.categoria.nombre : "";
-		content = newDesc;
+		content = noticia.Sumario;
 		Titulo = noticia.Titulo;
 		fecha = moment(noticia.fecha);
 		url = `/articulo/${noticia.url}/`;
 
+		
 		if (noticia.cover) {
 			let newUrl = noticia.cover.url.split("/");
 			switch (size) {
 				case "medium":
-                    imagen = noticia.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + noticia.cover.url;
+					imagen = noticia.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + noticia.cover.url;
 					break;
-				case "small":
+					case "small":
                     imagen = noticia.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + noticia.cover.url;
 					break;
 				case "xsmall":

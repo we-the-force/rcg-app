@@ -1,8 +1,11 @@
-query AppQuery {
+query AppCateg {
 	categorias {
 		nombre
 		url
 	}
+}
+
+query AppLogos {
 	setting {
 		LogoRCG {
 			url
@@ -11,82 +14,81 @@ query AppQuery {
 			url
 		}
 	}
+}
+
+query AppChannels {
 	tvChannels: canalEstacions(where: { Radio_TV: true }) {
-		...StationData
-	}
-	radioStations: canalEstacions(where: { Radio_TV: false }) {
-		...StationData
-	}
-	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
-		...ArticulosData
+		nombre
+		url
 	}
 }
 
-query HomePage {
-	banner: banners(sort: "posicion:desc", limit: 10) {
+query AppStations {
+	radioStations: canalEstacions(where: { Radio_TV: false }) {
+		nombre
+		url
+	}
+}
+
+query AppRightPanel {
+	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
+		cover {
+			url
+			width
+		}
+		url
+		Titulo
+	}
+}
+
+query HomeBanner {
+	banner: banners(sort: "posicion:desc", limit: 10, start: 1) {
 		articulo {
-			...ArticulosData
+			id
+			url
+			Titulo
+			cover {
+				url
+				width
+			}
+			categoria {
+				nombre
+			}
 		}
 	}
-	anuncio:anuncio{
-			bannerHorizontalUno {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
+}
+
+query AppBanner {
+	banner: banners(sort: "posicion:desc", limit: 1) {
+		articulo {
+			id
+			url
+			Titulo
+			cover {
+				url
+				width
 			}
-			bannerHorizontalDos {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
+			categoria {
+				nombre
 			}
-			bannerHorizontalTres {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
-			bannerHorizontalCuatro {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
-			bannerVerticalUno {
-					alt
-					googleAds
-					link
-					deskImg {
-							url
-					}
-					mobileImg {
-							url
-					}
-			}
+		}
 	}
+}
+
+query HomeRelevante {
 	relevante: articulos(sort: "fecha:desc", where: { relevante: true }, limit: 8) {
-		...ArticulosData
+		id
+		url
+		Titulo
+		cover {
+			url
+			width
+		}
+		categoria {
+			nombre
+		}
+		Sumario
+		fecha
 	}
 }
 
@@ -95,7 +97,17 @@ query CategoriaHome($inicio: Int, $limite: Int) {
 		nombre
 		url
 		articulos(sort: "fecha:desc", limit: 9) {
-			...ArticulosData
+			cover {
+				url
+				width
+			}
+			url
+			autor {
+				nombre
+				url
+			}
+			fecha
+			Titulo
 		}
 	}
 }
@@ -236,7 +248,18 @@ query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
 
 query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
 	articulos(sort: "fecha:desc", where: { categoria: { url: $categoria } }, start: $inicio, limit: $limite) {
-		...ArticulosData
+		id
+		url
+		Titulo
+		cover {
+			url
+			width
+		}
+		categoria {
+			nombre
+		}
+		Sumario
+		fecha
 	}
 	categorias(where: { url: $categoria }) {
 		nombre

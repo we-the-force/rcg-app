@@ -58,6 +58,7 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
+		console.log("1");
 		const dev = f7.device;
 		let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
@@ -65,12 +66,12 @@ export default class ArticuloPanel extends Component {
 		const DB_url = f7.methods.get_URL_DB();
 		const url = f7.methods.get_URL();
 		let urlThing = url + `/articulo/${articulo.url}/`;
-		let result = formatText(articulo.description);
-		let otherTags = /(<([^>]+)>)/gi;
-		let firstLine = result
-			.replace(otherTags, "")
-			.replace(/\n/gi, " ")
-			.match(/^.{0,200}/gi);
+		// let result = formatText(articulo.description);
+		// let otherTags = /(<([^>]+)>)/gi;
+		// let firstLine = result
+		// 	.replace(otherTags, "")
+		// 	.replace(/\n/gi, " ")
+		// 	.match(/^.{0,200}/gi);
 
 		let cover = IMG;
 		if (articulo.cover && !areMobile) {
@@ -80,8 +81,9 @@ export default class ArticuloPanel extends Component {
 			let newUrl = articulo.cover.url.split("/");
 			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
+		console.log("1.2");
 		return (
-			<Block className="articulo_panel center_panel helmet">
+			<Block className="articulo_panel center_panel">
 				<Card className="articulo">
 					<Block className="header_cont display-flex justify-content-space-between">
 						<CardHeader>
@@ -112,7 +114,7 @@ export default class ArticuloPanel extends Component {
 									// OPTIONAL PARAMETERS
 									url: urlThing, // (defaults to current url)
 									image: cover, // (defaults to og:image or twitter:image)
-									description: firstLine, // (defaults to og:description or twitter:description)
+									description: articulo.Sumario, // (defaults to og:description or twitter:description)
 									title: articulo.Titulo, // (defaults to og:title or twitter:title)
 									// (only for email sharing)
 									username: "RCGoficial", // (only for twitter sharing)

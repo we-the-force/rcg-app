@@ -18,14 +18,14 @@ export default function NewsCategoria(props) {
 	let url = f7.methods.get_URL();
 	const urlThing = url + `/articulo/${articulo.url}/`;
 
-	let newDesc = marked(articulo.description);
-	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-	let otherTags = /(<([^>]+)>)/gi;
-	newDesc = newDesc
-		.replace(titlesRegEx, "")
-		.replace(otherTags, "")
-		.replace(/\n/gi, " ")
-		.match(/^.{0,300}/gi);
+	// let newDesc = marked(articulo.description);
+	// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+	// let otherTags = /(<([^>]+)>)/gi;
+	// newDesc = newDesc
+	// 	.replace(titlesRegEx, "")
+	// 	.replace(otherTags, "")
+	// 	.replace(/\n/gi, " ")
+	// 	.match(/^.{0,300}/gi);
 
 	let cover = IMG;
 	if (articulo.cover && !areMobile) {
@@ -35,6 +35,8 @@ export default function NewsCategoria(props) {
 		let newUrl = articulo.cover.url.split("/");
 		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 	}
+
+	console.log("3.1");
 
 	return (
 		<Card className={`NewsCategoria_cont ${className}`}>

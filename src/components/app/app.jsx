@@ -6,23 +6,21 @@ import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import TVPlayerStatic from "@/components/tv/tv-player-pip";
-import { AppQuery } from "@/graphql/queries.graphql";
+import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
-import { HelmetProvider } from "react-helmet-async";
-
-const helmetContext = {};
 
 const errorLink = onError(({ graphQLErrors }) => {
-	if (graphQLErrors)
-		graphQLErrors.map(({ message }) => {});
+	if (graphQLErrors) graphQLErrors.map(({ message }) => {});
 });
 
 const client = new ApolloClient({
 	uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql`,
 	// uri: `http://${process.env.API_HOSTNAME}/graphql`,
-	cache: new InMemoryCache(),
+	cache: new InMemoryCache({
+		addTypename: false,
+	}),
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 	// link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${process.env.API_HOSTNAME}/graphql` })]),
 });
@@ -254,6 +252,12 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_RelevantesNews: () => {
+					return this.state.data.relevantesNews;
+				},
+				get_Banners: () => {
+					return this.state.data.banners;
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -276,37 +280,35 @@ export default class extends React.Component {
 				tv_url: "",
 				tv_active: false,
 				tv_name: "",
+				relevantesNews: [],
+				banners: [],
 			},
 		};
-	}
 
-	render() {
-		return (
-			<ApolloProvider client={client}>
-				<HelmetProvider context={helmetContext}>
-					<App params={this.state}>
-						<RadioPlayerStatic
-							url={this.state.data.radio_url}
-							play={this.state.data.radio_play}
-							volume={this.state.data.radio_volume}
-							muted={this.state.data.radio_muted}
-						/>
-						{this.state.data.tv_active && (
-							<TVPlayerStatic url={this.state.data.tv_url} name={this.state.data.tv_name} play={this.state.data.tv_play} />
-						)}
-						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-						<View id="main-view" main className="safe-areas" url="/" />
-					</App>
-				</HelmetProvider>
-			</ApolloProvider>
-		);
-	}
-
-	componentDidMount() {
+		// client
+		// 	.query({
+		// 		query: AppCateg,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					categorias: res.data.categorias,
+		// 					radioStations: res.data.radioStations,
+		// 					tvChannels: res.data.tvChannels,
+		// 					articulosRightPanel: res.data.rightPanel,
+		// 					logo: res.data.setting.LogoRCG.url,
+		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
 
 		client
 			.query({
-				query: AppQuery,
+				query: AppCateg,
 			})
 			.then((res) => {
 				this.setState((prevState) => {
@@ -315,9 +317,21 @@ export default class extends React.Component {
 						data: {
 							...prevState.data,
 							categorias: res.data.categorias,
-							radioStations: res.data.radioStations,
-							tvChannels: res.data.tvChannels,
-							articulosRightPanel: res.data.rightPanel,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppLogos,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
 							logo: res.data.setting.LogoRCG.url,
 							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
 						},
@@ -325,6 +339,107 @@ export default class extends React.Component {
 				});
 			});
 
+		client
+			.query({
+				query: AppChannels,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							tvChannels: res.data.tvChannels,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppStations,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							radioStations: res.data.radioStations,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppRightPanel,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							articulosRightPanel: res.data.rightPanel,
+						},
+					};
+				});
+			});
+	}
+
+	render() {
+		return (
+			<ApolloProvider client={client}>
+				<App params={this.state}>
+					<RadioPlayerStatic
+						url={this.state.data.radio_url}
+						play={this.state.data.radio_play}
+						volume={this.state.data.radio_volume}
+						muted={this.state.data.radio_muted}
+					/>
+					{this.state.data.tv_active && <TVPlayerStatic url={this.state.data.tv_url} name={this.state.data.tv_name} play={this.state.data.tv_play} />}
+					<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+					<View id="main-view" main className="safe-areas" url="/" />
+				</App>
+			</ApolloProvider>
+		);
+	}
+
+	componentWillMount() {
+		// client
+		// 	.query({
+		// 		query: HomeBanner,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					banners: res.data.banner,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+		// client
+		// 	.query({
+		// 		query: HomeRelevante,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					relevantesNews: res.data.relevante,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+	}
+
+	componentDidMount() {
 		this.$f7ready((f7) => {
 			// Init cordova APIs (see cordova-app.js)
 			const $ = f7.$;
