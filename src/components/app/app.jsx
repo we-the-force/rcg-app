@@ -302,30 +302,9 @@ export default class extends React.Component {
 	}
 
 	componentWillMount() {
-		client
-			.query({
-				query: HomeBanner,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							categorias: res.data.categorias,
-							radioStations: res.data.radioStations,
-							tvChannels: res.data.tvChannels,
-							articulosRightPanel: res.data.rightPanel,
-							logo: res.data.setting.LogoRCG.url,
-							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
-						},
-					};
-				});
-			});
-
 		// client
 		// 	.query({
-		// 		query: AppQuery,
+		// 		query: HomeBanner,
 		// 	})
 		// 	.then((res) => {
 		// 		this.setState((prevState) => {
@@ -343,6 +322,27 @@ export default class extends React.Component {
 		// 			};
 		// 		});
 		// 	});
+
+		client
+			.query({
+				query: AppQuery,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							categorias: res.data.categorias,
+							radioStations: res.data.radioStations,
+							tvChannels: res.data.tvChannels,
+							articulosRightPanel: res.data.rightPanel,
+							logo: res.data.setting.LogoRCG.url,
+							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+						},
+					};
+				});
+			});
 	}
 
 	componentDidMount() {
