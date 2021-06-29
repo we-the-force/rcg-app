@@ -55,7 +55,6 @@ export default function NewsRelevantes(props) {
 		fecha = moment(new Date());
 		url = "#";
 	}
-	console.log("2");
 	return (
 		<Block className={`NewsRel_Cont ${className} ${modal}`} id={id}>
 			<a href={url}>

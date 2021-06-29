@@ -10,8 +10,6 @@ import { Block, Link, Card, f7 } from "framework7-react";
 export default function NewsCategoria(props) {
 	moment.locale("es");
 
-	console.log("3");
-
 	const dev = f7.device;
 	let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 

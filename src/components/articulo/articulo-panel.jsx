@@ -58,6 +58,7 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
+		console.log("1");
 		const dev = f7.device;
 		let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
