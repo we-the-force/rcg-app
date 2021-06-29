@@ -21,7 +21,6 @@ export default class ArticuloPanel extends Component {
 		window.instgrm.Embeds.process();
 	}
 	render() {
-		console.log("1");
 		const dev = f7.device;
 		let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
@@ -29,13 +28,6 @@ export default class ArticuloPanel extends Component {
 		const DB_url = f7.methods.get_URL_DB();
 		const url = f7.methods.get_URL();
 		let urlThing = url + `/articulo/${articulo.url}/`;
-		// let result = formatText(articulo.description);
-		// let otherTags = /(<([^>]+)>)/gi;
-		// let firstLine = result
-		// 	.replace(otherTags, "")
-		// 	.replace(/\n/gi, " ")
-		// 	.match(/^.{0,200}/gi);
-
 		let desc = `${articulo.Sumario}`;
 
 		let cover = IMG;
@@ -46,7 +38,6 @@ export default class ArticuloPanel extends Component {
 			let newUrl = articulo.cover.url.split("/");
 			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
-		console.log("1.2");
 		return (
 			<Block className="articulo_panel center_panel">
 				<Card className="articulo">
@@ -90,10 +81,9 @@ export default class ArticuloPanel extends Component {
 					<Block className="title_cont">
 						<Block className="head display-flex justify-content-flex-start">
 							<a className="autor" href={articulo.autor ? `/autor/${articulo.autor.url}` : "/autores"}>
-								{" "}
-								{articulo.autor ? articulo.autor.nombre : "Sin Autor"}{" "}
-							</a>{" "}
-							<p className="fecha"> {moment(articulo.created_at).format("D MMMM YYYY, h:mm a")} </p>
+								{articulo.autor ? articulo.autor.nombre : "Sin Autor"}
+							</a>
+							{/* <p className="fecha"> {moment(articulo.created_at).format("D MMMM YYYY, h:mm a")} </p> */}
 						</Block>
 						<Block className="titulo">{articulo.Titulo}</Block>
 						<Block className="sumario">{articulo.Sumario}</Block>
@@ -102,28 +92,28 @@ export default class ArticuloPanel extends Component {
 							<img src={cover} alt="" />
 						</Block>
 						<Block>
-							<p>{articulo.creditos}</p>
+							{/* <p>{articulo.creditos}</p> */}
 						</Block>
 					</Block>
 					<Block className="content display-flex align-items-flex-start">
 						<Block className="left_side">
 							<div>{parse(articulo.description)}</div>
 							<Block className="tags">
-								<p>Tags Relacionados:</p>
+								{/* <p>Tags Relacionados:</p>
 								{articulo.tags.map((tag, i) => {
 									return (
 										<a key={i} href={`/busqueda/${tag.nombre}`}>
 											{tag.nombre}
 										</a>
 									);
-								})}
+								})} */}
 							</Block>
 
 							<Block className="comments">
 								<div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
 							</Block>
 							<Block className="share display-flex align-items-center justify-content-flex-end">
-								<p>Compartir:</p>
+								{/* <p>Compartir:</p>
 								<a
 									target="_blank"
 									className="faceIcon display-flex justify-content-center align-items-center external"
@@ -145,7 +135,7 @@ export default class ArticuloPanel extends Component {
 									>
 										<img src={FBIconx3} alt="" />
 									</a>
-								</div>
+								</div> */}
 							</Block>
 						</Block>
 						<Block className="right_side">
@@ -160,7 +150,7 @@ export default class ArticuloPanel extends Component {
 						<div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
 					</Block>
 					<Block className="share tab display-flex align-items-center justify-content-flex-end">
-						<p>Compartir:</p>
+						{/* <p>Compartir:</p>
 						<a
 							target="_blank"
 							className="faceIcon display-flex justify-content-center align-items-center external"
@@ -182,12 +172,12 @@ export default class ArticuloPanel extends Component {
 							>
 								<img src={FBIconx3} alt="" />
 							</a>
-						</div>
+						</div> */}
 					</Block>
 					<Block className="ads_cont">
 						<img src={banner3} alt="" />
 					</Block>
-					<SwiperNews articulos={recomendados} />
+					{/* <SwiperNews articulos={recomendados} /> */}
 				</Card>
 			</Block>
 		);
