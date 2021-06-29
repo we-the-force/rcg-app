@@ -73,6 +73,8 @@ export default class ArticuloPanel extends Component {
 		// 	.replace(/\n/gi, " ")
 		// 	.match(/^.{0,200}/gi);
 
+		let desc = `${articulo.Sumario}`;
+
 		let cover = IMG;
 		if (articulo.cover && !areMobile) {
 			let newUrl = articulo.cover.url.split("/");
@@ -114,7 +116,7 @@ export default class ArticuloPanel extends Component {
 									// OPTIONAL PARAMETERS
 									url: urlThing, // (defaults to current url)
 									image: cover, // (defaults to og:image or twitter:image)
-									description: articulo.Sumario, // (defaults to og:description or twitter:description)
+									description: desc, // (defaults to og:description or twitter:description)
 									title: articulo.Titulo, // (defaults to og:title or twitter:title)
 									// (only for email sharing)
 									username: "RCGoficial", // (only for twitter sharing)
