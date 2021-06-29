@@ -250,6 +250,12 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_relevantesNews: () => {
+					return this.state.data.relevantesNews;
+				},
+				get_banners: () => {
+					return this.state.data.banners;
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -272,6 +278,8 @@ export default class extends React.Component {
 				tv_url: "",
 				tv_active: false,
 				tv_name: "",
+				relevantesNews: [],
+				banners: []
 			},
 		};
 	}
@@ -295,26 +303,37 @@ export default class extends React.Component {
 	}
 
 	componentWillMount() {
-		// client
-		// 	.query({
-		// 		query: HomeBanner,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					categorias: res.data.categorias,
-		// 					radioStations: res.data.radioStations,
-		// 					tvChannels: res.data.tvChannels,
-		// 					articulosRightPanel: res.data.rightPanel,
-		// 					logo: res.data.setting.LogoRCG.url,
-		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
+		client
+			.query({
+				query: HomeBanner,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							banners: res.data.banner,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: HomeRelevante,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							relevantesNews: res.data.relevante,
+						},
+					};
+				});
+			});
 
 		client
 			.query({
