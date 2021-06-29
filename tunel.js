@@ -13,7 +13,7 @@ app.get("/articulo/:url", function (request, response) {
 	const query = `query ArticuloMeta($url: String) {
 		articulos: articulos(where: { url: $url }) {
 			Titulo,
-			description,
+			Sumario,
 			cover{
 				url
 			}
@@ -51,7 +51,7 @@ app.get("/articulo/:url", function (request, response) {
 			articuloURL = URL + "/articulo/" + request.params.url;
 			if(newChunk.data.articulos.length > 0){
 				articuloTitulo = newChunk.data.articulos[0].Titulo;
-				articuloDesc = newChunk.data.articulos[0].description.replace(/(<([^>]+)>)/gi, "").substr(0,50);
+				articuloDesc = newChunk.data.articulos[0].Sumario;
 				articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
 			}else {
 				response.redirect('/not-found');
