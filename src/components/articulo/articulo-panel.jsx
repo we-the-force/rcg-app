@@ -114,7 +114,7 @@ export default class ArticuloPanel extends Component {
 									// OPTIONAL PARAMETERS
 									url: urlThing, // (defaults to current url)
 									image: cover, // (defaults to og:image or twitter:image)
-									description: firstLine, // (defaults to og:description or twitter:description)
+									description: articulo.Sumario, // (defaults to og:description or twitter:description)
 									title: articulo.Titulo, // (defaults to og:title or twitter:title)
 									// (only for email sharing)
 									username: "RCGoficial", // (only for twitter sharing)
