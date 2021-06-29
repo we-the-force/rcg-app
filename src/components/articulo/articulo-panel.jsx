@@ -81,6 +81,7 @@ export default class ArticuloPanel extends Component {
 			let newUrl = articulo.cover.url.split("/");
 			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
+		console.log("1.2");
 		return (
 			<Block className="articulo_panel center_panel">
 				<Card className="articulo">
