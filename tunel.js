@@ -52,7 +52,7 @@ app.get("/articulo/:url", function (request, response) {
 				articuloDesc = newChunk.data.articulos[0].description.replace(/(<([^>]+)>)/gi, "").substr(0,50);
 				articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
 			}else {
-				response.sendStatus(404);
+				response.redirect('/not-found');
 			}
 		});
 		res.on("end", () => {
