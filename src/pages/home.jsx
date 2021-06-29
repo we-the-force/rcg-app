@@ -21,8 +21,8 @@ export default function Home(props) {
 	const DB_url = f7.methods.get_URL_DB();
 	const limitStatic = 1;
 
-	console.log(f7.methods.get_relevantesNews());
-	console.log(f7.methods.get_baners());
+	console.log(f7.methods.get_RelevantesNews());
+	console.log(f7.methods.get_Banners());
 
 	const [callApi, setCallApi] = useState(false);
 	const [callBan, setCallBan] = useState(false);

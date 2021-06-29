@@ -250,10 +250,10 @@ export default class extends React.Component {
 						};
 					});
 				},
-				get_relevantesNews: () => {
+				get_RelevantesNews: () => {
 					return this.state.data.relevantesNews;
 				},
-				get_banners: () => {
+				get_Banners: () => {
 					return this.state.data.banners;
 				},
 			},
