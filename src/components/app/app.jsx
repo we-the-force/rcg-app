@@ -303,37 +303,37 @@ export default class extends React.Component {
 	}
 
 	componentWillMount() {
-		// client
-		// 	.query({
-		// 		query: HomeBanner,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					banners: res.data.banner,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
+		client
+			.query({
+				query: HomeBanner,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							banners: res.data.banner,
+						},
+					};
+				});
+			});
 
-		// client
-		// 	.query({
-		// 		query: HomeRelevante,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					relevantesNews: res.data.relevante,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
+		client
+			.query({
+				query: HomeRelevante,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							relevantesNews: res.data.relevante,
+						},
+					};
+				});
+			});
 
 		client
 			.query({

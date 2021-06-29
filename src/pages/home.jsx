@@ -34,9 +34,9 @@ export default function Home(props) {
 	const [footer, setFooter] = useState(false);
 	const [categorias, setCategorias] = useState([]);
 	const [errorCat, setErrorCat] = useState(false);
-	const [relevanteNews, setRelevanteNews] = useState([]);
+	const [relevanteNews, setRelevanteNews] = useState(f7.methods.get_RelevantesNews());
 	const [errorRel, setErrorRel] = useState(false);
-	const [bannerNews, setBannerNews] = useState([]);
+	const [bannerNews, setBannerNews] = useState(f7.methods.get_Banners());
 	const [errorBan, setErrorBan] = useState(false);
 
 	const [getCategorias] = useLazyQuery(CategoriaHome, {
@@ -100,8 +100,8 @@ export default function Home(props) {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
 			setCallApi(!callApi);
-			setCallRel(!callRel);
-			setCallBan(!callBan);
+			// setCallRel(!callRel);
+			// setCallBan(!callBan);
 		});
 	}, []);
 
