@@ -52,7 +52,6 @@ export default function Home(props) {
 
 	const [getRelevante] = useLazyQuery(HomeRelevante, {
 		onCompleted: (data) => {
-			console.log(data);
 			setRelevanteNews(data.relevante);
 		},
 		onError: (data) => {
@@ -62,7 +61,6 @@ export default function Home(props) {
 
 	const [getBanner] = useLazyQuery(HomeBanner, {
 		onCompleted: (data) => {
-			console.log(data);
 			setBannerNews(data.banner);
 		},
 		onError: (data) => {

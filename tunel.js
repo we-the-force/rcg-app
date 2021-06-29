@@ -79,4 +79,6 @@ app.get("/articulo/:url", function (request, response) {
 
 app.use(express.static(path.resolve(__dirname, "/var/www/html/")));
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+var httpServer = app.listen(port, () => console.log(`Listening on port ${port}`));
+
+httpServer.setTimeout(1000);

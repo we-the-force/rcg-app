@@ -6,7 +6,7 @@ import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import TVPlayerStatic from "@/components/tv/tv-player-pip";
-import { AppQuery } from "@/graphql/queries.graphql";
+import { AppQuery, HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
@@ -304,7 +304,7 @@ export default class extends React.Component {
 	componentWillMount() {
 		client
 			.query({
-				query: AppQuery,
+				query: HomeBanner,
 			})
 			.then((res) => {
 				this.setState((prevState) => {
@@ -322,6 +322,27 @@ export default class extends React.Component {
 					};
 				});
 			});
+
+		// client
+		// 	.query({
+		// 		query: AppQuery,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					categorias: res.data.categorias,
+		// 					radioStations: res.data.radioStations,
+		// 					tvChannels: res.data.tvChannels,
+		// 					articulosRightPanel: res.data.rightPanel,
+		// 					logo: res.data.setting.LogoRCG.url,
+		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
 	}
 
 	componentDidMount() {
