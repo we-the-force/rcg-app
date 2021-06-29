@@ -51,7 +51,7 @@ query HomeRelevante {
 		categoria {
 			nombre
 		}
-		description
+		Sumario
 		fecha
 	}
 }

@@ -15,17 +15,17 @@ export default function NewsRelevantes(props) {
 	let DB_url = f7.methods.get_URL_DB();
 	let imagen, categoria, content, Titulo, fecha, url;
 	if (noticia) {
-		let newDesc = marked(noticia.description);
-		let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-		let otherTags = /(<([^>]+)>)/gi;
-		newDesc = newDesc
-			.replace(titlesRegEx, "")
-			.replace(otherTags, "")
-			.replace(/\n/gi, " ")
-			.match(/^.{0,300}/gi);
+		// let newDesc = marked(noticia.description);
+		// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+		// let otherTags = /(<([^>]+)>)/gi;
+		// newDesc = newDesc
+		// 	.replace(titlesRegEx, "")
+		// 	.replace(otherTags, "")
+		// 	.replace(/\n/gi, " ")
+		// 	.match(/^.{0,300}/gi);
 		imagen = IMG;
 		categoria = noticia.categoria ? noticia.categoria.nombre : "";
-		content = newDesc;
+		content = noticia.Sumario;
 		Titulo = noticia.Titulo;
 		fecha = moment(noticia.fecha);
 		url = `/articulo/${noticia.url}/`;
