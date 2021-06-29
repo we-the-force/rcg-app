@@ -100,8 +100,8 @@ export default function Home(props) {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
 			setCallApi(!callApi);
-			// setCallRel(!callRel);
-			// setCallBan(!callBan);
+			setCallRel(!callRel);
+			setCallBan(!callBan);
 		});
 	}, []);
 

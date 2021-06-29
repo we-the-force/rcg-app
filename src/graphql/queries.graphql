@@ -1,8 +1,11 @@
-query AppQuery {
+query AppCateg {
 	categorias {
 		nombre
 		url
 	}
+}
+
+query AppLogos {
 	setting {
 		LogoRCG {
 			url
@@ -11,12 +14,21 @@ query AppQuery {
 			url
 		}
 	}
+}
+
+query AppChannels {
 	tvChannels: canalEstacions(where: { Radio_TV: true }) {
 		...StationData
 	}
+}
+
+query AppStations {
 	radioStations: canalEstacions(where: { Radio_TV: false }) {
 		...StationData
 	}
+}
+
+query AppRightPanel {
 	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
 		...ArticulosData
 	}

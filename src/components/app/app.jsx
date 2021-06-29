@@ -6,7 +6,7 @@ import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import TVPlayerStatic from "@/components/tv/tv-player-pip";
-import { AppQuery, HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
+import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
@@ -279,9 +279,111 @@ export default class extends React.Component {
 				tv_active: false,
 				tv_name: "",
 				relevantesNews: [],
-				banners: []
+				banners: [],
 			},
 		};
+
+		// client
+		// 	.query({
+		// 		query: AppCateg,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					categorias: res.data.categorias,
+		// 					radioStations: res.data.radioStations,
+		// 					tvChannels: res.data.tvChannels,
+		// 					articulosRightPanel: res.data.rightPanel,
+		// 					logo: res.data.setting.LogoRCG.url,
+		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+
+		client
+			.query({
+				query: AppCateg,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							categorias: res.data.categorias,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppLogos,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							logo: res.data.setting.LogoRCG.url,
+							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppChannels,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							tvChannels: res.data.tvChannels,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppStations,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							radioStations: res.data.radioStations,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppRightPanel,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							articulosRightPanel: res.data.rightPanel,
+						},
+					};
+				});
+			});
 	}
 
 	render() {
@@ -303,58 +405,36 @@ export default class extends React.Component {
 	}
 
 	componentWillMount() {
-		client
-			.query({
-				query: HomeBanner,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							banners: res.data.banner,
-						},
-					};
-				});
-			});
-
-		client
-			.query({
-				query: HomeRelevante,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							relevantesNews: res.data.relevante,
-						},
-					};
-				});
-			});
-
-		client
-			.query({
-				query: AppQuery,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							categorias: res.data.categorias,
-							radioStations: res.data.radioStations,
-							tvChannels: res.data.tvChannels,
-							articulosRightPanel: res.data.rightPanel,
-							logo: res.data.setting.LogoRCG.url,
-							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
-						},
-					};
-				});
-			});
+		// client
+		// 	.query({
+		// 		query: HomeBanner,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					banners: res.data.banner,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+		// client
+		// 	.query({
+		// 		query: HomeRelevante,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					relevantesNews: res.data.relevante,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
 	}
 
 	componentDidMount() {
