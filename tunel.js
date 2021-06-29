@@ -47,6 +47,7 @@ app.get("/articulo/:url", function (request, response) {
 		res.on("data", (chunk) => {
 			var newChunk = JSON.parse(chunk);
 			articuloURL = URL + "/articulo/" + request.params.url;
+			console.log(newChunk);
 			articuloTitulo = newChunk.data.articulos[0].Titulo;
 			articuloDesc = newChunk.data.articulos[0].description.replace(/(<([^>]+)>)/gi, "").substr(0,50);
 			articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
