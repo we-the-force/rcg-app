@@ -15,21 +15,24 @@ export default function NewsBusqueda(props) {
     const { className, articulo } = props;
     let DB_url = f7.methods.get_URL_DB();
 
-	let newDesc = marked(articulo.description);
-	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-	let otherTags = /(<([^>]+)>)/gi;
-	newDesc = newDesc
-		.replace(titlesRegEx, "")
-		.replace(otherTags, "")
-		.replace(/\n/gi, " ")
-        .match(/^.{0,300}/gi);
-
     let cover = IMG;
+
     if (articulo.cover) {
-        let newUrl = articulo.cover.url.split("/");
-        //cambiar a xs
-        cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+        if (articulo.cover.formats) {
+            if (articulo.cover.formats.xxsmall) {
+                cover = DB_url + articulo.cover.formats.xxsmall.url;
+            } else if (articulo.cover.formats.xsmall) {
+                cover = DB_url + articulo.cover.formats.xsmall.url;
+            } else if (articulo.cover.formats.small) {
+                cover = DB_url + articulo.cover.formats.small.url;
+            } else {
+                cover = DB_url + articulo.cover.url;	
+            }
+        } else {
+            cover = DB_url + articulo.cover.url;
+        }
     }
+
     return (
         <Card className={`NewsBusqueda_cont ${className}`}>
             <Block className="background">
