@@ -6,11 +6,21 @@ import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import TVPlayerStatic from "@/components/tv/tv-player-pip";
-import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { HelmetProvider } from "react-helmet-async";
+import {
+	AppLogos,
+	AppCateg,
+	AppChannels,
+	AppStations,
+	AppRightPanel,
+	AppRightPanelTxt,
+	HomeBanner,
+	HomeRelevante,
+	CategoriaHome,
+} from "@/graphql/queries.graphql";
 
 const helmetContext = {};
 
