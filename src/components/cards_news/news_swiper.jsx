@@ -18,7 +18,7 @@ export default class NewsSwiper extends Component {
 
 		if (articulo.cover) {
 			if (articulo.cover.formats) {
-				if (areMobile && articulo.cover.formats.xxsmall) {
+				if (articulo.cover.formats.xxsmall) {
 					cover = DB_url + articulo.cover.formats.xxsmall.url;
 				} else if (articulo.cover.formats.xsmall) {
 					cover = DB_url + articulo.cover.formats.xsmall.url;
