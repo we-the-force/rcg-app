@@ -72,7 +72,6 @@ export default function Articulo(props) {
 	};
 
 	useEffect(() => {
-		window.addEventListener("backbutton", () => console.log("ahoy"));
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
 		});
