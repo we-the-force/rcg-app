@@ -19,7 +19,12 @@ export default function Home(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	const bannersState = f7.methods.get_Banners();
+	const relevantesState = f7.methods.get_RelevantesNews();
 	const limitStatic = 1;
+
+	console.log(bannersState);
+	console.log(relevantesState);
 
 	const [callApi, setCallApi] = useState(false);
 	const [callBan, setCallBan] = useState(false);
@@ -31,9 +36,9 @@ export default function Home(props) {
 	const [footer, setFooter] = useState(false);
 	const [categorias, setCategorias] = useState([]);
 	const [errorCat, setErrorCat] = useState(false);
-	const [relevanteNews, setRelevanteNews] = useState(f7.methods.get_RelevantesNews());
+	const [relevanteNews, setRelevanteNews] = useState(relevantesState);
 	const [errorRel, setErrorRel] = useState(false);
-	const [bannerNews, setBannerNews] = useState(f7.methods.get_Banners());
+	const [bannerNews, setBannerNews] = useState(bannersState);
 	const [errorBan, setErrorBan] = useState(false);
 
 	const [getCategorias] = useLazyQuery(CategoriaHome, {
