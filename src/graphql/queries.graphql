@@ -116,8 +116,15 @@ query ArticuloPage($url: String) {
 	articulos: articulos(where: { url: $url }) {
 		id
 		url
+		Sumario
+		visitas
+		tags {
+			nombre
+		}
+		categoria {
+			nombre
+		}
 		# Titulo
-		# Sumario
 		# cover_creditos
 		# autor {
 		# 	nombre
@@ -130,13 +137,6 @@ query ArticuloPage($url: String) {
 		# 	width
 		# }
 		# description
-		visitas
-		tags {
-			nombre
-		}
-		categoria {
-			nombre
-		}
 	}
 }
 

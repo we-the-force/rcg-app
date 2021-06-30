@@ -26,12 +26,16 @@ export default class ArticuloPanel extends Component {
 		let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
 
 		let { articulo, recomendados } = this.props;
-		console.log("articulo " +articulo);
-		console.log("recoms " +recomendados);
+		// console.log("articulo " +articulo);
+		// console.log("recoms " +recomendados);
 		const DB_url = f7.methods.get_URL_DB();
 		const url = f7.methods.get_URL();
 		let urlThing = url + `/articulo/${articulo.url}/`;
 		let desc = `${articulo.Sumario}`;
+
+		console.log(DB_url);
+		console.log(urlThing);
+		console.log(desc);
 
 		let cover = IMG;
 		if (articulo.cover && !areMobile) {
