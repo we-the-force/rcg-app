@@ -33,19 +33,25 @@ export default class ArticuloPanel extends Component {
 		let urlThing = url + `/articulo/${articulo.url}/`;
 		let desc = `${articulo.Sumario}`;
 
-		
 		let cover = IMG;
-		if (articulo.cover && !areMobile) {
-			console.log("url " + articulo.cover.url);
-			console.log("formats " + articulo.cover.formats);
-			let newUrl = articulo.cover.url.split("/");
-			cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
-		} else if (areMobile) {
-			let newUrl = articulo.cover.url.split("/");
-			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+		if (articulo.cover) {
+			if (articulo.cover.formats) {
+				if (areMobile && articulo.cover.formats.small) {
+					cover = articulo.cover.formats.small.url;
+				} else if (articulo.cover.formats.medium) {
+					cover = articulo.cover.formats.medium.url;
+				} else {
+					cover = articulo.cover.url;
+				}
+			} else {
+				cover = articulo.cover.url;
+			}
 		}
+
+		console.log(cover);
+
 		return (
-			<Block className="articulo_panel center_panel helmet">
+			<Block className="articulo_panel center_panel">
 				<Card className="articulo">
 					<Block className="header_cont display-flex justify-content-space-between">
 						<CardHeader>
