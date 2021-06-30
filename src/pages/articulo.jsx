@@ -46,6 +46,7 @@ export default function Articulo(props) {
 	const { loading, error, data } = useQuery(ArticuloPage, {
 		variables: { url },
 		onCompleted: (data) => {
+			console.log("oncompleted" + data);
 			setFlag(true);
 			if (data.articulos.length > 0) {
 				if (data.articulos[0].tags.length > 0) {
@@ -64,6 +65,8 @@ export default function Articulo(props) {
 			}
 		},
 	});
+
+	console.log("const " + data);
 
 	const addVisitas = () => {
 		let visitas = data.articulos[0].visitas + 1;
@@ -109,8 +112,6 @@ export default function Articulo(props) {
 		}
 	} else {
 		if (data.articulos.length > 0) {
-			console.log(recomendados);
-			console.log(data);
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 			navbarLoading = false;
 		} else {
