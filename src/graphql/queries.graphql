@@ -276,18 +276,54 @@ query BusquedaAutor($url: String, $inicio: Int, $limite: Int) {
 
 query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
 	articulos(where: { description_contains: $values }, start: $inicio, limit: $limite) {
-		...ArticulosData
+		Titulo
+		url
+		fecha
+		cover {
+			url
+			formats
+		}
+		categoria {
+			nombre
+		}
+		autor {
+			url
+		}
 	}
 }
 
 query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
 	articulos(sort: "fecha:desc",where: { Titulo_contains: $values }, start: $inicio, limit: $limite) {
-		...ArticulosData
+		Titulo
+		url
+		fecha
+		cover {
+			url
+			formats
+		}
+		categoria {
+			nombre
+		}
+		autor {
+			url
+		}
 	}
 }
 query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
 	articulos(sort: "fecha:desc",where: { tags: { nombre_contains: $values } }, start: $inicio, limit: $limite) {
-		...ArticulosData
+		Titulo
+		url
+		fecha
+		cover {
+			url
+			formats
+		}
+		categoria {
+			nombre
+		}
+		autor {
+			url
+		}
 	}
 }
 
