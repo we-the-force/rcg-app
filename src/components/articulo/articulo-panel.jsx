@@ -37,18 +37,16 @@ export default class ArticuloPanel extends Component {
 		if (articulo.cover) {
 			if (articulo.cover.formats) {
 				if (areMobile && articulo.cover.formats.small) {
-					cover = articulo.cover.formats.small.url;
+					cover = DB_url + articulo.cover.formats.small.url;
 				} else if (articulo.cover.formats.medium) {
-					cover = articulo.cover.formats.medium.url;
+					cover = DB_url + articulo.cover.formats.medium.url;
 				} else {
-					cover = articulo.cover.url;
+					cover = DB_url + articulo.cover.url;
 				}
 			} else {
-				cover = articulo.cover.url;
+				cover = DB_url + articulo.cover.url;
 			}
 		}
-
-		console.log(cover);
 
 		return (
 			<Block className="articulo_panel center_panel">
