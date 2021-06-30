@@ -100,7 +100,7 @@ export default class ArticuloPanel extends Component {
 					</Block>
 					<Block className="content display-flex align-items-flex-start">
 						<Block className="left_side">
-							<div>{parse(articulo.description)}</div>
+							{/* <div>{parse(articulo.description)}</div> */}
 							<Block className="tags">
 								<p>Tags Relacionados:</p>
 								{articulo.tags.map((tag, i) => {
