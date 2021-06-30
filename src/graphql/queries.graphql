@@ -152,13 +152,25 @@ query ArticuloMeta($url: String) {
 
 query Recomendados($tag: String) {
 	swiper: articulos(sort: "fecha:desc",where: { tags: { nombre: $tag } }, limit: 9) {
-		...ArticulosData
+		url
+		Titulo
+		fecha
+		cover {
+			url
+			formats
+		}
 	}
 }
 
 query RecomendadosCateg($categ: String) {
 	swiper: articulos(sort: "fecha:desc",where: { categoria: { nombre: $categ } }, limit: 9) {
-		...ArticulosData
+		url
+		Titulo
+		fecha
+		cover {
+			url
+			formats
+		}
 	}
 }
 

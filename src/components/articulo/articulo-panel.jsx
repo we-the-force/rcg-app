@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SwiperNews from "@/components/general/swiper_news.jsx";
 import IMG from "@/static/imgs/grayback.jpg";
 import moment from "moment";
-import marked from "marked";
 import TWIconx3 from "@/static/icons/TW_Icon_x4.png";
 import FBIconx3 from "@/static/icons/FB_Icon_x4.png";
 import { Block, Card, CardHeader, Link, f7 } from "framework7-react";
