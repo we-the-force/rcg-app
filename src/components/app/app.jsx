@@ -323,70 +323,60 @@ export default class extends React.Component {
 				});
 			});
 
-		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions`)
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions?Radio_TV=false`)
 			.then((response) => response.json())
 			.then((json) => {
-				let res = json.map((val, i) => {
+				let radio = json.map((val, i) => {
 					return {
 						nombre: val.nombre,
 						url: val.url,
 						logo: {
 							url: val.logo.url,
 							formats: val.logo.formats
-						},
-						Radio_TV: val.Radio_TV
+						}
 					}
 				});
-				console.log(res);
-				let radio = res.filter((val, i) => {return val.Radio_TV == false});
-				let tv = res.filter((val, i) => {return val.Radio_TV == true});
-
-				console.log(tv);
-				console.log(radio);
+				// let radio = res.filter((val, i) => {return val.Radio_TV == false});
+				// let tv = res.filter((val, i) => {return val.Radio_TV == true});
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							tvChannels: tv,
 							radioStations: radio,
 						},
 					};
 				});
 			});
 
-
-		// client
-		// 	.query({
-		// 		query: AppChannels,
-		// 	})
-		// 	.then((res) => {
+		// fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions`)
+		// 	.then((response) => response.json())
+		// 	.then((json) => {
+		// 		let res = json.map((val, i) => {
+		// 			return {
+		// 				nombre: val.nombre,
+		// 				url: val.url,
+		// 				logo: {
+		// 					url: val.logo.url,
+		// 					formats: val.logo.formats
+		// 				},
+		// 				Radio_TV: val.Radio_TV
+		// 			}
+		// 		});
+		// 		let radio = res.filter((val, i) => {return val.Radio_TV == false});
+		// 		let tv = res.filter((val, i) => {return val.Radio_TV == true});
 		// 		this.setState((prevState) => {
 		// 			return {
 		// 				...prevState,
 		// 				data: {
 		// 					...prevState.data,
-		// 					tvChannels: res.data.tvChannels,
+		// 					tvChannels: tv,
+		// 					radioStations: radio,
 		// 				},
 		// 			};
 		// 		});
 		// 	});
 
-		// client
-		// 	.query({
-		// 		query: AppStations,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					radioStations: res.data.radioStations,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
 
 		client
 			.query({
