@@ -326,54 +326,32 @@ export default class extends React.Component {
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions`)
 			.then((response) => response.json())
 			.then((json) => {
-				// let res = json.map((val, i) => {
-				// 	return {
-				// 		nombre: val.nombre,
-				// 		url: val.url,
-				// 		logo: {
-				// 			url: val.logo.url,
-				// 			formats: val.logo.formats
-				// 		}
-				// 	}
-				// });
-				let radio = json.filter((val, i) => {
-					if(val.Radio_TV == false){
-						return {
-							nombre: val.nombre,
-							url: val.url,
-							logo: {
-								url: val.logo.url,
-								formats: val.logo.formats
-							}
-						}
+				let res = json.map((val, i) => {
+					return {
+						nombre: val.nombre,
+						url: val.url,
+						logo: {
+							url: val.logo.url,
+							formats: val.logo.formats
+						},
+						Radio_TV: val.Radio_TV
 					}
 				});
-
-				let tv = json.filter((val, i) => {
-					if(val.Radio_TV == true){
-						return {
-							nombre: val.nombre,
-							url: val.url,
-							logo: {
-								url: val.logo.url,
-								formats: val.logo.formats
-							}
-						}
-					}
-				});
+				let radio = res.filter((val, i) => {val.Radio_TV == false});
+				let tv = res.filter((val, i) => {val.Radio_TV == true});
 
 				console.log(tv);
 				console.log(radio);
-				// this.setState((prevState) => {
-				// 	return {
-				// 		...prevState,
-				// 		data: {
-				// 			...prevState.data,
-				// 			logo: json.LogoRCG.formats.thumbnail.url,
-				// 			logoDarkMode: json.LogoRCGModoOscuro.formats.thumbnail.url,
-				// 		},
-				// 	};
-				// });
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							tvChannels: tv,
+							radioStations: radio,
+						},
+					};
+				});
 			});
 
 
