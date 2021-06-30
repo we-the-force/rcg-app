@@ -103,7 +103,6 @@ export default function Articulo(props) {
 	let centerPanel;
 	let navbarLoading = false;
 	
-	console.log("loading " + loading);
 	if (loading) {
 		if (error) {
 			centerPanel = <ErrorPanel />;
@@ -113,8 +112,9 @@ export default function Articulo(props) {
 			navbarLoading = true;
 		}
 	} else {
-		console.log("data or loading" + data.articulos);
-		console.log("data or loading" + data.articulos[0]);
+		console.log("data " + data.articulos);
+		console.log("data " + data.articulos[0]);
+		console.log("recomendados data " + recomendados);
 		if (data.articulos.length > 0) {
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 			navbarLoading = false;
