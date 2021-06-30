@@ -121,9 +121,7 @@ export default function Busqueda(props) {
 	let centerPanel =
 		isLoading && firstCharge ? isError ? <ErrorPanel /> : <LoadingPanel /> : <BusquedaPanel first={type} title={values} articulos={newResults} />;
 	let navbarLoading = isLoading && firstCharge ? (isError ? false : true) : false;
-	let rightPanelImg = f7.methods.getArticulosRightPanel();
-	let rightPanelTxt = f7.methods.getArticulosRightPanelTxt();
-	let rightPanel = rightPanelImg.concat(rightPanelTxt);
+	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
 

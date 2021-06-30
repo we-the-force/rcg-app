@@ -39,9 +39,7 @@ export default function AboutUs(props) {
 
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
-	let rightPanelImg = f7.methods.getArticulosRightPanel();
-	let rightPanelTxt = f7.methods.getArticulosRightPanelTxt();
-	let rightPanel = rightPanelImg.concat(rightPanelTxt);
+	let rightPanel = f7.methods.getArticulosRightPanel();
 
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();

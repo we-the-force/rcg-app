@@ -39,18 +39,11 @@ query AppStations {
 }
 
 query AppRightPanel {
-	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 2) {
+	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 5) {
 		cover {
 			url
 			formats
 		}
-		url
-		Titulo
-	}
-}
-
-query AppRightPanelTxt {
-	rightPanel: articulos(sort: "fecha:desc,visitas:desc", limit: 3, start: 2) {
 		url
 		Titulo
 	}

@@ -36,9 +36,7 @@ export default function TV(props) {
 		player.remove();
 	};
 
-	let rightPanelImg = f7.methods.getArticulosRightPanel();
-	let rightPanelTxt = f7.methods.getArticulosRightPanelTxt();
-	let rightPanel = rightPanelImg.concat(rightPanelTxt);
+	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
 	const logo = f7.methods.getLogo();

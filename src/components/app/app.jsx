@@ -105,9 +105,6 @@ export default class extends React.Component {
 				getArticulosRightPanel: () => {
 					return this.state.data.articulosRightPanel;
 				},
-				getArticulosRightPanelTxt: () => {
-					return this.state.data.articulosRightPanelTxt;
-				},
 				get_URL_DB: () => {
 					return this.state.data.db_url;
 				},
@@ -283,7 +280,6 @@ export default class extends React.Component {
 				radioStations: [],
 				tvChannels: [],
 				articulosRightPanel: [],
-				articulosRightPanelTxt: [],
 				logo: "",
 				logoDarkMode: "",
 				radio_url: "",
@@ -369,22 +365,6 @@ export default class extends React.Component {
 
 		client
 			.query({
-				query: AppRightPanelTxt,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							articulosRightPanelTxt: res.data.rightPanel,
-						},
-					};
-				});
-			});
-
-		client
-			.query({
 				query: AppRightPanel,
 			})
 			.then((res) => {
@@ -394,22 +374,6 @@ export default class extends React.Component {
 						data: {
 							...prevState.data,
 							articulosRightPanel: res.data.rightPanel,
-						},
-					};
-				});
-			});
-
-		client
-			.query({
-				query: AppRightPanelTxt,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							articulosRightPanelTxt: res.data.rightPanel,
 						},
 					};
 				});

@@ -19,9 +19,7 @@ export default function Articulo(props) {
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
 
-	let rightPanelImg = f7.methods.getArticulosRightPanel();
-	let rightPanelTxt = f7.methods.getArticulosRightPanelTxt();
-	let rightPanel = rightPanelImg.concat(rightPanelTxt);
+	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
 
@@ -30,36 +28,36 @@ export default function Articulo(props) {
 	const DB_url = f7.methods.get_URL_DB();
 
 	const [updateArticulo] = useMutation(UpdateArticulo, {
-		onCompleted: () => {console.log("mutation complete");},
+		onCompleted: (data) => {},
 	});
 
 	const [getRecomendados] = useLazyQuery(Recomendados, {
-		onCompleted: (res) => {	
-			setRecomendados(res.swiper);
+		onCompleted: (data) => {
+			setRecomendados(data.swiper);
 		},
 	});
 
 	const [getRecomendadosCateg] = useLazyQuery(RecomendadosCateg, {
-		onCompleted: (res) => {	
-			setRecomendados(res.swiper);
+		onCompleted: (data) => {
+			setRecomendados(data.swiper);
 		},
 	});
 
 	const { loading, error, data } = useQuery(ArticuloPage, {
 		variables: { url },
-		onCompleted: (res) => {
+		onCompleted: (data) => {
 			setFlag(true);
-			if (res.articulos.length > 0) {
-				if (res.articulos[0].tags.length > 0) {
+			if (data.articulos.length > 0) {
+				if (data.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {
-							tag: res.articulos[0].tags[0].nombre,
+							tag: data.articulos[0].tags[0].nombre,
 						},
 					});
 				} else {
 					getRecomendadosCateg({
 						variables: {
-							categ: res.articulos[0].categoria ? res.articulos[0].categoria.nombre : "",
+							categ: data.articulos[0].categoria ? data.articulos[0].categoria.nombre : "",
 						},
 					});
 				}
@@ -100,7 +98,6 @@ export default function Articulo(props) {
 
 	let centerPanel;
 	let navbarLoading = false;
-	
 	if (loading) {
 		if (error) {
 			centerPanel = <ErrorPanel />;
@@ -111,6 +108,7 @@ export default function Articulo(props) {
 		}
 	} else {
 		if (data.articulos.length > 0) {
+			console.log(data.articulos[0]);
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 			navbarLoading = false;
 		} else {
