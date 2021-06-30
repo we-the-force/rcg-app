@@ -413,37 +413,255 @@ query EspectacularPage {
 
 query CatalogoPage {
 	norte: espectaculars(where: { zona: "norte" }) {
-		...EspectacularData
+		id_espectacular
+		cara1 {
+			url
+		}
+		cara2 {
+			url
+		}
+		lugar
+		zona
 	}
 	sur: espectaculars(where: { zona: "sur" }) {
-		...EspectacularData
+		id_espectacular
+		cara1 {
+			url
+		}
+		cara2 {
+			url
+		}
+		lugar
+		zona
 	}
 	oriente: espectaculars(where: { zona: "oriente" }) {
-		...EspectacularData
+		id_espectacular
+		cara1 {
+			url
+		}
+		cara2 {
+			url
+		}
+		lugar
+		zona
 	}
 	poniente: espectaculars(where: { zona: "poniente" }) {
-		...EspectacularData
+		id_espectacular
+		cara1 {
+			url
+		}
+		cara2 {
+			url
+		}
+		lugar
+		zona
 	}
 	centro: espectaculars(where: { zona: "centro" }) {
-		...EspectacularData
+		id_espectacular
+		cara1 {
+			url
+		}
+		cara2 {
+			url
+		}
+		lugar
+		zona
 	}
 }
 
 query SchedulePage($station: String, $date: String, $radio_tv: Boolean) {
 	tv: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
-		...StationData
+		nombre
+		url
+		source_url
+		logo {
+			url
+		}
+		descripcion
+		Radio_TV
 	}
 	programacion: programacionSemanas(where: { canal_estacion: { url: $station }, fecha_inicio: $date }) {
-		...ScheduleData
+		id
+		canal_estacion {
+			nombre
+		}
+		programacion {
+			lunes {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			martes {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			miercoles {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			jueves {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			viernes {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			sabado {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			domingo {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+		}
 	}
 }
 
 query SchedulePageRadio($station: String, $date: String, $radio_tv: Boolean) {
 	radio: canalEstacions(where: { Radio_TV: $radio_tv, url: $station }) {
-		...StationData
+		nombre
+		url
+		source_url
+		logo {
+			url
+		}
+		descripcion
+		Radio_TV
 	}
 	programacion: programacionSemanas(where: { canal_estacion: { url: $station }, fecha_inicio: $date }) {
-		...ScheduleData
+		id
+		canal_estacion {
+			nombre
+		}
+		programacion {
+			lunes {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			martes {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			miercoles {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			jueves {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			viernes {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			sabado {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+			domingo {
+				hora_inicio
+				hora_final
+				programa {
+					Nombre
+					Descripcion
+					cover {
+						url
+					}
+				}
+			}
+		}
 	}
 }
 
