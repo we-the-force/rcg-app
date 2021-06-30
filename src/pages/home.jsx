@@ -86,13 +86,13 @@ export default function Home(props) {
 		});
 	}, [callApi]);
 
-	useEffect(() => {
-		getBanner();
-	}, [callBan]);
+	// useEffect(() => {
+	// 	getBanner();
+	// }, [callBan]);
 
-	useEffect(() => {
-		getRelevante();
-	}, [callRel]);
+	// useEffect(() => {
+	// 	getRelevante();
+	// }, [callRel]);
 
 	useEffect(() => {
 		setBannerNews(bannersState);
@@ -106,7 +106,7 @@ export default function Home(props) {
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
-			setCallApi(!callApi);
+			// setCallApi(!callApi);
 			// setCallRel(!callRel);
 			// setCallBan(!callBan);
 		});
