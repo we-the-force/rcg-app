@@ -133,10 +133,9 @@ query ArticuloPage($url: String) {
 			url
 		}
 		Titulo
-		# cover_creditos
-		# fecha
-		# created_at
-		# description
+		cover_creditos
+		created_at
+		description
 	}
 }
 

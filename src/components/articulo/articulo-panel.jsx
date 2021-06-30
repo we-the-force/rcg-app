@@ -107,14 +107,14 @@ export default class ArticuloPanel extends Component {
 						<Block className="left_side">
 							<div>{articulo.description}</div>
 							<Block className="tags">
-								{/* <p>Tags Relacionados:</p>
+								<p>Tags Relacionados:</p>
 								{articulo.tags.map((tag, i) => {
 									return (
 										<a key={i} href={`/busqueda/${tag.nombre}`}>
 											{tag.nombre}
 										</a>
 									);
-								})} */}
+								})}
 							</Block>
 
 							<Block className="comments">
