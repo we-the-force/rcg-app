@@ -377,8 +377,8 @@ export default class extends React.Component {
 				let res = json.map((val, i) => {
 					return {
 						cover: {
-							url: val.logo.url,
-							formats: val.logo.formats
+							url: val.cover.url,
+							formats: val.cover.formats
 						},
 						url: val.url,
 						Titulo: val.Titulo,
