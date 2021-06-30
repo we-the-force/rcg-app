@@ -395,20 +395,20 @@ export default class extends React.Component {
 				});
 			});
 
-		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=posicion:desc&_limit=10`)
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/banners?_sort=posicion:desc&_limit=10`)
 			.then((response) => response.json())
 			.then((json) => {
 				let banner = json.map((val, i) => {
 					return {
-						id: val.id,
-						url: val.url,
-						Titulo: val.Titulo,
+						id: val.articulo.id,
+						url: val.articulo.url,
+						Titulo: val.articulo.Titulo,
 						cover: {
-							url: val.cover.url,
-							formats: val.cover.formats
+							url: val.articulo.cover.url,
+							formats: val.articulo.cover.formats
 						},
 						categoria: {
-							nombre: val.categoria.nombre
+							nombre: val.articulo.categoria.nombre
 						}
 					}
 				});
