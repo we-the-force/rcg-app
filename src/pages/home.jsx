@@ -96,7 +96,6 @@ export default function Home(props) {
 
 	useEffect(() => {
 		setBannerNews(bannersState);
-		console.log("on change" + bannersState); 
 	}, [bannersState]);
 
 	useEffect(() => {

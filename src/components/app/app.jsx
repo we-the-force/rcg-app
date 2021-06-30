@@ -423,50 +423,31 @@ export default class extends React.Component {
 				});
 			});
 
-
-		// client
-		// 	.query({
-		// 		query: AppRightPanel,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					articulosRightPanel: res.data.rightPanel,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
-
-		// client
-		// 	.query({
-		// 		query: AppBanner,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					banners: res.data.banner,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
-
-		client
-			.query({
-				query: AppRelevante,
-			})
-			.then((res) => {
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=fecha:desc&_limit=8&relevante=true`)
+			.then((response) => response.json())
+			.then((json) => {
+				let relevante = json.map((val, i) => {
+					return {
+						id: val.id,
+						url: val.url,
+						Titulo: val.Titulo,
+						cover: {
+							url: val.cover.url,
+							formats: val.cover.formats
+						},
+						categoria: {
+							nombre: val.categoria.nombre
+						},
+						Sumario: val.Sumario,
+						fecha: val.fecha
+					}
+				});
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							relevantesNews: res.data.relevante,
+							relevantesNews: relevante,
 						},
 					};
 				});
