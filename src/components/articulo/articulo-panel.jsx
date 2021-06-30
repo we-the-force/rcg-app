@@ -100,7 +100,7 @@ export default class ArticuloPanel extends Component {
 					</Block>
 					<Block className="content display-flex align-items-flex-start">
 						<Block className="left_side">
-							{/* <div>{parse(articulo.description)}</div> */}
+							<div>{articulo.description}</div>
 							<Block className="tags">
 								<p>Tags Relacionados:</p>
 								{articulo.tags.map((tag, i) => {
@@ -164,7 +164,7 @@ export default class ArticuloPanel extends Component {
 						</a>
 						<div
 							className="faceIcon display-flex justify-content-center align-items-center external"
-							data-href={urlThing}
+							// data-href={urlThing}
 							data-layout="button_count"
 							data-size="small"
 						>
