@@ -437,7 +437,6 @@ fragment ArticulosData on Articulo {
 	}
 	categoria {
 		nombre
-		id
 	}
 }
 
