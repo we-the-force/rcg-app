@@ -114,7 +114,7 @@ query CategoriaHome($inicio: Int, $limite: Int) {
 
 query ArticuloPage($url: String) {
 	articulos: articulos(where: { url: $url }) {
-		...ArticulosData
+		Titulo
 	}
 }
 
