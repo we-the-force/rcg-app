@@ -270,6 +270,7 @@ query BusquedaAutor($url: String, $inicio: Int, $limite: Int) {
 		}
 		autor {
 			url
+			nombre
 		}
 	}
 }
@@ -288,6 +289,7 @@ query BusquedaDesc($values: [String], $inicio: Int, $limite: Int) {
 		}
 		autor {
 			url
+			nombre
 		}
 	}
 }
@@ -306,6 +308,7 @@ query BusquedaTitulo($values: [String], $inicio: Int, $limite: Int) {
 		}
 		autor {
 			url
+			nombre
 		}
 	}
 }
@@ -323,6 +326,7 @@ query BusquedaTag($values: [String], $inicio: Int, $limite: Int) {
 		}
 		autor {
 			url
+			nombre
 		}
 	}
 }
@@ -457,6 +461,7 @@ query SearchArticulosByTag($tags: [String]) {
 		}
 		autor {
 			url
+			nombre
 		}
 	}
 }
