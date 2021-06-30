@@ -12,6 +12,10 @@ export default function TVPanel(props) {
 	const [descPrograma, setDescPrograma] = useState("");
 	const url = f7.methods.get_URL();
 	const DB_url = f7.methods.get_URL_DB();
+
+	console.log("canal "+canal);
+	console.log("url "+url);
+	console.log(canales);
 	let urlThing = url + `/tv/${canal[0].url}/`;
 	let prog = programacion[0]
 		? programacion[0].programacion
@@ -153,6 +157,7 @@ export default function TVPanel(props) {
 					<Block className="mas_canales">
 						<BlockHeader>Más Canales</BlockHeader>
 						{canales.map((channel, key) => {
+							console.log("channel" + channel);
 							if (channel.url !== canal[0].url) {
 								return (
 									<Block key={key} className="canal">

@@ -54,6 +54,7 @@ export default function TV(props) {
 		navbarLoading = false;
 	} else {
 		let { tv, programacion } = data;
+		console.log("tv "+tv);
 		centerPanel =
 			tv.length > 0 ? (
 				<TVPanel canal={tv} canales={leftPanelTV} programacion={programacion} table_id={name} />
