@@ -128,12 +128,12 @@ query ArticuloPage($url: String) {
 			url
 			formats
 		}
-		# Titulo
+		autor {
+			nombre
+			url
+		}
+		Titulo
 		# cover_creditos
-		# autor {
-		# 	nombre
-		# 	url
-		# }
 		# fecha
 		# created_at
 		# description
