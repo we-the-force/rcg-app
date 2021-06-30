@@ -99,9 +99,9 @@ export default function Home(props) {
 		mast = "";
 	}
 	
-	if((categorias.length == 0 || relevanteNews.length == 0) && !errorCat && !errorRel){
+	if((relevanteNews.length == 0) && !errorCat && !errorRel){
 		center = <LoadingPanel />;
-	}else if(categorias.length > 0 && relevanteNews.length > 0 && !errorCat){
+	}else if(relevanteNews.length > 0 && !errorCat){
 		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;
