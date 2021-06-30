@@ -23,9 +23,6 @@ export default function Home(props) {
 	const relevantesState = f7.methods.get_RelevantesNews();
 	const limitStatic = 1;
 
-	console.log(bannersState);
-	console.log(relevantesState);
-
 	const [callApi, setCallApi] = useState(false);
 	const [callBan, setCallBan] = useState(false);
 	const [callRel, setCallRel] = useState(false);
@@ -97,6 +94,14 @@ export default function Home(props) {
 		getRelevante();
 	}, [callRel]);
 
+	useEffect(() => {
+		setBannerNews(bannersState);
+	}, [bannersState]);
+
+	useEffect(() => {
+		setRelevanteNews(relevantesState);
+	}, [relevantesState]);
+
 	//efecto para quitar etiqueta roja
 	useEffect(() => {
 		f7ready((f7) => {
@@ -112,8 +117,7 @@ export default function Home(props) {
 	console.log("r " + relevanteNews);
 	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
-	} else if(bannerNews.length > 0 && relevanteNews.length > 0 && !errorCat){
-		// const { banner, relevante } = data;
+	} else if((bannerNews.length > 0 || relevanteNews.length > 0) && !errorCat){
 		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
