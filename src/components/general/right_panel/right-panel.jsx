@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DestItem from '@/components/general/right_panel/destacado-item';
 import AutorCard from '@/components/autores/autor-card.jsx';
-import AdsSearch from "@/components/general/ads/ads_search";
 import satelite from "../../../static/imgs/sat.jpg"
 import bannersearch from "../../../static/imgs/200x300_03.png"
 import {
     Block,
     Card,
     CardHeader,
-    List,
     Link,
-    ListItem,
     f7
 } from 'framework7-react';
-import adsSearch from '../ads/ads_search';
 
 export default function RightPanel(props) {
     
@@ -45,7 +41,6 @@ export default function RightPanel(props) {
                 }
             </Card>
         );
-
     } else if (autores != undefined) {
         cards = autores.map((autor, i) => {
             return (
@@ -77,32 +72,16 @@ export default function RightPanel(props) {
                         search
                     </span>
                 </Block>
-                {/* <AdsSearch/> */}
-                {/* <br /> */}
-                <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"  /></Link>
-                
+                <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"/></Link>
                 <br />
                 <Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank">
                 <img  className="bannerSearch" src={bannersearch} alt="" sytle={{ width: "200px", margin: "0 10px" }}/>
-
                 </Link>
             </Block>
             
             <Block className="right_panel_down">
                 {cards}
                 <img src={satelite} alt="" className="sat" />
-                {/* <Card className="right_panel_down_card tags">
-                    <CardHeader>
-                        Tags
-                        </CardHeader>
-                    <List>
-                        <ListItem link="#">Coahuila</ListItem>
-                        <ListItem link="#">Saltillo</ListItem>
-                        <ListItem link="#">Reporte</ListItem>
-                        <ListItem link="#">Alcalde</ListItem>
-                        <ListItem link="#">RCG</ListItem>
-                    </List>
-                </Card> */}
             </Block>
         </Block>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
@@ -17,7 +17,6 @@ export default function LeftPanel(props) {
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
 	let radioPlay = f7.methods.get_RadioPlay();
-
 	let radio_name = f7.methods.get_RadioName();
 	let radio_img = f7.methods.get_RadioIMG();
 
@@ -33,9 +32,6 @@ export default function LeftPanel(props) {
 		setPlayPause(radioPlay);
 	}, [radioPlay]);
 
-	// let skeletonTV = tv_channels.length == 0;
-	// let skeletonRadio = radio_stations.length == 0;
-
 	return (
 		<Block className="left_panel_cont">
 			<Card className="left_pan_card envivo">
@@ -47,16 +43,6 @@ export default function LeftPanel(props) {
 					en vivo
 				</CardHeader>
 				<List>
-					{/* {skeletonTV && (
-						<Fragment>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-						</Fragment>
-					)} */}
 					{tv_channels.map((channel, key) => {
 						return (
 							<ListItem key={key} link={`/tv/${channel.url}`}>
@@ -83,20 +69,6 @@ export default function LeftPanel(props) {
 							</a>
 						</ListItem>
 					)}
-					{/* {skeletonRadio && (
-						<Fragment>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-							<ListItem className="skeleton-text" content="Lorem ipsum dolor">
-							</ListItem>
-						</Fragment>
-					)} */}
 					{radio_stations.map((station, key) => {
 						return (
 							<ListItem key={key} link={`/radio/${station.url}`}>
@@ -136,15 +108,6 @@ export default function LeftPanel(props) {
 						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
 					</a>
 				</Block>
-				{/* <Block className="social_cont display-flex justify-content-left align-items-center">
-					<a href="https://t.me/RCGMedia" className="external" target="_blank">
-						<img src={telegramIcon} alt="Telegram" srcSet="" />
-					</a>
-					<a href="https://mx.linkedin.com/company/rcg-media-mexico" className="external" target="_blank">
-						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
-					</a>
-					
-				</Block> */}
 			</Card>
 			<Card className="left_pan_card about">
 				<List>
@@ -183,23 +146,18 @@ export default function LeftPanel(props) {
 					<Link href="/derecho-replica">Derecho de réplica</Link>
 					<Link href="/aviso-privacidad">Aviso de privacidad</Link>
 					<Link href="/faq">Preguntas Frecuentes</Link>
-					{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}> */}
 					<Link className="external" target="_blank" href={false}>
 						SOLICITUDES USO DE INFRAESTRUCTURA
 					</Link>
-					{/* <Link className="external" target="_blank" href={false}> */}
 					<Link className="external" target="_blank" href={false}>
 						OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 					</Link>
-					{/* <Link className="external" target="_blank" href={"https://rcgmedia.mx/oferta/"}> */}
 					<Link className="external" target="_blank" href={false}>
 						OPI 2017
 					</Link>
-					{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}> */}
 					<Link className="external" target="_blank" href={false}>
 						OPI 2018
 					</Link>
-					{/* <Link className="external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}> */}
 					<Link className="external" target="_blank" href={false}>
 						SEG
 					</Link>

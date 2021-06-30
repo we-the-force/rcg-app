@@ -10,26 +10,34 @@ import AdsTop from "@/components/general/ads/ads_top";
 import HomePanel from "@/components/home/home-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import doscuatrosiete from "@/static/imgs/24-7.png";
-import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery } from "@apollo/client";
-import { HomePage, CategoriaHome } from "@/graphql/queries.graphql";
-import { Page, Block, PageContent, Preloader, Navbar, NavLeft, NavRight, } from "framework7-react";
+import { HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
+import { Page, Block, PageContent, Preloader, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Home(props) {
 	//query de la pagina
-	const { loading, error, data } = useQuery(HomePage);
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
-	const limitStatic = 2;
+	const limitStatic = 1;
+
+	// console.log(f7.methods.get_RelevantesNews());
+	// console.log(f7.methods.get_Banners());
 
 	const [callApi, setCallApi] = useState(false);
+	const [callBan, setCallBan] = useState(false);
+	const [callRel, setCallRel] = useState(false);
+
 	const [inicial, setInicial] = useState(0);
-	const [categorias, setCategorias] = useState([]);
 	const [preloader, setPreloader] = useState(false);
 	const [allowInfinite, setAllowInfinite] = useState(true);
 	const [footer, setFooter] = useState(false);
+	const [categorias, setCategorias] = useState([]);
+	const [errorCat, setErrorCat] = useState(false);
+	const [relevanteNews, setRelevanteNews] = useState(f7.methods.get_RelevantesNews());
+	const [errorRel, setErrorRel] = useState(false);
+	const [bannerNews, setBannerNews] = useState(f7.methods.get_Banners());
+	const [errorBan, setErrorBan] = useState(false);
 
 	const [getCategorias] = useLazyQuery(CategoriaHome, {
 		onCompleted: (data) => {
@@ -40,6 +48,27 @@ export default function Home(props) {
 			setInicial(newInicial);
 			setCategorias(categorias.concat(data.categorias));
 		},
+		onError: (data) => {
+			setErrorCat(true);
+		}
+	});
+
+	const [getRelevante] = useLazyQuery(HomeRelevante, {
+		onCompleted: (data) => {
+			setRelevanteNews(data.relevante);
+		},
+		onError: (data) => {
+			setErrorRel(true);
+		}
+	});
+
+	const [getBanner] = useLazyQuery(HomeBanner, {
+		onCompleted: (data) => {
+			setBannerNews(data.banner);
+		},
+		onError: (data) => {
+			setErrorBan(true);
+		}
 	});
 
 	const loadMore = () => {
@@ -58,32 +87,48 @@ export default function Home(props) {
 		});
 	}, [callApi]);
 
+	useEffect(() => {
+		getBanner();
+	}, [callBan]);
+
+	useEffect(() => {
+		getRelevante();
+	}, [callRel]);
+
 	//efecto para quitar etiqueta roja
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
 			setCallApi(!callApi);
+			setCallRel(!callRel);
+			setCallBan(!callBan);
 		});
 	}, []);
 
 	let center, mast;
-	let navbarLoading = false;
-	if (loading) {
-		center = <LoadingPanel />;
+	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
-		navbarLoading = true;
-	} else if (error) {
-		center = <ErrorPanel />;
-		navbarLoading = false;
-	} else {
-		const { banner, anuncio, relevante } = data;
-		center = <HomePanel noticias={categorias} relevante={relevante} />;
-		mast = <Masthead logo={DB_url + logoDark} banner={banner} relevante={relevante} anuncio={anuncio} loading={false} />;
-		navbarLoading = false;
+	} else if(bannerNews.length > 0 && relevanteNews.length > 0 && !errorCat){
+		// const { banner, relevante } = data;
+		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
+	}else {
+		mast = "";
 	}
+	
+	if((categorias.length == 0 || relevanteNews.length == 0) && !errorCat && !errorRel){
+		center = <LoadingPanel />;
+	}else if(categorias.length > 0 && relevanteNews.length > 0 && !errorCat){
+		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
+	}else if(errorCat || errorRel){
+		center = <ErrorPanel />;
+	}
+	
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
+	
+	let navbarLoading = true;
+	if (f7.methods.getCategorias().length > 0 && leftPanelRadio.length > 0 && leftPanelTV.length) navbarLoading = false;
 	return (
 		<Page pageContent={false} name="home">
 			<PageContent
@@ -95,25 +140,20 @@ export default function Home(props) {
 				}}
 			>
 				{/* ads */}
-				{/* masthead */}
 				{!navbarLoading && (
 					<Nav
-						home
-						categorias={f7.methods.getCategorias()}
-						tv_channels={leftPanelTV}
-						radio_stations={leftPanelRadio}
-						logoD={DB_url + logoDark}
-						logo={DB_url + logo}
-						loading={false}
+					home
+					categorias={f7.methods.getCategorias()}
+					tv_channels={leftPanelTV}
+					radio_stations={leftPanelRadio}
+					logoD={DB_url + logoDark}
+					logo={DB_url + logo}
 					/>
-				)}
+					)}
 				{navbarLoading && (
-					<Navbar sliding noHairline noShadow>
-						<NavRight>
-							<img src={doscuatrosiete} alt="" />
-						</NavRight>
-					</Navbar>
-				)}
+					<Navbar sliding noHairline noShadow> </Navbar>
+					)}
+				{/* masthead */}
 				{mast}
 				{/* Top Navbar */}
 

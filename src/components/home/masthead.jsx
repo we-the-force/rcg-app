@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, Fragment } from "react";
+import React, { useRef, useEffect, Fragment } from "react";
 import IMG from "@/static/imgs/grayback.jpg";
 import { Swiper, SwiperSlide, Block, Link, f7 } from "framework7-react";
 
@@ -22,9 +22,6 @@ export default function Masthead(props) {
 				categoria: val.articulo.categoria,
 				url: val.articulo.url,
 				Titulo: val.articulo.Titulo,
-				autor: val.articulo.autor,
-				fecha: val.articulo.fecha,
-				creditos: val.articulo.cover_creditos,
 			};
 		});
 
@@ -35,9 +32,6 @@ export default function Masthead(props) {
 				categoria: val.categoria,
 				url: val.url,
 				Titulo: val.Titulo,
-				autor: val.autor,
-				fecha: val.fecha,
-				creditos: val.cover_creditos,
 			};
 		});
 

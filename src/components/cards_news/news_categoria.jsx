@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import IMG from "@/static/imgs/grayback.jpg";
 import Twitter from "@/static/icons/TW_Icon_x3.png";
 import Face from "@/static/icons/FB_Icon_x3.png";
@@ -17,16 +17,15 @@ export default function NewsCategoria(props) {
 	let DB_url = f7.methods.get_URL_DB();
 	let url = f7.methods.get_URL();
 	const urlThing = url + `/articulo/${articulo.url}/`;
-	const urlEncoded = encodeURIComponent(urlThing);
 
-	let newDesc = marked(articulo.description);
-	let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-	let otherTags = /(<([^>]+)>)/gi;
-	newDesc = newDesc
-		.replace(titlesRegEx, "")
-		.replace(otherTags, "")
-		.replace(/\n/gi, " ")
-		.match(/^.{0,300}/gi);
+	// let newDesc = marked(articulo.description);
+	// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
+	// let otherTags = /(<([^>]+)>)/gi;
+	// newDesc = newDesc
+	// 	.replace(titlesRegEx, "")
+	// 	.replace(otherTags, "")
+	// 	.replace(/\n/gi, " ")
+	// 	.match(/^.{0,300}/gi);
 
 	let cover = IMG;
 	if (articulo.cover && !areMobile) {
@@ -37,7 +36,8 @@ export default function NewsCategoria(props) {
 		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 	}
 
-	// let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+	console.log("3.1");
+
 	return (
 		<Card className={`NewsCategoria_cont ${className}`}>
 			<Block className="head">
@@ -83,7 +83,6 @@ export default function NewsCategoria(props) {
 						<img src={cover} alt="" />
 					</a>
 				</div>
-				{/* <p className="preview">{newDesc}</p> */}
 				<div className="more_cont">
 					<a className="more" href={`/articulo/${articulo.url}/`}>
 						Ver más

@@ -1,7 +1,5 @@
 import React, { Fragment, useRef, useState } from 'react';
-import ReactPlayer from 'react-player';
 import { f7 } from 'framework7-react';
-
 import {
     Block,
     Card,

@@ -14,6 +14,7 @@ export default function RadioPanelStatic(props) {
                 volume={volume}
                 muted={muted}
                 className="display-none radio-player"
+                playsinline
             />
         </Block>
     );

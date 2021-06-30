@@ -6,46 +6,36 @@ import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import TVPlayerStatic from "@/components/tv/tv-player-pip";
-import { AppQuery } from "@/graphql/queries.graphql";
-
+import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { HelmetProvider } from "react-helmet-async";
 
-// import OneSignal from 'react-onesignal';
-
 const helmetContext = {};
 
 const errorLink = onError(({ graphQLErrors }) => {
-	if (graphQLErrors)
-		graphQLErrors.map(({ message }) => {
-			/* console.error('!!GraphQL Error!!', message) */
-		});
+	if (graphQLErrors) graphQLErrors.map(({ message }) => {});
 });
 
 const client = new ApolloClient({
 	uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql`,
 	// uri: `http://${process.env.API_HOSTNAME}/graphql`,
-	cache: new InMemoryCache(),
+	cache: new InMemoryCache({
+		addTypename: false,
+	}),
 	link: ApolloLink.from([errorLink, new HttpLink({ uri: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/graphql` })]),
 	// link: ApolloLink.from([errorLink, new HttpLink({ uri: `http://${process.env.API_HOSTNAME}/graphql` })]),
 });
+
 window.OneSignal = window.OneSignal || [];
 const OneSignal = window.OneSignal;
-
-// OneSignal.push(() => {
-// 	OneSignal.init({
-// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-// 	});
-// });
-
 export default class extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			// Framework7 Parameters
-			id: "io.framework7.RCG", // App bundle ID
+			id: "io.rcg.media", // App bundle ID
 			name: "RCG webpage", // App name
 			theme: "auto", // Automatic theme detection
 
@@ -63,10 +53,6 @@ export default class extends React.Component {
 			// App routes
 			routes: routes,
 
-			// Register service worker
-			// serviceWorker: Device.cordova ? {} : { path: "/service-worker.js" },
-			// serviceWorker: { path: "/OneSignalSDKWorker.js" },
-			// Input settings
 			input: {
 				scrollIntoViewOnFocus: Device.cordova && !Device.electron,
 				scrollIntoViewCentered: Device.cordova && !Device.electron,
@@ -77,9 +63,6 @@ export default class extends React.Component {
 				androidOverlaysWebView: false,
 			},
 			methods: {
-				alert: function () {
-					app.dialog.alert("Hello World");
-				},
 				handleCategoriaActual: (cat) => {
 					this.setState((prevState) => {
 						return {
@@ -272,6 +255,12 @@ export default class extends React.Component {
 						};
 					});
 				},
+				get_RelevantesNews: () => {
+					return this.state.data.relevantesNews;
+				},
+				get_Banners: () => {
+					return this.state.data.banners;
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -294,8 +283,112 @@ export default class extends React.Component {
 				tv_url: "",
 				tv_active: false,
 				tv_name: "",
+				relevantesNews: [],
+				banners: [],
 			},
 		};
+
+		// client
+		// 	.query({
+		// 		query: AppCateg,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					categorias: res.data.categorias,
+		// 					radioStations: res.data.radioStations,
+		// 					tvChannels: res.data.tvChannels,
+		// 					articulosRightPanel: res.data.rightPanel,
+		// 					logo: res.data.setting.LogoRCG.url,
+		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+
+		client
+			.query({
+				query: AppCateg,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							categorias: res.data.categorias,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppLogos,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							logo: res.data.setting.LogoRCG.url,
+							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppChannels,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							tvChannels: res.data.tvChannels,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppStations,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							radioStations: res.data.radioStations,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppRightPanel,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							articulosRightPanel: res.data.rightPanel,
+						},
+					};
+				});
+			});
 	}
 
 	render() {
@@ -320,38 +413,40 @@ export default class extends React.Component {
 		);
 	}
 
-	componentDidMount() {
-
-		// window.OneSignal = window.OneSignal || [];
-		// const OneSignal = window.OneSignal;
-
-		// OneSignal.push(() => {
-		// 	OneSignal.init({
-		// 		appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+	componentWillMount() {
+		// client
+		// 	.query({
+		// 		query: HomeBanner,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					banners: res.data.banner,
+		// 				},
+		// 			};
+		// 		});
 		// 	});
-		// });
+		// client
+		// 	.query({
+		// 		query: HomeRelevante,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					relevantesNews: res.data.relevante,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+	}
 
-		client
-			.query({
-				query: AppQuery,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							categorias: res.data.categorias,
-							radioStations: res.data.radioStations,
-							tvChannels: res.data.tvChannels,
-							articulosRightPanel: res.data.rightPanel,
-							logo: res.data.setting.LogoRCG.url,
-							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
-						},
-					};
-				});
-			});
-
+	componentDidMount() {
 		this.$f7ready((f7) => {
 			// Init cordova APIs (see cordova-app.js)
 			const $ = f7.$;
@@ -364,9 +459,6 @@ export default class extends React.Component {
 					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
 				});
 			});
-
-
-			// f7.serviceWorker.register("../../OneSignalSDKWorker.js", "/");
 
 			// Call F7 APIs here
 			window.addEventListener("orientationchange", function (e) {
@@ -400,71 +492,5 @@ export default class extends React.Component {
 				}
 			});
 		});
-
-		// OneSignal.initialize('2b8f51fa-8098-49d8-a9a5-a36441f41907');
-
-		// OneSignal.push(()=> {
-		// 	OneSignal.init({
-		// 			appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
-		// 	});
-		// });
-
-		// let newWorker;
-
-		// if ("serviceWorker" in navigator) {
-			
-		// 	console.log("si hay sw");
-		// 	navigator.serviceWorker
-		// 	.register("../../OneSignalSDKWorker.js")
-		// 	.then((reg) => {
-				
-		// 		console.log("se registro");
-				
-			// });
-			// 			reg.addEventListener("updatefound", () => {
-			// 				console.log("update");
-			// 				// An updated service worker has appeared in reg.installing!
-			// 				newWorker = reg.installing;
-	
-			// 				newWorker.addEventListener("statechange", () => {
-			// 					console.log("state changed " + newWorker.state);
-			// 					// Has service worker state changed?
-			// 					switch (newWorker.state) {
-			// 						case "installed":
-			// 							window.OneSignal = window.OneSignal || [];
-			// 							OneSignal.push(function () {
-			// 								OneSignal.init({
-			// 									appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-			// 								});
-			// 							});
-			// 							// There is a new service worker available, show the notification
-			// 							console.log("controller? " + navigator.serviceWorker.controller);
-			// 							if (navigator.serviceWorker.controller) {
-			// 								console.log("ahoy");
-			// 							}
-	
-			// 							break;
-			// 					}
-			// 				});
-			// 			});
-	
-			// 			/*     swRegistration = reg;
-			// 		  Notification.requestPermission();
-			// 		  initializeUI(); */
-			// 		})
-			// 		.catch(function (err) {
-			// 			// registration failed :(
-			// 			console.log("ServiceWorker registration failed: ", err);
-			// 		});
-	
-			// let refreshing;
-			// // The event listener that is fired when the service worker updates
-			// // Here we reload the page
-			// navigator.serviceWorker.addEventListener("controllerchange", function () {
-			// 	if (refreshing) return;
-			// 	window.location.reload();
-			// 	refreshing = true;
-			// });
-		// }
 	}
 }

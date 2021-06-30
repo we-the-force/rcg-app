@@ -3,7 +3,7 @@ import marked from "marked";
 import image from "@/static/imgs/av_priv.png";
 import city from "@/static/imgs/city.png";
 import JsxParser from "react-jsx-parser";
-import { Block, Card, BlockHeader, BlockFooter, f7 } from "framework7-react";
+import { Block, Card, BlockHeader, f7 } from "framework7-react";
 
 export function formatText(x) {
 	const DB_url = f7.methods.get_URL_DB();

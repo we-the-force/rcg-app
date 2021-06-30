@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import IMG from "@/static/imgs/grayback.jpg";
 import moment from "moment";
-import { Block, Link, BlockFooter, f7 } from "framework7-react";
+import { Block, Link, f7 } from "framework7-react";
 
 // ano natsu no, kimi ga atama ni iru
 export default function NewsHome(props) {
@@ -25,8 +25,6 @@ export default function NewsHome(props) {
 		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 	}
 
-	// let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
-
 	return (
 		<Block className={`NewsHome_cont ${className}`}>
 			<Block className="img_cont">
@@ -45,7 +43,6 @@ export default function NewsHome(props) {
 				<Link className="title" href={`/articulo/${articulo.url}/`}>
 					{articulo.Titulo}
 				</Link>
-				{/* <p className="preview">{newDesc}</p> */}
 			</Block>
 		</Block>
 	);

@@ -10,14 +10,11 @@ export default class NewsSwiper extends Component {
 	}
 	render() {
 		moment.locale("es");
-
-		console.log(f7.device); //cambiar a xs 
+		console.log("3");
 
 		let { articulo } = this.props;
 		let DB_url = f7.methods.get_URL_DB();
 		let skeleton = articulo ? "" : "skeleton-text";
-
-
 		let cover = IMG;
 		if (articulo.cover) {
 			if (articulo.cover.width > 500) {
@@ -28,7 +25,8 @@ export default class NewsSwiper extends Component {
 			}
 		}
 
-		// let cover = articulo.cover ? DB_url + articulo.cover.url : IMG;
+		console.log("3.1");
+
 		return (
 			<Link href={`/articulo/${articulo.url}/`} className="news_swiper">
 				<img src={articulo ? cover : IMG} alt="" srcSet="" />

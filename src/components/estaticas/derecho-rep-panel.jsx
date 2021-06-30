@@ -22,16 +22,16 @@ export default class AboutUsPanel extends Component {
                         <div className="content">
                             <p className="uppercase">Responsable de derecho de réplica</p>
                             <div className="parrafo">Nombre:
-                                <div className="info">{this.props.content.nombre}</div>
+                                <div className="info">{nombre}</div>
                             </div>
                             <div className="parrafo">Dirección:
-                                <div className="info">{this.props.content.direccion}</div>
+                                <div className="info">{direccion}</div>
                             </div>
                             <div className="parrafo">Telefono:
-                                <div className="info">{this.props.content.telefono}</div>
+                                <div className="info">{telefono}</div>
                             </div>
                             <div className="parrafo">Email:
-                                <div className="info">{this.props.content.correo}</div>
+                                <div className="info">{correo}</div>
                             </div>
                         </div>
                         <img className="city" src={city} alt="" />

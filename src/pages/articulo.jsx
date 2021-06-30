@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Nav from "@/components/general/navbar/navbar";
 import LeftPanel from "@/components/general/left_panel/left-panel";
 import RightPanel from "@/components/general/right_panel/right-panel";
-import marked from "marked";
-
 import LeftPanelTablet from "@/components/general/left_panel/left-panel-tablet";
 import RightPanelTablet from "@/components/general/right_panel/right-panel-tablet";
 import Footer from "@/components/general/footer";
@@ -11,11 +9,10 @@ import ArticuloPanel from "@/components/articulo/articulo-panel";
 import AdsTop from "@/components/general/ads/ads_top";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import { f7, f7ready } from "framework7-react";
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 import { ArticuloPage, Recomendados, RecomendadosCateg } from "@/graphql/queries.graphql";
 import { UpdateArticulo } from "@/graphql/mutations.graphql";
-import { Page, Block, PageContent } from "framework7-react";
+import { Page, Block, PageContent, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Articulo(props) {
 	const { url } = props;
@@ -77,7 +74,6 @@ export default function Articulo(props) {
 	};
 
 	useEffect(() => {
-		window.addEventListener("backbutton", () => console.log("ahoy"));
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
 		});
@@ -103,40 +99,49 @@ export default function Articulo(props) {
 	}, [flag]);
 
 	let centerPanel;
-
+	let navbarLoading = false;
 	if (loading) {
 		if (error) {
 			centerPanel = <ErrorPanel />;
+			navbarLoading = false;
 		} else {
 			centerPanel = <LoadingPanel />;
+			navbarLoading = true;
 		}
 	} else {
 		console.log("data no loading" + data);
 		console.log("recomendados no loading" + recomendados);
 		if (data.articulos.length > 0) {
+			console.log(data.articulos[0]);
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
+			navbarLoading = false;
 		} else {
 			centerPanel = <ErrorPanel error="No pudimos encontrar el articulo que buscas" />;
+			navbarLoading = false;
 		}
 	}
+
 	return (
-		<Page
-			pageContent={false}
-			name="articulo"
-		>
+		<Page pageContent={false} name="articulo">
 			<PageContent>
 				{/* Top Navbar */}
-				<Nav
-					categorias={f7.methods.getCategorias()}
-					tv_channels={leftPanelTV}
-					radio_stations={leftPanelRadio}
-					logoD={DB_url + logoDark}
-					logo={DB_url + logo}
-				/>
+				{!navbarLoading && (
+					<Nav
+						categorias={f7.methods.getCategorias()}
+						tv_channels={leftPanelTV}
+						radio_stations={leftPanelRadio}
+						logoD={DB_url + logoDark}
+						logo={DB_url + logo}
+					/>
+				)}
+				{navbarLoading && (
+					<Navbar sliding noHairline noShadow>
+					</Navbar>
+				)}
 				<Block className="main_cont display-flex flex-direction-column justify-content-center">
 					<Block className="paneles">
 						<Block className="left_pan">
-						<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio}/>
+							<LeftPanel tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">

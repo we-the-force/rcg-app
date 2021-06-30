@@ -13,7 +13,7 @@ app.get("/articulo/:url", function (request, response) {
 	const query = `query ArticuloMeta($url: String) {
 		articulos: articulos(where: { url: $url }) {
 			Titulo,
-			description,
+			Sumario,
 			cover{
 				url
 			}
@@ -47,12 +47,15 @@ app.get("/articulo/:url", function (request, response) {
 		res.on("data", (chunk) => {
 			var newChunk = JSON.parse(chunk);
 			articuloURL = URL + "/articulo/" + request.params.url;
-			articuloTitulo = newChunk.data.articulos[0].Titulo;
-			articuloDesc = newChunk.data.articulos[0].description.replace(/(<([^>]+)>)/gi, "").substr(0,50);
-			articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
+			if(newChunk.data.articulos.length > 0){
+				articuloTitulo = newChunk.data.articulos[0].Titulo;
+				articuloDesc = newChunk.data.articulos[0].Sumario;
+				articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
+			}else {
+				response.redirect('/not-found');
+			}
 		});
 		res.on("end", () => {
-			console.log("No more data in response.");
 			fs.readFile(filePath, "utf8", function (err, data) {
 				if (err) {
 					return console.log(err);
@@ -79,4 +82,6 @@ app.get("/articulo/:url", function (request, response) {
 
 app.use(express.static(path.resolve(__dirname, "/var/www/html/")));
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+var httpServer = app.listen(port, () => console.log(`Listening on port ${port}`));
+
+httpServer.setTimeout(1000);

@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
 import ReactPlayer from "react-player";
-import { f7 } from "framework7-react";
 import radio from "@/static/imgs/Radio_contacto.png";
 import tv from "@/static/imgs/TV_contacto.png";
 import espect from "@/static/imgs/Espect_contacto.png";
@@ -11,7 +10,7 @@ import tv_dark from "@/static/imgs/tv_contact_dark.png";
 import espect_dark from "@/static/imgs/Espect_contacto_dark.png";
 import spantalla_dark from "@/static/imgs/super_pant_dark.png";
 import media_dark from "@/static/imgs/social_media_dark.png";
-import { Block, Card, BlockHeader, Input, Popup, Button } from "framework7-react";
+import { Block, Card, BlockHeader, Input, Popup, Button, f7 } from "framework7-react";
 
 export default function ContactoPanel(props) {
 	const DB_url = f7.methods.get_URL_DB();
@@ -57,8 +56,6 @@ export default function ContactoPanel(props) {
 	};
 
 	let areVideo = video_source != "" && video_source != null && video_source != undefined;
-    console.log(video_source);
-    console.log(areVideo);
 
 	return (
 		<Fragment>
@@ -70,8 +67,7 @@ export default function ContactoPanel(props) {
 						</BlockHeader>
 						{areVideo && (
 							<Block className="player-wrapper">
-								{/* url={DB_url + video.url} */}
-								<ReactPlayer className="player" controls={true} url={video_source} playing={false} />
+								<ReactPlayer playsinline className="player" controls={true} url={video_source} playing={false} />
 							</Block>
 						)}
 						<Block className="icons_cont display-flex">
@@ -109,7 +105,6 @@ export default function ContactoPanel(props) {
 								Deja tus datos en esta sección de formulario y nos pondremos en contacto contigo o llama al teléfono: <b>{telefono}</b>
 							</p>
 						</Block>
-						{/* El formulario */}
 						<form onSubmit={handleSubmit}>
 							<div className="titulo">
 								<p>formulario</p>

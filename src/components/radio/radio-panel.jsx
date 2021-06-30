@@ -1,10 +1,10 @@
 import ScheduleTable from "@/components/general/schedule-table";
 import Icon_Radio from "@/static/icons/microphone_dark.png";
 import React, { useState, useEffect } from "react";
-import { Card, CardHeader, Block, BlockHeader, Icon, Range, f7, f7ready } from "framework7-react";
+import { Card, CardHeader, Block, BlockHeader, Icon, Range, f7 } from "framework7-react";
 
 export default function RadioPanel(props) {
-	const { estacion, estaciones, programacion, table_id, } = props;
+	const { estacion, estaciones, programacion, table_id } = props;
 	const { descripcion, source_url, nombre, logo } = estacion[0];
 	const [playPause, setPlayPause] = useState(false);
 	const [volume, setVolume] = useState(0.8);
@@ -71,9 +71,7 @@ export default function RadioPanel(props) {
 
 	return (
 		<Block className="radio_panel center_panel">
-			{/* tarjetita principal radio */}
 			<Card className="radio_center_card">
-				{/* header */}
 				<Block className="header_cont display-flex justify-content-space-between">
 					<CardHeader>
 						<h1>{nombre}</h1>
@@ -104,7 +102,6 @@ export default function RadioPanel(props) {
 						</div>
 					</Block>
 				</Block>
-				{/* bloque de radio*/}
 				<Block className="radio-wrapper">
 					<Block className="radio-ui-mobile">
 						<Block className="logo-radio">
@@ -142,12 +139,10 @@ export default function RadioPanel(props) {
 						</Block>
 					</Block>
 				</Block>
-				{/* La tablita de programación */}
 				<Block className="tabla_programacion">
 					<BlockHeader>Programación:</BlockHeader>
 					<ScheduleTable prog={prog} table_id={table_id} />
 				</Block>
-				{/* más canales xD */}
 				{estaciones.length > 1 && (
 					<Block className="mas_canales">
 						<BlockHeader>Más Canales</BlockHeader>

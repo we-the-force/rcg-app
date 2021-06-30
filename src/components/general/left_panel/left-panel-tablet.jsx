@@ -6,7 +6,6 @@ import twred from "@/static/icons/TW_red.png";
 import tiktok from "@/static/imgs/tictoc.png";
 import telegramIcon from "@/static/icons/telegram.png";
 import linkedinIcon from "@/static/icons/linkedin.png";
-import contact from "@/static/icons/Contact.png";
 import TWIcon from "@/static/icons/TW_Icon.png";
 import FBIcon from "@/static/icons/FB_Icon.png";
 import YTIcon from "@/static/icons/YT_Icon.png";
@@ -21,17 +20,14 @@ export default function LeftPanelTablet(props) {
 	const [more_pop, setMorePop] = useState([false, 0]);
 	const [redes_pop, setRedesPop] = useState([false, 0]);
 	const [nosotros_pop, setNosotrosPop] = useState([false, 0]);
-
-
 	const [playPause, setPlayPause] = useState(false);
 	let leftPlayerRadio = f7.methods.get_LeftRadioActive();
 	let radioPlay = f7.methods.get_RadioPlay();
-
 	let radio_name = f7.methods.get_RadioName();
 	let radio_img = f7.methods.get_RadioIMG();
 
 	const handlePlayPause = () => {
-		if(!playPause){
+		if (!playPause) {
 			f7.methods.set_TVPlay(false);
 		}
 		setPlayPause(!playPause);
@@ -142,29 +138,21 @@ export default function LeftPanelTablet(props) {
 				<Link href="/faq" className="text-link">
 					Preguntas Frecuentes
 				</Link>
-				{/* <Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/registro/"}> */}
 				<Link className="lowercase text-link external" target="_blank" href={false}>
 					SOLICITUDES USO DE INFRAESTRUCTURA
 				</Link>
-				{/* <Link className="lowercase text-link external" target="_blank" href={false}> */}
 				<Link className="lowercase text-link external" target="_blank" href={false}>
 					OFERTA PÚBLICA DE INFRAESTRUCTURA PASIVA
 				</Link>
-				{/* <Link className="lowercase text-link external" target="_blank" href={"https://rcgmedia.mx/oferta/"}> */}
 				<Link className="lowercase text-link external" target="_blank" href={false}>
 					OPI 2017
 				</Link>
-				{/* <Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/"}> */}
 				<Link className="lowercase text-link external" target="_blank" href={false}>
 					OPI 2018
 				</Link>
-				{/* <Link className="lowercase text-link external" target="_blank" href={"https://www.rcgmedia.mx/ofertapublica/login"}> */}
 				<Link className="lowercase text-link external" target="_blank" href={false}>
 					SEG
 				</Link>
-				{/*<Link className="text-link OPI-2017">OPI 2017</Link>
-                <Link className="text-link OPi-2018">OPI 2018</Link>
-    <Link className="text-link SEG">SEG</Link>*/}
 				<p>©2020 RCG</p>
 			</div>
 
@@ -232,13 +220,9 @@ export default function LeftPanelTablet(props) {
 				}}
 			>
 				<List>
-					{/* <ListItem popupClose link="#">Fundación RCG</ListItem> */}
 					<ListItem popupClose link="/espectaculares">
 						Espectaculares
 					</ListItem>
-					{/* <ListItem popupClose link="/calca">
-						Registra tu calca
-					</ListItem> */}
 				</List>
 			</Popup>
 			<Popup
@@ -272,15 +256,6 @@ export default function LeftPanelTablet(props) {
 						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
 					</a>
 				</Block>
-				{/* <Block className="social_cont display-flex justify-content-left align-items-center">
-					<a href="https://t.me/RCGMedia" className="external" target="_blank">
-						<img src={telegramIcon} alt="Telegram" srcSet="" />
-					</a>
-					<a href="https://mx.linkedin.com/company/rcg-media-mexico" className="external" target="_blank">
-						<img src={linkedinIcon} alt="Linkedin" srcSet="" />
-					</a>
-					
-				</Block> */}
 			</Popup>
 			<Popup
 				className="nosotros-popup left-popup-tablet"

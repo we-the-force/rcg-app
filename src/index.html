@@ -2,25 +2,7 @@
 <html lang="es">
 
 <head>
-    <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        var OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-            });
-            // OneSignal.showNativePrompt();
-        });
-    </script> -->
     <meta charset="utf-8">
-    <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-  Some notes:
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-      * Enable inline JS: add 'unsafe-inline' to default-src
-  -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src * 'self' 'unsafe-inline' 'unsafe-eval' blob: data: gap: content:;
     ">
@@ -34,36 +16,12 @@
     <link rel="shortlink" href="https://rcgmedia.mx/">
     <link rel="alternate" href="https://rcgmedia.mx/" hreflang="es" />
     <meta name="robots" content="all">
-
-    <!-- <meta property="og:site_name" content="RCG MEDIA">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rcgmedia.mx">
-    <meta property="og:title" content="RCG MEDIA">
-    <meta property="og:description" content="Las Noticias de México, Coahuila y Saltillo.">
-    <meta property="og:image" content="https://www.rcgmedia.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:creator" content="@RCGoficial">
-    <meta name="twitter:url" content="https://rcgmedia.mx/">
-    <meta name="twitter:title" content="RCG MEDIA">
-    <meta name="twitter:description" content="Las Noticias de México, Coahuila y Saltillo.">
-
-    <meta property="twitter:image" content="https://www.rcgmedia.mx/wp-content/uploads/2020/09/logo-rcg-media-250.png">
-    <meta property="twitter:title" content="RCG MEDIA">
-    <meta property="twitter:description" content="Las Noticias de México, Coahuila y Saltillo."> -->
-
     <meta property="og:site_name" content="RCG MEDIA" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="__OG_URL__" />
     <meta property="og:title" content="__OG_TITLE__" />
-    <!-- <link rel=”canonical” href=”__OG_URL__” /> -->
-    <!-- <meta property="og:title" content="RCG MEDIA" /> -->
     <meta property="og:description" content="__OG_DESCRIPTION__" />
-    <!-- <meta property="og:description" content="Noticias y entretenimiento de Coahuila, México y el Mundo. La mejor manera de informarte en tiempo real. Historias, tendencias, viral, farándula, cultura, deportes, finanzas, tecnología y más." /> -->
     <meta property="og:image" content="__OG_IMAGE__" />
-    <!-- <meta property="og:image" content="https://rcgmedia.mx/static/imgs/rcg-graph.png" /> -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="720" />
 
@@ -79,22 +37,20 @@
 
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
     <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
-    <link rel="preload" href="/fonts/Product-Sans-Regular.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/fonts/Product-Sans-Bold.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/fonts/MaterialIcons-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Framework7Icons-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Redressed-Regular.ttf" as="font" type="font/ttf" crossorigin>
-    <!-- <link rel="stylesheet" href="/css/Icons.css" /> -->
+    <link rel="preload" href="/fonts/Product-Sans-Regular.ttf" as="style" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/Product-Sans-Bold.ttf" as="style" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/MaterialIcons-Regular.woff2" as="style" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Framework7Icons-Regular.woff2" as="style" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Redressed-Regular.ttf" as="style" type="font/ttf" crossorigin>
 
     <meta property="fb:app_id" content="693607127910625" />
 
-    <script data-ad-client="ca-pub-9419050468962974" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- <script data-ad-client="ca-pub-9419050468962974" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 
     <meta name="theme-color" content="#ec1b23">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
 
-    <!-- <title>__OG_TITLE__</title> -->
     <title>RCG | El Gigante de Coahuila</title>
     <% if (process.env.TARGET==='web' ) { %>
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -105,16 +61,7 @@
         <% } %>
 
             <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-            <!-- <script>
-                window.OneSignal = window.OneSignal || [];
-                OneSignal.push(function() {
-                    OneSignal.init({
-                        appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-                    });
-                });
-            </script> -->
-
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 </head>
 
 <body>
@@ -232,21 +179,6 @@
 
             <!-- built script files will be auto injected -->
             <script>
-                // if (localStorage.getItem("firstTime") === null) {
-                //     localStorage.setItem('firstTime', 'false');
-                //     setTimeout(() => {
-                //     // window.location.reload(true);
-                //     console.log('reload');
-
-                //     }, 5000);
-                //     window.addEventListener('beforeunload', function(event) {
-                //       console.log(`do something with the event:`, event);
-                //     //  localStorage.clear();
-                //     });
-                // } else {
-
-                // }
-                
                 // window.onload = function() {
                 //     if(!window.location.hash) {
                 //         window.location = window.location + '#loaded';
