@@ -38,6 +38,7 @@ export default function TV(props) {
 
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
+	console.log(leftPanelTV);
 	let leftPanelRadio = f7.methods.getRadio();
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
