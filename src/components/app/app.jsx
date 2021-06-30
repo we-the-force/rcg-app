@@ -382,6 +382,38 @@ export default class extends React.Component {
 					};
 				});
 			});
+
+		client
+			.query({
+				query: AppRightPanel,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							articulosRightPanel: res.data.rightPanel,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppRightPanelTxt,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							articulosRightPanelTxt: res.data.rightPanel,
+						},
+					};
+				});
+			});
 	}
 
 	render() {
