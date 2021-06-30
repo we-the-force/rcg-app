@@ -52,47 +52,27 @@ export default function Home(props) {
 		}
 	});
 
-	// const [getRelevante] = useLazyQuery(HomeRelevante, {
-	// 	onCompleted: (data) => {
-	// 		// setRelevanteNews(data.relevante);
-	// 	},
-	// 	onError: (data) => {
-	// 		setErrorRel(true);
-	// 	}
-	// });
-
-	// const [getBanner] = useLazyQuery(HomeBanner, {
-	// 	onCompleted: (data) => {
-	// 		// setBannerNews(data.banner);
-	// 	},
-	// 	onError: (data) => {
-	// 		setErrorBan(true);
-	// 	}
-	// });
-
 	const loadMore = () => {
 		if (!allowInfinite) return;
 		setAllowInfinite(false);
 		setPreloader(true);
-		setCallApi(!callApi);
-	};
-
-	useEffect(() => {
 		getCategorias({
 			variables: {
 				inicio: inicial,
 				limite: limitStatic,
 			},
 		});
-	}, [callApi]);
+		// setCallApi(!callApi);
+	};
 
 	// useEffect(() => {
-	// 	getBanner();
-	// }, [callBan]);
-
-	// useEffect(() => {
-	// 	getRelevante();
-	// }, [callRel]);
+	// 	getCategorias({
+	// 		variables: {
+	// 			inicio: inicial,
+	// 			limite: limitStatic,
+	// 		},
+	// 	});
+	// }, [callApi]);
 
 	useEffect(() => {
 		setBannerNews(bannersState);
@@ -106,9 +86,6 @@ export default function Home(props) {
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
-			// setCallApi(!callApi);
-			// setCallRel(!callRel);
-			// setCallBan(!callBan);
 		});
 	}, []);
 
