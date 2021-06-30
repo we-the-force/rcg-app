@@ -10,16 +10,7 @@ import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { HelmetProvider } from "react-helmet-async";
-import {
-	AppLogos,
-	AppCateg,
-	AppChannels,
-	AppStations,
-	AppRightPanel,
-	AppBanner,
-	AppRelevante,
-	CategoriaHome,
-} from "@/graphql/queries.graphql";
+import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, AppBanner, AppRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 
 const helmetContext = {};
 
@@ -297,21 +288,25 @@ export default class extends React.Component {
 			},
 		};
 
-		client
-			.query({
-				query: AppCateg,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							categorias: res.data.categorias,
-						},
-					};
-				});
-			});
+		// client
+		// 	.query({
+		// 		query: AppCateg,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					categorias: res.data.categorias,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/categorias`)
+			.then((response) => response.json())
+			.then((json) => console.log(json));
 
 		client
 			.query({
