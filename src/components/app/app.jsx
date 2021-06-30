@@ -324,22 +324,39 @@ export default class extends React.Component {
 					});
 			});
 
-		client
-			.query({
-				query: AppLogos,
-			})
-			.then((res) => {
+		// client
+		// 	.query({
+		// 		query: AppLogos,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					logo: res.data.setting.LogoRCG.url,
+		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/settings`)
+			.then((response) => response.json())
+			.then((json) => {
+				console.log(json);
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							logo: res.data.setting.LogoRCG.url,
-							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+							logo: json.LogoRCG.formats.thumbnail.url,
+							logoDarkMode: json.LogoRCGModoOscuro.formats.thumbnail.url,
 						},
 					};
 				});
 			});
+
 
 		client
 			.query({
