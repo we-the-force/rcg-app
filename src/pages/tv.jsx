@@ -36,9 +36,10 @@ export default function TV(props) {
 		player.remove();
 	};
 
-	let rightPanel = f7.methods.getArticulosRightPanel();
+	let rightPanelImg = f7.methods.getArticulosRightPanel();
+	let rightPanelTxt = f7.methods.getArticulosRightPanelTxt();
+	let rightPanel = rightPanelImg.concat(rightPanelTxt);
 	let leftPanelTV = f7.methods.getTV();
-	console.log(leftPanelTV);
 	let leftPanelRadio = f7.methods.getRadio();
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
@@ -55,7 +56,6 @@ export default function TV(props) {
 		navbarLoading = false;
 	} else {
 		let { tv, programacion } = data;
-		console.log("tv "+tv);
 		centerPanel =
 			tv.length > 0 ? (
 				<TVPanel canal={tv} canales={leftPanelTV} programacion={programacion} table_id={name} />

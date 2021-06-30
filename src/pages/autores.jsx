@@ -43,7 +43,9 @@ export default function Autores(props) {
 		centerPanel = <AutoresPanel autores={autores} numNoticias={numNoticias} />;
 		navbarLoading = false;
 	}
-	const rightPanel = f7.methods.getArticulosRightPanel();
+	let rightPanelImg = f7.methods.getArticulosRightPanel();
+	let rightPanelTxt = f7.methods.getArticulosRightPanelTxt();
+	let rightPanel = rightPanelImg.concat(rightPanelTxt);
 	const leftPanelTV = f7.methods.getTV();
 	const leftPanelRadio = f7.methods.getRadio();
 
