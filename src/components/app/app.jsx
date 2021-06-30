@@ -365,7 +365,7 @@ export default class extends React.Component {
 						...prevState,
 						data: {
 							...prevState.data,
-							tvChannels: radio,
+							tvChannels: tv,
 						},
 					};
 				});
@@ -389,7 +389,7 @@ export default class extends React.Component {
 						...prevState,
 						data: {
 							...prevState.data,
-							articulosRightPanel: res.data.rightPanel,
+							articulosRightPanel: res,
 						},
 					};
 				});
