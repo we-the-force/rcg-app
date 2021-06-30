@@ -10,7 +10,6 @@ export default class NewsSwiper extends Component {
 	}
 	render() {
 		moment.locale("es");
-		console.log("3");
 
 		let { articulo } = this.props;
 		let DB_url = f7.methods.get_URL_DB();
@@ -24,8 +23,6 @@ export default class NewsSwiper extends Component {
 				cover = DB_url + articulo.cover.url;
 			}
 		}
-
-		console.log("3.1");
 
 		return (
 			<Link href={`/articulo/${articulo.url}/`} className="news_swiper">
