@@ -16,9 +16,8 @@ import {
 	AppChannels,
 	AppStations,
 	AppRightPanel,
-	AppRightPanelTxt,
-	HomeBanner,
-	HomeRelevante,
+	AppBanner,
+	AppRelevante,
 	CategoriaHome,
 } from "@/graphql/queries.graphql";
 
@@ -378,6 +377,38 @@ export default class extends React.Component {
 					};
 				});
 			});
+
+		client
+			.query({
+				query: AppBanner,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							banners: res.data.banner,
+						},
+					};
+				});
+			});
+
+		client
+			.query({
+				query: AppRelevante,
+			})
+			.then((res) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							relevantesNews: res.data.relevante,
+						},
+					};
+				});
+			});
 	}
 
 	render() {
@@ -400,39 +431,6 @@ export default class extends React.Component {
 				</HelmetProvider>
 			</ApolloProvider>
 		);
-	}
-
-	componentWillMount() {
-		// client
-		// 	.query({
-		// 		query: HomeBanner,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					banners: res.data.banner,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
-		// client
-		// 	.query({
-		// 		query: HomeRelevante,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					relevantesNews: res.data.relevante,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
 	}
 
 	componentDidMount() {

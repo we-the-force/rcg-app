@@ -21,8 +21,8 @@ export default function Home(props) {
 	const DB_url = f7.methods.get_URL_DB();
 	const limitStatic = 1;
 
-	// console.log(f7.methods.get_RelevantesNews());
-	// console.log(f7.methods.get_Banners());
+	console.log(f7.methods.get_RelevantesNews());
+	console.log(f7.methods.get_Banners());
 
 	const [callApi, setCallApi] = useState(false);
 	const [callBan, setCallBan] = useState(false);
@@ -55,7 +55,7 @@ export default function Home(props) {
 
 	const [getRelevante] = useLazyQuery(HomeRelevante, {
 		onCompleted: (data) => {
-			setRelevanteNews(data.relevante);
+			// setRelevanteNews(data.relevante);
 		},
 		onError: (data) => {
 			setErrorRel(true);
@@ -64,7 +64,7 @@ export default function Home(props) {
 
 	const [getBanner] = useLazyQuery(HomeBanner, {
 		onCompleted: (data) => {
-			setBannerNews(data.banner);
+			// setBannerNews(data.banner);
 		},
 		onError: (data) => {
 			setErrorBan(true);
