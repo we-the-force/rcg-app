@@ -15,11 +15,16 @@ export default function NewsBusqueda(props) {
     const { className, articulo } = props;
     let DB_url = f7.methods.get_URL_DB();
 
+	const dev = f7.device;
+	let areMobile = dev.android || dev.ios || dev.iphone || dev.ipod || dev.cordova;
+
     let cover = IMG;
 
     if (articulo.cover) {
         if (articulo.cover.formats) {
-            if (articulo.cover.formats.xxsmall) {
+            if(areMobile && articulo.cover.formats.thumbnail){
+                cover = DB_url + articulo.cover.formats.thumbnail.url;
+            } else if (articulo.cover.formats.xxsmall) {
                 cover = DB_url + articulo.cover.formats.xxsmall.url;
             } else if (articulo.cover.formats.xsmall) {
                 cover = DB_url + articulo.cover.formats.xsmall.url;
