@@ -46,10 +46,10 @@ export default function Articulo(props) {
 	const { loading, error, data } = useQuery(ArticuloPage, {
 		variables: { url },
 		onCompleted: (res) => {
-			console.log("on complete");
 			setFlag(true);
-			console.log("data on complete " + res);
+			console.log("data on complete " + res.articulos[0]);
 			if (res.articulos.length > 0) {
+				console.log("data more than zero " + res.articulos[0]);
 				if (res.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {
@@ -109,8 +109,6 @@ export default function Articulo(props) {
 			navbarLoading = true;
 		}
 	} else {
-		console.log("data no loading" + data);
-		console.log("recomendados no loading" + recomendados);
 		if (data.articulos.length > 0) {
 			console.log(data.articulos[0]);
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
