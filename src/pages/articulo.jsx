@@ -33,13 +33,15 @@ export default function Articulo(props) {
 
 	const [getRecomendados] = useLazyQuery(Recomendados, {
 		onCompleted: (res) => {
-			setRecomendados(res.swiper);
+			console.log("recomendados " + res.swiper);
+			setRecomendados(recomendados.concat(res.swiper));
 		},
 	});
 
 	const [getRecomendadosCateg] = useLazyQuery(RecomendadosCateg, {
 		onCompleted: (res) => {
-			setRecomendados(res.swiper);
+			console.log("recomendadosCateg " + res.swiper);
+			setRecomendados(recomendados.concat(res.swiper));
 		},
 	});
 
@@ -47,10 +49,8 @@ export default function Articulo(props) {
 		variables: { url },
 		onCompleted: (res) => {
 			setFlag(true);
-			console.log("data on complete " + res.articulos.length);
-			console.log("data on complete tags" + res.articulos[0].tags);
 			if (res.articulos.length > 0) {
-				// console.log("data more than zero " + JSON.parse(res.articulos[0]));
+				console.log(res.articulos[0].tags.length);
 				if (res.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {
@@ -69,6 +69,7 @@ export default function Articulo(props) {
 	});
 
 	const addVisitas = () => {
+		console.log("add visita");
 		let visitas = data.articulos[0].visitas + 1;
 		let id = data.articulos[0].id;
 		updateArticulo({ variables: { id: id, visitas: visitas } });
