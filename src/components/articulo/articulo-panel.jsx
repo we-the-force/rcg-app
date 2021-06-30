@@ -11,6 +11,7 @@ import banner1 from "@/static/imgs/200x300_01.png";
 import banner2 from "@/static/imgs/200x300_02.png";
 import banner3 from "@/static/imgs/790x80_01.png";
 import { InlineShareButtons } from "sharethis-reactjs";
+
 export default class ArticuloPanel extends Component {
 	constructor(props) {
 		super(props);
@@ -39,16 +40,16 @@ export default class ArticuloPanel extends Component {
 			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 		}
 		return (
-			<Block className="articulo_panel center_panel">
+			<Block className="articulo_panel center_panel helmet">
 				<Card className="articulo">
 					<Block className="header_cont display-flex justify-content-space-between">
 						<CardHeader>
-							{/* <a href={articulo.categoria ? `/categoria/${articulo.categoria.nombre}` : ""}>
+							<a href={articulo.categoria ? `/categoria/${articulo.categoria.nombre}` : ""}>
 								{articulo.categoria ? articulo.categoria.nombre : ""}
-							</a> */}
+							</a>
 						</CardHeader>
 						<Block className="share display-flex align-items-center">
-							{/* <InlineShareButtons
+							<InlineShareButtons
 								config={{
 									alignment: "right", // alignment of buttons (left, center, right)
 									color: "social", // set the color of buttons (social, white)
@@ -75,45 +76,45 @@ export default class ArticuloPanel extends Component {
 									// (only for email sharing)
 									username: "RCGoficial", // (only for twitter sharing)
 								}}
-							/> */}
+							/>
 						</Block>
 					</Block>
 					<Block className="title_cont">
 						<Block className="head display-flex justify-content-flex-start">
-							{/* <a className="autor" href={articulo.autor ? `/autor/${articulo.autor.url}` : "/autores"}>
-								{articulo.autor ? articulo.autor.nombre : "Sin Autor"}
-							</a> */}
-							{/* <p className="fecha"> {moment(articulo.created_at).format("D MMMM YYYY, h:mm a")} </p> */}
+							<a className="autor" href={articulo.autor ? `/autor/${articulo.autor.url}` : "/autores"}>
+								{articulo.autor ? articulo.autor.nombre : "Sin Autor"}{" "}
+							</a>
+							<p className="fecha"> {moment(articulo.created_at).format("D MMMM YYYY, h:mm a")} </p>
 						</Block>
-						{/* <Block className="titulo">{articulo.Titulo}</Block>
-						<Block className="sumario">{articulo.Sumario}</Block> */}
+						<Block className="titulo">{articulo.Titulo}</Block>
+						<Block className="sumario">{articulo.Sumario}</Block>
 
 						<Block className="img_cont display-flex flex-direction-column">
-							{/* <img src={cover} alt="" /> */}
+							<img src={cover} alt="" />
 						</Block>
 						<Block>
-							{/* <p>{articulo.creditos}</p> */}
+							<p>{articulo.cover_creditos}</p>
 						</Block>
 					</Block>
 					<Block className="content display-flex align-items-flex-start">
 						<Block className="left_side">
-							{/* <div>{parse(articulo.description)}</div> */}
+							<div>{parse(articulo.description)}</div>
 							<Block className="tags">
-								{/* <p>Tags Relacionados:</p>
+								<p>Tags Relacionados:</p>
 								{articulo.tags.map((tag, i) => {
 									return (
 										<a key={i} href={`/busqueda/${tag.nombre}`}>
 											{tag.nombre}
 										</a>
 									);
-								})} */}
+								})}
 							</Block>
 
 							<Block className="comments">
-								{/* <div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div> */}
+								<div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
 							</Block>
 							<Block className="share display-flex align-items-center justify-content-flex-end">
-								{/* <p>Compartir:</p>
+								<p>Compartir:</p>
 								<a
 									target="_blank"
 									className="faceIcon display-flex justify-content-center align-items-center external"
@@ -135,22 +136,22 @@ export default class ArticuloPanel extends Component {
 									>
 										<img src={FBIconx3} alt="" />
 									</a>
-								</div> */}
+								</div>
 							</Block>
 						</Block>
 						<Block className="right_side">
-							{/* <Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank">
+							<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank">
 								<img src={banner1} alt="" />
 							</Link>
 							<img src={banner2} alt="" />
-							<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank"></Link> */}
+							<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank"></Link>
 						</Block>
 					</Block>
 					<Block className="comments tab">
-						{/* <div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div> */}
+						<div className="fb-comments" data-href={urlThing} data-numposts="" data-width=""></div>
 					</Block>
 					<Block className="share tab display-flex align-items-center justify-content-flex-end">
-						{/* <p>Compartir:</p>
+						<p>Compartir:</p>
 						<a
 							target="_blank"
 							className="faceIcon display-flex justify-content-center align-items-center external"
@@ -172,12 +173,12 @@ export default class ArticuloPanel extends Component {
 							>
 								<img src={FBIconx3} alt="" />
 							</a>
-						</div> */}
+						</div>
 					</Block>
 					<Block className="ads_cont">
-						{/* <img src={banner3} alt="" /> */}
+						<img src={banner3} alt="" />
 					</Block>
-					{/* <SwiperNews articulos={recomendados} /> */}
+					<SwiperNews articulos={recomendados} />
 				</Card>
 			</Block>
 		);
