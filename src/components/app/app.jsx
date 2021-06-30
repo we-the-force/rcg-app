@@ -395,6 +395,34 @@ export default class extends React.Component {
 				});
 			});
 
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=posicion:desc&_limit=10`)
+			.then((response) => response.json())
+			.then((json) => {
+				let banner = json.map((val, i) => {
+					return {
+						id: val.id,
+						url: val.url,
+						Titulo: val.Titulo,
+						cover: {
+							url: val.cover.url,
+							formats: val.cover.formats
+						},
+						categoria: {
+							nombre: val.categoria.nombre
+						}
+					}
+				});
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							banners: banner,
+						},
+					};
+				});
+			});
+
 
 		// client
 		// 	.query({
@@ -412,21 +440,21 @@ export default class extends React.Component {
 		// 		});
 		// 	});
 
-		client
-			.query({
-				query: AppBanner,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							banners: res.data.banner,
-						},
-					};
-				});
-			});
+		// client
+		// 	.query({
+		// 		query: AppBanner,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					banners: res.data.banner,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
 
 		client
 			.query({
