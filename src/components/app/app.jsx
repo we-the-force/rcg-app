@@ -400,7 +400,7 @@ export default class extends React.Component {
 			.then((json) => {
 				let banner = json.map((val, i) => {
 					console.log(val);
-					console.log(articulo);
+					console.log(val.articulo);
 					return {
 						id: val.articulo.id,
 						url: val.articulo.url,
