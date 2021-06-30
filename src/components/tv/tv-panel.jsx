@@ -156,6 +156,7 @@ export default function TVPanel(props) {
 						<BlockHeader>Más Canales</BlockHeader>
 						{canales.map((channel, key) => {
 							if (channel.url !== canal[0].url) {
+								console.log(channel.logo);
 								return (
 									<Block key={key} className="canal">
 										<Block className="icon_tv display-flex justify-content-center align-items-center">

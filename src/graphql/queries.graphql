@@ -20,6 +20,10 @@ query AppChannels {
 	tvChannels: canalEstacions(where: { Radio_TV: true }) {
 		nombre
 		url
+		logo {
+			url
+			formats
+		}
 	}
 }
 
@@ -27,6 +31,10 @@ query AppStations {
 	radioStations: canalEstacions(where: { Radio_TV: false }) {
 		nombre
 		url
+		logo {
+			url
+			formats 
+		}
 	}
 }
 
