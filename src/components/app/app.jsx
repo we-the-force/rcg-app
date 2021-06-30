@@ -336,8 +336,6 @@ export default class extends React.Component {
 						}
 					}
 				});
-				// let radio = res.filter((val, i) => {return val.Radio_TV == false});
-				// let tv = res.filter((val, i) => {return val.Radio_TV == true});
 				this.setState((prevState) => {
 					return {
 						...prevState,
@@ -349,40 +347,43 @@ export default class extends React.Component {
 				});
 			});
 
-		// fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions`)
-		// 	.then((response) => response.json())
-		// 	.then((json) => {
-		// 		let res = json.map((val, i) => {
-		// 			return {
-		// 				nombre: val.nombre,
-		// 				url: val.url,
-		// 				logo: {
-		// 					url: val.logo.url,
-		// 					formats: val.logo.formats
-		// 				},
-		// 				Radio_TV: val.Radio_TV
-		// 			}
-		// 		});
-		// 		let radio = res.filter((val, i) => {return val.Radio_TV == false});
-		// 		let tv = res.filter((val, i) => {return val.Radio_TV == true});
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					tvChannels: tv,
-		// 					radioStations: radio,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions?Radio_TV=true`)
+			.then((response) => response.json())
+			.then((json) => {
+				let tv = json.map((val, i) => {
+					return {
+						nombre: val.nombre,
+						url: val.url,
+						logo: {
+							url: val.logo.url,
+							formats: val.logo.formats
+						}
+					}
+				});
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							tvChannels: radio,
+						},
+					};
+				});
+			});
 
-
-		client
-			.query({
-				query: AppRightPanel,
-			})
-			.then((res) => {
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=fecha:desc,visitas:desc&_limit=5`)
+			.then((response) => response.json())
+			.then((json) => {
+				let res = json.map((val, i) => {
+					return {
+						cover: {
+							url: val.logo.url,
+							formats: val.logo.formats
+						},
+						url: val.url,
+						Titulo: val.Titulo,
+					}
+				});
 				this.setState((prevState) => {
 					return {
 						...prevState,
@@ -393,6 +394,23 @@ export default class extends React.Component {
 					};
 				});
 			});
+
+
+		// client
+		// 	.query({
+		// 		query: AppRightPanel,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					articulosRightPanel: res.data.rightPanel,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
 
 		client
 			.query({
