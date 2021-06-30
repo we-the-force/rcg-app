@@ -32,16 +32,14 @@ export default function Articulo(props) {
 	});
 
 	const [getRecomendados] = useLazyQuery(Recomendados, {
-		onCompleted: (res) => {
-			console.log("recomendados " + res.swiper);
-			setRecomendados(recomendados.concat(res.swiper));
+		onCompleted: (res) => {	
+			setRecomendados(res.swiper);
 		},
 	});
 
 	const [getRecomendadosCateg] = useLazyQuery(RecomendadosCateg, {
-		onCompleted: (res) => {
-			console.log("recomendadosCateg " + res.swiper);
-			setRecomendados(recomendados.concat(res.swiper));
+		onCompleted: (res) => {	
+			setRecomendados(res.swiper);
 		},
 	});
 
@@ -69,7 +67,6 @@ export default function Articulo(props) {
 	});
 
 	const addVisitas = () => {
-		console.log("add visita");
 		let visitas = data.articulos[0].visitas + 1;
 		let id = data.articulos[0].id;
 		updateArticulo({ variables: { id: id, visitas: visitas } });
@@ -112,9 +109,6 @@ export default function Articulo(props) {
 			navbarLoading = true;
 		}
 	} else {
-		console.log("data " + data.articulos);
-		console.log("data " + data.articulos[0]);
-		console.log("recomendados data " + recomendados);
 		if (data.articulos.length > 0) {
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 			navbarLoading = false;
