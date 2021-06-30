@@ -15,15 +15,13 @@ export default function Masthead(props) {
 	let articulos = [];
 
 	if (!loading) {
-		console.log(banners);
 		banners = banners.map((val) => {
-			console.log("mast" + val);
 			return {
-				id: val.articulo.id,
-				cover: val.articulo.cover,
-				categoria: val.articulo.categoria,
-				url: val.articulo.url,
-				Titulo: val.articulo.Titulo,
+				id: val.id,
+				cover: val.cover,
+				categoria: val.categoria,
+				url: val.url,
+				Titulo: val.Titulo,
 			};
 		});
 

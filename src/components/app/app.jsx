@@ -399,7 +399,6 @@ export default class extends React.Component {
 			.then((response) => response.json())
 			.then((json) => {
 				let banner = json.map((val, i) => {
-					console.log(val.articulo.id);
 					return {
 						id: val.articulo.id,
 						url: val.articulo.url,
