@@ -337,8 +337,9 @@ export default class extends React.Component {
 						Radio_TV: val.Radio_TV
 					}
 				});
-				let radio = res.filter((val, i) => {val.Radio_TV == false});
-				let tv = res.filter((val, i) => {val.Radio_TV == true});
+				console.log(res);
+				let radio = res.filter((val, i) => {return val.Radio_TV == false});
+				let tv = res.filter((val, i) => {return val.Radio_TV == true});
 
 				console.log(tv);
 				console.log(radio);
