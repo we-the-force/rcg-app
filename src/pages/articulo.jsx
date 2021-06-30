@@ -47,9 +47,10 @@ export default function Articulo(props) {
 		variables: { url },
 		onCompleted: (res) => {
 			setFlag(true);
-			console.log("data on complete " + JSON.parse(res.articulos[0]));
+			console.log("data on complete " + res.articulos.length);
+			console.log("data on complete tags" + res.articulos[0].tags);
 			if (res.articulos.length > 0) {
-				console.log("data more than zero " + JSON.parse(res.articulos[0]));
+				// console.log("data more than zero " + JSON.parse(res.articulos[0]));
 				if (res.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {
@@ -102,7 +103,8 @@ export default function Articulo(props) {
 	let navbarLoading = false;
 	
 	console.log("loading " + loading);
-	console.log("data or loading" + JSON.parse(data));
+	console.log("data or loading" + data.articulos);
+	console.log("data or loading" + data.articulos[0]);
 	if (loading) {
 		if (error) {
 			centerPanel = <ErrorPanel />;
