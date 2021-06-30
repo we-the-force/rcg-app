@@ -114,7 +114,29 @@ query CategoriaHome($inicio: Int, $limite: Int) {
 
 query ArticuloPage($url: String) {
 	articulos: articulos(where: { url: $url }) {
-		Titulo
+		id
+		url
+		# Titulo
+		# Sumario
+		# cover_creditos
+		# autor {
+		# 	nombre
+		# 	url
+		# }
+		# fecha
+		# created_at
+		# cover {
+		# 	url
+		# 	width
+		# }
+		# description
+		visitas
+		tags {
+			nombre
+		}
+		categoria {
+			nombre
+		}
 	}
 }
 
