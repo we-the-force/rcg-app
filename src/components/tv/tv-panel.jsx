@@ -163,6 +163,7 @@ export default function TVPanel(props) {
 										</Block>
 										<a href={`/tv/${channel.url}`} className="canal_content">
 											<div className="image_cont">
+												{/* cambiar a xs */}
 												<img src={channel.logo ? DB_url + channel.logo.url : IMG} alt="" srcSet="" />
 											</div>
 											<h2 className="title">{channel.nombre}</h2>

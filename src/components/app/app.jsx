@@ -288,22 +288,6 @@ export default class extends React.Component {
 			},
 		};
 
-		// client
-		// 	.query({
-		// 		query: AppCateg,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					categorias: res.data.categorias,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
-
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/categorias`)
 			.then((response) => response.json())
 			.then((json) => {
@@ -324,27 +308,9 @@ export default class extends React.Component {
 					});
 			});
 
-		// client
-		// 	.query({
-		// 		query: AppLogos,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					logo: res.data.setting.LogoRCG.url,
-		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
-
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/settings`)
 			.then((response) => response.json())
 			.then((json) => {
-				console.log(json);
 				this.setState((prevState) => {
 					return {
 						...prevState,
@@ -357,38 +323,91 @@ export default class extends React.Component {
 				});
 			});
 
-
-		client
-			.query({
-				query: AppChannels,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							tvChannels: res.data.tvChannels,
-						},
-					};
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions`)
+			.then((response) => response.json())
+			.then((json) => {
+				// let res = json.map((val, i) => {
+				// 	return {
+				// 		nombre: val.nombre,
+				// 		url: val.url,
+				// 		logo: {
+				// 			url: val.logo.url,
+				// 			formats: val.logo.formats
+				// 		}
+				// 	}
+				// });
+				let radio = json.filter((val, i) => {
+					if(val.Radio_TV == false){
+						return {
+							nombre: val.nombre,
+							url: val.url,
+							logo: {
+								url: val.logo.url,
+								formats: val.logo.formats
+							}
+						}
+					}
 				});
+
+				let tv = json.filter((val, i) => {
+					if(val.Radio_TV == true){
+						return {
+							nombre: val.nombre,
+							url: val.url,
+							logo: {
+								url: val.logo.url,
+								formats: val.logo.formats
+							}
+						}
+					}
+				});
+
+				console.log(tv);
+				console.log(radio);
+				// this.setState((prevState) => {
+				// 	return {
+				// 		...prevState,
+				// 		data: {
+				// 			...prevState.data,
+				// 			logo: json.LogoRCG.formats.thumbnail.url,
+				// 			logoDarkMode: json.LogoRCGModoOscuro.formats.thumbnail.url,
+				// 		},
+				// 	};
+				// });
 			});
 
-		client
-			.query({
-				query: AppStations,
-			})
-			.then((res) => {
-				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							radioStations: res.data.radioStations,
-						},
-					};
-				});
-			});
+
+		// client
+		// 	.query({
+		// 		query: AppChannels,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					tvChannels: res.data.tvChannels,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
+
+		// client
+		// 	.query({
+		// 		query: AppStations,
+		// 	})
+		// 	.then((res) => {
+		// 		this.setState((prevState) => {
+		// 			return {
+		// 				...prevState,
+		// 				data: {
+		// 					...prevState.data,
+		// 					radioStations: res.data.radioStations,
+		// 				},
+		// 			};
+		// 		});
+		// 	});
 
 		client
 			.query({

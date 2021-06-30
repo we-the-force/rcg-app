@@ -155,6 +155,7 @@ export default function RadioPanel(props) {
 										</Block>
 										<a href={`/radio/${station.url}`} className="canal_content">
 											<div className="image_cont">
+												{/* cambiar a xs */}
 												<img src={station.logo ? (DB_url + station.logo.url) : ""} alt="" srcSet="" />
 											</div>
 
