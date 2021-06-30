@@ -13,6 +13,7 @@ export default class SwiperNews extends Component {
     }
     render() {
         const { wot, articulos } = this.props;
+        console.log(articulos);
         let display = wot ? 'display-none' : '';
         return (
             <Fragment>
