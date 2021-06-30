@@ -15,6 +15,7 @@ export default function Masthead(props) {
 	let articulos = [];
 
 	if (!loading) {
+		console.log(banners);
 		banners = banners.map((val) => {
 			console.log("mast" + val);
 			return {

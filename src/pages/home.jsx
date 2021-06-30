@@ -52,23 +52,23 @@ export default function Home(props) {
 		}
 	});
 
-	const [getRelevante] = useLazyQuery(HomeRelevante, {
-		onCompleted: (data) => {
-			// setRelevanteNews(data.relevante);
-		},
-		onError: (data) => {
-			setErrorRel(true);
-		}
-	});
+	// const [getRelevante] = useLazyQuery(HomeRelevante, {
+	// 	onCompleted: (data) => {
+	// 		// setRelevanteNews(data.relevante);
+	// 	},
+	// 	onError: (data) => {
+	// 		setErrorRel(true);
+	// 	}
+	// });
 
-	const [getBanner] = useLazyQuery(HomeBanner, {
-		onCompleted: (data) => {
-			// setBannerNews(data.banner);
-		},
-		onError: (data) => {
-			setErrorBan(true);
-		}
-	});
+	// const [getBanner] = useLazyQuery(HomeBanner, {
+	// 	onCompleted: (data) => {
+	// 		// setBannerNews(data.banner);
+	// 	},
+	// 	onError: (data) => {
+	// 		setErrorBan(true);
+	// 	}
+	// });
 
 	const loadMore = () => {
 		if (!allowInfinite) return;
@@ -96,6 +96,7 @@ export default function Home(props) {
 
 	useEffect(() => {
 		setBannerNews(bannersState);
+		console.log("on change" + bannersState); 
 	}, [bannersState]);
 
 	useEffect(() => {
@@ -113,11 +114,10 @@ export default function Home(props) {
 	}, []);
 
 	let center, mast;
-	console.log("b " + bannerNews);
-	console.log("r " + relevanteNews);
 	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
 	} else if((bannerNews.length > 0 || relevanteNews.length > 0) && !errorCat){
+		console.log("on Enter" + bannerNews);
 		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
