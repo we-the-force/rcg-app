@@ -31,36 +31,38 @@ export default function Articulo(props) {
 	const DB_url = f7.methods.get_URL_DB();
 
 	const [updateArticulo] = useMutation(UpdateArticulo, {
-		onCompleted: (data) => {},
+		onCompleted: () => {console.log("mutation complete");},
 	});
 
 	const [getRecomendados] = useLazyQuery(Recomendados, {
-		onCompleted: (data) => {
-			setRecomendados(data.swiper);
+		onCompleted: (res) => {
+			setRecomendados(res.swiper);
 		},
 	});
 
 	const [getRecomendadosCateg] = useLazyQuery(RecomendadosCateg, {
-		onCompleted: (data) => {
-			setRecomendados(data.swiper);
+		onCompleted: (res) => {
+			setRecomendados(res.swiper);
 		},
 	});
 
 	const { loading, error, data } = useQuery(ArticuloPage, {
 		variables: { url },
-		onCompleted: (data) => {
+		onCompleted: (res) => {
+			console.log("on complete");
 			setFlag(true);
-			if (data.articulos.length > 0) {
-				if (data.articulos[0].tags.length > 0) {
+			console.log("data on complete " + res);
+			if (res.articulos.length > 0) {
+				if (res.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {
-							tag: data.articulos[0].tags[0].nombre,
+							tag: res.articulos[0].tags[0].nombre,
 						},
 					});
 				} else {
 					getRecomendadosCateg({
 						variables: {
-							categ: data.articulos[0].categoria ? data.articulos[0].categoria.nombre : "",
+							categ: res.articulos[0].categoria ? res.articulos[0].categoria.nombre : "",
 						},
 					});
 				}
@@ -109,6 +111,8 @@ export default function Articulo(props) {
 			centerPanel = <LoadingPanel />;
 		}
 	} else {
+		console.log("data no loading" + data);
+		console.log("recomendados no loading" + recomendados);
 		if (data.articulos.length > 0) {
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 		} else {
