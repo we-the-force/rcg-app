@@ -306,7 +306,23 @@ export default class extends React.Component {
 
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/categorias`)
 			.then((response) => response.json())
-			.then((json) => console.log(json));
+			.then((json) => {
+				let categorias = json.map((val, i) => {
+					return {
+						nombre: val.nombre,
+						url: val.url
+					};
+				});
+				this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								categorias: categorias,
+							},
+						};
+					});
+			});
 
 		client
 			.query({
