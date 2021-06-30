@@ -48,7 +48,6 @@ export default function Articulo(props) {
 		onCompleted: (res) => {
 			setFlag(true);
 			if (res.articulos.length > 0) {
-				console.log(res.articulos[0].tags.length);
 				if (res.articulos[0].tags.length > 0) {
 					getRecomendados({
 						variables: {

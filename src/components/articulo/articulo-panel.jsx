@@ -33,12 +33,11 @@ export default class ArticuloPanel extends Component {
 		let urlThing = url + `/articulo/${articulo.url}/`;
 		let desc = `${articulo.Sumario}`;
 
-		console.log(DB_url);
-		console.log(urlThing);
-		console.log(desc);
-
+		
 		let cover = IMG;
 		if (articulo.cover && !areMobile) {
+			console.log("url " + articulo.cover.url);
+			console.log("formats " + articulo.cover.formats);
 			let newUrl = articulo.cover.url.split("/");
 			cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
 		} else if (areMobile) {

@@ -124,6 +124,10 @@ query ArticuloPage($url: String) {
 		categoria {
 			nombre
 		}
+		cover {
+			url
+			formats
+		}
 		# Titulo
 		# cover_creditos
 		# autor {
@@ -132,10 +136,6 @@ query ArticuloPage($url: String) {
 		# }
 		# fecha
 		# created_at
-		# cover {
-		# 	url
-		# 	width
-		# }
 		# description
 	}
 }
