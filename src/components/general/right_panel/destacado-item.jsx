@@ -9,11 +9,21 @@ export default function DestItem(props) {
 	const { cover, Titulo, url } = props.articulo;
 	let DB_url = f7.methods.get_URL_DB();
 	let imgn = IMG;
-    if (cover) {
-        let newUrl = cover.url.split("/");
-        //cambiar a xs
-        imgn = cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + cover.url;
-    }
+
+	if (cover) {
+		if (cover.formats) {
+			if (cover.formats.thumbnail) {
+				imgn = DB_url + cover.formats.thumbnail.url;
+			} else if (cover.formats.xxsmall) {
+				imgn = DB_url + cover.formats.xxsmall.url;
+			} else {
+				imgn = DB_url + cover.url;	
+			}
+		} else {
+			imgn = DB_url + cover.url;
+		}
+	}
+
 	return (
 		<Block className={"dest-item"}>
 			{props.image && (

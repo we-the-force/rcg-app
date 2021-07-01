@@ -52,7 +52,7 @@ export default function Masthead(props) {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			if(swiper != null && swiper.current != null){
+			if (swiper != null && swiper.current != null) {
 				let el_swiper = swiper.current.swiper;
 				el_swiper.slideNext(1000);
 			}
@@ -78,10 +78,18 @@ export default function Masthead(props) {
 							let cover = IMG;
 
 							if (item.cover) {
-								let newUrl = item.cover.url.split("/");
-								//cambiar a xs
-								if (areMobile && item.cover.width > 500) {
-									cover = DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2];
+								if (item.cover.formats) {
+									if (areMobile && item.cover.formats.small) {
+										cover = DB_url + item.cover.formats.small.url;
+									} else if (areMobile && item.cover.formats.medium) {
+										cover = DB_url + item.cover.formats.medium.url;
+									} else if (!areMobile && item.cover.formats.large) {
+										cover = DB_url + item.cover.formats.large.url;
+									} else if (!areMobile && item.cover.formats.medium) {
+										cover = DB_url + item.cover.formats.medium.url;
+									} else {
+										cover = DB_url + item.cover.url;
+									}
 								} else {
 									cover = DB_url + item.cover.url;
 								}
