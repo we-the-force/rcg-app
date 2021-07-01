@@ -47,11 +47,11 @@ export default class AboutUsPanel extends Component {
 		//this.avisoPrivacidad = marked(props.avisoPriv.descripcion == null ? "" : props.avisoPriv.descripcion);
 	}
 	componentDidMount() {
-		FB.XFBML.parse();
+		// FB.XFBML.parse();
 	}
 	componentDidUpdate() {
-		twttr.widgets.load();
-		window.instgrm.Embeds.process();
+		// twttr.widgets.load();
+		// window.instgrm.Embeds.process();
 	}
 	render() {
 		let { avisoPriv } = this.props;

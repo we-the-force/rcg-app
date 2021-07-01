@@ -46,11 +46,11 @@ export default class EspectacularPanel extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		FB.XFBML.parse();
+		// FB.XFBML.parse();
 	}
 	componentDidUpdate() {
-		twttr.widgets.load();
-		window.instgrm.Embeds.process();
+		// twttr.widgets.load();
+		// window.instgrm.Embeds.process();
 	}
 	render() {
 		const { info, clientes } = this.props;
