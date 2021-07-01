@@ -18,7 +18,8 @@ export default function RightPanelTablet(props) {
         x[0].classList.add("invisible");
     }
     const bannerSearch = {
-        height: '204px'
+        height: '204px',
+        
     }
 
     const changeBackdropClose = () => {
@@ -27,7 +28,7 @@ export default function RightPanelTablet(props) {
     }
 
     let { newsInfo, autores, numArticulos } = props;
-    let cont, title = 'Lo Mas Visto';
+    let cont, title = 'Lo Más Visto';
 
     if (newsInfo != undefined) {
         cont = (
@@ -56,15 +57,9 @@ export default function RightPanelTablet(props) {
                 <h1>{title}</h1>
                 <Block className="news-cont">
                     <Block className="search_block">
-                        <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" style={{
-                            width: '50%',
-                            display: 'inline-block'
-                        }} ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"  /></Link>
-                        <Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank" style={{
-                            width: '50%',
-                            display: 'inline-block'
-                        }}>
-                        <img src={bannersearch} alt="" sytle={bannerSearch}/>
+                        <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" className='linkTablet'><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"  /></Link>
+                        <Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank" className='linkTablet'>
+                        <img src={bannersearch} alt="" />
                         </Link>
                     </Block>
                     {cont}

@@ -478,7 +478,6 @@ export default class extends React.Component {
 
 	componentDidMount() {
 		this.$f7ready((f7) => {
-			// Init cordova APIs (see cordova-app.js)
 			const $ = f7.$;
 			if (Device.cordova) {
 				cordovaApp.init(f7);

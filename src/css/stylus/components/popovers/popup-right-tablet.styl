@@ -14,7 +14,9 @@
         // background red
         // border-top-left-radius 50%
         // border-bottom-left-radius 50%
+        display none
         &.mobile
+            display inline-flex
             transform  rotate(45deg)
             i
                 color red
@@ -41,8 +43,17 @@
         overflow hidden
         margin-bottom 10px
         overflow-y scroll
+        .search_block
+            a.link.linkTablet
+                width 50%
+                display inline-block
+                text-align center
+                img
+                    width auto
+                    height 204px
 
     @media (min-width 640px)
+        display block
         width 190px !important
         height calc(100% - 44px) !important
         transform translate3d(42px, 0, 0) !important
@@ -89,6 +100,17 @@
             overflow hidden
             margin-bottom 10px
             overflow-y scroll
+            .search_block
+                padding-left 10px
+                padding-right 10px
+                a.link.linkTablet
+                    width 100%
+                    display block
+                    text-align center
+                    img
+                        width 100%
+                        height auto
+                        margin 0
 
         &.modal-in
             transform translate3d(-190px, 0, 0) !important
