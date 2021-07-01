@@ -6,11 +6,11 @@ import routes from "../../js/routes";
 import LeftPanelMobile from "@/components/general/left_panel/left-panel-mobile";
 import RadioPlayerStatic from "@/components/radio/radio-player-static";
 import TVPlayerStatic from "@/components/tv/tv-player-pip";
-import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import { HelmetProvider } from "react-helmet-async";
+import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, AppBanner, AppRelevante, CategoriaHome } from "@/graphql/queries.graphql";
 
 const helmetContext = {};
 
@@ -288,103 +288,166 @@ export default class extends React.Component {
 			},
 		};
 
-		// client
-		// 	.query({
-		// 		query: AppCateg,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					categorias: res.data.categorias,
-		// 					radioStations: res.data.radioStations,
-		// 					tvChannels: res.data.tvChannels,
-		// 					articulosRightPanel: res.data.rightPanel,
-		// 					logo: res.data.setting.LogoRCG.url,
-		// 					logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/categorias`)
+			.then((response) => response.json())
+			.then((json) => {
+				let categorias = json.map((val, i) => {
+					return {
+						nombre: val.nombre,
+						url: val.url
+					};
+				});
+				this.setState((prevState) => {
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								categorias: categorias,
+							},
+						};
+					});
+			});
 
-		client
-			.query({
-				query: AppCateg,
-			})
-			.then((res) => {
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/settings`)
+			.then((response) => response.json())
+			.then((json) => {
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							categorias: res.data.categorias,
+							logo: json.LogoRCG.formats.thumbnail.url,
+							logoDarkMode: json.LogoRCGModoOscuro.formats.thumbnail.url,
 						},
 					};
 				});
 			});
 
-		client
-			.query({
-				query: AppLogos,
-			})
-			.then((res) => {
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions?Radio_TV=false`)
+			.then((response) => response.json())
+			.then((json) => {
+				let radio = json.map((val, i) => {
+					return {
+						nombre: val.nombre,
+						url: val.url,
+						logo: {
+							url: val.logo.url,
+							formats: val.logo.formats
+						}
+					}
+				});
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							logo: res.data.setting.LogoRCG.url,
-							logoDarkMode: res.data.setting.LogoRCGModoOscuro.url,
+							radioStations: radio,
 						},
 					};
 				});
 			});
 
-		client
-			.query({
-				query: AppChannels,
-			})
-			.then((res) => {
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/canal-estacions?Radio_TV=true`)
+			.then((response) => response.json())
+			.then((json) => {
+				let tv = json.map((val, i) => {
+					return {
+						nombre: val.nombre,
+						url: val.url,
+						logo: {
+							url: val.logo.url,
+							formats: val.logo.formats
+						}
+					}
+				});
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							tvChannels: res.data.tvChannels,
+							tvChannels: tv,
 						},
 					};
 				});
 			});
 
-		client
-			.query({
-				query: AppStations,
-			})
-			.then((res) => {
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=fecha:desc,visitas:desc&_limit=5`)
+			.then((response) => response.json())
+			.then((json) => {
+				let res = json.map((val, i) => {
+					return {
+						cover: {
+							url: val.cover.url,
+							formats: val.cover.formats
+						},
+						url: val.url,
+						Titulo: val.Titulo,
+					}
+				});
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							radioStations: res.data.radioStations,
+							articulosRightPanel: res,
 						},
 					};
 				});
 			});
 
-		client
-			.query({
-				query: AppRightPanel,
-			})
-			.then((res) => {
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/banners?_sort=posicion:desc&_limit=10`)
+			.then((response) => response.json())
+			.then((json) => {
+				let banner = json.map((val, i) => {
+					return {
+						id: val.articulo.id,
+						url: val.articulo.url,
+						Titulo: val.articulo.Titulo,
+						cover: {
+							url: val.articulo.cover.url,
+							formats: val.articulo.cover.formats
+						},
+						categoria: {
+							nombre: val.articulo.categoria.nombre
+						}
+					}
+				});
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							articulosRightPanel: res.data.rightPanel,
+							banners: banner,
+						},
+					};
+				});
+			});
+
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=fecha:desc&_limit=8&relevante=true`)
+			.then((response) => response.json())
+			.then((json) => {
+				let relevante = json.map((val, i) => {
+					return {
+						id: val.id,
+						url: val.url,
+						Titulo: val.Titulo,
+						cover: {
+							url: val.cover.url,
+							formats: val.cover.formats
+						},
+						categoria: {
+							nombre: val.categoria.nombre
+						},
+						Sumario: val.Sumario,
+						fecha: val.fecha
+					}
+				});
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							relevantesNews: relevante,
 						},
 					};
 				});
@@ -411,39 +474,6 @@ export default class extends React.Component {
 				</HelmetProvider>
 			</ApolloProvider>
 		);
-	}
-
-	componentWillMount() {
-		// client
-		// 	.query({
-		// 		query: HomeBanner,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					banners: res.data.banner,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
-		// client
-		// 	.query({
-		// 		query: HomeRelevante,
-		// 	})
-		// 	.then((res) => {
-		// 		this.setState((prevState) => {
-		// 			return {
-		// 				...prevState,
-		// 				data: {
-		// 					...prevState.data,
-		// 					relevantesNews: res.data.relevante,
-		// 				},
-		// 			};
-		// 		});
-		// 	});
 	}
 
 	componentDidMount() {

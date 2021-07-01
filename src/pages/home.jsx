@@ -19,10 +19,9 @@ export default function Home(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	const bannersState = f7.methods.get_Banners();
+	const relevantesState = f7.methods.get_RelevantesNews();
 	const limitStatic = 1;
-
-	// console.log(f7.methods.get_RelevantesNews());
-	// console.log(f7.methods.get_Banners());
 
 	const [callApi, setCallApi] = useState(false);
 	const [callBan, setCallBan] = useState(false);
@@ -34,9 +33,9 @@ export default function Home(props) {
 	const [footer, setFooter] = useState(false);
 	const [categorias, setCategorias] = useState([]);
 	const [errorCat, setErrorCat] = useState(false);
-	const [relevanteNews, setRelevanteNews] = useState(f7.methods.get_RelevantesNews());
+	const [relevanteNews, setRelevanteNews] = useState(relevantesState);
 	const [errorRel, setErrorRel] = useState(false);
-	const [bannerNews, setBannerNews] = useState(f7.methods.get_Banners());
+	const [bannerNews, setBannerNews] = useState(bannersState);
 	const [errorBan, setErrorBan] = useState(false);
 
 	const [getCategorias] = useLazyQuery(CategoriaHome, {
@@ -53,71 +52,56 @@ export default function Home(props) {
 		}
 	});
 
-	const [getRelevante] = useLazyQuery(HomeRelevante, {
-		onCompleted: (data) => {
-			setRelevanteNews(data.relevante);
-		},
-		onError: (data) => {
-			setErrorRel(true);
-		}
-	});
-
-	const [getBanner] = useLazyQuery(HomeBanner, {
-		onCompleted: (data) => {
-			setBannerNews(data.banner);
-		},
-		onError: (data) => {
-			setErrorBan(true);
-		}
-	});
-
 	const loadMore = () => {
 		if (!allowInfinite) return;
 		setAllowInfinite(false);
 		setPreloader(true);
-		setCallApi(!callApi);
-	};
-
-	useEffect(() => {
 		getCategorias({
 			variables: {
 				inicio: inicial,
 				limite: limitStatic,
 			},
 		});
-	}, [callApi]);
+		// setCallApi(!callApi);
+	};
+
+	// useEffect(() => {
+	// 	getCategorias({
+	// 		variables: {
+	// 			inicio: inicial,
+	// 			limite: limitStatic,
+	// 		},
+	// 	});
+	// }, [callApi]);
 
 	useEffect(() => {
-		getBanner();
-	}, [callBan]);
+		setBannerNews(bannersState);
+	}, [bannersState]);
 
 	useEffect(() => {
-		getRelevante();
-	}, [callRel]);
+		setRelevanteNews(relevantesState);
+	}, [relevantesState]);
 
 	//efecto para quitar etiqueta roja
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
-			setCallApi(!callApi);
-			setCallRel(!callRel);
-			setCallBan(!callBan);
 		});
 	}, []);
 
 	let center, mast;
 	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
-	} else if(bannerNews.length > 0 && relevanteNews.length > 0 && !errorCat){
-		// const { banner, relevante } = data;
+	} else if((bannerNews.length > 0 || relevanteNews.length > 0) && !errorCat){
+		console.log("on Enter" + bannerNews);
 		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
 	}
 	
-	if((categorias.length == 0 || relevanteNews.length == 0) && !errorCat && !errorRel){
+	if((relevanteNews.length == 0) && !errorCat && !errorRel){
 		center = <LoadingPanel />;
-	}else if(categorias.length > 0 && relevanteNews.length > 0 && !errorCat){
+	}else if(relevanteNews.length > 0 && !errorCat){
 		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;

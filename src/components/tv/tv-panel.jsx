@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Icon_TV from "@/static/icons/tv_dark.png";
 import moment from "moment";
 import { Card, CardHeader, Block, BlockHeader, Icon, f7 } from "framework7-react";
+import IMG from '@/static/imgs/grayback.jpg';
 
 export default function TVPanel(props) {
 	const { canal, canales, programacion, table_id } = props;
@@ -12,6 +13,7 @@ export default function TVPanel(props) {
 	const [descPrograma, setDescPrograma] = useState("");
 	const url = f7.methods.get_URL();
 	const DB_url = f7.methods.get_URL_DB();
+
 	let urlThing = url + `/tv/${canal[0].url}/`;
 	let prog = programacion[0]
 		? programacion[0].programacion
@@ -161,7 +163,8 @@ export default function TVPanel(props) {
 										</Block>
 										<a href={`/tv/${channel.url}`} className="canal_content">
 											<div className="image_cont">
-												<img src={DB_url + channel.logo.url} alt="" srcSet="" />
+												{/* cambiar a xs */}
+												<img src={channel.logo ? DB_url + channel.logo.url : IMG} alt="" srcSet="" />
 											</div>
 											<h2 className="title">{channel.nombre}</h2>
 										</a>

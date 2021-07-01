@@ -17,11 +17,11 @@ export default function Masthead(props) {
 	if (!loading) {
 		banners = banners.map((val) => {
 			return {
-				id: val.articulo.id,
-				cover: val.articulo.cover,
-				categoria: val.articulo.categoria,
-				url: val.articulo.url,
-				Titulo: val.articulo.Titulo,
+				id: val.id,
+				cover: val.cover,
+				categoria: val.categoria,
+				url: val.url,
+				Titulo: val.Titulo,
 			};
 		});
 

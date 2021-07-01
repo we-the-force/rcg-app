@@ -12,10 +12,23 @@ export default class AutorPanel extends Component {
 		let DB_url = f7.methods.get_URL_DB();
 
 		let autorUrl = "/static/icons/person_x2.png";
+
 		if (autor[0].img) {
-			let newUrl = autor[0].img.url.split("/");
-			//change xs
-			autorUrl = autor[0].img.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + autor[0].img.url;
+			if (autor[0].img.formats) {
+				if (autor[0].img.formats.thumbnail) {
+					autorUrl = DB_url + autor[0].img.formats.thumbnail.url;
+				} else if (autor[0].img.formats.xxsmall) {
+					autorUrl = DB_url + autor[0].img.formats.xxsmall.url;
+				} else if (articulo.cover.formats.xsmall) {
+					autorUrl = DB_url + autor[0].img.formats.xsmall.url;
+				} else if (articulo.cover.formats.small) {
+					autorUrl = DB_url + autor[0].img.formats.small.url;
+				} else {
+					autorUrl = DB_url + autor[0].img.url;
+				}
+			} else {
+				autorUrl = DB_url + autor[0].img.url;
+			}
 		}
 		return (
 			<Block className="autor center_panel">
