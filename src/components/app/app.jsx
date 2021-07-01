@@ -9,10 +9,6 @@ import TVPlayerStatic from "@/components/tv/tv-player-pip";
 import { ApolloClient, ApolloLink, InMemoryCache, ApolloProvider, Query } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
-import { HelmetProvider } from "react-helmet-async";
-import { AppLogos, AppCateg, AppChannels, AppStations, AppRightPanel, AppBanner, AppRelevante, CategoriaHome } from "@/graphql/queries.graphql";
-
-const helmetContext = {};
 
 const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors) graphQLErrors.map(({ message }) => {});
@@ -457,7 +453,6 @@ export default class extends React.Component {
 	render() {
 		return (
 			<ApolloProvider client={client}>
-				<HelmetProvider context={helmetContext}>
 					<App params={this.state}>
 						<RadioPlayerStatic
 							url={this.state.data.radio_url}
@@ -471,7 +466,6 @@ export default class extends React.Component {
 						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
 						<View id="main-view" main className="safe-areas" url="/" />
 					</App>
-				</HelmetProvider>
 			</ApolloProvider>
 		);
 	}
