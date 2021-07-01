@@ -52,7 +52,7 @@ export default function NewsRelevantes(props) {
 					}
 				}
 			} else {
-				cover = DB_url + noticia.cover.url;
+				imagen = DB_url + noticia.cover.url;
 			}
 		}
 	} else {
