@@ -30,7 +30,9 @@ export default function Home(props) {
 	const [categorias, setCategorias] = useState([]);
 	const [errorCat, setErrorCat] = useState(false);
 	const [relevanteNews, setRelevanteNews] = useState(relevantesState);
+	const [errorRel, setErrorRel] = useState(false);
 	const [bannerNews, setBannerNews] = useState(bannersState);
+	const [errorBan, setErrorBan] = useState(false);
 
 	const [getCategorias] = useLazyQuery(CategoriaHome, {
 		onCompleted: (data) => {
@@ -73,17 +75,17 @@ export default function Home(props) {
 	}, []);
 
 	let center, mast;
-	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
+	if ((bannerNews.length == 0 || relevanteNews.length == 0)) {
 		mast = <Masthead loading />;
-	} else if((bannerNews.length > 0 || relevanteNews.length > 0) && !errorCat){
+	} else if((bannerNews.length > 0 || relevanteNews.length > 0)){
 		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
 	}
 	
-	if((relevanteNews.length == 0) && !errorCat && !errorRel){
+	if((relevanteNews.length == 0)){
 		center = <LoadingPanel />;
-	}else if(relevanteNews.length > 0 && !errorCat){
+	}else if(relevanteNews.length > 0){
 		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;
