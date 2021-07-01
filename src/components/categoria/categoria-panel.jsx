@@ -35,18 +35,18 @@ export default class NewsPanel extends Component {
 
 				<Card className="relevantes_home">
 					<Block id="grid1" className="grid-cont">
-						<NewsRelevantes noticia={articulos[0]} size={"medium"} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
+						<NewsRelevantes noticia={articulos[0]} size={0} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
 					</Block>
 					<Block id="grid2" className="grid-cont">
-						<NewsRelevantes noticia={articulos[1]} size={"xsmall"} id="item1" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={articulos[2]} size={"xsmall"} id="item2" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={articulos[3]} size={"xsmall"} id="item3" className="mob-large-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={articulos[1]} size={1} id="item1" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={articulos[2]} size={1} id="item2" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={articulos[3]} size={2} id="item3" className="mob-large-small tab-medium desk-medium" />
 					</Block>
 					<Block id="grid3" className="grid-cont">
-						<NewsRelevantes noticia={articulos[4]} size={"small"} id="item1" className="tab-large desk-large-small" />
-						<NewsRelevantes noticia={articulos[5]} size={"xsmall"} id="item2" className="tab-large desk-small" />
-						<NewsRelevantes noticia={articulos[6]} size={"xsmall"} id="item3" className="desk-small" />
-						<NewsRelevantes noticia={articulos[7]} size={"small"} id="item4" className="desk-large" />
+						<NewsRelevantes noticia={articulos[4]} size={3} id="item1" className="tab-large desk-large-small" />
+						<NewsRelevantes noticia={articulos[5]} size={3} id="item2" className="tab-large desk-small" />
+						<NewsRelevantes noticia={articulos[6]} size={4} id="item3" className="desk-small" />
+						<NewsRelevantes noticia={articulos[7]} size={3} id="item4" className="desk-large" />
 					</Block>
 				</Card>
 
