@@ -15,6 +15,22 @@ import { UpdateArticulo } from "@/graphql/mutations.graphql";
 import { Page, Block, PageContent, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Articulo(props) {
+	window.twttr = (function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0],
+									t = window.twttr || {};
+					if (d.getElementById(id)) return t;
+					js = d.createElement(s);
+					js.id = id;
+					js.src = "https://platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js, fjs);
+
+					t._e = [];
+					t.ready = function(f) {
+									t._e.push(f);
+					};
+
+					return t;
+	}(document, "script", "twitter-wjs"));
 	const { url } = props;
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
@@ -80,22 +96,7 @@ export default function Articulo(props) {
 
 	useEffect(() => {
 		if (flag && data.articulos.length > 0) {
-			window.twttr = (function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0],
-											t = window.twttr || {};
-							if (d.getElementById(id)) return t;
-							js = d.createElement(s);
-							js.id = id;
-							js.src = "https://platform.twitter.com/widgets.js";
-							fjs.parentNode.insertBefore(js, fjs);
-
-							t._e = [];
-							t.ready = function(f) {
-											t._e.push(f);
-							};
-
-							return t;
-			}(document, "script", "twitter-wjs"));
+			
 			let viewedArticles = window.sessionStorage.getItem("viewedArticles");
 			if (viewedArticles != null) {
 				let jsonArticles = JSON.parse(viewedArticles);
