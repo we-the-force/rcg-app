@@ -14,7 +14,9 @@
         // background red
         // border-top-left-radius 50%
         // border-bottom-left-radius 50%
+        display none
         &.mobile
+            display block
             transform  rotate(45deg)
             i
                 color red
@@ -43,6 +45,7 @@
         overflow-y scroll
 
     @media (min-width 640px)
+        display block
         width 190px !important
         height calc(100% - 44px) !important
         transform translate3d(42px, 0, 0) !important

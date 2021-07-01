@@ -27,7 +27,7 @@ export default function RightPanelTablet(props) {
     }
 
     let { newsInfo, autores, numArticulos } = props;
-    let cont, title = 'Lo Mas Visto';
+    let cont, title = 'Lo Más Visto';
 
     if (newsInfo != undefined) {
         cont = (
