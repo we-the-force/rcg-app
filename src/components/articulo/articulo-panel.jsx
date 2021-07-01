@@ -16,9 +16,9 @@ export default class ArticuloPanel extends Component {
 		super(props);
 	}
 	componentDidUpdate() {
-		FB.XFBML.parse();
-		twttr.widgets.load();
-		window.instgrm.Embeds.process();
+		// FB.XFBML.parse();
+		// twttr.widgets.load();
+		// window.instgrm.Embeds.process();
 	}
 	render() {
 		const dev = f7.device;
