@@ -207,7 +207,7 @@ query AutorPage($url: String) {
 		descripcion
 		img {
 			url
-			width
+			formats
 		}
 		twitter_link
 		facebook_link
@@ -233,7 +233,7 @@ query AutorPage($url: String) {
 		nombre
 		img {
 			url
-			width
+			formats
 		}
 		twitter_link
 		facebook_link
@@ -261,7 +261,7 @@ query AutoresPage {
 		nombre
 		img {
 			url
-			width
+			formats
 		}
 		twitter_link
 		facebook_link

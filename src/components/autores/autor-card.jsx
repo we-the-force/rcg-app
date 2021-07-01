@@ -10,9 +10,21 @@ export default function AutorCard(props) {
 	if (autor) {
 		imagen = "/static/icons/person_x2.png";
 		if (autor.img) {
-			let newUrl = autor.img.url.split("/");
-			//cambiar a xsmall
-			imagen = autor.img.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + autor.img.url;
+			if (autor.img.formats) {
+				if (autor.img.formats.thumbnail) {
+					imagen = DB_url + autor.img.formats.thumbnail.url;
+				} else if (autor.img.formats.xxsmall) {
+					imagen = DB_url + autor.img.formats.xxsmall.url;
+				} else if (articulo.cover.formats.xsmall) {
+					imagen = DB_url + autor.img.formats.xsmall.url;
+				} else if (articulo.cover.formats.small) {
+					imagen = DB_url + autor.img.formats.small.url;
+				} else {
+					imagen = DB_url + autor.img.url;
+				}
+			} else {
+				imagen = DB_url + autor.img.url;
+			}
 		}
 		nombre = autor.nombre;
 		articulos = numArticulos ? numArticulos.articulos : "0";

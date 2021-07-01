@@ -18,23 +18,28 @@ export default function NewsCategoria(props) {
 	let url = f7.methods.get_URL();
 	const urlThing = url + `/articulo/${articulo.url}/`;
 
-	// let newDesc = marked(articulo.description);
-	// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-	// let otherTags = /(<([^>]+)>)/gi;
-	// newDesc = newDesc
-	// 	.replace(titlesRegEx, "")
-	// 	.replace(otherTags, "")
-	// 	.replace(/\n/gi, " ")
-	// 	.match(/^.{0,300}/gi);
-
 	let cover = IMG;
-	if (articulo.cover && !areMobile) {
-		let newUrl = articulo.cover.url.split("/");
-		cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
-	} else if (areMobile) {
-		let newUrl = articulo.cover.url.split("/");
-		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+	if (articulo.cover) {
+		if (articulo.cover.formats) {
+			if (areMobile && articulo.cover.formats.small) {
+				cover = DB_url + articulo.cover.formats.small.url;
+			} else if (articulo.cover.formats.medium) {
+				cover = DB_url + articulo.cover.formats.medium.url;
+			} else {
+				cover = DB_url + articulo.cover.url;
+			}
+		} else {
+			cover = DB_url + articulo.cover.url;
+		}
 	}
+
+	// if (articulo.cover && !areMobile) {
+	// 	let newUrl = articulo.cover.url.split("/");
+	// 	cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
+	// } else if (areMobile) {
+	// 	let newUrl = articulo.cover.url.split("/");
+	// 	cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+	// }
 
 	return (
 		<Card className={`NewsCategoria_cont ${className}`}>

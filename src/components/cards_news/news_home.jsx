@@ -13,6 +13,21 @@ export default function NewsHome(props) {
 	const { className, articulo, first } = props;
 	let DB_url = f7.methods.get_URL_DB();
 	let cover = IMG;
+
+	// if (articulo.cover) {
+	// 	if (articulo.cover.formats) {
+	// 		if (areMobile && articulo.cover.formats.small || ) {
+	// 			cover = DB_url + articulo.cover.formats.small.url;
+	// 		} else if (articulo.cover.formats.medium) {
+	// 			cover = DB_url + articulo.cover.formats.medium.url;
+	// 		} else {
+	// 			cover = DB_url + articulo.cover.url;
+	// 		}
+	// 	} else {
+	// 		cover = DB_url + articulo.cover.url;
+	// 	}
+	// }
+
 	if (articulo.cover && !areMobile) {
 		let newUrl = articulo.cover.url.split("/");
 		if (first) {
