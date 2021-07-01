@@ -82,12 +82,12 @@ export default class HomePanel extends Component {
 										let first = i == 0 && articulosTop.length != 2 ? "first" : "";
 										return <NewsHome className={"grid-item " + first} key={i} articulo={val} first={i == 0 ? true : false}/>;
 									})}
-									{articulosSwiper.length > 0 && (
+									{/* {articulosSwiper.length > 0 && (
 										<Fragment>
 											<NewsHome className={"grid-item mobile"} articulo={articulosSwiper[0]} />
 											<NewsHome className={"grid-item mobile"} articulo={articulosSwiper[1]} />
 										</Fragment>
-									)}
+									)} */}
 								</Block>
 								{articulosSwiper.length > 0 && <SwiperNews wot articulos={articulosSwiper} />}
 							</Card>

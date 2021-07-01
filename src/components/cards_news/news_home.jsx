@@ -8,37 +8,45 @@ export default function NewsHome(props) {
 	moment.locale("es");
 
 	const dev = f7.device;
-	let areMobile = dev.android || dev.ios || dev.ipad || dev.iphone || dev.ipod || dev.cordova;
+	let areMobile = dev.android || dev.ios || dev.iphone || dev.ipod || dev.cordova;
 
 	const { className, articulo, first } = props;
 	let DB_url = f7.methods.get_URL_DB();
 	let cover = IMG;
 
-	// if (articulo.cover) {
-	// 	if (articulo.cover.formats) {
-	// 		if (areMobile && articulo.cover.formats.small || ) {
-	// 			cover = DB_url + articulo.cover.formats.small.url;
-	// 		} else if (articulo.cover.formats.medium) {
-	// 			cover = DB_url + articulo.cover.formats.medium.url;
-	// 		} else {
-	// 			cover = DB_url + articulo.cover.url;
-	// 		}
-	// 	} else {
-	// 		cover = DB_url + articulo.cover.url;
-	// 	}
-	// }
-
-	if (articulo.cover && !areMobile) {
-		let newUrl = articulo.cover.url.split("/");
-		if (first) {
-			cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
+	if (articulo.cover) {
+		if (articulo.cover.formats) {
+			if (areMobile && articulo.cover.formats.xxsmall && !first) {
+				cover = DB_url + articulo.cover.formats.xxsmall.url;
+			} else if (areMobile && articulo.cover.formats.xsmall && !first) {
+				cover = DB_url + articulo.cover.formats.xsmall.url;
+			} else if (areMobile && articulo.cover.formats.small && first) {
+				cover = DB_url + articulo.cover.formats.small.url;
+			} else if (!areMobile && articulo.cover.formats.xsmall && !first) {
+				cover = DB_url + articulo.cover.formats.xsmall.url;
+			} else if (!areMobile && articulo.cover.formats.small && !first) {
+				cover = DB_url + articulo.cover.formats.small.url;
+			} else if (!areMobile && articulo.cover.formats.medium && first) {
+				cover = DB_url + articulo.cover.formats.medium.url;
+			} else {
+				cover = DB_url + articulo.cover.url;
+			}
 		} else {
-			cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+			cover = DB_url + articulo.cover.url;
 		}
-	} else if (areMobile) {
-		let newUrl = articulo.cover.url.split("/");
-		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 	}
+
+	// if (articulo.cover && !areMobile) {
+	// 	let newUrl = articulo.cover.url.split("/");
+	// 	if (first) {
+	// 		cover = articulo.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + articulo.cover.url;
+	// 	} else {
+	// 		cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+	// 	}
+	// } else if (areMobile) {
+	// 	let newUrl = articulo.cover.url.split("/");
+	// 	cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
+	// }
 
 	return (
 		<Block className={`NewsHome_cont ${className}`}>

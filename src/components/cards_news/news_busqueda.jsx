@@ -24,7 +24,7 @@ export default function NewsBusqueda(props) {
         if (articulo.cover.formats) {
             if(areMobile && articulo.cover.formats.thumbnail){
                 cover = DB_url + articulo.cover.formats.thumbnail.url;
-            } else if (articulo.cover.formats.xxsmall) {
+            } else if (areMobile && articulo.cover.formats.xxsmall) {
                 cover = DB_url + articulo.cover.formats.xxsmall.url;
             } else if (articulo.cover.formats.xsmall) {
                 cover = DB_url + articulo.cover.formats.xsmall.url;
