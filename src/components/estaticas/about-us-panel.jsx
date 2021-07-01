@@ -48,11 +48,11 @@ export default class AboutUsPanel extends Component {
 	}
 
 	componentDidMount() {
-		FB.XFBML.parse();
+		// FB.XFBML.parse();
 	}
 	componentDidUpdate() {
-		twttr.widgets.load();
-		window.instgrm.Embeds.process();
+		// twttr.widgets.load();
+		// window.instgrm.Embeds.process();
 	}
 	render() {
 		let { nosotrosInfo } = this.props;

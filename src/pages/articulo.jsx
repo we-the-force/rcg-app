@@ -31,6 +31,12 @@ export default function Articulo(props) {
 
 					return t;
 	}(document, "script", "twitter-wjs"));
+	const script = document.createElement("script");
+
+	script.src = "https://platform.instagram.com/en_US/embeds.js";
+	script.async = true;
+
+	document.body.appendChild(script);
 	const { url } = props;
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);

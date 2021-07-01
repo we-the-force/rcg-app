@@ -32,12 +32,7 @@ export default class ArticuloPanel extends Component {
 
 		// 									return t;
 		// 					}(document, "script", "twitter-wjs"));
-		const script = document.createElement("script");
-
-		script.src = "https://platform.instagram.com/en_US/embeds.js";
-		script.async = true;
-
-		document.body.appendChild(script);
+		
 	}
 	componentDidUpdate() {
 		
