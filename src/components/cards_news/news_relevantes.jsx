@@ -9,20 +9,16 @@ import { Block, Link, f7, BlockFooter } from "framework7-react";
 // ano natsu no, kimi ga atama ni iru
 export default function NewsRelevantes(props) {
 	moment.locale("es");
+
+	const dev = f7.device;
+	let areMobile = dev.android || dev.ios || dev.iphone || dev.ipod || dev.cordova;
+
 	let { className, id, noticia, size } = props;
 	let skeleton = noticia ? "" : "skeleton-text";
 	const [modal, setModal] = useState("");
 	let DB_url = f7.methods.get_URL_DB();
 	let imagen, categoria, content, Titulo, fecha, url;
 	if (noticia) {
-		// let newDesc = marked(noticia.description);
-		// let titlesRegEx = /(<h([^>]+)>[^<]*<\/h([^>]+)>)/gi;
-		// let otherTags = /(<([^>]+)>)/gi;
-		// newDesc = newDesc
-		// 	.replace(titlesRegEx, "")
-		// 	.replace(otherTags, "")
-		// 	.replace(/\n/gi, " ")
-		// 	.match(/^.{0,300}/gi);
 		imagen = IMG;
 		categoria = noticia.categoria ? noticia.categoria.nombre : "";
 		content = noticia.Sumario;
@@ -30,20 +26,33 @@ export default function NewsRelevantes(props) {
 		fecha = moment(noticia.fecha);
 		url = `/articulo/${noticia.url}/`;
 
-		
 		if (noticia.cover) {
-			let newUrl = noticia.cover.url.split("/");
-			switch (size) {
-				case "medium":
-					imagen = noticia.cover.width > 750 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/medium_" + newUrl[2] : DB_url + noticia.cover.url;
-					break;
-					case "small":
-                    imagen = noticia.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + noticia.cover.url;
-					break;
-				case "xsmall":
-                    imagen = noticia.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + noticia.cover.url;
-                    //aqui cambiar por xsmall cuando pueda
-					break;
+			if (noticia.cover.formats) {
+				if (areMobile) {
+					if ((size == 2 || size == 0) && noticia.cover.formats.small) {
+						imagen = DB_url + noticia.cover.formats.small.url;
+					} else if (size == 1 && noticia.cover.formats.xxsmall) {
+						imagen = DB_url + noticia.cover.formats.xxsmall.url;
+					}else {
+						imagen = DB_url + noticia.cover.url;
+					}
+				}else{
+					if(size == 0 && noticia.cover.formats.medium) {
+						imagen = DB_url + noticia.cover.formats.medium.url;
+					}else if((size == 1 || size == 2) && noticia.cover.formats.xxsmall){
+						imagen = DB_url + noticia.cover.formats.xxsmall.url;
+					}else if(size == 3 && noticia.cover.formats.xsmall){
+						imagen = DB_url + noticia.cover.formats.xsmall.url;
+					}else if(size == 4 && noticia.cover.formats.thumbnail){
+						imagen = DB_url + noticia.cover.formats.thumbnail.url;
+					}else if(size == 4 && noticia.cover.formats.xxsmall){
+						imagen = DB_url + noticia.cover.formats.xxsmall.url;
+					}else {
+						imagen = DB_url + noticia.cover.url;
+					}
+				}
+			} else {
+				cover = DB_url + articulo.cover.url;
 			}
 		}
 	} else {

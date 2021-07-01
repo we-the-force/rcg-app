@@ -21,19 +21,28 @@ export default class HomePanel extends Component {
 						<p className="title">Lo Más Relevante</p>
 					</CardHeader>
 					<Block id="grid1" className="grid-cont">
-						<NewsRelevantes noticia={relevante[0]} size={"medium"} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
+						<NewsRelevantes noticia={relevante[0]} size={0} id="item1" className="mob-large-sm2 tab-2large-sm2 desk-2large-large" />
 					</Block>
 					<Block id="grid2" className="grid-cont">
-						<NewsRelevantes noticia={relevante[1]} size={"xsmall"} id="item1" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={relevante[2]} size={"xsmall"} id="item2" className="mob-small tab-medium desk-medium" />
-						<NewsRelevantes noticia={relevante[3]} size={"xsmall"} id="item3" className="mob-large-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={relevante[1]} size={1} id="item1" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={relevante[2]} size={1} id="item2" className="mob-small tab-medium desk-medium" />
+						<NewsRelevantes noticia={relevante[3]} size={2} id="item3" className="mob-large-small tab-medium desk-medium" />
 					</Block>
 					<Block id="grid3" className="grid-cont">
-						<NewsRelevantes noticia={relevante[4]} size={"small"} id="item1" className="tab-large desk-large-small" />
-						<NewsRelevantes noticia={relevante[5]} size={"xsmall"} id="item2" className="tab-large desk-small" />
-						<NewsRelevantes noticia={relevante[6]} size={"xsmall"} id="item3" className="desk-small" />
-						<NewsRelevantes noticia={relevante[7]} size={"small"} id="item4" className="desk-large" />
+						<NewsRelevantes noticia={relevante[4]} size={3} id="item1" className="tab-large desk-large-small" />
+						<NewsRelevantes noticia={relevante[5]} size={3} id="item2" className="tab-large desk-small" />
+						<NewsRelevantes noticia={relevante[6]} size={4} id="item3" className="desk-small" />
+						<NewsRelevantes noticia={relevante[7]} size={3} id="item4" className="desk-large" />
 					</Block>
+					{/* sizes:
+					**  -- mob   / tab / desk
+					**	0: small / med / med
+					**	1: xxs   / xxs / xxs 
+					**	2: s     / xxs / xxs
+					**	3: --    / xs  / xs
+					**	4: --    / tumb  / tumb
+					**
+					*/}
 				</Card>
 
 				{noticias_filtradas.map((val, i) => {
@@ -82,12 +91,6 @@ export default class HomePanel extends Component {
 										let first = i == 0 && articulosTop.length != 2 ? "first" : "";
 										return <NewsHome className={"grid-item " + first} key={i} articulo={val} first={i == 0 ? true : false}/>;
 									})}
-									{/* {articulosSwiper.length > 0 && (
-										<Fragment>
-											<NewsHome className={"grid-item mobile"} articulo={articulosSwiper[0]} />
-											<NewsHome className={"grid-item mobile"} articulo={articulosSwiper[1]} />
-										</Fragment>
-									)} */}
 								</Block>
 								{articulosSwiper.length > 0 && <SwiperNews wot articulos={articulosSwiper} />}
 							</Card>
