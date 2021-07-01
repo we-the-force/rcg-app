@@ -62,17 +62,7 @@ export default function Home(props) {
 				limite: limitStatic,
 			},
 		});
-		// setCallApi(!callApi);
 	};
-
-	// useEffect(() => {
-	// 	getCategorias({
-	// 		variables: {
-	// 			inicio: inicial,
-	// 			limite: limitStatic,
-	// 		},
-	// 	});
-	// }, [callApi]);
 
 	useEffect(() => {
 		setBannerNews(bannersState);
@@ -82,7 +72,6 @@ export default function Home(props) {
 		setRelevanteNews(relevantesState);
 	}, [relevantesState]);
 
-	//efecto para quitar etiqueta roja
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
