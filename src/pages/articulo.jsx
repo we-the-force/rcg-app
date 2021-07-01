@@ -47,22 +47,7 @@ export default function Articulo(props) {
 		variables: { url },
 		onCompleted: (data) => {
 			setFlag(true);
-			window.twttr = (function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0],
-											t = window.twttr || {};
-							if (d.getElementById(id)) return t;
-							js = d.createElement(s);
-							js.id = id;
-							js.src = "https://platform.twitter.com/widgets.js";
-							fjs.parentNode.insertBefore(js, fjs);
-
-							t._e = [];
-							t.ready = function(f) {
-											t._e.push(f);
-							};
-
-							return t;
-			}(document, "script", "twitter-wjs"));
+			
 			if (data.articulos.length > 0) {
 				if (data.articulos[0].tags.length > 0) {
 					getRecomendados({
@@ -95,6 +80,22 @@ export default function Articulo(props) {
 
 	useEffect(() => {
 		if (flag && data.articulos.length > 0) {
+			window.twttr = (function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0],
+											t = window.twttr || {};
+							if (d.getElementById(id)) return t;
+							js = d.createElement(s);
+							js.id = id;
+							js.src = "https://platform.twitter.com/widgets.js";
+							fjs.parentNode.insertBefore(js, fjs);
+
+							t._e = [];
+							t.ready = function(f) {
+											t._e.push(f);
+							};
+
+							return t;
+			}(document, "script", "twitter-wjs"));
 			let viewedArticles = window.sessionStorage.getItem("viewedArticles");
 			if (viewedArticles != null) {
 				let jsonArticles = JSON.parse(viewedArticles);
