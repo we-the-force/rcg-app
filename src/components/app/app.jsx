@@ -482,15 +482,6 @@ export default class extends React.Component {
 					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
 				});
 			});
-
-			// const script = document.createElement("script");
-
-			// script
-			// script.src = "https://platform.instagram.com/en_US/embeds.js";
-			// script.async = true;
-
-			// document.body.appendChild(script);
-
 			// Call F7 APIs here
 			window.addEventListener("orientationchange", function (e) {
 				if ($(".popup.modal-in").length) {

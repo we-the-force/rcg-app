@@ -10,8 +10,8 @@ import AdsTop from "@/components/general/ads/ads_top";
 import HomePanel from "@/components/home/home-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import { useQuery, useLazyQuery } from "@apollo/client";
-import { HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
+import { useLazyQuery } from "@apollo/client";
+import { CategoriaHome } from "@/graphql/queries.graphql";
 import { Page, Block, PageContent, Preloader, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Home(props) {
@@ -23,10 +23,6 @@ export default function Home(props) {
 	const relevantesState = f7.methods.get_RelevantesNews();
 	const limitStatic = 1;
 
-	const [callApi, setCallApi] = useState(false);
-	const [callBan, setCallBan] = useState(false);
-	const [callRel, setCallRel] = useState(false);
-
 	const [inicial, setInicial] = useState(0);
 	const [preloader, setPreloader] = useState(false);
 	const [allowInfinite, setAllowInfinite] = useState(true);
@@ -34,9 +30,7 @@ export default function Home(props) {
 	const [categorias, setCategorias] = useState([]);
 	const [errorCat, setErrorCat] = useState(false);
 	const [relevanteNews, setRelevanteNews] = useState(relevantesState);
-	const [errorRel, setErrorRel] = useState(false);
 	const [bannerNews, setBannerNews] = useState(bannersState);
-	const [errorBan, setErrorBan] = useState(false);
 
 	const [getCategorias] = useLazyQuery(CategoriaHome, {
 		onCompleted: (data) => {
