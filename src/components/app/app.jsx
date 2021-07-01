@@ -290,18 +290,18 @@ export default class extends React.Component {
 				let categorias = json.map((val, i) => {
 					return {
 						nombre: val.nombre,
-						url: val.url,
+						url: val.url
 					};
 				});
 				this.setState((prevState) => {
-					return {
-						...prevState,
-						data: {
-							...prevState.data,
-							categorias: categorias,
-						},
-					};
-				});
+						return {
+							...prevState,
+							data: {
+								...prevState.data,
+								categorias: categorias,
+							},
+						};
+					});
 			});
 
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/settings`)
@@ -328,9 +328,9 @@ export default class extends React.Component {
 						url: val.url,
 						logo: {
 							url: val.logo.url,
-							formats: val.logo.formats,
-						},
-					};
+							formats: val.logo.formats
+						}
+					}
 				});
 				this.setState((prevState) => {
 					return {
@@ -352,9 +352,9 @@ export default class extends React.Component {
 						url: val.url,
 						logo: {
 							url: val.logo.url,
-							formats: val.logo.formats,
-						},
-					};
+							formats: val.logo.formats
+						}
+					}
 				});
 				this.setState((prevState) => {
 					return {
@@ -374,11 +374,11 @@ export default class extends React.Component {
 					return {
 						cover: {
 							url: val.cover.url,
-							formats: val.cover.formats,
+							formats: val.cover.formats
 						},
 						url: val.url,
 						Titulo: val.Titulo,
-					};
+					}
 				});
 				this.setState((prevState) => {
 					return {
@@ -401,12 +401,12 @@ export default class extends React.Component {
 						Titulo: val.articulo.Titulo,
 						cover: {
 							url: val.articulo.cover.url,
-							formats: val.articulo.cover.formats,
+							formats: val.articulo.cover.formats
 						},
 						categoria: {
-							nombre: val.articulo.categoria.nombre,
-						},
-					};
+							nombre: val.articulo.categoria.nombre
+						}
+					}
 				});
 				this.setState((prevState) => {
 					return {
@@ -429,14 +429,14 @@ export default class extends React.Component {
 						Titulo: val.Titulo,
 						cover: {
 							url: val.cover.url,
-							formats: val.cover.formats,
+							formats: val.cover.formats
 						},
 						categoria: {
-							nombre: val.categoria.nombre,
+							nombre: val.categoria.nombre
 						},
 						Sumario: val.Sumario,
-						fecha: val.fecha,
-					};
+						fecha: val.fecha
+					}
 				});
 				this.setState((prevState) => {
 					return {
@@ -453,17 +453,19 @@ export default class extends React.Component {
 	render() {
 		return (
 			<ApolloProvider client={client}>
-				<App params={this.state}>
-					<RadioPlayerStatic
-						url={this.state.data.radio_url}
-						play={this.state.data.radio_play}
-						volume={this.state.data.radio_volume}
-						muted={this.state.data.radio_muted}
-					/>
-					{this.state.data.tv_active && <TVPlayerStatic url={this.state.data.tv_url} name={this.state.data.tv_name} play={this.state.data.tv_play} />}
-					<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-					<View id="main-view" main className="safe-areas" url="/" />
-				</App>
+					<App params={this.state}>
+						<RadioPlayerStatic
+							url={this.state.data.radio_url}
+							play={this.state.data.radio_play}
+							volume={this.state.data.radio_volume}
+							muted={this.state.data.radio_muted}
+						/>
+						{this.state.data.tv_active && (
+							<TVPlayerStatic url={this.state.data.tv_url} name={this.state.data.tv_name} play={this.state.data.tv_play} />
+						)}
+						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+						<View id="main-view" main className="safe-areas" url="/" />
+					</App>
 			</ApolloProvider>
 		);
 	}
@@ -481,14 +483,11 @@ export default class extends React.Component {
 				});
 			});
 
-			const script = document.createElement("script");
+			// const script = document.createElement("script");
 
-			script.id = "mcjs";
-			script.async = true;
-			var code = `! function(c, h, i, m, p) {
-				m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)
-			}(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/66c59de200fc45f635d07399d/e9029e0f42a821fca2fa7d512.js");`;
-			script.appendChild(document.createTextNode(code));
+			// script
+			// script.src = "https://platform.instagram.com/en_US/embeds.js";
+			// script.async = true;
 
 			document.body.appendChild(script);
 

@@ -82,7 +82,6 @@ export default function Home(props) {
 	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
 		mast = <Masthead loading />;
 	} else if((bannerNews.length > 0 || relevanteNews.length > 0) && !errorCat){
-		console.log("on Enter" + bannerNews);
 		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
