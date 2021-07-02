@@ -15,7 +15,7 @@ export default class ArticuloPanel extends Component {
 	constructor(props) {
 		super(props);
 	}
-	componentDidMount(){
+	componentWillMount(){
 		// window.twttr = (function(d, s, id) {
 		// 									var js, fjs = d.getElementsByTagName(s)[0],
 		// 													t = window.twttr || {};

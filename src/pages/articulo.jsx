@@ -132,7 +132,6 @@ export default function Articulo(props) {
 		}
 	} else {
 		if (data.articulos.length > 0) {
-			console.log(data.articulos[0]);
 			centerPanel = <ArticuloPanel articulo={data.articulos[0]} recomendados={recomendados} />;
 			navbarLoading = false;
 		} else {

@@ -10,8 +10,8 @@ import AdsTop from "@/components/general/ads/ads_top";
 import HomePanel from "@/components/home/home-panel";
 import LoadingPanel from "@/components/loading/loading-panel";
 import ErrorPanel from "@/components/error-panel";
-import { useQuery, useLazyQuery } from "@apollo/client";
-import { HomeBanner, HomeRelevante, CategoriaHome } from "@/graphql/queries.graphql";
+import { useLazyQuery } from "@apollo/client";
+import { CategoriaHome } from "@/graphql/queries.graphql";
 import { Page, Block, PageContent, Preloader, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Home(props) {
@@ -22,10 +22,6 @@ export default function Home(props) {
 	const bannersState = f7.methods.get_Banners();
 	const relevantesState = f7.methods.get_RelevantesNews();
 	const limitStatic = 1;
-
-	const [callApi, setCallApi] = useState(false);
-	const [callBan, setCallBan] = useState(false);
-	const [callRel, setCallRel] = useState(false);
 
 	const [inicial, setInicial] = useState(0);
 	const [preloader, setPreloader] = useState(false);
@@ -62,17 +58,7 @@ export default function Home(props) {
 				limite: limitStatic,
 			},
 		});
-		// setCallApi(!callApi);
 	};
-
-	// useEffect(() => {
-	// 	getCategorias({
-	// 		variables: {
-	// 			inicio: inicial,
-	// 			limite: limitStatic,
-	// 		},
-	// 	});
-	// }, [callApi]);
 
 	useEffect(() => {
 		setBannerNews(bannersState);
@@ -82,7 +68,6 @@ export default function Home(props) {
 		setRelevanteNews(relevantesState);
 	}, [relevantesState]);
 
-	//efecto para quitar etiqueta roja
 	useEffect(() => {
 		f7ready((f7) => {
 			f7.methods.handleCategoriaActual("");
@@ -90,18 +75,17 @@ export default function Home(props) {
 	}, []);
 
 	let center, mast;
-	if ((bannerNews.length == 0 || relevanteNews.length == 0) && !errorBan && !errorRel) {
+	if ((bannerNews.length == 0 || relevanteNews.length == 0)) {
 		mast = <Masthead loading />;
-	} else if((bannerNews.length > 0 || relevanteNews.length > 0) && !errorCat){
-		console.log("on Enter" + bannerNews);
+	} else if((bannerNews.length > 0 || relevanteNews.length > 0)){
 		mast = <Masthead logo={DB_url + logoDark} banner={bannerNews} relevante={relevanteNews} loading={false} />;
 	}else {
 		mast = "";
 	}
 	
-	if((relevanteNews.length == 0) && !errorCat && !errorRel){
+	if((relevanteNews.length == 0)){
 		center = <LoadingPanel />;
-	}else if(relevanteNews.length > 0 && !errorCat){
+	}else if(relevanteNews.length > 0){
 		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;
