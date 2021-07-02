@@ -78,7 +78,10 @@ export default class ArticuloPanel extends Component {
 						return t;
 		}(document, "script", "twitter-wjs"));
 		const script = document.createElement("script");
-		twttr.widgets.load();
+		setTimeout(() => {
+			twttr.widgets.load();
+		}, 3000);
+		
 	}
 	render() {
 		const dev = f7.device;
