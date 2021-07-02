@@ -395,26 +395,31 @@ export default class extends React.Component {
 			.then((response) => response.json())
 			.then((json) => {
 				let banner = json.map((val, i) => {
-					console.log(val);
-					return {
-						id: val.articulo.id,
-						url: val.articulo.url,
-						Titulo: val.articulo.Titulo,
-						cover: {
-							url: val.articulo.cover.url,
-							formats: val.articulo.cover.formats
-						},
-						categoria: {
-							nombre: val.articulo.categoria.nombre
+					if(val.articulo){
+						return {
+							id: val.articulo.id,
+							url: val.articulo.url,
+							Titulo: val.articulo.Titulo,
+							cover: {
+								url: val.articulo.cover.url,
+								formats: val.articulo.cover.formats
+							},
+							categoria: {
+								nombre: val.articulo.categoria.nombre
+							}
 						}
+					}else{
+						return null
 					}
 				});
+
+				let filtered = banner.filter((val, i) => {return val != null});
 				this.setState((prevState) => {
 					return {
 						...prevState,
 						data: {
 							...prevState.data,
-							banners: banner,
+							banners: filtered,
 						},
 					};
 				});
