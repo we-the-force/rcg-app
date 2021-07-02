@@ -15,26 +15,26 @@ import { UpdateArticulo } from "@/graphql/mutations.graphql";
 import { Page, Block, PageContent, Navbar, f7, f7ready } from "framework7-react";
 
 export default function Articulo(props) {
-	window.twttr = (function(d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0],
-									t = window.twttr || {};
-					if (d.getElementById(id)) return t;
-					js = d.createElement(s);
-					js.id = id;
-					js.src = "https://platform.twitter.com/widgets.js";
-					fjs.parentNode.insertBefore(js, fjs);
+	// window.twttr = (function(d, s, id) {
+	// 				var js, fjs = d.getElementsByTagName(s)[0],
+	// 								t = window.twttr || {};
+	// 				if (d.getElementById(id)) return t;
+	// 				js = d.createElement(s);
+	// 				js.id = id;
+	// 				js.src = "https://platform.twitter.com/widgets.js";
+	// 				fjs.parentNode.insertBefore(js, fjs);
 
-					t._e = [];
-					t.ready = function(f) {
-									t._e.push(f);
-					};
+	// 				t._e = [];
+	// 				t.ready = function(f) {
+	// 								t._e.push(f);
+	// 				};
 
-					return t;
-	}(document, "script", "twitter-wjs"));
-	const script = document.createElement("script");
+	// 				return t;
+	// }(document, "script", "twitter-wjs"));
+	// const script = document.createElement("script");
 
-	script.src = "https://platform.instagram.com/en_US/embeds.js";
-	script.async = true;
+	// script.src = "https://platform.instagram.com/en_US/embeds.js";
+	// script.async = true;
 
 	document.body.appendChild(script);
 	const { url } = props;
