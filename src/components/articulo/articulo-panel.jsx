@@ -35,10 +35,53 @@ export default class ArticuloPanel extends Component {
 		
 	}
 	componentDidUpdate() {
+		function loadScript( url, callback ) {
+			var script = document.createElement( "script" )
+			script.type = "text/javascript";
+			if(script.readyState) {  // only required for IE <9
+					script.onreadystatechange = function() {
+							if ( script.readyState === "loaded" || script.readyState === "complete" ) {
+									script.onreadystatechange = null;
+									callback();
+							}
+					};
+			} else {  //Others
+					script.onload = function() {
+							callback();
+					};
+			}
+
+			script.src = url;
+			document.getElementsByTagName( "head" )[0].appendChild( script );
+		}
 		
-		// FB.XFBML.parse();
-		twttr.widgets.load();
+
+		loadScript('https://platform.instagram.com/en_US/embeds.js', function() {
 		window.instgrm.Embeds.process();
+
+	});
+		// FB.XFBML.parse();
+		window.twttr = (function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0],
+										t = window.twttr || {};
+						if (d.getElementById(id)) return t;
+						js = d.createElement(s);
+						js.id = id;
+						js.src = "https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js, fjs);
+
+						t._e = [];
+						t.ready = function(f) {
+										t._e.push(f);
+						};
+
+						return t;
+		}(document, "script", "twitter-wjs"));
+		const script = document.createElement("script");
+		setTimeout(() => {
+			twttr.widgets.load();
+		}, 3000);
+		
 	}
 	render() {
 		const dev = f7.device;
