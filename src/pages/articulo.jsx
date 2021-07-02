@@ -36,7 +36,7 @@ export default function Articulo(props) {
 	// script.src = "https://platform.instagram.com/en_US/embeds.js";
 	// script.async = true;
 
-	document.body.appendChild(script);
+	// document.body.appendChild(script);
 	const { url } = props;
 	const [flag, setFlag] = useState(false);
 	const [recomendados, setRecomendados] = useState([]);
