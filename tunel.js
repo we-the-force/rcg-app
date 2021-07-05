@@ -49,8 +49,11 @@ app.get("/articulo/:url", function (request, response) {
 			articuloURL = URL + "/articulo/" + request.params.url;
 			if(newChunk.data.articulos.length > 0){
 				articuloTitulo = newChunk.data.articulos[0].Titulo;
+				console.log("title" + articuloTitulo);
 				articuloDesc = newChunk.data.articulos[0].Sumario;
+				console.log("desc " +articuloDesc);
 				articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
+				console.log("cover " +articuloCover);
 			}else {
 				response.redirect('/not-found');
 			}
