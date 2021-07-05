@@ -91,6 +91,7 @@ export default function Categoria(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	let anuncios = f7.methods.get_Anuncios();
 	return (
 		<Page pageContent={false} name="categoria">
 			<PageContent
@@ -119,7 +120,7 @@ export default function Categoria(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 							{preloader && (
 								<Block className="display-flex justify-content-center align-items-center">

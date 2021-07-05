@@ -140,6 +140,8 @@ export default function Articulo(props) {
 		}
 	}
 
+	let anuncios = f7.methods.get_Anuncios();
+
 	return (
 		<Page pageContent={false} name="articulo">
 			<PageContent>
@@ -164,7 +166,7 @@ export default function Articulo(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 						</Block>
 						<Block className="right_pan">

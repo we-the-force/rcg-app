@@ -40,6 +40,7 @@ export default function AvisoPrivacidad(props) {
 
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
+	let anuncios = f7.methods.get_Anuncios();
 	return (
 		<Page pageContent={false} name="nosotros">
 			<PageContent>
@@ -62,7 +63,7 @@ export default function AvisoPrivacidad(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan wo_right_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 						</Block>
 					</Block>

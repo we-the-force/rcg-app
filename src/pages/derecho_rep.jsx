@@ -41,6 +41,7 @@ export default function DerechoReplica(props) {
 
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
+	let anuncios = f7.methods.get_Anuncios();
 
 	return (
 		<Page pageContent={false} name="nosotros">
@@ -65,7 +66,7 @@ export default function DerechoReplica(props) {
 						</Block>
 						<Block className="center_pan wo_right_pan">
 							{/* aqui va el panel central */}
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 						</Block>
 					</Block>

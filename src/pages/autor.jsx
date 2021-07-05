@@ -113,6 +113,7 @@ export default function Autor(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	let anuncios = f7.methods.get_Anuncios();
 
 	return (
 		<Page pageContent={false} name="autor">
@@ -146,7 +147,7 @@ export default function Autor(props) {
 						</Block>
 						<Block className="center_pan">
 							{/* Aqui va el deste */}
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 							{preloader && (
 								<Block className="display-flex justify-content-center align-items-center">

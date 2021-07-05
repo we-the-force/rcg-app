@@ -94,6 +94,7 @@ export default function Home(props) {
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
+	let anuncios = f7.methods.get_Anuncios();
 	
 	let navbarLoading = true;
 	if (f7.methods.getCategorias().length > 0 && leftPanelRadio.length > 0 && leftPanelTV.length) navbarLoading = false;
@@ -133,7 +134,7 @@ export default function Home(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{center}
 							{preloader && (
 								<Block className="display-flex justify-content-center align-items-center">

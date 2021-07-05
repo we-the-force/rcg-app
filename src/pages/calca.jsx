@@ -22,6 +22,7 @@ export default function Calcas(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	let anuncios = f7.methods.get_Anuncios();
 
 	let navbarLoading = true;
 	if (f7.methods.getCategorias().length > 0 && leftPanelRadio.length > 0 && leftPanelTV.length) navbarLoading = false;
@@ -47,7 +48,7 @@ export default function Calcas(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							<CalcasPanel logo={DB_url + logo} logoD={DB_url + logoDark} />
 						</Block>
 						<Block className="right_pan">

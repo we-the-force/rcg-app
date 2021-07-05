@@ -44,6 +44,7 @@ export default function AboutUs(props) {
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
+	let anuncios = f7.methods.get_Anuncios();
 	
 	return (
 		<Page pageContent={false} name="nosotros">
@@ -67,7 +68,7 @@ export default function AboutUs(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 						</Block>
 						<Block className="right_pan">

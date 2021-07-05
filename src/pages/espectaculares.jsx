@@ -17,6 +17,7 @@ export default function Espectaculares(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	let anuncios = f7.methods.get_Anuncios();
 
 	useEffect(() => {
 		f7ready((f7) => {
@@ -63,7 +64,7 @@ export default function Espectaculares(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan wo_right_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 						</Block>
 					</Block>

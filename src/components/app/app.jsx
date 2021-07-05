@@ -257,6 +257,9 @@ export default class extends React.Component {
 				get_Banners: () => {
 					return this.state.data.banners;
 				},
+				get_Anuncios: () => {
+					return this.state.data.anuncios;
+				},
 			},
 			data: {
 				db_url: `${process.env.PROTOCOL}://${process.env.API_HOSTNAME}`,
@@ -281,6 +284,7 @@ export default class extends React.Component {
 				tv_name: "",
 				relevantesNews: [],
 				banners: [],
+				anuncios: {},
 			},
 		};
 
@@ -327,8 +331,8 @@ export default class extends React.Component {
 						nombre: val.nombre,
 						url: val.url,
 						logo: {
-							url: val.logo.url,
-							formats: val.logo.formats
+							url: val.logo ? val.logo.url : "",
+							formats: val.logo ? val.logo.formats : "", 
 						}
 					}
 				});
@@ -351,8 +355,8 @@ export default class extends React.Component {
 						nombre: val.nombre,
 						url: val.url,
 						logo: {
-							url: val.logo.url,
-							formats: val.logo.formats
+							url: val.logo ? val.logo.url : "",
+							formats: val.logo ? val.logo.formats : "",
 						}
 					}
 				});
@@ -370,11 +374,12 @@ export default class extends React.Component {
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=fecha:desc,visitas:desc&_limit=5`)
 			.then((response) => response.json())
 			.then((json) => {
+				//validar que tenga categoria y autor
 				let res = json.map((val, i) => {
 					return {
 						cover: {
-							url: val.cover.url,
-							formats: val.cover.formats
+							url: val.cover ? val.cover.url : "",
+							formats: val.cover ? val.cover.formats : "",
 						},
 						url: val.url,
 						Titulo: val.Titulo,
@@ -394,6 +399,7 @@ export default class extends React.Component {
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/banners?_sort=posicion:desc&_limit=10`)
 			.then((response) => response.json())
 			.then((json) => {
+				//validar que tenga categoria y autor
 				let banner = json.map((val, i) => {
 					if(val.articulo){
 						return {
@@ -401,11 +407,11 @@ export default class extends React.Component {
 							url: val.articulo.url,
 							Titulo: val.articulo.Titulo,
 							cover: {
-								url: val.articulo.cover.url,
-								formats: val.articulo.cover.formats
+								url: val.articulo.cover ? val.articulo.cover.url : "",
+								formats: val.articulo.cover ? val.articulo.cover.formats : "",
 							},
 							categoria: {
-								nombre: val.articulo.categoria.nombre
+								nombre: val.articulo.categoria ? val.articulo.categoria.nombre : "",
 							}
 						}
 					}else{
@@ -428,17 +434,18 @@ export default class extends React.Component {
 		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/articulos?_sort=fecha:desc&_limit=8&relevante=true`)
 			.then((response) => response.json())
 			.then((json) => {
+				//validar que tenga categoria y autor
 				let relevante = json.map((val, i) => {
 					return {
 						id: val.id,
 						url: val.url,
 						Titulo: val.Titulo,
 						cover: {
-							url: val.cover.url,
-							formats: val.cover.formats
+							url: val.cover ? val.cover.url : "",
+							formats: val.cover ? val.cover.formats : ""
 						},
 						categoria: {
-							nombre: val.categoria.nombre
+							nombre: val.categoria ? val.categoria.nombre : ""
 						},
 						Sumario: val.Sumario,
 						fecha: val.fecha
@@ -450,6 +457,28 @@ export default class extends React.Component {
 						data: {
 							...prevState.data,
 							relevantesNews: relevante,
+						},
+					};
+				});
+			});
+
+		fetch(`${process.env.PROTOCOL}://${process.env.API_HOSTNAME}/anuncios`)
+			.then((response) => response.json())
+			.then((json) => {
+				this.setState((prevState) => {
+					return {
+						...prevState,
+						data: {
+							...prevState.data,
+							anuncios: {
+								"bannerHorizontalUno": json.bannerHorizontalUno,
+								"bannerHorizontalDos": json.bannerHorizontalDos,
+								"bannerHorizontalTres": json.bannerHorizontalTres,
+								"bannerHorizontalCuatro": json.bannerHorizontalCuatro,
+								"bannerVerticalUno": json.bannerVerticalUno,
+								"bannerVerticalDos": json.bannerVerticalDos,
+								"bannerVerticalTres": json.bannerVerticalTres,
+							},
 						},
 					};
 				});

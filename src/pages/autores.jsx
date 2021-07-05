@@ -50,6 +50,7 @@ export default function Autores(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
+	let anuncios = f7.methods.get_Anuncios();
 
 	return (
 		<Page pageContent={false} name="autores">
@@ -73,7 +74,7 @@ export default function Autores(props) {
 							<LeftPanelTablet tv_channels={leftPanelTV} radio_stations={leftPanelRadio} />
 						</Block>
 						<Block className="center_pan">
-							<AdsTop />
+							<AdsTop anuncio={anuncios.bannerHorizontalUno}/>
 							{centerPanel}
 						</Block>
 						<Block className="right_pan">
