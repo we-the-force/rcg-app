@@ -45,11 +45,12 @@ app.get("/articulo/:url", function (request, response) {
 	const req = https.request(options, (res) => {
 		res.setEncoding("utf8");
 		res.on("data", (chunk) => {
+			console.log(chunk);
 			var newChunk = JSON.parse(chunk);
 			articuloURL = URL + "/articulo/" + request.params.url;
 			if(newChunk.data.articulos.length > 0){
 				articuloTitulo = newChunk.data.articulos[0].Titulo;
-				console.log("title" + articuloTitulo);
+				console.log("title " + articuloTitulo);
 				articuloDesc = newChunk.data.articulos[0].Sumario;
 				console.log("desc " +articuloDesc);
 				articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
