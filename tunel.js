@@ -33,7 +33,6 @@ app.get("/articulo/:url", function (request, response) {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
-			"Content-Length": Buffer.byteLength(postData),
 		},
 	};
 
