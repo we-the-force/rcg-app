@@ -33,6 +33,7 @@ app.get("/articulo/:url", function (request, response) {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
+			"Content-Length": Buffer.byteLength(postData),
 		},
 	};
 
@@ -87,4 +88,4 @@ app.use(express.static(path.resolve(__dirname, "/var/www/html/")));
 
 var httpServer = app.listen(port, () => console.log(`Listening on port ${port}`));
 
-httpServer.setTimeout(1000);
+httpServer.setTimeout(2000);
