@@ -43,33 +43,38 @@ app.get("/articulo/:url", function (request, response) {
 	let articuloCover = "";
 
 	const req = https.request(options, (res) => {
+		let rawData = "";
 		res.setEncoding("utf8");
 		res.on("data", (chunk) => {
-			console.log(chunk);
-			var newChunk = JSON.parse(chunk);
-			articuloURL = URL + "/articulo/" + request.params.url;
-			if(newChunk.data.articulos.length > 0){
-				articuloTitulo = newChunk.data.articulos[0].Titulo;
-				console.log("title " + articuloTitulo);
-				articuloDesc = newChunk.data.articulos[0].Sumario;
-				console.log("desc " +articuloDesc);
-				articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
-				console.log("cover " +articuloCover);
-			}else {
-				response.redirect('/not-found');
-			}
+			rawData += chunk;
 		});
 		res.on("end", () => {
-			fs.readFile(filePath, "utf8", function (err, data) {
-				if (err) {
-					return console.log(err);
+			try {
+				console.log(rawData);
+				var newChunk = JSON.parse(rawData);
+				console.log(newChunk);
+				articuloURL = URL + "/articulo/" + request.params.url;
+				if (newChunk.data.articulos.length > 0) {
+					articuloTitulo = newChunk.data.articulos[0].Titulo;
+					articuloDesc = newChunk.data.articulos[0].Sumario;
+					articuloCover = "https://" + apiURL + newChunk.data.articulos[0].cover.url;
+				} else {
+					response.redirect("/not-found");
 				}
-				data = data.replace(/__OG_URL__/g, articuloURL);
-				data = data.replace(/__OG_TITLE__/g, articuloTitulo);
-				data = data.replace(/__OG_DESCRIPTION__/g, articuloDesc);
-				result = data.replace(/__OG_IMAGE__/g, articuloCover);
-				response.send(result);
-			});
+
+				fs.readFile(filePath, "utf8", function (err, data) {
+					if (err) {
+						return console.log(err);
+					}
+					data = data.replace(/__OG_URL__/g, articuloURL);
+					data = data.replace(/__OG_TITLE__/g, articuloTitulo);
+					data = data.replace(/__OG_DESCRIPTION__/g, articuloDesc);
+					result = data.replace(/__OG_IMAGE__/g, articuloCover);
+					response.send(result);
+				});
+			} catch (error) {
+				console.error(e.message);
+			}
 		});
 	});
 
@@ -81,7 +86,6 @@ app.get("/articulo/:url", function (request, response) {
 	// Write data to request body
 	req.write(postData);
 	req.end();
-	
 });
 
 app.use(express.static(path.resolve(__dirname, "/var/www/html/")));
