@@ -50,9 +50,7 @@ app.get("/articulo/:url", function (request, response) {
 		});
 		res.on("end", () => {
 			try {
-				console.log(rawData);
 				var newChunk = JSON.parse(rawData);
-				console.log(newChunk);
 				articuloURL = URL + "/articulo/" + request.params.url;
 				if (newChunk.data.articulos.length > 0) {
 					articuloTitulo = newChunk.data.articulos[0].Titulo;
