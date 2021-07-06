@@ -104,7 +104,35 @@ export default function TVPanel(props) {
 						<Icon material="play_arrow"></Icon>
 					</CardHeader>
 					<Block className="share display-flex align-items-center">
-						<p>Compartir:</p>
+						<InlineShareButtons
+							config={{
+								alignment: "right", // alignment of buttons (left, center, right)
+								color: "social", // set the color of buttons (social, white)
+								enabled: true, // show/hide buttons (true, false)
+								font_size: 16, // font size for the buttons
+								labels: "cta", // button labels (cta, counts, null)
+								language: "es", // which language to use (see LANGUAGES)
+								networks: [
+									// which networks to include (see SHARING NETWORKS)
+									"whatsapp",
+									"facebook",
+									"twitter",
+								],
+								padding: 12, // padding within buttons (INTEGER)
+								radius: 20, // the corner radius on each button (INTEGER)
+								show_total: true,
+								size: 30, // the size of each button (INTEGER)
+
+								// OPTIONAL PARAMETERS
+								url: urlThing, // (defaults to current url)
+								image: canal.logo ? DB_url + canal.logo.url : IMG, // (defaults to og:image or twitter:image)
+								description: descPrograma, // (defaults to og:description or twitter:description)
+								title: canal[0].nombre, // (defaults to og:title or twitter:title)
+								// (only for email sharing)
+								username: "RCGoficial", // (only for twitter sharing)
+							}}
+						/>
+						{/* <p>Compartir:</p>
 						<a
 							className="faceIcon display-flex justify-content-center align-items-center external"
 							href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`}
@@ -125,7 +153,7 @@ export default function TVPanel(props) {
 							>
 								<img src="../static/icons/FB_Icon_x3.png" alt="" />
 							</a>
-						</div>
+						</div> */}
 					</Block>
 				</Block>
 				<Block className="middle-cont">

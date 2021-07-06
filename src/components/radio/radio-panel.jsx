@@ -15,14 +15,14 @@ export default function RadioPanel(props) {
 	let prog = programacion[0]
 		? programacion[0].programacion
 		: {
-            domingo: [],
-            jueves: [],
-            lunes: [],
-            martes: [],
-            miercoles: [],
-            sabado: [],
-            viernes: [],
-        };
+				domingo: [],
+				jueves: [],
+				lunes: [],
+				martes: [],
+				miercoles: [],
+				sabado: [],
+				viernes: [],
+		  };
 
 	let radioPlay = f7.methods.get_RadioPlay();
 
@@ -36,18 +36,17 @@ export default function RadioPanel(props) {
 	}, []);
 
 	useEffect(() => {
-		if(f7.methods.get_RadioURL() == source_url)
-			setPlayPause(radioPlay);
+		if (f7.methods.get_RadioURL() == source_url) setPlayPause(radioPlay);
 	}, [radioPlay]);
 
 	const handlePlayPause = () => {
 		if (!playPause == true && source_url != f7.methods.get_RadioURL()) {
-			f7.methods.set_LeftRadioActive(false);	
+			f7.methods.set_LeftRadioActive(false);
 			f7.methods.set_RadioURL(source_url);
 			f7.methods.set_RadioName(nombre);
-			f7.methods.set_RadioIMG(logo ? (DB_url + logo.url) : "");
+			f7.methods.set_RadioIMG(logo ? DB_url + logo.url : "");
 		}
-		if(!playPause){
+		if (!playPause) {
 			f7.methods.set_TVPlay(false);
 		}
 		setPlayPause(!playPause);
@@ -78,7 +77,35 @@ export default function RadioPanel(props) {
 						<Icon material="play_arrow"></Icon>
 					</CardHeader>
 					<Block className="share display-flex align-items-center">
-						<p>Compartir:</p>
+						<InlineShareButtons
+							config={{
+								alignment: "right", // alignment of buttons (left, center, right)
+								color: "social", // set the color of buttons (social, white)
+								enabled: true, // show/hide buttons (true, false)
+								font_size: 16, // font size for the buttons
+								labels: "cta", // button labels (cta, counts, null)
+								language: "es", // which language to use (see LANGUAGES)
+								networks: [
+									// which networks to include (see SHARING NETWORKS)
+									"whatsapp",
+									"facebook",
+									"twitter",
+								],
+								padding: 12, // padding within buttons (INTEGER)
+								radius: 20, // the corner radius on each button (INTEGER)
+								show_total: true,
+								size: 30, // the size of each button (INTEGER)
+
+								// OPTIONAL PARAMETERS
+								url: urlThing, // (defaults to current url)
+								image: logo ? DB_url + logo.url : "", // (defaults to og:image or twitter:image)
+								description: desc, // (defaults to og:description or twitter:description)
+								title: nombre, // (defaults to og:title or twitter:title)
+								// (only for email sharing)
+								username: "RCGoficial", // (only for twitter sharing)
+							}}
+						/>
+						{/* <p>Compartir:</p>
 						<a
 							className="faceIcon display-flex justify-content-center align-items-center external"
 							href={`https://twitter.com/intent/tweet?url=${urlThing}&text=%0D`}
@@ -99,13 +126,13 @@ export default function RadioPanel(props) {
 							>
 								<img src="../static/icons/FB_Icon_x3.png" alt="" />
 							</a>
-						</div>
+						</div> */}
 					</Block>
 				</Block>
 				<Block className="radio-wrapper">
 					<Block className="radio-ui-mobile">
 						<Block className="logo-radio">
-							<img src={logo ? (DB_url + logo.url) : ""} alt="" />
+							<img src={logo ? DB_url + logo.url : ""} alt="" />
 						</Block>
 						<h2 className="title">{nombre}</h2>
 						<Range min={0} max={1} step={0.01} value={volume} onRangeChange={handleVolumeChange}></Range>
@@ -116,7 +143,7 @@ export default function RadioPanel(props) {
 					<Block className="radio-ui display-flex flex-direction-column">
 						<Block className="display-flex top-wrapper">
 							<Block className="logo-radio">
-								<img src={logo ? (DB_url + logo.url) : ""} alt="" />
+								<img src={logo ? DB_url + logo.url : ""} alt="" />
 							</Block>
 							<Block className="content-radio">
 								<h1 className="title">{nombre}</h1>
@@ -156,7 +183,7 @@ export default function RadioPanel(props) {
 										<a href={`/radio/${station.url}`} className="canal_content">
 											<div className="image_cont">
 												{/* cambiar a xs */}
-												<img src={station.logo ? (DB_url + station.logo.url) : ""} alt="" srcSet="" />
+												<img src={station.logo ? DB_url + station.logo.url : ""} alt="" srcSet="" />
 											</div>
 
 											<h2 className="title">{station.nombre}</h2>

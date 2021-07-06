@@ -133,9 +133,9 @@ export default class ArticuloPanel extends Component {
 										"twitter",
 									],
 									padding: 12, // padding within buttons (INTEGER)
-									radius: 4, // the corner radius on each button (INTEGER)
+									radius: 20, // the corner radius on each button (INTEGER)
 									show_total: true,
-									size: 40, // the size of each button (INTEGER)
+									size: 30, // the size of each button (INTEGER)
 
 									// OPTIONAL PARAMETERS
 									url: urlThing, // (defaults to current url)
