@@ -269,6 +269,9 @@ export default function LeftPanelTablet(props) {
 					<ListItem popupClose link="/nosotros">
 						Nosotros
 					</ListItem>
+					<ListItem popupClose link="/autores">
+						Autores
+					</ListItem>
 					<ListItem popupClose link="/contacto">
 						Contacto
 					</ListItem>
