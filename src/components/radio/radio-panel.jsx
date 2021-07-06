@@ -2,6 +2,7 @@ import ScheduleTable from "@/components/general/schedule-table";
 import Icon_Radio from "@/static/icons/microphone_dark.png";
 import React, { useState, useEffect } from "react";
 import { Card, CardHeader, Block, BlockHeader, Icon, Range, f7 } from "framework7-react";
+import { InlineShareButtons } from "sharethis-reactjs";
 
 export default function RadioPanel(props) {
 	const { estacion, estaciones, programacion, table_id } = props;

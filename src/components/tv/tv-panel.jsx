@@ -5,6 +5,7 @@ import Icon_TV from "@/static/icons/tv_dark.png";
 import moment from "moment";
 import { Card, CardHeader, Block, BlockHeader, Icon, f7 } from "framework7-react";
 import IMG from '@/static/imgs/grayback.jpg';
+import { InlineShareButtons } from "sharethis-reactjs";
 
 export default function TVPanel(props) {
 	const { canal, canales, programacion, table_id } = props;
