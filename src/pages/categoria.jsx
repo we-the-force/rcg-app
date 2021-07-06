@@ -65,6 +65,7 @@ export default function Categoria(props) {
 
 	let centerPanel;
 	let navbarLoading = false;
+	let anuncios = f7.methods.get_Anuncios();
 
 	if (loading && first) {
 		if (error) {
@@ -76,7 +77,7 @@ export default function Categoria(props) {
 		}
 	} else {
 		if (articulos.length > 0) {
-			centerPanel = <CategoriaPanel articulos={articulos} categoria={catNombre} />;
+			centerPanel = <CategoriaPanel articulos={articulos} categoria={catNombre} anuncios={anuncios}/>;
 			navbarLoading = false;
 		} else {
 			centerPanel = <ErrorPanel error="No pudimos encontrar la categoria que buscas" />;
@@ -91,7 +92,6 @@ export default function Categoria(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
-	let anuncios = f7.methods.get_Anuncios();
 	return (
 		<Page pageContent={false} name="categoria">
 			<PageContent

@@ -21,8 +21,9 @@ export default class NewsPanel extends Component {
 				</Card>
 			);
 		}
-		const { categoria, articulos } = this.props;
+		const { categoria, articulos, anuncios } = this.props;
 		let coahuila = categoria === "Coahuila" ? <Coahuila catego={categoria} /> : null;
+		let numOfAd = 1;
 		return (
 			<Block className="categoria_panel center_panel">
 				<Card className="new_head">
@@ -49,10 +50,10 @@ export default class NewsPanel extends Component {
 						<NewsRelevantes noticia={articulos[7]} size={3} id="item4" className="desk-large" />
 					</Block>
 				</Card>
-
 				{articulos.map((articulo, i) => {
 					if(i > 7){
-						let ad = i % 2 === 1 ? <AdsFeed /> : null;
+						let ad = i % 2 === 1 ? <AdsFeed numOfAd={numOfAd} anuncios={anuncios}/> : null;
+						if(ad != null) numOfAd++;
 						return (
 							<Fragment key={i}>
 								{ad}

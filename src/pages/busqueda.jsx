@@ -118,8 +118,9 @@ export default function Busqueda(props) {
 			}
 		}
 	}
+	let anuncios = f7.methods.get_Anuncios();
 	let centerPanel =
-		isLoading && firstCharge ? isError ? <ErrorPanel /> : <LoadingPanel /> : <BusquedaPanel first={type} title={values} articulos={newResults} />;
+		isLoading && firstCharge ? isError ? <ErrorPanel /> : <LoadingPanel /> : <BusquedaPanel first={type} title={values} articulos={newResults} anuncios={anuncios}/>;
 	let navbarLoading = isLoading && firstCharge ? (isError ? false : true) : false;
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
@@ -128,7 +129,6 @@ export default function Busqueda(props) {
 	const logo = f7.methods.getLogo();
 	const logoDark = f7.methods.getLogoDarkMode();
 	const DB_url = f7.methods.get_URL_DB();
-	let anuncios = f7.methods.get_Anuncios();
 	return (
 		<Page
 			pageContent={false}
