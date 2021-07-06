@@ -43,7 +43,7 @@ export default class adsFeed extends Component {
 		}
 		return (
 			<Fragment>
-				{googleAds && <Adsense client="ca-pub-9419050468962974" slot="2504924643" />}
+				{/* {googleAds && <Adsense client="ca-pub-9419050468962974" slot="2504924643" />} */}
 				{!googleAds && (
 					<Block className="ads feed">
 						<Link href={link} target="_blank" external>
