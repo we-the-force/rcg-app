@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import doscuatrosiete from "@/static/imgs/24-7.png";
+import doscuatrosiete from "@/static/imgs/logo 24 7 blanco.png";
 import { NavLeft, NavRight, Link } from "framework7-react";
 
 export default function navMobile(props) {
