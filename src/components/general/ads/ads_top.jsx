@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Block, Link, f7 } from "framework7-react";
-// import {Adsense} from '@ctrl/react-adsense';
-import uane from "../../../static/imgs/uane.gif"
+import {Adsense} from '@ctrl/react-adsense';
+import uane from "../../../static/imgs/uane.gif";
 
 export default class adsTop extends Component {
 	constructor(props) {
@@ -21,35 +21,35 @@ export default class adsTop extends Component {
 		let alt = "";
 		let image = "";
 
-		if(anuncio){
+		if (anuncio) {
 			googleAds = anuncio.googleAds;
 			link = anuncio.link;
 			alt = anuncio.alt;
-			if(areMobile){
+			if (areMobile) {
 				image = anuncio.mobileImg ? DB_url + anuncio.mobileImg.url : DB_url + anuncio.deskImg.url;
-			}else {
+			} else {
 				image = DB_url + anuncio.deskImg.url;
 			}
 		}
 
 		return (
 			<Block className="ads_cont">
-				<Block className="left"></Block>
 				<Block className="center">
-					{googleAds && ("")}
+					{googleAds && <Adsense client="ca-pub-9419050468962974" slot="2504924643" />}
 					{/* aqui va el google ads */}
-					{/* <Adsense
-						client="ca-pub-9419050468962974"
-						slot="2504924643"
-					/> */}
+					{/* */}
 					{!googleAds && (
 						<Block className="ads top">
 							<Link href={link} target="_blank" external>
-							<img src={image} alt={alt} style={{
-								width: '100%',
-								height: 'fit-content',
-								minHeight: '80px'
-							}}/>
+								<img
+									src={image}
+									alt={alt}
+									style={{
+										width: "100%",
+										height: "fit-content",
+										minHeight: "80px",
+									}}
+								/>
 							</Link>
 						</Block>
 					)}

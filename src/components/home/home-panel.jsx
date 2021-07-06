@@ -14,6 +14,7 @@ export default class HomePanel extends Component {
 		let noticias_filtradas = noticias.filter((val, i) => {
 			return val.articulos.length > 0;
 		});
+		let numOfAd = 1;
 		return (
 			<Block className="home center_panel">
 				<Card className="relevantes_home">
@@ -74,7 +75,8 @@ export default class HomePanel extends Component {
 							articulosSwiper = articulos.slice(7);
 							break;
 					}
-					let ad = i % 2 === 1 ? <AdsFeed /> : null;
+					let ad = i % 2 === 1 ? <AdsFeed numOfAd={numOfAd} anuncios={anuncios}/> : null;
+					if(ad != null) numOfAd++;
 					return (
 						<Fragment  key={i}>
 							{ad}

@@ -82,11 +82,12 @@ export default function Home(props) {
 	}else {
 		mast = "";
 	}
+	let anuncios = f7.methods.get_Anuncios();
 	
 	if((relevanteNews.length == 0)){
 		center = <LoadingPanel />;
 	}else if(relevanteNews.length > 0){
-		center = <HomePanel noticias={categorias} relevante={relevanteNews} />;
+		center = <HomePanel noticias={categorias} relevante={relevanteNews} anuncios={anuncios}/>;
 	}else if(errorCat || errorRel){
 		center = <ErrorPanel />;
 	}
@@ -94,7 +95,6 @@ export default function Home(props) {
 	let rightPanel = f7.methods.getArticulosRightPanel();
 	let leftPanelTV = f7.methods.getTV();
 	let leftPanelRadio = f7.methods.getRadio();
-	let anuncios = f7.methods.get_Anuncios();
 	
 	let navbarLoading = true;
 	if (f7.methods.getCategorias().length > 0 && leftPanelRadio.length > 0 && leftPanelTV.length) navbarLoading = false;
