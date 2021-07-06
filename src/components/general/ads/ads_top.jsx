@@ -34,6 +34,7 @@ export default class adsTop extends Component {
 
 		return (
 			<Block className="ads_cont">
+				<Block className="left"></Block>
 				<Block className="center">
 					{googleAds && <Adsense client="ca-pub-9419050468962974" slot="2504924643" />}
 					{/* aqui va el google ads */}

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Block } from "framework7-react";
 // import {Adsense} from '@ctrl/react-adsense';
 
@@ -42,27 +42,24 @@ export default class adsFeed extends Component {
 			}
 		}
 		return (
-			<Block className="ads feed">
-				<Block className="center">
-					{googleAds && <Adsense client="ca-pub-9419050468962974" slot="2504924643" />}
-					{!googleAds && (
-						<Block className="ads top">
-							<Link href={link} target="_blank" external>
-								<img
-									src={image}
-									alt={alt}
-									style={{
-										width: "100%",
-										height: "fit-content",
-										minHeight: "80px",
-									}}
-								/>
-							</Link>
-						</Block>
-					)}
-				</Block>
-				<Block className="right"></Block>
-			</Block>
+			<Fragment>
+				{googleAds && <Adsense client="ca-pub-9419050468962974" slot="2504924643" />}
+				{!googleAds && (
+					<Block className="ads feed">
+						<Link href={link} target="_blank" external>
+							<img
+								src={image}
+								alt={alt}
+								style={{
+									width: "100%",
+									height: "fit-content",
+									minHeight: "80px",
+								}}
+							/>
+						</Link>
+					</Block>
+				)}
+			</Fragment>
 		);
 	}
 }
