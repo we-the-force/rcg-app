@@ -53,7 +53,7 @@ export default function RightPanelTablet(props) {
             <Link popupOpen=".vistos-popup" onClick={e => { changeBackdropOpen(e) }} className="more" iconMaterial="add" icon="add"></Link>
             <Popup className="vistos-popup right-popup-tablet" onPopupClose={changeBackdropClose}>
                 <Link popupClose=".vistos-popup" className="close" iconMaterial="add" icon="add"></Link>
-                <Link popupClose=".vistos-popup" className="close mobile" iconMaterial="add" icon="add"></Link>
+                {/* <Link popupClose=".vistos-popup" className="close mobile" iconMaterial="add" icon="add"></Link> */}
                 <h1>{title}</h1>
                 <Block className="news-cont">
                     <Block className="search_block">
