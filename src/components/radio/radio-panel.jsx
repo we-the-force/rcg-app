@@ -100,7 +100,7 @@ export default function RadioPanel(props) {
 								// OPTIONAL PARAMETERS
 								url: urlThing, // (defaults to current url)
 								image: logo ? DB_url + logo.url : "", // (defaults to og:image or twitter:image)
-								description: desc, // (defaults to og:description or twitter:description)
+								description: descripcion, // (defaults to og:description or twitter:description)
 								title: nombre, // (defaults to og:title or twitter:title)
 								// (only for email sharing)
 								username: "RCGoficial", // (only for twitter sharing)
