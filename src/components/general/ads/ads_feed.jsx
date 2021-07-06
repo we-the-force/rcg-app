@@ -21,14 +21,16 @@ export default class adsFeed extends Component {
 		let alt = "";
 		let image = "";
 
-		if (numOfAd % 5 == 0) {
-			anuncio = anuncios.bannerHorizontalUno;
-		} else if (numOfAd % 5 == 1) {
-			anuncio = anuncios.bannerHorizontalDos;
-		} else if (numOfAd % 5 == 2) {
-			anuncio = anuncios.bannerHorizontalTres;
-		} else if (numOfAd % 5 == 3) {
-			anuncio = anuncios.bannerHorizontalCuatro;
+		if(anuncios){
+			if (numOfAd % 5 == 0) {
+				anuncio = anuncios.bannerHorizontalUno;
+			} else if (numOfAd % 5 == 1) {
+				anuncio = anuncios.bannerHorizontalDos;
+			} else if (numOfAd % 5 == 2) {
+				anuncio = anuncios.bannerHorizontalTres;
+			} else if (numOfAd % 5 == 3) {
+				anuncio = anuncios.bannerHorizontalCuatro;
+			}
 		}
 
 		if (anuncio) {
