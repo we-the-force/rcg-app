@@ -15,7 +15,7 @@ export default class ArticuloPanel extends Component {
 	constructor(props) {
 		super(props);
 	}
-	componentWillMount(){
+	componentWillMount() {
 		// window.twttr = (function(d, s, id) {
 		// 									var js, fjs = d.getElementsByTagName(s)[0],
 		// 													t = window.twttr || {};
@@ -24,64 +24,61 @@ export default class ArticuloPanel extends Component {
 		// 									js.id = id;
 		// 									js.src = "https://platform.twitter.com/widgets.js";
 		// 									fjs.parentNode.insertBefore(js, fjs);
-
 		// 									t._e = [];
 		// 									t.ready = function(f) {
 		// 													t._e.push(f);
 		// 									};
-
 		// 									return t;
 		// 					}(document, "script", "twitter-wjs"));
-		
 	}
 	componentDidUpdate() {
-		function loadScript( url, callback ) {
-			var script = document.createElement( "script" )
+		function loadScript(url, callback) {
+			var script = document.createElement("script");
 			script.type = "text/javascript";
-			if(script.readyState) {  // only required for IE <9
-					script.onreadystatechange = function() {
-							if ( script.readyState === "loaded" || script.readyState === "complete" ) {
-									script.onreadystatechange = null;
-									callback();
-							}
-					};
-			} else {  //Others
-					script.onload = function() {
-							callback();
-					};
+			if (script.readyState) {
+				// only required for IE <9
+				script.onreadystatechange = function () {
+					if (script.readyState === "loaded" || script.readyState === "complete") {
+						script.onreadystatechange = null;
+						callback();
+					}
+				};
+			} else {
+				//Others
+				script.onload = function () {
+					callback();
+				};
 			}
 
 			script.src = url;
-			document.getElementsByTagName( "head" )[0].appendChild( script );
+			document.getElementsByTagName("head")[0].appendChild(script);
 		}
-		
 
-		loadScript('https://platform.instagram.com/en_US/embeds.js', function() {
-		window.instgrm.Embeds.process();
-
-	});
+		loadScript("https://platform.instagram.com/en_US/embeds.js", function () {
+			window.instgrm.Embeds.process();
+		});
 		// FB.XFBML.parse();
-		window.twttr = (function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0],
-										t = window.twttr || {};
-						if (d.getElementById(id)) return t;
-						js = d.createElement(s);
-						js.id = id;
-						js.src = "https://platform.twitter.com/widgets.js";
-						fjs.parentNode.insertBefore(js, fjs);
+		window.twttr = (function (d, s, id) {
+			var js,
+				fjs = d.getElementsByTagName(s)[0],
+				t = window.twttr || {};
+			if (d.getElementById(id)) return t;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://platform.twitter.com/widgets.js";
+			fjs.parentNode.insertBefore(js, fjs);
 
-						t._e = [];
-						t.ready = function(f) {
-										t._e.push(f);
-						};
+			t._e = [];
+			t.ready = function (f) {
+				t._e.push(f);
+			};
 
-						return t;
-		}(document, "script", "twitter-wjs"));
+			return t;
+		})(document, "script", "twitter-wjs");
 		const script = document.createElement("script");
 		setTimeout(() => {
 			twttr.widgets.load();
 		}, 3000);
-		
 	}
 	render() {
 		const dev = f7.device;
@@ -165,7 +162,7 @@ export default class ArticuloPanel extends Component {
 							<p>{articulo.cover_creditos}</p>
 						</Block>
 					</Block>
-					<Block className="content display-flex align-items-flex-start">
+					<Block className="content">
 						<Block className="left_side">
 							<div>{parse(articulo.description)}</div>
 							{/* <div>{articulo.description}</div> */}
@@ -210,11 +207,14 @@ export default class ArticuloPanel extends Component {
 							</Block>
 						</Block>
 						<Block className="right_side">
+							{/* aqui poner los anuncios */}
 							<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank">
 								<img src={banner1} alt="" />
 							</Link>
-							<img src={banner2} alt="" />
-							<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank"></Link>
+
+							<Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank">
+								<img src={banner2} alt="" />
+							</Link>
 						</Block>
 					</Block>
 					<Block className="comments tab">
