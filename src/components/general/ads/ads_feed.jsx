@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Block } from "framework7-react";
+import { Block, Link, f7 } from "framework7-react";
 // import {Adsense} from '@ctrl/react-adsense';
 
 export default class adsFeed extends Component {
