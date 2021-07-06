@@ -44,6 +44,16 @@ export default function mobileMenuPopup(props) {
 						<input placeholder="Buscar" onKeyPress={(e) => articuloSearch(e)} />
 						<span className="material-icons icon-image-preview">search</span>
 					</Block>
+					<div className="box weather">
+						<Link
+							href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html"
+							external
+							target="_blank"
+							className="linkTablet"
+						>
+							<img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png" />
+						</Link>
+					</div>
 					<div className="box live">
 						<Block>
 							<BlockHeader>
@@ -143,16 +153,6 @@ export default function mobileMenuPopup(props) {
 								<Icon className="dark" f7="sun_min_fill"></Icon>
 							</a>
 						</Block>
-					</div>
-					<div className="box weather">
-						<Link
-							href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html"
-							external
-							target="_blank"
-							className="linkTablet"
-						>
-							<img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png" />
-						</Link>
 					</div>
 					<div className="box foot">
 						<Block className="display-flex flex-direction-column justify-content-center align-items-center">
