@@ -488,19 +488,19 @@ export default class extends React.Component {
 	render() {
 		return (
 			<ApolloProvider client={client}>
-					<App params={this.state}>
-						<RadioPlayerStatic
-							url={this.state.data.radio_url}
-							play={this.state.data.radio_play}
-							volume={this.state.data.radio_volume}
-							muted={this.state.data.radio_muted}
-						/>
-						{this.state.data.tv_active && (
-							<TVPlayerStatic url={this.state.data.tv_url} name={this.state.data.tv_name} play={this.state.data.tv_play} />
-						)}
-						<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
-						<View id="main-view" main className="safe-areas" url="/" />
-					</App>
+				<App params={this.state}>
+					<RadioPlayerStatic
+						url={this.state.data.radio_url}
+						play={this.state.data.radio_play}
+						volume={this.state.data.radio_volume}
+						muted={this.state.data.radio_muted}
+					/>
+					{this.state.data.tv_active && (
+						<TVPlayerStatic url={this.state.data.tv_url} name={this.state.data.tv_name} play={this.state.data.tv_play} />
+					)}
+					<LeftPanelMobile categorias={this.state.data.categorias} categoria={this.state.data.categoriaActual} />
+					<View id="main-view" main className="safe-areas" url="/" />
+				</App>
 			</ApolloProvider>
 		);
 	}

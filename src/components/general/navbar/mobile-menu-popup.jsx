@@ -144,6 +144,16 @@ export default function mobileMenuPopup(props) {
 							</a>
 						</Block>
 					</div>
+					<div className="box weather">
+						<Link
+							href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html"
+							external
+							target="_blank"
+							className="linkTablet"
+						>
+							<img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png" />
+						</Link>
+					</div>
 					<div className="box foot">
 						<Block className="display-flex flex-direction-column justify-content-center align-items-center">
 							<div className="avisos display-flex">
