@@ -19,7 +19,7 @@ export default function navMobile(props) {
 	if (itemsPop.length === 0) {
 		navLinks.push(
 			<Fragment key="autoresLink">
-				<hr />
+				{/* <hr /> */}
 			</Fragment>
 		);
 	}
