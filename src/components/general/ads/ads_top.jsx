@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Block, Link, f7 } from "framework7-react";
-import {Adsense} from '@ctrl/react-adsense';
+// import {Adsense} from '@ctrl/react-adsense';
 import uane from "../../../static/imgs/uane.gif";
 
 export default class adsTop extends Component {

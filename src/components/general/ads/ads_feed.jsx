@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Block } from "framework7-react";
-import {Adsense} from '@ctrl/react-adsense';
+// import {Adsense} from '@ctrl/react-adsense';
 
 export default class adsFeed extends Component {
 	constructor() {
