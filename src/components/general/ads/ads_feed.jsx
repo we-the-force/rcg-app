@@ -55,7 +55,6 @@ export default class adsFeed extends Component {
 								style={{
 									width: "100%",
 									height: "fit-content",
-									minHeight: "80px",
 								}}
 							/>
 						</Link>

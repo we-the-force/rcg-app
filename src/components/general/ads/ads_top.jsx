@@ -48,7 +48,6 @@ export default class adsTop extends Component {
 									style={{
 										width: "100%",
 										height: "fit-content",
-										minHeight: "80px",
 									}}
 								/>
 							</Link>
