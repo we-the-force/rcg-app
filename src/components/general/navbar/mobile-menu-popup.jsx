@@ -51,7 +51,7 @@ export default function mobileMenuPopup(props) {
 							target="_blank"
 							className="linkTablet"
 						>
-							<img src="https://www.meteored.mx/wimages/fotoa2828ddbea6e4541a5a29cdfb7632b1c.png"/>
+							<img src="https://www.meteored.mx/wimages/foto6686a27bc4365fd9e8dd1949bb3452f3.png"/>
 						</Link>
 					</div>
 					<div className="box live">
