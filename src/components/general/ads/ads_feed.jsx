@@ -9,7 +9,7 @@ export default class adsFeed extends Component {
 	}
 	render() {
 		let { anuncios, numOfAd } = this.props;
-		let anuncio;
+		let anuncio = false;
 
 		let DB_url = f7.methods.get_URL_DB();
 
@@ -21,13 +21,13 @@ export default class adsFeed extends Component {
 		let alt = "";
 		let image = "";
 
-		if (numOfAd % 4 == 0) {
+		if (numOfAd % 5 == 0) {
 			anuncio = anuncios.bannerHorizontalUno;
-		} else if (numOfAd % 4 == 1) {
+		} else if (numOfAd % 5 == 1) {
 			anuncio = anuncios.bannerHorizontalDos;
-		} else if (numOfAd % 4 == 2) {
+		} else if (numOfAd % 5 == 2) {
 			anuncio = anuncios.bannerHorizontalTres;
-		} else if (numOfAd % 4 == 3) {
+		} else if (numOfAd % 5 == 3) {
 			anuncio = anuncios.bannerHorizontalCuatro;
 		}
 
