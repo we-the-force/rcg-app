@@ -12,6 +12,7 @@ export default class FaqPage extends Component {
     }
     render() {
         let { preguntas } = this.props.faq;
+        console.log(preguntas);
         return (
             <Block className="center_panel faq_panel">
                 <Card>

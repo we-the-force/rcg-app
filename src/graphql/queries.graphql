@@ -415,9 +415,9 @@ query DerechoReplicaPage {
 
 query FaqPage {
 	faq: preguntasFrecuente {
-		preguntas {
-			pregunta
-			respuesta
+		FAQ {
+			Pregunta
+			Respuesta
 		}
 	}
 }
