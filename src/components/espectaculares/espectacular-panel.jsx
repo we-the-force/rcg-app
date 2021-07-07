@@ -3,6 +3,7 @@ import Portada from "@/static/imgs/Espectaculares-Portada 1.png";
 import PortadaDark from "@/static/imgs/Espectaculares-Portada 2.png";
 import marked from "marked";
 import JsxParser from "react-jsx-parser";
+import parse from "html-react-parser";
 import { Block, Card, BlockHeader, Link, f7 } from "framework7-react";
 
 function formatText(x) {
@@ -80,12 +81,13 @@ export default class EspectacularPanel extends Component {
 							<h2>Nosotros</h2>
 						</BlockHeader>
 						<div className="content">
-							<JsxParser
+							{/* <JsxParser
 								components={{ Block }}
 								jsx={`<div className="markdown">
                             ${nosotros}
                         </div>`}
-							/>
+							/> */}
+							{parse(info.nosotros)}
 						</div>
 						<div className="img_cont">
 							<img src={nosotrosImagen} alt="" />
@@ -98,12 +100,13 @@ export default class EspectacularPanel extends Component {
 							<h2>¿Por qué nosotros?</h2>
 						</BlockHeader>
 						<div className="content">
-							<JsxParser
+							{/* <JsxParser
 								components={{ Block }}
 								jsx={`<div className="markdown">
                             ${porque_nosotros}
                         </div>`}
-							/>
+							/> */}
+							{parse(info.porque_nosotros)}
 						</div>
 						<div className="img_cont">
 							<img src={porqueNosotrosImagen} alt="" />
