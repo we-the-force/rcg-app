@@ -68,7 +68,7 @@ export default class AboutUsPanel extends Component {
 							</div>
 						</BlockHeader>
 						<div className="content">
-							{parse(avisoPriv.description)}
+							{parse(avisoPriv.descripcion)}
 							{/* <JsxParser
 								components={{ Block }}
 								jsx={`
