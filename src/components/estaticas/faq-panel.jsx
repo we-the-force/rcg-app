@@ -11,8 +11,7 @@ export default class FaqPage extends Component {
         super(props);
     }
     render() {
-        let { preguntas } = this.props.faq;
-        console.log(preguntas);
+        let { FAQ } = this.props.faq;
         return (
             <Block className="center_panel faq_panel">
                 <Card>
@@ -21,11 +20,11 @@ export default class FaqPage extends Component {
                             <h1>Preguntas Frecuentes</h1>
                         </BlockHeader>
                         <div className="content">
-                            {preguntas.map((val,i) => {
+                            {FAQ.map((val,i) => {
                                 return(
                                     <Block key={i}>
-                                        <h2 className="pregunta">{val.pregunta}</h2>
-                                        <p className="respuesta">{val.respuesta}</p>
+                                        <h2 className="pregunta">{val.Pregunta}</h2>
+                                        <p className="respuesta">{val.Respuesta}</p>
                                     </Block>
                                 );
                             })}

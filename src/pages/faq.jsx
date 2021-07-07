@@ -30,7 +30,6 @@ export default function Faq(props) {
 		centerPanel = <ErrorPanel />;
 		navbarLoading = false;
 	} else {
-		console.log(data);
 		const { faq } = data;
 		centerPanel = <FaqPanel faq={faq} />;
 		navbarLoading = false;
