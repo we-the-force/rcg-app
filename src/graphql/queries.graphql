@@ -371,6 +371,10 @@ query CategoriaPage($categoria: String, $inicio: Int, $limite: Int) {
 		}
 		Sumario
 		fecha
+		autor {
+			url
+			nombre
+		}
 	}
 	categorias(where: { url: $categoria }) {
 		nombre
