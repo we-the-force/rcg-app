@@ -41,6 +41,8 @@ export default function NewsCategoria(props) {
 	// 	cover = articulo.cover.width > 500 ? DB_url + newUrl[0] + "/" + newUrl[1] + "/small_" + newUrl[2] : DB_url + articulo.cover.url;
 	// }
 
+	console.log(articulo);
+
 	return (
 		<Card className={`NewsCategoria_cont ${className}`}>
 			<Block className="head">
@@ -52,7 +54,7 @@ export default function NewsCategoria(props) {
 					<p className="fecha">{moment(articulo.fecha).format("D MMMM")}</p>
 				</Block>
 				<Block className="share display-flex align-items-center">
-					<p>Compartir:</p>
+					{/* <p>Compartir:</p>
 					<a
 						target="_blank"
 						className="faceIcon display-flex justify-content-center align-items-center external"
@@ -74,7 +76,7 @@ export default function NewsCategoria(props) {
 						>
 							<img src={Face} alt="" />
 						</a>
-					</div>
+					</div> */}
 				</Block>
 			</Block>
 			<Block className="content">
