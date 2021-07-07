@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import city from '@/static/imgs/city.png'
+import parse from "html-react-parser";
 import {
     Block,
     Card,
@@ -23,8 +24,8 @@ export default class FaqPage extends Component {
                             {FAQ.map((val,i) => {
                                 return(
                                     <Block key={i}>
-                                        <h2 className="pregunta">{val.Pregunta}</h2>
-                                        <p className="respuesta">{val.Respuesta}</p>
+                                        <h2 className="pregunta">{parse(val.Pregunta)}</h2>
+                                        <p className="respuesta">{parse(val.Respuesta)}</p>
                                     </Block>
                                 );
                             })}
