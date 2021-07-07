@@ -4,6 +4,7 @@ import city from "@/static/imgs/city.png";
 import cityB from "@/static/imgs/city_black.png";
 import back_head from "@/static/imgs/card_back_6.png";
 import JsxParser from "react-jsx-parser";
+import parse from "html-react-parser";
 import { Block, Card, CardHeader, f7 } from "framework7-react";
 
 function formatText(x) {
@@ -74,12 +75,13 @@ export default class AboutUsPanel extends Component {
 							<img className="light" src={this.props.logo} alt="" />
 							<img className="dark" src={this.props.logoD} alt="" />
 						</div>
-						<JsxParser
+						{/* <JsxParser
 							components={{ Block }}
 							jsx={`<div className="markdown">
                                 ${desc}
                             </div>`}
-						/>
+						/> */}
+						{parse(nosotrosInfo.descripcion)}
 						<img className="cityImg light" src={city} alt="" />
 						<img className="cityImg dark" src={cityB} alt="" />
 					</Block>
@@ -92,12 +94,13 @@ export default class AboutUsPanel extends Component {
 				/>
 				<Card className="bottom">
 					<Block className="back">
-						<JsxParser
+						{/* <JsxParser
 							components={{ Block }}
 							jsx={`<div className="markdown">
                             ${bottom}
                         </div>`}
-						/>
+						/> */}
+						{parse(nosotrosInfo.info_bottom)}
 						<div className="logo_cont">
 							<img className="light" src={this.props.logo} alt="" />
 							<img className="dark" src={this.props.logoD} alt="" />
