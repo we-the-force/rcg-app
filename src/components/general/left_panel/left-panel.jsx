@@ -86,7 +86,7 @@ export default function LeftPanel(props) {
 			<Card className="left_pan_card social">
 				<CardHeader>Síguenos en:</CardHeader>
 				<Block className="social_cont display-flex justify-content-left align-items-center">
-					<a href="https://www.facebook.com/rcgmedia.oficial" className="external" target="_blank">
+					<a href="https://www.facebook.com/media.rcg/" className="external" target="_blank">
 						<img src={FBIcon} alt="" srcSet="" />
 					</a>
 					<a href="https://twitter.com/rcg_media" className="external" target="_blank">
@@ -95,7 +95,7 @@ export default function LeftPanel(props) {
 					<a href="https://www.youtube.com/user/RCGNOTICIAS" className="external" target="_blank">
 						<img src={YTIcon} alt="" srcSet="" />
 					</a>
-					<a href="https://www.instagram.com/rcgoficial" className="external" target="_blank">
+					<a href="https://www.instagram.com/rcg.media/" className="external" target="_blank">
 						<img src={IGIcon} alt="" srcSet="" />
 					</a>
 					<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">

@@ -234,7 +234,7 @@ export default function LeftPanelTablet(props) {
 				}}
 			>
 				<Block className="social_cont display-flex justify-content-left align-items-center">
-					<a className="external" target="_blank" href="https://www.facebook.com/rcgmedia.oficial">
+					<a className="external" target="_blank" href="https://www.facebook.com/media.rcg/">
 						<img src={FBIcon} alt="" srcSet="" />
 					</a>
 					<a className="external" target="_blank" href="https://twitter.com/rcg_media">
@@ -243,7 +243,7 @@ export default function LeftPanelTablet(props) {
 					<a className="external" target="_blank" href="https://www.youtube.com/user/RCGNOTICIAS">
 						<img src={YTIcon} alt="" srcSet="" />
 					</a>
-					<a className="external" target="_blank" href="https://www.instagram.com/rcgoficial">
+					<a className="external" target="_blank" href="https://www.instagram.com/rcg.media/">
 						<img src={IGIcon} alt="" srcSet="" />
 					</a>
 					<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">

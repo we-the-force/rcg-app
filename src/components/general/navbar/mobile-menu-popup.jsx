@@ -99,7 +99,7 @@ export default function mobileMenuPopup(props) {
 								<img src={twred} alt="" />
 								<p>Síguenos En:</p>
 							</BlockHeader>
-							<Link href="https://www.facebook.com/rcgmedia.oficial" target="_blank" className="redes external">
+							<Link href="https://www.facebook.com/media.rcg/" target="_blank" className="redes external">
 								<img src={face} alt="" />
 							</Link>
 							<Link href="https://twitter.com/rcg_media" target="_blank" className="redes external">
@@ -108,7 +108,7 @@ export default function mobileMenuPopup(props) {
 							<Link href="https://www.youtube.com/user/RCGNOTICIAS" target="_blank" className="redes external">
 								<img src={you} alt="" />
 							</Link>
-							<Link href="https://www.instagram.com/rcgoficial" target="_blank" className="redes external">
+							<Link href="https://www.instagram.com/rcg.media/" target="_blank" className="redes external">
 								<img src={insta} alt="" />
 							</Link>
 							<Link href="https://www.tiktok.com/@rcgoficial?lang=es" target="_blank" className="redes external">
