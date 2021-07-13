@@ -90,4 +90,4 @@ app.use(express.static(path.resolve(__dirname, "/var/www/html/")));
 
 var httpServer = app.listen(port, () => console.log(`Listening on port ${port}`));
 
-httpServer.setTimeout(2000);
+httpServer.setTimeout(120000);
