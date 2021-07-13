@@ -61,11 +61,11 @@ export default class Footer extends Component {
 					</div>
 				</Block>
 				<Block className="right display-flex justify-content-space-between align-items-center social-desk">
-					<a href="https://www.facebook.com/rcgoficial" className="faceIcon display-flex justify-content-center align-items-center external">
+					<a href="https://www.facebook.com/media.rcg/" className="faceIcon display-flex justify-content-center align-items-center external">
 						<img className="light" src={FaceFoot} alt="" />
 						<img className="dark" src={FaceFoot_d} alt="" />
 					</a>
-					<a href="https://www.twitter.com/RCGoficial" className="twitIcon display-flex justify-content-center align-items-center external">
+					<a href="https://www.twitter.com/rcg_media" className="twitIcon display-flex justify-content-center align-items-center external">
 						<img className="light" src={TwitFoot} alt="" />
 						<img className="dark" src={TwitFoot_d} alt="" />
 					</a>
@@ -73,7 +73,7 @@ export default class Footer extends Component {
 						<img className="light" src={YouFoot} alt="" />
 						<img className="dark" src={YouFoot_d} alt="" />
 					</a>
-					<a href="https://www.instagram.com/rcgoficial" className="instaIcon display-flex justify-content-center align-items-center external">
+					<a href="https://www.instagram.com/rcg.media/" className="instaIcon display-flex justify-content-center align-items-center external">
 						<img className="light" src={InstaFoot} alt="" />
 						<img className="dark" src={InstaFoot_d} alt="" />
 					</a>
@@ -81,16 +81,16 @@ export default class Footer extends Component {
 				<Block className="display-flex justify-content-space-between align-items-center social-mobile">
 					<p>Síguenos en:</p>
 					<Block className="icons display-flex justify-content-space-between align-items-center ">
-						<a href="https://www.facebook.com/rcgmedia.oficial" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.facebook.com/media.rcg/" className="display-flex justify-content-center align-items-center external">
 							<img src={FBIcon} alt="" srcSet="" />
 						</a>
-						<a href="https://twitter.com/rcg_media" className="display-flex justify-content-center align-items-center">
+						<a href="https://twitter.com/rcg_media" className="display-flex justify-content-center align-items-center external">
 							<img src={TWIcon} alt="" srcSet="" />
 						</a>
-						<a href="https://www.youtube.com/user/RCGNOTICIAS" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.youtube.com/user/RCGNOTICIAS" className="display-flex justify-content-center align-items-center external">
 							<img src={YTIcon} alt="" srcSet="" />
 						</a>
-						<a href="https://www.instagram.com/rcgoficial" className="display-flex justify-content-center align-items-center">
+						<a href="https://www.instagram.com/rcg.media/" className="display-flex justify-content-center align-items-center external">
 							<img src={IGIcon} alt="" srcSet="" />
 						</a>
 						<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">

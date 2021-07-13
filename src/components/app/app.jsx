@@ -514,7 +514,7 @@ export default class extends React.Component {
 
 			OneSignal.push(() => {
 				OneSignal.init({
-					appId: "2b8f51fa-8098-49d8-a9a5-a36441f41907", //STEP 9
+					appId: "f2f80301-05fa-442c-8ea4-4fcd0dab1abd", //STEP 9
 				});
 			});
 			// Call F7 APIs here
