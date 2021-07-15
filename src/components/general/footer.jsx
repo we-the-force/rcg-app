@@ -93,7 +93,7 @@ export default class Footer extends Component {
 						<a href="https://www.instagram.com/rcg.media/" className="display-flex justify-content-center align-items-center external">
 							<img src={IGIcon} alt="" srcSet="" />
 						</a>
-						<a href="https://www.tiktok.com/@rcgoficial?lang=es" className="external" target="_blank">
+						<a href="https://vm.tiktok.com/ZMdXfQNrf/" className="external" target="_blank">
 							<img src={tiktok} alt="" srcSet="" />
 						</a>
 						<a href="https://t.me/RCGMedia" className="external" target="_blank">

@@ -111,7 +111,7 @@ export default function mobileMenuPopup(props) {
 							<Link href="https://www.instagram.com/rcg.media/" target="_blank" className="redes external">
 								<img src={insta} alt="" />
 							</Link>
-							<Link href="https://www.tiktok.com/@rcgoficial?lang=es" target="_blank" className="redes external">
+							<Link href="https://vm.tiktok.com/ZMdXfQNrf/" target="_blank" className="redes external">
 								<img src={tiktok} alt="" />
 							</Link>
 							<Link href="https://t.me/RCGMedia" target="_blank" className="redes external">
