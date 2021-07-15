@@ -47,7 +47,7 @@ export default class adsTop extends Component {
 									alt={alt}
 									style={{
 										width: "100%",
-										height: "fit-content",
+										height: "auto",
 									}}
 								/>
 							</Link>
