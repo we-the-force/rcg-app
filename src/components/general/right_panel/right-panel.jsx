@@ -72,7 +72,8 @@ export default function RightPanel(props) {
                         search
                     </span>
                 </Block>
-                <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"/></Link>
+                <a external class="weatherwidget-io" href="https://forecast7.com/es/25d44n100d97/saltillo/" data-label_1="SALTILLO" data-icons="Climacons Animated" data-days="3" data-theme="pure" data-suncolor="#ff0000">SALTILLO</a>
+                {/* <Link href="https://www.meteored.mx/clima_Saltillo-America+Norte-Mexico-Coahuila-MMIO-1-22377.html" external target="_blank" ><img src="https://www.meteored.mx/wimages/fotobb9883428a01a276c51ec22c33002745.png"/></Link> */}
                 <br />
                 <Link href="https://www.youtube.com/channel/UCcv1a47MEXfAbsKcxZAn9Ow" external target="_blank">
                 <img  className="bannerSearch" src={bannersearch} alt="" sytle={{ width: "200px", margin: "0 10px" }}/>
