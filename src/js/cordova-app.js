@@ -16,6 +16,7 @@ var cordovaApp = {
   In case there is a current view with navigation history, it will go back instead.
   */
   handleAndroidBackButton: function () {
+    console.log('backbutton');
     var f7 = cordovaApp.f7;
     const $ = f7.$;
     if (f7.device.electron) return;
@@ -86,13 +87,54 @@ var cordovaApp = {
       }
     }, false);
   },
+
+  receivedEvent: function() {
+  //START ONESIGNAL CODE
+  //Remove this method to stop OneSignal Debugging 
+  //window.OneSignal.setLogLevel({logLevel: 6, visualLevel: 0});
+
+  var notificationOpenedCallback = function(jsonData) {
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  };
+  // Set your iOS Settings
+  var iosSettings = {};
+  iosSettings["kOSSettingsKeyAutoPrompt"] = false;
+  iosSettings["kOSSettingsKeyInAppLaunchURL"] = false;
+
+  window.OneSignal.startInit("f2f80301-05fa-442c-8ea4-4fcd0dab1abd")
+    .handleNotificationOpened(notificationOpenedCallback)
+    .registerForPushNotifications()
+    .showNativePrompt()
+    .endInit();
+    // .handleNotificationOpened(notificationOpenedCallback)
+    // .iOSSettings(iosSettings)
+    // .inFocusDisplaying(window.OneSignal.OSInFocusDisplayOption.Notification)
+    // .endInit();
+
+  // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+  // window.OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
+  //     console.log("User accepted notifications: " + accepted);
+  // });
+  window.OneSignal.getPermissionSubscriptionState(function(status) {
+    console.log('entering validation notif');
+
+    if (status.permissionStatus.hasPrompted == false) {
+      console.log('no notifications');
+      OneSignal.addTrigger("prompt_ios", "true");
+    }
+  });
+
+
+  //END ONESIGNAL CODE
+  },
+
   /*
   This method does the following:
     - provides cross-platform view "shrinking" on keyboard open/close
     - hides keyboard accessory bar for all inputs except where it required
   */
 
-    
+   
   handleKeyboard: function () {
     var f7 = cordovaApp.f7;
     if (!window.Keyboard || !window.Keyboard.shrinkView || f7.device.electron) return;
@@ -139,7 +181,7 @@ var cordovaApp = {
   init: function (f7) {
     // Save f7 instance
     cordovaApp.f7 = f7;
-
+    cordovaApp.receivedEvent();
     // Handle Android back button
     cordovaApp.handleAndroidBackButton();
 
@@ -148,7 +190,6 @@ var cordovaApp = {
 
     // Handle Keyboard
     cordovaApp.handleKeyboard();
-    
     
   },
 };
