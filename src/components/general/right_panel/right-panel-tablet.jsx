@@ -65,6 +65,7 @@ export default function RightPanelTablet(props) {
 							data-days="3"
 							data-theme="pure"
 							data-suncolor="#ff0000"
+                            external
 						>
 							SALTILLO
 						</a>
